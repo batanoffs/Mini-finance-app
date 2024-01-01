@@ -1,3 +1,10 @@
+import  USLogo from "../images/flag/united-states.png";
+import  singaporeLogo  from "../images/flag/singapore.png";
+import  UKLogo  from "../images/flag/united-kingdom.png";
+import  australiaLogo  from "../images/flag/australia.png";
+import  europeLogo  from "../images/flag/european-union.png";
+
+
 export const ExchangeRate = () => {
     return (
         <div className="custom-block custom-block-exchange">
@@ -5,7 +12,7 @@ export const ExchangeRate = () => {
 
             <div className="d-flex align-items-center border-bottom pb-3 mb-3">
                 <div className="d-flex align-items-center">
-                    <img src="../images/flag/united-states.png" className="exchange-image img-fluid" alt=""/>
+                    <img src={USLogo} className="exchange-image img-fluid" alt={"US logo"}/>
 
                     <div>
                         <p>USD</p>
@@ -26,7 +33,7 @@ export const ExchangeRate = () => {
 
             <div className="d-flex align-items-center border-bottom pb-3 mb-3">
                 <div className="d-flex align-items-center">
-                    <img src="images/flag/singapore.png" className="exchange-image img-fluid" alt=""/>
+                    <img src={singaporeLogo} className="exchange-image img-fluid" alt={"Singapore logo"}/>
 
                     <div>
                         <p>SGD</p>
@@ -47,7 +54,7 @@ export const ExchangeRate = () => {
 
             <div className="d-flex align-items-center border-bottom pb-3 mb-3">
                 <div className="d-flex align-items-center">
-                    <img src="images/flag/united-kingdom.png" className="exchange-image img-fluid" alt=""/>
+                    <img src={UKLogo} className="exchange-image img-fluid" alt={"UK logo"}/>
 
                     <div>
                         <p>GPD</p>
@@ -68,7 +75,7 @@ export const ExchangeRate = () => {
 
             <div className="d-flex align-items-center border-bottom pb-3 mb-3">
                 <div className="d-flex align-items-center">
-                    <img src="images/flag/australia.png" className="exchange-image img-fluid" alt=""/>
+                    <img src={australiaLogo} className="exchange-image img-fluid" alt={"australia logo"}/>
 
                     <div>
                         <p>AUD</p>
@@ -89,7 +96,7 @@ export const ExchangeRate = () => {
 
             <div className="d-flex align-items-center">
                 <div className="d-flex align-items-center">
-                    <img src="images/flag/european-union.png" className="exchange-image img-fluid" alt=""/>
+                    <img src={europeLogo} className="exchange-image img-fluid" alt={"europe logo"}/>
 
                     <div>
                         <p>EUR</p>

@@ -1,3 +1,7 @@
+import person3 from "../images/profile/senior-man-white-sweater-eyeglasses.jpg"
+import person2 from "../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
+import person1 from "../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+
 export const Transactions = () => {
     return (
         <div className="custom-block custom-block-transations">
@@ -5,7 +9,7 @@ export const Transactions = () => {
 
             <div className="d-flex flex-wrap align-items-center mb-4">
                 <div className="d-flex align-items-center">
-                    <img src="images/profile/senior-man-white-sweater-eyeglasses.jpg" className="profile-image img-fluid" alt=""/>
+                    <img src={person3} className="profile-image img-fluid" alt={"person"}/>
 
                     <div>
                         <p>
@@ -24,7 +28,7 @@ export const Transactions = () => {
 
             <div className="d-flex flex-wrap align-items-center mb-4">
                 <div className="d-flex align-items-center">
-                    <img src="images/profile/young-beautiful-woman-pink-warm-sweater.jpg" className="profile-image img-fluid" alt=""/>
+                    <img src={person2} className="profile-image img-fluid" alt={"person"}/>
 
                     <div>
                         <p>
@@ -43,7 +47,7 @@ export const Transactions = () => {
 
             <div className="d-flex flex-wrap align-items-center">
                 <div className="d-flex align-items-center">
-                    <img src="images/profile/young-woman-with-round-glasses-yellow-sweater.jpg" className="profile-image img-fluid" alt=""/>
+                    <img src={person1} className="profile-image img-fluid" alt={"person"}/>
 
                     <div>
                         <p><a href="transation-detail.html">Store</a></p>

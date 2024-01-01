@@ -1,7 +1,3 @@
-import "./css/apexcharts.css";
-import "./css/bootstrap-icons.css";
-import "./css/bootstrap.min.css";
-import "./css/tooplate-mini-finance.css";
 import { Header } from "./Components/Header";
 import { Navigation } from "./Components/Navigation";
 import { Welcome } from "./Components/Welcome";
@@ -22,7 +18,7 @@ function App() {
                         <Footer />
                     </main>
                 </div>
-            </div>
+            </div>                     
         </>
     );
 }

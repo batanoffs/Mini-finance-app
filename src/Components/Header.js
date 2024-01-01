@@ -1,3 +1,11 @@
+import search from "../images/social/search.png"
+import spotify from "../images/social/spotify.png"
+import telegram from "../images/social/telegram.png"
+import snapchat from "../images/social/snapchat.png"
+import tiktok from "../images/social/tiktok.png"
+import youtube from "../images/social/youtube.png"
+import profilePicture from "../images/medium-shot-happy-man-smiling.jpg"
+
 export const Header = () => {
     return (
         
@@ -84,42 +92,42 @@ export const Header = () => {
                                 <div className="row">
                                     <div className="col-lg-4 col-md-4 col-4">
                                         <a className="dropdown-item text-center" href="javascript:void(0)">
-                                            <img src="../images/social/search.png" className="profile-image img-fluid" alt=""/>
+                                            <img src={search} className="profile-image img-fluid" alt={"Google search"}/>
                                             <span className="d-block">Google</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
                                         <a className="dropdown-item text-center" href="javascript:void(0)">
-                                            <img src="../images/social/spotify.png" className="profile-image img-fluid" alt=""/>
+                                            <img src={spotify} className="profile-image img-fluid" alt="Spotify"/>
                                             <span className="d-block">Spotify</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
                                         <a className="dropdown-item text-center" href="javascript:void(0)">
-                                            <img src="../images/social/telegram.png" className="profile-image img-fluid" alt=""/>
+                                            <img src={telegram} className="profile-image img-fluid" alt="telegram"/>
                                             <span className="d-block">Telegram</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
                                         <a className="dropdown-item text-center" href="javascript:void(0)">
-                                            <img src="../images/social/snapchat.png" className="profile-image img-fluid" alt=""/>
+                                            <img src={snapchat} className="profile-image img-fluid" alt="snapchat"/>
                                             <span className="d-block">Snapchat</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
                                         <a className="dropdown-item text-center" href="javascript:void(0)">
-                                            <img src="../images/social/tiktok.png" className="profile-image img-fluid" alt=""/>
+                                            <img src={tiktok} className="profile-image img-fluid" alt="tiktok"/>
                                             <span className="d-block">Tiktok</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
                                         <a className="dropdown-item text-center" href="javascript:void(0)">
-                                            <img src="../images/social/youtube.png" className="profile-image img-fluid" alt=""/>
+                                            <img src={youtube} className="profile-image img-fluid" alt="youtube"/>
                                             <span className="d-block">Youtube</span>
                                         </a>
                                     </div>
@@ -130,12 +138,12 @@ export const Header = () => {
 
                     <div className="dropdown px-3">
                         <a className="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../images/medium-shot-happy-man-smiling.jpg" className="profile-image img-fluid" alt=""/>
+                            <img src={profilePicture} className="profile-image img-fluid" alt={"happy man"}/>
                         </a>
                         <ul className="dropdown-menu bg-white shadow">
                             <li>
                                 <div className="dropdown-menu-profile-thumb d-flex">
-                                    <img src="../images/medium-shot-happy-man-smiling.jpg" className="profile-image img-fluid me-3" alt=""/>
+                                    <img src={profilePicture} className="profile-image img-fluid me-3" alt={"happy man"}/>
 
                                     <div className="d-flex flex-column">
                                         <small>Thomas</small>

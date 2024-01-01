@@ -1,8 +1,10 @@
+import profilePicture from "../images/medium-shot-happy-man-smiling.jpg"
+
 export const ProfileDetails = () => {
     return (
         <div className="custom-block custom-block-profile-front custom-block-profile text-center bg-white">
             <div className="custom-block-profile-image-wrap mb-4">
-                <img src="images/medium-shot-happy-man-smiling.jpg" className="custom-block-profile-image img-fluid" alt=""/>
+                <img src={profilePicture} className="custom-block-profile-image img-fluid" alt="happy Man"/>
 
                 <a href="setting.html" className="bi-pencil-square custom-block-edit-icon"></a>
             </div>
