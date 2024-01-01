@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+import creditCard from "../images/credit-card.png"
+
 export const Navigation = () => {
 
     return (
@@ -5,51 +8,51 @@ export const Navigation = () => {
                     <div className="position-sticky py-4 px-3 sidebar-sticky">
                         <ul className="nav flex-column h-100">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="index.html">
+                                <Link className="nav-link active" aria-current="page" to="dashboard">
                                     <i className="bi-house-fill me-2"></i>
                                     Overview
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link" href="wallet.html">
+                                <Link className="nav-link" to="wallet">
                                     <i className="bi-wallet me-2"></i>
                                     My Wallet
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link" href="profile.html">
+                                <Link className="nav-link" to="profile">
                                     <i className="bi-person me-2"></i>
                                     Profile
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link" href="setting.html">
+                                <Link className="nav-link" to="settings">
                                     <i className="bi-gear me-2"></i>
                                     Settings
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link" href="help-center.html">
+                                <Link className="nav-link" to="helpCenter">
                                     <i className="bi-question-circle me-2"></i>
                                     Help Center
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item featured-box mt-lg-5 mt-4 mb-4">
-                                <img src="images/credit-card.png" className="img-fluid" alt=""/>
+                                <img src={creditCard} className="img-fluid" alt="credit card"/>
 
-                                <a className="btn custom-btn" href="javascript:void(0)">Upgrade</a>
+                                <Link className="btn custom-btn" to="javascript:void(0)">Upgrade</Link>
                             </li>
 
                             <li className="nav-item border-top mt-auto pt-2">
-                                <a className="nav-link" href="javascript:void(0)">
+                                <Link className="nav-link" to="javascript:void(0)">
                                     <i className="bi-box-arrow-left me-2"></i>
                                     Logout
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

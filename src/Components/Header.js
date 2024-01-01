@@ -4,7 +4,7 @@ import telegram from "../images/social/telegram.png"
 import snapchat from "../images/social/snapchat.png"
 import tiktok from "../images/social/tiktok.png"
 import youtube from "../images/social/youtube.png"
-import profilePicture from "../images/medium-shot-happy-man-smiling.jpg"
+import userProfilePicture from "../images/medium-shot-happy-man-smiling.jpg"
 
 export const Header = () => {
     return (
@@ -138,12 +138,12 @@ export const Header = () => {
 
                     <div className="dropdown px-3">
                         <a className="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src={profilePicture} className="profile-image img-fluid" alt={"happy man"}/>
+                            <img src={userProfilePicture} className="profile-image img-fluid" alt={"happy man"}/>
                         </a>
                         <ul className="dropdown-menu bg-white shadow">
                             <li>
                                 <div className="dropdown-menu-profile-thumb d-flex">
-                                    <img src={profilePicture} className="profile-image img-fluid me-3" alt={"happy man"}/>
+                                    <img src={userProfilePicture} className="profile-image img-fluid me-3" alt={"happy man"}/>
 
                                     <div className="d-flex flex-column">
                                         <small>Thomas</small>
