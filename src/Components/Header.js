@@ -21,14 +21,14 @@ export const Header = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            <form className="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="javascript:void(0)" method="get">
+            <form className="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#" method="get">
                 <input className="form-control" name="search" type="text" placeholder="Search" aria-label="Search"/>
             </form>
 
             <div className="navbar-nav me-lg-2">
                 <div className="nav-item text-nowrap d-flex align-items-center">
                     <div className="dropdown ps-3">
-                        <a className="nav-link dropdown-toggle text-center" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarLightDropdownMenuLink">
+                        <a className="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarLightDropdownMenuLink">
                             <i className="bi-bell"></i>
                             <span className="position-absolute start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
                                 <span className="visually-hidden">New alerts</span>
@@ -39,7 +39,7 @@ export const Header = () => {
                             <small>Notifications</small>
 
                             <li className="notifications-block border-bottom pb-2 mb-2">
-                                <a className="dropdown-item d-flex  align-items-center" href="javascript:void(0)">
+                                <a className="dropdown-item d-flex  align-items-center" href="#">
                                     <div className="notifications-icon-wrap bg-success">
                                         <i className="notifications-icon bi-check-circle-fill"></i>
                                     </div>
@@ -53,7 +53,7 @@ export const Header = () => {
                             </li>
 
                             <li className="notifications-block border-bottom pb-2 mb-2">
-                                <a className="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                <a className="dropdown-item d-flex align-items-center" href="#">
                                     <div className="notifications-icon-wrap bg-info">
                                         <i className="notifications-icon bi-folder"></i>
                                     </div>
@@ -67,7 +67,7 @@ export const Header = () => {
                             </li>
 
                             <li className="notifications-block">
-                                <a className="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                <a className="dropdown-item d-flex align-items-center" href="#">
                                     <div className="notifications-icon-wrap bg-danger">
                                         <i className="notifications-icon bi-question-circle"></i>
                                     </div>
@@ -83,7 +83,7 @@ export const Header = () => {
                     </div>
 
                     <div className="dropdown ps-1">
-                        <a className="nav-link dropdown-toggle text-center" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i className="bi-three-dots-vertical"></i>
                         </a>
 
@@ -91,42 +91,42 @@ export const Header = () => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-4 col-md-4 col-4">
-                                        <a className="dropdown-item text-center" href="javascript:void(0)">
+                                        <a className="dropdown-item text-center" href="#">
                                             <img src={search} className="profile-image img-fluid" alt={"Google search"}/>
                                             <span className="d-block">Google</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
-                                        <a className="dropdown-item text-center" href="javascript:void(0)">
+                                        <a className="dropdown-item text-center" href="#">
                                             <img src={spotify} className="profile-image img-fluid" alt="Spotify"/>
                                             <span className="d-block">Spotify</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
-                                        <a className="dropdown-item text-center" href="javascript:void(0)">
+                                        <a className="dropdown-item text-center" href="#">
                                             <img src={telegram} className="profile-image img-fluid" alt="telegram"/>
                                             <span className="d-block">Telegram</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
-                                        <a className="dropdown-item text-center" href="javascript:void(0)">
+                                        <a className="dropdown-item text-center" href="#">
                                             <img src={snapchat} className="profile-image img-fluid" alt="snapchat"/>
                                             <span className="d-block">Snapchat</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
-                                        <a className="dropdown-item text-center" href="javascript:void(0)">
+                                        <a className="dropdown-item text-center" href="#">
                                             <img src={tiktok} className="profile-image img-fluid" alt="tiktok"/>
                                             <span className="d-block">Tiktok</span>
                                         </a>
                                     </div>
 
                                     <div className="col-lg-4 col-md-4 col-4">
-                                        <a className="dropdown-item text-center" href="javascript:void(0)">
+                                        <a className="dropdown-item text-center" href="#">
                                             <img src={youtube} className="profile-image img-fluid" alt="youtube"/>
                                             <span className="d-block">Youtube</span>
                                         </a>
@@ -137,7 +137,7 @@ export const Header = () => {
                     </div>
 
                     <div className="dropdown px-3">
-                        <a className="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src={userProfilePicture} className="profile-image img-fluid" alt={"happy man"}/>
                         </a>
                         <ul className="dropdown-menu bg-white shadow">
@@ -147,7 +147,7 @@ export const Header = () => {
 
                                     <div className="d-flex flex-column">
                                         <small>Thomas</small>
-                                        <a href="javascript:void(0)">thomas@site.com</a>
+                                        <a href="#">thomas@site.com</a>
                                     </div>
                                 </div>
                             </li>
@@ -174,7 +174,7 @@ export const Header = () => {
                             </li>
 
                             <li className="border-top mt-3 pt-2 mx-4">
-                                <a className="dropdown-item ms-0 me-0" href="javascript:void(0)">
+                                <a className="dropdown-item ms-0 me-0" href="#">
                                     <i className="bi-box-arrow-left me-2"></i>
                                     Logout
                                 </a>

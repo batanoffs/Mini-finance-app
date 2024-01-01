@@ -2,7 +2,7 @@ export const ProfileActions = () => {
     return (
         <div className="custom-block custom-block-bottom d-flex flex-wrap">
             <div className="custom-block-bottom-item">
-                <a href="javascript:void(0)" className="d-flex flex-column">
+                <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-wallet"></i>
 
                     <small>Top up</small>
@@ -10,7 +10,7 @@ export const ProfileActions = () => {
             </div>
 
             <div className="custom-block-bottom-item">
-                <a href="javascript:void(0)" className="d-flex flex-column">
+                <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-upc-scan"></i>
 
                     <small>Scan & Pay</small>
@@ -18,7 +18,7 @@ export const ProfileActions = () => {
             </div>
 
             <div className="custom-block-bottom-item">
-                <a href="javascript:void(0)" className="d-flex flex-column">
+                <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-send"></i>
 
                     <small>Send</small>
@@ -26,7 +26,7 @@ export const ProfileActions = () => {
             </div>
 
             <div className="custom-block-bottom-item">
-                <a href="javascript:void(0)" className="d-flex flex-column">
+                <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-arrow-down"></i>
 
                     <small>Request</small>

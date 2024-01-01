@@ -1,10 +1,10 @@
-import { Balance } from "./Balance.js";
-import { History } from "./History.js";
-import { ExchangeRate } from "./ExchangeRate.js";
-import { ProfileDetails } from "./ProfileDetails.js";
-import { ProfileActions } from "./ProfileActions.js";
-import { Transactions } from "./Transactions.js";
-import { SendMoney } from "./SendMoney.js";
+import { Balance } from "./DashboardPage/Balance.js";
+import { History } from "./DashboardPage/History.js";
+import { ExchangeRate } from "./DashboardPage/ExchangeRate.js";
+import { ProfileDetails } from "./DashboardPage/ProfileDetails.js";
+import { ProfileActions } from "./DashboardPage/ProfileActions.js";
+import { Transactions } from "./DashboardPage/Transactions.js";
+import { SendMoney } from "./DashboardPage/SendMoney.js";
 
 export const Dashboard = () => {
     return (

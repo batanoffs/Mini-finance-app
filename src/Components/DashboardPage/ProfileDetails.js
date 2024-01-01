@@ -1,4 +1,4 @@
-import profilePicture from "../images/medium-shot-happy-man-smiling.jpg"
+import profilePicture from "../../images/medium-shot-happy-man-smiling.jpg"
 
 export const ProfileDetails = () => {
     return (
@@ -6,7 +6,7 @@ export const ProfileDetails = () => {
             <div className="custom-block-profile-image-wrap mb-4">
                 <img src={profilePicture} className="custom-block-profile-image img-fluid" alt="happy Man"/>
 
-                <a href="setting.html" className="bi-pencil-square custom-block-edit-icon"></a>
+                <a href="settings" className="bi-pencil-square custom-block-edit-icon"></a>
             </div>
 
             <p className="d-flex flex-wrap mb-2">
@@ -18,7 +18,7 @@ export const ProfileDetails = () => {
             <p className="d-flex flex-wrap mb-2">
                 <strong>Email:</strong>
                 
-                <a href="javascript:void(0)">
+                <a href="#">
                     thomas@site.com
                 </a>
             </p>
@@ -26,7 +26,7 @@ export const ProfileDetails = () => {
             <p className="d-flex flex-wrap mb-0">
                 <strong>Phone:</strong>
 
-                <a href="javascript:void(0)">
+                <a href="#">
                     (60) 12 345 6789
                 </a>
             </p>

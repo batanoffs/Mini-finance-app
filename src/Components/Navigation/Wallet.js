@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import person3 from "../images/profile/senior-man-white-sweater-eyeglasses.jpg"
-import person2 from "../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
-import person1 from "../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+import person3 from "../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
+import person2 from "../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
+import person1 from "../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
 
 export const Wallet = () => {
     return (
@@ -38,217 +38,217 @@ export const Wallet = () => {
 
                                         <tbody>
                                             <tr>
-                                                <td scope="row">July 5, 2023</td>
+                                                <th scope="row">July 5, 2023</th>
 
-                                                <td scope="row">10:00 PM</td>
+                                                <th scope="row">10:00 PM</th>
 
-                                                <td scope="row">Shopping</td>
+                                                <th scope="row">Shopping</th>
 
-                                                <td scope="row">C2C Transfer</td>
+                                                <th scope="row">C2C Transfer</th>
 
-                                                <td className="text-danger" scope="row">
+                                                <th className="text-danger" scope="row">
                                                     <span className="me-1">-</span>
                                                     $100.00
-                                                </td>
+                                                </th>
 
-                                                <td scope="row">$5,500.00</td>
+                                                <th scope="row">$5,500.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-danger">
                                                         Pending
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">July 2, 2023</td>
+                                                <th scope="row">July 2, 2023</th>
 
-                                                <td scope="row">10:42 AM</td>
+                                                <th scope="row">10:42 AM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-success" scope="row">
+                                                <th className="text-success" scope="row">
                                                     <span className="me-1">+</span>
                                                     $250
-                                                </td>
+                                                </th>
 
-                                                <td scope="row">$5,600.00</td>
+                                                <th scope="row">$5,600.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-success">
                                                         Success
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">June 28, 2023</td>
+                                                <th scope="row">June 28, 2023</th>
 
-                                                <td scope="row">8:20 PM</td>
+                                                <th scope="row">8:20 PM</th>
 
-                                                <td scope="row">Billing</td>
+                                                <th scope="row">Billing</th>
 
-                                                <td scope="row">Goverment</td>
+                                                <th scope="row">Goverment</th>
 
-                                                <td className="text-success" scope="row">
-                                                <span className="me-2">+</span>$50</td>
+                                                <th className="text-success" scope="row">
+                                                <span className="me-2">+</span>$50</th>
 
-                                                <td scope="row">$5,350.00</td>
+                                                <th scope="row">$5,350.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-success">
                                                         Success
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">June 24, 2023</td>
+                                                <th scope="row">June 24, 2023</th>
 
-                                                <td scope="row">10:48 PM</td>
+                                                <th scope="row">10:48 PM</th>
 
-                                                <td scope="row">Shopee</td>
+                                                <th scope="row">Shopee</th>
 
-                                                <td scope="row">QR Code</td>
+                                                <th scope="row">QR Code</th>
 
-                                                <td className="text-danger" scope="row">
-                                                <span className="me-2">-</span>$380</td>
+                                                <th className="text-danger" scope="row">
+                                                <span className="me-2">-</span>$380</th>
 
-                                                <td scope="row">$5,300.00</td>
+                                                <th scope="row">$5,300.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-dark">
                                                         Cancelled
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">June 12, 2023</td>
+                                                <th scope="row">June 12, 2023</th>
 
-                                                <td scope="row">12:30 AM</td>
+                                                <th scope="row">12:30 AM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-success" scope="row">
-                                                <span className="me-2">+</span>$250</td>
+                                                <th className="text-success" scope="row">
+                                                <span className="me-2">+</span>$250</th>
 
-                                                <td scope="row">$4,920.00</td>
+                                                <th scope="row">$4,920.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-success">
                                                         Success
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">May 31, 2023</td>
+                                                <th scope="row">May 31, 2023</th>
 
-                                                <td scope="row">2:40 PM</td>
+                                                <th scope="row">2:40 PM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-success" scope="row">
-                                                <span className="me-2">+</span>$50</td>
+                                                <th className="text-success" scope="row">
+                                                <span className="me-2">+</span>$50</th>
 
-                                                <td scope="row">$4,920.00</td>
+                                                <th scope="row">$4,920.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-success">
                                                         Success
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">May 22, 2023</td>
+                                                <th scope="row">May 22, 2023</th>
 
-                                                <td scope="row">8:50 AM</td>
+                                                <th scope="row">8:50 AM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-success" scope="row">
-                                                <span className="me-2">+</span>$50</td>
+                                                <th className="text-success" scope="row">
+                                                <span className="me-2">+</span>$50</th>
 
-                                                <td scope="row">$4,920.00</td>
+                                                <th scope="row">$4,920.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-success">
                                                         Success
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">May 20, 2023</td>
+                                                <th scope="row">May 20, 2023</th>
 
-                                                <td scope="row">6:45 PM</td>
+                                                <th scope="row">6:45 PM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-danger" scope="row">
-                                                <span className="me-2">-</span>$500</td>
+                                                <th className="text-danger" scope="row">
+                                                <span className="me-2">-</span>$500</th>
 
-                                                <td scope="row">$4,920.00</td>
+                                                <th scope="row">$4,920.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-danger">
                                                         Pending
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">April 28, 2023</td>
+                                                <th scope="row">April 28, 2023</th>
 
-                                                <td scope="row">11:20 AM</td>
+                                                <th scope="row">11:20 AM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-success" scope="row">
-                                                <span className="me-2">+</span>$856</td>
+                                                <th className="text-success" scope="row">
+                                                <span className="me-2">+</span>$856</th>
 
-                                                <td scope="row">$4,920.00</td>
+                                                <th scope="row">$4,920.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-success">
                                                         Success
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
 
                                             <tr>
-                                                <td scope="row">April 16, 2023</td>
+                                                <th scope="row">April 16, 2023</th>
 
-                                                <td scope="row">11:00 PM</td>
+                                                <th scope="row">11:00 PM</th>
 
-                                                <td scope="row">Food Delivery</td>
+                                                <th scope="row">Food Delivery</th>
 
-                                                <td scope="row">Mobile Reload</td>
+                                                <th scope="row">Mobile Reload</th>
 
-                                                <td className="text-success" scope="row">
-                                                <span className="me-2">+</span>$50</td>
+                                                <th className="text-success" scope="row">
+                                                <span className="me-2">+</span>$50</th>
 
-                                                <td scope="row">$4,920.00</td>
+                                                <th scope="row">$4,920.00</th>
 
-                                                <td scope="row">
+                                                <th scope="row">
                                                     <span className="badge text-bg-danger">
                                                         Pending
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -257,29 +257,29 @@ export const Wallet = () => {
                                 <nav aria-label="Page navigation example">
                                         <ul className="pagination justify-content-center mb-0">
                                             <li className="page-item">
-                                                <Link className="page-link" href="#" aria-label="Previous">
+                                                <Link className="page-link"  to={"#"} aria-label="Previous">
                                                     <span aria-hidden="true">Prev</span>
                                                 </Link>
                                             </li>
 
                                             <li className="page-item active" aria-current="page">
-                                                <Link className="page-link" href="#">1</Link>
+                                                <Link className="page-link" to={"#"}>1</Link>
                                             </li>
                                             
                                             <li className="page-item">
-                                                <Link className="page-link" href="#">2</Link>
+                                                <Link className="page-link"  to={"#"}>2</Link>
                                             </li>
                                             
                                             <li className="page-item">
-                                                <Link className="page-link" href="#">3</Link>
+                                                <Link className="page-link"  to={"#"}>3</Link>
                                             </li>
 
                                             <li className="page-item">
-                                                <Link className="page-link" href="#">4</Link>
+                                                <Link className="page-link"  to={"#"}>4</Link>
                                             </li>
                                             
                                             <li className="page-item">
-                                                <Link className="page-link" href="#" aria-label="Next">
+                                                <Link className="page-link"  to={"#"} aria-label="Next">
                                                     <span aria-hidden="true">Next</span>
                                                 </Link>
                                             </li>
@@ -316,7 +316,7 @@ export const Wallet = () => {
 
                             <div className="custom-block custom-block-bottom d-flex flex-wrap">
                                 <div className="custom-block-bottom-item">
-                                    <Link href="#" className="d-flex flex-column">
+                                    <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-wallet"></i>
 
                                         <small>Top up</small>
@@ -324,7 +324,7 @@ export const Wallet = () => {
                                 </div>
 
                                 <div className="custom-block-bottom-item">
-                                    <Link href="#" className="d-flex flex-column">
+                                    <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-upc-scan"></i>
 
                                         <small>Scan & Pay</small>
@@ -332,7 +332,7 @@ export const Wallet = () => {
                                 </div>
 
                                 <div className="custom-block-bottom-item">
-                                    <Link href="#" className="d-flex flex-column">
+                                    <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-send"></i>
 
                                         <small>Send</small>
@@ -340,7 +340,7 @@ export const Wallet = () => {
                                 </div>
 
                                 <div className="custom-block-bottom-item">
-                                    <Link href="#" className="d-flex flex-column">
+                                    <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-arrow-down"></i>
 
                                         <small>Request</small>
@@ -359,7 +359,7 @@ export const Wallet = () => {
 
                                         <div>
                                             <p>
-                                                <Link href="transation-detail.html">Daniel Jones</Link>
+                                                <Link to={"#"}>Daniel Jones</Link>
                                             </p>
 
                                             <small className="text-muted">C2C Transfer</small>
@@ -378,7 +378,7 @@ export const Wallet = () => {
 
                                         <div>
                                             <p>
-                                                <Link href="transation-detail.html">Public Bank</Link>
+                                                <Link to={"#"}>Public Bank</Link>
                                             </p>
 
                                             <small className="text-muted">Mobile Reload</small>
@@ -396,7 +396,7 @@ export const Wallet = () => {
                                         <img src={person1} className="profile-image img-fluid" alt="person"/>
 
                                         <div>
-                                            <p><Link href="transation-detail.html">Store</Link></p>
+                                            <p><Link to={"#"}>Store</Link></p>
 
                                             <small className="text-muted">Payment Received</small>
                                         </div>

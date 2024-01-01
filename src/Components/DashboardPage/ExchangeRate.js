@@ -1,8 +1,8 @@
-import  USLogo from "../images/flag/united-states.png";
-import  singaporeLogo  from "../images/flag/singapore.png";
-import  UKLogo  from "../images/flag/united-kingdom.png";
-import  australiaLogo  from "../images/flag/australia.png";
-import  europeLogo  from "../images/flag/european-union.png";
+import  USLogo from "../../images/flag/united-states.png";
+import  singaporeLogo  from "../../images/flag/singapore.png";
+import  UKLogo  from "../../images/flag/united-kingdom.png";
+import  australiaLogo  from "../../images/flag/australia.png";
+import  europeLogo  from "../../images/flag/european-union.png";
 
 
 export const ExchangeRate = () => {

@@ -1,11 +1,13 @@
-import person3 from "../images/profile/senior-man-white-sweater-eyeglasses.jpg"
-import person2 from "../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
-import person1 from "../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+import person3 from "../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
+import person2 from "../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
+import person1 from "../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+
+import { Link } from "react-router-dom"
 
 export const Transactions = () => {
     return (
         <div className="custom-block custom-block-transations">
-            <h5 className="mb-4">Recent Transations</h5>
+            <h5 className="mb-4">Recent Transactions</h5>
 
             <div className="d-flex flex-wrap align-items-center mb-4">
                 <div className="d-flex align-items-center">
@@ -63,10 +65,10 @@ export const Transactions = () => {
             </div>
 
             <div className="border-top pt-4 mt-4 text-center">
-                <a className="btn custom-btn" href="wallet.html">
+                <Link className="btn custom-btn" to="/wallet">
                     View all transations
                     <i className="bi-arrow-up-right-circle-fill ms-2"></i>
-                </a>
+                </Link>
             </div>
         </div>
     )
