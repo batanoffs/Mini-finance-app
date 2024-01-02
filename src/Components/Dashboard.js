@@ -2,7 +2,7 @@ import { Balance } from "./DashboardPage/Balance.js";
 import { History } from "./DashboardPage/History.js";
 import { ExchangeRate } from "./DashboardPage/ExchangeRate.js";
 import { ProfileDetails } from "./DashboardPage/ProfileDetails.js";
-import { ProfileActions } from "./DashboardPage/ProfileActions.js";
+import { BankingActionButtons } from "./DashboardPage/BankingActionButtons.js";
 import { Transactions } from "./DashboardPage/Transactions.js";
 import { SendMoney } from "./DashboardPage/SendMoney.js";
 
@@ -18,7 +18,7 @@ export const Dashboard = () => {
             {/* user profile */}
             <div className="col-lg-5 col-12">
                 <ProfileDetails />
-                <ProfileActions />
+                <BankingActionButtons />
                 <Transactions />
                 <SendMoney />
             </div>

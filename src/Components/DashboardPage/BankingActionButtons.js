@@ -1,4 +1,4 @@
-export const ProfileActions = () => {
+export const BankingActionButtons = () => {
     return (
         <div className="custom-block custom-block-bottom d-flex flex-wrap">
             <div className="custom-block-bottom-item">

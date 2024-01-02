@@ -1,8 +1,8 @@
-import { Contact } from "../OverviewSection/Contact";
-import { SettingsNavigationPanel } from "../OverviewSection/SettingsNavigationPanel";
-import { ProfileTab } from "../OverviewSection/ProfileTab";
-import { PasswordTab } from "../OverviewSection/PasswordTab";
-import { NotificationTab } from "../OverviewSection/NotificationTab";
+import { Contact } from "../NavigationPanel/Contact";
+import { SettingsNavigationPanel } from "../NavigationPanel/SettingsNavigationPanel";
+import { ProfileTab } from "../NavigationPanel/ProfileTab";
+import { PasswordTab } from "../NavigationPanel/PasswordTab";
+import { NotificationTab } from "../NavigationPanel/NotificationTab";
 import { Route, Routes } from "react-router-dom";
 
 export const Settings = () => {
@@ -19,9 +19,9 @@ export const Settings = () => {
 
                                 <div className="tab-content" id="myTabContent">
                                     <Routes> 
-                                        <Route path="profile" element={<ProfileTab />} />
+                                        <Route path="*" element={<ProfileTab />} />
                                         <Route path="password" element={<PasswordTab />} />
-                                        <Route path="notification" element={<NotificationTab />} />
+                                        <Route path="notifications" element={<NotificationTab />} />
                                     </Routes>
                                     
                                 </div>

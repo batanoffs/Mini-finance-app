@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import creditCard from "../images/credit-card.png"
 
-export const Navigation = () => {
+export const Navbar = () => {
 
     return (
         <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block sidebar collapse">
@@ -45,11 +45,11 @@ export const Navigation = () => {
                             <li className="nav-item featured-box mt-lg-5 mt-4 mb-4">
                                 <img src={creditCard} className="img-fluid" alt="credit card"/>
 
-                                <Link className="btn custom-btn" to="javascript:void(0)">Upgrade</Link>
+                                <Link className="btn custom-btn" to="upgrade">Upgrade</Link>
                             </li>
 
                             <li className="nav-item border-top mt-auto pt-2">
-                                <Link className="nav-link" to="javascript:void(0)">
+                                <Link className="nav-link" to="logout">
                                     <i className="bi-box-arrow-left me-2"></i>
                                     Logout
                                 </Link>
