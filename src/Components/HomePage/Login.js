@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export const Login = () => {
@@ -13,12 +13,17 @@ export const Login = () => {
         }
     }
 
+    function onLogin(e) {
+        e.preventDefault();
+        redirect("/dashboard");
+    }
+
     return (
         <div className="container">
             <input type="checkbox" id="check" />
             <div className="login form">
                 <header>Login</header>
-                <form action="#">
+                <form action="submit" onSubmit={onLogin}>
                     <input type="text" placeholder="Enter your email" />
                     <input type="password" placeholder="Enter your password" />
                     <Link to="reset">Forgot password?</Link>
@@ -27,7 +32,7 @@ export const Login = () => {
                 <div className="signup">
                     <span className="signup">
                         Don't have an account?
-                        <label for="check" onClick={change}>Signup</label>
+                        <label htmlFor="check" onClick={change}>Signup</label>
                     </span>
                 </div>
             </div>
@@ -45,7 +50,7 @@ export const Login = () => {
                 <div className="signup">
                     <span className="signup">
                         Already have an account?
-                        <label for="check" onClick={change}>Login</label>
+                        <label htmlFor="check" onClick={change}>Login</label>
                     </span>
                 </div>
             </div>

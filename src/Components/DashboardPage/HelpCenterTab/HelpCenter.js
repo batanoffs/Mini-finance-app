@@ -1,4 +1,4 @@
-export const HelpCenter = () => {
+export const HelpCenterTab = () => {
     return (
         <>
         <div className="title-group mb-3">

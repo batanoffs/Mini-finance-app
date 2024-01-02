@@ -1,6 +1,6 @@
-import person3 from "../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
-import person2 from "../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
-import person1 from "../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+import person3 from "../../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
+import person2 from "../../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
+import person1 from "../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
 
 import { Link } from "react-router-dom"
 
@@ -65,7 +65,7 @@ export const Transactions = () => {
             </div>
 
             <div className="border-top pt-4 mt-4 text-center">
-                <Link className="btn custom-btn" to="/wallet">
+                <Link className="btn custom-btn" to="wallet">
                     View all transations
                     <i className="bi-arrow-up-right-circle-fill ms-2"></i>
                 </Link>

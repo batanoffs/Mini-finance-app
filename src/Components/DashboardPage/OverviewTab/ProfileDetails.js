@@ -1,4 +1,4 @@
-import profilePicture from "../../images/medium-shot-happy-man-smiling.jpg"
+import profilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
 import { Link } from "react-router-dom"
 
 export const ProfileDetails = () => {
@@ -7,7 +7,7 @@ export const ProfileDetails = () => {
             <div className="custom-block-profile-image-wrap mb-4">
                 <img src={profilePicture} className="custom-block-profile-image img-fluid" alt="happy Man"/>
 
-                <Link to="/settings" className="bi-pencil-square custom-block-edit-icon"></Link>
+                <Link to="settings" className="bi-pencil-square custom-block-edit-icon"></Link>
             </div>
 
             <p className="d-flex flex-wrap mb-2">

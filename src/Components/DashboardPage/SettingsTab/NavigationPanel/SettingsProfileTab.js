@@ -1,4 +1,4 @@
-import person1 from "../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+import person1 from "../../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
 
 export const ProfileTab = () => {
     return (

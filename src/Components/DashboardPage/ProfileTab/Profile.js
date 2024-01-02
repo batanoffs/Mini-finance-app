@@ -1,5 +1,5 @@
-import userProfilePicture from "../../images/medium-shot-happy-man-smiling.jpg"
-export const ProfilePage = () => {
+import userProfilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
+export const ProfileTab = () => {
     return (
         <>  
         <div className="title-group mb-3">

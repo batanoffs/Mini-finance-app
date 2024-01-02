@@ -1,11 +1,11 @@
-import { Contact } from "../NavigationPanel/Contact";
-import { SettingsNavigationPanel } from "../NavigationPanel/SettingsNavigationPanel";
-import { ProfileTab } from "../NavigationPanel/ProfileTab";
-import { PasswordTab } from "../NavigationPanel/PasswordTab";
-import { NotificationTab } from "../NavigationPanel/NotificationTab";
+import { Contact } from "./NavigationPanel/CallUs";
+import { SettingsNavigationPanel } from "./NavigationPanel/SettingsNavigationPanel";
+import { ProfileTab } from "./NavigationPanel/SettingsProfileTab";
+import { PasswordTab } from "./NavigationPanel/SettingsPasswordTab";
+import { NotificationTab } from "./NavigationPanel/SettingsNotificationTab";
 import { Route, Routes } from "react-router-dom";
 
-export const Settings = () => {
+export const SettingsTab = () => {
     return (
         <>  
         <div className="title-group mb-3">

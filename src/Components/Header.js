@@ -13,10 +13,10 @@ export const Header = () => {
         
         <header className="navbar sticky-top flex-md-nowrap">
             <div className="col-md-3 col-lg-3 me-0 px-3 fs-6">
-                <a className="navbar-brand" href="index.html">
+                <Link className="navbar-brand" to="dashboard">
                     <i className="bi-box"></i>
                     Mini Finance
-                </a>
+                </Link>
             </div>
 
             <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">

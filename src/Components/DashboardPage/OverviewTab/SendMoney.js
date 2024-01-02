@@ -1,6 +1,6 @@
-import person1 from "../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
-import person2 from "../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
-import person3 from "../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
+import person1 from "../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+import person2 from "../../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
+import person3 from "../../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
 
 export const SendMoney = () => {
     return (

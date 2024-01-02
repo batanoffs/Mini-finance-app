@@ -8,7 +8,7 @@ export const Navbar = () => {
                     <div className="position-sticky py-4 px-3 sidebar-sticky">
                         <ul className="nav flex-column h-100">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="dashboard">
+                                <Link className="nav-link active" aria-current="page" to="">
                                     <i className="bi-house-fill me-2"></i>
                                     Overview
                                 </Link>
@@ -36,7 +36,7 @@ export const Navbar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link" to="helpCenter">
+                                <Link className="nav-link" to="help-center">
                                     <i className="bi-question-circle me-2"></i>
                                     Help Center
                                 </Link>
