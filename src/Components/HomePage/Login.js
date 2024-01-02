@@ -19,7 +19,7 @@ export const Login = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container-authetication">
             <input type="checkbox" id="check" />
             <div className="login form">
                 <header>Login</header>

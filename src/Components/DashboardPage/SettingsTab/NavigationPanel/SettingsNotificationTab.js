@@ -1,20 +1,20 @@
 export const NotificationTab = () => {
     return (
-        <div className="tab-pane fade active show" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
+        <div className="tab-pane fade active show" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabIndex="0">
             <h6 className="mb-4">Notification</h6>
 
             <form className="custom-form notification-form" action="#" method="post">
 
                 <div className="form-check form-switch d-flex mb-3 ps-0">
-                    <label className="form-check-label" for="flexSwitchCheckCheckedOne">Account activity</label>
+                    <label className="form-check-label" htmlFor="flexSwitchCheckCheckedOne">Account activity</label>
 
-                    <input className="form-check-input ms-auto" type="checkbox" name="form-check-input" role="switch" id="flexSwitchCheckCheckedOne" checked=""/>
+                    <input className="form-check-input ms-auto" type="checkbox" onChange={() => {}} name="form-check-input" role="switch" id="flexSwitchCheckCheckedOne" checked=""/>
                 </div>
 
                 <div className="form-check form-switch d-flex mb-3 ps-0">
-                    <label className="form-check-label" for="flexSwitchCheckCheckedTwo">Payment updated</label>
+                    <label className="form-check-label" htmlFor="flexSwitchCheckCheckedTwo">Payment updated</label>
 
-                    <input className="form-check-input ms-auto" type="checkbox" name="form-check-input" role="switch" id="flexSwitchCheckCheckedTwo" checked=""/>
+                    <input className="form-check-input ms-auto" type="checkbox" onChange={() => {}} name="form-check-input" role="switch" id="flexSwitchCheckCheckedTwo" checked=""/>
                 </div>
 
                 <div className="d-flex mt-4">

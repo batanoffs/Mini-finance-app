@@ -49,7 +49,7 @@ export const Navbar = () => {
                             </li>
 
                             <li className="nav-item border-top mt-auto pt-2">
-                                <Link className="nav-link" to="logout">
+                                <Link className="nav-link" to="/login">
                                     <i className="bi-box-arrow-left me-2"></i>
                                     Logout
                                 </Link>

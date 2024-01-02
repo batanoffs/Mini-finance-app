@@ -2,7 +2,7 @@ import person1 from "../../../../images/profile/young-woman-with-round-glasses-y
 
 export const ProfileTab = () => {
     return (
-        <div className="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <div className="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabIndex="0">
             <h6 className="mb-4">User Profile</h6>
 
             <form className="custom-form profile-form" action="#" method="post">

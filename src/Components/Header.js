@@ -14,8 +14,8 @@ export const Header = () => {
         <header className="navbar sticky-top flex-md-nowrap">
             <div className="col-md-3 col-lg-3 me-0 px-3 fs-6">
                 <Link className="navbar-brand" to="dashboard">
-                    <i className="bi-box"></i>
-                    Mini Finance
+                    <label className="bi-box"> My Finance</label>
+                    
                 </Link>
             </div>
 

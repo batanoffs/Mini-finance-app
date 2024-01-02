@@ -7,7 +7,6 @@ import "./css/apexcharts.css";
 import "./css/bootstrap-icons.css";
 import "./css/bootstrap.min.css";
 import "./css/tooplate-mini-finance.css";
-// import "./css/login.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
