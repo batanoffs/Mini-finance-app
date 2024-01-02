@@ -6,6 +6,8 @@ import tiktok from "../images/social/tiktok.png"
 import youtube from "../images/social/youtube.png"
 import userProfilePicture from "../images/medium-shot-happy-man-smiling.jpg"
 
+import { Link } from "react-router-dom"
+
 export const Header = () => {
     return (
         
@@ -28,58 +30,14 @@ export const Header = () => {
             <div className="navbar-nav me-lg-2">
                 <div className="nav-item text-nowrap d-flex align-items-center">
                     <div className="dropdown ps-3">
-                        <a className="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarLightDropdownMenuLink">
+                        <Link className="nav-link dropdown-toggle text-center" to="notifications" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarLightDropdownMenuLink">
                             <i className="bi-bell"></i>
                             <span className="position-absolute start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
                                 <span className="visually-hidden">New alerts</span>
                             </span>
-                        </a>
+                        </Link>
 
-                        <ul className="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink">
-                            <small>Notifications</small>
-
-                            <li className="notifications-block border-bottom pb-2 mb-2">
-                                <a className="dropdown-item d-flex  align-items-center" href="#">
-                                    <div className="notifications-icon-wrap bg-success">
-                                        <i className="notifications-icon bi-check-circle-fill"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Your account has been created successfuly.</span>
-
-                                        <p>12 days ago</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li className="notifications-block border-bottom pb-2 mb-2">
-                                <a className="dropdown-item d-flex align-items-center" href="#">
-                                    <div className="notifications-icon-wrap bg-info">
-                                        <i className="notifications-icon bi-folder"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Please check. We have sent a Daily report.</span>
-
-                                        <p>10 days ago</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li className="notifications-block">
-                                <a className="dropdown-item d-flex align-items-center" href="#">
-                                    <div className="notifications-icon-wrap bg-danger">
-                                        <i className="notifications-icon bi-question-circle"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Account verification failed.</span>
-
-                                        <p>1 hour ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                        
                     </div>
 
                     <div className="dropdown ps-1">
