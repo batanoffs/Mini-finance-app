@@ -1,10 +1,9 @@
 import { Header } from "./Components/Header";
-import { Login } from "./Components/HomePage/Login";
+import { LoginRegister } from "./Components/LoginPage/LoginRegister";
 import { WelcomePage } from "./Components/WelcomePage";
 import { Footer } from "./Components/Footer";
 
 import { Routes, Route } from "react-router-dom";
-
 
 // const Parse = require('parse');
 
@@ -14,12 +13,11 @@ function App() {
             <Header />
 
             <Routes>
-                <Route path="/*" element={<Login />} />
+                <Route path="/*" element={<LoginRegister />} />
                 <Route path="/dashboard/*" element={<WelcomePage />} />
             </Routes>
-            
+
             <Footer />
-            
         </>
     );
 }
