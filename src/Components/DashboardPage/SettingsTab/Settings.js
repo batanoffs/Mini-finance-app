@@ -4,6 +4,7 @@ import { ProfileTab } from "./NavigationPanel/SettingsProfileTab";
 import { PasswordTab } from "./NavigationPanel/SettingsPasswordTab";
 import { NotificationTab } from "./NavigationPanel/SettingsNotificationTab";
 import { Route, Routes } from "react-router-dom";
+import { CreditCard } from "./NavigationPanel/SettingsCreditCardTab";
 
 export const SettingsTab = () => {
     return (
@@ -22,6 +23,7 @@ export const SettingsTab = () => {
                                         <Route path="*" element={<ProfileTab />} />
                                         <Route path="password" element={<PasswordTab />} />
                                         <Route path="notifications" element={<NotificationTab />} />
+                                        <Route path="credit-card" element={<CreditCard />} />
                                     </Routes>
                                     
                                 </div>
