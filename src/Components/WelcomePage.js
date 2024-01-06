@@ -14,9 +14,9 @@ export const WelcomePage = () => {
                             <Navbar/> 
                                 <Routes>                                
                                     <Route path="*" element={<Dashboard />} />
+                                    <Route path="wallet" element={<MyWalletTab /> } />
                                     <Route path="profile" element={<ProfileTab />} />
                                     <Route path="settings/*" element={<SettingsTab />} />
-                                    <Route path="wallet" element={<MyWalletTab /> } />
                                     <Route path="help-center" element={<HelpCenterTab />}/>
                                 </Routes>
                         </main>

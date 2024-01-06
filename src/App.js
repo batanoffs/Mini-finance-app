@@ -3,104 +3,69 @@ import { LoginRegister } from "./Components/LoginPage/LoginRegister";
 import { WelcomePage } from "./Components/WelcomePage";
 import { Footer } from "./Components/Footer";
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext";
-import { redirect } from "react-router-dom";
+import { authService } from "./services/authService";
 
 function App() {
-    const BASE_LOGIN_URL = "https://parseapi.back4app.com/login";
-    const BASE_REGISTER_URL = "https://parseapi.back4app.com/users";
     const [auth, setAuth] = useState({});
     const [records, setRecords] = useState([]);
+    const navigate = useNavigate();
 
     const onRegisterSubmitHandler = async (formData) => {
         if (formData.password !== formData.confirmPassword) {
             return;
         }
-        try {
-            const response = await fetch(BASE_REGISTER_URL, {
-                method: "POST",
-                headers: {
-                    "X-Parse-Application-Id":
-                        "J7d9KFz7D1pyPmJe073ZsK5stStJP5aD4dW4Fxoy",
-                    "X-Parse-REST-API-Key":
-                        "iVHSXY38Vg77ClZ1ooPr7bS2CzXS4xKmoQqXcUs4",
-                    "X-Parse-Revocable-Session": "1",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-            const data = await response.json();
-            const token = data.sessionToken;
-            const userId = data.objectId;
-            sessionStorage.setItem("userData", token);
-            
+        const { email, password } = formData;
+        const response = await authService.register({ email, password });
+        console.log(response);
 
-            // TO DO: Fix redirect
-            if(response.status !== 404) { 
-                console.log(response.status);               
-                redirect(`dashboard/${userId}`);
-            }
-        } catch (error) {
-            throw new Error(error);
-        }
-        setRecords([...records, formData]);      
+        setRecords([...records, formData]); 
+        setAuth(response);
+
+        window.alert("Successfully registered!");
     };
 
     
-    const onLoginSubmitHandler = async (formData) => {        
-    console.log(formData);
-    const encodedUsername = encodeURI(formData.username);
-    const encodedPassword = encodeURI(formData.password);
-    const URI = BASE_LOGIN_URL + `?username=${encodedUsername}&password=${encodedPassword}`;
+    const onLoginSubmitHandler = async (formData) => {
+        const data = {
+            "login": formData.email,
+            "password": formData.password,
+        };
 
-    try {
-        const response = await fetch(URI, {
-            method: "POST",
-            headers: {
-                "X-Parse-Application-Id":
-                    "J7d9KFz7D1pyPmJe073ZsK5stStJP5aD4dW4Fxoy",
-                "X-Parse-REST-API-Key":
-                    "iVHSXY38Vg77ClZ1ooPr7bS2CzXS4xKmoQqXcUs4",
-                "X-Parse-Revocable-Session": "1",
-            },
-        });
-        const data = await response.json();
-        const token = data.sessionToken;
-        const userId = data.objectId;
+        const response = await authService.login(data);
+        setAuth(response);
+        const token = response["user-token"];
+        console.log(token);
         sessionStorage.setItem("userData", token);
-        // TO DO:
-        // setRecords([...records, formValues]);
-        // setFormValues({
-        //     username: "",
-        //     email: "",
-        //     password: "",
-        //     confirmPassword: "",
-        // });
+        navigate(`/dashboard`);
+    };
+
+    const context = {
+        onLoginSubmitHandler,
+        onRegisterSubmitHandler,
+        userId: auth.objectId,
+        token: auth.sessionToken,
+        email: auth.email,
+        username: auth.username,
+        password: auth.confirmPassword,
+        isAuthenticated() {
+            return !!auth.sessionToken;
+        },
+    };
         
-        // TO DO: Fix redirect
-        if(response.status !== 404) {
-            console.log(response.status);
-            redirect(`/dashboard/${userId}`);
-        }
-    } catch (error) {
-        throw new Error(error);
-    }        
-};
-    
-    return ( 
-        
-        <AuthContext.Provider value={{onLoginSubmitHandler,onRegisterSubmitHandler}}>
+    return (         
+        <AuthContext.Provider value={{...context}}>
             <Header />
 
             <Routes>
-                <Route path="/*" element={<LoginRegister />} />
-                <Route path="/dashboard/:userId" element={<WelcomePage />} />
+                <Route path='*' element={<h1>404</h1>} />
+                <Route path="/" element={<LoginRegister />} />
+                <Route path="/dashboard/*" element={<WelcomePage />} />
             </Routes>
 
             <Footer />
-        </AuthContext.Provider>
-        
+        </AuthContext.Provider>        
     );
 }
 

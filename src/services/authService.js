@@ -1,13 +1,19 @@
-import { requestFactory } from './requester';
+import * as request from './requester'
+const baseURL = "https://lavishpart.backendless.app/api";
+const endpoints = {
+    login: "/users/login",
+    register: "/users/register",
+}
 
-const baseUrl = "https://parseapi.back4app.com/"; 
+const login = async (loginData) => {
+    return await request.post(`${baseURL}${endpoints.login}`, loginData)
+}
 
-export const authServiceFactory = (token) => {
-    const request = requestFactory(token);
+const register = async (registerData) => {
+    return await request.post(`${baseURL}${endpoints.register}`, registerData)
+}
 
-    return {
-        login: (data) => request.post(`${baseUrl}/login`, data),
-        register: (data) => request.post(`${baseUrl}/register`, data),
-        logout: () => request.get(`${baseUrl}/logout`),
-    }
-};
+export const authService = {
+    login,
+    register
+}

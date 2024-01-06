@@ -8,12 +8,10 @@ export const LoginRegister = () => {
     const { onLoginSubmitHandler, onRegisterSubmitHandler } = useContext(AuthContext);
     const [checked, setChecked] = useState(false);    
     const {values, changeHandler, onSubmitLogin, resetFormHandler, onSubmitRegister} = useForm({
-        username: "",
         email: "",
         password: "",
         confirmPassword: "",
     }, onLoginSubmitHandler, onRegisterSubmitHandler);
-    //     e.preventDefault();
     //     const atIndex = values.username.indexOf("@");
     //     values.username = values.username.slice(0, atIndex);
 
@@ -107,14 +105,14 @@ export const LoginRegister = () => {
             <input type="checkbox" id="check" />
             <div className="login form">
                 <header>Login</header>
-                <form action="submit" onSubmit={onSubmitLogin}>
+                <form method="post" onSubmit={onSubmitLogin}>
                     <input
                         type="text"
                         autoComplete="off"
-                        name="username"
-                        value={values.username}
+                        name="email"
+                        value={values.email}
                         onChange={changeHandler}
-                        placeholder="Enter your username"
+                        placeholder="Enter your email"
                     />
                     <input
                         type="password"
@@ -140,7 +138,7 @@ export const LoginRegister = () => {
             <div className="registration form">
                 <header>Signup</header>
 
-                <form onSubmit={onSubmitRegister}>
+                <form method="post" onSubmit={onSubmitRegister}>
                     <input
                         type="email"
                         name="email"
