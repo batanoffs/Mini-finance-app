@@ -36,14 +36,23 @@ function App() {
         const response = await authService.login(data);
         setAuth(response);
         const token = response["user-token"];
-        console.log(token);
         sessionStorage.setItem("userData", token);
-        navigate(`/dashboard`);
+        navigate("/dashboard");
     };
+
+    const onLogoutHandler = async () => {        
+        const token = sessionStorage.getItem("userData");
+        await authService.logout(token);
+        sessionStorage.removeItem("userData");
+        setAuth("");
+        setRecords([]);
+        
+    }
 
     const context = {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,
+        onLogoutHandler,
         userId: auth.objectId,
         token: auth["user-token"],
         email: auth.email,

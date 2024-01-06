@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import creditCard from "../images/credit-card.png"
+import { useContext } from "react"
+import { AuthContext } from "../contexts/AuthContext"
 
 export const Navbar = () => {
-
+    const { onLogoutHandler } = useContext(AuthContext)
     return (
         <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block sidebar collapse">
                     <div className="position-sticky py-4 px-3 sidebar-sticky">
@@ -49,7 +51,7 @@ export const Navbar = () => {
                             </li>
 
                             <li className="nav-item border-top mt-auto pt-2">
-                                <Link className="nav-link" to="/login">
+                                <Link className="nav-link" onClick={onLogoutHandler} to="/">
                                     <i className="bi-box-arrow-left me-2"></i>
                                     Logout
                                 </Link>

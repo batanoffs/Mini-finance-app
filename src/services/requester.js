@@ -1,7 +1,7 @@
-const request = async (method, url, data) => {
+const request = async (method, url, data, token = undefined) => {
     const options = {};
 
-    if (method !== "GET") {
+    if (method === "POST") {
         options.method = method;
 
         if (data) {
@@ -11,21 +11,35 @@ const request = async (method, url, data) => {
 
             options.body = JSON.stringify(data);
         }
-    }    
 
-    const response = await fetch(url, options);
+        const response = await fetch(url, options);
 
-    if (response.status === 204) {
-        return {};
+        if (response.status === 204) {
+            return {};
+        }
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message);
+        }
+        if (result) {
+            return result;
+        }
     }
 
-    const result = await response.json();
+    if (method === "GET") {
+        options.method = method;
+        options.headers = {
+            "user-token": `${token}`,
+        };
 
-    if (!response.ok) {
-        throw new Error(result.message);
+        const response = await fetch(url, options);
+
+        if (response.status === 204) {
+            return {};
+        }
     }
-
-    return result;
 };
 
 export const get = request.bind(null, "GET");
