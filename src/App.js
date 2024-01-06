@@ -45,12 +45,11 @@ function App() {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,
         userId: auth.objectId,
-        token: auth.sessionToken,
+        token: auth["user-token"],
         email: auth.email,
-        username: auth.username,
-        password: auth.confirmPassword,
+        userStatus: auth.userStatus,
         isAuthenticated() {
-            return !!auth.sessionToken;
+            return !!auth["user-token"];
         },
     };
         
