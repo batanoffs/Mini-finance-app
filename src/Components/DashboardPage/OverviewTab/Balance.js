@@ -1,9 +1,10 @@
-export const Balance = ({cardNumber, expiryDate, name, balance}) => {
-
+export const Balance = ({creditCard, name, balance}) => {
+    let card = creditCard.cardNumber;
     // TO DO last digits
-    // let lastDigits = cardNumber.splice(-4, 4);
-    // let lastDigits = cardNumber;
-    // lastDigits.splice(-4);
+    const splitDigits = (number) => {
+        return number.toString().split('').splice(-4).join('');
+    }
+
     return (
         <div className="custom-block custom-block-balance">
             <small>Your Balance</small>
@@ -14,13 +15,13 @@ export const Balance = ({cardNumber, expiryDate, name, balance}) => {
                 <span>****</span>
                 <span>****</span>
                 <span>****</span>
-                <p>{cardNumber}</p>
+                <p>{splitDigits(card)}</p>
             </div>
 
             <div className="d-flex">
                 <div>
                     <small>Valid Date</small>
-                    <p>{expiryDate}</p>
+                    <p>{creditCard.expiryDate}</p>
                 </div>
 
                 <div className="ms-auto">
