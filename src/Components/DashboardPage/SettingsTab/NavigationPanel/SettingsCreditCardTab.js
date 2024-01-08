@@ -2,12 +2,12 @@ import { useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 
-export const CreditCard = () => {
+export const CreditCard = ({creditCard, name}) => {
     const [state, setState] = useState({
-        fullname: "",
-        credit_card_number:"",
-        expiryDate:"",
-        cvc:"",
+        fullname: `name`,
+        credit_card_number: `creditCard.cardNumber`,
+        expiryDate: `creditCard.expiryDate`,
+        cvc: `creditCard.cvv`,
         focus: "",
     });
 

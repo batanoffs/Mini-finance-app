@@ -14,7 +14,7 @@ export const Header = () => {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <header className="navbar sticky-top flex-md-nowrap">
-            <div className="col-md-3 col-lg-3 me-0 px-3 fs-6">
+            <div className="col-md-3 col-lg-4 me-0 px-3 fs-6">
                 <Link className="navbar-brand" to="dashboard">
                     <label className="bi-box"> My Finance</label>
                 </Link>
@@ -32,7 +32,7 @@ export const Header = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            <form
+            {/* <form
                 className="custom-form header-form ms-lg-1 ms-md-1 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0"
                 action="#"
                 method="get"
@@ -44,7 +44,7 @@ export const Header = () => {
                     placeholder="Search"
                     aria-label="Search"
                 />
-            </form>
+            </form> */}
 
             {isAuthenticated() && (
                 <div className="navbar-nav me-lg-2">

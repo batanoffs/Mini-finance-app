@@ -1,11 +1,11 @@
 import person1 from "../../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg";
 import { useState } from "react";
 
-export const ProfileTab = (props) => {
+export const ProfileTab = ({name, email, phone, picture}) => {
     const [state, setState] = useState({
-        fullname: "",
-        email: "",
-        phone_number: "",
+        fullname: name,
+        email: email,
+        phone_number: phone,
         picture: "",
     });
 
@@ -64,7 +64,7 @@ export const ProfileTab = (props) => {
 
                 <div className="input-group mb-1">
                     <img
-                        src={person1}
+                        src={picture}
                         className="profile-image img-fluid"
                         alt="person"
                         value={state.picture}

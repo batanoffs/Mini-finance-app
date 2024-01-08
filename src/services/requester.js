@@ -3,7 +3,6 @@ const request = async (method, url, data, token = undefined) => {
 
     if (method === "POST") {
         options.method = method;
-
         if (data) {
             options.headers = {
                 "Content-Type": "application/json",
@@ -11,34 +10,34 @@ const request = async (method, url, data, token = undefined) => {
 
             options.body = JSON.stringify(data);
         }
+    }
 
+    if (method === "GET") {
+        options.method = method;
+        if (token) {
+            options.headers = {
+                "user-token": `${token}`,
+            };
+        }
+    }
+
+    try {
         const response = await fetch(url, options);
-
+        
         if (response.status === 204) {
             return {};
         }
 
         const result = await response.json();
-
+        // console.log(result);
         if (!response.ok) {
             throw new Error(result.message);
         }
         if (result) {
             return result;
         }
-    }
-
-    if (method === "GET") {
-        options.method = method;
-        options.headers = {
-            "user-token": `${token}`,
-        };
-
-        const response = await fetch(url, options);
-
-        if (response.status === 204) {
-            return {};
-        }
+    } catch (error) {
+        console.log(error);
     }
 };
 

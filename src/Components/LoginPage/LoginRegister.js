@@ -31,7 +31,7 @@ export const LoginRegister = () => {
                 <form method="post" onSubmit={onSubmitLogin}>
                     <input
                         type="text"
-                        autoComplete="off"
+                        autoComplete="on"
                         name="email"
                         value={values.email}
                         onChange={changeHandler}
@@ -39,7 +39,7 @@ export const LoginRegister = () => {
                     />
                     <input
                         type="password"
-                        autoComplete="off"
+                        autoComplete="on"
                         name="password"
                         value={values.password}
                         onChange={changeHandler}

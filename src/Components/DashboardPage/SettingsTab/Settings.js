@@ -5,8 +5,11 @@ import { PasswordTab } from "./NavigationPanel/SettingsPasswordTab";
 import { NotificationTab } from "./NavigationPanel/SettingsNotificationTab";
 import { Route, Routes } from "react-router-dom";
 import { CreditCard } from "./NavigationPanel/SettingsCreditCardTab";
+import { useContext } from "react";
+import { UserDataContext } from "../../../contexts/UserDataContext";
 
 export const SettingsTab = () => {
+    const {name, phone, balance, creditCard, picture, userId, email, transactions, friends} = useContext(UserDataContext);
     return (
         <>  
         <div className="title-group mb-3">
@@ -20,9 +23,11 @@ export const SettingsTab = () => {
 
                                 <div className="tab-content" id="myTabContent">
                                     <Routes> 
-                                        <Route path="*" element={<ProfileTab />} />
+                                    
+                                        <Route path="*" element={<ProfileTab name={name} email={email} phone={phone} picture={picture}/>} />
                                         <Route path="password" element={<PasswordTab />} />
                                         <Route path="notifications" element={<NotificationTab />} />
+                                        {/* name={name} creditCard={creditCard[0]} */}
                                         <Route path="credit-card" element={<CreditCard />} />
                                     </Routes>
                                     
