@@ -4,13 +4,12 @@ import telegram from "../images/social/telegram.png";
 import snapchat from "../images/social/snapchat.png";
 import tiktok from "../images/social/tiktok.png";
 import youtube from "../images/social/youtube.png";
-import userProfilePicture from "../images/medium-shot-happy-man-smiling.jpg";
 
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header = ({picture}) => {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <header className="navbar sticky-top flex-md-nowrap">
@@ -190,7 +189,7 @@ export const Header = () => {
                                 aria-expanded="false"
                             >
                                 <img
-                                    src={userProfilePicture}
+                                    src={picture}
                                     className="profile-image img-fluid"
                                     alt={"happy man"}
                                 />
@@ -199,7 +198,7 @@ export const Header = () => {
                                 <li>
                                     <div className="dropdown-menu-profile-thumb d-flex">
                                         <img
-                                            src={userProfilePicture}
+                                            src={picture}
                                             className="profile-image img-fluid me-3"
                                             alt={"happy man"}
                                         />

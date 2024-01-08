@@ -4,10 +4,10 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 
 export const CreditCard = ({creditCard, name}) => {
     const [state, setState] = useState({
-        fullname: `name`,
-        credit_card_number: `creditCard.cardNumber`,
-        expiryDate: `creditCard.expiryDate`,
-        cvc: `creditCard.cvv`,
+        name: name,
+        cardNumber: creditCard.cardNumber,
+        expiryDate: creditCard.expiryDate,
+        cvc: creditCard.cvv,
         focus: "",
     });
 
@@ -17,10 +17,6 @@ export const CreditCard = ({creditCard, name}) => {
     };
     const inputFocusHandler = (e) => {
         setState((prev) => ({ ...prev, focus: e.target.name }));
-    };
-
-    const onResetHandler = () => {
-        console.log("reseted");
     };
 
     const onUpdateHandler = () => {
@@ -44,7 +40,7 @@ export const CreditCard = ({creditCard, name}) => {
                             name="credit_card_number"
                             className="form-control mt-1"
                             placeholder="Card Number"
-                            value={state.credit_card_number}
+                            value={state.cardNumber}
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
                             required
@@ -55,7 +51,7 @@ export const CreditCard = ({creditCard, name}) => {
                             name="fullname"
                             autoComplete="off"
                             className="form-control mt-1"
-                            value={state.fullname}
+                            value={state.name}
                             placeholder="Name"
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
@@ -63,7 +59,7 @@ export const CreditCard = ({creditCard, name}) => {
                         />
 
                         <input
-                            type="number"
+                            type="string"
                             name="expiryDate"
                             className="form-control mt-1"
                             placeholder="Valid Thru"
@@ -89,10 +85,10 @@ export const CreditCard = ({creditCard, name}) => {
 
                     <div className="col-md-2 mt-2 mt-md-1">
                             <Cards
-                                number={state.credit_card_number}
+                                number={state.cardNumber}
                                 expiry={state.expiryDate}
                                 cvc={state.cvc}
-                                name={state.fullname}
+                                name={state.name}
                                 focused={state.focus}
                             />
                     </div>

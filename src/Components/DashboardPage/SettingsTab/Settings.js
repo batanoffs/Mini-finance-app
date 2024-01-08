@@ -27,8 +27,7 @@ export const SettingsTab = () => {
                                         <Route path="*" element={<ProfileTab name={name} email={email} phone={phone} picture={picture}/>} />
                                         <Route path="password" element={<PasswordTab />} />
                                         <Route path="notifications" element={<NotificationTab />} />
-                                        {/* name={name} creditCard={creditCard[0]} */}
-                                        <Route path="credit-card" element={<CreditCard />} />
+                                        <Route path="credit-card" element={<CreditCard name={name} creditCard={creditCard[0]}/>} />
                                     </Routes>
                                     
                                 </div>

@@ -88,7 +88,7 @@ function App() {
 
     return (
         <AuthContext.Provider value={{ ...context }}>
-            <Header />
+            <Header picture={userContext.picture} />
             <Routes>
                 <Route path="*" element={<h1>404</h1>} />
                 <Route path="/" element={<LoginRegister />} />
