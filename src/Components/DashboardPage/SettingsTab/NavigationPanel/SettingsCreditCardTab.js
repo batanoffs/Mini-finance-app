@@ -7,7 +7,7 @@ export const CreditCard = ({creditCard, name}) => {
         name: name,
         cardNumber: creditCard.cardNumber,
         expiryDate: creditCard.expiryDate,
-        cvc: creditCard.cvv,
+        cvc: creditCard.cvc,
         focus: "",
     });
 

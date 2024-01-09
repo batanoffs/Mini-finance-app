@@ -1,4 +1,3 @@
-import person1 from "../../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg";
 import { useState } from "react";
 
 export const ProfileTab = ({name, email, phone, picture}) => {

@@ -61,14 +61,15 @@ function App() {
         await authService.logout(token);
         sessionStorage.removeItem("userData");
         setAuth("");
+        setUserData("");
     };
 
     // check if userData is null or not
     const userContext = {
         name: userData.fullName || "New user",
-        phone: userData.phoneNumber || "no phone number",
+        phone: userData.phoneNumber || "No number",
         balance: userData.accountBalance || 0,
-        creditCard: userData.creditCard || "No credit card uploaded",
+        creditCard: userData.creditCard ? userData.creditCard[0] : {cardNumber: `0000 0000 0000 0000`, expiryDate: "00/00", cvc: `000`, name : `New user`, created: Number(`00000000`)},
         picture: userData.profilePicture || "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
         userId: userData.ownerId || null,
         transactions: userData.transactions || [],

@@ -15,7 +15,7 @@ export const Dashboard = () => {
         <div className="row my-4">
             <div className="col-lg-7 col-12">
                 <Greetings name={name}/>
-                <Balance creditCard={creditCard[0]} name={name} balance={balance}/>
+                <Balance creditCard={creditCard} name={name} balance={balance}/>
                 <History />
                 <ExchangeRate />
             </div>

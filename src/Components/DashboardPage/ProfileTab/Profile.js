@@ -3,15 +3,13 @@ import { UserDataContext } from "../../../contexts/UserDataContext";
 import { Link } from "react-router-dom";
 
 export const ProfileTab = () => {
-    const { name, phone, creditCard, picture, userId, email } =
-        useContext(UserDataContext);
-
-    const date = new Date(creditCard[0].created);
+    const { name, phone, creditCard, picture, userId, email } =  useContext(UserDataContext);
+    const date = new Date(creditCard.created);
     const month = date.getMonth();
     const year = date.getFullYear();
     const day = date.getDate();
     const createdDate = `${month} ${day}, ${year}`;
-    console.log(createdDate);
+    
     return (
         <>
             <div className="title-group mb-3">
