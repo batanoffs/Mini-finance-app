@@ -71,7 +71,7 @@ export const CreditCard = ({creditCard, name}) => {
                         />
 
                         <input
-                            type="number"
+                            type="password"
                             name="cvc"
                             className="form-control mt-1"
                             placeholder="CVC"

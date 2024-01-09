@@ -1,3 +1,4 @@
+// To do: Add Search and Social Icons to data base
 import search from "../images/social/search.png";
 import spotify from "../images/social/spotify.png";
 import telegram from "../images/social/telegram.png";
@@ -15,7 +16,7 @@ export const Header = ({picture}) => {
         <header className="navbar sticky-top flex-md-nowrap">
             <div className="col-md-3 col-lg-4 me-0 px-3 fs-6">
                 <Link className="navbar-brand" to="dashboard">
-                    <label className="bi-box"> My Finance</label>
+                    <label className="bi-box"> Mini Finance</label>
                 </Link>
             </div>
 

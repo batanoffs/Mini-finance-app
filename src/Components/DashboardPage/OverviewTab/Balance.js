@@ -2,7 +2,10 @@ export const Balance = ({creditCard, name, balance}) => {
     let card = creditCard.cardNumber;
     // TO DO last digits
     const splitDigits = (number) => {
-        return number.toString().split('').splice(-4).join('');
+        if (number) {
+            return number.toString().split('').splice(-4).join('');
+        }
+        return "****"
     }
 
     return (

@@ -25,8 +25,6 @@ function App() {
         window.alert("Successfully registered!");
     };
 
-    
-    
     const onLoginSubmitHandler = async (formData) => {
         const data = {
             login: formData.email,
@@ -38,19 +36,25 @@ function App() {
         const token = response["user-token"];
         sessionStorage.setItem("userData", token);
         navigate("/dashboard");
-        const id = response.objectId;
+        console.log(`Getting response from login:`)
+        console.table(response);
+        console.log(response);
+        const id = response.ownerId;
+        console.log(`Getting id from auth.ownerId ${auth.ownerId}`);
         userDataHandler(id);
     };
-
     
     const userDataHandler = async (id) => {
         if (!id) return new Error("User is not logged in");
         const response = await getUserData(id);
+        console.log(`Fetching user data with id:${id}`);
         console.log(response);
-        setUserData(response[0]);
+        if(response.length > 0) {
+            setUserData(response[0]);
+        } else {
+            setUserData([]);
+        }
     };
-
-    
 
     const onLogoutHandler = async () => {
         const token = sessionStorage.getItem("userData");
@@ -59,25 +63,24 @@ function App() {
         setAuth("");
     };
 
-   
-
+    // check if userData is null or not
     const userContext = {
-        name: userData.fullName,
-        phone: userData.phoneNumber,
-        balance: userData.accountBalance,
-        creditCard: userData.creditCard,
-        picture: userData.profilePicture,
-        userId: userData.ownerId,
-        transactions: userData.transactions,
-        friends: userData.friends,
-        email: auth.email,
+        name: userData.fullName || "New user",
+        phone: userData.phoneNumber || "no phone number",
+        balance: userData.accountBalance || 0,
+        creditCard: userData.creditCard || "No credit card uploaded",
+        picture: userData.profilePicture || "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
+        userId: userData.ownerId || null,
+        transactions: userData.transactions || [],
+        friends: userData.friends || [],
+        email: auth.email || "No email",
     };
 
     const context = {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,
         onLogoutHandler,
-        userId: auth.objectId,
+        userId: auth.ownerId,
         token: auth["user-token"],
         email: auth.email,
         userStatus: auth.userStatus,
@@ -90,7 +93,7 @@ function App() {
         <AuthContext.Provider value={{ ...context }}>
             <Header picture={userContext.picture} />
             <Routes>
-                <Route path="*" element={<h1>404</h1>} />
+                <Route path="*" element={<h1>Error 404 Page not found</h1>} />
                 <Route path="/" element={<LoginRegister />} />
                 <Route
                     path="/dashboard/*"

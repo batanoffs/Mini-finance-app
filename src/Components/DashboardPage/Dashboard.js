@@ -10,9 +10,6 @@ import { useContext } from "react";
 import { UserDataContext } from "../../contexts/UserDataContext.js";
 
 export const Dashboard = () => {
-    // // const [ userData, setData ] = useState();
-    // const {name, phone, balance, creditCard, picture, userId, email, transactions, friends} = useContext(UserDataContext);
-    // console.log(name);
     const {name, creditCard, balance, picture, phone, email} = useContext(UserDataContext);
     return (
         <div className="row my-4">

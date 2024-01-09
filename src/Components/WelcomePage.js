@@ -7,8 +7,7 @@ import { MyWalletTab } from "./DashboardPage/MyWalletTab/Wallet";
 import { Navbar } from "./Navbar";
 
 export const WelcomePage = () => {
-    return (
-        
+    return (        
             <div className="container-fluid">
                 <div className="row">
                         <main className="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">    

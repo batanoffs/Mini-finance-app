@@ -2,7 +2,7 @@ import * as request from './requester'
 
 const baseURL = "https://lavishpart.backendless.app/api";
 const endpoints = {
-    userData: (id) => `/data/UserProfile?ownerId=${id}&loadRelations=creditCard%2Cfriends%2Ctransactions`,
+    userData: (id) => `/data/UserProfile?where=ownerId='${id}'&loadRelations=creditCard%2Cfriends%2Ctransactions`,
     
 }
 

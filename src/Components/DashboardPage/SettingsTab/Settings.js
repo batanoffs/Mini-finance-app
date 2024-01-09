@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { UserDataContext } from "../../../contexts/UserDataContext";
 
 export const SettingsTab = () => {
-    const {name, phone, balance, creditCard, picture, userId, email, transactions, friends} = useContext(UserDataContext);
+    const {name, phone, creditCard, picture, email} = useContext(UserDataContext);
     return (
         <>  
         <div className="title-group mb-3">

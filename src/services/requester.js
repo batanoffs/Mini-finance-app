@@ -17,6 +17,8 @@ const request = async (method, url, data, token = undefined) => {
         if (token) {
             options.headers = {
                 "user-token": `${token}`,
+                "content-type": "application/json",
+                // "no-corps" : "true"
             };
         }
     }
