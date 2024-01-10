@@ -1,13 +1,13 @@
-import { Balance } from "./OverviewTab/Balance.js";
-import { History } from "./OverviewTab/History.js";
-import { ExchangeRate } from "./OverviewTab/ExchangeRate.js";
-import { ProfileDetails } from "./OverviewTab/ProfileDetails.js";
-import { BankingActionButtons } from "./OverviewTab/BankingActionButtons.js";
-import { Transactions } from "./OverviewTab/Transactions.js";
-import { SendMoney } from "./OverviewTab/SendMoney.js";
-import { Greetings } from "./OverviewTab/Greetings.js";
+import { Balance } from "../OverviewTab/Balance.js";
+import { History } from "../OverviewTab/History.js";
+import { ExchangeRate } from "../OverviewTab/ExchangeRate.js";
+import { ProfileDetails } from "../OverviewTab/ProfileDetails.js";
+import { BankingActionButtons } from "../OverviewTab/BankingActionButtons.js";
+import { Transactions } from "../OverviewTab/Transactions.js";
+import { SendMoney } from "../OverviewTab/SendMoney.js";
+import { Greetings } from "../OverviewTab/Greetings.js";
 import { useContext } from "react";
-import { UserDataContext } from "../../contexts/UserDataContext.js";
+import { UserDataContext } from "../../../contexts/UserDataContext.js";
 
 export const Dashboard = () => {
     const {name, creditCard, balance, picture, phone, email} = useContext(UserDataContext);

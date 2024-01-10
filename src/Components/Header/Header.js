@@ -1,16 +1,16 @@
 // To do: Add Search and Social Icons to data base
-import search from "../images/social/search.png";
-import spotify from "../images/social/spotify.png";
-import telegram from "../images/social/telegram.png";
-import snapchat from "../images/social/snapchat.png";
-import tiktok from "../images/social/tiktok.png";
-import youtube from "../images/social/youtube.png";
+import search from "../../images/social/search.png";
+import spotify from "../../images/social/spotify.png";
+import telegram from "../../images/social/telegram.png";
+import snapchat from "../../images/social/snapchat.png";
+import tiktok from "../../images/social/tiktok.png";
+import youtube from "../../images/social/youtube.png";
 
-import { AuthContext } from "../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-export const Header = ({picture}) => {
+export const Header = ({ picture }) => {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <header className="navbar sticky-top flex-md-nowrap">

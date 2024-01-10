@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import person3 from "../../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
 import person2 from "../../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
 import person1 from "../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
+import './wallet.css';
 
 export const MyWalletTab = () => {
     return (

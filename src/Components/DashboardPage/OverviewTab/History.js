@@ -1,3 +1,5 @@
+
+
 export const History = () => {
     return (
         <>
@@ -8,7 +10,9 @@ export const History = () => {
             </div>
 
             <div className="custom-block bg-white">
-                <div id="chart"></div>
+                <div id="chart">
+                    
+                </div>
             </div>
         </>
     );

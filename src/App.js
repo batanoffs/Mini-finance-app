@@ -4,11 +4,11 @@ import { AuthContext } from "./contexts/AuthContext";
 import { UserDataContext } from "./contexts/UserDataContext";
 import { authService } from "./services/authService";
 import { getUserData } from "./services/dataService";
-import { Header } from "./Components/Header";
+import { Header } from "./Components/Header/Header";
 import { LoginRegister } from "./Components/LoginPage/LoginRegister";
-import { WelcomePage } from "./Components/WelcomePage";
-import { Footer } from "./Components/Footer";
-
+import { WelcomePage } from "./Components/WelcomePage/WelcomePage";
+import { Footer } from "./Components/Footer/Footer";
+// import Spline from '@splinetool/react-spline';
 function App() {
     const [auth, setAuth] = useState({});
     const [userData, setUserData] = useState([]);
@@ -93,6 +93,7 @@ function App() {
     return (
         <AuthContext.Provider value={{ ...context }}>
             <Header picture={userContext.picture} />
+            {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
             <Routes>
                 <Route path="*" element={<h1>Error 404 Page not found</h1>} />
                 <Route path="/" element={<LoginRegister />} />

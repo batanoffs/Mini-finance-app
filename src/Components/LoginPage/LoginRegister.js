@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
+import './login.css'
 
 export const LoginRegister = () => {
     const { onLoginSubmitHandler, onRegisterSubmitHandler } = useContext(AuthContext);

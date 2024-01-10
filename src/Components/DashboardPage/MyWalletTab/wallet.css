@@ -1,0 +1,130 @@
+/*---------------------------------------
+  CUSTOM PROPERTIES ( VARIABLES )             
+-----------------------------------------*/
+:root {
+    --white-color:                  #ffffff;
+    --primary-color:                #E63946;
+    --secondary-color:              #F1FAEE;
+    --section-bg-color:             #ececec;
+    --primary-bg-color:             #E63946;
+    --custom-btn-bg-color:          #A8DADC;
+    --custom-btn-bg-hover-color:    #1D3557;
+    --heading-color:                #1D3557;
+    --dark-color:                   #000000;
+    --p-color:                      #717275;
+    --border-color:                 #e0e0e5;
+    --link-hover-color:             #E63946;
+  
+    --body-font-family:             'Unbounded';
+  
+    --h1-font-size:                 74px;
+    --h2-font-size:                 46px;
+    --h3-font-size:                 32px;
+    --h4-font-size:                 28px;
+    --h5-font-size:                 24px;
+    --h6-font-size:                 22px;
+    --p-font-size:                  18px;
+    --menu-font-size:               14px;
+    --btn-font-size:                12px;
+    --copyright-font-size:          10px;
+  
+    --border-radius-large:          100px;
+    --border-radius-medium:         20px;
+    --border-radius-small:          10px;
+  
+    --font-weight-light:            300;
+    --font-weight-normal:           400;
+    --font-weight-bold:             700;
+  }
+  
+  body {
+    background-color: var(--white-color);
+    font-family: var(--body-font-family); 
+  }
+/*---------------------------------------
+  ACCOUNT TABLE               
+-----------------------------------------*/
+.account-table {
+    background: var(--section-bg-color);
+    border-radius: var(--border-radius-small);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .account-table>:not(caption)>*>* {
+    border-bottom: 0;
+    padding: 15px 10px;
+  }
+  
+  .account-table thead {
+    background: var(--custom-btn-bg-color);
+  }
+  
+  .account-table th,
+  .account-table tr {
+    font-size: var(--btn-font-size);
+    padding: 15px 10px;
+  }
+  
+  .account-table th {
+    padding: 12px 15px;
+  }
+  
+  .account-table tr {
+    font-weight: var(--font-weight-normal);
+  }
+  
+  .account-table tbody tr:nth-child(odd) {
+    background: var(--white-color);
+  }
+  
+  .badge {
+    border-radius: var(--border-radius-large);
+    font-weight: var(--font-weight-normal);
+    line-height: normal;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 4px;
+  }
+
+/*---------------------------------------
+  PAGINATION              
+-----------------------------------------*/
+.pagination {
+    margin-top: 20px;
+  }
+  
+  .page-link {
+    border-radius: var(--border-radius-medium);
+    color: var(--p-color);
+    font-size: var(--btn-font-size);
+    margin: 0 5px;
+    padding: 10px 20px;
+  }
+  
+  .page-link:hover,
+  .page-item:first-child .page-link:hover,
+  .page-item:last-child .page-link:hover {
+    background-color: var(--custom-btn-bg-color);
+    color: var(--white-color);
+  }
+  
+  .page-item:not(:first-child) .page-link {
+    margin-left: 10px;
+  }
+  
+  .page-item:first-child .page-link {
+    margin-right: 10px;
+  }
+  
+  .page-item:first-child .page-link,
+  .page-item:last-child .page-link {
+    border-radius: var(--border-radius-medium);
+    font-weight: var(--font-weight-bold);
+    margin-left: 15px;
+  }
+  
+  .active>.page-link, .page-link.active {
+    background-color: var(--custom-btn-bg-color);
+    border-color: var(--secondary-color);
+  }

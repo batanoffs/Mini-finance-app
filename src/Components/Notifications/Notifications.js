@@ -1,3 +1,4 @@
+import './notifications.css'
 export const Notifications = () => {
     return (
         <ul className="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink">

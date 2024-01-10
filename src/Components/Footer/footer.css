@@ -1,0 +1,17 @@
+/*---------------------------------------
+  SITE FOOTER              
+-----------------------------------------*/
+.site-footer {
+    position: fixed;
+    height: 50px;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    background-color: #ececec transparent;
+    color: white;
+    text-align: center;
+  }
+  
+  .copyright-text {
+    font-size: var(--copyright-font-size);
+  }

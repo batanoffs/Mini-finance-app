@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
-import creditCard from "../images/credit-card.png"
+import creditCard from "../../../../images/credit-card.png"
 import { useContext } from "react"
-import { AuthContext } from "../contexts/AuthContext"
+import { AuthContext } from "../../../../contexts/AuthContext"
+import "../tab-bar.css";
+import "../nav.css";
 
 export const Navbar = () => {
     const { onLogoutHandler } = useContext(AuthContext)

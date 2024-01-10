@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import '../tab-bar.css'
 
 export const ProfileTab = ({name, email, phone, picture}) => {
     const [state, setState] = useState({
