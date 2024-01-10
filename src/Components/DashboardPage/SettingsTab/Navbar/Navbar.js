@@ -14,48 +14,48 @@ export const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="">
                                     <i className="bi-house-fill me-2"></i>
-                                    Overview
+                                    Общ преглед
                                 </Link>
                             </li>
 
                             <li className="nav-item">
                                 <Link className="nav-link" to="wallet">
                                     <i className="bi-wallet me-2"></i>
-                                    My Wallet
+                                    Портфейл
                                 </Link>
                             </li>
 
                             <li className="nav-item">
                                 <Link className="nav-link" to="profile">
                                     <i className="bi-person me-2"></i>
-                                    Profile
+                                    Профил
                                 </Link>
                             </li>
 
                             <li className="nav-item">
                                 <Link className="nav-link" to="settings">
                                     <i className="bi-gear me-2"></i>
-                                    Settings
+                                    Настройки
                                 </Link>
                             </li>
 
                             <li className="nav-item">
                                 <Link className="nav-link" to="help-center">
                                     <i className="bi-question-circle me-2"></i>
-                                    Help Center
+                                    Помощен център
                                 </Link>
                             </li>
 
                             <li className="nav-item featured-box mt-lg-5 mt-4 mb-4">
                                 <img src={creditCard} className="img-fluid" alt="credit card"/>
 
-                                <Link className="btn custom-btn" to="upgrade">Upgrade</Link>
+                                <Link className="btn custom-btn" to="upgrade">Нов План</Link>
                             </li>
 
                             <li className="nav-item border-top mt-auto pt-2">
                                 <Link className="nav-link" onClick={onLogoutHandler} to="/">
                                     <i className="bi-box-arrow-left me-2"></i>
-                                    Logout
+                                    Изход
                                 </Link>
                             </li>
                         </ul>

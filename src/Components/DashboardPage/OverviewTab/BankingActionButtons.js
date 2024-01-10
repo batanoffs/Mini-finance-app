@@ -5,7 +5,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-wallet"></i>
 
-                    <small>Top up</small>
+                    <small>Зареди</small>
                 </a>
             </div>
 
@@ -13,7 +13,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-upc-scan"></i>
 
-                    <small>Scan & Pay</small>
+                    <small>Сканирай</small>
                 </a>
             </div>
 
@@ -21,7 +21,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-send"></i>
 
-                    <small>Send</small>
+                    <small>Изпрати</small>
                 </a>
             </div>
 
@@ -29,7 +29,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-arrow-down"></i>
 
-                    <small>Request</small>
+                    <small>Вземи</small>
                 </a>
             </div>
         </div>

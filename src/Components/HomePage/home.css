@@ -9,8 +9,17 @@
 }
 
 .home div {
-    margin:8rem 25rem;
+    margin:10rem 25rem 10rem 10rem;
     display: flex;
     justify-content: center;
     align-items:center;
+}
+
+.home-mini-finance h3{ 
+    font-size: 24px;
+}
+
+.bi-box {
+    font-size: 24px;
+    font-weight: 400;
 }

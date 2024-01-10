@@ -10,7 +10,7 @@ export const Balance = ({creditCard, name, balance}) => {
 
     return (
         <div className="custom-block custom-block-balance">
-            <small>Your Balance</small>
+            <small>Твоята наличност:</small>
 
             <h2 className="mt-2 mb-3">${balance}</h2>
 
@@ -23,12 +23,12 @@ export const Balance = ({creditCard, name, balance}) => {
 
             <div className="d-flex">
                 <div>
-                    <small>Valid Date</small>
+                    <small>Валидна до:</small>
                     <p>{creditCard.expiryDate}</p>
                 </div>
 
                 <div className="ms-auto">
-                    <small>Card Holder</small>
+                    <small>картодържател:</small>
                     <p>{name}</p>
                 </div>
             </div>

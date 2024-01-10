@@ -8,42 +8,42 @@ export const MyWalletTab = () => {
     return (
         <> 
         <div className="title-group mb-3">
-                        <h1 className="h2 mb-0">Wallet</h1>
+                        <h1 className="h2 mb-0">Портфейл</h1>
                     </div>
 
                     <div className="row my-4">
                         <div className="col-lg-12 col-12">
                             <div className="custom-block bg-white">
-                                <h5 className="mb-4">Account Activities</h5>
+                                <h5 className="mb-4">Движения по сметка</h5>
 
                                 <div className="table-responsive">
                                     <table className="account-table table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Date</th>
+                                                <th scope="col">Дата</th>
 
-                                                <th scope="col">Time</th>
+                                                <th scope="col">Време</th>
 
-                                                <th scope="col">Description</th>
+                                                <th scope="col">Описание</th>
 
-                                                <th scope="col">Payment Type</th>
+                                                <th scope="col">Вид Плащане</th>
 
-                                                <th scope="col">Amount</th>
+                                                <th scope="col">Сума</th>
 
-                                                <th scope="col">Balance</th>
+                                                <th scope="col">Наличност</th>
 
-                                                <th scope="col">Status</th>
+                                                <th scope="col">Статус</th>
 
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             <tr>
-                                                <th scope="row">July 5, 2023</th>
+                                                <th scope="row">"Юли" 5, 2023</th>
 
-                                                <th scope="row">10:00 PM</th>
+                                                <th scope="row">10:00</th>
 
-                                                <th scope="row">Shopping</th>
+                                                <th scope="row">Пазаруване</th>
 
                                                 <th scope="row">C2C Transfer</th>
 
@@ -56,7 +56,7 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">
                                                     <span className="badge text-bg-danger">
-                                                        Pending
+                                                        Изчакване
                                                     </span>
                                                 </th>
                                             </tr>
@@ -66,9 +66,9 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">10:42 AM</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                     <span className="me-1">+</span>
@@ -79,7 +79,7 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">
                                                     <span className="badge text-bg-success">
-                                                        Success
+                                                        Успешен
                                                     </span>
                                                 </th>
                                             </tr>
@@ -89,9 +89,9 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">8:20 PM</th>
 
-                                                <th scope="row">Billing</th>
+                                                <th scope="row">Таксуване</th>
 
-                                                <th scope="row">Goverment</th>
+                                                <th scope="row">Държавана сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                 <span className="me-2">+</span>$50</th>
@@ -100,7 +100,7 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">
                                                     <span className="badge text-bg-success">
-                                                        Success
+                                                        Успешен
                                                     </span>
                                                 </th>
                                             </tr>
@@ -112,7 +112,7 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">Shopee</th>
 
-                                                <th scope="row">QR Code</th>
+                                                <th scope="row">QR код</th>
 
                                                 <th className="text-danger" scope="row">
                                                 <span className="me-2">-</span>$380</th>
@@ -121,7 +121,7 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">
                                                     <span className="badge text-bg-dark">
-                                                        Cancelled
+                                                        Отказан
                                                     </span>
                                                 </th>
                                             </tr>
@@ -131,9 +131,9 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">12:30 AM</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                 <span className="me-2">+</span>$250</th>
@@ -152,9 +152,9 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">2:40 PM</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                 <span className="me-2">+</span>$50</th>
@@ -173,9 +173,9 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">8:50 AM</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                 <span className="me-2">+</span>$50</th>
@@ -194,9 +194,9 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">6:45 PM</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-danger" scope="row">
                                                 <span className="me-2">-</span>$500</th>
@@ -211,13 +211,13 @@ export const MyWalletTab = () => {
                                             </tr>
 
                                             <tr>
-                                                <th scope="row">April 28, 2023</th>
+                                                <th scope="row">Април 28, 2023</th>
 
-                                                <th scope="row">11:20 AM</th>
+                                                <th scope="row">11:20</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                 <span className="me-2">+</span>$856</th>
@@ -226,19 +226,19 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">
                                                     <span className="badge text-bg-success">
-                                                        Success
+                                                        Успешен
                                                     </span>
                                                 </th>
                                             </tr>
 
                                             <tr>
-                                                <th scope="row">April 16, 2023</th>
+                                                <th scope="row">Април 16, 2023</th>
 
                                                 <th scope="row">11:00 PM</th>
 
-                                                <th scope="row">Food Delivery</th>
+                                                <th scope="row">Доставка храна</th>
 
-                                                <th scope="row">Mobile Reload</th>
+                                                <th scope="row">Мобилна сметка</th>
 
                                                 <th className="text-success" scope="row">
                                                 <span className="me-2">+</span>$50</th>
@@ -247,7 +247,7 @@ export const MyWalletTab = () => {
 
                                                 <th scope="row">
                                                     <span className="badge text-bg-danger">
-                                                        Pending
+                                                        Изчакване
                                                     </span>
                                                 </th>
                                             </tr>
@@ -259,7 +259,7 @@ export const MyWalletTab = () => {
                                         <ul className="pagination justify-content-center mb-0">
                                             <li className="page-item">
                                                 <Link className="page-link"  to={"#"} aria-label="Previous">
-                                                    <span aria-hidden="true">Prev</span>
+                                                    <span aria-hidden="true">Предходена</span>
                                                 </Link>
                                             </li>
 
@@ -281,7 +281,7 @@ export const MyWalletTab = () => {
                                             
                                             <li className="page-item">
                                                 <Link className="page-link"  to={"#"} aria-label="Next">
-                                                    <span aria-hidden="true">Next</span>
+                                                    <span aria-hidden="true">Следваща</span>
                                                 </Link>
                                             </li>
                                         </ul>
@@ -291,7 +291,7 @@ export const MyWalletTab = () => {
 
                         <div className="col-lg-7 col-12">
                             <div className="custom-block custom-block-balance">
-                                <small>Your Balance</small>
+                                <small>Наличност по сметка</small>
 
                                 <h2 className="mt-2 mb-3">$254,800</h2>
 
@@ -304,12 +304,12 @@ export const MyWalletTab = () => {
 
                                 <div className="d-flex">
                                     <div>
-                                        <small>Valid Date</small>
+                                        <small>Валидна до</small>
                                         <p>12/2028</p>
                                     </div>
 
                                     <div className="ms-auto">
-                                        <small>Card Holder</small>
+                                        <small>картодържател</small>
                                         <p>Thomas</p>
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@ export const MyWalletTab = () => {
                                     <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-wallet"></i>
 
-                                        <small>Top up</small>
+                                        <small>Зареждане</small>
                                     </Link>
                                 </div>
 
@@ -328,7 +328,7 @@ export const MyWalletTab = () => {
                                     <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-upc-scan"></i>
 
-                                        <small>Scan & Pay</small>
+                                        <small>Сканирай</small>
                                     </Link>
                                 </div>
 
@@ -336,7 +336,7 @@ export const MyWalletTab = () => {
                                     <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-send"></i>
 
-                                        <small>Send</small>
+                                        <small>Изпрати</small>
                                     </Link>
                                 </div>
 
@@ -344,7 +344,7 @@ export const MyWalletTab = () => {
                                     <Link to={"#"} className="d-flex flex-column">
                                         <i className="custom-block-icon bi-arrow-down"></i>
 
-                                        <small>Request</small>
+                                        <small>Вземи</small>
                                     </Link>
                                 </div>
                             </div>
@@ -352,7 +352,7 @@ export const MyWalletTab = () => {
 
                         <div className="col-lg-5 col-12">
                             <div className="custom-block custom-block-transations">
-                                <h5 className="mb-4">Recent Transations</h5>
+                                <h5 className="mb-4">Последни транзакции</h5>
 
                                 <div className="d-flex flex-wrap align-items-center mb-4">
                                     <div className="d-flex align-items-center">
@@ -399,7 +399,7 @@ export const MyWalletTab = () => {
                                         <div>
                                             <p><Link to={"#"}>Store</Link></p>
 
-                                            <small className="text-muted">Payment Received</small>
+                                            <small className="text-muted">Получено</small>
                                         </div>
                                     </div>
 

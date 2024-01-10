@@ -28,7 +28,7 @@ export const LoginRegister = () => {
         <div className="container-authetication">
             <input type="checkbox" id="check" />
             <div className="login form">
-                <header>Login</header>
+                <header>Вход в системата</header>
                 <form method="post" onSubmit={onSubmitLogin}>
                     <input
                         type="text"
@@ -36,7 +36,7 @@ export const LoginRegister = () => {
                         name="email"
                         value={values.email}
                         onChange={changeHandler}
-                        placeholder="Enter your email"
+                        placeholder="Въведи е-мейл"
                     />
                     <input
                         type="password"
@@ -44,16 +44,16 @@ export const LoginRegister = () => {
                         name="password"
                         value={values.password}
                         onChange={changeHandler}
-                        placeholder="Enter your password"
+                        placeholder="Въведи парола"
                     />
-                    <Link to="reset">Forgot password?</Link>
-                    <input type="submit" className="button" value="Login" />
+                    <Link to="reset">Забравена парола?</Link>
+                    <input type="submit" className="button" value="Вход" />
                 </form>
                 <div className="signup">
                     <span className="signup">
-                        Don't have an account?
+                        Все още нямаш акаунт?
                         <label htmlFor="check" onClick={onFormChange}>
-                            Signup
+                            Регистрация
                         </label>
                     </span>
                 </div>

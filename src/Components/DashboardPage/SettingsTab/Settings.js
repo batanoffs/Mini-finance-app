@@ -13,7 +13,7 @@ export const SettingsTab = () => {
     return (
         <>  
         <div className="title-group mb-3">
-                        <h1 className="h2 mb-0">Settings</h1>
+                        <h1 className="h2 mb-0">Настройки</h1>
                     </div>
 
                     <div className="row my-4">

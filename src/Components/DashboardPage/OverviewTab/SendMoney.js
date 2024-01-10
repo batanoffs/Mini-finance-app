@@ -5,7 +5,7 @@ import person3 from "../../../images/profile/senior-man-white-sweater-eyeglasses
 export const SendMoney = () => {
     return (
         <div className="custom-block primary-bg">
-            <h5 className="text-white mb-4">Send Money</h5>
+            <h5 className="text-white mb-4">Бързо изпращане</h5>
 
             <a href="#">
                 <img src={person1} className="profile-image img-fluid" alt={"person"}/>

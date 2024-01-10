@@ -6,8 +6,8 @@ export const Home = () => {
                 <h2>Опитай от бъдещето и бъди от най-добрите.</h2>
             </div>
 
-            <div>
-                <h3>Спести време и се потопи в нечувана финансова сила.</h3>
+            <div className="home-mini-finance">
+                <h3>Потопи се в <label className="bi-box"> Mini Finance App</label> и спести време сега.</h3>
             </div>
         </div>
     );

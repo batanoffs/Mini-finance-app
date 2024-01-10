@@ -29,7 +29,7 @@ export const ProfileTab = ({name, email, phone, picture}) => {
             aria-labelledby="profile-tab"
             tabIndex="0"
         >
-            <h6 className="mb-4">User Profile</h6>
+            <h6 className="mb-4">Профил</h6>
 
             <form className="custom-form profile-form" action="#" method="post">
                 <input
@@ -39,7 +39,7 @@ export const ProfileTab = ({name, email, phone, picture}) => {
                     id="profile-name"
                     value={state.fullname}
                     onChange={inputChangeHandler}
-                    placeholder="John Doe"
+                    placeholder="Име и фамилия"
                 />
 
                 <input
@@ -49,7 +49,7 @@ export const ProfileTab = ({name, email, phone, picture}) => {
                     value={state.email}
                     onChange={inputChangeHandler}
                     id="profile-email"
-                    placeholder="Johndoe@gmail.com"
+                    placeholder="email"
                 />
 
                 <input
@@ -58,7 +58,7 @@ export const ProfileTab = ({name, email, phone, picture}) => {
                     value={state.phone_number}
                     onChange={inputChangeHandler}
                     autoComplete="off"
-                    placeholder="Phone number"
+                    placeholder="Телефонен номер"
                     className="form-control mb-3"
                 />
 
@@ -77,16 +77,17 @@ export const ProfileTab = ({name, email, phone, picture}) => {
                         value=""
                         className="form-control"
                         id="inputGroupFile02"
+                        placeholder="Избери снимка"
                     />
                 </div>
 
                 <div className="d-flex">
                     <button type="button" onClick={onResetHandler}className="form-control me-3">
-                        Reset
+                        Изчисти
                     </button>
 
                     <button type="submit" onClick={onUpdateHandler} className="form-control ms-2">
-                        Update
+                        Запази промени
                     </button>
                 </div>
             </form>

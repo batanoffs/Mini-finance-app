@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 export const Transactions = () => {
     return (
         <div className="custom-block custom-block-transations">
-            <h5 className="mb-4">Recent Transactions</h5>
+            <h5 className="mb-4">Последни транзакции</h5>
 
             <div className="d-flex flex-wrap align-items-center mb-4">
                 <div className="d-flex align-items-center">
@@ -66,7 +66,7 @@ export const Transactions = () => {
 
             <div className="border-top pt-4 mt-4 text-center">
                 <Link className="btn custom-btn" to="wallet">
-                    View all transations
+                    Виж всички транзакции
                     <i className="bi-arrow-up-right-circle-fill ms-2"></i>
                 </Link>
             </div>

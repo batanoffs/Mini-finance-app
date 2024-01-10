@@ -16,7 +16,7 @@ export const Header = ({ picture }) => {
         <header className="navbar sticky-top flex-md-nowrap">
             <div className="col-md-3 col-lg-4 me-0 px-3 fs-6">
                 <Link className="navbar-brand" to="dashboard">
-                    <label className="bi-box"> Mini Finance</label>
+                    <label className="bi-box"> Mini Finance App</label>
                 </Link>
             </div>
 
@@ -31,14 +31,18 @@ export const Header = ({ picture }) => {
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="header-buttons">
-                <Link to="login" className="link"  type="button">
-                    Login
-                </Link>
-                <button className="button" name="register" type="button">
-                    Open Bank Account
-                </button>
-            </div>
+            {!isAuthenticated() && (
+                 <div className="header-buttons">
+                 <Link to="login" className="link"  type="button">
+                     ВХОД
+                 </Link>
+                 <button className="button" name="register" type="button">
+                    Нов Банков Акаунт
+                 </button>
+             </div>
+            )}
+            
+           
 
 
             {/* <form
@@ -70,7 +74,7 @@ export const Header = ({ picture }) => {
                                 <i className="bi-bell"></i>
                                 <span className="position-absolute start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
                                     <span className="visually-hidden">
-                                        New alerts
+                                        Нотификация
                                     </span>
                                 </span>
                             </Link>

@@ -31,7 +31,7 @@ export const CreditCard = ({creditCard, name}) => {
             aria-labelledby="profile-tab"
             tabIndex="0"
         >
-            <h6 className="mb-4">Add Credit Card</h6>
+            <h6 className="mb-4">Добави карта</h6>
             <form className="custom-form profile-form" action="#" method="post">
                 <div className="row width 25%">
                     <div className="col-md-6">
@@ -39,7 +39,7 @@ export const CreditCard = ({creditCard, name}) => {
                             type="number"
                             name="credit_card_number"
                             className="form-control mt-1"
-                            placeholder="Card Number"
+                            placeholder="Номер на карта"
                             value={state.cardNumber}
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
@@ -52,7 +52,7 @@ export const CreditCard = ({creditCard, name}) => {
                             autoComplete="off"
                             className="form-control mt-1"
                             value={state.name}
-                            placeholder="Name"
+                            placeholder="Картодържател"
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
                             required
@@ -62,7 +62,7 @@ export const CreditCard = ({creditCard, name}) => {
                             type="string"
                             name="expiryDate"
                             className="form-control mt-1"
-                            placeholder="Valid Thru"
+                            placeholder="Валидна до"
                             pattern="\d\d/\d\d"
                             value={state.expiryDate}
                             onChange={inputChangeHandler}
@@ -97,7 +97,7 @@ export const CreditCard = ({creditCard, name}) => {
                     
 
                     <button type="submit" onClick={onUpdateHandler} className="form-control">
-                        Update
+                        Запази
                     </button>
                 </div>
                 </div>

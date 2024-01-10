@@ -74,15 +74,15 @@ function App() {
 
     // check if userData is null or not
     const userContext = {
-        name: userData.fullName || "New user",
-        phone: userData.phoneNumber || "No number",
+        name: userData.fullName || "Не е въведено",
+        phone: userData.phoneNumber || "Не е въведен",
         balance: userData.accountBalance || 0,
         creditCard: userData.creditCard ? userData.creditCard[0] : {cardNumber: `0000 0000 0000 0000`, expiryDate: "00/00", cvc: `000`, name : `New user`, created: Number(`00000000`)},
         picture: userData.profilePicture || "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
-        userId: userData.ownerId || null,
+        userId: userData.ownerId || "Не е издаден",
         transactions: userData.transactions || [],
         friends: userData.friends || [],
-        email: auth.email || "No email",
+        email: auth.email || "Не е въведен",
     };
 
     const context = {
@@ -103,7 +103,7 @@ function App() {
             <Header picture={userContext.picture} />
             {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
             <Routes>
-                <Route path="*" element={<h1>Error 404 Page not found</h1>} />
+                <Route path="*" element={<h1>Грешка 404 - Страницата не е намерена</h1>} />
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<LoginRegister />} />
                 <Route

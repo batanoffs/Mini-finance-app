@@ -6,8 +6,7 @@ export const Footer = () => {
                 <div className="row">
                     
                     <div className="col-lg-12 col-12">
-                        <p className="copyright-text">Copyright © Mini Finance 2048 
-                        - Design: <a rel="noreferrer" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                        <p className="copyright-text">Всички права запазени © MAX Finance 2030. Дизайн - <a href="https://github.com/batanoffs" target="_blank">batanoff</a></p>
                     </div>
 
                 </div>

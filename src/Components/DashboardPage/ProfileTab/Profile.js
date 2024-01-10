@@ -13,7 +13,7 @@ export const ProfileTab = () => {
     return (
         <>
             <div className="title-group mb-3">
-                <h1 className="h2 mb-0">Profile</h1>
+                <h1 className="h2 mb-0">Профил</h1>
             </div>
 
             <div className="row my-4">
@@ -21,7 +21,7 @@ export const ProfileTab = () => {
                     <div className="custom-block custom-block-profile">
                         <div className="row">
                             <div className="col-lg-12 col-12 mb-3">
-                                <h6>General</h6>
+                                <h6>Обща информация</h6>
                             </div>
 
                             <div className="col-lg-3 col-12 mb-4 mb-lg-0">
@@ -41,7 +41,7 @@ export const ProfileTab = () => {
 
                             <div className="col-lg-9 col-12">
                                 <p className="d-flex flex-wrap mb-2">
-                                    <strong>Name:</strong>
+                                    <strong>Име:</strong>
 
                                     <span>{name}</span>
                                 </p>
@@ -53,19 +53,19 @@ export const ProfileTab = () => {
                                 </p>
 
                                 <p className="d-flex flex-wrap mb-2">
-                                    <strong>Phone:</strong>
+                                    <strong>Телефон:</strong>
 
                                     <span>{phone}</span>
                                 </p>
 
                                 <p className="d-flex flex-wrap mb-2">
-                                    <strong>Birthday:</strong>
+                                    <strong>Роден на:</strong>
 
                                     <span>March 5, 1992</span>
                                 </p>
 
                                 <p className="d-flex flex-wrap">
-                                    <strong>Address:</strong>
+                                    <strong>Адрес:</strong>
 
                                     <span>551 Swanston Street, Melbourne</span>
                                 </p>
@@ -74,28 +74,28 @@ export const ProfileTab = () => {
                     </div>
 
                     <div className="custom-block custom-block-profile bg-white">
-                        <h6 className="mb-4">Card Information</h6>
+                        <h6 className="mb-4">Кредитна карта</h6>
 
                         <p className="d-flex flex-wrap mb-2">
-                            <strong>User ID:</strong>
+                            <strong>Номер:</strong>
 
                             <span>{userId}</span>
                         </p>
 
                         <p className="d-flex flex-wrap mb-2">
-                            <strong>Type:</strong>
+                            <strong>Вид:</strong>
 
-                            <span>Personal</span>
+                            <span>Лична</span>
                         </p>
 
                         <p className="d-flex flex-wrap mb-2">
-                            <strong>Created:</strong>
+                            <strong>Създадена на:</strong>
 
                             <span>{createdDate}</span>
                         </p>
 
                         <p className="d-flex flex-wrap mb-2">
-                            <strong>Valid Date:</strong>
+                            <strong>Валидна до:</strong>
 
                             <span>July 18, 2032</span>
                         </p>
@@ -105,11 +105,11 @@ export const ProfileTab = () => {
                 <div className="col-lg-5 col-12">
                     <div className="custom-block custom-block-contact">
                         <h6 className="mb-4">
-                            Still can’t find what you looking for?
+                        Имате ли нужда от помощ? Моля направете запитване.
                         </h6>
 
                         <p>
-                            <strong>Call us:</strong>
+                            <strong>Свържи се с нас:</strong>
                             <a href="tel: 305-240-9671" className="ms-2">
                                 (60) 305-240-9671
                             </a>
@@ -119,7 +119,7 @@ export const ProfileTab = () => {
                             to="#"
                             className="btn custom-btn custom-btn-bg-white mt-3"
                         >
-                            Chat with us
+                            Започни Чат
                         </Link>
                     </div>
                 </div>
