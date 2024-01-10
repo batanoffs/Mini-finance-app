@@ -2,7 +2,7 @@ import { useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 
-export const CreditCard = ({creditCard, name}) => {
+export const CreditCard = ({ creditCard, name }) => {
     const [state, setState] = useState({
         name: name,
         cardNumber: creditCard.cardNumber,
@@ -21,7 +21,7 @@ export const CreditCard = ({creditCard, name}) => {
 
     const onUpdateHandler = () => {
         console.log("updated");
-    }
+    };
 
     return (
         <div
@@ -84,22 +84,24 @@ export const CreditCard = ({creditCard, name}) => {
                     </div>
 
                     <div className="col-md-2 mt-2 mt-md-1">
-                            <Cards
-                                number={state.cardNumber}
-                                expiry={state.expiryDate}
-                                cvc={state.cvc}
-                                name={state.name}
-                                focused={state.focus}
-                            />
+                        <Cards
+                            number={state.cardNumber}
+                            expiry={state.expiryDate}
+                            cvc={state.cvc}
+                            name={state.name}
+                            focused={state.focus}
+                        />
                     </div>
 
                     <div className="d-flex">
-                    
-
-                    <button type="submit" onClick={onUpdateHandler} className="form-control">
-                        Запази
-                    </button>
-                </div>
+                        <button
+                            type="submit"
+                            onClick={onUpdateHandler}
+                            className="form-control"
+                        >
+                            Запази
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

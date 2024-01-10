@@ -12,8 +12,8 @@ export const SettingsTab = () => {
     const {name, phone, creditCard, picture, email} = useContext(UserDataContext);
     return (
         <>  
-        <div className="title-group mb-3">
-                        <h1 className="h2 mb-0">Настройки</h1>
+        <div className="title-group mb-3 mt-4">
+                        <h4 className="h4 mb-0">Настройки</h4>
                     </div>
 
                     <div className="row my-4">

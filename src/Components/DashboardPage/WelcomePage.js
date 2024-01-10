@@ -10,7 +10,7 @@ export const WelcomePage = () => {
     return (        
             <div className="container-fluid">
                 <div className="row">
-                        <main className="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">    
+                        <main className="main-wrapper col-md-9 ms-sm-auto py-0 col-lg-9 px-md-4 ">    
                             <Navbar/> 
                                 <Routes>                                
                                     <Route path="*" element={<Dashboard />} />

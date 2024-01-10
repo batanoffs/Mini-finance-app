@@ -7,14 +7,14 @@ import './wallet.css';
 export const MyWalletTab = () => {
     return (
         <> 
-        <div className="title-group mb-3">
-                        <h1 className="h2 mb-0">Портфейл</h1>
+        <div className="title-group mb-3 mt-4">
+                        <h4 className="h4 mb-4">Портфейл</h4>
                     </div>
 
                     <div className="row my-4">
                         <div className="col-lg-12 col-12">
                             <div className="custom-block bg-white">
-                                <h5 className="mb-4">Движения по сметка</h5>
+                                <h6 className="mb-4">Движения по сметка</h6>
 
                                 <div className="table-responsive">
                                     <table className="account-table table">
@@ -259,7 +259,7 @@ export const MyWalletTab = () => {
                                         <ul className="pagination justify-content-center mb-0">
                                             <li className="page-item">
                                                 <Link className="page-link"  to={"#"} aria-label="Previous">
-                                                    <span aria-hidden="true">Предходена</span>
+                                                    <span aria-hidden="true">Предишна</span>
                                                 </Link>
                                             </li>
 

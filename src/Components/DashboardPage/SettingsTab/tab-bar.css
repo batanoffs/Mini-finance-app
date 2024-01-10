@@ -3,17 +3,17 @@
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #E63946;
-  --secondary-color:              #F1FAEE;
-  --section-bg-color:             #ececec;
-  --primary-bg-color:             #E63946;
-  --custom-btn-bg-color:          #A8DADC;
-  --custom-btn-bg-hover-color:    #1D3557;
-  --heading-color:                #1D3557;
   --dark-color:                   #000000;
-  --p-color:                      #717275;
-  --border-color:                 #e0e0e5;
-  --link-hover-color:             #E63946;
+  --primary-color:                #1678fb;
+  --secondary-color:              #44CFCB;
+  --section-bg-color:             #eee;
+  --primary-bg-color:             #a60067;
+  --custom-btn-bg-color:          #ffffffff;
+  --custom-btn-bg-hover-color:    #e94f37ff;
+  --heading-color:                #122C34;
+  --p-color:                      #1d3557ff;
+  --border-color:                 #ccdde2ff;
+  --link-hover-color:             #DC602E;
 
   --body-font-family:             'Unbounded';
 

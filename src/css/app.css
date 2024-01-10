@@ -5,21 +5,22 @@
 @import url("../fonts/Montserrat.css");
 
 :root {
-  --charcoal: #314259ff;
+  /* --charcoal: #314259ff;
   --white: #ffffffff;
   --blue-crayola: #1678fbff;
   --murrey: #a60067ff;
   --robin-egg-blue: #44cfcbff;
   --desert-sand: #d7b49eff;
-  --flame: #dc602eff;
+  --flame: #dc602eff; */
   --white-color:                  #ffffff;
   --dark-color:                   #000000;
   --primary-color:                #1678fb;
   --secondary-color:              #44CFCB;
   --section-bg-color:             #eee;
   --primary-bg-color:             #a60067;
-  --custom-btn-bg-color:          #ffffffff;
-  --custom-btn-bg-hover-color:    #e94f37ff;
+  --custom-btn-bg-color:          #1678fb;
+  --third-bg-color:               #ffffffff;
+  --custom-btn-bg-hover-color:    #ccdde2ff;
   --heading-color:                #122C34;
   --p-color:                      #1d3557ff;
   --border-color:                 #ccdde2ff;
@@ -33,7 +34,8 @@
   --h5-font-size:                 24px;
   --h6-font-size:                 22px;
   --p-font-size:                  18px;
-  --menu-font-size:               18px;
+  --menu-font-size:               16px;
+  --menu-font-weight:             600;
   --btn-font-size:                16px;
   --copyright-font-size:          12px;
 
@@ -41,9 +43,9 @@
   --border-radius-medium:         20px;
   --border-radius-small:          10px;
 
-  --font-weight-light:            500;
-  --font-weight-normal:           600;
-  --font-weight-bold:             800;
+  --font-weight-light:            400;
+  --font-weight-normal:           500;
+  --font-weight-bold:             600;
 
 
 }
@@ -52,6 +54,10 @@ body {
   background-color: var(--white-color);
   font-family: var(--body-font-family); 
   font-style: var(--body-font-style);
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /*---------------------------------------
@@ -318,7 +324,7 @@ strong {
 
 .custom-block-balance::before {
   content: "";
-  background: var(--custom-btn-bg-color);
+  background: var(--third-bg-color);
   background: #ff0000;
   border-radius: 100%;
   width: 200px;
@@ -353,7 +359,7 @@ strong {
 }
 
 .custom-block-edit-icon:hover {
-  background: var(--custom-btn-bg-color);
+  background: var(--third-bg-color);
   color: var(--white-color);
 }
 
@@ -368,7 +374,7 @@ strong {
 }
 
 .custom-block-bottom {
-  background: var(--custom-btn-bg-color);
+  background: var(--third-bg-color);
   text-align: center;
 }
 
@@ -381,7 +387,7 @@ strong {
 }
 
 .custom-block-icon {
-  background: var(--secondary-color);
+  background: var(--custom-btn-bg-color);
   border-radius: var(--border-radius-medium);
   font-size: var(--h6-font-size);
   width: 55px;
@@ -440,7 +446,7 @@ strong {
 
 .custom-block-exchange,
 .custom-block-contact {
-  background: var(--custom-btn-bg-color);
+  background: var(--third-bg-color);
 }
 
 .custom-block-exchange .border-bottom {
@@ -527,8 +533,9 @@ strong {
   color: var(--p-color);
   border-radius: var(--border-radius-large);
   font-size: var(--menu-font-size);
+  font-weight: var(--menu-font-weight);
   margin-bottom: 24px;
-  padding: 10px 20px;
+  padding: 6px 20px;
   outline: none;
   transition: all 0.3s;
 }
@@ -552,19 +559,20 @@ strong {
 .custom-form button[type="submit"] {
   border-radius: var(--border-radius-large);
   font-size: var(--menu-font-size);
+  font-weight: var(--menu-font-weight);
   transition: all 0.3s;
   margin-bottom: 0;
 }
 
 .custom-form button[type="submit"] {
-  background: var(--custom-btn-bg-hover-color);
+  background: var(--custom-btn-bg-color);
   border: none;
   color: var(--white-color);
 }
 
 .custom-form button[type="submit"]:hover,
 .custom-form button[type="submit"]:focus {
-  background: var(--custom-btn-bg-color);
+  background: var(--custom-btn-bg-hover-color);
   border-color: transparent;
 }
 

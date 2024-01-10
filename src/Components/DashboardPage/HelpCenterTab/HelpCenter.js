@@ -1,8 +1,8 @@
 export const HelpCenterTab = () => {
     return (
         <>
-        <div className="title-group mb-3">
-                        <h1 className="h2 mb-0">Как можем да ви помогнем?</h1>
+        <div className="title-group mb-3 mt-4">
+                        <h4 className="h4 mb-0">Как можем да ви помогнем?</h4>
                     </div>
 
                     <div className="row my-4">
@@ -49,7 +49,7 @@ export const HelpCenterTab = () => {
                                 <h6 className="mb-4">Имате ли нужда от помощ? Моля направете запитване.</h6>
 
                                 <p>
-                                    <strong>Обадете се на:</strong>
+                                    <strong>Свържи се с нас:</strong>
                                     <a href="tel: 305-240-9671" className="ms-2">
                                         (60) 
                                         305-240-9671

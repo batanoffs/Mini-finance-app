@@ -2,25 +2,29 @@ import { useContext } from "react";
 import { UserDataContext } from "../../../contexts/UserDataContext";
 import { Link } from "react-router-dom";
 
+import Cards from "react-credit-cards-2";
+import "react-credit-cards-2/dist/es/styles-compiled.css";
+
 export const ProfileTab = () => {
-    const { name, phone, creditCard, picture, userId, email } =  useContext(UserDataContext);
+    const { name, phone, creditCard, picture, userId, email } =
+        useContext(UserDataContext);
     const date = new Date(creditCard.created);
     const month = date.getMonth();
     const year = date.getFullYear();
     const day = date.getDate();
     const createdDate = `${month} ${day}, ${year}`;
-    
+
     return (
         <>
-            <div className="title-group mb-3">
-                <h1 className="h2 mb-0">Профил</h1>
+            <div className="title-group mb-3 mt-4">
+                <h4 className="h4 mb-4">Профил</h4>
             </div>
 
-            <div className="row my-4">
+            <div className="row my-4 ">
                 <div className="col-lg-7 col-12">
                     <div className="custom-block custom-block-profile">
                         <div className="row">
-                            <div className="col-lg-12 col-12 mb-3">
+                            <div className="col-lg-12 col-12 mb-4">
                                 <h6>Обща информация</h6>
                             </div>
 
@@ -67,45 +71,55 @@ export const ProfileTab = () => {
                                 <p className="d-flex flex-wrap">
                                     <strong>Адрес:</strong>
 
-                                    <span>551 Swanston Street, Melbourne</span>
+                                    <span>551Swanston Street</span>
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="custom-block custom-block-profile bg-white">
-                        <h6 className="mb-4">Кредитна карта</h6>
+                    <div className="custom-block custom-block-profile bg-white ">
+                        <h6 className="mb-4">Дебитна карта</h6>
+                        <div className="col-md-12 mb-4">
+                            <Cards
+                                
+                                number={creditCard.cardNumber}
+                                expiry={creditCard.expiryDate}
+                                cvc={creditCard.cvc}
+                                name={name}
+                            />
+                        </div>
+                        <div className="d-flex mb-2">
+                            <p className="d-flex row">
+                                <strong>Номер:</strong>
 
-                        <p className="d-flex flex-wrap mb-2">
-                            <strong>Номер:</strong>
+                                <span>{userId}</span>
+                            </p>
 
-                            <span>{userId}</span>
-                        </p>
+                            <p className="d-flex flex-wrap mb-2">
+                                <strong>Вид:</strong>
 
-                        <p className="d-flex flex-wrap mb-2">
-                            <strong>Вид:</strong>
+                                <span>Лична</span>
+                            </p>
 
-                            <span>Лична</span>
-                        </p>
+                            <p className="d-flex flex-wrap mb-2">
+                                <strong>Създадена на:</strong>
 
-                        <p className="d-flex flex-wrap mb-2">
-                            <strong>Създадена на:</strong>
+                                <span>{createdDate}</span>
+                            </p>
 
-                            <span>{createdDate}</span>
-                        </p>
+                            <p className="d-flex flex-wrap mb-2">
+                                <strong>Валидна до:</strong>
 
-                        <p className="d-flex flex-wrap mb-2">
-                            <strong>Валидна до:</strong>
-
-                            <span>July 18, 2032</span>
-                        </p>
+                                <span>July 18, 2032</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <div className="col-lg-5 col-12">
                     <div className="custom-block custom-block-contact">
-                        <h6 className="mb-4">
-                        Имате ли нужда от помощ? Моля направете запитване.
+                        <h6 className="mb-5">
+                            Имате ли нужда от помощ? Моля направете запитване.
                         </h6>
 
                         <p>
