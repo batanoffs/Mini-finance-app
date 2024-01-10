@@ -1,27 +1,31 @@
-/*
-Tooplate 2135 Mini Finance
-https://www.tooplate.com/view/2135-mini-finance
-*/
-
 /*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
+  CUSTOM PROPERTIES ( VARIABLES )    
 -----------------------------------------*/
+
+@import url("../fonts/Montserrat.css");
+
 :root {
+  --charcoal: #314259ff;
+  --white: #ffffffff;
+  --blue-crayola: #1678fbff;
+  --murrey: #a60067ff;
+  --robin-egg-blue: #44cfcbff;
+  --desert-sand: #d7b49eff;
+  --flame: #dc602eff;
   --white-color:                  #ffffff;
-  --primary-color:                #E63946;
-  --secondary-color:              #F1FAEE;
-  --section-bg-color:             #ececec;
-  --primary-bg-color:             #E63946;
-  --custom-btn-bg-color:          #A8DADC;
-  --custom-btn-bg-hover-color:    #1D3557;
-  --heading-color:                #1D3557;
   --dark-color:                   #000000;
-  --p-color:                      #717275;
-  --border-color:                 #e0e0e5;
-  --link-hover-color:             #E63946;
+  --primary-color:                #1678fb;
+  --secondary-color:              #44CFCB;
+  --section-bg-color:             #eee;
+  --primary-bg-color:             #a60067;
+  --custom-btn-bg-color:          #ffffffff;
+  --custom-btn-bg-hover-color:    #e94f37ff;
+  --heading-color:                #122C34;
+  --p-color:                      #1d3557ff;
+  --border-color:                 #ccdde2ff;
+  --link-hover-color:             #DC602E;
 
-  --body-font-family:             'Unbounded';
-
+  --body-font-family:             'Montserrat', sans-serif;
   --h1-font-size:                 74px;
   --h2-font-size:                 46px;
   --h3-font-size:                 32px;
@@ -29,22 +33,25 @@ https://www.tooplate.com/view/2135-mini-finance
   --h5-font-size:                 24px;
   --h6-font-size:                 22px;
   --p-font-size:                  18px;
-  --menu-font-size:               14px;
-  --btn-font-size:                12px;
-  --copyright-font-size:          10px;
+  --menu-font-size:               18px;
+  --btn-font-size:                16px;
+  --copyright-font-size:          12px;
 
   --border-radius-large:          100px;
   --border-radius-medium:         20px;
   --border-radius-small:          10px;
 
-  --font-weight-light:            300;
-  --font-weight-normal:           400;
-  --font-weight-bold:             700;
+  --font-weight-light:            500;
+  --font-weight-normal:           600;
+  --font-weight-bold:             800;
+
+
 }
 
 body {
   background-color: var(--white-color);
   font-family: var(--body-font-family); 
+  font-style: var(--body-font-style);
 }
 
 /*---------------------------------------
@@ -255,53 +262,6 @@ strong {
   background: var(--section-bg-color);
   color: var(--p-color);
 }
-
-
-/*---------------------------------------
-  NOTIFICATIONS ICON              
------------------------------------------*/
-/* .dropdown-menu.notifications-block-wrap {
-  min-width: 465px;
-}
-
-.notifications-block-wrap small {
-  background: var(--custom-btn-bg-color);
-  display: block;
-  padding: 15px 30px;
-  margin-top: -15px;
-  margin-bottom: 10px;
-}
-
-.notifications-block p {
-  font-size: var(--btn-font-size);
-  margin-bottom: 0;
-}
-
-.notifications-block span {
-  white-space: normal;
-}
-
-.dropdown .notifications-block .dropdown-item:hover {
-  background: transparent;
-  color: var(--dark-color);
-}
-
-.notifications-icon-wrap {
-  background: var(--section-bg-color);
-  border-radius: var(--border-radius-medium);
-  width: 32px;
-  min-width: 32px;
-  height: 32px;
-  line-height: 32px;
-  text-align: center;
-  margin-right: 10px;
-}
-
-.notifications-icon {
-  font-size: var(--p-font-size);
-  color: var(--white-color);
-} */
-
 
 /*---------------------------------------
   CUSTOM BUTTON               

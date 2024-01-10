@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "../DashboardPage/dashboard/Dashboard";
-import { ProfileTab } from "../DashboardPage/ProfileTab/Profile";
-import { SettingsTab } from "../DashboardPage/SettingsTab/Settings";
-import { HelpCenterTab } from "../DashboardPage/HelpCenterTab/HelpCenter";
-import { MyWalletTab } from "../DashboardPage/MyWalletTab/Wallet";
-import { Navbar } from "../DashboardPage/SettingsTab/Navbar/Navbar";
+import { Dashboard } from "./dashboard/Dashboard";
+import { ProfileTab } from "./ProfileTab/Profile";
+import { SettingsTab } from "./SettingsTab/Settings";
+import { HelpCenterTab } from "./HelpCenterTab/HelpCenter";
+import { MyWalletTab } from "./MyWalletTab/Wallet";
+import { Navbar } from "./SettingsTab/Navbar/Navbar";
 
 export const WelcomePage = () => {
     return (        

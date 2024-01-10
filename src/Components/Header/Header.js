@@ -5,10 +5,10 @@ import telegram from "../../images/social/telegram.png";
 import snapchat from "../../images/social/snapchat.png";
 import tiktok from "../../images/social/tiktok.png";
 import youtube from "../../images/social/youtube.png";
-
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import './header.css';
 
 export const Header = ({ picture }) => {
     const { isAuthenticated } = useContext(AuthContext);
@@ -31,6 +31,15 @@ export const Header = ({ picture }) => {
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
+            <div className="header-buttons">
+                <Link to="login" className="link"  type="button">
+                    Login
+                </Link>
+                <button className="button" name="register" type="button">
+                    Open Bank Account
+                </button>
+            </div>
+
 
             {/* <form
                 className="custom-form header-form ms-lg-1 ms-md-1 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0"

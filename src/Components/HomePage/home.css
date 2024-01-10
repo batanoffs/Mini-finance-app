@@ -1,0 +1,16 @@
+
+.home {
+    /* aling items in the center of page */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-weight: 800;
+    font-family: 'Montserrat Alternates'
+}
+
+.home div {
+    margin:8rem 25rem;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}

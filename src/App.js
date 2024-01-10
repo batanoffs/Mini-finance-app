@@ -6,8 +6,9 @@ import { authService } from "./services/authService";
 import { getUserData } from "./services/dataService";
 import { Header } from "./Components/Header/Header";
 import { LoginRegister } from "./Components/LoginPage/LoginRegister";
-import { WelcomePage } from "./Components/WelcomePage/WelcomePage";
+import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
 import { Footer } from "./Components/Footer/Footer";
+import { Home } from "./Components/HomePage/Home";
 // import Spline from '@splinetool/react-spline';
 function App() {
     const [auth, setAuth] = useState({});
@@ -15,6 +16,9 @@ function App() {
     const navigate = useNavigate();
 
     const onRegisterSubmitHandler = async (formData) => {
+        if (!formData.email || !formData.password || !formData.confirmPassword) {
+            return;
+        }
         if (formData.password !== formData.confirmPassword) {
             return;
         }
@@ -30,6 +34,10 @@ function App() {
             login: formData.email,
             password: formData.password,
         };
+
+        if (!data.login || !data.password) {
+            return;
+        }
 
         const response = await authService.login(data);        
         setAuth(response);
@@ -96,7 +104,8 @@ function App() {
             {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
             <Routes>
                 <Route path="*" element={<h1>Error 404 Page not found</h1>} />
-                <Route path="/" element={<LoginRegister />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<LoginRegister />} />
                 <Route
                     path="/dashboard/*"
                     element={
