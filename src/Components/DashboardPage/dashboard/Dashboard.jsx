@@ -1,13 +1,13 @@
-import { Balance } from "../OverviewTab/Balance.js";
-import { History } from "../OverviewTab/History.js";
-import { ExchangeRate } from "../OverviewTab/ExchangeRate.js";
-import { ProfileDetails } from "../OverviewTab/ProfileDetails.js";
-import { BankingActionButtons } from "../OverviewTab/BankingActionButtons.js";
-import { Transactions } from "../OverviewTab/Transactions.js";
-import { SendMoney } from "../OverviewTab/SendMoney.js";
-import { Greetings } from "../OverviewTab/Greetings.js";
+import { CreditCard } from "../OverviewTab/CreditCard.jsx";
+import { History } from "../OverviewTab/History.jsx";
+import { ExchangeRate } from "../OverviewTab/ExchangeRate.jsx";
+import { ProfileDetails } from "../OverviewTab/ProfileDetails.jsx";
+import { BankingActionButtons } from "../OverviewTab/BankingActionButtons.jsx";
+import { Transactions } from "../OverviewTab/Transactions.jsx";
+import { SendMoney } from "../OverviewTab/SendMoney.jsx";
+import { Greetings } from "../OverviewTab/Greetings.jsx";
 import { useContext } from "react";
-import { UserDataContext } from "../../../contexts/UserDataContext.js";
+import { UserDataContext } from "../../../contexts/UserDataContext.jsx";
 
 export const Dashboard = () => {
     const {name, creditCard, balance, picture, phone, email} = useContext(UserDataContext);
@@ -15,7 +15,7 @@ export const Dashboard = () => {
         <div className="row my-4">
             <div className="col-lg-7 col-12">
                 <Greetings name={name}/>
-                <Balance creditCard={creditCard} name={name} balance={balance}/>
+                <CreditCard creditCard={creditCard} name={name} balance={balance}/>
                 <History />
                 <ExchangeRate />
             </div>

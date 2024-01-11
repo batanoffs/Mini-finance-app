@@ -1,4 +1,4 @@
-export const Balance = ({creditCard, name, balance}) => {
+export const CreditCard = ({creditCard, name, balance}) => {
     let card = creditCard.cardNumber;
     // TO DO last digits
     const splitDigits = (number) => {
