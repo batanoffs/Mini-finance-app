@@ -10,8 +10,12 @@
     background-color: #ececec transparent;
     color: white;
     text-align: center;
-  }
-  
-  .copyright-text {
+}
+
+.copyright-text {
     font-size: var(--copyright-font-size);
-  }
+}
+
+.label {
+    font-size: 12px;
+}

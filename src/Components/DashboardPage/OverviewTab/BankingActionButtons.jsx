@@ -1,11 +1,11 @@
 export const BankingActionButtons = () => {
     return (
-        <div className="custom-block custom-block-bottom d-flex flex-wrap">
+        <div className="custom-block custom-block-bottom d-flex flex-wrap pt-4 pb-3">
             <div className="custom-block-bottom-item">
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-wallet"></i>
 
-                    <small>Зареди</small>
+                    <small>захрани</small>
                 </a>
             </div>
 
@@ -13,7 +13,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-upc-scan"></i>
 
-                    <small>Сканирай</small>
+                    <small>сканирай</small>
                 </a>
             </div>
 
@@ -21,7 +21,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-send"></i>
 
-                    <small>Изпрати</small>
+                    <small>изпрати</small>
                 </a>
             </div>
 
@@ -29,7 +29,7 @@ export const BankingActionButtons = () => {
                 <a href="#" className="d-flex flex-column">
                     <i className="custom-block-icon bi-arrow-down"></i>
 
-                    <small>Вземи</small>
+                    <small>поискай</small>
                 </a>
             </div>
         </div>

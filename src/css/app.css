@@ -13,12 +13,12 @@
   --desert-sand: #d7b49eff;
   --flame: #dc602eff; */
   --white-color:                  #ffffff;
-  --dark-color:                   #000000;
+  --black-color:                  #000000;
   --primary-color:                #1678fb;
   --secondary-color:              #44CFCB;
   --section-bg-color:             #eee;
   --primary-bg-color:             #a60067;
-  --custom-btn-bg-color:          #1678fb;
+  --custom-btn-bg-color:          #DC602E;
   --third-bg-color:               #ccdde2ff;
   --custom-btn-bg-hover-color:    #ccdde2ff;
   --heading-color:                #122C34;
@@ -37,10 +37,12 @@
   --menu-font-size:               16px;
   --menu-font-weight:             600;
   --btn-font-size:                16px;
+  --card-title-font-size:         18px;
   --copyright-font-size:          12px;
 
   --border-radius-large:          100px;
-  --border-radius-medium:         20px;
+  --border-radius-component:      18px;
+  --border-radius-medium:         16px;
   --border-radius-small:          10px;
 
   --font-weight-light:            400;
@@ -309,7 +311,7 @@ strong {
 -----------------------------------------*/
 .custom-block {
   background: var(--secondary-color);
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-component);
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
@@ -394,35 +396,48 @@ strong {
   height: 55px;
   line-height: 55px;
   text-align: center;
-  color: var(--dark-color);
+  color: var(--white-color);
   display: block;
   margin: auto;
   margin-bottom: 10px;
   transition: all 0.3s;
 }
+/* .bi-wallet:hover, .bi-upc-scan:hover, .bi-send:hover, .bi-arrow-down:hover {
+  background: white;  
+  color: var(--black-color);
+} */
 
 .custom-block-icon:hover {
-  background: var(--custom-btn-bg-hover-color);
-  color: var(--white-color);
+  background: white;
+  color: var(--custom-btn-bg-hover-color);
 }
 
 .custom-block p {
-  color: var(--dark-color);
+  color: var(--black-color);
   margin-bottom: 0;
 }
 
 .custom-block small {
   color: var(--p-color);
   font-size: var(--btn-font-size);
+  letter-spacing: -0.5px;
+  text-transform: lowercase;
+}
+
+.custom-block-balance small {
+  color: var(--p-color);
+  font-size: var(--card-title-font-size);
+  font-weight: 500;
   text-transform: uppercase;
 }
+
 
 .custom-block-numbers {
   margin-bottom: 10px;
 }
 
 .custom-block-numbers span {
-  color: var(--dark-color);
+  color: var(--black-color);
   display: inline-block;
   vertical-align: middle;
   font-size: var(--p-font-size);
@@ -479,7 +494,7 @@ strong {
 }
 
 .custom-block-transations p a {
-  color: var(--dark-color);
+  color: var(--black-color);
 }
 
 .custom-block-transations p a:hover {

@@ -1,6 +1,7 @@
-/*---------------------------------------
-  LOGIN PAGE              
------------------------------------------*/
+/* --border-radius-large:          100px;
+--border-radius-medium:         20px;
+--border-radius-small:          10px; */
+
 
 .container-authetication{
     position:absolute;
@@ -10,7 +11,7 @@
     max-width: 400px;
     width: 100%;
     background: #fff;
-    border-radius: 50px;
+    border-radius: var(--border-radius-medium);
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
   }
   .container-authetication .registration{
@@ -44,7 +45,7 @@
      margin-bottom: 0.5rem;
      margin-left: 0rem;
      border: 1px solid #ddd;
-     border-radius: 18px;
+     border-radius: var(--border-radius-medium);
      outline: none;
    }
    

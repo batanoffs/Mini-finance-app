@@ -10,6 +10,7 @@ import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
 import { Footer } from "./Components/Footer/Footer";
 import { Home } from "./Components/HomePage/Home";
 // import Spline from '@splinetool/react-spline';
+
 function App() {
     const [auth, setAuth] = useState({});
     const [userData, setUserData] = useState([]);
@@ -43,7 +44,7 @@ function App() {
         setAuth(response);
         const token = response["user-token"];
         sessionStorage.setItem("userData", token);
-        navigate("/dashboard");
+        navigate("/dashboard/overview");
         console.log(`Getting response from login:`)
         console.table(response);
         console.log(response);

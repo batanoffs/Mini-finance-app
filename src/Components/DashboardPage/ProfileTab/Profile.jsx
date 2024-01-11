@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import { Contact } from "../SettingsTab/NavigationPanel/CallUs";
 
 export const ProfileTab = () => {
     const { name, phone, creditCard, picture, userId, email } =
@@ -116,27 +117,7 @@ export const ProfileTab = () => {
                     </div>
                 </div>
 
-                <div className="col-lg-5 col-12">
-                    <div className="custom-block custom-block-contact">
-                        <h6 className="mb-5">
-                            Имате ли нужда от помощ? Моля направете запитване.
-                        </h6>
-
-                        <p>
-                            <strong>Свържи се с нас:</strong>
-                            <a href="tel: 305-240-9671" className="ms-2">
-                                (60) 305-240-9671
-                            </a>
-                        </p>
-
-                        <Link
-                            to="#"
-                            className="btn custom-btn custom-btn-bg-white mt-3"
-                        >
-                            Започни Чат
-                        </Link>
-                    </div>
-                </div>
+                <Contact />
             </div>
         </>
     );

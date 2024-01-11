@@ -13,7 +13,7 @@ export const WelcomePage = () => {
                         <main className="main-wrapper col-md-9 ms-sm-auto py-0 col-lg-9 px-md-4 ">    
                             <Navbar/> 
                                 <Routes>                                
-                                    <Route path="*" element={<Dashboard />} />
+                                    <Route path="/*" element={<Dashboard />} />
                                     <Route path="wallet" element={<MyWalletTab /> } />
                                     <Route path="profile" element={<ProfileTab />} />
                                     <Route path="settings/*" element={<SettingsTab />} />

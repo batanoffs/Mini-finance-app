@@ -4,33 +4,58 @@
         <meta charset="utf-8" />
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />        
-        <meta name="description" content="Mini Finance Web site created using create-react-app"/>
-        <meta name="author" content="Tooplate">
+        <meta name="theme-color" content="#000000" />
+        <meta
+            name="description"
+            content="Mini Finance Web site created using create-react-app"
+        />
+        <meta name="author" content="Tooplate" />
 
         <title>Mini Finance Dashboard Template</title>
 
-        <!-- CSS FILES -->      
-        <link rel="preconnect" href="https://fonts.googleapis.com">        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" >
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <!-- 
-    Tooplate 2135 Mini Finance
-    https://www.tooplate.com/view/2135-mini-finance
-    Bootstrap 5 Dashboard Admin Template
--->
-
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        
     </head>
     <body>
-        <div id="root">
-            
-        </div>
+        
+        <div id="root"></div>
 
         <!-- APEXCHARTS LIBRARY TO DO for Histroy      
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://cdn.jsdelivr.net/npm/react-apexcharts"></script>
         -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.globe.min.js"></script>
+        <script>
+            VANTA.GLOBE({
+              el: "body",
+              mouseControls: false,
+              touchControls: false,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              color: 0x1678fb,
+              color2: 0x1678fb,
+              scale: 1.00,
+              scaleMobile: 1.00,
+              backgroundColor: 0xffffff
+            })
+            </script>
     </body>
 </html>

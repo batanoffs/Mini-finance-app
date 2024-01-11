@@ -19,7 +19,7 @@
     margin-top: 3rem;
     cursor: pointer;
     transition: 0.4s;
-    border-radius: 18px;
+    border-radius: var(--border-radius-small);
     margin-bottom: 0rem;
     height: 35px;
     width: auto;

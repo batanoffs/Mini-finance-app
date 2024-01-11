@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const ProfileDetails = ({ email, phone, name, picture }) => {
     return (
         <div className="custom-block custom-block-profile-front custom-block-profile text-center bg-white">
-            <div className="custom-block-profile-image-wrap mb-4">
+            <div className="custom-block-profile-image-wrap mb-5">
                 <img
                     src={picture}
                     className="custom-block-profile-image img-fluid"
@@ -26,7 +26,7 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                 <strong>Е-майл:</strong>
                 <span>{email}</span>
             </p>
-            <p className="d-flex flex-wrap mb-0">
+            <p className="d-flex flex-wrap">
                 <strong>Телефон:</strong>
                 <span>{phone}</span>
             </p>

@@ -1,25 +1,55 @@
-
 .home {
     /* aling items in the center of page */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     font-weight: 800;
-    font-family: 'Montserrat Alternates'
+    font-family: "Montserrat Alternates";
+}
+.globe {
+    height: 55px;
+    width: 20px;
+}
+.first-title {
+    margin-left: 20rem;
 }
 
 .home div {
-    margin:10rem 25rem 10rem 10rem;
+    margin: 8rem 40rem 2rem 8rem;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: left;
 }
 
-.home-mini-finance h3{ 
+.second-title h3 {
     font-size: 24px;
+    margin-left: 0rem;
 }
 
 .bi-box {
     font-size: 24px;
     font-weight: 400;
+}
+
+.title-btn {
+    border-radius: 6px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    font-size: 20px;
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0px;
+    cursor: pointer;
+    transition: 0.4s;
+    height: 40px;
+    width: auto;
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    margin-left: 1rem;
+}
+
+.title-btn:hover {
+    background: var(--third-bg-color);
+    border-color: transparent;
+    color: var(--black-color);
 }

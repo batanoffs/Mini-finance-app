@@ -28,7 +28,7 @@ export const CreditCard = ({creditCard, name, balance}) => {
                 </div>
 
                 <div className="ms-auto">
-                    <small>картодържател:</small>
+                    <small>Картодържател:</small>
                     <p>{name}</p>
                 </div>
             </div>
