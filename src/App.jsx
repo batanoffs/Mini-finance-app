@@ -5,10 +5,11 @@ import { UserDataContext } from "./contexts/UserDataContext";
 import { authService } from "./services/authService";
 import { getUserData } from "./services/dataService";
 import { Header } from "./Components/Header/Header";
-import { LoginRegister } from "./Components/LoginPage/LoginRegister";
+import { Login } from "./Components/LoginPage/Login";
 import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
 import { Footer } from "./Components/Footer/Footer";
 import { Home } from "./Components/HomePage/Home";
+import { Register } from "./Components/RegisterPage/Register";
 // import Spline from '@splinetool/react-spline';
 
 function App() {
@@ -104,9 +105,10 @@ function App() {
             <Header picture={userContext.picture} />
             {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
             <Routes>
-                <Route path="*" element={<h1>Грешка 404 - Страницата не е намерена</h1>} />
+                <Route path="*" element={<h2 style={{ textAlign: "center", paddingTop: "20rem" }}>Грешка 404 - Страницата не е намерена</h2>} />
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<LoginRegister />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route
                     path="/dashboard/*"
                     element={

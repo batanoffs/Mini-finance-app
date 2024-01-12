@@ -1,13 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
-import creditCard from "../../../../images/credit-card.png";
+import creditCard from "../../../images/credit-card.png";
+import "./Sidebar.css";
 
-import "../tab-bar.css";
-import "../nav.css";
-
-export const Navbar = () => {
+export const Sidebar = () => {
     const { onLogoutHandler } = useContext(AuthContext);
     return (
         <nav

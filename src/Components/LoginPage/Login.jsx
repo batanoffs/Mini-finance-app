@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import './login.css'
 
-export const LoginRegister = () => {
+export const Login = () => {
     const { onLoginSubmitHandler, onRegisterSubmitHandler } = useContext(AuthContext);
     const [checked, setChecked] = useState(false);    
     const {values, changeHandler, onSubmitLogin, resetFormHandler, onSubmitRegister} = useForm({

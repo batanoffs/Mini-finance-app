@@ -6,38 +6,58 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin-right: 1rem;    
+    margin-right: 1rem;
+    
+    
 }
 
 .button {
     background: #1678fb;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    padding: 6px 5px 5px 5px;
     font-weight: 500;
-    letter-spacing: 1px;
-    margin-top: 3rem;
     cursor: pointer;
     transition: 0.4s;
-    border-radius: var(--border-radius-small);
     margin-bottom: 0rem;
-    height: 35px;
-    width: auto;
     margin-top: 0rem;
-    border: 1px solid #ddd;
+    height: 35px;
+    width: auto;   
+    border-top-right-radius: var(--border-radius-small);
+    border-bottom-right-radius: var(--border-radius-small);
 }
 
 .link {
     color: #000;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-top: 3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
     transition: 0.4s;
     margin-bottom: 0rem;
     height: 26px;
     width: auto;
-    margin-top: 0.5rem;
+    margin-top: 0rem;
+    padding: 5px 10px 0px 10px;
+    height: 35px;
+    border: 1px solid #6e6e6e;
+
+    border-top-left-radius: var(--border-radius-small);
+    border-bottom-left-radius: var(--border-radius-small);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    
 }
 
+.button:hover {
+    background: #65a8ff;
+    border-color: transparent;
+    color: var(--black-color);
+}
+
+.link:hover {
+    border-color: transparent;
+    color:  #1678fb;
+    border: 1px solid #1678fb;;
+    border-top-left-radius: var(--border-radius-small);
+    border-bottom-left-radius: var(--border-radius-small);
+}

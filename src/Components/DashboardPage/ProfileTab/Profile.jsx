@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
-import { Contact } from "../SettingsTab/NavigationPanel/CallUs";
+import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 
 export const ProfileTab = () => {
     const { name, phone, creditCard, picture, userId, email } =

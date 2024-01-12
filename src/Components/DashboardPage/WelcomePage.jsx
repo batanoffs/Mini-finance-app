@@ -4,14 +4,14 @@ import { ProfileTab } from "./ProfileTab/Profile";
 import { SettingsTab } from "./SettingsTab/Settings";
 import { HelpCenterTab } from "./HelpCenterTab/HelpCenter";
 import { MyWalletTab } from "./MyWalletTab/Wallet";
-import { Navbar } from "./SettingsTab/Navbar/Navbar";
+import { Sidebar } from "./Sidebar/Sidebar";
 
 export const WelcomePage = () => {
     return (        
             <div className="container-fluid">
                 <div className="row">
                         <main className="main-wrapper col-md-9 ms-sm-auto py-0 col-lg-9 px-md-4 ">    
-                            <Navbar/> 
+                            <Sidebar/> 
                                 <Routes>                                
                                     <Route path="/*" element={<Dashboard />} />
                                     <Route path="wallet" element={<MyWalletTab /> } />

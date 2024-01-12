@@ -1,4 +1,4 @@
-import { Contact } from "../SettingsTab/NavigationPanel/CallUs";
+import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 
 export const HelpCenterTab = () => {
     return (

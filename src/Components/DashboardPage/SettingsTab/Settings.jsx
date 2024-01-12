@@ -1,10 +1,10 @@
-import { Contact } from "./NavigationPanel/CallUs";
+import { Contact } from "./NavigationTabs/CallUs";
 import { SettingsNavigationPanel } from "./NavigationPanel/SettingsNavigationPanel";
-import { ProfileTab } from "./NavigationPanel/SettingsProfileTab";
-import { PasswordTab } from "./NavigationPanel/SettingsPasswordTab";
-import { NotificationTab } from "./NavigationPanel/SettingsNotificationTab";
+import { ProfileTab } from "./NavigationTabs/SettingsProfileTab";
+import { PasswordTab } from "./NavigationTabs/SettingsPasswordTab";
+import { NotificationTab } from "./NavigationTabs/SettingsNotificationTab";
 import { Route, Routes } from "react-router-dom";
-import { CreditCard } from "./NavigationPanel/SettingsCreditCardTab";
+import { CreditCard } from "./NavigationTabs/SettingsCreditCardTab";
 import { useContext } from "react";
 import { UserDataContext } from "../../../contexts/UserDataContext";
 

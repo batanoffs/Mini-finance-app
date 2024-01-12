@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Globe from "vanta/dist/vanta.globe.min";
 
 import "./home.css";
@@ -17,10 +18,11 @@ export const Home = () => {
                     minWidth: 200.0,
                     scale: 1.0,
                     scaleMobile: 1.0,
-                    color: 0x249fc2,
-                    color2: 0xc28282,
+                    color: 0x109fc2,
+                    // color: 0x44CFCB,
+                    color2: 0xc29282,
                     backgroundColor: 0xffffff,
-                    size: 0.8,
+                    size: 0.5,
                 })
             );
         }
@@ -34,17 +36,20 @@ export const Home = () => {
                 <div className="text-container" id="home">
                     <div className="first-title-container">
                         <h2>
-                            Oнлайн банкирането е вече достъпно
-                            за всеки потребител.
+                        Добре дошли в света на безгрижния финансов успех с иновативни решения.
                         </h2>
                     </div>
                     <div className="second-title-container">
                         <h3>
                             Отвори нов банков акаунт в{" "}
                             <label className="bi-box"> Mini Finance App</label>.
-                            <button className="title-btn">
+                            <Link
+                                to="register"
+                                role="button"
+                                className="title-btn"
+                            >
                                 Влез в системата
-                            </button>
+                            </Link>
                         </h3>
                     </div>
                 </div>

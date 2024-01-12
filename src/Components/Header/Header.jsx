@@ -8,42 +8,44 @@ import youtube from "../../images/social/youtube.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import './header.css';
+import "./header.css";
 
 export const Header = ({ picture }) => {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <header className="navbar sticky-top flex-md-nowrap">
             <div className="col-md-3 col-lg-4 me-0 px-3 fs-6">
-                <Link className="navbar-brand" to="dashboard">
-                    <label className="bi-box"> Mini Finance App</label>
+                <Link className="navbar-brand"  to="/">
+                    <label style={{ cursor: "pointer" }} className="bi-box"> Mini Finance App</label>
                 </Link>
             </div>
 
-            <button
+            {/* <button
                 className="navbar-toggler position-absolute d-md-none collapsed"
                 type="button"
-                data-bs-toggle="collapse"
+                data-bs-toggle="collapse"                
                 data-bs-target="#sidebarMenu"
                 aria-controls="sidebarMenu"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
                 <span className="navbar-toggler-icon"></span>
-            </button>
+            </button> */}
             {!isAuthenticated() && (
-                 <div className="header-buttons">
-                 <Link to="login" className="link"  type="button">
-                     ВХОД
-                 </Link>
-                 <button className="button" name="register" type="button">
-                    Нов Банков Акаунт
-                 </button>
-             </div>
+                <div className="header-buttons">
+                    <Link to="login" className="link" type="button">
+                        Вход
+                    </Link>
+                    <Link
+                        to="register"
+                        className="button"
+                        name="register"
+                        type="button"
+                    >
+                        Нов Банков Акаунт
+                    </Link>
+                </div>
             )}
-            
-           
-
 
             {/* <form
                 className="custom-form header-form ms-lg-1 ms-md-1 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0"

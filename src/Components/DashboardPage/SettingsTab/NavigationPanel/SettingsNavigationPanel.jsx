@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-
+import '../tab-bar.css'
 export const SettingsNavigationPanel = () => {
     return (
         <ul className="nav nav-tabs" id="myTab" role="tablist">
