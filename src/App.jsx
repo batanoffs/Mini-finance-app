@@ -103,6 +103,7 @@ function App() {
     return (
         <AuthContext.Provider value={{ ...context }}>
             <Header picture={userContext.picture} />
+            <main>
             {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
             <Routes>
                 <Route path="*" element={<h2 style={{ textAlign: "center", paddingTop: "20rem" }}>Грешка 404 - Страницата не е намерена</h2>} />
@@ -118,6 +119,7 @@ function App() {
                     }
                 />
             </Routes>
+            </main>
             <Footer />
         </AuthContext.Provider>
     );

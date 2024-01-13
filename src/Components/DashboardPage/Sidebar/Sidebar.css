@@ -1,13 +1,7 @@
-
-  
-  body {
-    background-color: var(--white-color);
-    font-family: var(--body-font-family); 
-  }
 /*---------------------------------------
   NAVIGATION              
 -----------------------------------------*/
-.sidebar {
+.sidebar-nav {
     background: var(--white-color);
     position: fixed;
     top: 0;

@@ -26,7 +26,7 @@
   --border-color:                 #ccdde2ff;
   --link-hover-color:             #DC602E;
 
-  --body-font-family:             'Montserrat Alternates', sans-serif;
+  --body-font-family:            'Montserrat Alternates', sans-serif;
   --h1-font-size:                 74px;
   --h2-font-size:                 46px;
   --h3-font-size:                 32px;
@@ -52,10 +52,24 @@
 
 }
 
-body {
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+#root {
   background-color: var(--white-color);
   font-family: var(--body-font-family); 
-  font-style: var(--body-font-style);
+  font-style: var(--body-font-style); 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
 }
 
 body::-webkit-scrollbar {
@@ -643,7 +657,7 @@ strong {
   }
 
   .navbar .nav-link {
-    padding-top: 7px;
+    padding-top: 0px;
   }
 
   .navbar-nav .dropdown:last-child {
@@ -767,7 +781,7 @@ strong {
 
   .profile-rounded {
     width: 32px;
-    height: 32px;
+    height: 23px;
   }
 
   .profile-rounded-icon {

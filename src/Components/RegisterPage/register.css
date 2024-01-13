@@ -1,0 +1,48 @@
+.register-container {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+}
+.form-container {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    padding-bottom: 3rem; */
+
+    max-width: 400px;
+    background: #fff;
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
+    
+
+    
+}
+
+/*---------------------------------------
+  SIDEBAR              
+-----------------------------------------*/
+
+.tracker {
+    margin: 0rem 2rem 1rem 2rem;
+    font-size: 16px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    background-color: #eeeeee;
+}

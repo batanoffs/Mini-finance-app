@@ -1,27 +1,30 @@
 .home-container {
     width: stretch;
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
+
 .text-container {
     /* aling items in the center of page */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 820px;
+    justify-content: space-around;
+    
 }
 
 .first-title-container {
-    margin: 6rem 36rem 6rem 10rem;
+    margin: 0rem 0rem 0rem 6rem;
 }
-
+.image-container{
+    margin: 20rem 10rem 0rem 0rem;
+}
 .second-title-container {
-    margin: 0rem 40rem 6rem 10rem;
+    margin: 0rem 16rem 0rem 6rem;
 }
 .first-title-container h2 {
-    margin-bottom: 0px;
-    
-    font-weight: 500;
-    
+    margin-bottom: 0px;    
+    font-weight: 500;    
 }
 
 .second-title-container h3{

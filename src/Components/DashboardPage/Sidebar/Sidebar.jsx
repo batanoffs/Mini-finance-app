@@ -12,7 +12,7 @@ export const Sidebar = () => {
             id="sidebarMenu"
             className="col-md-3 col-lg-3 d-md-block sidebar collapse"
         >
-            <div className="position-sticky py-4 px-3 sidebar-sticky">
+            <div className="position-sticky py-3 px-3 sidebar-sticky">
                 <ul className="nav flex-column h-100">
                     <li className="nav-item">
                         <NavLink
