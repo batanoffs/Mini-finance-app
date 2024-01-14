@@ -1,34 +1,6 @@
-.register-container {
-    display: flex;
-    flex-direction: row;
-    align-self: stretch;
-}
-.form-container {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 400px;
-    width: 100%;
-    background: #fff;
-    border-radius: var(--border-radius-medium);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 2rem;
-    padding-bottom: 3rem; */
-
-    max-width: 400px;
-    background: #fff;
-    border-radius: var(--border-radius-small);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
-    
-
-    
-}
-
 /*---------------------------------------
   SIDEBAR              
 -----------------------------------------*/
-
 .tracker {
     margin: 0rem 2rem 1rem 2rem;
     font-size: 16px;
@@ -45,4 +17,44 @@
     justify-content: space-around;
     align-items: left;
     background-color: #eeeeee;
+    flex: 0 0 350px;
+}
+
+.form-container {    
+    background: #fff;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    min-width: 400px;
+    align-self: center;
+    margin: 0 250px;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: stretch;    
+}
+
+
+
+.form {
+    padding: 2rem;
+    padding-bottom: 3rem;
+}
+
+.form input {
+    height: 35px;
+    width: 100%;
+    padding: 0 12px;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    margin-left: 0rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-small);
+    outline: none;
+}
+
+.form label {
+    padding: 0 11px;
 }

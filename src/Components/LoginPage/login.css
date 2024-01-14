@@ -6,13 +6,11 @@
     max-width: 400px;
     background: #fff;
     border-radius: var(--border-radius-small);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
-    flex: 1;
-    
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    align-self: center;
 }
 
 .login form {
-    
 }
 
 .form {
@@ -77,7 +75,7 @@
     transition: 0.4s;
 }
 .form input.button:hover {
-    background: #a8dadc;
+    background: #65a8ff;
     border-color: transparent;
 }
 .signup {

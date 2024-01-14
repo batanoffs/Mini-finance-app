@@ -2,8 +2,9 @@
   SITE FOOTER              
 -----------------------------------------*/
 .site-footer {
-    height: 60px;
-    border-top: 1px solid #ddd;
+	height: 60px;
+	border-top: 1px solid #ddd;
+	flex: 0 0 40px;
 }
 
 

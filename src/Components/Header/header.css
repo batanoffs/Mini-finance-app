@@ -65,3 +65,6 @@
     border-top-left-radius: var(--border-radius-small);
     border-bottom-left-radius: var(--border-radius-small);
 }
+.navbar {
+	flex: 0 0 50px;
+}

@@ -1,49 +1,61 @@
-import { SidebarRegister } from "./SidebarRegister";
 import "./register.css";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useState, useContext } from "react";
+import { SidebarRegister } from "./SidebarRegister";
+import { EmailPassword } from './EmailPassword'
+import { PersonalInfo } from "./PersonalInfo";
+
 
 export const Register = () => {
+    // const { onLoginSubmitHandler, onRegisterSubmitHandler } =
+    // useContext(AuthContext);
+    const [register, setRegister] = useState({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        gender: "",
+        country: "",
+        phoneNumber: "",
+        creditCard: {},
+    });
+
+    // const {
+    //     values,
+    //     changeHandler,
+    //     onSubmitLogin,
+    //     resetFormHandler,
+    //     onSubmitRegister,
+    // } = useForm(
+    //     {
+    //         email: "",
+    //         password: "",
+    //         confirmPassword: "",
+    //     },
+    //     onLoginSubmitHandler,
+    //     onRegisterSubmitHandler
+    // );
+
+    
+
+    // const onFormChange = (e) => {
+    //     if (!checked) {
+    //         setChecked(true);
+    //         resetFormHandler(e);
+    //     } else {
+    //         setChecked(false);
+    //         resetFormHandler(e);
+    //     }
+    // };
+
     return (
         <div className="register-container">
             <SidebarRegister />
-            <section className="form-container">
-                <div className="registration form">
-                    <form action="#" method="post">
-                        <header>Е-майл и парола</header>
-                        <label htmlFor="email">Е-майл</label>
 
-                        <input
-                            type="email"
-                            name="email"
-                            autoComplete="off"
-                            placeholder="Въведи е-майла"
-                            className="form-control"
-                        />
-                        <label htmlFor="password"> Парола</label>
+            <EmailPassword />
 
-                        <input
-                            type="password"
-                            name="password"
-                            autoComplete="off"
-                            placeholder="Въведи парола"
-                            className="form-control"
-                        />
-                        <label htmlFor="confirmPassword">Потвърди парола</label>
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            autoComplete="off"
-                            placeholder="Confirm your password"
-                            className="form-control"
-                        />
-                        <input
-                            type="submit"
-                            name="submit"
-                            className="button btn btn-primary"
-                            value="Напред"
-                        />
-                    </form>
-                </div>
-            </section>
+            {/* <PersonalInfo /> */}
+
         </div>
     );
 };

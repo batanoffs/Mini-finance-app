@@ -8,7 +8,6 @@ import "./login.css";
 export const Login = () => {
     const { onLoginSubmitHandler, onRegisterSubmitHandler } =
         useContext(AuthContext);
-    // const [checked, setChecked] = useState(false);
     const {
         values,
         changeHandler,
@@ -24,16 +23,6 @@ export const Login = () => {
         onLoginSubmitHandler,
         onRegisterSubmitHandler
     );
-
-    // const onFormChange = (e) => {
-    //     if (!checked) {
-    //         setChecked(true);
-    //         resetFormHandler(e);
-    //     } else {
-    //         setChecked(false);
-    //         resetFormHandler(e);
-    //     }
-    // };
 
     return (
         <div className="container-authetication">

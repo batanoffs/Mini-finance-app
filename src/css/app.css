@@ -5,13 +5,6 @@
 @import url("../fonts/Montserrat.css");
 
 :root {
-  /* --charcoal: #314259ff;
-  --white: #ffffffff;
-  --blue-crayola: #1678fbff;
-  --murrey: #a60067ff;
-  --robin-egg-blue: #44cfcbff;
-  --desert-sand: #d7b49eff;
-  --flame: #dc602eff; */
   --white-color:                  #ffffff;
   --black-color:                  #000000;
   --primary-color:                #1678fb;
@@ -69,11 +62,14 @@
 }
 
 main {
-  flex-grow: 1;
+  flex: 1 1 min-content;
+  display: flex;
+  justify-content: center;
 }
 
 body::-webkit-scrollbar {
   display: none;
+  
 }
 
 /*---------------------------------------
