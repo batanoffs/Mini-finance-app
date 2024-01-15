@@ -10,10 +10,9 @@ export const Sidebar = () => {
     return (
         <nav
             id="sidebarMenu"
-            className="col-md-3 col-lg-3 d-md-block sidebar collapse"
         >
-            <div className="position-sticky py-3 px-3 sidebar-sticky">
-                <ul className="nav flex-column h-100">
+            <div className="sidebar-sticky">
+                <ul className="nav">
                     <li className="nav-item">
                         <NavLink
                             className={({ isActive, isPending }) =>
@@ -26,7 +25,7 @@ export const Sidebar = () => {
                             name="overview"
                             to="overview"
                         >
-                            <i className="bi-house-fill me-2"></i>
+                            <i className="bi-house-fill"></i>
                             Общ преглед
                         </NavLink>
                     </li>
@@ -43,7 +42,7 @@ export const Sidebar = () => {
                             name="wallet"
                             to="wallet"
                         >
-                            <i className="bi-wallet me-2"></i>
+                            <i className="bi-wallet"></i>
                             Портфейл
                         </NavLink>
                     </li>
@@ -60,7 +59,7 @@ export const Sidebar = () => {
                             name="profile"
                             to="profile"
                         >
-                            <i className="bi-person me-2"></i>
+                            <i className="bi-person"></i>
                             Профил
                         </NavLink>
                     </li>
@@ -77,7 +76,7 @@ export const Sidebar = () => {
                             name="settings"
                             to="settings"
                         >
-                            <i className="bi-gear me-2"></i>
+                            <i className="bi-gear"></i>
                             Настройки
                         </NavLink>
                     </li>
@@ -94,12 +93,12 @@ export const Sidebar = () => {
                             name="helpCenter"
                             to="help-center"
                         >
-                            <i className="bi-question-circle me-2"></i>
+                            <i className="bi-question-circle"></i>
                             Помощен център
                         </NavLink>
                     </li>
 
-                    <li className="nav-item featured-box mt-lg-5 mt-4 mb-4">
+                    <li className="nav-item featured-box">
                         <img
                             src={creditCard}
                             className="img-fluid"
@@ -111,13 +110,13 @@ export const Sidebar = () => {
                         </NavLink>
                     </li>
 
-                    <li className="nav-item border-top mt-auto pt-2">
+                    <li className="nav-item">
                         <NavLink
                             className="nav-link"
                             onClick={onLogoutHandler}
                             to="/"
                         >
-                            <i className="bi-box-arrow-left me-2"></i>
+                            <i className="bi-box-arrow-left"></i>
                             Изход
                         </NavLink>
                     </li>

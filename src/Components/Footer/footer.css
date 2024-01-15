@@ -2,23 +2,20 @@
   SITE FOOTER              
 -----------------------------------------*/
 .site-footer {
-	height: 60px;
-	border-top: 1px solid #ddd;
-	flex: 0 0 40px;
+    border-top: 1px solid #ddd;
+    background-color: #65a8ff;
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
 
 .copyright-text {
     font-size: var(--copyright-font-size);
+    color: white;
+    font-weight: 500;
 }
 
 .label {
     font-size: 12px;
-}
-
-.footer-container {
-    width: fit-content;
-    margin: 0 auto;
-    height: max-content;
 }

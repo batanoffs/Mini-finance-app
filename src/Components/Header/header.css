@@ -51,6 +51,11 @@
     border-bottom-right-radius: 0px;
     
 }
+.header-dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .button:hover {
     background: #65a8ff;

@@ -7,20 +7,18 @@ import { MyWalletTab } from "./MyWalletTab/Wallet";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 export const WelcomePage = () => {
-    return (        
-            <div className="container-fluid">
-                <div className="row">
-                        <main className="main-wrapper col-md-9 ms-sm-auto py-0 col-lg-9 px-md-4 ">    
-                            <Sidebar/> 
-                                <Routes>                                
-                                    <Route path="/*" element={<Dashboard />} />
-                                    <Route path="wallet" element={<MyWalletTab /> } />
-                                    <Route path="profile" element={<ProfileTab />} />
-                                    <Route path="settings/*" element={<SettingsTab />} />
-                                    <Route path="help-center" element={<HelpCenterTab />}/>
-                                </Routes>
-                        </main>
-                </div>
+    return (
+            <div className="content-wrapper">
+                <main className="main-wrapper">
+                    <Sidebar />
+                    <Routes>
+                        <Route path="/*" element={<Dashboard />} />
+                        <Route path="wallet" element={<MyWalletTab />} />
+                        <Route path="profile" element={<ProfileTab />} />
+                        <Route path="settings/*" element={<SettingsTab />} />
+                        <Route path="help-center" element={<HelpCenterTab />} />
+                    </Routes>
+                </main>
             </div>
-    )
-} 
+    );
+};
