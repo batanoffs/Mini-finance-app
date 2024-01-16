@@ -8,8 +8,7 @@ import { Sidebar } from "./Sidebar/Sidebar";
 
 export const WelcomePage = () => {
     return (
-            <div className="content-wrapper">
-                <main className="main-wrapper">
+            <div className="main-wrapper">
                     <Sidebar />
                     <Routes>
                         <Route path="/*" element={<Dashboard />} />
@@ -18,7 +17,6 @@ export const WelcomePage = () => {
                         <Route path="settings/*" element={<SettingsTab />} />
                         <Route path="help-center" element={<HelpCenterTab />} />
                     </Routes>
-                </main>
             </div>
     );
 };

@@ -9,7 +9,7 @@ export const Sidebar = () => {
     const { onLogoutHandler } = useContext(AuthContext);
     return (
         <nav
-            id="sidebarMenu"
+            className="sidebar"
         >
             <div className="sidebar-sticky">
                 <ul className="nav">

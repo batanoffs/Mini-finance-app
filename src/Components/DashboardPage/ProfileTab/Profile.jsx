@@ -16,109 +16,107 @@ export const ProfileTab = () => {
     const createdDate = `${month} ${day}, ${year}`;
 
     return (
-        <>
-            <div className="title-group mb-3 mt-4">
-                <h4 className="h4 mb-4">Профил</h4>
-            </div>
+        <div className="content-container">
+            <div className="column">
+                <div className="title-group">
+                    <h4>Профил</h4>
+                </div>
+                <div className="custom-block custom-block-profile">
+                    <div className="row">
+                        <div>
+                            <h6>Обща информация</h6>
+                        </div>
 
-            <div className="row my-4 ">
-                <div className="col-lg-7 col-12">
-                    <div className="custom-block custom-block-profile">
-                        <div className="row">
-                            <div className="col-lg-12 col-12 mb-4">
-                                <h6>Обща информация</h6>
-                            </div>
+                        <div>
+                            <div className="custom-block-profile-image-wrap">
+                                <img
+                                    src={picture}
+                                    className="custom-block-profile-image img-fluid"
+                                    alt=""
+                                />
 
-                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                                <div className="custom-block-profile-image-wrap">
-                                    <img
-                                        src={picture}
-                                        className="custom-block-profile-image img-fluid"
-                                        alt=""
-                                    />
-
-                                    <Link
-                                        to="/dashboard/settings"
-                                        className="bi-pencil-square custom-block-edit-icon"
-                                    ></Link>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-9 col-12">
-                                <p className="d-flex flex-wrap mb-2">
-                                    <strong>Име:</strong>
-
-                                    <span>{name}</span>
-                                </p>
-
-                                <p className="d-flex flex-wrap mb-2">
-                                    <strong>Email:</strong>
-
-                                    <span>{email}</span>
-                                </p>
-
-                                <p className="d-flex flex-wrap mb-2">
-                                    <strong>Телефон:</strong>
-
-                                    <span>{phone}</span>
-                                </p>
-
-                                <p className="d-flex flex-wrap mb-2">
-                                    <strong>Роден на:</strong>
-
-                                    <span>March 5, 1992</span>
-                                </p>
-
-                                <p className="d-flex flex-wrap">
-                                    <strong>Адрес:</strong>
-
-                                    <span>551Swanston Street</span>
-                                </p>
+                                <Link
+                                    to="/dashboard/settings"
+                                    className="bi-pencil-square custom-block-edit-icon"
+                                ></Link>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="custom-block custom-block-profile bg-white ">
-                        <h6 className="mb-4">Дебитна карта</h6>
-                        <div className="col-md-12 mb-4">
-                            <Cards
-                                
-                                number={creditCard.cardNumber}
-                                expiry={creditCard.expiryDate}
-                                cvc={creditCard.cvc}
-                                name={name}
-                            />
-                        </div>
-                        <div className="d-flex mb-2">
-                            <p className="d-flex row">
-                                <strong>Номер:</strong>
+                        <div>
+                            <p>
+                                <strong>Име:</strong>
 
-                                <span>{userId}</span>
+                                <span>{name}</span>
                             </p>
 
-                            <p className="d-flex flex-wrap mb-2">
-                                <strong>Вид:</strong>
+                            <p>
+                                <strong>Email:</strong>
 
-                                <span>Лична</span>
+                                <span>{email}</span>
                             </p>
 
-                            <p className="d-flex flex-wrap mb-2">
-                                <strong>Създадена на:</strong>
+                            <p>
+                                <strong>Телефон:</strong>
 
-                                <span>{createdDate}</span>
+                                <span>{phone}</span>
                             </p>
 
-                            <p className="d-flex flex-wrap mb-2">
-                                <strong>Валидна до:</strong>
+                            <p>
+                                <strong>Роден на:</strong>
 
-                                <span>July 18, 2032</span>
+                                <span>March 5, 1992</span>
+                            </p>
+
+                            <p>
+                                <strong>Адрес:</strong>
+
+                                <span>551Swanston Street</span>
                             </p>
                         </div>
                     </div>
                 </div>
 
+                <div className="custom-block custom-block-profile">
+                    <h6>Дебитна карта</h6>
+                    <div>
+                        <Cards
+                            number={creditCard.cardNumber}
+                            expiry={creditCard.expiryDate}
+                            cvc={creditCard.cvc}
+                            name={name}
+                        />
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Номер:</strong>
+
+                            <span>{userId}</span>
+                        </p>
+
+                        <p>
+                            <strong>Вид:</strong>
+
+                            <span>Лична</span>
+                        </p>
+
+                        <p>
+                            <strong>Създадена на:</strong>
+
+                            <span>{createdDate}</span>
+                        </p>
+
+                        <p>
+                            <strong>Валидна до:</strong>
+
+                            <span>July 18, 2032</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div className="column">
                 <Contact />
             </div>
-        </>
+        </div>
     );
 };

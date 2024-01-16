@@ -51,6 +51,11 @@
   box-sizing: border-box;
 }
 
+.content-container{
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
 
 #root {
   background-color: var(--white-color);
@@ -62,7 +67,7 @@
 }
 
 main {
-  flex: 1 1 min-content;
+  flex: 1;
   display: flex;
   justify-content: center;
 }
@@ -156,6 +161,8 @@ strong {
 .main-wrapper {
   background: var(--section-bg-color);
   min-height: calc(100vh - 65px);
+  display: flex;
+  width: 100vw;
 }
 
 .section-padding {
@@ -245,40 +252,6 @@ strong {
 
 .profile-rounded-icon {
   font-size: var(--h2-font-size);
-}
-
-.dropdown-menu-profile-thumb {
-  margin: 15px 25px;
-}
-
-.dropdown-menu-profile-thumb small,
-.dropdown-menu-profile-thumb a {
-  font-size: var(--btn-font-size);
-}
-
-.dropdown-menu.dropdown-menu-social {
-  min-width: 340px;
-}
-
-.dropdown-menu-social .profile-image {
-  margin-bottom: 5px;
-}
-
-.dropdown .dropdown-menu-social span {
-  font-size: var(--btn-font-size);
-}
-
-.dropdown .dropdown-menu-social .dropdown-item {
-  display: block;
-  margin: auto;
-  margin-bottom: 5px;
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.dropdown .dropdown-menu-social .dropdown-item:hover {
-  background: var(--section-bg-color);
-  color: var(--p-color);
 }
 
 /*---------------------------------------
@@ -636,53 +609,6 @@ strong {
   }
 }
 
-
-@media screen and (max-width: 767px) {
-  #sidebarMenu {
-    top: 60px;
-  }
-
-  .sidebar-sticky {
-    top: 117px;
-    height: calc(100vh - 117px);
-  }
-
-  .navbar .header-form {
-    width: 100%;
-    margin: 10px;
-  }
-
-  .navbar .nav-link {
-    padding-top: 0px;
-  }
-
-  .navbar-nav .dropdown:last-child {
-    margin-right: 50px;
-  }
-}
-
-
-@media screen and (max-width: 580px) {
-  .navbar-nav .dropdown-menu {
-    width: 95%;
-    min-width: 240px;
-    margin: auto;
-    top: 60px;
-    right: 0;
-    left: 0;
-  }
-
-  .dropdown-menu[data-bs-popper] {
-    top: 60px;
-    right: 0;
-    left: 0;
-  }
-
-  .dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center {
-    position: inherit;
-  }
-}
-
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 38px;
@@ -702,21 +628,6 @@ strong {
 
   h5 {
     font-size: 20px;
-  }
-
-  .navbar-nav .dropdown-menu {
-    width: 95%;
-    min-width: 240px;
-    margin: auto;
-    top: 60px;
-    right: 0;
-    left: 0;
-  }
-
-  .dropdown-menu[data-bs-popper] {
-    top: 60px;
-    right: 0;
-    left: 0;
   }
 
   .dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center {

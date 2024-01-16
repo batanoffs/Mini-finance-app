@@ -11,8 +11,9 @@ import { UserDataContext } from "../../../contexts/UserDataContext";
 export const SettingsTab = () => {
     const {name, phone, creditCard, picture, email} = useContext(UserDataContext);
     return (
-        <>  
-        <div className="title-group mb-3 mt-4">
+        <div className="content-container">
+            <div className="column">
+                    <div className="title-group">
                         <h4 className="h4 mb-0">Настройки</h4>
                     </div>
 
@@ -33,9 +34,12 @@ export const SettingsTab = () => {
                                 </div>
                             </div>
                         </div>
-
-                        <Contact />
-                    </div>
-        </>
+            </div>
+            </div>
+            <div className="column">
+                    <Contact />
+            </div>
+            
+        </div>
     )
 }

@@ -6,51 +6,47 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
+    margin-right: 1em;
 }
 
 .bi-box {
     font-size: 20px;
     font-weight: 400;
-    margin-left: 1rem;
+    margin-left: 1em;
+    color: black;
 }
 
 .button {
     background: #1678fb;
     color: #fff;
-    font-size: 0.9rem;
-    padding: 6px 5px 5px 5px;
+    font-size: 0.9em;
+    padding: 7px 5px 5px 5px;
     font-weight: 500;
     cursor: pointer;
     transition: 0.4s;
-    margin-bottom: 0rem;
-    margin-top: 0rem;
-    height: 35px;
+    margin-bottom: 0em;
+    margin-top: 0em;
+    height: 2.2em;
     width: auto;   
     border-top-right-radius: var(--border-radius-small);
     border-bottom-right-radius: var(--border-radius-small);
 }
 
-.link {
+.login-button {
     color: #000;
-    font-size: 0.9rem; 
+    font-size: 0.9em; 
     font-weight: 500;
     cursor: pointer;
     transition: 0.4s;
-    margin-bottom: 0rem;
-    height: 26px;
-    width: auto;
-    margin-top: 0rem;
-    padding: 5px 10px 0px 10px;
-    height: 35px;
+    margin-bottom: 0em;
+    margin-top: 0em;
+    padding: 6px 10px 0px 10px;
+    height: 2.2em;
     border: 1px solid #6e6e6e;
-
     border-top-left-radius: var(--border-radius-small);
     border-bottom-left-radius: var(--border-radius-small);
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    
 }
+
 .header-dropdown-container{
     display: flex;
     justify-content: center;
@@ -63,13 +59,19 @@
     color: var(--white-color);
 }
 
-.link:hover {
+.login-button:hover {
     border-color: transparent;
     color:  #1678fb;
-    border: 1px solid #1678fb;;
+    border: 1px solid #1678fb;
     border-top-left-radius: var(--border-radius-small);
     border-bottom-left-radius: var(--border-radius-small);
 }
-.navbar {
+
+.header-container {
 	flex: 0 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
 }

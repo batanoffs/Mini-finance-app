@@ -7,15 +7,15 @@ import { CreditCard } from "../OverviewTab/CreditCard.jsx";
 import "./wallet.css";
 
 export const MyWalletTab = () => {
-    const {name, creditCard, balance, picture, phone, email} = useContext(UserDataContext);
+    const { name, creditCard, balance, picture, phone, email } =
+        useContext(UserDataContext);
     return (
-        <>
-            <div className="title-group mb-3 mt-4">
-                <h4 className="h4 mb-4">Портфейл</h4>
-            </div>
-
-            <div className="row my-4">
-                <div className="col-lg-12 col-12">
+        <div className="wallet">
+            <div className="column " style={{ margin: "3em" }}>
+                <div className="title">
+                    <h4 className="h4 mb-4">Портфейл</h4>
+                </div>
+                <div className="stats">
                     <div className="custom-block bg-white">
                         <h6 className="mb-4">Движения по сметка</h6>
 
@@ -339,14 +339,6 @@ export const MyWalletTab = () => {
                     </div>
                 </div>
 
-                <div className="col-lg-7 col-12">
-                <CreditCard creditCard={creditCard} name={name} balance={balance}/>
-
-                    <BankingActionButtons />
-                </div>
-                <div className="col-lg-5 col-12">
-                    <Transactions />
-                </div>
                 {/* <div className="col-lg-5 col-12">
                             <div className="custom-block custom-block-transations">
                                 <h5 className="mb-4">Последни транзакции</h5>
@@ -409,6 +401,20 @@ export const MyWalletTab = () => {
 
                         </div> */}
             </div>
-        </>
+            <div className="content-container">
+                <div className="column">
+                    <CreditCard
+                        creditCard={creditCard}
+                        name={name}
+                        balance={balance}
+                    />
+
+                    <BankingActionButtons />
+                </div>
+                <div className="column">
+                    <Transactions />
+                </div>
+            </div>
+        </div>
     );
 };

@@ -24,7 +24,7 @@
     background: #fff;
     border-radius: var(--border-radius-medium);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    min-width: 400px;
+    max-width: 400px;
     align-self: center;
     margin: 0 250px;
 }
@@ -41,6 +41,8 @@
 .form {
     padding: 2rem;
     padding-bottom: 3rem;
+    
+
 }
 
 .form input {
