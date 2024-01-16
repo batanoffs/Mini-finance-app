@@ -7,6 +7,7 @@ import { MyWalletTab } from "./MyWalletTab/Wallet";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 export const WelcomePage = () => {
+    const t = false // TODO
     return (
             <div className="main-wrapper">
                     <Sidebar />

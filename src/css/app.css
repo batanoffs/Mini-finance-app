@@ -53,8 +53,11 @@
 
 .content-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex: 1 1 auto;
+}
+.column {
+  padding: 2em;
 }
 
 #root {
