@@ -82,7 +82,7 @@ export const ProfileTab = () => {
                         <Cards
                             number={creditCard.cardNumber}
                             expiry={creditCard.expiryDate}
-                            cvc={creditCard.cvc}
+                            cvc={creditCard.cvv}
                             name={name}
                         />
                     </div>

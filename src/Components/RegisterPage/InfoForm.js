@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
-import React from "react";
-import { PlusOutlined } from "@ant-design/icons";
-import { Upload, Radio } from "antd";
+import { Radio } from "antd";
 
-export const InfoForm = () => {
+export const InfoForm = ({
+    firstName,
+    lastName,
+    gender,
+    picture,
+    phoneNumber,
+    adress,
+    town,
+    country,
+    changeHandler,
+}) => {
     return (
         <section className="form-container">
             <div className="form-content">
@@ -14,76 +22,77 @@ export const InfoForm = () => {
                     <input
                         type="text"
                         className="form-control"
-                        id="name"
+                        name="firstName"
                         placeholder="Име"
+                        value={firstName}
+                        onChange={changeHandler}
                     />
 
                     <input
                         type="text"
                         className="form-control"
-                        id="surname"
+                        name="lastName"
                         placeholder="Фамилия"
+                        value={lastName}
+                        onChange={changeHandler}
                     />
                     <label>Пол: </label>
-                    <Radio.Group>
-                        <Radio value="apple"> Мъж </Radio>
-                        <Radio value="pear"> Жена </Radio>
+                    <Radio.Group
+                        name="gender"
+                        value={gender}
+                        onChange={changeHandler}
+                    >
+                        <Radio value="male"> Мъж </Radio>
+                        <Radio value="female"> Жена </Radio>
                     </Radio.Group>
-
-                    <Upload action="/upload.do" listType="picture-card">
-                        <button
-                            style={{
-                                border: 0,
-                                background: "none",
-                            }}
-                            type="button"
-                        >
-                            <PlusOutlined />
-                            <div
-                                style={{
-                                    marginTop: 8,
-                                    fontSize: 12,
-                                    fontFamily: "Montserrat Alternates",
-                                }}
-                            >
-                                Прикачи профилна на снимка
-                            </div>
-                        </button>
-                    </Upload>
-
+                    <div style={{ display: "flex", marginTop: "1em" }}>
+                        <label htmlFor="file">Профилна снимка:</label>
+                        <input
+                            type="file"
+                            className="form-control"
+                            name="picture"
+                            accept="image/*"
+                            id="file"
+                            placeholder="Профилна снимка"
+                            value={picture}
+                            onChange={changeHandler}
+                        />
+                    </div>
                     <input
                         type="tel"
                         className="form-control"
-                        id="phone"
+                        name="phoneNumber"
                         placeholder="Телефон"
+                        value={phoneNumber}
+                        onChange={changeHandler}
                     />
 
                     <input
                         type="text"
                         className="form-control"
-                        id="address"
+                        name="adress"
                         placeholder="Адрес"
+                        value={adress}
+                        onChange={changeHandler}
                     />
 
                     <input
                         type="text"
                         className="form-control"
-                        id="city"
+                        name="town"
                         placeholder="Град"
+                        value={town}
+                        onChange={changeHandler}
                     />
 
                     <input
                         type="text"
                         className="form-control"
+                        name="country"
                         id="country"
                         placeholder="Държава"
-                    />
-
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="zip"
-                        placeholder="Пощенски код"
+                        value={country}
+                        onChange={changeHandler}
                     />
                 </form>
                 <footer>

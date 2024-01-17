@@ -79,7 +79,7 @@ function App() {
         name: userData.fullName || "Не е въведено",
         phone: userData.phoneNumber || "Не е въведен",
         balance: userData.accountBalance || 0,
-        creditCard: userData.creditCard ? userData.creditCard[0] : {cardNumber: `0000 0000 0000 0000`, expiryDate: "00/00", cvc: `000`, name : `New user`, created: Number(`00000000`)},
+        creditCard: userData.creditCard ? userData.creditCard[0] : {cardNumber: `0000 0000 0000 0000`, expiryDate: "00/00", cvv: `000`, cardHolder : `New user`, created: Number(`00000000`)},
         picture: userData.profilePicture || "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
         userId: userData.ownerId || "Не е издаден",
         transactions: userData.transactions || [],

@@ -7,7 +7,7 @@ export const CreditCard = ({ creditCard, name }) => {
         name: name,
         cardNumber: creditCard.cardNumber,
         expiryDate: creditCard.expiryDate,
-        cvc: creditCard.cvc,
+        cvc: creditCard.cvv,
         focus: "",
     });
 
@@ -72,11 +72,11 @@ export const CreditCard = ({ creditCard, name }) => {
 
                         <input
                             type="password"
-                            name="cvc"
+                            name="cvv"
                             className="form-control mt-1"
-                            placeholder="CVC"
+                            placeholder="CVV"
                             pattern="\d{3,4}"
-                            value={state.cvc}
+                            value={state.cvv}
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
                             required
@@ -87,7 +87,7 @@ export const CreditCard = ({ creditCard, name }) => {
                         <Cards
                             number={state.cardNumber}
                             expiry={state.expiryDate}
-                            cvc={state.cvc}
+                            cvc={state.cvv}
                             name={state.name}
                             focused={state.focus}
                         />

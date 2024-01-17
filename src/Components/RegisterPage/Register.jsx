@@ -1,6 +1,4 @@
 import "./register.css";
-import { AuthContext } from "../../contexts/AuthContext";
-import { useState, useContext } from "react";
 import { SidebarRegister } from "./SidebarRegister";
 import { EmailForm } from "./EmailForm";
 import { CardForm } from "./CardForm";
@@ -8,11 +6,10 @@ import { InfoForm } from "./InfoForm";
 import { TermsForm } from "./TermsForm";
 import { Routes, Route } from "react-router-dom";
 import { ConfirmForm } from "./ConfirmForm";
+import { useForm } from "../../hooks/useForm";
 
 export const Register = () => {
-    // const { onLoginSubmitHandler, onRegisterSubmitHandler } =
-    // useContext(AuthContext);
-    const [register, setRegister] = useState({
+    const { values, changeHandler } = useForm({
         email: "",
         password: "",
         firstName: "",
@@ -20,7 +17,10 @@ export const Register = () => {
         gender: "",
         country: "",
         phoneNumber: "",
-        creditCard: {},
+        creditCard: {cardNumber : "", cardHolder: "", expiryDate: "", cvv: ""},
+        picture: "",
+        adress: "",
+        town: "",
     });
 
     return (
@@ -28,11 +28,39 @@ export const Register = () => {
             <SidebarRegister />
 
             <Routes>
-                <Route path="/" element={<EmailForm />} />
-                <Route path="/userinfo" element={<InfoForm />} />
-                <Route path="/creditcard" element={<CardForm />} />
-                <Route path="/terms" element={<TermsForm />} />
-                <Route path="/confirm" element={<ConfirmForm />} />
+                <Route
+                    path="/"
+                    element={
+                        <EmailForm {...values}  changeHandler={changeHandler} />
+                    }
+                />
+                <Route
+                    path="/userinfo"
+                    element={
+                        <InfoForm {...values} changeHandler={changeHandler} />
+                    }
+                />
+                <Route
+                    path="/creditcard"
+                    element={
+                        <CardForm values = {values} changeHandler={changeHandler} />
+                    }
+                />
+                <Route
+                    path="/terms"
+                    element={
+                        <TermsForm {...values} changeHandler={changeHandler} />
+                    }
+                />
+                <Route
+                    path="/confirm"
+                    element={
+                        <ConfirmForm
+                            {...values}
+                            changeHandler={changeHandler}
+                        />
+                    }
+                />
             </Routes>
         </div>
     );

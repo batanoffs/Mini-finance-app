@@ -1,27 +1,9 @@
-import { AuthContext } from "../../contexts/AuthContext";
-import { useContext } from "react";
-import { useForm } from "../../hooks/useForm";
-import { Link, redirect } from "react-router-dom";
+// import { AuthContext } from "../../contexts/AuthContext";
+// import { useContext } from "react";
+import { Link } from "react-router-dom";
 import "./register.css";
 
-export const EmailForm = () => {
-    const { onLoginSubmitHandler, onRegisterSubmitHandler } =
-        useContext(AuthContext);
-    const {
-        values,
-        changeHandler,
-        onSubmitLogin,
-        // resetFormHandler,
-        // onSubmitRegister,
-    } = useForm(
-        {
-            email: "",
-            password: "",
-            confirmPassword: "",
-        },
-        onLoginSubmitHandler,
-        onRegisterSubmitHandler
-    );
+export const EmailForm = ({email, passowrd, changeHandler}) => {
     return (
         <section className="form-container">
             <div className="form-content">
@@ -36,6 +18,8 @@ export const EmailForm = () => {
                         autoComplete="off"
                         placeholder="Въведи е-майла"
                         className="form-control"
+                        value={email}
+                        onChange={changeHandler}
                     />
 
                     <input
@@ -44,6 +28,8 @@ export const EmailForm = () => {
                         autoComplete="off"
                         placeholder="Въведи парола"
                         className="form-control"
+                        value={passowrd}
+                        onChange={changeHandler}
                     />
 
                     <input
