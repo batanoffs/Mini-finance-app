@@ -44,9 +44,9 @@ export const Home = () => {
                     <h3>
                         Отвори нов банков акаунт в{" "}
                         <label className="bi-box"> Mini Finance App</label>.
-                        {/* <Link to="register" role="button" className="title-btn">
+                        <Link to="/register" role="button" className="button-primary">
                             Влез в системата
-                        </Link> */}
+                        </Link>
                     </h3>
                 </div>
             </div>

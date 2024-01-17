@@ -109,7 +109,7 @@ function App() {
                 <Route path="*" element={<h2 style={{ textAlign: "center", paddingTop: "20rem" }}>Грешка 404 - Страницата не е намерена</h2>} />
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/register/*" element={<Register />} />
                 <Route
                     path="/dashboard/*"
                     element={

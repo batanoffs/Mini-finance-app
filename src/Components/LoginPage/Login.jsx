@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
-import "./login.css";
 
 export const Login = () => {
     const { onLoginSubmitHandler, onRegisterSubmitHandler } =
@@ -25,10 +23,12 @@ export const Login = () => {
     );
 
     return (
-        <div className="container-authetication">
-            <div className="login form">
+        <div className="form-container">
+            <div className="form-content">
+                <header>
+                    <h6>Вход в системата</h6>
+                </header>
                 <form method="post" onSubmit={onSubmitLogin}>
-                    <header>Вход в системата</header>
                     <input
                         type="text"
                         autoComplete="on"
@@ -46,8 +46,17 @@ export const Login = () => {
                         placeholder="Въведи парола"
                     />
                     <Link to="reset">Забравена парола?</Link>
-                    <input type="submit" className="button" value="Вход" />
+                    <footer>
+                        <input
+                            type="submit"
+                            style={{ width: "10em" }}
+                            className="button-primary"
+                            onSubmit={onSubmitLogin}
+                            value="Вход"
+                        />
+                    </footer>
                 </form>
+
                 <div className="signup">
                     <span className="signup">
                         Все още нямаш акаунт?

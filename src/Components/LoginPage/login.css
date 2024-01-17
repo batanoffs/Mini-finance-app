@@ -2,7 +2,7 @@
 --border-radius-medium:         20px;
 --border-radius-small:          10px; */
 
-.container-authetication {
+/* .container-authetication {
     max-width: 400px;
     background: #fff;
     border-radius: var(--border-radius-medium);
@@ -88,4 +88,4 @@
 }
 .signup label:hover {
     text-decoration: underline;
-}
+} */

@@ -16,55 +16,10 @@
     color: black;
 }
 
-.button {
-    background: #1678fb;
-    color: #fff;
-    font-size: 0.9em;
-    padding: 7px 5px 5px 5px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.4s;
-    margin-bottom: 0em;
-    margin-top: 0em;
-    height: 2.2em;
-    width: auto;   
-    border-top-right-radius: var(--border-radius-small);
-    border-bottom-right-radius: var(--border-radius-small);
-}
-
-.login-button {
-    color: #000;
-    font-size: 0.9em; 
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.4s;
-    margin-bottom: 0em;
-    margin-top: 0em;
-    padding: 6px 10px 0px 10px;
-    height: 2.2em;
-    border: 1px solid #6e6e6e;
-    border-top-left-radius: var(--border-radius-small);
-    border-bottom-left-radius: var(--border-radius-small);
-}
-
 .header-dropdown-container{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.button:hover {
-    background: #65a8ff;
-    border-color: transparent;
-    color: var(--white-color);
-}
-
-.login-button:hover {
-    border-color: transparent;
-    color:  #1678fb;
-    border: 1px solid #1678fb;
-    border-top-left-radius: var(--border-radius-small);
-    border-bottom-left-radius: var(--border-radius-small);
 }
 
 .header-container {

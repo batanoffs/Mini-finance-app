@@ -15,20 +15,35 @@ export const Header = ({ picture }) => {
     return (
         <header className="header-container">
             <div className="header-logo">
-                <Link className="navbar-brand"  to="/">
-                    <label style={{ cursor: "pointer" }} className="bi-box"> Mini Finance App</label>
+                <Link className="navbar-brand" to="/">
+                    <label style={{ cursor: "pointer" }} className="bi-box">
+                        {" "}
+                        Mini Finance App
+                    </label>
                 </Link>
             </div>
             {!isAuthenticated() && (
                 <div className="header-buttons">
-                    <Link to="login" className="login-button" type="button">
+                    <Link
+                        to="login"
+                        className="button-secondary"
+                        type="button"
+                        style={{
+                            borderBottomRightRadius: "0px",
+                            borderTopRightRadius: "0px",
+                        }}
+                    >
                         Вход
                     </Link>
                     <Link
                         to="register"
-                        className="button"
+                        className="button-primary"
                         name="register"
                         type="button"
+                        style={{
+                            borderBottomLeftRadius: "0px",
+                            borderTopLeftRadius: "0px",
+                        }}
                     >
                         Нов Банков Акаунт
                     </Link>
@@ -36,41 +51,39 @@ export const Header = ({ picture }) => {
             )}
 
             {isAuthenticated() && (
-                    <div className="header-dropdown-container">
-                        <div className="dropdown-notifications">
-                            <Link
-                                className="nav-link"
-                                to="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                id="navbarLightDropdownMenuLink"
-                            >
-                                <i className="bi-bell"></i>
-                                <span className="">
-                                    <span className="">
-                                        Нотификация
-                                    </span>
-                                </span>
-                            </Link>
-                        </div>
-
-                        <div className="dropdown-profile">
-                            <Link
-                                className="nav-link"
-                                to="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                <img
-                                    src={picture}
-                                    className="profile-image"
-                                    alt={"happy man"}
-                                />
-                            </Link>
-                        </div>
+                <div className="header-dropdown-container">
+                    <div className="dropdown-notifications">
+                        <Link
+                            className="nav-link"
+                            to="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            id="navbarLightDropdownMenuLink"
+                        >
+                            <i className="bi-bell"></i>
+                            <span className="">
+                                <span className="">Нотификация</span>
+                            </span>
+                        </Link>
                     </div>
+
+                    <div className="dropdown-profile">
+                        <Link
+                            className="nav-link"
+                            to="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <img
+                                src={picture}
+                                className="profile-image"
+                                alt={"happy man"}
+                            />
+                        </Link>
+                    </div>
+                </div>
             )}
         </header>
     );
