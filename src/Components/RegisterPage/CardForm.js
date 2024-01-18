@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
-export const CardForm = ({changeHandler, values}) => {
-    console.log(values.creditCard);
-    console.log(values.creditCard.cardNumber);
-
-    const card = values.creditCard;
-
+export const CardForm = (props) => {
     // { cardNumber,  cardHolder,  expiryDate, cvv }
-
     return (
         <div className="form-container">
             <div className="form-content">
@@ -14,55 +8,55 @@ export const CardForm = ({changeHandler, values}) => {
                     <header>
                         <h6>Въведи своята карта</h6>
                     </header>
+
+                    <label htmlFor="cardNumber"><p className="star">*</p>Card Number:</label>
                     <input
                         type="text"
                         className="form-control"
                         name="cardNumber"
+                        id="cardNumber"
                         placeholder="номер на карта"
-                        value={card.cardNumber} 
-                        // cardNumber
-                        onChange={changeHandler}
+                        value={props.creditCard.cardNumber}
+                        onChange={props.changeHandler}
                     />
 
+                    <label htmlFor="cardHolder"><p className="star">*</p>Card Holder:</label>
                     <input
-                        type="tel"
+                        type="text"
                         className="form-control"
                         name="cardHolder"
+                        id="cardHolder"
                         placeholder="картодържател"
-                        // value={cardHolder}
-                        // cardHolder
-                        onChange={changeHandler}
+                        value={props.creditCard.cardHolder}
+                        onChange={props.changeHandler}
                     />
 
+                    <label htmlFor="expiryDate"><p className="star">*</p>Expiry Date:</label>
                     <input
                         type="text"
                         className="form-control"
                         name="expiryDate"
+                        id="expiryDate"
                         placeholder="валидна до"
-                        // value={expiryDate}
-                        // expiryDate
-                        onChange={changeHandler}
+                        value={props.creditCard.expiryDate}
+                        onChange={props.changeHandler}
                     />
 
+                    <label htmlFor="cvv"><p className="star">*</p>CVV:</label>
                     <input
                         type="text"
                         className="form-control"
                         name="cvv"
+                        id="cvv"
                         placeholder="CVV"
-                        // value={cvv}
-                        // cvv
-                        onChange={changeHandler}
+                        value={props.creditCard.cvv}
+                        onChange={props.changeHandler}
                     />
                 </form>
 
                 <footer>
                     <Link
                         to={"/register/userinfo"}
-                        style={{
-                            width: "10em",
-                            textAlign: "center",
-                            marginRight: "1em",
-                        }}
                         type="submit"
                         name="submit"
                         className="button-secondary"
@@ -70,8 +64,7 @@ export const CardForm = ({changeHandler, values}) => {
                         Назад
                     </Link>
                     <Link
-                        to={"/register/terms"}
-                        style={{ width: "10em", textAlign: "center" }}
+                        to={'/register/terms'}                     
                         type="submit"
                         name="submit"
                         className="button-primary"

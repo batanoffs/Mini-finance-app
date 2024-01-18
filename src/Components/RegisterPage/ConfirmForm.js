@@ -14,11 +14,6 @@ export const ConfirmForm = () => {
                 <article></article>
                 <footer>
                     <Link
-                        style={{
-                            width: "10em",
-                            textAlign: "center",
-                            marginRight: "1em",
-                        }}
                         type="button"
                         name="back"
                         to={"/register/terms"}
@@ -28,7 +23,6 @@ export const ConfirmForm = () => {
                         Назад
                     </Link>
                     <input
-                        style={{ width: "10em"}}
                         name="register"
                         type="button"
                         className="button-primary"

@@ -3,7 +3,13 @@
 import { Link } from "react-router-dom";
 import "./register.css";
 
-export const EmailForm = ({email, passowrd, changeHandler}) => {
+export const EmailForm = ({
+    email,
+    password,
+    confirmPassword,
+    changeHandler,
+}) => {
+   
     return (
         <section className="form-container">
             <div className="form-content">
@@ -12,6 +18,7 @@ export const EmailForm = ({email, passowrd, changeHandler}) => {
                         <h6>Е-майл и парола</h6>
                     </header>
 
+                    <label htmlFor="email"><p className="star">*</p>Email:</label>
                     <input
                         type="email"
                         name="email"
@@ -20,32 +27,38 @@ export const EmailForm = ({email, passowrd, changeHandler}) => {
                         className="form-control"
                         value={email}
                         onChange={changeHandler}
+                        id="email"
                     />
 
+                    <label htmlFor="password"><p className="star">*</p>Password:</label>
                     <input
                         type="password"
                         name="password"
                         autoComplete="off"
                         placeholder="Въведи парола"
                         className="form-control"
-                        value={passowrd}
+                        value={password}
                         onChange={changeHandler}
+                        id="password"
                     />
 
+                    <label htmlFor="confirmPassword"><p className="star">*</p>Confirm Password:</label>
                     <input
                         type="password"
                         name="confirmPassword"
                         autoComplete="off"
                         placeholder="Потвърди парола"
                         className="form-control"
+                        value={confirmPassword}
+                        onChange={changeHandler}
+                        id="confirmPassword"
                     />
                     <footer>
                         <Link
-                            style={{ width: "100%", textAlign: "center" }}
                             type="button"
                             name="next"
                             className="button-primary"
-                            to={"userinfo"}
+                            to={'userInfo'}
                         >
                             Напред
                         </Link>

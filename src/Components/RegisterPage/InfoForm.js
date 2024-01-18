@@ -19,6 +19,7 @@ export const InfoForm = ({
                     <h6>Моля, въведете вашите лични данни във формата</h6>
                 </header>
                 <form>
+                    <label htmlFor="firstName"><p className="star">*</p>Име:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -28,6 +29,7 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
+                    <label htmlFor="lastName"><p className="star">*</p>Фамилия:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -36,28 +38,19 @@ export const InfoForm = ({
                         value={lastName}
                         onChange={changeHandler}
                     />
-                    <label>Пол: </label>
+
+                    <label><p className="star">*</p>Пол:</label>
                     <Radio.Group
                         name="gender"
                         value={gender}
                         onChange={changeHandler}
+                        style={{ marginBottom: "0.5rem" }}
                     >
                         <Radio value="male"> Мъж </Radio>
                         <Radio value="female"> Жена </Radio>
                     </Radio.Group>
-                    <div style={{ display: "flex", marginTop: "1em" }}>
-                        <label htmlFor="file">Профилна снимка:</label>
-                        <input
-                            type="file"
-                            className="form-control"
-                            name="picture"
-                            accept="image/*"
-                            id="file"
-                            placeholder="Профилна снимка"
-                            value={picture}
-                            onChange={changeHandler}
-                        />
-                    </div>
+
+                    <label htmlFor="phoneNumber"><p className="star">*</p>Телефон:</label>
                     <input
                         type="tel"
                         className="form-control"
@@ -67,6 +60,7 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
+                    <label htmlFor="adress"><p className="star">*</p>Адрес:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -76,6 +70,7 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
+                    <label htmlFor="town"><p className="star">*</p>Град:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -85,6 +80,7 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
+                    <label htmlFor="country"><p className="star">*</p>Държава:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -98,7 +94,6 @@ export const InfoForm = ({
                 <footer>
                     <Link
                         to={"/register"}
-                        style={{ width: "150px", textAlign: "center" }}
                         type="submit"
                         name="submit"
                         className="button-secondary"
@@ -107,7 +102,6 @@ export const InfoForm = ({
                     </Link>
                     <Link
                         to={"/register/creditcard"}
-                        style={{ width: "150px", textAlign: "center" }}
                         type="submit"
                         name="submit"
                         className="button-primary"

@@ -23,6 +23,7 @@ export const Login = () => {
                     <h6>Вход в системата</h6>
                 </header>
                 <form method="post" onSubmit={onSubmitLogin}>
+                    <label htmlFor="email">Е-мейл:</label>
                     <input
                         type="text"
                         autoComplete="on"
@@ -31,6 +32,7 @@ export const Login = () => {
                         onChange={changeHandler}
                         placeholder="Въведи е-мейл"
                     />
+                    <label htmlFor="password">Парола:</label>
                     <input
                         type="password"
                         autoComplete="on"

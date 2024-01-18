@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 export const TermsForm = () => {
+    const [check, setCheck] = useState(false)
     return (
         <div className="form-container">
             <div className="form-content">
@@ -17,6 +20,8 @@ export const TermsForm = () => {
                             type="checkbox"
                             name="accept"
                             autoComplete="off"
+                            value= {check}
+                            onChange={() => setCheck(!check)}
                             className="form-control"
                             style={{width: "15px", height: "15px"}}
                         />
@@ -24,7 +29,7 @@ export const TermsForm = () => {
                 </form>
                 <footer>
                     <Link
-                        style={{ width: "10em", textAlign: "center", marginRight: "1em" }}
+                        
                         type="button"
                         name="next"
                         className="button-secondary"
@@ -33,7 +38,6 @@ export const TermsForm = () => {
                         Назад
                     </Link>
                     <Link
-                        style={{ width: "10em", textAlign: "center" }}
                         type="button"
                         name="next"
                         className="button-primary"

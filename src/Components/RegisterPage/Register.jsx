@@ -12,13 +12,13 @@ export const Register = () => {
     const { values, changeHandler } = useForm({
         email: "",
         password: "",
+        confirmPassword: "",
         firstName: "",
         lastName: "",
         gender: "",
         country: "",
         phoneNumber: "",
-        creditCard: {cardNumber : "", cardHolder: "", expiryDate: "", cvv: ""},
-        picture: "",
+        creditCard: {cardNumber: "",  cardHolder: "",  expiryDate: "", cvv: ""},
         adress: "",
         town: "",
     });
@@ -43,7 +43,7 @@ export const Register = () => {
                 <Route
                     path="/creditcard"
                     element={
-                        <CardForm values = {values} changeHandler={changeHandler} />
+                        <CardForm creditCard = {values.creditCard} changeHandler={changeHandler} />
                     }
                 />
                 <Route
