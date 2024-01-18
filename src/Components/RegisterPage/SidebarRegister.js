@@ -2,37 +2,37 @@ import pic from "../../images/svg/money-transfer-isometric-60529.svg";
 import React from "react";
 import { Divider, Steps } from "antd";
 
-export const SidebarRegister = () => {
+export const SidebarRegister = (props) => {
     return (
         <div className="sidebar-container">
             <div className="sidebar-list">                
                 <Steps
                     direction="vertical"
                     size="small"
-                    current={1}
+                    current={props.currentStep}
                     items={[
                         {
-                            title: "Finished",
+                            title: "Създаване на потребител",
                             description:
-                                "Е-майл и парола.",
+                                "емаил и парола.",
                         },
                         {
-                            title: "Finished",
+                            title: "Лична информация.",
                             description:
-                                "Лична информация.",
+                                "данни от потребителя.",
                         },
                         {
-                            title: "In Progress",
+                            title: "Добавяне на банкова карта",
                             description:
-                                "Въвеждане на карта.",
+                                "въведете вашата карта.",
                         },
                         {
-                            title: "Waiting",
-                            description: "Приемане на условията.",
+                            title: "Общи условия",
+                            description: "условия за ползване",
                         },
                         {
-                            title: "Waiting",
-                            description: "Регистрация.",
+                            title: "Регистрация",
+                            description: "преглед.",
                         },
                     ]}
                 />

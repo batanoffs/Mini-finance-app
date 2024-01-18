@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export const TermsForm = () => {
+export const TermsForm = ({currentStepsHendler}) => {
     const [check, setCheck] = useState(false)
     return (
         <div className="form-container">
@@ -31,9 +31,10 @@ export const TermsForm = () => {
                     <Link
                         
                         type="button"
-                        name="next"
+                        name="prev"
                         className="button-secondary"
                         to={"/register/creditcard"}
+                        onClick={currentStepsHendler}
                     >
                         Назад
                     </Link>
@@ -42,6 +43,7 @@ export const TermsForm = () => {
                         name="next"
                         className="button-primary"
                         to={"/register/confirm"}
+                        onClick={currentStepsHendler}
                     >
                         Напред
                     </Link>

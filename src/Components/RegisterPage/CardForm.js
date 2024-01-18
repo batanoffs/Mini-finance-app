@@ -9,7 +9,9 @@ export const CardForm = (props) => {
                         <h6>Въведи своята карта</h6>
                     </header>
 
-                    <label htmlFor="cardNumber"><p className="star">*</p>Card Number:</label>
+                    <label htmlFor="cardNumber">
+                        <p className="star">*</p>Card Number:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -20,7 +22,9 @@ export const CardForm = (props) => {
                         onChange={props.changeHandler}
                     />
 
-                    <label htmlFor="cardHolder"><p className="star">*</p>Card Holder:</label>
+                    <label htmlFor="cardHolder">
+                        <p className="star">*</p>Card Holder:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -31,7 +35,9 @@ export const CardForm = (props) => {
                         onChange={props.changeHandler}
                     />
 
-                    <label htmlFor="expiryDate"><p className="star">*</p>Expiry Date:</label>
+                    <label htmlFor="expiryDate">
+                        <p className="star">*</p>Expiry Date:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -42,7 +48,9 @@ export const CardForm = (props) => {
                         onChange={props.changeHandler}
                     />
 
-                    <label htmlFor="cvv"><p className="star">*</p>CVV:</label>
+                    <label htmlFor="cvv">
+                        <p className="star">*</p>CVV:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -58,16 +66,18 @@ export const CardForm = (props) => {
                     <Link
                         to={"/register/userinfo"}
                         type="submit"
-                        name="submit"
+                        name="prev"
                         className="button-secondary"
+                        onClick={props.currentStepsHendler}
                     >
                         Назад
                     </Link>
                     <Link
-                        to={'/register/terms'}                     
+                        to={"/register/terms"}
                         type="submit"
-                        name="submit"
+                        name="next"
                         className="button-primary"
+                        onClick={props.currentStepsHendler}
                     >
                         Напред
                     </Link>

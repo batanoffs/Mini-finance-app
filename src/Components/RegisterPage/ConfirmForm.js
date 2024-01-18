@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { AuthContext  } from "../../contexts/AuthContext";
 import { useContext } from "react";
 
-export const ConfirmForm = () => {
+export const ConfirmForm = ({currentStepsHendler}) => {
     const { onSumbitHandler } = useContext(AuthContext);
     return (
         <div className="form-container">
@@ -15,10 +15,10 @@ export const ConfirmForm = () => {
                 <footer>
                     <Link
                         type="button"
-                        name="back"
+                        name="prev"
                         to={"/register/terms"}
                         className="button-secondary"
-                        value={"Назад"}
+                        onClick={currentStepsHendler}
                     >
                         Назад
                     </Link>

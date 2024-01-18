@@ -4,8 +4,6 @@ export const useForm = (initialState, onLogin, onRegister) => {
     const [values, setValues] = useState(initialState);
 
     const changeHandler = (e) => {
-
-        ;
         // setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
 
         // setValues((state) => ({...state,...{

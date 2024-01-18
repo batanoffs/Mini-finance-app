@@ -5,12 +5,12 @@ export const InfoForm = ({
     firstName,
     lastName,
     gender,
-    picture,
     phoneNumber,
     adress,
     town,
     country,
     changeHandler,
+    currentStepsHendler
 }) => {
     return (
         <section className="form-container">
@@ -95,16 +95,18 @@ export const InfoForm = ({
                     <Link
                         to={"/register"}
                         type="submit"
-                        name="submit"
+                        name="prev"
                         className="button-secondary"
+                        onClick={currentStepsHendler}
                     >
                         Назад
                     </Link>
                     <Link
                         to={"/register/creditcard"}
                         type="submit"
-                        name="submit"
+                        name="next"
                         className="button-primary"
+                        onClick={currentStepsHendler}
                     >
                         Напред
                     </Link>

@@ -8,6 +8,7 @@ export const EmailForm = ({
     password,
     confirmPassword,
     changeHandler,
+    currentStepsHendler
 }) => {
    
     return (
@@ -59,6 +60,7 @@ export const EmailForm = ({
                             name="next"
                             className="button-primary"
                             to={'userInfo'}
+                            onClick={currentStepsHendler}
                         >
                             Напред
                         </Link>
