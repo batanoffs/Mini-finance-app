@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { AuthContext  } from "../../contexts/AuthContext";
-import { useContext } from "react";
 
-export const ConfirmForm = ({currentStepsHendler}) => {
-    const { onSumbitHandler } = useContext(AuthContext);
+export const ConfirmForm = ({currentStepsHendler, onSubmitRegister}) => {
+    
     return (
         <div className="form-container">
             <div className="form-content">
@@ -27,7 +25,7 @@ export const ConfirmForm = ({currentStepsHendler}) => {
                         type="button"
                         className="button-primary"
                         value={"Регистрация"}
-                        onClick={onSumbitHandler}
+                        onClick={onSubmitRegister}
                     />
                 </footer>
             </div>

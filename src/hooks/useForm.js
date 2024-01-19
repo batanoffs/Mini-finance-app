@@ -5,16 +5,7 @@ export const useForm = (initialState, onLogin, onRegister) => {
 
     const changeHandler = (e) => {
         // setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-
-        // setValues((state) => ({...state,...{
-        //         [e.target.name]: e.target.value,
-        //         creditCard: {
-        //             ...state.creditCard,
-        //             [e.target.name]: e.target.value,
-        //         },
-        //     },
-        // }));
-
+        
         setValues((state) => {
             const newState = { ...state };
 

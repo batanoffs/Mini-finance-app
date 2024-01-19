@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 
 export const Login = () => {
-    const { onLoginSubmitHandler, onRegisterSubmitHandler } =
+    const { onLoginSubmitHandler } =
         useContext(AuthContext);
     const { values, changeHandler, onSubmitLogin } = useForm(
         {
@@ -12,8 +12,7 @@ export const Login = () => {
             password: "",
             confirmPassword: "",
         },
-        onLoginSubmitHandler,
-        onRegisterSubmitHandler
+        onLoginSubmitHandler
     );
 
     return (

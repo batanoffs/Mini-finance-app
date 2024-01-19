@@ -7,10 +7,13 @@ import { TermsForm } from "./TermsForm";
 import { Routes, Route } from "react-router-dom";
 import { ConfirmForm } from "./ConfirmForm";
 import { useForm } from "../../hooks/useForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 export const Register = () => {
-    const { values, changeHandler } = useForm({
+    const { onRegisterSubmitHandler } = useContext(AuthContext);
+    const { values, changeHandler, onSubmitRegister } = useForm({
         email: "",
         password: "",
         confirmPassword: "",
@@ -22,12 +25,13 @@ export const Register = () => {
         creditCard: { cardNumber: "", cardHolder: "", expiryDate: "", cvv: "" },
         adress: "",
         town: "",
-    });
+    }, null, onRegisterSubmitHandler);
 
     const [currentStep, setCurrentStep] = useState(0);
 
     const currentStepsHendler = (e) => {
         // e.preventDefault();
+
 
         if (e.target.name === "next") {
             setCurrentStep((prev) => prev + 1);
@@ -89,6 +93,7 @@ export const Register = () => {
                         <ConfirmForm
                             {...values}
                             changeHandler={changeHandler}
+                            onSubmitRegister={onSubmitRegister}
                             currentStepsHendler={currentStepsHendler}
                         />
                     }

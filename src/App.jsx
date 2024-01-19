@@ -18,16 +18,25 @@ function App() {
     const navigate = useNavigate();
 
     const onRegisterSubmitHandler = async (formData) => {
-        if (!formData.email || !formData.password || !formData.confirmPassword) {
+        if (
+            !formData.email &&
+            !formData.password &&
+            !formData.confirmPassword &&
+            !formData.firstName &&
+            !formData.lastName &&
+            !formData.gender &&
+            !formData.country &&
+            !formData.phoneNumber &&
+            !formData.creditCard &&
+            !formData.adress &&
+            !formData.town
+        ) {
             return;
         }
-        if (formData.password !== formData.confirmPassword) {
-            return;
-        }
-        const { email, password } = formData;
-        const response = await authService.register({ email, password });
+        console.log(formData);
+        const response = await authService.register({ ...formData });
         setAuth(response);
-
+        
         window.alert("Successfully registered!");
     };
 
@@ -41,25 +50,25 @@ function App() {
             return;
         }
 
-        const response = await authService.login(data);        
+        const response = await authService.login(data);
         setAuth(response);
         const token = response["user-token"];
         sessionStorage.setItem("userData", token);
         navigate("/dashboard/overview");
-        console.log(`Getting response from login:`)
+        console.log(`Getting response from login:`);
         console.table(response);
         console.log(response);
         const id = response.ownerId;
         console.log(`Getting id from auth.ownerId ${auth.ownerId}`);
         userDataHandler(id);
     };
-    
+
     const userDataHandler = async (id) => {
         if (!id) return new Error("User is not logged in");
         const response = await getUserData(id);
         console.log(`Fetching user data with id:${id}`);
         console.log(response);
-        if(response.length > 0) {
+        if (response.length > 0) {
             setUserData(response[0]);
         } else {
             setUserData([]);
@@ -76,15 +85,25 @@ function App() {
 
     // check if userData is null or not
     const userContext = {
-        name: userData.fullName || "Не е въведено",
-        phone: userData.phoneNumber || "Не е въведен",
+        name: userData.fullName || "Липсва информация",
+        phone: userData.phoneNumber || "Липсва информация",
         balance: userData.accountBalance || 0,
-        creditCard: userData.creditCard ? userData.creditCard[0] : {cardNumber: `0000 0000 0000 0000`, expiryDate: "00/00", cvv: `000`, cardHolder : `New user`, created: Number(`00000000`)},
-        picture: userData.profilePicture || "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
-        userId: userData.ownerId || "Не е издаден",
+        creditCard: userData.creditCard
+            ? userData.creditCard[0]
+            : {
+                  cardNumber: `0000 0000 0000 0000`,
+                  expiryDate: "00/00",
+                  cvv: `000`,
+                  cardHolder: `Липсва информация`,
+                  created: Number(`00000000`),
+              },
+        picture:
+            userData.profilePicture ||
+            "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
+        userId: userData.ownerId || "Липсва информация",
         transactions: userData.transactions || [],
         friends: userData.friends || [],
-        email: auth.email || "Не е въведен",
+        email: auth.email || "Липсва информация",
     };
 
     const context = {
@@ -104,21 +123,35 @@ function App() {
         <AuthContext.Provider value={{ ...context }}>
             <Header picture={userContext.picture} />
             <main>
-            {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
-            <Routes>
-                <Route path="*" element={<h2 style={{ textAlign: "center", paddingTop: "20rem" }}>Грешка 404 - Страницата не е намерена</h2>} />
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register/*" element={<Register />} />
-                <Route
-                    path="/dashboard/*"
-                    element={
-                        <UserDataContext.Provider value={{ ...userContext }}>
-                            <WelcomePage />
-                        </UserDataContext.Provider>
-                    }
-                />
-            </Routes>
+                {/* <Spline scene="https://prod.spline.design/1RsSrFOp3UHWgR5n/scene.splinecode" /> */}
+                <Routes>
+                    <Route
+                        path="*"
+                        element={
+                            <h2
+                                style={{
+                                    textAlign: "center",
+                                    paddingTop: "20rem",
+                                }}
+                            >
+                                Грешка 404 - Страницата не е намерена
+                            </h2>
+                        }
+                    />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register/*" element={<Register />} />
+                    <Route
+                        path="/dashboard/*"
+                        element={
+                            <UserDataContext.Provider
+                                value={{ ...userContext }}
+                            >
+                                <WelcomePage />
+                            </UserDataContext.Provider>
+                        }
+                    />
+                </Routes>
             </main>
             <Footer />
         </AuthContext.Provider>

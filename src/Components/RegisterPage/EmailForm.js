@@ -8,9 +8,8 @@ export const EmailForm = ({
     password,
     confirmPassword,
     changeHandler,
-    currentStepsHendler
+    currentStepsHendler,
 }) => {
-   
     return (
         <section className="form-container">
             <div className="form-content">
@@ -19,7 +18,9 @@ export const EmailForm = ({
                         <h6>Е-майл и парола</h6>
                     </header>
 
-                    <label htmlFor="email"><p className="star">*</p>Email:</label>
+                    <label htmlFor="email">
+                        <p className="star">*</p>Email:
+                    </label>
                     <input
                         type="email"
                         name="email"
@@ -31,7 +32,9 @@ export const EmailForm = ({
                         id="email"
                     />
 
-                    <label htmlFor="password"><p className="star">*</p>Password:</label>
+                    <label htmlFor="password">
+                        <p className="star">*</p>Password:
+                    </label>
                     <input
                         type="password"
                         name="password"
@@ -43,7 +46,9 @@ export const EmailForm = ({
                         id="password"
                     />
 
-                    <label htmlFor="confirmPassword"><p className="star">*</p>Confirm Password:</label>
+                    <label htmlFor="confirmPassword">
+                        <p className="star">*</p>Confirm Password:
+                    </label>
                     <input
                         type="password"
                         name="confirmPassword"
@@ -59,8 +64,22 @@ export const EmailForm = ({
                             type="button"
                             name="next"
                             className="button-primary"
-                            to={'userInfo'}
-                            onClick={currentStepsHendler}
+                            to={(!!email && !!password && confirmPassword === password) ? 'userInfo' : null}
+                            onClick={(e) => {
+                                console.log(!!email);
+                                console.log(
+                                    confirmPassword === password &&
+                                        !!email &&
+                                        !!password
+                                );
+                                if (
+                                    confirmPassword === password &&
+                                    !!email &&
+                                    !!password
+                                ) {
+                                    currentStepsHendler(e);
+                                }
+                            }}
                         >
                             Напред
                         </Link>
