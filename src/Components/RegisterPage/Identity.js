@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import faceIO from "@faceio/fiojs";
 
 export const Identity = (props) => {
     let faceio;
@@ -9,22 +10,22 @@ export const Identity = (props) => {
 
     const handleSignIn = async () => {
         try {
-            let response = await faceio.enroll({
-                locale: "auto",
-                payload: {
-                    email: "example@gmail.com",
-                    pin: "12345",
-                },
-            });
-
-            console.log(` Unique Facial ID: ${response.facialId}
-      Enrollment Date: ${response.timestamp}
-      Gender: ${response.details.gender}
-      Age Approximation: ${response.details.age}`);
+          let response = await faceio.enroll({
+            locale: "auto",
+            payload: {
+              email: "example@gmail.com",
+              pin: "12345",
+            },
+          });
+    
+          console.log(` Unique Facial ID: ${response.facialId}
+          Enrollment Date: ${response.timestamp}
+          Gender: ${response.details.gender}
+          Age Approximation: ${response.details.age}`);
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
-    };
+      };
 
     return (
         <div className="form-container">
@@ -34,7 +35,7 @@ export const Identity = (props) => {
                 </button>
                 <footer>
                     <Link
-                        to={"/register/userinfo"}
+                        to={"/register/creditcard"}
                         type="submit"
                         name="prev"
                         className="button-secondary"

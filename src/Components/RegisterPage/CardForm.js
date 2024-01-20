@@ -73,7 +73,7 @@ export const CardForm = (props) => {
                         Назад
                     </Link>
                     <Link
-                        to={"/register/terms"}
+                        to={"/register/identity"}
                         type="submit"
                         name="next"
                         className="button-primary"

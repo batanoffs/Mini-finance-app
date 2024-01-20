@@ -15,7 +15,7 @@ import { Register } from "./Components/RegisterPage/Register";
 function App() {
     const [auth, setAuth] = useState({});
     const [userData, setUserData] = useState([]);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const onRegisterSubmitHandler = async (formData) => {
         if (

@@ -9,6 +9,7 @@ import { ConfirmForm } from "./ConfirmForm";
 import { useForm } from "../../hooks/useForm";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Identity } from "./Identity";
 
 
 export const Register = () => {
@@ -81,7 +82,7 @@ export const Register = () => {
                 <Route
                     path="/identity"
                     element={
-                        <identity
+                        <Identity
                             creditCard={values.identity}
                             currentStepsHendler={currentStepsHendler}
                             changeHandler={changeHandler}
