@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext";
 import { UserDataContext } from "./contexts/UserDataContext";
@@ -15,7 +15,7 @@ import { Register } from "./Components/RegisterPage/Register";
 function App() {
     const [auth, setAuth] = useState({});
     const [userData, setUserData] = useState([]);
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const onRegisterSubmitHandler = async (formData) => {
         if (
@@ -28,6 +28,7 @@ function App() {
             !formData.country &&
             !formData.phoneNumber &&
             !formData.creditCard &&
+            !formData.identity &&
             !formData.adress &&
             !formData.town
         ) {

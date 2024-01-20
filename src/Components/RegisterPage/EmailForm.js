@@ -66,19 +66,7 @@ export const EmailForm = ({
                             className="button-primary"
                             to={(!!email && !!password && confirmPassword === password) ? 'userInfo' : null}
                             onClick={(e) => {
-                                console.log(!!email);
-                                console.log(
-                                    confirmPassword === password &&
-                                        !!email &&
-                                        !!password
-                                );
-                                if (
-                                    confirmPassword === password &&
-                                    !!email &&
-                                    !!password
-                                ) {
-                                    currentStepsHendler(e);
-                                }
+                                if(confirmPassword === password && !!email && !!password) currentStepsHendler(e);
                             }}
                         >
                             Напред

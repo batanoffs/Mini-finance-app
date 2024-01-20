@@ -23,6 +23,7 @@ export const Register = () => {
         country: "",
         phoneNumber: "",
         creditCard: { cardNumber: "", cardHolder: "", expiryDate: "", cvv: "" },
+        identity: {},
         adress: "",
         town: "",
     }, null, onRegisterSubmitHandler);
@@ -72,6 +73,16 @@ export const Register = () => {
                     element={
                         <CardForm
                             creditCard={values.creditCard}
+                            currentStepsHendler={currentStepsHendler}
+                            changeHandler={changeHandler}
+                        />
+                    }
+                />
+                <Route
+                    path="/identity"
+                    element={
+                        <identity
+                            creditCard={values.identity}
                             currentStepsHendler={currentStepsHendler}
                             changeHandler={changeHandler}
                         />
