@@ -93,7 +93,7 @@ export const InfoForm = ({
                 </form>
                 <footer>
                     <Link
-                        to={"/register"}
+                        to={"/mini-finance/register"}
                         type="submit"
                         name="prev"
                         className="button-secondary"
@@ -102,7 +102,7 @@ export const InfoForm = ({
                         Назад
                     </Link>
                     <Link
-                        to={"/register/identity"}
+                        to={"/mini-finance/register/identity"}
                         type="submit"
                         name="next"
                         className="button-primary"

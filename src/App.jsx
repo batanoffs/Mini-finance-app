@@ -55,7 +55,7 @@ function App() {
         setAuth(response);
         const token = response["user-token"];
         sessionStorage.setItem("userData", token);
-        navigate("/dashboard/overview");
+        navigate("/mini-finance/dashboard/overview");
         console.log(`Getting response from login:`);
         console.table(response);
         console.log(response);
@@ -143,7 +143,7 @@ function App() {
                     <Route path="/mini-finance/login" element={<Login />} />
                     <Route path="/mini-finance/register/*" element={<Register />} />
                     <Route
-                        path="/dashboard/*"
+                        path="/mini-finance/dashboard/*"
                         element={
                             <UserDataContext.Provider
                                 value={{ ...userContext }}

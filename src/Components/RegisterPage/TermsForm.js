@@ -33,7 +33,7 @@ export const TermsForm = ({currentStepsHendler}) => {
                         type="button"
                         name="prev"
                         className="button-secondary"
-                        to={"/register/creditcard"}
+                        to={"/mini-finance/register/identity"}
                         onClick={currentStepsHendler}
                     >
                         Назад
@@ -42,7 +42,7 @@ export const TermsForm = ({currentStepsHendler}) => {
                         type="button"
                         name="next"
                         className="button-primary"
-                        to={"/register/confirm"}
+                        to={"/mini-finance/register/confirm"}
                         onClick={currentStepsHendler}
                     >
                         Напред

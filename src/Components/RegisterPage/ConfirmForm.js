@@ -14,7 +14,7 @@ export const ConfirmForm = ({currentStepsHendler, onSubmitRegister}) => {
                     <Link
                         type="button"
                         name="prev"
-                        to={"/register/terms"}
+                        to={"/mini-finance/register/terms"}
                         className="button-secondary"
                         onClick={currentStepsHendler}
                     >

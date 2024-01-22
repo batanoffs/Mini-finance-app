@@ -36,7 +36,7 @@ export const Identity = ({changeHandler, identity, currentStepsHendler}) => {
                 </button>
                 <footer>
                     <Link
-                        to={"/register/userinfo"}
+                        to={"/mini-finance/register/userinfo"}
                         type="submit"
                         name="prev"
                         className="button-secondary"
@@ -45,7 +45,7 @@ export const Identity = ({changeHandler, identity, currentStepsHendler}) => {
                         Назад
                     </Link>
                     <Link
-                        to={"/register/terms"}
+                        to={"/mini-finance/register/terms"}
                         type="submit"
                         name="next"
                         className="button-primary"

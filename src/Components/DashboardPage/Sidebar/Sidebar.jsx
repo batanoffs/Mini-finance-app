@@ -114,7 +114,7 @@ export const Sidebar = () => {
                         <NavLink
                             className="nav-link"
                             onClick={onLogoutHandler}
-                            to="/"
+                            to="/mini-finance/home"
                         >
                             <i className="bi-box-arrow-left"></i>
                             Изход
