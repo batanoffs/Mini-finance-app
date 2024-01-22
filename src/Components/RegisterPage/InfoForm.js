@@ -102,7 +102,7 @@ export const InfoForm = ({
                         Назад
                     </Link>
                     <Link
-                        to={"/register/creditcard"}
+                        to={"/register/identity"}
                         type="submit"
                         name="next"
                         className="button-primary"

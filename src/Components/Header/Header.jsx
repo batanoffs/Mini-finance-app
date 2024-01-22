@@ -15,7 +15,7 @@ export const Header = ({ picture }) => {
     return (
         <header className="header-container">
             <div className="header-logo">
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/mini-finance/home">
                     <label style={{ cursor: "pointer" }} className="bi-box">
                         {" "}
                         Mini Finance App
@@ -25,7 +25,7 @@ export const Header = ({ picture }) => {
             {!isAuthenticated() && (
                 <div className="header-buttons">
                     <Link
-                        to="login"
+                        to="/mini-finance/login"
                         className="button-secondary"
                         type="button"
                         style={{
@@ -36,7 +36,7 @@ export const Header = ({ picture }) => {
                         Вход
                     </Link>
                     <Link
-                        to="register"
+                        to="/mini-finance/register"
                         className="button-primary"
                         name="register"
                         type="button"

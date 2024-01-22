@@ -36,7 +36,7 @@ export const Identity = ({changeHandler, identity, currentStepsHendler}) => {
                 </button>
                 <footer>
                     <Link
-                        to={"/register/creditcard"}
+                        to={"/register/userinfo"}
                         type="submit"
                         name="prev"
                         className="button-secondary"

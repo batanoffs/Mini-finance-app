@@ -139,9 +139,9 @@ function App() {
                             </h2>
                         }
                     />
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register/*" element={<Register />} />
+                    <Route path="/mini-finance/home" element={<Home />} />
+                    <Route path="/mini-finance/login" element={<Login />} />
+                    <Route path="/mini-finance/register/*" element={<Register />} />
                     <Route
                         path="/dashboard/*"
                         element={

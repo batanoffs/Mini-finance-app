@@ -1,7 +1,6 @@
 import "./register.css";
 import { SidebarRegister } from "./SidebarRegister";
 import { EmailForm } from "./EmailForm";
-import { CardForm } from "./CardForm";
 import { InfoForm } from "./InfoForm";
 import { TermsForm } from "./TermsForm";
 import { Routes, Route } from "react-router-dom";
@@ -24,14 +23,7 @@ export const Register = () => {
             gender: "",
             country: "",
             phoneNumber: "",
-            creditCard: {
-                balance: 0,
-                issuer: "",
-                number: "",
-                brand: "",
-                expiration: "",
-                cvv: 0,
-            },
+            cardId: 0,
             identity: {},
             adress: "",
             town: "",
@@ -49,6 +41,26 @@ export const Register = () => {
             setCurrentStep((prev) => prev - 1);
         }
     };
+
+    const cardIdGenerator = () => {
+        const id = Math.floor(Math.random() * 100) + 1;
+        return id;
+    }
+
+    //TO DO ACTIVATE YOUR CARD
+
+    // const generateVirtualCard = async () => {
+    //     try {
+    //         const response = await cardService.getCard();
+    //         console.log(response);
+
+    //         props.changeHandler({
+    //             creditCard = response
+    //         })
+    //     } catch (error) {
+    //         throw new Error(error);
+    //     }
+    // };
 
     return (
         <div className="content-container">
@@ -75,7 +87,7 @@ export const Register = () => {
                         />
                     }
                 />
-                <Route
+                {/* <Route
                     path="/creditcard"
                     element={
                         <CardForm
@@ -84,7 +96,7 @@ export const Register = () => {
                             changeHandler={changeHandler}
                         />
                     }
-                />
+                /> */}
                 <Route
                     path="/identity"
                     element={

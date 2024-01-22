@@ -14,24 +14,24 @@ const request = async (method, url, data, token = undefined) => {
 
     if (method === "GET") {
         options.method = method;
-        
+
         if (token) {
             options.headers = {
                 "user-token": `${token}`,
                 "content-type": "application/json",
-                // "no-corps" : "true"
-            };
-        } else {
-            options.headers = {
-                "content-type": "application/json",
-                'mode' : 'no-cors'
             };
         }
+
+        options.headers = {
+            "response_type": "JSON",
+            "api_key": "8b1fdb20-2d0e-4400-a885-a8b2b3331162",
+            // "Access-Control-Allow-Origin": "*",
+        };
     }
 
     try {
         const response = await fetch(url, options);
-        
+
         if (response.status === 204) {
             return {};
         }

@@ -23,6 +23,8 @@ export const useForm = (initialState, onLogin, onRegister) => {
                     ) {
                         newState[e.target.name] = e.target.value;
                     }
+                } else {
+                    newState[e.target.name] = e.target.value;
                 }
             }
 
