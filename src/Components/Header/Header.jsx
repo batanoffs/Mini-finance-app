@@ -15,7 +15,7 @@ export const Header = ({ picture }) => {
     return (
         <header className="header-container">
             <div className="header-logo">
-                <Link className="navbar-brand" to="/mini-finance/home">
+                <Link className="navbar-brand" to="/mini-finance/">
                     <label style={{ cursor: "pointer" }} className="bi-box">
                         {" "}
                         Mini Finance App

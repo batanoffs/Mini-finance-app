@@ -139,7 +139,7 @@ function App() {
                             </h2>
                         }
                     />
-                    <Route path="/mini-finance/home" element={<Home />} />
+                    <Route path="/mini-finance/" element={<Home />} />
                     <Route path="/mini-finance/login" element={<Login />} />
                     <Route path="/mini-finance/register/*" element={<Register />} />
                     <Route
