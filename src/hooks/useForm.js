@@ -5,22 +5,24 @@ export const useForm = (initialState, onLogin, onRegister) => {
 
     const changeHandler = (e) => {
         // setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-        
+
         setValues((state) => {
             const newState = { ...state };
 
             if (e.target.name && e.target.value) {
                 if (newState.creditCard) {
-                    newState.creditCard[e.target.name] = e.target.value;
-                }
-                if (
-                    e.target.name !== "cardNumber" &&
-                    e.target.name !== "cvv" &&
-                    e.target.name !== "expiryDate" &&
-                    e.target.name !== "cardHolder" &&
-                    e.target.name !== "picture"
-                ) {
-                    newState[e.target.name] = e.target.value;
+                    // newState.creditCard[e.target.name] = e.target.value;
+
+                    if (
+                        e.target.name !== "balance" &&
+                        e.target.name !== "issuer" &&
+                        e.target.name !== "number" &&
+                        e.target.name !== "brand" &&
+                        e.target.name !== "expiration" &&
+                        e.target.name !== "cvv"
+                    ) {
+                        newState[e.target.name] = e.target.value;
+                    }
                 }
             }
 

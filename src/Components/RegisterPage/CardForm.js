@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom";
+import { cardService } from "../../services/cardService";
+
 export const CardForm = (props) => {
-    // { cardNumber,  cardHolder,  expiryDate, cvv }
+    // { balance: 0, issuer: "", number: "", brand: "", expiration: "", cvv: 0 }
+
+    const generateVirtualCard = async () => {
+            const response = await cardService.getCard();
+            console.log(response);
+
+            // if (response.status === "ok") {
+            //     props.creditCard = response.data;
+            // }
+    };
+
     return (
         <div className="form-container">
             <div className="form-content">
                 <form action="#" method="post">
                     <header>
-                        <h6>Въведи своята карта</h6>
+                        <h6>Генерирай своята карта</h6>
                     </header>
 
                     <label htmlFor="cardNumber">
@@ -16,22 +28,37 @@ export const CardForm = (props) => {
                         type="text"
                         className="form-control"
                         name="cardNumber"
+                        disabled
                         id="cardNumber"
                         placeholder="номер на карта"
-                        value={props.creditCard.cardNumber}
+                        value={props.creditCard.number}
                         onChange={props.changeHandler}
                     />
 
                     <label htmlFor="cardHolder">
-                        <p className="star">*</p>Card Holder:
+                        <p className="star">*</p>Issuer:
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        name="cardHolder"
-                        id="cardHolder"
-                        placeholder="картодържател"
-                        value={props.creditCard.cardHolder}
+                        name="issuer"
+                        id="issuer"
+                        disabled
+                        placeholder="издадена от:"
+                        value={props.creditCard.issuer}
+                        onChange={props.changeHandler}
+                    />
+                    <label htmlFor="balance">
+                        <p className="star">*</p>Balance:
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="balance"
+                        id="balance"
+                        disabled
+                        placeholder="balance:"
+                        value={props.creditCard.balance}
                         onChange={props.changeHandler}
                     />
 
@@ -43,8 +70,9 @@ export const CardForm = (props) => {
                         className="form-control"
                         name="expiryDate"
                         id="expiryDate"
+                        disabled
                         placeholder="валидна до"
-                        value={props.creditCard.expiryDate}
+                        value={props.creditCard.expiration}
                         onChange={props.changeHandler}
                     />
 
@@ -56,9 +84,17 @@ export const CardForm = (props) => {
                         className="form-control"
                         name="cvv"
                         id="cvv"
+                        disabled
                         placeholder="CVV"
                         value={props.creditCard.cvv}
                         onChange={props.changeHandler}
+                    />
+
+                    <input
+                        type="button"
+                        className="button-primary"
+                        onClick={generateVirtualCard}
+                        value="Generate"
                     />
                 </form>
 

@@ -14,11 +14,17 @@ const request = async (method, url, data, token = undefined) => {
 
     if (method === "GET") {
         options.method = method;
+        
         if (token) {
             options.headers = {
                 "user-token": `${token}`,
                 "content-type": "application/json",
                 // "no-corps" : "true"
+            };
+        } else {
+            options.headers = {
+                "content-type": "application/json",
+                'mode' : 'no-cors'
             };
         }
     }

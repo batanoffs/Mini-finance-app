@@ -11,30 +11,36 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Identity } from "./Identity";
 
-
 export const Register = () => {
     const { onRegisterSubmitHandler } = useContext(AuthContext);
-    const { values, changeHandler, onSubmitRegister } = useForm({
-        email: "",
-        password: "",
-        confirmPassword: "",
-        firstName: "",
-        lastName: "",
-        gender: "",
-        country: "",
-        phoneNumber: "",
-        creditCard: { cardNumber: "", cardHolder: "", expiryDate: "", cvv: "" },
-        identity: {},
-        adress: "",
-        town: "",
-    }, null, onRegisterSubmitHandler);
-
     const [currentStep, setCurrentStep] = useState(0);
+    const { values, changeHandler, onSubmitRegister } = useForm(
+        {
+            email: "",
+            password: "",
+            confirmPassword: "",
+            firstName: "",
+            lastName: "",
+            gender: "",
+            country: "",
+            phoneNumber: "",
+            creditCard: {
+                balance: 0,
+                issuer: "",
+                number: "",
+                brand: "",
+                expiration: "",
+                cvv: 0,
+            },
+            identity: {},
+            adress: "",
+            town: "",
+        },
+        null,
+        onRegisterSubmitHandler
+    );
 
     const currentStepsHendler = (e) => {
-        // e.preventDefault();
-
-
         if (e.target.name === "next") {
             setCurrentStep((prev) => prev + 1);
         }
@@ -83,7 +89,7 @@ export const Register = () => {
                     path="/identity"
                     element={
                         <Identity
-                            creditCard={values.identity}
+                            identity={values.identity}
                             currentStepsHendler={currentStepsHendler}
                             changeHandler={changeHandler}
                         />

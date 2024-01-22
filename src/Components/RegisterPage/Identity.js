@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import faceIO from "@faceio/fiojs";
 
-export const Identity = (props) => {
+export const Identity = ({changeHandler, identity, currentStepsHendler}) => {
     let faceio;
     useEffect(() => {
         faceio = new faceIO("fioacd5c");
     }, []);
 
-    const handleSignIn = async () => {
+    const handleSignIn = async (e) => {
         try {
           let response = await faceio.enroll({
             locale: "auto",
@@ -22,6 +22,7 @@ export const Identity = (props) => {
           Enrollment Date: ${response.timestamp}
           Gender: ${response.details.gender}
           Age Approximation: ${response.details.age}`);
+          identity = response;
         } catch (error) {
           console.log(error);
         }
@@ -39,7 +40,7 @@ export const Identity = (props) => {
                         type="submit"
                         name="prev"
                         className="button-secondary"
-                        onClick={props.currentStepsHendler}
+                        onClick={currentStepsHendler}
                     >
                         Назад
                     </Link>
@@ -48,7 +49,7 @@ export const Identity = (props) => {
                         type="submit"
                         name="next"
                         className="button-primary"
-                        onClick={props.currentStepsHendler}
+                        onClick={currentStepsHendler}
                     >
                         Напред
                     </Link>
