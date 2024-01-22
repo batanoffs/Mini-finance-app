@@ -47,7 +47,7 @@ export const Register = () => {
         return id;
     }
 
-    //TO DO ACTIVATE YOUR CARD
+    //TO DO ACTIVATE YOUR CARD IN DASHBOARD AFTER LOGIN
 
     // const generateVirtualCard = async () => {
     //     try {
