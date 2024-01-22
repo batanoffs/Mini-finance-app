@@ -1,6 +1,6 @@
 {
-  "homepage": "http://batanoffs.github.io/Mini-finance-app",
-  "name": "2135_mini_finance",
+  "homepage": "http://batanoffs.github.io/mini-finance-app",
+  "name": "mini-finance-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
