@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mini-finance/static/css/main.2fb337c2.css",
-    "main.js": "/mini-finance/static/js/main.ecf96e65.js",
+    "main.css": "/mini-finance/static/css/main.1d3e5a02.css",
+    "main.js": "/mini-finance/static/js/main.d07dfe6f.js",
     "static/media/florid-web-wallet-and-online-banking.gif": "/mini-finance/static/media/florid-web-wallet-and-online-banking.ec0211b24d217ddf22cc.gif",
     "static/media/Montserrat-BoldItalic.woff": "/mini-finance/static/media/Montserrat-BoldItalic.bf331673b91821715c08.woff",
     "static/media/Montserrat-BlackItalic.woff": "/mini-finance/static/media/Montserrat-BlackItalic.fbf405b6c45f55a09aec.woff",
@@ -75,16 +75,18 @@
     "static/media/MontserratAlternates-ThinItalic.woff2": "/mini-finance/static/media/MontserratAlternates-ThinItalic.be9e41aed2948b63f671.woff2",
     "static/media/MontserratAlternates-ExtraLight.woff2": "/mini-finance/static/media/MontserratAlternates-ExtraLight.e5ed166fe7b72391cecb.woff2",
     "static/media/MontserratAlternates-Thin.woff2": "/mini-finance/static/media/MontserratAlternates-Thin.71edc5673abb2057ec43.woff2",
+    "static/media/logo4.svg": "/mini-finance/static/media/logo4.e567de81e1366b943fb2a27c693bfff9.svg",
     "static/media/young-beautiful-woman-pink-warm-sweater.jpg": "/mini-finance/static/media/young-beautiful-woman-pink-warm-sweater.aaaf6fb8eeab53446741.jpg",
     "static/media/young-woman-with-round-glasses-yellow-sweater.jpg": "/mini-finance/static/media/young-woman-with-round-glasses-yellow-sweater.687425cbb55678f93009.jpg",
     "static/media/money-transfer-isometric-60529.svg": "/mini-finance/static/media/money-transfer-isometric-60529.993edda0959229d2ac794eae7a2f1f7a.svg",
     "static/media/senior-man-white-sweater-eyeglasses.jpg": "/mini-finance/static/media/senior-man-white-sweater-eyeglasses.1e4cfdb0dee2bb651735.jpg",
+    "static/media/logoa.svg": "/mini-finance/static/media/logoa.0c69b3a087ce46f4647ac66fb568e33e.svg",
     "index.html": "/mini-finance/index.html",
-    "main.2fb337c2.css.map": "/mini-finance/static/css/main.2fb337c2.css.map",
-    "main.ecf96e65.js.map": "/mini-finance/static/js/main.ecf96e65.js.map"
+    "main.1d3e5a02.css.map": "/mini-finance/static/css/main.1d3e5a02.css.map",
+    "main.d07dfe6f.js.map": "/mini-finance/static/js/main.d07dfe6f.js.map"
   },
   "entrypoints": [
-    "static/css/main.2fb337c2.css",
-    "static/js/main.ecf96e65.js"
+    "static/css/main.1d3e5a02.css",
+    "static/js/main.d07dfe6f.js"
   ]
 }
