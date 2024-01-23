@@ -1,7 +1,7 @@
 // import React, { useState, useEffect, useRef } from "react";
 // import Globe from "vanta/dist/vanta.globe.min";
-import { Link } from "react-router-dom";
 import pic from "../../images/svg/florid-web-wallet-and-online-banking.gif";
+import logo from "../../images/logo/logoa.svg";
 import "./home.css";
 export const Home = () => {
     // const [vantaEffect, setVantaEffect] = useState(null);
@@ -43,15 +43,21 @@ export const Home = () => {
                 <div className="second-title-container">
                     <h3>
                         Отвори нов банков акаунт в{" "}
-                        <label className="bi-box"> Mini Finance App</label>.
-                        <Link to="/register" role="button" className="button-primary">
-                            Влез в системата
-                        </Link>
+                        <img
+                            className="logo"
+                            src={logo}
+                            style={{ 
+                                width: "250px",
+                                position: "relative",
+                                top: "34px",
+                            }}
+                            alt="logo"
+                        ></img>
                     </h3>
                 </div>
             </div>
             <div className="image-container">
-                <img src={pic} alt="gif" />
+                <img src={pic} style={{ height: "60%" }} alt="gif" />
             </div>
         </div>
     );

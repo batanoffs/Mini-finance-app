@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
+import logo from "../../images/logo/logo4.svg"
 
 export const Header = ({ picture }) => {
     const { isAuthenticated } = useContext(AuthContext);
@@ -16,10 +17,7 @@ export const Header = ({ picture }) => {
         <header className="header-container">
             <div className="header-logo">
                 <Link className="navbar-brand" to="/mini-finance/">
-                    <label style={{ cursor: "pointer" }} className="bi-box">
-                        {" "}
-                        Mini Finance App
-                    </label>
+                    <img src={logo} alt="logo" className="logo" />
                 </Link>
             </div>
             {!isAuthenticated() && (
