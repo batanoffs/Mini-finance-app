@@ -15,6 +15,29 @@
     height: 3em;
     
 }
+.button-login {
+    
+    color: #ccdde2ff;
+    font-size: 1em; 
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-bottom: 0em;
+    margin-top: 0em;
+    padding: 6px 10px 0px 10px;
+    height: 2.2em;
+    border: 1px solid #ccdde2ff;
+    border-radius: var(--border-radius-small);
+}
+
+.button-login:hover{
+    color: var(--primary-hover-color);
+    border-color: transparent;
+    border: 1px solid #1678fb;
+    border-top-left-radius: var(--border-radius-small);
+    border-bottom-left-radius: var(--border-radius-small);
+    
+}
 
 .header-dropdown-container{
     display: flex;

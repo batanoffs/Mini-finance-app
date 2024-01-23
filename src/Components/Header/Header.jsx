@@ -24,7 +24,7 @@ export const Header = ({ picture }) => {
                 <div className="header-buttons">
                     <Link
                         to="/mini-finance/login"
-                        className="button-secondary"
+                        className="button-login"
                         type="button"
                         style={{
                             borderBottomRightRadius: "0px",

@@ -35,15 +35,17 @@ export const Home = () => {
         <div className="home-container">
             <div className="text-container" id="home">
                 <div className="first-title-container">
-                    <h2>
-                        Добре дошли в света на безгрижния финансов успех с
-                        иновативни решения.
-                    </h2>
+                    <h2 style={{paddingBottom: "10px"}}>Добре дошли,</h2>
+                    <h4>
+                        Създадохме тази платформа безплатна, за да бъде достъпна
+                        за всеки един от вас.
+                    </h4>
                 </div>
                 <div className="second-title-container">
-                    <h3>
-                        Отвори нов банков акаунт в{" "}
-                        <img
+                    <h5>
+                        Отворете банков акаунт и вземете вашата виртуална карта
+                        като се регистрирате.
+                        {/* <img
                             className="logo"
                             src={logo}
                             style={{ 
@@ -52,8 +54,8 @@ export const Home = () => {
                                 top: "34px",
                             }}
                             alt="logo"
-                        ></img>
-                    </h3>
+                        ></img> */}
+                    </h5>
                 </div>
             </div>
             <div className="image-container">
