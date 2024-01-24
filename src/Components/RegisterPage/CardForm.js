@@ -97,7 +97,7 @@
 //                         type="submit"
 //                         name="prev"
 //                         className="button-secondary"
-//                         onClick={props.currentStepsHendler}
+//                         onClick={props.currentStepsHandler}
 //                     >
 //                         Назад
 //                     </Link>
@@ -106,7 +106,7 @@
 //                         type="submit"
 //                         name="next"
 //                         className="button-primary"
-//                         onClick={props.currentStepsHendler}
+//                         onClick={props.currentStepsHandler}
 //                     >
 //                         Напред
 //                     </Link>

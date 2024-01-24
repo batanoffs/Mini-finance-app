@@ -13,6 +13,7 @@ import { Identity } from "./Identity";
 export const Register = () => {
     const { onRegisterSubmitHandler } = useContext(AuthContext);
     const [currentStep, setCurrentStep] = useState(0);
+    const [check, setCheck] = useState(false);
     const { values, changeHandler, onSubmitRegister } = useForm(
         {
             email: "",
@@ -24,7 +25,6 @@ export const Register = () => {
             country: "",
             phoneNumber: "",
             cardId: 0,
-            identity: {},
             adress: "",
             town: "",
         },
@@ -32,7 +32,12 @@ export const Register = () => {
         onRegisterSubmitHandler
     );
 
-    const currentStepsHendler = (e) => {
+    const termsCheckHandler = (e) => {
+        console.log(e.target.checked);
+        setCheck(e.target.checked);
+    };
+
+    const currentStepsHandler = (e) => {
         if (e.target.name === "next") {
             setCurrentStep((prev) => prev + 1);
         }
@@ -41,11 +46,6 @@ export const Register = () => {
             setCurrentStep((prev) => prev - 1);
         }
     };
-
-    const cardIdGenerator = () => {
-        const id = Math.floor(Math.random() * 100) + 1;
-        return id;
-    }
 
     //TO DO ACTIVATE YOUR CARD IN DASHBOARD AFTER LOGIN
 
@@ -72,7 +72,7 @@ export const Register = () => {
                     element={
                         <EmailForm
                             {...values}
-                            currentStepsHendler={currentStepsHendler}
+                            currentStepsHandler={currentStepsHandler}
                             changeHandler={changeHandler}
                         />
                     }
@@ -82,7 +82,7 @@ export const Register = () => {
                     element={
                         <InfoForm
                             {...values}
-                            currentStepsHendler={currentStepsHendler}
+                            currentStepsHandler={currentStepsHandler}
                             changeHandler={changeHandler}
                         />
                     }
@@ -92,7 +92,7 @@ export const Register = () => {
                     element={
                         <CardForm
                             creditCard={values.creditCard}
-                            currentStepsHendler={currentStepsHendler}
+                            currentStepsHandler={currentStepsHandler}
                             changeHandler={changeHandler}
                         />
                     }
@@ -102,7 +102,7 @@ export const Register = () => {
                     element={
                         <Identity
                             identity={values.identity}
-                            currentStepsHendler={currentStepsHendler}
+                            currentStepsHandler={currentStepsHandler}
                             changeHandler={changeHandler}
                         />
                     }
@@ -112,8 +112,10 @@ export const Register = () => {
                     element={
                         <TermsForm
                             {...values}
-                            currentStepsHendler={currentStepsHendler}
+                            currentStepsHandler={currentStepsHandler}
                             changeHandler={changeHandler}
+                            check={check}
+                            termsCheckHandler={termsCheckHandler}
                         />
                     }
                 />
@@ -124,7 +126,7 @@ export const Register = () => {
                             {...values}
                             changeHandler={changeHandler}
                             onSubmitRegister={onSubmitRegister}
-                            currentStepsHendler={currentStepsHendler}
+                            currentStepsHandler={currentStepsHandler}
                         />
                     }
                 />

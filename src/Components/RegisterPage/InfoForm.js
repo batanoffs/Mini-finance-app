@@ -10,16 +10,18 @@ export const InfoForm = ({
     town,
     country,
     changeHandler,
-    currentStepsHendler
+    currentStepsHandler,
 }) => {
     return (
         <section className="form-container">
             <div className="form-content">
-                <header>
-                    <h6>Моля, въведете вашите лични данни във формата</h6>
-                </header>
-                <form>
-                    <label htmlFor="firstName"><p className="star">*</p>Име:</label>
+                <article>
+                    <header>
+                        <h5>Моля, въведете вашите лични данни във формата</h5>
+                    </header>
+                    <label htmlFor="firstName">
+                        <p className="star">*</p>Име:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -29,7 +31,9 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
-                    <label htmlFor="lastName"><p className="star">*</p>Фамилия:</label>
+                    <label htmlFor="lastName">
+                        <p className="star">*</p>Фамилия:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -39,7 +43,9 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
-                    <label><p className="star">*</p>Пол:</label>
+                    <label>
+                        <p className="star">*</p>Пол:
+                    </label>
                     <Radio.Group
                         name="gender"
                         value={gender}
@@ -50,7 +56,9 @@ export const InfoForm = ({
                         <Radio value="female"> Жена </Radio>
                     </Radio.Group>
 
-                    <label htmlFor="phoneNumber"><p className="star">*</p>Телефон:</label>
+                    <label htmlFor="phoneNumber">
+                        <p className="star">*</p>Телефон:
+                    </label>
                     <input
                         type="tel"
                         className="form-control"
@@ -60,7 +68,9 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
-                    <label htmlFor="adress"><p className="star">*</p>Адрес:</label>
+                    <label htmlFor="adress">
+                        <p className="star">*</p>Адрес:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -70,7 +80,9 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
-                    <label htmlFor="town"><p className="star">*</p>Град:</label>
+                    <label htmlFor="town">
+                        <p className="star">*</p>Град:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -80,7 +92,9 @@ export const InfoForm = ({
                         onChange={changeHandler}
                     />
 
-                    <label htmlFor="country"><p className="star">*</p>Държава:</label>
+                    <label htmlFor="country">
+                        <p className="star">*</p>Държава:
+                    </label>
                     <input
                         type="text"
                         className="form-control"
@@ -90,27 +104,27 @@ export const InfoForm = ({
                         value={country}
                         onChange={changeHandler}
                     />
-                </form>
-                <footer>
-                    <Link
-                        to={"/mini-finance/register"}
-                        type="submit"
-                        name="prev"
-                        className="button-secondary"
-                        onClick={currentStepsHendler}
-                    >
-                        Назад
-                    </Link>
-                    <Link
-                        to={"/mini-finance/register/identity"}
-                        type="submit"
-                        name="next"
-                        className="button-primary"
-                        onClick={currentStepsHendler}
-                    >
-                        Напред
-                    </Link>
-                </footer>
+                    <footer>
+                        <Link
+                            to={"/mini-finance/register"}
+                            type="submit"
+                            name="prev"
+                            className="button-secondary"
+                            onClick={currentStepsHandler}
+                        >
+                            Назад
+                        </Link>
+                        <Link
+                            to={"/mini-finance/register/identity"}
+                            type="submit"
+                            name="next"
+                            className="button-primary"
+                            onClick={currentStepsHandler}
+                        >
+                            Напред
+                        </Link>
+                    </footer>
+                </article>
             </div>
         </section>
     );

@@ -19,7 +19,7 @@ export const Login = () => {
         <div className="form-container">
             <div className="form-content">
                 <header>
-                    <h6>Вход в системата</h6>
+                    <h5>Вход в системата</h5>
                 </header>
                 <form method="post" onSubmit={onSubmitLogin}>
                     <label htmlFor="email">Е-мейл:</label>

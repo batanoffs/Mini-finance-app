@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext";
 import { UserDataContext } from "./contexts/UserDataContext";
 import { authService } from "./services/authService";
@@ -10,6 +10,8 @@ import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
 import { Footer } from "./Components/Footer/Footer";
 import { Home } from "./Components/HomePage/Home";
 import { Register } from "./Components/RegisterPage/Register";
+
+import { Result } from 'antd';
 // import Spline from '@splinetool/react-spline';
 
 function App() {
@@ -128,15 +130,12 @@ function App() {
                 <Routes>
                     <Route
                         path="*"
-                        element={
-                            <h2
-                                style={{
-                                    textAlign: "center",
-                                    paddingTop: "20rem",
-                                }}
-                            >
-                                Грешка 404 - Страницата не е намерена
-                            </h2>
+                        element={<Result
+                            status="404"
+                            title="Грешка 404, не е намерена страница."
+                            subTitle="Страницата, която търсите не съществува."
+                            extra={<Link to="/mini-finance/" className="button-primary">Начална страница</Link>}
+                          />
                         }
                     />
                     <Route path="/mini-finance/" element={<Home />} />

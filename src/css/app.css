@@ -32,8 +32,8 @@
   --h3-font-size:                 32px;
   --h4-font-size:                 28px;
   --h5-font-size:                 24px;
-  --h6-font-size:                 22px;
-  --p-font-size:                  18px;
+  --h6-font-size:                 16px;
+  --p-font-size:                  14px;
   --menu-font-size:               16px;
   --menu-font-weight:             600;
   --btn-font-size:                16px;
@@ -56,6 +56,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+p {
+  padding-bottom: 1em;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .content-container{
@@ -82,9 +92,10 @@ main {
   justify-content: center;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-  
+
+
+body {
+ 
 }
 
 /*---------------------------------------
@@ -272,7 +283,7 @@ strong {
   background: var(--primary-color);
   color: #fff;
   font-size: 1em;
-  padding: 7px 5px 5px 5px;
+  padding: 6px 5px 5px 5px;
   border: 1px solid transparent;
   font-weight: 500;
   cursor: pointer;
@@ -292,14 +303,14 @@ strong {
 .button-secondary {
   color: var(--logo--text-color);
   font-size: 1em; 
+  padding: 6px 10px 0px 10px;
+  border: 1px solid var(--logo--text-color);
   font-weight: 500;
   cursor: pointer;
   transition: 0.4s;
   margin-bottom: 0em;
   margin-top: 0em;
-  padding: 6px 10px 0px 10px;
   height: 2.2em;
-  border: 1px solid var(--logo--text-color);
   border-radius: var(--border-radius-small);
 }
 .button-secondary:hover {
@@ -587,7 +598,7 @@ strong {
   background: #fff;
   border-radius: var(--border-radius-medium);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
+  max-width: 500px;
   align-self: center;
   margin: 0 auto;
 

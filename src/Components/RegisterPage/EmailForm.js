@@ -8,14 +8,14 @@ export const EmailForm = ({
     password,
     confirmPassword,
     changeHandler,
-    currentStepsHendler,
+    currentStepsHandler,
 }) => {
     return (
         <section className="form-container">
             <div className="form-content">
-                <form action="#" method="post">
+                
                     <header>
-                        <h6>Е-майл и парола</h6>
+                        <h5>Е-майл и парола</h5>
                     </header>
 
                     <label htmlFor="email">
@@ -66,13 +66,12 @@ export const EmailForm = ({
                             className="button-primary"
                             to={(!!email && !!password && confirmPassword === password) ? 'userInfo' : null}
                             onClick={(e) => {
-                                if(confirmPassword === password && !!email && !!password) currentStepsHendler(e);
+                                if(confirmPassword === password && !!email && !!password) currentStepsHandler(e);
                             }}
                         >
                             Напред
                         </Link>
                     </footer>
-                </form>
             </div>
         </section>
     );
