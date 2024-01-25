@@ -14,7 +14,7 @@ export const Dashboard = () => {
     const {name, creditCard, balance, picture, phone, email} = useContext(UserDataContext);
     return (
         <div className="content-container">
-            <div className="column">
+            <div className="main-column">
                 <Greetings name={name}/>
                 <CreditCard creditCard={creditCard} name={name} balance={balance}/>
                 <History />
@@ -22,11 +22,11 @@ export const Dashboard = () => {
             </div>
 
             {/* user profile */}
-            <div className="column">
+            <div className="side-column">
                 <ProfileDetails picture={picture} name={name} phone={phone} email={email}/>
                 <BankingActionButtons />
-                <Transactions />
                 <SendMoney />
+                <Transactions />
             </div>
         </div>
     );

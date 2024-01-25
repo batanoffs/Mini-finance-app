@@ -9,8 +9,8 @@ export const Transactions = () => {
         <div className="custom-block custom-block-transations">
             <h5 className="mb-4">Последни транзакции</h5>
 
-            <div className="d-flex flex-wrap align-items-center mb-4">
-                <div className="d-flex align-items-center">
+            <div className="transactions-box-wrapper">
+                <div className="transactions-profile-wrapper">
                     <img src={person3} className="profile-image img-fluid" alt={"person"}/>
 
                     <div>
@@ -22,14 +22,14 @@ export const Transactions = () => {
                     </div>
                 </div>
 
-                <div className="ms-auto">
+                <div className="transactions-amount-info">
                     <small>05/12/2023</small>
-                    <strong className="d-block text-danger"><span className="me-1">-</span> $250</strong>
+                    <strong className="d-block text-danger" style={{color: "red", display: "block"}}><span style={{marginRight: "0.25rem"}}>-</span> $250</strong>
                 </div>
             </div>
 
-            <div className="d-flex flex-wrap align-items-center mb-4">
-                <div className="d-flex align-items-center">
+            <div className="transactions-box-wrapper">
+                <div className="transactions-profile-wrapper">
                     <img src={person2} className="profile-image img-fluid" alt={"person"}/>
 
                     <div>
@@ -41,14 +41,14 @@ export const Transactions = () => {
                     </div>
                 </div>
 
-                <div className="ms-auto">
+                <div className="transactions-amount-info">
                     <small>22/8/2023</small>
-                    <strong className="d-block text-success"><span className="me-1">+</span> $280</strong>
+                    <strong style={{color:"green", marginRight: "0.25rem", display: "block"}} ><span>+</span > $280</strong>
                 </div>
             </div>
 
-            <div className="d-flex flex-wrap align-items-center">
-                <div className="d-flex align-items-center">
+            <div className="transactions-box-wrapper">
+                <div className="transactions-profile-wrapper">
                     <img src={person1} className="profile-image img-fluid" alt={"person"}/>
 
                     <div>
@@ -58,9 +58,9 @@ export const Transactions = () => {
                     </div>
                 </div>
 
-                <div className="ms-auto">
+                <div className="transactions-amount-info">
                     <small>22/8/2023</small>
-                    <strong className="d-block text-success"><span className="me-1">+</span> $280</strong>
+                    <strong style={{color:"green",  marginRight: "0.25rem", display: "block"}} ><span>+</span > $280</strong>
                 </div>
             </div>
 

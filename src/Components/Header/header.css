@@ -48,7 +48,7 @@
 .header-container {
 	flex: 0 0 50px;
     display: flex;
-    background-color: #44464c;
+    background-color: var(--heading-color);
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

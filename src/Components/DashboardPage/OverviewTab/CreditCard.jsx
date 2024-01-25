@@ -10,26 +10,26 @@ export const CreditCard = ({creditCard, name, balance}) => {
 
     return (
         <div className="custom-block custom-block-balance">
-            <small>Твоята наличност:</small>
+            <h5>Твоята наличност</h5>
 
-            <h2 className="mt-2 mb-3">${balance}</h2>
+            <h4 className="mt-2 mb-3">${balance}</h4>
 
             <div className="custom-block-numbers d-flex align-items-center">
                 <span>****</span>
                 <span>****</span>
                 <span>****</span>
-                <p>{splitDigits(card)}</p>
+                <small>{splitDigits(card)}</small>
             </div>
 
-            <div className="d-flex">
+            <div className="d-flex" style ={{ display: "flex", justifyContent: "space-between"}}>
                 <div>
-                    <small>Валидна до:</small>
-                    <p>{creditCard.expiryDate}</p>
+                    <h6>Валидна до</h6>
+                    <small>{creditCard.expiryDate}</small>
                 </div>
 
                 <div className="ms-auto">
-                    <small>Картодържател:</small>
-                    <p>{name}</p>
+                    <h6>Картодържател</h6>
+                    <small>{name}</small>
                 </div>
             </div>
         </div>

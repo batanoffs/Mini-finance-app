@@ -7,7 +7,7 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 
 export const ProfileTab = () => {
-    const { name, phone, creditCard, picture, userId, email } =
+    const { adress, country, name, phone, creditCard, picture, email } =
         useContext(UserDataContext);
     const date = new Date(creditCard.created);
     const month = date.getMonth();
@@ -17,14 +17,11 @@ export const ProfileTab = () => {
 
     return (
         <div className="content-container">
-            <div className="column">
-                <div className="title-group">
-                    <h4>Профил</h4>
-                </div>
+            <div className="main-column">
                 <div className="custom-block custom-block-profile">
                     <div className="row">
                         <div>
-                            <h6>Обща информация</h6>
+                            <h5>Обща информация</h5>
                         </div>
 
                         <div>
@@ -62,22 +59,22 @@ export const ProfileTab = () => {
                             </p>
 
                             <p>
-                                <strong>Роден на:</strong>
+                                <strong>Държава:</strong>
 
-                                <span>March 5, 1992</span>
+                                <span>{country}</span>
                             </p>
 
                             <p>
                                 <strong>Адрес:</strong>
 
-                                <span>551Swanston Street</span>
+                                <span>{adress}</span>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div className="custom-block custom-block-profile">
-                    <h6>Дебитна карта</h6>
+                    <h5>Дебитна карта</h5>
                     <div>
                         <Cards
                             number={creditCard.cardNumber}
@@ -90,13 +87,13 @@ export const ProfileTab = () => {
                         <p>
                             <strong>Номер:</strong>
 
-                            <span>{userId}</span>
+                            <span>{creditCard.cardId}</span>
                         </p>
 
                         <p>
                             <strong>Вид:</strong>
 
-                            <span>Лична</span>
+                            <span>{creditCard.brand}</span>
                         </p>
 
                         <p>
@@ -108,13 +105,13 @@ export const ProfileTab = () => {
                         <p>
                             <strong>Валидна до:</strong>
 
-                            <span>July 18, 2032</span>
+                            <span>{creditCard.expiryDate}</span>
                         </p>
                     </div>
                 </div>
             </div>
             
-            <div className="column">
+            <div className="side-column">
                 <Contact />
             </div>
         </div>

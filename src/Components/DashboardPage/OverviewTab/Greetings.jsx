@@ -1,9 +1,9 @@
 export const Greetings = ({ name }) => {
     return (
-        <div className="title-group">
-            <h4>Основна информация</h4>
-
-            <small className="text-muted">Добре дошъл, {name}!</small>
+        <div className="custom-block custom-block-bottom">
+            <div className="title-group">
+                <h4 style={{ paddingBottom: "0px"}}>Добре дошъл, {name}!</h4>
+            </div>
         </div>
     );
 };

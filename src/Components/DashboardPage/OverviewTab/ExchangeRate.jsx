@@ -10,8 +10,8 @@ export const ExchangeRate = () => {
         <div className="custom-block custom-block-exchange">
             <h5 className="mb-4">Обменен курс</h5>
 
-            <div className="d-flex align-items-center border-bottom pb-3 mb-3">
-                <div className="d-flex align-items-center">
+            <div className="exchange-block-wrapper">
+                <div className="currency-wrapper">
                     <img src={USLogo} className="exchange-image img-fluid" alt={"US logo"}/>
 
                     <div>
@@ -31,8 +31,8 @@ export const ExchangeRate = () => {
                 </div>
             </div>
 
-            <div className="d-flex align-items-center border-bottom pb-3 mb-3">
-                <div className="d-flex align-items-center">
+            <div className="exchange-block-wrapper">
+                <div className="currency-wrapper">
                     <img src={singaporeLogo} className="exchange-image img-fluid" alt={"Singapore logo"}/>
 
                     <div>
@@ -52,8 +52,8 @@ export const ExchangeRate = () => {
                 </div>
             </div>
 
-            <div className="d-flex align-items-center border-bottom pb-3 mb-3">
-                <div className="d-flex align-items-center">
+            <div className="exchange-block-wrapper">
+                <div className="currency-wrapper">
                     <img src={UKLogo} className="exchange-image img-fluid" alt={"UK logo"}/>
 
                     <div>
@@ -73,8 +73,8 @@ export const ExchangeRate = () => {
                 </div>
             </div>
 
-            <div className="d-flex align-items-center border-bottom pb-3 mb-3">
-                <div className="d-flex align-items-center">
+            <div className="exchange-block-wrapper">
+                <div className="currency-wrapper">
                     <img src={australiaLogo} className="exchange-image img-fluid" alt={"australia logo"}/>
 
                     <div>
@@ -94,8 +94,8 @@ export const ExchangeRate = () => {
                 </div>
             </div>
 
-            <div className="d-flex align-items-center">
-                <div className="d-flex align-items-center">
+            <div className="exchange-block-wrapper-last">
+                <div className="currency-wrapper">
                     <img src={europeLogo} className="exchange-image img-fluid" alt={"europe logo"}/>
 
                     <div>

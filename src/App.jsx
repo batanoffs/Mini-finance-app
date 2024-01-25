@@ -10,13 +10,15 @@ import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
 import { Footer } from "./Components/Footer/Footer";
 import { Home } from "./Components/HomePage/Home";
 import { Register } from "./Components/RegisterPage/Register";
+import { cardService } from "./services/cardService";
 
-import { Result } from 'antd';
+import { Result } from "antd";
 // import Spline from '@splinetool/react-spline';
 
 function App() {
     const [auth, setAuth] = useState({});
     const [userData, setUserData] = useState([]);
+    const [cardData, setCardData] = useState({});
     const navigate = useNavigate();
 
     const onRegisterSubmitHandler = async (formData) => {
@@ -39,7 +41,7 @@ function App() {
         console.log(formData);
         const response = await authService.register({ ...formData });
         setAuth(response);
-        
+
         window.alert("Successfully registered!");
     };
 
@@ -54,27 +56,32 @@ function App() {
         }
 
         const response = await authService.login(data);
-        setAuth(response);
         const token = response["user-token"];
-        sessionStorage.setItem("userData", token);
-        navigate("/mini-finance/dashboard/overview");
+        const id = response.cardId;
+
+        // Log the response in the console
         console.log(`Getting response from login:`);
+        console.log(typeof response);
         console.table(response);
-        console.log(response);
-        const id = response.ownerId;
-        console.log(`Getting id from auth.ownerId ${auth.ownerId}`);
-        userDataHandler(id);
+
+        // Store the token in session storage
+        sessionStorage.setItem("userData", token);
+
+        setUserData(response);
+        navigate("/mini-finance/dashboard/overview");
+        generateVirtualCard(id);
     };
 
-    const userDataHandler = async (id) => {
-        if (!id) return new Error("User is not logged in");
-        const response = await getUserData(id);
-        console.log(`Fetching user data with id:${id}`);
-        console.log(response);
-        if (response.length > 0) {
-            setUserData(response[0]);
-        } else {
-            setUserData([]);
+    // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
+
+    const generateVirtualCard = async (id) => {
+        try {
+            const response = await cardService.generateCard(id);
+            //set response data to setCardData
+            setCardData(response);
+            console.table(response);
+        } catch (error) {
+            throw new Error(error);
         }
     };
 
@@ -91,14 +98,29 @@ function App() {
         name: userData.fullName || "Липсва информация",
         phone: userData.phoneNumber || "Липсва информация",
         balance: userData.accountBalance || 0,
-        creditCard: userData.creditCard
-            ? userData.creditCard[0]
+        country: userData.country,
+        creditCard: cardData
+            ? {
+                  cardNumber: cardData.number,
+                  expiryDate: cardData.expiration,
+                  cvv: cardData.cvv,
+                  cardHolder: cardData.number,
+                  balance: cardData.balance,
+                  issuer: cardData.issuer,
+                  brand: cardData.brand,
+                  cardId: cardData.objectId,
+                  created: userData.created,
+              }
             : {
                   cardNumber: `0000 0000 0000 0000`,
                   expiryDate: "00/00",
                   cvv: `000`,
                   cardHolder: `Липсва информация`,
                   created: Number(`00000000`),
+                  balance: 0,
+                  issuer: `Липсва информация`,
+                  brand: `Липсва информация`,
+                  cardId: `Липсва информация`,
               },
         picture:
             userData.profilePicture ||
@@ -106,7 +128,8 @@ function App() {
         userId: userData.ownerId || "Липсва информация",
         transactions: userData.transactions || [],
         friends: userData.friends || [],
-        email: auth.email || "Липсва информация",
+        email: userData.email || "Липсва информация",
+        adress: userData.adress || "Липсва информация",
     };
 
     const context = {
@@ -130,17 +153,28 @@ function App() {
                 <Routes>
                     <Route
                         path="*"
-                        element={<Result
-                            status="404"
-                            title="Грешка 404, не е намерена страница."
-                            subTitle="Страницата, която търсите не съществува."
-                            extra={<Link to="/mini-finance/" className="button-primary">Начална страница</Link>}
-                          />
+                        element={
+                            <Result
+                                status="404"
+                                title="Грешка 404, не е намерена страница."
+                                subTitle="Страницата, която търсите не съществува."
+                                extra={
+                                    <Link
+                                        to="/mini-finance/"
+                                        className="button-primary"
+                                    >
+                                        Начална страница
+                                    </Link>
+                                }
+                            />
                         }
                     />
                     <Route path="/mini-finance/" element={<Home />} />
                     <Route path="/mini-finance/login" element={<Login />} />
-                    <Route path="/mini-finance/register/*" element={<Register />} />
+                    <Route
+                        path="/mini-finance/register/*"
+                        element={<Register />}
+                    />
                     <Route
                         path="/mini-finance/dashboard/*"
                         element={

@@ -11,13 +11,10 @@ export const MyWalletTab = () => {
         useContext(UserDataContext);
     return (
         <div className="wallet">
-            <div className="column " style={{ margin: "3em" }}>
-                <div className="title">
-                    <h4 className="h4 mb-4">Портфейл</h4>
-                </div>
+            <div className="main-column" style={{ marginRight: "10em"}}>
                 <div className="stats">
                     <div className="custom-block bg-white">
-                        <h6 className="mb-4">Движения по сметка</h6>
+                        <h5 className="mb-4">Движения по сметка</h5>
 
                         <div className="table-responsive">
                             <table className="account-table table">
@@ -402,7 +399,7 @@ export const MyWalletTab = () => {
                         </div> */}
             </div>
             <div className="content-container">
-                <div className="column">
+                <div className="main-column">
                     <CreditCard
                         creditCard={creditCard}
                         name={name}
@@ -411,7 +408,7 @@ export const MyWalletTab = () => {
 
                     <BankingActionButtons />
                 </div>
-                <div className="column">
+                <div className="side-column">
                     <Transactions />
                 </div>
             </div>

@@ -34,6 +34,7 @@
   --h5-font-size:                 24px;
   --h6-font-size:                 16px;
   --p-font-size:                  14px;
+  --label-font-size:              14px;
   --menu-font-size:               16px;
   --menu-font-weight:             600;
   --btn-font-size:                16px;
@@ -66,15 +67,6 @@ p {
 
 body::-webkit-scrollbar {
   display: none;
-}
-
-.content-container{
-  display: flex;
-  justify-content: center;
-  flex: 1 1 auto;
-}
-.column {
-  padding: 2em;
 }
 
 #root {
@@ -131,6 +123,7 @@ h4 {
 
 h5 {
   font-size: var(--h5-font-size);
+  padding-bottom: 1em;
 }
 
 h6 {
@@ -145,8 +138,8 @@ p {
 
 ul li {
   color: var(--p-color);
-  font-size: var(--p-font-size);
-  font-weight: var(--font-weight-light);
+  font-size: var(--card-title-font-size);
+  font-weight: var(--font-weight-normal);
 }
 
 a, 
@@ -155,7 +148,9 @@ button {
   transition: all 0.3s;
   font-family: var(--body-font-family);
 }
-
+label {
+  font-size: var(--label-font-size);
+}
 a {
   display: inline-block;
   color: var(--primary-color);
@@ -422,6 +417,7 @@ strong {
 .custom-block-bottom {
   background: var(--third-bg-color);
   text-align: center;
+  display: flex;
 }
 
 .custom-block.custom-block-bottom small {
@@ -599,6 +595,8 @@ strong {
   margin: 0 auto;
 
 }
+
+
 
 .form-content {
 	padding: 2rem;

@@ -5,8 +5,8 @@ const baseURL = (id) =>
 
 // https://cors-anywhere.herokuapp.com/
 
-const getCard = async (id) => {
-    console.log(`Card with id has been used: ${id}`);
+const generateCard = async (id) => {
+    console.log(`Card with id: ${id} has been set`);
     const response = await request.get(baseURL(id));
     const date = response[0].expiration.split("/");
     const money = response[0].balance.replace("$", "");
@@ -26,5 +26,5 @@ const getCard = async (id) => {
 };
 
 export const cardService = {
-    getCard,
+    generateCard,
 };

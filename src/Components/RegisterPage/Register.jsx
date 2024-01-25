@@ -47,20 +47,7 @@ export const Register = () => {
         }
     };
 
-    //TO DO ACTIVATE YOUR CARD IN DASHBOARD AFTER LOGIN
-
-    // const generateVirtualCard = async () => {
-    //     try {
-    //         const response = await cardService.getCard();
-    //         console.log(response);
-
-    //         props.changeHandler({
-    //             creditCard = response
-    //         })
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
-    // };
+    
 
     return (
         <div className="content-container">

@@ -3,37 +3,31 @@ import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 export const HelpCenterTab = () => {
     return (
         <div className="content-container">
-            <div className="column">
-                <div className="title-group">
-                    <h4>Как можем да ви помогнем?</h4>
-                </div>
+            <div className="main-column">
                 <div className="custom-block bg-white">
                     <form
                         className="custom-form search-form"
                         action="#"
                         method="post"
                     >
-                        <div className="row">
-                            <div>
-                                <h6>Търсене по тема</h6>
-                            </div>
-
-                            <div>
-                                <input
-                                    className="form-control"
-                                    name="search"
-                                    type="text"
-                                    placeholder="Търсене"
-                                    aria-label="Search"
-                                />
-                            </div>
-
-                            <div>
-                                <button type="submit" className="form-control">
-                                    Изпрати
-                                </button>
-                            </div>
-                        </div>
+                        <header>
+                            <h4>Как можем да ви помогнем?</h4>
+                        </header>
+                        <label htmlFor="search">Търсене по тема: </label>
+                        <input
+                            className="form-control"
+                            name="search"
+                            type="text"
+                            placeholder="Търсене"
+                            aria-label="Search"
+                        />
+                        <footer>
+                            <input
+                                type="submit"
+                                value="Изпрати"
+                                className="button-primary"
+                            />
+                        </footer>
                     </form>
                 </div>
 
@@ -64,7 +58,8 @@ export const HelpCenterTab = () => {
                     </p>
                 </div>
             </div>
-            <div className="column">
+
+            <div className="side-column">
                 <Contact />
             </div>
         </div>
