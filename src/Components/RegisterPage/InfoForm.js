@@ -20,7 +20,7 @@ export const InfoForm = ({
                         <h5>Моля, въведете вашите лични данни във формата</h5>
                     </header>
                     <label htmlFor="firstName">
-                        <p className="star">*</p>Име:
+                        Име <small className="star">*</small>
                     </label>
                     <input
                         type="text"
@@ -32,7 +32,7 @@ export const InfoForm = ({
                     />
 
                     <label htmlFor="lastName">
-                        <p className="star">*</p>Фамилия:
+                        Фамилия <small className="star">*</small>
                     </label>
                     <input
                         type="text"
@@ -44,7 +44,7 @@ export const InfoForm = ({
                     />
 
                     <label>
-                        <p className="star">*</p>Пол:
+                        Пол <small className="star">*</small>
                     </label>
                     <Radio.Group
                         name="gender"
@@ -57,7 +57,7 @@ export const InfoForm = ({
                     </Radio.Group>
 
                     <label htmlFor="phoneNumber">
-                        <p className="star">*</p>Телефон:
+                        Телефон <small className="star">*</small>
                     </label>
                     <input
                         type="tel"
@@ -69,7 +69,7 @@ export const InfoForm = ({
                     />
 
                     <label htmlFor="adress">
-                        <p className="star">*</p>Адрес:
+                        Адрес <small className="star">*</small>
                     </label>
                     <input
                         type="text"
@@ -81,7 +81,7 @@ export const InfoForm = ({
                     />
 
                     <label htmlFor="town">
-                        <p className="star">*</p>Град:
+                        Град <small className="star">*</small>
                     </label>
                     <input
                         type="text"
@@ -93,7 +93,7 @@ export const InfoForm = ({
                     />
 
                     <label htmlFor="country">
-                        <p className="star">*</p>Държава:
+                        Държава <small className="star">*</small>
                     </label>
                     <input
                         type="text"

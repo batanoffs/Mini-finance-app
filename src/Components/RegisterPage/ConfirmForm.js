@@ -38,7 +38,7 @@ export const ConfirmForm = ({
                         <h5>Проверка на данните</h5>
                     </header>
                     <label htmlFor="email">
-                        Email:
+                        Email
                     </label>
                     <input
                         type="email"
@@ -51,7 +51,7 @@ export const ConfirmForm = ({
                         id="email"
                     />
                     <label htmlFor="email">
-                        Your Card Id:
+                        Your Card Id
                     </label>
                     <input
                         type="id"
@@ -76,7 +76,7 @@ export const ConfirmForm = ({
                     />
 
                     <label htmlFor="firstName">
-                        Име:
+                        Име
                     </label>
                     <input
                         type="text"
@@ -88,7 +88,7 @@ export const ConfirmForm = ({
                     />
 
                     <label htmlFor="lastName">
-                        Фамилия:
+                        Фамилия
                     </label>
                     <input
                         type="text"
@@ -100,7 +100,7 @@ export const ConfirmForm = ({
                     />
 
                     <label>
-                        Пол:
+                        Пол
                     </label>
                     <Radio.Group
                         name="gender"
@@ -113,7 +113,7 @@ export const ConfirmForm = ({
                     </Radio.Group>
 
                     <label htmlFor="phoneNumber">
-                        Телефон:
+                        Телефон
                     </label>
                     <input
                         type="tel"
@@ -125,7 +125,7 @@ export const ConfirmForm = ({
                     />
 
                     <label htmlFor="adress">
-                        Адрес:
+                        Адрес
                     </label>
                     <input
                         type="text"
@@ -137,7 +137,7 @@ export const ConfirmForm = ({
                     />
 
                     <label htmlFor="town">
-                        Град:
+                        Град
                     </label>
                     <input
                         type="text"
@@ -149,7 +149,7 @@ export const ConfirmForm = ({
                     />
 
                     <label htmlFor="country">
-                        Държава:
+                        Държава
                     </label>
                     <input
                         type="text"

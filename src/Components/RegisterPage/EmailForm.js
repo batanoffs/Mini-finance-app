@@ -13,13 +13,12 @@ export const EmailForm = ({
     return (
         <section className="form-container">
             <div className="form-content">
-                
-                    <header>
-                        <h5>Е-майл и парола</h5>
-                    </header>
-
+                <header>
+                    <h5>Е-майл и парола</h5>
+                </header>
+                <div>
                     <label htmlFor="email">
-                        <p className="star">*</p>Email:
+                        Email <small className="star">*</small>
                     </label>
                     <input
                         type="email"
@@ -33,7 +32,7 @@ export const EmailForm = ({
                     />
 
                     <label htmlFor="password">
-                        <p className="star">*</p>Password:
+                        Password <small className="star">*</small>
                     </label>
                     <input
                         type="password"
@@ -47,7 +46,7 @@ export const EmailForm = ({
                     />
 
                     <label htmlFor="confirmPassword">
-                        <p className="star">*</p>Confirm Password:
+                        Confirm Password <small className="star">*</small>
                     </label>
                     <input
                         type="password"
@@ -59,19 +58,31 @@ export const EmailForm = ({
                         onChange={changeHandler}
                         id="confirmPassword"
                     />
-                    <footer>
-                        <Link
-                            type="button"
-                            name="next"
-                            className="button-primary"
-                            to={(!!email && !!password && confirmPassword === password) ? 'userInfo' : null}
-                            onClick={(e) => {
-                                if(confirmPassword === password && !!email && !!password) currentStepsHandler(e);
-                            }}
-                        >
-                            Напред
-                        </Link>
-                    </footer>
+                </div>
+                <footer>
+                    <Link
+                        type="button"
+                        name="next"
+                        className="button-primary"
+                        to={
+                            !!email &&
+                            !!password &&
+                            confirmPassword === password
+                                ? "userInfo"
+                                : null
+                        }
+                        onClick={(e) => {
+                            if (
+                                confirmPassword === password &&
+                                !!email &&
+                                !!password
+                            )
+                                currentStepsHandler(e);
+                        }}
+                    >
+                        Напред
+                    </Link>
+                </footer>
             </div>
         </section>
     );

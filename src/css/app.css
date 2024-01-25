@@ -7,8 +7,8 @@
 :root {
   --white-color:                  #ffffff;
   --black-color:                  #000000;
-  --primary-color:                #41a6d1;
-  --primary-hover-color:          #1678fb;
+  --primary-color:                #1678fb;
+  --primary-hover-color:          #41a6d1;
   --secondary-color:              #44CFCB;
   --section-bg-color:             #eee;
   --primary-bg-color:             #a60067;
@@ -92,12 +92,6 @@ main {
   justify-content: center;
 }
 
-
-
-body {
- 
-}
-
 /*---------------------------------------
   TYPOGRAPHY               
 -----------------------------------------*/
@@ -159,6 +153,7 @@ a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
+  font-family: var(--body-font-family);
 }
 
 a {
@@ -283,11 +278,11 @@ strong {
   background: var(--primary-color);
   color: #fff;
   font-size: 1em;
-  padding: 6px 5px 5px 5px;
+  padding: 6px 10px;
   border: 1px solid transparent;
   font-weight: 500;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.2s;
   margin-bottom: 0em;
   margin-top: 0em;
   height: 2.2em;
@@ -303,11 +298,11 @@ strong {
 .button-secondary {
   color: var(--logo--text-color);
   font-size: 1em; 
-  padding: 6px 10px 0px 10px;
+  padding: 6px 10px;
   border: 1px solid var(--logo--text-color);
   font-weight: 500;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.2s;
   margin-bottom: 0em;
   margin-top: 0em;
   height: 2.2em;
@@ -315,8 +310,8 @@ strong {
 }
 .button-secondary:hover {
   border-color: transparent;
-  color:  var(--primary-hover-color);
-  border: 1px solid #1678fb;
+  color:  var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-top-left-radius: var(--border-radius-small);
   border-bottom-left-radius: var(--border-radius-small);
 }
@@ -599,6 +594,7 @@ strong {
   border-radius: var(--border-radius-medium);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   max-width: 500px;
+  min-width: 500px;
   align-self: center;
   margin: 0 auto;
 
@@ -647,11 +643,10 @@ strong {
 
 .form-container input:hover,
 .form-container input:focus {
-  background: var(--section-bg-color);
-  border-color: transparent;
+  border-color: var(--primary-hover-color);
 }
 
-.form-container button[type="button"],
+/* .form-container button[type="button"],
 .form-container button[type="submit"] {
   border-radius: var(--border-radius-large);
   font-size: var(--menu-font-size);
@@ -670,7 +665,7 @@ strong {
 .custom-form button[type="submit"]:focus {
   background: var(--custom-btn-bg-hover-color);
   border-color: transparent;
-}
+} */
 
 form input[type=radio] {
   width: 1em;

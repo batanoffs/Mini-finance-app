@@ -31,9 +31,9 @@
 }
 
 .button-login:hover{
-    color: var(--primary-hover-color);
+    color: var(--primary-color);
     border-color: transparent;
-    border: 1px solid #1678fb;
+    border: 1px solid var(--primary-color);
     border-top-left-radius: var(--border-radius-small);
     border-bottom-left-radius: var(--border-radius-small);
     
