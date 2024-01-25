@@ -1,10 +1,10 @@
-This is practice React project, that uses the layout of "Tooplate 2135 Mini Finance Template":
+This is practice React project, that was inspired by the layout of "Tooplate 2135 Mini Finance Template":
 https://www.tooplate.com/view/2135-mini-financeto.
 
-The project aims to simulate online banking. Generate online debit card for new user, top up the account via existing credit card, make transactions to other users in the ecosystem and keep track of history.
-Booststrap is removed from the original template and refactored. Added colour pallet, fonts, login/register, home page, photo authentication. The aim is to practice css/html and responsive design.
+The project aims to simulate online banking. Generate online virtual card for new user, top up the account via user credit card, make transactions to other users in the ecosystem and keep track of history.
+Booststrap is removed from the original template and refactored. The aim of this project is to practice REST, React, React-router, css and responsive design.
 
-This project is using:
+Libraries and services:
 <ul>
     <li>back4app database as backend service</li>
     <li>create-react-app library</li>
