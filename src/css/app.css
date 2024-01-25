@@ -248,7 +248,6 @@ strong {
   width: 64px;
   height: 64px;
   margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 .profile-rounded {
@@ -353,7 +352,7 @@ strong {
   border-radius: var(--border-radius-component);
   position: relative;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 0.5em;
   padding: 30px;
 }
 
@@ -439,7 +438,6 @@ strong {
   color: var(--white-color);
   display: block;
   margin: auto;
-  margin-bottom: 10px;
   transition: all 0.3s;
 }
 /* .bi-wallet:hover, .bi-upc-scan:hover, .bi-send:hover, .bi-arrow-down:hover {

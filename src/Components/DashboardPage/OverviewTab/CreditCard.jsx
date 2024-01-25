@@ -1,4 +1,11 @@
-export const CreditCard = ({creditCard, name, balance}) => {
+import { UserDataContext } from "../../../contexts/UserDataContext.jsx";
+import { useContext } from "react";
+
+export const CreditCard = () => {
+
+    const { name, creditCard, balance } =
+        useContext(UserDataContext);
+        
     let card = creditCard.cardNumber;
     // TO DO last digits
     const splitDigits = (number) => {

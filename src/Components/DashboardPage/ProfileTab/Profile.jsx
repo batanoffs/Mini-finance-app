@@ -17,7 +17,7 @@ export const ProfileTab = () => {
 
     return (
         <div className="content-container">
-            <div className="main-column">
+            <div className="bento-fill-column" style={{ marginLeft: "1em" }}>
                 <div className="custom-block custom-block-profile">
                     <div className="row">
                         <div>
@@ -111,7 +111,7 @@ export const ProfileTab = () => {
                 </div>
             </div>
             
-            <div className="side-column">
+            <div className="bento-side-column">
                 <Contact />
             </div>
         </div>

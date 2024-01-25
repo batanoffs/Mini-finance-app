@@ -4,14 +4,19 @@
     flex: 1 1 auto;
 }
 
-.main-column {
-    margin: 1em 0.7em 0em 10em;
-    flex: 5 0 max(500px);
+.bento-main-column {
+    margin: 1em 0.25em 0em 1em;
+    flex: 1 1 auto;
 }
 
-.side-column {
-    margin: 1em 10em 0em 0.7em;
-    flex: 1 0 max(350px);
+.bento-side-column {
+    margin: 1em 1em 0em 0.25em;
+    flex: 2 1 max(250px);
+}
+
+.bento-fill-column {
+    margin: 1em 0.25em 0em 0.25em;
+    flex: 1 1 auto;
 }
 
 .exchange-block-wrapper {

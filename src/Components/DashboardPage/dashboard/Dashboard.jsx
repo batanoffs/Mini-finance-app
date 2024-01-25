@@ -8,25 +8,40 @@ import { SendMoney } from "../OverviewTab/SendMoney.jsx";
 import { Greetings } from "../OverviewTab/Greetings.jsx";
 import { useContext } from "react";
 import { UserDataContext } from "../../../contexts/UserDataContext.jsx";
+import { Contact } from "../SettingsTab/NavigationTabs/CallUs.jsx";
 import "./dashboard.css";
 
 export const Dashboard = () => {
-    const {name, creditCard, balance, picture, phone, email} = useContext(UserDataContext);
+    const { name, creditCard, balance, picture, phone, email } =
+        useContext(UserDataContext);
     return (
         <div className="content-container">
-            <div className="main-column">
-                <Greetings name={name}/>
-                <CreditCard creditCard={creditCard} name={name} balance={balance}/>
-                <History />
+            <div className="bento-main-column">
                 <ExchangeRate />
+                <Transactions />
             </div>
-
-            {/* user profile */}
-            <div className="side-column">
-                <ProfileDetails picture={picture} name={name} phone={phone} email={email}/>
+            <div className="bento-fill-column">
+                <Greetings name={name} />
+                <CreditCard
+                    creditCard={creditCard}
+                    name={name}
+                    balance={balance}
+                />                
                 <BankingActionButtons />
                 <SendMoney />
-                <Transactions />
+                
+                <History />
+            </div>
+            {/* user profile */}
+            <div className="bento-side-column">
+                <ProfileDetails
+                    picture={picture}
+                    name={name}
+                    phone={phone}
+                    email={email}
+                />
+                <Contact />
+                
             </div>
         </div>
     );

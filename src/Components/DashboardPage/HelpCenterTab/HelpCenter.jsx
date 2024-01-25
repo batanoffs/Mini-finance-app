@@ -3,7 +3,7 @@ import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 export const HelpCenterTab = () => {
     return (
         <div className="content-container">
-            <div className="main-column">
+            <div className="bento-main-column">
                 <div className="custom-block bg-white">
                     <form
                         className="custom-form search-form"
@@ -59,7 +59,7 @@ export const HelpCenterTab = () => {
                 </div>
             </div>
 
-            <div className="side-column">
+            <div className="bento-side-column">
                 <Contact />
             </div>
         </div>

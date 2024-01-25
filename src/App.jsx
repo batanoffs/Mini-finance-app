@@ -66,7 +66,7 @@ function App() {
 
         // Store the token in session storage
         sessionStorage.setItem("userData", token);
-
+        setAuth(response);
         setUserData(response);
         navigate("/mini-finance/dashboard/overview");
         generateVirtualCard(id);

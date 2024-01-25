@@ -9,15 +9,15 @@ import { Sidebar } from "./Sidebar/Sidebar";
 export const WelcomePage = () => {
     // const t = false // TODO
     return (
-            <div className="main-wrapper">
-                    <Sidebar />
-                    <Routes>
-                        <Route path="/*" element={<Dashboard />} />
-                        <Route path="wallet" element={<MyWalletTab />} />
-                        <Route path="profile" element={<ProfileTab />} />
-                        <Route path="settings/*" element={<SettingsTab />} />
-                        <Route path="help-center" element={<HelpCenterTab />} />
-                    </Routes>
-            </div>
+        <div className="main-wrapper">
+            <Sidebar />
+            <Routes>
+                <Route path="/*" element={<Dashboard />} />
+                <Route path="wallet" element={<MyWalletTab />} />
+                <Route path="profile" element={<ProfileTab />} />
+                <Route path="settings/*" element={<SettingsTab />} />
+                <Route path="help-center" element={<HelpCenterTab />} />
+            </Routes>
+        </div>
     );
 };

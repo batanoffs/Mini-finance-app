@@ -1,7 +1,33 @@
+import React from "react";
+import { UploadOutlined } from "@ant-design/icons";
+import { Button, message, Upload } from "antd";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserDataContext } from "../../../../contexts/UserDataContext";
 // import '../tab-bar.css'
 
-export const ProfileTab = ({name, email, phone, picture}) => {
+export const ProfileTab = () => {
+
+    // TO DO PICTURE
+    const props = {
+        name: "file",
+        action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+        headers: {
+            authorization: "authorization-text",
+        },
+        onChange(info) {
+            if (info.file.status !== "uploading") {
+                console.log(info.file, info.fileList);
+            }
+            if (info.file.status === "done") {
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === "error") {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+    };
+    const { name, phone, picture, email } = useContext(UserDataContext);
+
     const [state, setState] = useState({
         fullname: name,
         email: email,
@@ -16,11 +42,11 @@ export const ProfileTab = ({name, email, phone, picture}) => {
 
     const onResetHandler = () => {
         console.log("resetted");
-    }
+    };
 
     const onUpdateHandler = () => {
         console.log("updated");
-    }
+    };
     return (
         <div
             className="tab-pane fade show active"
@@ -29,7 +55,6 @@ export const ProfileTab = ({name, email, phone, picture}) => {
             aria-labelledby="profile-tab"
             tabIndex="0"
         >
-            <h6 className="mb-4">Профил</h6>
 
             <form className="custom-form profile-form" action="#" method="post">
                 <input
@@ -70,26 +95,38 @@ export const ProfileTab = ({name, email, phone, picture}) => {
                         value={state.picture}
                         onChange={inputChangeHandler}
                     />
-
-                    <input
+                    <Upload {...props}>
+                        <Button icon={<UploadOutlined />}>
+                            Click to Upload
+                        </Button>
+                    </Upload>
+                    {/* <input
                         type="file"
                         onChange={inputChangeHandler}
                         value=""
                         className="form-control"
                         id="inputGroupFile02"
                         placeholder="Избери снимка"
-                    />
+                    /> */}
                 </div>
 
-                <div className="d-flex">
-                    <button type="button" onClick={onResetHandler}className="form-control me-3">
+                <footer style={{ display: "flex" }}>
+                    <button
+                        type="button"
+                        onClick={onResetHandler}
+                        className="button-secondary"
+                    >
                         Изчисти
                     </button>
 
-                    <button type="submit" onClick={onUpdateHandler} className="form-control ms-2">
+                    <button
+                        type="submit"
+                        onClick={onUpdateHandler}
+                        className="button-primary"
+                    >
                         Запази промени
                     </button>
-                </div>
+                </footer>
             </form>
         </div>
     );
