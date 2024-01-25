@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mini-finance/static/css/main.e96c5686.css",
-    "main.js": "/mini-finance/static/js/main.20010eee.js",
+    "main.css": "/mini-finance/static/css/main.dee058c4.css",
+    "main.js": "/mini-finance/static/js/main.f09f31a7.js",
     "static/media/florid-web-wallet-and-online-banking.gif": "/mini-finance/static/media/florid-web-wallet-and-online-banking.ec0211b24d217ddf22cc.gif",
     "static/media/Montserrat-BoldItalic.woff": "/mini-finance/static/media/Montserrat-BoldItalic.bf331673b91821715c08.woff",
     "static/media/Montserrat-BlackItalic.woff": "/mini-finance/static/media/Montserrat-BlackItalic.fbf405b6c45f55a09aec.woff",
@@ -82,11 +82,11 @@
     "static/media/senior-man-white-sweater-eyeglasses.jpg": "/mini-finance/static/media/senior-man-white-sweater-eyeglasses.1e4cfdb0dee2bb651735.jpg",
     "static/media/logoa.svg": "/mini-finance/static/media/logoa.0c69b3a087ce46f4647ac66fb568e33e.svg",
     "index.html": "/mini-finance/index.html",
-    "main.e96c5686.css.map": "/mini-finance/static/css/main.e96c5686.css.map",
-    "main.20010eee.js.map": "/mini-finance/static/js/main.20010eee.js.map"
+    "main.dee058c4.css.map": "/mini-finance/static/css/main.dee058c4.css.map",
+    "main.f09f31a7.js.map": "/mini-finance/static/js/main.f09f31a7.js.map"
   },
   "entrypoints": [
-    "static/css/main.e96c5686.css",
-    "static/js/main.20010eee.js"
+    "static/css/main.dee058c4.css",
+    "static/js/main.f09f31a7.js"
   ]
 }
