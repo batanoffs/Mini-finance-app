@@ -94,6 +94,10 @@ export const EmailForm = ({
                         Напред
                     </Link>
                 </footer>
+                <span className="signup">
+                    Вече имаш акаунт?
+                    <Link to="/mini-finance/login">Влез в системата</Link>
+                </span>
             </div>
         </section>
     );

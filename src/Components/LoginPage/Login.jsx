@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import { useValidate } from "../../hooks/useValidate";
 
-export const Login = ({loginError, setLoginError}) => {
+export const Login = ({ loginError, setLoginError }) => {
     const { onLoginSubmitHandler } = useContext(AuthContext);
     const { values, changeHandler, onSubmitLogin } = useForm(
         {
@@ -15,8 +15,7 @@ export const Login = ({loginError, setLoginError}) => {
         onLoginSubmitHandler
     );
 
-    const { error, errorHandler, clearErrorHandler } = useValidate(
-        {
+    const { error, errorHandler, clearErrorHandler } = useValidate({
         email: "",
         password: "",
     });
@@ -24,7 +23,7 @@ export const Login = ({loginError, setLoginError}) => {
     const clearErrors = (e) => {
         clearErrorHandler(e);
         setLoginError(false);
-    }
+    };
 
     return (
         <div className="form-container">
@@ -37,7 +36,9 @@ export const Login = ({loginError, setLoginError}) => {
                     method="post"
                     onSubmit={onSubmitLogin}
                 >
-                    <label htmlFor="email">Е-мейл <small className="star">* {error.email}</small></label>
+                    <label htmlFor="email">
+                        Е-мейл <small className="star">* {error.email}</small>
+                    </label>
                     <input
                         type="text"
                         autoComplete="on"
@@ -48,7 +49,10 @@ export const Login = ({loginError, setLoginError}) => {
                         onBlur={errorHandler}
                         onFocus={clearErrors}
                     />
-                    <label htmlFor="password">Парола <small className="star">* {error.password}</small></label>
+                    <label htmlFor="password">
+                        Парола{" "}
+                        <small className="star">* {error.password}</small>
+                    </label>
                     <input
                         type="password"
                         autoComplete="on"
@@ -60,7 +64,11 @@ export const Login = ({loginError, setLoginError}) => {
                         onFocus={clearErrors}
                     />
                     <Link to="reset">Забравена парола?</Link>
-                    {loginError && <small style={{ color: "red" }}>Грешен е-майл или парола</small>}
+                    {loginError && (
+                        <small style={{ color: "red" }}>
+                            Грешен е-майл или парола
+                        </small>
+                    )}
                     <footer style={{ marginTop: "1em" }}>
                         <input
                             type="submit"
@@ -71,13 +79,10 @@ export const Login = ({loginError, setLoginError}) => {
                         />
                     </footer>
                 </form>
-
-                <div className="signup">
-                    <span className="signup">
-                        Все още нямаш акаунт?
-                        <Link to="/register">Регистрация</Link>
-                    </span>
-                </div>
+                <span className="signup">
+                    Все още нямаш акаунт?
+                    <Link to="/mini-finance/register">Регистрация</Link>
+                </span>
             </div>
         </div>
     );
