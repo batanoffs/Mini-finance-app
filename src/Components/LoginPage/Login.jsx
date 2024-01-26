@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
+import { useValidate } from "../../hooks/useValidate";
 
-export const Login = () => {
+export const Login = ({loginError, setLoginError}) => {
     const { onLoginSubmitHandler } = useContext(AuthContext);
     const { values, changeHandler, onSubmitLogin } = useForm(
         {
@@ -13,6 +14,17 @@ export const Login = () => {
         },
         onLoginSubmitHandler
     );
+
+    const { error, errorHandler, clearErrorHandler } = useValidate(
+        {
+        email: "",
+        password: "",
+    });
+
+    const clearErrors = (e) => {
+        clearErrorHandler(e);
+        setLoginError(false);
+    }
 
     return (
         <div className="form-container">
@@ -25,26 +37,31 @@ export const Login = () => {
                     method="post"
                     onSubmit={onSubmitLogin}
                 >
-                    <label htmlFor="email">Е-мейл:</label>
+                    <label htmlFor="email">Е-мейл <small className="star">* {error.email}</small></label>
                     <input
                         type="text"
                         autoComplete="on"
                         name="email"
+                        placeholder="Въведи е-мейл"
                         value={values.email}
                         onChange={changeHandler}
-                        placeholder="Въведи е-мейл"
+                        onBlur={errorHandler}
+                        onFocus={clearErrors}
                     />
-                    <label htmlFor="password">Парола:</label>
+                    <label htmlFor="password">Парола <small className="star">* {error.password}</small></label>
                     <input
                         type="password"
                         autoComplete="on"
                         name="password"
+                        placeholder="Въведи парола"
                         value={values.password}
                         onChange={changeHandler}
-                        placeholder="Въведи парола"
+                        onBlur={errorHandler}
+                        onFocus={clearErrors}
                     />
                     <Link to="reset">Забравена парола?</Link>
-                    <footer>
+                    {loginError && <small style={{ color: "red" }}>Грешен е-майл или парола</small>}
+                    <footer style={{ marginTop: "1em" }}>
                         <input
                             type="submit"
                             style={{ width: "10em" }}

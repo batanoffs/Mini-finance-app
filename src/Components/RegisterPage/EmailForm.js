@@ -1,7 +1,5 @@
-// import { AuthContext } from "../../contexts/AuthContext";
-// import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useValidate } from "../../hooks/useValidate";
 import "./register.css";
 
 export const EmailForm = ({
@@ -11,68 +9,71 @@ export const EmailForm = ({
     changeHandler,
     currentStepsHandler,
 }) => {
-    const [error, setError] = useState("");
+    const { error, errorHandler, clearErrorHandler } = useValidate(
+        {
+        email: "",
+        password: "",
+        confirmPassword: "",
+        noFields: "",
+    });
+
     const onNextPageHandler = (e) => {
-        if (confirmPassword === password && !!email && !!password) {
-            currentStepsHandler(e);
-            setError("");
-        } else if (email && confirmPassword !== password) {
-            setError("Вашата парола не съвпада");
-        } else {
-            setError("Въведете задължителните полета");
-        }
+        currentStepsHandler(e);
     };
+
     return (
         <section className="form-container">
             <div className="form-content">
                 <header>
                     <h5>Е-майл и парола</h5>
                 </header>
-                    <label htmlFor="email">
-                        Е-майл <small className="star">*</small>
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        onFocus={() => setError("")}
-                        autoComplete="off"
-                        placeholder="Въведи е-майла"
-                        className="form-control"
-                        value={email}
-                        onChange={changeHandler}
-                        id="email"
-                    />
+                <label htmlFor="email">
+                    Е-майл <small className="star">* {error.email}</small>
+                </label>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="off"
+                    placeholder="въведи е-майла"
+                    className="form-control"
+                    value={email}
+                    onChange={changeHandler}
+                    onBlur={errorHandler}
+                    onFocus={clearErrorHandler}
+                />
 
-                    <label htmlFor="password">
-                        Парола <small className="star">*</small>
-                    </label>
-                    <input
-                        type="password"
-                        name="password"
-                        onFocus={() => setError("")}
-                        autoComplete="off"
-                        placeholder="Въведи парола"
-                        className="form-control"
-                        value={password}
-                        onChange={changeHandler}
-                        id="password"
-                    />
+                <label htmlFor="password">
+                    Парола <small className="star">* {error.password}</small>
+                </label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    autoComplete="off"
+                    placeholder="въведи парола"
+                    className="form-control"
+                    value={password}
+                    onChange={changeHandler}
+                    onBlur={errorHandler}
+                    onFocus={clearErrorHandler}
+                />
 
-                    <label htmlFor="confirmPassword">
-                        Потвърди парола <small className="star">*</small>
-                    </label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        autoComplete="off"
-                        onFocus={() => setError("")}
-                        placeholder="Потвърди парола"
-                        className="form-control"
-                        value={confirmPassword}
-                        onChange={changeHandler}
-                        id="confirmPassword"
-                    />
-                    <p className="text-danger">{error}</p>
+                <label htmlFor="confirmPassword">
+                    Потвърди парола <small className="star">* {error.confirmPassword}</small>
+                </label>
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    autoComplete="off"
+                    placeholder="потвърди парола"
+                    className="form-control"
+                    value={confirmPassword}
+                    onChange={changeHandler}
+                    onBlur={errorHandler}
+                    onFocus={clearErrorHandler}
+                />
                 <footer>
                     <Link
                         type="button"

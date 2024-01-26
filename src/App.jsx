@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext";
 import { UserDataContext } from "./contexts/UserDataContext";
 import { authService } from "./services/authService";
-import { getUserData } from "./services/dataService";
 import { Header } from "./Components/Header/Header";
 import { Login } from "./Components/LoginPage/Login";
 import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
@@ -19,6 +18,7 @@ function App() {
     const [auth, setAuth] = useState({});
     const [userData, setUserData] = useState([]);
     const [cardData, setCardData] = useState({});
+    const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
 
     const onRegisterSubmitHandler = async (formData) => {
@@ -38,11 +38,14 @@ function App() {
         ) {
             return;
         }
-        console.log(formData);
-        const response = await authService.register({ ...formData });
-        setAuth(response);
+        try {
+            const response = await authService.register({ ...formData });
+            setAuth(response);
 
-        window.alert("Successfully registered!");
+            window.alert("Successfully registered!");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const onLoginSubmitHandler = async (formData) => {
@@ -54,22 +57,24 @@ function App() {
         if (!data.login || !data.password) {
             return;
         }
+        try {
+            const response = await authService.login(data);
+            const token = response["user-token"];
+            const id = response.cardId;
 
-        const response = await authService.login(data);
-        const token = response["user-token"];
-        const id = response.cardId;
+            // Log the response in the console
+            console.log(`Getting response from login:`);
+            console.table(response);
 
-        // Log the response in the console
-        console.log(`Getting response from login:`);
-        console.log(typeof response);
-        console.table(response);
-
-        // Store the token in session storage
-        sessionStorage.setItem("userData", token);
-        setAuth(response);
-        setUserData(response);
-        navigate("/mini-finance/dashboard/overview");
-        generateVirtualCard(id);
+            // Store the token in session storage
+            sessionStorage.setItem("userData", token);
+            setAuth(response);
+            setUserData(response);
+            navigate("/mini-finance/dashboard/overview");
+            generateVirtualCard(id);
+        } catch (error) {
+            setLoginError(true);
+        }
     };
 
     // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
@@ -81,7 +86,7 @@ function App() {
             setCardData(response);
             console.table(response);
         } catch (error) {
-            throw new Error(error);
+            console.log(error);
         }
     };
 
@@ -170,7 +175,7 @@ function App() {
                         }
                     />
                     <Route path="/mini-finance/" element={<Home />} />
-                    <Route path="/mini-finance/login" element={<Login />} />
+                    <Route path="/mini-finance/login" element={<Login loginError={loginError} setLoginError={setLoginError}/>} />
                     <Route
                         path="/mini-finance/register/*"
                         element={<Register />}
