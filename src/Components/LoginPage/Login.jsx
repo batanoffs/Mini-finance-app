@@ -64,7 +64,7 @@ export const Login = ({loginError, setLoginError}) => {
                     <footer style={{ marginTop: "1em" }}>
                         <input
                             type="submit"
-                            style={{ width: "10em" }}
+                            style={{ width: `100%`, textAlign: `center` }}
                             className="button-primary"
                             onSubmit={onSubmitLogin}
                             value="Вход"

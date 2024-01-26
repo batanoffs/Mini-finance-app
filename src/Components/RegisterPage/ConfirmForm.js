@@ -45,7 +45,7 @@ export const ConfirmForm = ({
                         name="email"
                         readOnly
                         autoComplete="off"
-                        placeholder="Въведи е-майла"
+                        placeholder="липсва информация"
                         className="form-control"
                         value={email}
                         id="email"
@@ -56,7 +56,7 @@ export const ConfirmForm = ({
                         readOnly
                         hidden
                         autoComplete="off"
-                        placeholder="card id"
+                        placeholder="липсва информация"
                         className="form-control"
                         value={cardId}
                         id="cardId"
@@ -67,7 +67,7 @@ export const ConfirmForm = ({
                         readOnly
                         hidden
                         autoComplete="off"
-                        placeholder="Парола"
+                        placeholder="липсва информация"
                         className="form-control"
                         value={password}
                         id="password"
@@ -78,7 +78,7 @@ export const ConfirmForm = ({
                         type="text"
                         className="form-control"
                         name="firstName"
-                        placeholder="Име"
+                        placeholder="липсва информация"
                         value={firstName}
                         disabled
                     />
@@ -88,7 +88,7 @@ export const ConfirmForm = ({
                         type="text"
                         className="form-control"
                         name="lastName"
-                        placeholder="Фамилия"
+                        placeholder="липсва информация"
                         value={lastName}
                         disabled
                     />
@@ -109,7 +109,7 @@ export const ConfirmForm = ({
                         type="tel"
                         className="form-control"
                         name="phoneNumber"
-                        placeholder="Телефон"
+                        placeholder="липсва информация"
                         value={phoneNumber}
                         disabled
                     />
@@ -119,7 +119,7 @@ export const ConfirmForm = ({
                         type="text"
                         className="form-control"
                         name="adress"
-                        placeholder="Адрес"
+                        placeholder="липсва информация"
                         value={adress}
                         disabled
                     />
@@ -129,7 +129,7 @@ export const ConfirmForm = ({
                         type="text"
                         className="form-control"
                         name="town"
-                        placeholder="Град"
+                        placeholder="липсва информация"
                         value={town}
                         disabled
                     />
@@ -140,7 +140,7 @@ export const ConfirmForm = ({
                         className="form-control"
                         name="country"
                         id="country"
-                        placeholder="Държава"
+                        placeholder="липсва информация"
                         value={country}
                         disabled
                     />

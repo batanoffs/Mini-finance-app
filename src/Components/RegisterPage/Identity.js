@@ -3,51 +3,8 @@ import { useEffect, useState } from "react"; // added useState
 import faceIO from "@faceio/fiojs";
 
 export const Identity = ({ currentStepsHandler }) => {
-    // const navigate = useNavigate();
-    // const [initFaceID, setInitFaceID] = useState(null); // added useState
     const [faceio, setFaceio] = useState(null);
     const [error, setError] = useState(null);
-
-    // useEffect(() => {
-    //     const init = async () => {
-    //         try {
-    //             const faceId = new faceIO("fioacd5c");
-    //             setInitFaceID(faceId);
-    //         } catch (error) {
-    //             console.log(error); // handle error
-    //         }
-    //     };
-    //     init();
-    // }, []);
-
-    // const fetchData = async () => {
-    //     try {
-    //         if (!initFaceID) {
-    //             console.log("Face ID not initialized"); // handle null pointer reference
-    //             return;
-    //         }
-
-    //         const response = await initFaceID.enroll({
-    //             locale: "auto",
-    //             payload: {
-    //                 email: "example@gmail.com",
-    //                 pin: "12345",
-    //             },
-    //         });
-
-    //         console.table(response);
-
-    //         if (response) {
-    //             alert("Аутентикацията е успешна!");
-    //             navigate("/mini-finance/register/confirm");
-    //         }
-    //     } catch (error) {
-    //         console.log(error); // handle unhandled exceptions
-    //     }
-    // };
-    // fetchData();
-
-    // Set up state variables for FaceIO instance and error messages
 
     // Use useEffect hook to initialize FaceIO instance when component mounts
     useEffect(() => {
@@ -105,7 +62,7 @@ export const Identity = ({ currentStepsHandler }) => {
                         type="submit"
                         name="prev"
                         className="button-secondary"
-                        onClick={currentStepsHandler} // corrected spelling of currentStepsHandler
+                        onClick={currentStepsHandler}
                     >
                         Назад
                     </Link>
@@ -115,7 +72,7 @@ export const Identity = ({ currentStepsHandler }) => {
                         type="submit"
                         name="next"
                         className="button-primary"
-                        onClick={currentStepsHandler} // corrected spelling of currentStepsHandler
+                        onClick={currentStepsHandler}
                     >
                         Напред
                     </Link>
@@ -124,30 +81,3 @@ export const Identity = ({ currentStepsHandler }) => {
         </div>
     );
 };
-//     return (
-//         <div className="form-container">
-//                 <div className="form-content">
-//                     <footer>
-//                         <Link
-//                             to={"/mini-finance/register/userinfo"}
-//                             type="submit"
-//                             name="prev"
-//                             className="button-secondary"
-//                             onClick={currentStepsHandler} // corrected spelling of currentStepsHandler
-//                         >
-//                             Назад
-//                         </Link>
-//                         <Link
-//                             to={"/mini-finance/register/terms"}
-//                             type="submit"
-//                             name="next"
-//                             className="button-primary"
-//                             onClick={currentStepsHandler} // corrected spelling of currentStepsHandler
-//                         >
-//                             Напред
-//                         </Link>
-//                     </footer>
-//                 </div>
-//         </div>
-//     );
-// };

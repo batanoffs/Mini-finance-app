@@ -9,8 +9,7 @@ export const EmailForm = ({
     changeHandler,
     currentStepsHandler,
 }) => {
-    const { error, errorHandler, clearErrorHandler } = useValidate(
-        {
+    const { error, errorHandler, clearErrorHandler } = useValidate({
         email: "",
         password: "",
         confirmPassword: "",
@@ -18,7 +17,9 @@ export const EmailForm = ({
     });
 
     const onNextPageHandler = (e) => {
-        currentStepsHandler(e);
+        if (!!email && !!password && confirmPassword === password) {
+            currentStepsHandler(e);
+        }
     };
 
     return (
@@ -60,7 +61,8 @@ export const EmailForm = ({
                 />
 
                 <label htmlFor="confirmPassword">
-                    Потвърди парола <small className="star">* {error.confirmPassword}</small>
+                    Потвърди парола{" "}
+                    <small className="star">* {error.confirmPassword}</small>
                 </label>
                 <input
                     type="password"
@@ -79,6 +81,7 @@ export const EmailForm = ({
                         type="button"
                         name="next"
                         className="button-primary"
+                        style={{ width: `100%`, textAlign: `center` }}
                         to={
                             !!email &&
                             !!password &&
