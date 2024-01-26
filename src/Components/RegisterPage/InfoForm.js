@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Radio } from "antd";
 
 export const InfoForm = ({
@@ -12,10 +13,34 @@ export const InfoForm = ({
     changeHandler,
     currentStepsHandler,
 }) => {
+    const [error, setError] = useState({
+        status: true,
+        message: "",
+    });
+    const onNextPageHandler = (e) => {
+        if (
+            !!firstName &&
+            !!lastName &&
+            !!gender &&
+            !!phoneNumber &&
+            !!town &&
+            !!country
+        ) {
+            currentStepsHandler(e);
+            setError({
+                status: false,
+                message: "",
+            });
+        } else {
+            setError({
+                status: true,
+                message: "Въведете задължителните полета",
+            });
+        }
+    };
     return (
         <section className="form-container">
             <div className="form-content">
-                <article>
                     <header>
                         <h5>Моля, въведете вашите лични данни във формата</h5>
                     </header>
@@ -23,6 +48,7 @@ export const InfoForm = ({
                         Име <small className="star">*</small>
                     </label>
                     <input
+                        onFocus={() => setError({ status: false, message: "" })}
                         type="text"
                         className="form-control"
                         name="firstName"
@@ -35,6 +61,7 @@ export const InfoForm = ({
                         Фамилия <small className="star">*</small>
                     </label>
                     <input
+                        onFocus={() => setError({ status: false, message: "" })}
                         type="text"
                         className="form-control"
                         name="lastName"
@@ -48,6 +75,7 @@ export const InfoForm = ({
                     </label>
                     <Radio.Group
                         name="gender"
+                        onFocus={() => setError({ status: false, message: "" })}
                         value={gender}
                         onChange={changeHandler}
                         style={{ marginBottom: "0.5rem" }}
@@ -61,6 +89,7 @@ export const InfoForm = ({
                     </label>
                     <input
                         type="tel"
+                        onFocus={() => setError({ status: false, message: "" })}
                         className="form-control"
                         name="phoneNumber"
                         placeholder="Телефон"
@@ -69,10 +98,11 @@ export const InfoForm = ({
                     />
 
                     <label htmlFor="adress">
-                        Адрес <small className="star">*</small>
+                        Адрес
                     </label>
                     <input
                         type="text"
+                        onFocus={() => setError({ status: false, message: "" })}
                         className="form-control"
                         name="adress"
                         placeholder="Адрес"
@@ -85,6 +115,7 @@ export const InfoForm = ({
                     </label>
                     <input
                         type="text"
+                        onFocus={() => setError({ status: false, message: "" })}
                         className="form-control"
                         name="town"
                         placeholder="Град"
@@ -100,10 +131,12 @@ export const InfoForm = ({
                         className="form-control"
                         name="country"
                         id="country"
+                        onFocus={() => setError({ status: false, message: "" })}
                         placeholder="Държава"
                         value={country}
                         onChange={changeHandler}
                     />
+                    <p className="text-danger">{error.message}</p>
                     <footer>
                         <Link
                             to={"/mini-finance/register"}
@@ -115,16 +148,19 @@ export const InfoForm = ({
                             Назад
                         </Link>
                         <Link
-                            to={"/mini-finance/register/identity"}
+                            to={
+                                error.status
+                                    ? null
+                                    : "/mini-finance/register/identity"
+                            }
                             type="submit"
                             name="next"
                             className="button-primary"
-                            onClick={currentStepsHandler}
+                            onClick={onNextPageHandler}
                         >
                             Напред
                         </Link>
                     </footer>
-                </article>
             </div>
         </section>
     );

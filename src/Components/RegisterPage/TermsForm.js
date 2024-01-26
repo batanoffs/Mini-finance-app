@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const TermsForm = ({
     currentStepsHandler,
@@ -6,13 +7,15 @@ export const TermsForm = ({
     termsCheckHandler,
 }) => {
     const navigate = useNavigate();
+    const [error, setError] = useState("");
 
     const checkHandler = async (e) => {
         if (check) {
             currentStepsHandler(e);
+            setError("");
             navigate("/mini-finance/register/confirm");
         } else {
-            alert("Please accept the terms and conditions to proceed");
+            setError("Не сте потвърдили условията");
         }
     };
 
@@ -109,6 +112,7 @@ export const TermsForm = ({
                         style={{ width: "15px", height: "15px" }}
                     />
                 </div>
+                <p className="text-danger">{error}</p>
                 <footer style={{ paddingBottom: "0" }}>
                     <Link
                         type="button"

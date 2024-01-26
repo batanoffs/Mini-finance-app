@@ -15,31 +15,31 @@ export const ConfirmForm = ({
     town,
     currentStepsHandler,
     onSubmitRegister,
-    changeHandler
+    changeHandler,
 }) => {
     const [isHidden, setHidden] = useState(false);
     const cardIdGenerator = () => {
         const id = Math.floor(Math.random() * 100) + 1;
         return id;
-    }
+    };
     const onConfirmHandler = (e) => {
         e.preventDefault();
         e.target.hidden = true;
         setHidden(true);
-        changeHandler({ target: { name: "cardId", value: cardIdGenerator() } })
-
-
-    }
+        changeHandler({ target: { name: "cardId", value: cardIdGenerator() } });
+    };
     return (
         <div className="form-container">
             <div className="form-content">
-                <form action="#" method="post">
+                <form
+                    style={{ display: `inline-flex`, flexDirection: `column` }}
+                    action="#"
+                    method="post"
+                >
                     <header>
                         <h5>Проверка на данните</h5>
                     </header>
-                    <label htmlFor="email">
-                        Email
-                    </label>
+                    <label htmlFor="email">Е-майл</label>
                     <input
                         type="email"
                         name="email"
@@ -50,13 +50,11 @@ export const ConfirmForm = ({
                         value={email}
                         id="email"
                     />
-                    <label htmlFor="email">
-                        Your Card Id
-                    </label>
                     <input
                         type="id"
                         name="cardId"
                         readOnly
+                        hidden
                         autoComplete="off"
                         placeholder="card id"
                         className="form-control"
@@ -75,9 +73,7 @@ export const ConfirmForm = ({
                         id="password"
                     />
 
-                    <label htmlFor="firstName">
-                        Име
-                    </label>
+                    <label htmlFor="firstName">Име</label>
                     <input
                         type="text"
                         className="form-control"
@@ -87,9 +83,7 @@ export const ConfirmForm = ({
                         disabled
                     />
 
-                    <label htmlFor="lastName">
-                        Фамилия
-                    </label>
+                    <label htmlFor="lastName">Фамилия</label>
                     <input
                         type="text"
                         className="form-control"
@@ -99,9 +93,7 @@ export const ConfirmForm = ({
                         disabled
                     />
 
-                    <label>
-                        Пол
-                    </label>
+                    <label>Пол</label>
                     <Radio.Group
                         name="gender"
                         value={gender}
@@ -112,9 +104,7 @@ export const ConfirmForm = ({
                         <Radio value="female"> Жена </Radio>
                     </Radio.Group>
 
-                    <label htmlFor="phoneNumber">
-                        Телефон
-                    </label>
+                    <label htmlFor="phoneNumber">Телефон</label>
                     <input
                         type="tel"
                         className="form-control"
@@ -124,9 +114,7 @@ export const ConfirmForm = ({
                         disabled
                     />
 
-                    <label htmlFor="adress">
-                        Адрес
-                    </label>
+                    <label htmlFor="adress">Адрес</label>
                     <input
                         type="text"
                         className="form-control"
@@ -136,9 +124,7 @@ export const ConfirmForm = ({
                         disabled
                     />
 
-                    <label htmlFor="town">
-                        Град
-                    </label>
+                    <label htmlFor="town">Град</label>
                     <input
                         type="text"
                         className="form-control"
@@ -148,9 +134,7 @@ export const ConfirmForm = ({
                         disabled
                     />
 
-                    <label htmlFor="country">
-                        Държава
-                    </label>
+                    <label htmlFor="country">Държава</label>
                     <input
                         type="text"
                         className="form-control"
@@ -179,14 +163,15 @@ export const ConfirmForm = ({
                         value={"Потвърди данните"}
                         onClick={onConfirmHandler}
                     />
-                    {isHidden && 
-                    <input
-                        name="register"
-                        type="submit"
-                        className="button-primary"
-                        value={"Регистрация"}
-                        onClick={onSubmitRegister}
-                    />}
+                    {isHidden && (
+                        <input
+                            name="register"
+                            type="submit"
+                            className="button-primary"
+                            value={"Регистрация"}
+                            onClick={onSubmitRegister}
+                        />
+                    )}
                 </footer>
             </div>
         </div>

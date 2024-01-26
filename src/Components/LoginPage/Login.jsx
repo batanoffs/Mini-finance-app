@@ -4,8 +4,7 @@ import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 
 export const Login = () => {
-    const { onLoginSubmitHandler } =
-        useContext(AuthContext);
+    const { onLoginSubmitHandler } = useContext(AuthContext);
     const { values, changeHandler, onSubmitLogin } = useForm(
         {
             email: "",
@@ -21,7 +20,11 @@ export const Login = () => {
                 <header>
                     <h5>Вход в системата</h5>
                 </header>
-                <form method="post" onSubmit={onSubmitLogin}>
+                <form
+                    style={{ display: `flex`, flexDirection: `column` }}
+                    method="post"
+                    onSubmit={onSubmitLogin}
+                >
                     <label htmlFor="email">Е-мейл:</label>
                     <input
                         type="text"
