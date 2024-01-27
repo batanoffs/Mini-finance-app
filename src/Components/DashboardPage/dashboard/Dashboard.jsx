@@ -15,33 +15,43 @@ export const Dashboard = () => {
     const { name, creditCard, balance, picture, phone, email } =
         useContext(UserDataContext);
     return (
-        <div className="content-container">
-            <div className="bento-main-column">
-                <ExchangeRate />
-                <Transactions />
+        <div
+            className="content-container"
+            style={{ display: "flex", flexDirection: "column"}}
+        >
+            <div style={{ display: "flex" }}>
+                <div className="bento-main-column">
+                    <ExchangeRate />
+                </div>
+                <div className="bento-fill-column">
+                    <Greetings name={name} />
+                    <CreditCard
+                        creditCard={creditCard}
+                        name={name}
+                        balance={balance}
+                    />
+                    <BankingActionButtons/>
+                </div>
+                <div className="bento-side-column">
+                    <ProfileDetails 
+                        picture={picture}
+                        name={name}
+                        phone={phone}
+                        email={email}
+                    />
+                    <Contact />
+                </div>
             </div>
-            <div className="bento-fill-column">
-                <Greetings name={name} />
-                <CreditCard
-                    creditCard={creditCard}
-                    name={name}
-                    balance={balance}
-                />                
-                <BankingActionButtons />
-                <SendMoney />
-                
-                <History />
-            </div>
-            {/* user profile */}
-            <div className="bento-side-column">
-                <ProfileDetails
-                    picture={picture}
-                    name={name}
-                    phone={phone}
-                    email={email}
-                />
-                <Contact />
-                
+            <div style={{ display: "flex" }}>
+                <div className="bento-main-column" style={{ marginTop: '0em'}}>
+                    <Transactions />
+                </div>
+                <div className="bento-fill-column" style={{ marginTop: '0em'}}>
+                    <SendMoney />
+
+                    <History />
+                </div>
+                <div className="bento-side-column"></div>
             </div>
         </div>
     );

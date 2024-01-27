@@ -11,12 +11,12 @@
     padding: 58px 0 0;
   }
   
-  .sidebar-sticky {
+  /* .sidebar-sticky {
     height: calc(100vh - 58px);
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-  }
+  } */
   
   .logo-image {
     width: 32px;

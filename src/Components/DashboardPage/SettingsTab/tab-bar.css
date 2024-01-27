@@ -57,16 +57,18 @@
 -----------------------------------------*/
 .sidebar {
     background: var(--white-color);
-    flex: 0 0 300px;
-    padding: 58px 0 0;
+    flex: 0 0 max(20dvw);
+    padding: 5em 1em;
+    align-items: center;
+    align-self: stretch;
   }
   
-  .sidebar-sticky {
+  /* .sidebar-sticky {
     height: calc(100vh - 58px);
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-  }
+  } */
   
   .logo-image {
     width: 32px;
