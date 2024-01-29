@@ -62,11 +62,11 @@
 .sidebarMenu {
     flex: 0 0 max(20dvw);
     background: var(--white-color);
-    padding: 2em 1em;
+    padding: 1em;
 }
 
 .nav {
-    list-style:none;
+    list-style: none;
 }
 
 .nav-link {
@@ -82,7 +82,6 @@
 
 .sidebarMenu .nav-link.active,
 .sidebarMenu .nav-link:hover {
-    background: var(--primary-color);
+    background: var(--primary-hover-color);
     color: var(--white-color);
-    
 }

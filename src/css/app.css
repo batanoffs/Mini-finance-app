@@ -193,15 +193,16 @@ strong {
 .featured-box {
     background-color: var(--section-bg-color);
     border-radius: var(--border-radius-medium);
-    padding: 20px;
+    padding: 0.5em 0em;
+    margin: 0.5em; 
     text-align: center;
 }
 
 .featured-box img {
     display: block;
     margin: auto;
-    margin-bottom: 15px;
-    width: 100px;
+    margin-bottom: 0.5em;
+    width: 90px;
     height: auto;
 }
 
