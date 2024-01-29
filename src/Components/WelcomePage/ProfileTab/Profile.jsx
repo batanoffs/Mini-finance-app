@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { UserDataContext } from "../../../contexts/UserDataContext";
 import { Link } from "react-router-dom";
-
-import Cards from "react-credit-cards-2";
+import Cards from 'react-credit-cards-2';
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 
@@ -17,7 +16,7 @@ export const ProfileTab = () => {
 
     return (
         <div className="content-container">
-            <div className="bento-fill-column" style={{ marginLeft: "1em" }}>
+            <div className="bento-main-column" >
                 <div className="custom-block custom-block-profile">
                     <div className="row">
                         <div>
@@ -33,7 +32,7 @@ export const ProfileTab = () => {
                                 />
 
                                 <Link
-                                    to="/dashboard/settings"
+                                    to="mini-finance/dashboard/settings"
                                     className="bi-pencil-square custom-block-edit-icon"
                                 ></Link>
                             </div>

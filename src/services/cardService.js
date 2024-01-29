@@ -5,6 +5,8 @@ const baseURL = (id) =>
 
 // https://cors-anywhere.herokuapp.com/
 
+// EncodeURI
+
 const generateCard = async (id) => {
     console.log(`Card with id: ${id} has been set`);
     const response = await request.get(baseURL(id));

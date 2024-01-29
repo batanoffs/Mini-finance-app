@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Radio } from "antd";
-import { useValidate } from "../../hooks/useValidate";
+import { useValidate } from "../../../hooks/useValidate";
 
 export const InfoForm = ({
     firstName,

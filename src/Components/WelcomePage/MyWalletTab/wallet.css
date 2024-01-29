@@ -17,31 +17,27 @@
   
   .account-table>:not(caption)>*>* {
     border-bottom: 0;
-    padding: 15px 10px;
+    padding: 6px 2px;
   }
   
   .account-table thead {
     background: var(--custom-btn-bg-color);
-    
-    
   }
   
   .account-table th,
   .account-table tr {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
-    padding: 15px 10px;
   }
 
   .account-table thead th {
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration-line: underline;
-    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 4px;
   }
   
   .account-table th {
-    padding: 12px 15px;
+    padding: 2px 16px;
     
   }
   

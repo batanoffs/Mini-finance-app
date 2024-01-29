@@ -1,4 +1,4 @@
-import pic from "../../images/svg/money-transfer-isometric-60529.svg";
+import pic from "../../../images/svg/money-transfer-isometric-60529.svg";
 import React from "react";
 import { Divider, Steps } from "antd";
 

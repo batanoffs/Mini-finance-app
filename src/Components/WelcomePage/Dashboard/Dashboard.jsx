@@ -39,7 +39,7 @@ export const Dashboard = () => {
                         phone={phone}
                         email={email}
                     />
-                    <Contact />
+                    
                 </div>
             </div>
             <div style={{ display: "flex" }}>
@@ -51,7 +51,9 @@ export const Dashboard = () => {
 
                     <History />
                 </div>
-                <div className="bento-side-column"></div>
+                <div className="bento-side-column" style={{marginTop: '0em'}}>
+                <Contact />
+                </div>
             </div>
         </div>
     );

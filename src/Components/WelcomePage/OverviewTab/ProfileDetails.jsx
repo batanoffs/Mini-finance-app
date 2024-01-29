@@ -17,16 +17,16 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                 ></Link>
             </div>
             
-            <p className="d-flex flex-wrap mb-2">
+            <p>
                 <strong>Име:</strong>
 
                 <span>{name}</span>
             </p>
-            <p className="d-flex flex-wrap mb-2">
+            <p>
                 <strong>Е-майл:</strong>
                 <span>{email}</span>
             </p>
-            <p className="d-flex flex-wrap">
+            <p style={{ paddingBottom: "0" }}>
                 <strong>Телефон:</strong>
                 <span>{phone}</span>
             </p>

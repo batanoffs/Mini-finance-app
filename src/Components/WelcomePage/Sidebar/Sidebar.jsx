@@ -3,13 +3,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 import creditCard from "../../../images/credit-card.png";
-import "./Sidebar.css";
+import "./Sidebar.module.css";
 
 export const Sidebar = () => {
     const { onLogoutHandler } = useContext(AuthContext);
     return (
         <nav
-            className="sidebar"
+            className="sidebarMenu"
         >
             <div className="sidebar-sticky">
                 <ul className="nav">
@@ -110,7 +110,7 @@ export const Sidebar = () => {
                         </NavLink>
                     </li>
 
-                    <li className="nav-item">
+                    <li className="nav-item" style={{ position: "absolute", bottom: `3em` }}>
                         <NavLink
                             className="nav-link"
                             onClick={onLogoutHandler}

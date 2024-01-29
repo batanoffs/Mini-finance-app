@@ -4,9 +4,9 @@ export const HelpCenterTab = () => {
     return (
         <div className="content-container">
             <div className="bento-main-column">
-                <div className="custom-block bg-white">
+                <div className="custom-block">
                     <form
-                        className="custom-form search-form"
+                        className="custom-form"
                         action="#"
                         method="post"
                     >
@@ -31,7 +31,7 @@ export const HelpCenterTab = () => {
                     </form>
                 </div>
 
-                <div className="custom-block custom-block-faq">
+                <div className="custom-block">
                     <h5>Често задавани въпроси</h5>
 
                     <strong>Как да създам нова карта?</strong>

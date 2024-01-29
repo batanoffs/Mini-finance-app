@@ -11,42 +11,62 @@
 
 .logo {
     margin-left: 2em;
-    margin-top: 0.3em;
-    height: 3em;
-    
+    padding-top: 0.2em;
+    height: 2.5em;
 }
 .button-login {
-    
     color: #ccdde2ff;
-    font-size: 1em; 
-    font-weight: 500;
+    font-size: 0.9em;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.4s;
     margin-bottom: 0em;
+    width: fit-content;
     margin-top: 0em;
-    padding: 6px 10px 0px 10px;
-    height: 2.2em;
+    padding: 3px 10px 0px 10px;
+    height: 1.8em;
     border: 1px solid #ccdde2ff;
     border-radius: var(--border-radius-small);
 }
 
-.button-login:hover{
+.button-login:hover {
     color: var(--primary-color);
     border-color: transparent;
     border: 1px solid var(--primary-color);
     border-top-left-radius: var(--border-radius-small);
     border-bottom-left-radius: var(--border-radius-small);
-    
 }
 
-.header-dropdown-container{
+.button-register {
+    background: var(--primary-hover-color);
+    color: white;
+    font-size: 0.9em;
+    padding: 3px 10px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    /* margin-bottom: 0em; */
+    /* margin-top: 0em; */
+    height: 1.8em;
+    width: fit-content;
+    border-radius: var(--border-radius-small);
+    border-bottom-left-radius: 0em;
+    border-top-left-radius: 0em;
+}
+
+.button-register:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+.header-dropdown-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .header-container {
-	flex: 0 0 50px;
+    flex: 0 0 40px;
     display: flex;
     background-color: var(--heading-color);
     flex-direction: row;

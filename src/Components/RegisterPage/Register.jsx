@@ -1,14 +1,14 @@
-import "./register.css";
-import { SidebarRegister } from "./SidebarRegister";
-import { EmailForm } from "./EmailForm";
-import { InfoForm } from "./InfoForm";
-import { TermsForm } from "./TermsForm";
-import { Routes, Route } from "react-router-dom";
-import { ConfirmForm } from "./ConfirmForm";
-import { useForm } from "../../hooks/useForm";
-import { useState, useContext } from "react";
+import { SidebarRegister } from "./assets/SidebarRegister";
+import { EmailForm } from "./assets/EmailForm";
+import { InfoForm } from "./assets/InfoForm";
+import { TermsForm } from "./assets/TermsForm";
+import { ConfirmForm } from "./assets/ConfirmForm";
+import { Identity } from "./assets/Identity";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Identity } from "./Identity";
+import { useForm } from "../../hooks/useForm";
+import { Routes, Route } from "react-router-dom";
+import { useState, useContext } from "react";
+import "./register.css";
 
 export const Register = () => {
     const { onRegisterSubmitHandler } = useContext(AuthContext);

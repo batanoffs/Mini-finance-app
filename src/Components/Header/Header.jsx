@@ -35,15 +35,11 @@ export const Header = ({ picture }) => {
                     </Link>
                     <Link
                         to="/mini-finance/register"
-                        className="button-primary"
+                        className="button-register"
                         name="register"
                         type="button"
-                        style={{
-                            borderBottomLeftRadius: "0px",
-                            borderTopLeftRadius: "0px",
-                        }}
                     >
-                        Нов Банков Акаунт
+                        Нов Акаунт
                     </Link>
                 </div>
             )}

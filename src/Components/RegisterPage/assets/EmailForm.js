@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useValidate } from "../../hooks/useValidate";
-import "./register.css";
+import { useValidate } from "../../../hooks/useValidate";
+import "../register.css";
 
 export const EmailForm = ({
     email,

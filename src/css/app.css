@@ -34,7 +34,7 @@
     --h6-font-size: 16px;
     --p-font-size: 16px;
     --label-font-size: 14px;
-    --menu-font-size: 14px;
+    --menu-font-size: 16px;
     --menu-font-weight: 400;
     --btn-font-size: 14px;
     --card-title-font-size: 18px;
@@ -168,9 +168,9 @@ strong {
 -----------------------------------------*/
 .main-wrapper {
     background: var(--section-bg-color);
-    min-height: calc(100vh - 65px);
+    min-height: calc(100vh - 100px);
     display: flex;
-    width: 100vw;
+    width: 100dvw;
 }
 
 .section-padding {
@@ -470,11 +470,9 @@ strong {
 
 .custom-block-numbers span {
     color: var(--black-color);
-    display: inline-block;
     vertical-align: middle;
     font-size: var(--p-font-size);
     margin-right: 10px;
-    position: relative;
     top: 3px;
 }
 

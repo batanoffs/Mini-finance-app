@@ -1,4 +1,4 @@
-import { UserDataContext } from "../../../contexts/UserDataContext.jsx";
+import { UserDataContext } from "../../../contexts/UserDataContext";
 import { useContext } from "react";
 
 export const CreditCard = () => {
@@ -17,7 +17,7 @@ export const CreditCard = () => {
 
     return (
         <div className="custom-block custom-block-balance">
-            <h5>Твоята наличност</h5>
+            <h5>Наличност</h5>
 
             <h4 className="mt-2 mb-3">${balance}</h4>
 

@@ -5,7 +5,7 @@ import { UserDataContext } from "./contexts/UserDataContext";
 import { authService } from "./services/authService";
 import { Header } from "./Components/Header/Header";
 import { Login } from "./Components/LoginPage/Login";
-import { WelcomePage } from "./Components/DashboardPage/WelcomePage";
+import { WelcomePage } from "./Components/WelcomePage/WelcomePage";
 import { Footer } from "./Components/Footer/Footer";
 import { Home } from "./Components/HomePage/Home";
 import { Register } from "./Components/RegisterPage/Register";
