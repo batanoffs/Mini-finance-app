@@ -100,8 +100,8 @@ function App() {
 
     // check if userData is null or not
     const userContext = {
-        name: userData.fullName || "Липсва информация",
-        phone: userData.phoneNumber || "Липсва информация",
+        name: userData.fullName || "потребител",
+        phone: userData.phoneNumber || "номер",
         balance: userData.accountBalance || 0,
         country: userData.country,
         creditCard: cardData

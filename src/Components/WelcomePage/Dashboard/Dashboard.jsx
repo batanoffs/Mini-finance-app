@@ -17,7 +17,7 @@ export const Dashboard = () => {
     return (
         <div
             className="content-container"
-            style={{ display: "flex", flexDirection: "column"}}
+            style={{ display: "flex", flexDirection: "column" }}
         >
             <div style={{ display: "flex" }}>
                 <div className="bento-main-column">
@@ -30,29 +30,28 @@ export const Dashboard = () => {
                         name={name}
                         balance={balance}
                     />
-                    <BankingActionButtons/>
                 </div>
                 <div className="bento-side-column">
-                    <ProfileDetails 
+                    <ProfileDetails
                         picture={picture}
                         name={name}
                         phone={phone}
                         email={email}
                     />
-                    
+                    <BankingActionButtons />
                 </div>
             </div>
             <div style={{ display: "flex" }}>
-                <div className="bento-main-column" style={{ marginTop: '0em'}}>
+                <div className="bento-main-column" style={{ marginTop: "0em" }}>
                     <Transactions />
                 </div>
-                <div className="bento-fill-column" style={{ marginTop: '0em'}}>
+                <div className="bento-fill-column" style={{ marginTop: "0em" }}>
                     <SendMoney />
 
                     <History />
                 </div>
-                <div className="bento-side-column" style={{marginTop: '0em'}}>
-                <Contact />
+                <div className="bento-side-column" style={{ marginTop: "0em" }}>
+                    <Contact />
                 </div>
             </div>
         </div>
