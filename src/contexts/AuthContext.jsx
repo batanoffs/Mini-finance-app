@@ -1,15 +1,14 @@
 import { createContext } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../services/authService";
 import { cardService } from "../services/cardService";
+import { useSessionStorage } from "../hooks/useSessionStorage";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState({});
-    const [userData, setUserData] = useState([]);
-    const [cardData, setCardData] = useState({});
+    const [auth, setAuth] = useSessionStorage(`auth`, {});
     const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
 
@@ -25,23 +24,18 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await authService.login(data);
             const token = response["user-token"];
-            const id = response.cardId;
-
             // Log the response in the console
             console.log(`Getting response from login:`);
             console.table(response);
-
             // Store the token in session storage
-            sessionStorage.setItem("userData", token);
+            sessionStorage.setItem("token", token);
             setAuth(response);
-            setUserData(response);
             navigate("/mini-finance/dashboard/overview");
-            generateVirtualCard(id);
+            generateVirtualCard(response.cardId);
         } catch (error) {
             setLoginError(true);
         }
     };
-
     const onRegisterSubmitHandler = async (formData) => {
         if (
             !formData.email &&
@@ -68,85 +62,119 @@ export const AuthProvider = ({ children }) => {
             console.log(error);
         }
     };
-
     const onLogoutHandler = async () => {
-        const token = sessionStorage.getItem("userData");
+        const token = sessionStorage.getItem("token");
         await authService.logout(token);
-        sessionStorage.removeItem("userData");
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("auth");
         setAuth("");
-        setUserData("");
     };
-
     // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
-
     const generateVirtualCard = async (id) => {
         try {
             const response = await cardService.generateCard(id);
-            //set response data to setCardData
-            setCardData(response);
-            console.table(response);
+            console.log(response);
+            setAuth((state) => ({ ...state, [`creditCard`]: response }));
         } catch (error) {
             console.log(error);
         }
     };
-
     const authDataContext = {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,
         onLogoutHandler,
-        userId: auth.ownerId,
+        userId: auth.ownerId || "Липсва информация",
         token: auth["user-token"],
-        email: auth.email,
+        email: auth.email || "Липсва информация",
         userStatus: auth.userStatus,
         isAuthenticated() {
             return !!auth["user-token"];
         },
+        name: auth.fullName || "потребител",
+        phone: auth.phoneNumber || "номер",
+        country: auth.country,
+        creditCard: auth.creditCard || {
+            number:  `0000 0000 0000 0000`,
+            expiration:  "00/00",
+            cvv:  `000`,
+            cardHolder:  `информация`,
+            balance:  Number(`00000000`),
+            issuer:  0,
+            brand:  `Липсва информация`,
+            objectId:  `Липсва информация`,
+            created:  `информация`,
+        },
+        
+        // {
+        //     number: auth.creditCard.number || `0000 0000 0000 0000`,
+        //     expiration: auth.creditCard.expiration || "00/00",
+        //     cvv: auth.creditCard.cvv || `000`,
+        //     cardHolder: auth.fullName || `Липсва информация`,
+        //     balance: auth.creditCard.balance || Number(`00000000`),
+        //     issuer: auth.creditCard.issuer || 0,
+        //     brand: auth.creditCard.brand || `Липсва информация`,
+        //     objectId: auth.creditCard.objectId || `Липсва информация`,
+        //     created: auth.created || `Липсва информация`,
+        // }
+        
+        picture:
+            auth.profilePicture ||
+            "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
+        transactions: auth.transactions || [],
+        friends: auth.friends || [],
+        adress: auth.adress || "Липсва информация",
     };
 
-    // check if userData is null or not
-    const userContext = {
-        name: userData.fullName || "потребител",
-        phone: userData.phoneNumber || "номер",
-        balance: userData.accountBalance || 0,
-        country: userData.country,
-        creditCard: cardData
-            ? {
-                  cardNumber: cardData.number,
-                  expiryDate: cardData.expiration,
-                  cvv: cardData.cvv,
-                  cardHolder: cardData.number,
-                  balance: cardData.balance,
-                  issuer: cardData.issuer,
-                  brand: cardData.brand,
-                  cardId: cardData.objectId,
-                  created: userData.created,
-              }
-            : {
-                  cardNumber: `0000 0000 0000 0000`,
-                  expiryDate: "00/00",
-                  cvv: `000`,
-                  cardHolder: `Липсва информация`,
-                  created: Number(`00000000`),
-                  balance: 0,
-                  issuer: `Липсва информация`,
-                  brand: `Липсва информация`,
-                  cardId: `Липсва информация`,
-              },
-              picture:
-            userData.profilePicture ||
-            "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
-        userId: userData.ownerId || "Липсва информация",
-        transactions: userData.transactions || [],
-        friends: userData.friends || [],
-        email: userData.email || "Липсва информация",
-        adress: userData.adress || "Липсва информация",
-    };
+    // const userContext = {
+    //     name: userData.fullName || "потребител",
+    //     phone: userData.phoneNumber || "номер",
+    //     balance: userData.accountBalance || 0,
+    //     country: userData.country,
+    //     creditCard: cardData
+    //         ? {
+    //               cardNumber: cardData.number,
+    //               expiryDate: cardData.expiration,
+    //               cvv: cardData.cvv,
+    //               cardHolder: cardData.number,
+    //               balance: cardData.balance,
+    //               issuer: cardData.issuer,
+    //               brand: cardData.brand,
+    //               cardId: cardData.objectId,
+    //               created: userData.created,
+    //           }
+    //         : {
+    //               cardNumber: `0000 0000 0000 0000`,
+    //               expiryDate: "00/00",
+    //               cvv: `000`,
+    //               cardHolder: `Липсва информация`,
+    //               created: Number(`00000000`),
+    //               balance: 0,
+    //               issuer: `Липсва информация`,
+    //               brand: `Липсва информация`,
+    //               cardId: `Липсва информация`,
+    //           },
+    //           picture:
+    //         userData.profilePicture ||
+    //         "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
+    //     userId: userData.ownerId || "Липсва информация",
+    //     transactions: userData.transactions || [],
+    //     friends: userData.friends || [],
+    //     email: userData.email || "Липсва информация",
+    //     adress: userData.adress || "Липсва информация",
+    // };
 
     return (
         <>
-            <AuthContext.Provider value={{ ...userContext, ...authDataContext, loginError, setLoginError }}> 
+            <AuthContext.Provider
+                value={{ ...authDataContext, loginError, setLoginError }}
+            >
                 {children}
             </AuthContext.Provider>
         </>
     );
+};
+
+export const useAuthContext = () => {
+    const context = useContext(AuthContext);
+    return context;
 };

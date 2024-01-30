@@ -6,9 +6,9 @@ import { BankingActionButtons } from "../OverviewTab/BankingActionButtons.jsx";
 import { Transactions } from "../OverviewTab/Transactions.jsx";
 import { SendMoney } from "../OverviewTab/SendMoney.jsx";
 import { Greetings } from "../OverviewTab/Greetings.jsx";
-import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext.jsx";
 import { Contact } from "../SettingsTab/NavigationTabs/CallUs.jsx";
+import { useContext } from "react";
 import "./dashboard.css";
 
 export const Dashboard = () => {

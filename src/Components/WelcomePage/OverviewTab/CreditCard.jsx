@@ -2,9 +2,8 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 
 export const CreditCard = () => {
-    const { name, creditCard, balance } = useContext(AuthContext);
-
-    let card = creditCard.cardNumber;
+    const { creditCard } = useContext(AuthContext);
+    let card = creditCard.number;
     // TO DO last digits
     const splitDigits = (number) => {
         if (number) {
@@ -17,7 +16,7 @@ export const CreditCard = () => {
         <div className="custom-block custom-block-balance">
             <h5>Наличност</h5>
 
-            <h4 className="mt-2 mb-3">${balance}</h4>
+            <h4 className="mt-2 mb-3">${creditCard.balance}</h4>
 
             <div className="custom-block-numbers d-flex align-items-center">
                 <span>****</span>
@@ -32,12 +31,12 @@ export const CreditCard = () => {
             >
                 <div>
                     <h6>Валидна до</h6>
-                    <small>{creditCard.expiryDate}</small>
+                    <small>{creditCard.expiration}</small>
                 </div>
 
                 <div className="ms-auto">
                     <h6>Картодържател</h6>
-                    <small>{name}</small>
+                    <small>{creditCard.cardHolder}</small>
                 </div>
             </div>
         </div>
