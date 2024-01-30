@@ -33,7 +33,6 @@ export const Register = () => {
     );
 
     const termsCheckHandler = (e) => {
-        console.log(e.target.checked);
         setCheck(e.target.checked);
     };
 

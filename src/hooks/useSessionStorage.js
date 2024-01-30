@@ -12,13 +12,16 @@ export const useSessionStorage = (key, initialValue) => {
     });
 
     const setSessionStorageState = (value) => {
-        setState(value);
-
-        sessionStorage.setItem(key, JSON.stringify(value)); // предполага се да е селиризуем стейта
+        if (typeof value === "function") {
+            console.log(value());
+            console.table(value());
+            setState((prev) => value(prev));
+            
+        } else {
+            setState(value);
+            sessionStorage.setItem(key, JSON.stringify(value)); // предполага се да е селиризуем стейта
+        }
     };
 
-    return [
-        state,
-        setSessionStorageState,
-    ];
+    return [state, setSessionStorageState];
 };

@@ -37,7 +37,6 @@ const request = async (method, url, data, token = undefined) => {
         }
 
         const result = await response.json();
-        // console.log(result);
         if (!response.ok) {
             throw new Error(result.message);
         }

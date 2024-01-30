@@ -3,7 +3,6 @@ import { Pagination } from "antd";
 
 export const Table = () => {
     const onChange = (page) => {
-        console.log(page);
     };
     return (
         <div className="custom-block bg-white">

@@ -2,7 +2,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 
 export const CreditCard = () => {
-    const { creditCard } = useContext(AuthContext);
+    const { creditCard, name } = useContext(AuthContext);
     let card = creditCard.number;
     // TO DO last digits
     const splitDigits = (number) => {
@@ -36,7 +36,7 @@ export const CreditCard = () => {
 
                 <div className="ms-auto">
                     <h6>Картодържател</h6>
-                    <small>{creditCard.cardHolder}</small>
+                    <small>{name}</small>
                 </div>
             </div>
         </div>

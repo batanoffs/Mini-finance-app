@@ -24,9 +24,6 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await authService.login(data);
             const token = response["user-token"];
-            // Log the response in the console
-            console.log(`Getting response from login:`);
-            console.table(response);
             // Store the token in session storage
             sessionStorage.setItem("token", token);
             setAuth(response);
@@ -66,15 +63,19 @@ export const AuthProvider = ({ children }) => {
         const token = sessionStorage.getItem("token");
         await authService.logout(token);
         sessionStorage.removeItem("token");
+        setAuth({});
         sessionStorage.removeItem("auth");
-        setAuth("");
     };
     // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
     const generateVirtualCard = async (id) => {
         try {
             const response = await cardService.generateCard(id);
-            console.log(response);
-            setAuth((state) => ({ ...state, [`creditCard`]: response }));
+            // setAuth((state) => ({ ...state, creditCard: cardResponse }));
+            setAuth((state) => {
+                const newState = { ...state };
+                newState.creditCard = response;
+                return newState;
+            });
         } catch (error) {
             console.log(error);
         }
@@ -94,17 +95,16 @@ export const AuthProvider = ({ children }) => {
         phone: auth.phoneNumber || "номер",
         country: auth.country,
         creditCard: auth.creditCard || {
-            number:  `0000 0000 0000 0000`,
-            expiration:  "00/00",
-            cvv:  `000`,
-            cardHolder:  `информация`,
-            balance:  Number(`00000000`),
-            issuer:  0,
-            brand:  `Липсва информация`,
-            objectId:  `Липсва информация`,
-            created:  `информация`,
+            number: `0000 0000 0000 0000`,
+            expiration: "00/00",
+            cvv: `000`,
+            balance: Number(`00000000`),
+            issuer: 0,
+            brand: `Липсва информация`,
+            objectId: `Липсва информация`,
+            created: `информация`,
         },
-        
+
         // {
         //     number: auth.creditCard.number || `0000 0000 0000 0000`,
         //     expiration: auth.creditCard.expiration || "00/00",
@@ -116,7 +116,7 @@ export const AuthProvider = ({ children }) => {
         //     objectId: auth.creditCard.objectId || `Липсва информация`,
         //     created: auth.created || `Липсва информация`,
         // }
-        
+
         picture:
             auth.profilePicture ||
             "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",

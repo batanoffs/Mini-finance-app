@@ -8,15 +8,12 @@ const baseURL = (id) =>
 // EncodeURI
 
 const generateCard = async (id) => {
-    console.log(`Card with id: ${id} has been set`);
     const response = await request.get(baseURL(id));
-    console.table(response);
-    console.log(response);
     const date = response[0].expiration.split("/");
     const money = response[0].balance.replace("$", "");
     date.shift();
-
-    const data = {
+    
+    return {
         id: id,
         balance: money,
         brand: response[0].brand,
@@ -26,8 +23,6 @@ const generateCard = async (id) => {
         number: Number(response[0].number),
         objectId: response[0].objectId,
     }
-
-    return data;
 };
 
 export const cardService = {
