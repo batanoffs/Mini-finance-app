@@ -4,8 +4,8 @@ import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import { useValidate } from "../../hooks/useValidate";
 
-export const Login = ({ loginError, setLoginError }) => {
-    const { onLoginSubmitHandler } = useContext(AuthContext);
+export const Login = () => {
+    const { onLoginSubmitHandler, loginError, setLoginError } = useContext(AuthContext);
     const { values, changeHandler, onSubmitLogin } = useForm(
         {
             email: "",

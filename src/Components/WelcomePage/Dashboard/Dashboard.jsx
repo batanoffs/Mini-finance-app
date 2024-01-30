@@ -7,13 +7,13 @@ import { Transactions } from "../OverviewTab/Transactions.jsx";
 import { SendMoney } from "../OverviewTab/SendMoney.jsx";
 import { Greetings } from "../OverviewTab/Greetings.jsx";
 import { useContext } from "react";
-import { UserDataContext } from "../../../contexts/UserDataContext.jsx";
+import { AuthContext } from "../../../contexts/AuthContext.jsx";
 import { Contact } from "../SettingsTab/NavigationTabs/CallUs.jsx";
 import "./dashboard.css";
 
 export const Dashboard = () => {
     const { name, creditCard, balance, picture, phone, email } =
-        useContext(UserDataContext);
+        useContext(AuthContext);
     return (
         <div
             className="content-container"

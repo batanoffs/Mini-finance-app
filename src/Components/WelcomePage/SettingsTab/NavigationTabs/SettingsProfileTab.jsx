@@ -3,7 +3,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { Button, message, Upload } from "antd";
 import { useState } from "react";
 import { useContext } from "react";
-import { UserDataContext } from "../../../../contexts/UserDataContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 // import '../tab-bar.css'
 
 export const ProfileTab = () => {
@@ -26,7 +26,7 @@ export const ProfileTab = () => {
             }
         },
     };
-    const { name, phone, picture, email } = useContext(UserDataContext);
+    const { name, phone, picture, email } = useContext(AuthContext);
 
     const [state, setState] = useState({
         fullname: name,

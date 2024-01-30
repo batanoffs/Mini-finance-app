@@ -9,10 +9,11 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import logo from "../../images/logo/logo4.svg"
+import logo from "../../images/logo/logo4.svg";
 
-export const Header = ({ picture }) => {
-    const { isAuthenticated } = useContext(AuthContext);
+export const Header = () => {
+    
+    const { isAuthenticated, picture } = useContext(AuthContext);
     return (
         <header className="header-container">
             <div className="header-logo">

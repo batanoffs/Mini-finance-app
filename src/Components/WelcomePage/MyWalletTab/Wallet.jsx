@@ -1,9 +1,7 @@
 import { BankingActionButtons } from "../OverviewTab/BankingActionButtons.jsx";
 import { Transactions } from "../OverviewTab/Transactions.jsx";
-import { CreditCard } from "../OverviewTab/CreditCard.jsx";
-import "./wallet.css";
 import { TransactionsTable } from "./Transactions.js";
-import { Table } from "./TableTransactions.js"
+import "./wallet.css";
 
 export const MyWalletTab = () => {
     return (

@@ -1,19 +1,17 @@
-import { UserDataContext } from "../../../contexts/UserDataContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 
 export const CreditCard = () => {
+    const { name, creditCard, balance } = useContext(AuthContext);
 
-    const { name, creditCard, balance } =
-        useContext(UserDataContext);
-        
     let card = creditCard.cardNumber;
     // TO DO last digits
     const splitDigits = (number) => {
         if (number) {
-            return number.toString().split('').splice(-4).join('');
+            return number.toString().split("").splice(-4).join("");
         }
-        return "****"
-    }
+        return "****";
+    };
 
     return (
         <div className="custom-block custom-block-balance">
@@ -28,7 +26,10 @@ export const CreditCard = () => {
                 <small>{splitDigits(card)}</small>
             </div>
 
-            <div className="d-flex" style ={{ display: "flex", justifyContent: "space-between"}}>
+            <div
+                className="d-flex"
+                style={{ display: "flex", justifyContent: "space-between" }}
+            >
                 <div>
                     <h6>Валидна до</h6>
                     <small>{creditCard.expiryDate}</small>
@@ -40,5 +41,5 @@ export const CreditCard = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

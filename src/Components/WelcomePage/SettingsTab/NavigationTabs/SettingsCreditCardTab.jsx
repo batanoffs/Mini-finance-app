@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
-import { UserDataContext } from "../../../../contexts/UserDataContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
 
 export const CreditCard = () => {
-    const { name, creditCard } = useContext(UserDataContext);
+    const { name, creditCard } = useContext(AuthContext);
     const [state, setState] = useState({
         name: name,
         cardNumber: creditCard.cardNumber,

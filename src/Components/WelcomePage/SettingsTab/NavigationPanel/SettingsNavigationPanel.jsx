@@ -8,7 +8,6 @@ import "../tab-bar.css";
 
 export const SettingsNavigationPanel = () => {
     const onChange = (key) => {
-        console.log(key);
     };
     const items = [
         {

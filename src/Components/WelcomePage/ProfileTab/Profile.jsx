@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserDataContext } from "../../../contexts/UserDataContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import Cards from 'react-credit-cards-2';
 import "react-credit-cards-2/dist/es/styles-compiled.css";
@@ -7,7 +7,7 @@ import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
 
 export const ProfileTab = () => {
     const { adress, country, name, phone, creditCard, picture, email } =
-        useContext(UserDataContext);
+        useContext(AuthContext);
     const date = new Date(creditCard.created);
     const month = date.getMonth();
     const year = date.getFullYear();
