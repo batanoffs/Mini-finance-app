@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useSessionStorage(`auth`, {});
     const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
+    let loginData;
 
     const onLoginSubmitHandler = async (formData) => {
         const data = {
@@ -22,15 +23,25 @@ export const AuthProvider = ({ children }) => {
             return;
         }
         try {
-            const response = await authService.login(data);
-            const token = response["user-token"];
+            loginData = await authService.login(data);
+            const token = loginData["user-token"];
             // Store the token in session storage
             sessionStorage.setItem("token", token);
-            setAuth(response);
             navigate("/mini-finance/dashboard/overview");
-            generateVirtualCard(response.cardId);
+            generateVirtualCard(loginData.cardId);
         } catch (error) {
             setLoginError(true);
+        }
+    };
+
+    // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
+    const generateVirtualCard = async (id) => {
+        try {
+            const response = await cardService.generateCard(id);
+            loginData["creditCard"] = response;
+            setAuth(loginData);
+        } catch (error) {
+            console.log(error);
         }
     };
     const onRegisterSubmitHandler = async (formData) => {
@@ -66,20 +77,7 @@ export const AuthProvider = ({ children }) => {
         setAuth({});
         sessionStorage.removeItem("auth");
     };
-    // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
-    const generateVirtualCard = async (id) => {
-        try {
-            const response = await cardService.generateCard(id);
-            // setAuth((state) => ({ ...state, creditCard: cardResponse }));
-            setAuth((state) => {
-                const newState = { ...state };
-                newState.creditCard = response;
-                return newState;
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+
     const authDataContext = {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,

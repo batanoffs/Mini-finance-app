@@ -76,8 +76,8 @@ export const ProfileTab = () => {
                     <h5>Дебитна карта</h5>
                     <div>
                         <Cards
-                            number={creditCard.cardNumber}
-                            expiry={creditCard.expiryDate}
+                            number={creditCard.number}
+                            expiry={creditCard.expiration}
                             cvc={creditCard.cvv}
                             name={name}
                         />

@@ -8,8 +8,8 @@ export const CreditCard = () => {
     const { name, creditCard } = useContext(AuthContext);
     const [state, setState] = useState({
         name: name,
-        cardNumber: creditCard.cardNumber,
-        expiryDate: creditCard.expiryDate,
+        cardNumber: creditCard.number,
+        expiryDate: creditCard.expiration,
         cvc: creditCard.cvv,
         focus: "",
     });
