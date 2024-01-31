@@ -13,7 +13,7 @@ export const TermsForm = ({
         if (check) {
             currentStepsHandler(e);
             setError("");
-            navigate("/mini-finance/register/confirm");
+            navigate("/register/confirm");
         } else {
             setError("Не сте потвърдили условията");
         }
@@ -118,7 +118,7 @@ export const TermsForm = ({
                         type="button"
                         name="prev"
                         className="button-secondary"
-                        to={"/mini-finance/register/identity"}
+                        to={"/register/identity"}
                         onClick={currentStepsHandler}
                     >
                         Назад

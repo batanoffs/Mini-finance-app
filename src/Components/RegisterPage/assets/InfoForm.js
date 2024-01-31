@@ -160,7 +160,7 @@ export const InfoForm = ({
                 <p className="text-danger">{errorOnNext.message}</p>
                 <footer>
                     <Link
-                        to={"/mini-finance/register"}
+                        to={"/register"}
                         type="submit"
                         name="prev"
                         className="button-secondary"
@@ -172,7 +172,7 @@ export const InfoForm = ({
                         to={
                             errorOnNext.status
                                 ? null
-                                : "/mini-finance/register/identity"
+                                : "/register/identity"
                         }
                         type="submit"
                         name="next"

@@ -149,7 +149,7 @@ export const ConfirmForm = ({
                     <Link
                         type="button"
                         name="prev"
-                        to={"/mini-finance/register/terms"}
+                        to={"/register/terms"}
                         className="button-secondary"
                         onClick={currentStepsHandler}
                     >

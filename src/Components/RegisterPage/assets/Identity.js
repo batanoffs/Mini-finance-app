@@ -58,7 +58,7 @@ export const Identity = ({ currentStepsHandler }) => {
                 {error && <div className="error">{error}</div>}
                 <footer>
                     <Link
-                        to={"/mini-finance/register/userinfo"}
+                        to={"/register/userinfo"}
                         type="submit"
                         name="prev"
                         className="button-secondary"
@@ -68,7 +68,7 @@ export const Identity = ({ currentStepsHandler }) => {
                     </Link>
                     {!error}
                     <Link
-                        to={"/mini-finance/register/terms"}
+                        to={"/register/terms"}
                         type="submit"
                         name="next"
                         className="button-primary"
