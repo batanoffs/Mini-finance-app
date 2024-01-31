@@ -23,7 +23,7 @@ function App() {
                                 subTitle="Страницата, която търсите не съществува."
                                 extra={
                                     <Link
-                                        to="/mini-finance/"
+                                        to="/"
                                         className="button-primary">
                                         Начална страница
                                     </Link>
@@ -31,10 +31,10 @@ function App() {
                             />
                         }
                     />
-                    <Route path="/mini-finance/" element={<Home />} />
-                    <Route path="/mini-finance/login" element={<Login />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
                     <Route
-                        path="/mini-finance/register/*"
+                        path="/register/*"
                         element={<Register />}
                     />
                     <Route

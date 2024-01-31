@@ -17,14 +17,14 @@ export const Header = () => {
     return (
         <header className="header-container">
             <div className="header-logo">
-                <Link className="navbar-brand" to="/mini-finance/">
+                <Link className="navbar-brand" to="/">
                     <img src={logo} alt="logo" className="logo" />
                 </Link>
             </div>
             {!isAuthenticated() && (
                 <div className="header-buttons">
                     <Link
-                        to="/mini-finance/login"
+                        to="/login"
                         className="button-login"
                         type="button"
                         style={{
@@ -35,7 +35,7 @@ export const Header = () => {
                         Вход
                     </Link>
                     <Link
-                        to="/mini-finance/register"
+                        to="/register"
                         className="button-register"
                         name="register"
                         type="button"
