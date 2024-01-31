@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
             const token = loginData["user-token"];
             // Store the token in session storage
             sessionStorage.setItem("token", token);
-            navigate("/mini-finance/dashboard/overview");
+            navigate("/dashboard/overview");
             generateVirtualCard(loginData.cardId);
         } catch (error) {
             setLoginError(true);

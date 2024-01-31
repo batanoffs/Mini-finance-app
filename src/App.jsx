@@ -38,7 +38,7 @@ function App() {
                         element={<Register />}
                     />
                     <Route
-                        path="/mini-finance/dashboard/*"
+                        path="/dashboard/*"
                         element={<WelcomePage />}
                     />
                 </Routes>
