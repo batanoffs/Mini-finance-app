@@ -4,6 +4,7 @@ import { ProfileTab } from "./ProfileTab/Profile";
 import { SettingsTab } from "./SettingsTab/Settings";
 import { HelpCenterTab } from "./HelpCenterTab/HelpCenter";
 import { MyWalletTab } from "./MyWalletTab/Wallet";
+import { Upgrade } from "./Upgrade/Upgrade";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 export const WelcomePage = () => {
@@ -17,6 +18,7 @@ export const WelcomePage = () => {
                 <Route path="/profile" element={<ProfileTab />} />
                 <Route path="/settings/*" element={<SettingsTab />} />
                 <Route path="/help-center" element={<HelpCenterTab />} />
+                <Route path="/upgrade" element={<Upgrade />} />
             </Routes>
         </div>
     );
