@@ -49,7 +49,7 @@ export const Register = () => {
     
 
     return (
-        <div className="content-container">
+        <div className="register-content-container">
             <SidebarRegister currentStep={currentStep} />
 
             <Routes>
