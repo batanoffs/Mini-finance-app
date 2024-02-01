@@ -90,7 +90,7 @@ export const ProfileTab = () => {
                 <div className="input-group mb-1">
                     <img
                         src={picture}
-                        className="profile-image img-fluid"
+                        className="profile-image "
                         alt="person"
                         value={state.picture}
                         onChange={inputChangeHandler}

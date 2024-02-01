@@ -101,7 +101,7 @@ export const Sidebar = () => {
                     <li className="nav-item featured-box">
                         <img
                             src={creditCard}
-                            className="img-fluid"
+                            className=""
                             alt="credit card"
                         />
 

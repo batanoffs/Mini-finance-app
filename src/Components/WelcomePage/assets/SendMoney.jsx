@@ -8,15 +8,15 @@ export const SendMoney = () => {
             <h5 className="text-white mb-4">Бързо изпращане</h5>
 
             <a href="#">
-                <img src={person1} className="profile-image img-fluid" alt={"person"}/>
+                <img src={person1} className="profile-image " alt={"person"}/>
             </a>
 
             <a href="#">
-                <img src={person2} className="profile-image img-fluid" alt={"person"}/>
+                <img src={person2} className="profile-image " alt={"person"}/>
             </a>
 
             <a href="#">
-                <img src={person3} className="profile-image img-fluid" alt={"person"}/>
+                <img src={person3} className="profile-image " alt={"person"}/>
             </a>
 
             <div className="profile-rounded">

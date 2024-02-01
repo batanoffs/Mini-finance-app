@@ -1,13 +1,13 @@
 // import profilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
 import { Link } from "react-router-dom";
-
+import "./profileDetails.css";
 export const ProfileDetails = ({ email, phone, name, picture }) => {
     return (
-        <div className="custom-block custom-block-profile-front custom-block-profile text-center bg-white">
-            <div className="custom-block-profile-image-wrap mb-5">
+        <div className="custom-block custom-block-profile-front custom-block-profile">
+            <div className="custom-block-profile-image-wrap">
                 <img
                     src={picture}
-                    className="custom-block-profile-image img-fluid"
+                    className="custom-block-profile-image "
                     alt="happy Man"
                 />
 
@@ -16,7 +16,7 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                     className="bi-pencil-square custom-block-edit-icon"
                 ></Link>
             </div>
-            
+
             <p>
                 <strong>Име:</strong>
 

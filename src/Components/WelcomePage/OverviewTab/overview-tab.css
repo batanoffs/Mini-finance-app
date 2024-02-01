@@ -1,25 +1,25 @@
 .content-container {
     display: flex;
-    flex: 1 0;
+    flex-direction: column;
     width: 100dvw;
+    margin: 1em;
+}
+
+.content-container > div {
+    display: flex;
+    gap: 0.3em;
 }
 
 .bento-main-column {
-    margin: 0.5em 0.25em 0em 0.5em;
-    flex: 4 1 400px;
-    
-}
-
-.bento-side-column {
-    margin: 0.5em 0.5em 0em 0.25em;
-    flex: 1 1 max(200px);
-    
+    flex: 4 1 300px;
 }
 
 .bento-fill-column {
-    margin: 0.5em 0.25em 0em 0.25em;
-    flex: 2 1 300px;    
-    
+    flex: 2 1 200px;
+}
+
+.bento-side-column {
+    flex: 1 1 150px;
 }
 
 .exchange-block-wrapper {
@@ -29,7 +29,6 @@
     border-bottom: 1px solid rgb(184, 184, 184);
     padding-bottom: 0.5em;
     margin-bottom: 1em;
-    
 }
 
 .exchange-block-wrapper-last {

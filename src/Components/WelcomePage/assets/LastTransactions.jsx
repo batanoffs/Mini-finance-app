@@ -11,7 +11,7 @@ export const LastTransactions = () => {
 
             <div className="transactions-box-wrapper">
                 <div className="transactions-profile-wrapper">
-                    <img src={person3} className="profile-image img-fluid" alt={"person"}/>
+                    <img src={person3} className="profile-image " alt={"person"}/>
 
                     <div>
                         <p>
@@ -30,7 +30,7 @@ export const LastTransactions = () => {
 
             <div className="transactions-box-wrapper">
                 <div className="transactions-profile-wrapper">
-                    <img src={person2} className="profile-image img-fluid" alt={"person"}/>
+                    <img src={person2} className="profile-image " alt={"person"}/>
 
                     <div>
                         <p>
@@ -49,7 +49,7 @@ export const LastTransactions = () => {
 
             <div className="transactions-box-wrapper">
                 <div className="transactions-profile-wrapper">
-                    <img src={person1} className="profile-image img-fluid" alt={"person"}/>
+                    <img src={person1} className="profile-image " alt={"person"}/>
 
                     <div>
                         <p><a href="transation-detail.html">Store</a></p>

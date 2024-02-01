@@ -12,7 +12,7 @@ export const ExchangeRate = () => {
 
             <div className="exchange-block-wrapper">
                 <div className="currency-wrapper">
-                    <img src={USLogo} className="exchange-image img-fluid" alt={"US logo"}/>
+                    <img src={USLogo} className="exchange-image " alt={"US logo"}/>
 
                     <div>
                         <p className={styles.currency}>USD</p>
@@ -33,7 +33,7 @@ export const ExchangeRate = () => {
 
             <div className="exchange-block-wrapper">
                 <div className="currency-wrapper">
-                    <img src={singaporeLogo} className="exchange-image img-fluid" alt={"Singapore logo"}/>
+                    <img src={singaporeLogo} className="exchange-image " alt={"Singapore logo"}/>
 
                     <div>
                         <p className={styles.currency}>SGD</p>
@@ -54,7 +54,7 @@ export const ExchangeRate = () => {
 
             <div className="exchange-block-wrapper">
                 <div className="currency-wrapper">
-                    <img src={UKLogo} className="exchange-image img-fluid" alt={"UK logo"}/>
+                    <img src={UKLogo} className="exchange-image " alt={"UK logo"}/>
 
                     <div>
                         <p className={styles.currency}>GPD</p>
@@ -75,7 +75,7 @@ export const ExchangeRate = () => {
 
             <div className="exchange-block-wrapper">
                 <div className="currency-wrapper">
-                    <img src={australiaLogo} className="exchange-image img-fluid" alt={"australia logo"}/>
+                    <img src={australiaLogo} className="exchange-image " alt={"australia logo"}/>
 
                     <div>
                         <p className={styles.currency}>AUD</p>
@@ -96,7 +96,7 @@ export const ExchangeRate = () => {
 
             <div className="exchange-block-wrapper-last">
                 <div className="currency-wrapper">
-                    <img src={europeLogo} className="exchange-image img-fluid" alt={"europe logo"}/>
+                    <img src={europeLogo} className="exchange-image " alt={"europe logo"}/>
 
                     <div>
                         <p className={styles.currency}>EUR</p>

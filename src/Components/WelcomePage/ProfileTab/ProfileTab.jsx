@@ -27,7 +27,7 @@ export const ProfileTab = () => {
                             <div className="custom-block-profile-image-wrap">
                                 <img
                                     src={picture}
-                                    className="custom-block-profile-image img-fluid"
+                                    className="custom-block-profile-image "
                                     alt=""
                                 />
 
