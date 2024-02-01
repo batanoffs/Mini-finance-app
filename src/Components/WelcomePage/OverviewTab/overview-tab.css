@@ -29,7 +29,7 @@
 }
 
 .bento-side-column {
-    flex: 1 0 150px;
+    flex: 1 0 200px;
     flex-direction: column;
     display: inline-flex;
     flex-wrap: wrap;

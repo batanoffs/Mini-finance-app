@@ -45,11 +45,10 @@ export const OverviewTab = () => {
                     <LastTransactions />
                 </div>
                 <div className="bento-fill-column">
-                    <SendMoney />
-
                     <History />
                 </div>
                 <div className="bento-side-column">
+                    <SendMoney />
                     <ContactInfo />
                 </div>
             </div>

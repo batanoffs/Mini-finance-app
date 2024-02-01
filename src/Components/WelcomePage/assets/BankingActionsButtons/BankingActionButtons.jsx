@@ -10,7 +10,7 @@ export const BankingActionButtons = () => {
     const [showReceive, setShowReceive] = useState(false);
 
     return (
-        <div className="custom-block custom-block-bottom">
+        <div className="custom-block custom-block-bottom" style={{ height: "60px"}}>
             <div className="custom-block-bottom-item">
                 <a href="#" onClick={() => setShowTopUp(true)}>
                     <i className="custom-block-icon bi-wallet"></i>

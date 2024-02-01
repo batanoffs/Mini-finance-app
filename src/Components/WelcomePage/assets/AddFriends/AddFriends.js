@@ -2,7 +2,7 @@ import "./addfriends.css";
 
 export const AddFriends = () => {
     return (
-        <div className="custom-block">
+        <div className="custom-block custom-block-contact">
             <header>
                 <h6>Добави приятел</h6>
             </header>

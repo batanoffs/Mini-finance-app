@@ -62,8 +62,8 @@
 
 .custom-block .profile-image {
     border-radius: var(--border-radius-medium);
-    width: 64px;
-    height: 64px;
+    width: 55px;
+    height: 55px;
     margin-right: 10px;
 }
 
@@ -87,11 +87,3 @@
     position: relative;
     margin-bottom: 2em;
 }
-
-.custom-block .profile-image {
-    border-radius: var(--border-radius-medium);
-    width: 64px;
-    height: 64px;
-    margin-right: 10px;
-}
-

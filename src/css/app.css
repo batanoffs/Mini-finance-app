@@ -641,11 +641,6 @@ form label {
         position: inherit;
     }
 
-    .custom-block .profile-image {
-        width: 32px;
-        height: 32px;
-    }
-
     .profile-form .profile-image {
         width: 42px;
         height: 42px;
