@@ -6,13 +6,13 @@ import "./wallet-tab.css";
 export const WalletTab = () => {
     return (
         <div className="content-container">
-            <div className="bento-main-column">
-                <TableTransactions style={{ }}/>
-            </div>
-            <div className="bento-side-column">
+            <main className="bento-main-column">
+                <TableTransactions/>
+            </main>
+            <aside className="bento-side-column" >
                 <LastTransactions />
                 <BankingActionButtons />
-            </div>
+            </aside>
         </div>
     );
 };

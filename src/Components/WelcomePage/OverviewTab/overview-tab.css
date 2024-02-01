@@ -1,25 +1,43 @@
 .content-container {
     display: flex;
-    flex-direction: column;
     width: 100dvw;
     margin: 1em;
+    gap: 0.5em;
+    height: calc(100dvh - 120px);
 }
 
 .content-container > div {
     display: flex;
-    gap: 0.3em;
+    gap: 0.5em;
+    flex: auto;
 }
 
 .bento-main-column {
-    flex: 4 1 300px;
+    flex: 4 0 300px;
+    flex-direction: column;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
 }
 
 .bento-fill-column {
-    flex: 2 1 200px;
+    flex: 2 0 200px;
+    flex-direction: column;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
 }
 
 .bento-side-column {
-    flex: 1 1 150px;
+    flex: 1 0 150px;
+    flex-direction: column;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.custom-block-contact {
+    flex: initial;
 }
 
 .exchange-block-wrapper {

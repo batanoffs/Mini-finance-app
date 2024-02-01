@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
-import Cards from 'react-credit-cards-2';
+import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { ContactInfo } from "../assets/ContactInfo";
 
@@ -16,7 +16,43 @@ export const ProfileTab = () => {
 
     return (
         <div className="content-container">
-            <div className="bento-main-column" >
+            <main className="bento-main-column">
+                <div className="custom-block custom-block-profile">
+                    <h5>Дебитна карта</h5>
+                    <div>
+                        <Cards
+                            number={creditCard.number}
+                            expiry={creditCard.expiration}
+                            cvc={creditCard.cvv}
+                            name={name}
+                        />
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Номер:</strong>
+
+                            <span>{creditCard.cardId}</span>
+                        </p>
+
+                        <p>
+                            <strong>Вид:</strong>
+
+                            <span>{creditCard.brand}</span>
+                        </p>
+
+                        <p>
+                            <strong>Създадена на:</strong>
+
+                            <span>{createdDate}</span>
+                        </p>
+
+                        <p>
+                            <strong>Валидна до:</strong>
+
+                            <span>{creditCard.expiryDate}</span>
+                        </p>
+                    </div>
+                </div>
                 <div className="custom-block custom-block-profile">
                     <div>
                         <div>
@@ -71,48 +107,11 @@ export const ProfileTab = () => {
                         </div>
                     </div>
                 </div>
+            </main>
 
-                <div className="custom-block custom-block-profile">
-                    <h5>Дебитна карта</h5>
-                    <div>
-                        <Cards
-                            number={creditCard.number}
-                            expiry={creditCard.expiration}
-                            cvc={creditCard.cvv}
-                            name={name}
-                        />
-                    </div>
-                    <div>
-                        <p>
-                            <strong>Номер:</strong>
-
-                            <span>{creditCard.cardId}</span>
-                        </p>
-
-                        <p>
-                            <strong>Вид:</strong>
-
-                            <span>{creditCard.brand}</span>
-                        </p>
-
-                        <p>
-                            <strong>Създадена на:</strong>
-
-                            <span>{createdDate}</span>
-                        </p>
-
-                        <p>
-                            <strong>Валидна до:</strong>
-
-                            <span>{creditCard.expiryDate}</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div className="bento-side-column">
+            <aside className="bento-side-column">
                 <ContactInfo />
-            </div>
+            </aside>
         </div>
     );
 };

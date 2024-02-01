@@ -16,12 +16,12 @@ export const OverviewTab = () => {
     const { name, creditCard, balance, picture, phone, email } =
         useContext(AuthContext);
     return (
-        <div className="content-container">
+        <div className="content-container" style={{ flexDirection: "column" }}>
             <div>
-                <div className="bento-main-column">
+                <main className="bento-main-column">
                     <ExchangeRate />
-                </div>
-                <div className="bento-fill-column">
+                </main>
+                <section className="bento-fill-column">
                     <Greetings name={name} />
                     <CreditCard
                         creditCard={creditCard}
@@ -29,8 +29,8 @@ export const OverviewTab = () => {
                         balance={balance}
                     />
                     <AddFriends />
-                </div>
-                <div className="bento-side-column">
+                </section>
+                <aside className="bento-side-column">
                     <ProfileDetails
                         picture={picture}
                         name={name}
@@ -38,7 +38,7 @@ export const OverviewTab = () => {
                         email={email}
                     />
                     <BankingActionButtons />
-                </div>
+                </aside>
             </div>
             <div>
                 <div className="bento-main-column">

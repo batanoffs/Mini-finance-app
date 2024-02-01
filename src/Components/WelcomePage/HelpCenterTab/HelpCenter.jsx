@@ -3,13 +3,9 @@ import { ContactInfo } from "../assets/ContactInfo";
 export const HelpCenterTab = () => {
     return (
         <div className="content-container">
-            <div className="bento-main-column">
+            <main className="bento-main-column">
                 <div className="custom-block">
-                    <form
-                        className="custom-form"
-                        action="#"
-                        method="post"
-                    >
+                    <form className="custom-form" action="#" method="post">
                         <header>
                             <h4>Как можем да ви помогнем?</h4>
                         </header>
@@ -57,11 +53,11 @@ export const HelpCenterTab = () => {
                         промените", след като сте въвели новата парола.
                     </p>
                 </div>
-            </div>
+            </main>
 
-            <div className="bento-side-column">
+            <aside className="bento-side-column">
                 <ContactInfo />
-            </div>
+            </aside>
         </div>
     );
 };
