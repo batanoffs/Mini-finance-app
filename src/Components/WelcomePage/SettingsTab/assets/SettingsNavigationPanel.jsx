@@ -1,10 +1,8 @@
 import { Tabs } from "antd";
-
-import { ProfileTab } from "../NavigationTabs/SettingsProfileTab";
-import { PasswordTab } from "../NavigationTabs/SettingsPasswordTab";
-import { NotificationTab } from "../NavigationTabs/SettingsNotificationTab";
-import { CreditCard } from "../NavigationTabs/SettingsCreditCardTab";
-import "../tab-bar.css";
+import { ProfileTab } from "./SettingsProfileTab";
+import { PasswordTab } from "./SettingsPasswordTab";
+import { NotificationTab } from "./SettingsNotificationTab";
+import { CreditCard } from "./SettingsCreditCardTab";
 
 export const SettingsNavigationPanel = () => {
     const onChange = (key) => {

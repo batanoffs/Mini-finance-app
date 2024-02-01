@@ -4,7 +4,7 @@ import person1 from "../../../images/profile/young-woman-with-round-glasses-yell
 
 import { Link } from "react-router-dom"
 
-export const Transactions = () => {
+export const LastTransactions = () => {
     return (
         <div className="custom-block custom-block-transations">
             <h5 className="mb-4">Последни транзакции</h5>

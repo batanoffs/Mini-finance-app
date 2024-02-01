@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { TopUp } from "./TopUpModal";
 import { SendMoney } from "./SendModal";
 import { ReceiveMoney } from "./ReceiveModal";
@@ -10,7 +10,7 @@ export const BankingActionButtons = () => {
     const [showReceive, setShowReceive] = useState(false);
 
     return (
-        <div className="custom-block custom-block-bottom d-flex flex-wrap pt-4 pb-3">
+        <div className="custom-block custom-block-bottom">
             <div className="custom-block-bottom-item">
                 <a href="#" onClick={() => setShowTopUp(true)}>
                     <i className="custom-block-icon bi-wallet"></i>

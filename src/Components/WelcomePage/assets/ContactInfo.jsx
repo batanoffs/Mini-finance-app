@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const Contact = () => {
+export const ContactInfo = () => {
     return (
         <div className="col-lg-5 col-12">
             <div className="custom-block custom-block-contact">

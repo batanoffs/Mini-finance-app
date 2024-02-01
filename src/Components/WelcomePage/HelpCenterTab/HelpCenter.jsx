@@ -1,4 +1,4 @@
-import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
+import { ContactInfo } from "../assets/ContactInfo";
 
 export const HelpCenterTab = () => {
     return (
@@ -60,7 +60,7 @@ export const HelpCenterTab = () => {
             </div>
 
             <div className="bento-side-column">
-                <Contact />
+                <ContactInfo />
             </div>
         </div>
     );

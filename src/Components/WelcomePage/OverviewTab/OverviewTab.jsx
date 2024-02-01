@@ -1,17 +1,17 @@
-import { CreditCard } from "../OverviewTab/CreditCard.jsx";
-import { History } from "../OverviewTab/History.jsx";
-import { ExchangeRate } from "../OverviewTab/ExchangeRate.jsx";
-import { ProfileDetails } from "../OverviewTab/ProfileDetails.jsx";
-import { BankingActionButtons } from "../OverviewTab/BankingActionButtons.jsx";
-import { Transactions } from "../OverviewTab/Transactions.jsx";
-import { SendMoney } from "../OverviewTab/SendMoney.jsx";
-import { Greetings } from "../OverviewTab/Greetings.jsx";
+import { CreditCard } from "../assets/CreditCard.jsx";
+import { History } from "../assets/History.jsx";
+import { ExchangeRate } from "../assets/ExchangeRate.jsx";
+import { ProfileDetails } from "./assets/ProfileDetails.jsx";
+import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons.jsx";
+import { LastTransactions } from "../assets/LastTransactions.jsx";
+import { SendMoney } from "../assets/SendMoney";
+import { Greetings } from "./assets/Greetings.jsx";
 import { AuthContext } from "../../../contexts/AuthContext.jsx";
-import { Contact } from "../SettingsTab/NavigationTabs/CallUs.jsx";
+import { ContactInfo } from "../assets/ContactInfo.jsx";
 import { useContext } from "react";
-import "./dashboard.css";
+import "./overview-tab.css";
 
-export const Dashboard = () => {
+export const OverviewTab = () => {
     const { name, creditCard, balance, picture, phone, email } =
         useContext(AuthContext);
     return (
@@ -43,7 +43,7 @@ export const Dashboard = () => {
             </div>
             <div style={{ display: "flex" }}>
                 <div className="bento-main-column" style={{ marginTop: "0em" }}>
-                    <Transactions />
+                    <LastTransactions />
                 </div>
                 <div className="bento-fill-column" style={{ marginTop: "0em" }}>
                     <SendMoney />
@@ -51,7 +51,7 @@ export const Dashboard = () => {
                     <History />
                 </div>
                 <div className="bento-side-column" style={{ marginTop: "0em" }}>
-                    <Contact />
+                    <ContactInfo />
                 </div>
             </div>
         </div>

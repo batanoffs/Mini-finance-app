@@ -12,7 +12,7 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                 />
 
                 <Link
-                    to="settings"
+                    to="/dashboard/settings"
                     className="bi-pencil-square custom-block-edit-icon"
                 ></Link>
             </div>

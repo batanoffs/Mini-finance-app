@@ -3,7 +3,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import Cards from 'react-credit-cards-2';
 import "react-credit-cards-2/dist/es/styles-compiled.css";
-import { Contact } from "../SettingsTab/NavigationTabs/CallUs";
+import { ContactInfo } from "../assets/ContactInfo";
 
 export const ProfileTab = () => {
     const { adress, country, name, phone, creditCard, picture, email } =
@@ -18,7 +18,7 @@ export const ProfileTab = () => {
         <div className="content-container">
             <div className="bento-main-column" >
                 <div className="custom-block custom-block-profile">
-                    <div className="row">
+                    <div>
                         <div>
                             <h5>Обща информация</h5>
                         </div>
@@ -111,7 +111,7 @@ export const ProfileTab = () => {
             </div>
             
             <div className="bento-side-column">
-                <Contact />
+                <ContactInfo />
             </div>
         </div>
     );

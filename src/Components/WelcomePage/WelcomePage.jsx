@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "./Dashboard/Dashboard";
-import { ProfileTab } from "./ProfileTab/Profile";
-import { SettingsTab } from "./SettingsTab/Settings";
+import { OverviewTab } from "./OverviewTab/OverviewTab";
+import { ProfileTab } from "./ProfileTab/ProfileTab";
+import { SettingsTab } from "./SettingsTab/SettingsTab";
 import { HelpCenterTab } from "./HelpCenterTab/HelpCenter";
-import { MyWalletTab } from "./MyWalletTab/Wallet";
+import { WalletTab } from "./WalletTab/WalletTab";
 import { Upgrade } from "./Upgrade/Upgrade";
 import { Sidebar } from "./Sidebar/Sidebar";
 
@@ -13,8 +13,8 @@ export const WelcomePage = () => {
         <div className="main-wrapper">
             <Sidebar />
             <Routes>
-                <Route path="/overview" element={<Dashboard />} />
-                <Route path="/wallet" element={<MyWalletTab />} />
+                <Route path="/overview" element={<OverviewTab />} />
+                <Route path="/wallet" element={<WalletTab />} />
                 <Route path="/profile" element={<ProfileTab />} />
                 <Route path="/settings/*" element={<SettingsTab />} />
                 <Route path="/help-center" element={<HelpCenterTab />} />

@@ -1,5 +1,6 @@
-import { Contact } from "./NavigationTabs/CallUs";
-import { SettingsNavigationPanel } from "./NavigationPanel/SettingsNavigationPanel";
+import { ContactInfo } from "../assets/ContactInfo";
+import { SettingsNavigationPanel } from "./assets/SettingsNavigationPanel";
+import "./settings-tab.css";
 
 export const SettingsTab = () => {
     return (
@@ -40,7 +41,7 @@ export const SettingsTab = () => {
                 </div>
             </div>
             <div className="bento-side-column">
-                <Contact />
+                <ContactInfo />
             </div>
         </div>
     );
