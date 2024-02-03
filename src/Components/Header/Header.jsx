@@ -21,7 +21,7 @@ export const Header = () => {
                     <img src={logo} alt="logo" className="logo" />
                 </Link>
             </div>
-            {!isAuthenticated && (
+            {!isAuthenticated() && (
                 <div className="header-buttons">
                     <Link
                         to="/login"

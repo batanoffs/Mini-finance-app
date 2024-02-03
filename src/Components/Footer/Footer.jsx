@@ -5,7 +5,7 @@ export const Footer = () => {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <>
-        {!isAuthenticated && (
+        {!isAuthenticated() && (
             <footer className="site-footer">
                     <div className="footer-container">
                         <p className="copyright-text" style= {{ paddingBottom: "0em"}}>
