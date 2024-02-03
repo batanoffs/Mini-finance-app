@@ -1,7 +1,12 @@
 import "./footer.css";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 export const Footer = () => {
+    const { isAuthenticated } = useContext(AuthContext);
     return (
-        <footer className="site-footer">
+        <>
+        {!isAuthenticated && (
+            <footer className="site-footer">
                     <div className="footer-container">
                         <p className="copyright-text" style= {{ paddingBottom: "0em"}}>
                             Всички права запазени © Mini Finance Innovations 2030. Дизайн от - {" "}
@@ -19,5 +24,7 @@ export const Footer = () => {
                         </p>
                     </div>
         </footer>
+        )}
+       </> 
     );
 };

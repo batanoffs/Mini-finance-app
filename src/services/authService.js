@@ -25,6 +25,3 @@ export const authService = {
     register,
     logout,
 }
-
-
-// finance banking website design bento grid ux ui colours: #1678fb,#41a6d1,#a60067,#DC602E,#44464c,#ccdde2ff

@@ -110,7 +110,7 @@ export const Sidebar = () => {
                         </NavLink>
                     </li>
 
-                    <li className="nav-item" style={{ position: "absolute", bottom: `3em` }}>
+                    <li className="nav-item" style={{ position: "absolute", bottom: `1em` }}>
                         <NavLink
                             className="nav-link"
                             onClick={onLogoutHandler}

@@ -9,6 +9,7 @@ const endpoints = {
 export const filePathURL = (path, fileName) => `https://eu.backendlessappcontent.com/7E8BB132-A50E-1B4C-FFFA-B07295175E00/CB78EA12-92CA-45CA-89DE-A8109442A370/files/${path}/${fileName}`;
 const uploadURL = (path, fileName, overwrite) => `https://lavishpart.backendless.app/api/files/${path}/${fileName}?overwrite=${overwrite}`;
 
+// GET USER PROFILE PICTURE
 export const uploadProfilePicture = async (fileName, token) => {
     const response = await fetch(uploadURL("userData/profile/picture", fileName, false), {
         method: "POST",

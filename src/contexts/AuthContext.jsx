@@ -86,9 +86,7 @@ export const AuthProvider = ({ children }) => {
         token: auth["user-token"],
         email: auth.email || "Липсва информация",
         userStatus: auth.userStatus,
-        isAuthenticated() {
-            return !!auth["user-token"];
-        },
+        isAuthenticated: () =>!!auth["user-token"],
         name: auth.fullName || "потребител",
         phone: auth.phoneNumber || "номер",
         country: auth.country,
