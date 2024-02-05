@@ -1,6 +1,6 @@
 .modal-background {
     width: calc(100% - 320px);
-    height: calc(100% - 85px);
+    height: calc(100% - 44px);
     background: rgba(0, 0, 0, 0.5);
 
     position: fixed;
@@ -30,15 +30,20 @@
     margin-top: 10px;
 }
 
-.close-button {
+.modal-header {
     display: flex;
     justify-content: flex-end;
 }
+.modal-header h5 {
+    flex: auto;
+}
 
-.close-button button {
-    background-color: transparent;
+.modal-header button {
+    background-color: var(--secondary-color);
     border: none;
-    font-size: 25px;
+    font-size: 20px;
+    margin: 0;
+    padding: 0em 0.5em;
     cursor: pointer;
 }
 
@@ -63,7 +68,7 @@
     height: 45px;
     margin: 10px;
     border: none;
-    background-color: cornflowerblue;
+    background-color: var(--custom-btn-bg-color);
     color: white;
     border-radius: 8px;
     font-size: 20px;

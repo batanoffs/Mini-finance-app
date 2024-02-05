@@ -4,12 +4,9 @@ export const ReceiveMoney = ({ setShowReceive }) => {
     return (
         <div className="modal-background">
             <div className="modal-container">
-                <div className="close-button">
-                    <button onClick={() => setShowReceive(false)}> x</button>{" "}
-                </div>
-
-                <div className="modal-title">
+                <div className="modal-header">
                     <h5 className="modal-title">Получаване на пари</h5>
+                    <button onClick={() => setShowReceive(false)}> x</button>
                 </div>
                 <div className="modal-body">
                     <form>

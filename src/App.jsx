@@ -18,6 +18,7 @@ function App() {
                         path="*"
                         element={
                             <Result
+                                style={{ alignSelf: "center", margin: "0 auto" }}
                                 status="404"
                                 title="Грешка 404, не е намерена страница."
                                 subTitle="Страницата, която търсите не съществува."

@@ -4,12 +4,9 @@ export const SendMoney = ({ setShowSend }) => {
     return (
         <div className="modal-background">
             <div className="modal-container">
-                <div className="close-button">
-                    <button onClick={() => setShowSend(false)}> x</button>{" "}
-                </div>
-
-                <div className="modal-title">
+                <div className="modal-header">
                     <h5 className="modal-title">Изпращане на пари</h5>
+                    <button onClick={() => setShowSend(false)}> x</button>{" "}
                 </div>
                 <div className="modal-body">
                     <form>
