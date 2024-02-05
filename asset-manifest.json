@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/mini-finance/static/css/main.4fded77b.css",
-    "main.js": "/mini-finance/static/js/main.9e42a957.js",
-    "static/media/florid-web-wallet-and-online-banking.gif": "/mini-finance/static/media/florid-web-wallet-and-online-banking.ec0211b24d217ddf22cc.gif",
+    "main.css": "/mini-finance/static/css/main.463a3a2f.css",
+    "main.js": "/mini-finance/static/js/main.31fb2df5.js",
+    "static/media/website-dashboard.png": "/mini-finance/static/media/website-dashboard.20741267b58a5d87342b.png",
     "static/media/Montserrat-BoldItalic.woff": "/mini-finance/static/media/Montserrat-BoldItalic.bf331673b91821715c08.woff",
     "static/media/Montserrat-BlackItalic.woff": "/mini-finance/static/media/Montserrat-BlackItalic.fbf405b6c45f55a09aec.woff",
     "static/media/Montserrat-ExtraBoldItalic.woff": "/mini-finance/static/media/Montserrat-ExtraBoldItalic.1357e84ca56356a41d5c.woff",
@@ -80,13 +80,12 @@
     "static/media/young-woman-with-round-glasses-yellow-sweater.jpg": "/mini-finance/static/media/young-woman-with-round-glasses-yellow-sweater.687425cbb55678f93009.jpg",
     "static/media/money-transfer-isometric-60529.svg": "/mini-finance/static/media/money-transfer-isometric-60529.993edda0959229d2ac794eae7a2f1f7a.svg",
     "static/media/senior-man-white-sweater-eyeglasses.jpg": "/mini-finance/static/media/senior-man-white-sweater-eyeglasses.1e4cfdb0dee2bb651735.jpg",
-    "static/media/logoa.svg": "/mini-finance/static/media/logoa.0c69b3a087ce46f4647ac66fb568e33e.svg",
     "index.html": "/mini-finance/index.html",
-    "main.4fded77b.css.map": "/mini-finance/static/css/main.4fded77b.css.map",
-    "main.9e42a957.js.map": "/mini-finance/static/js/main.9e42a957.js.map"
+    "main.463a3a2f.css.map": "/mini-finance/static/css/main.463a3a2f.css.map",
+    "main.31fb2df5.js.map": "/mini-finance/static/js/main.31fb2df5.js.map"
   },
   "entrypoints": [
-    "static/css/main.4fded77b.css",
-    "static/js/main.9e42a957.js"
+    "static/css/main.463a3a2f.css",
+    "static/js/main.31fb2df5.js"
   ]
 }
