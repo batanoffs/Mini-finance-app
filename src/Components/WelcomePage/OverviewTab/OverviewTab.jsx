@@ -1,4 +1,4 @@
-import { CreditCard } from "../assets/CreditCard.jsx";
+import { VirtualCard } from "../assets/VirtualCard.jsx";
 import { History } from "../assets/History.jsx";
 import { ExchangeRate } from "../assets/ExchangeRate.jsx";
 import { ProfileDetails } from "./assets/profileDetails/ProfileDetails.jsx";
@@ -13,7 +13,7 @@ import { useContext } from "react";
 import "./overview-tab.css";
 
 export const OverviewTab = () => {
-    const { name, creditCard, balance, picture, phone, email } =
+    const { name, virtualcard, balance, picture, phone, email } =
         useContext(AuthContext);
     return (
         <div className="content-container" style={{ flexDirection: "column" }}>
@@ -23,8 +23,8 @@ export const OverviewTab = () => {
                 </main>
                 <section className="bento-fill-column">
                     <Greetings name={name} />
-                    <CreditCard
-                        creditCard={creditCard}
+                    <VirtualCard
+                        virtualcard={virtualcard}
                         name={name}
                         balance={balance}
                     />

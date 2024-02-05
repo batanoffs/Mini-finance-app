@@ -73,16 +73,6 @@ export const Register = () => {
                         />
                     }
                 />
-                {/* <Route
-                    path="/creditcard"
-                    element={
-                        <CardForm
-                            creditCard={values.creditCard}
-                            currentStepsHandler={currentStepsHandler}
-                            changeHandler={changeHandler}
-                        />
-                    }
-                /> */}
                 <Route
                     path="/identity"
                     element={
@@ -120,29 +110,3 @@ export const Register = () => {
         </div>
     );
 };
-
-// const {
-//     values,
-//     changeHandler,
-//     onSubmitLogin,
-//     resetFormHandler,
-//     onSubmitRegister,
-// } = useForm(
-//     {
-//         email: "",
-//         password: "",
-//         confirmPassword: "",
-//     },
-//     onLoginSubmitHandler,
-//     onRegisterSubmitHandler
-// );
-
-// const onFormChange = (e) => {
-//     if (!checked) {
-//         setChecked(true);
-//         resetFormHandler(e);
-//     } else {
-//         setChecked(false);
-//         resetFormHandler(e);
-//     }
-// };

@@ -6,9 +6,9 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { ContactInfo } from "../assets/ContactInfo";
 
 export const ProfileTab = () => {
-    const { adress, country, name, phone, creditCard, picture, email } =
+    const { adress, country, name, phone, virtualcard, picture, email } =
         useContext(AuthContext);
-    const date = new Date(creditCard.created);
+    const date = new Date(virtualcard.created);
     const month = date.getMonth();
     const year = date.getFullYear();
     const day = date.getDate();
@@ -21,9 +21,9 @@ export const ProfileTab = () => {
                     <h5>Дебитна карта</h5>
                     <div>
                         <Cards
-                            number={creditCard.number}
-                            expiry={creditCard.expiration}
-                            cvc={creditCard.cvv}
+                            number={virtualcard.number}
+                            expiry={virtualcard.expiration}
+                            cvc={virtualcard.cvv}
                             name={name}
                         />
                     </div>
@@ -31,13 +31,13 @@ export const ProfileTab = () => {
                         <p>
                             <strong>Номер:</strong>
 
-                            <span>{creditCard.cardId}</span>
+                            <span>{virtualcard.cardId}</span>
                         </p>
 
                         <p>
                             <strong>Вид:</strong>
 
-                            <span>{creditCard.brand}</span>
+                            <span>{virtualcard.brand}</span>
                         </p>
 
                         <p>
@@ -49,7 +49,7 @@ export const ProfileTab = () => {
                         <p>
                             <strong>Валидна до:</strong>
 
-                            <span>{creditCard.expiryDate}</span>
+                            <span>{virtualcard.expiryDate}</span>
                         </p>
                     </div>
                 </div>

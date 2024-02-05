@@ -20,6 +20,8 @@ const register = async (registerData) => {
     return await request.post(`${baseURL}${endpoints.register}`, registerData)
 }
 
+
+
 export const authService = {
     login,
     register,

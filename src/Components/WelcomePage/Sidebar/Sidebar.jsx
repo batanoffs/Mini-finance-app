@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 
-import creditCard from "../../../images/credit-card.png";
+import card from "../../../images/credit-card.png";
 import "./Sidebar.module.css";
 
 export const Sidebar = () => {
@@ -100,7 +100,7 @@ export const Sidebar = () => {
 
                     <li className="nav-item featured-box">
                         <img
-                            src={creditCard}
+                            src={card}
                             className=""
                             alt="credit card"
                         />

@@ -4,13 +4,13 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
 
-export const CreditCard = () => {
-    const { name, creditCard } = useContext(AuthContext);
+export const VirtualCard = () => {
+    const { name, virtualcard } = useContext(AuthContext);
     const [state, setState] = useState({
         name: name,
-        cardNumber: creditCard.number,
-        expiryDate: creditCard.expiration,
-        cvc: creditCard.cvv,
+        cardNumber: virtualcard.number,
+        expiryDate: virtualcard.expiration,
+        cvc: virtualcard.cvv,
         focus: "",
     });
 

@@ -12,8 +12,8 @@ export const useForm = (initialState, onLogin, onRegister) => {
             if (e === undefined && photoInfo) {
                 newState["identity"] = photoInfo;
             } else if (e.target.name && e.target.value) {
-                if (newState.creditCard) {
-                    // newState.creditCard[e.target.name] = e.target.value;
+                if (newState.virtualcard) {
+                    // newState.virtualcard[e.target.name] = e.target.value;
                     if (
                         e.target.name !== "balance" &&
                         e.target.name !== "issuer" &&

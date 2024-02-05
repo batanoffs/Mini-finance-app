@@ -1,6 +1,15 @@
 /*---------------------------------------
   HEADER PAGE              
 -----------------------------------------*/
+.header-container {
+    flex: 0 0 50px;
+    display: flex;
+    background-color: var(--heading-color);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header-buttons {
     display: flex;
     flex-direction: row;
@@ -16,8 +25,8 @@
 }
 .button-login {
     color: #ccdde2ff;
-    font-size: 0.9em;
-    font-weight: 600;
+    font-size: 1em;
+    font-weight: 500;
     cursor: pointer;
     transition: 0.4s;
     margin-bottom: 0em;
@@ -40,10 +49,10 @@
 .button-register {
     background: var(--primary-color);
     color: white;
-    font-size: 0.9em;
+    font-size: 1em;
     padding: 3px 10px;
     border: 1px solid transparent;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: 0.2s;
     /* margin-bottom: 0em; */
@@ -65,11 +74,4 @@
     align-items: center;
 }
 
-.header-container {
-    flex: 0 0 40px;
-    display: flex;
-    background-color: var(--heading-color);
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
+

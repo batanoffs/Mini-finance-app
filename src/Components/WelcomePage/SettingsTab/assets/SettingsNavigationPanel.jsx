@@ -2,7 +2,7 @@ import { Tabs } from "antd";
 import { ProfileTab } from "./SettingsProfileTab";
 import { PasswordTab } from "./SettingsPasswordTab";
 import { NotificationTab } from "./SettingsNotificationTab";
-import { CreditCard } from "./SettingsCreditCardTab";
+import { VirtualCard } from "./SettingsVirtualCardTab";
 
 export const SettingsNavigationPanel = () => {
     const onChange = (key) => {
@@ -26,7 +26,7 @@ export const SettingsNavigationPanel = () => {
         {
             key: "4",
             label: "Карта",
-            children: <CreditCard />,
+            children: <VirtualCard />,
         },
     ];
     return (

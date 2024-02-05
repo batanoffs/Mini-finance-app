@@ -8,7 +8,7 @@ import "./home.css";
 export const Home = () => {
     return (
         //  ref={myRef}
-        <div class="home-container">
+        <div className="home-container">
             <div className="text-container">
                 <div className="first-title-container">
                     {/* <h2 style={{ paddingBottom: "10px" }}>Добре дошли,</h2> */}
@@ -21,7 +21,7 @@ export const Home = () => {
                             достъпна за всеки един от вас.
                         </p>
                     </div>
-                    <div class="button-container">
+                    <div className="button-container">
                         <Link to="/about"
                             className="button-secondary"
                             style={{ backgroundColor: "transparent" }}
@@ -57,11 +57,11 @@ export const Home = () => {
                             />
                         </pattern>
                     </defs>
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
                         id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                         <g

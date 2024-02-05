@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { authService } from "../services/authService";
 import { cardService } from "../services/cardService";
 import { useSessionStorage } from "../hooks/useSessionStorage";
+import { dataService } from "../services/userDataService";
 
 export const AuthContext = createContext();
 
@@ -24,26 +25,25 @@ export const AuthProvider = ({ children }) => {
         }
         try {
             loginData = await authService.login(data);
+            
             const token = loginData["user-token"];
+            const ownerId = loginData["ownerId"];
             // Store the token in session storage
             sessionStorage.setItem("token", token);
+            const userDataResponse = await dataService.getUserData(ownerId)
+            const card = userDataResponse[0].virtualcard[0];
+            userDataResponse[0]["virtualcard"] = card;
+            userDataResponse[0]["email"] = loginData.email;
+            console.log(`userData response:`);
+            console.table(userDataResponse);
+            setAuth(userDataResponse[0]);
+            
             navigate("/dashboard/overview");
-            generateVirtualCard(loginData.cardId);
         } catch (error) {
             setLoginError(true);
         }
     };
-
-    // ACTIVATE USER CARD IN DASHBOARD AFTER LOGIN
-    const generateVirtualCard = async (id) => {
-        try {
-            const response = await cardService.generateCard(id);
-            loginData["creditCard"] = response;
-            setAuth(loginData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    
     const onRegisterSubmitHandler = async (formData) => {
         if (
             !formData.email &&
@@ -54,17 +54,49 @@ export const AuthProvider = ({ children }) => {
             !formData.gender &&
             !formData.country &&
             !formData.phoneNumber &&
-            !formData.creditCard &&
+            !formData.virtualcard &&
             !formData.identity &&
             !formData.adress &&
-            !formData.town
+            !formData.town &&
+            !formData.cardId
         ) {
             return;
         }
+
+        const registerData = {
+            email: formData.email,
+            password: formData.password,
+        }
         try {
-            const response = await authService.register({ ...formData });
+            const response = await authService.register({ ...registerData });
+            console.log(`Register response:`);
+            console.table(response);
+            const ownerId = response["ownerId"];
             setAuth(response);
 
+            // SET USER DATA
+            const regUserData = {
+                adress: formData.adress,
+                cardId: formData.cardId,
+                country: formData.country,
+                gender: formData.gender,
+                name: formData.firstName + " " + formData.lastName,
+                phone: formData.phoneNumber,
+                town: formData.town,
+                ownerId: ownerId,
+            }
+            const setUserDataResponse = await dataService.setUserData(regUserData);
+            const userDataObjectId = setUserDataResponse.objectId
+            console.log(`Set user data response:`);
+            console.table(setUserDataResponse);
+
+            const getCard = await cardService.generateCard(formData.cardId);
+            console.log(`Generated Card response:`);
+            console.table(getCard);
+            const cardObjectId = getCard.objectId
+            const cardResponse = await cardService.setVirtualCardRelation(userDataObjectId, [cardObjectId]);
+            console.log(`Set relation Card response:`);
+            console.table(cardResponse);
             window.alert("Successfully registered!");
         } catch (error) {
             console.log(error);
@@ -86,11 +118,11 @@ export const AuthProvider = ({ children }) => {
         token: auth["user-token"],
         email: auth.email || "Липсва информация",
         userStatus: auth.userStatus,
-        isAuthenticated: () =>!!auth["user-token"],
+        isAuthenticated: () => sessionStorage.getItem("token"),
         name: auth.fullName || "потребител",
         phone: auth.phoneNumber || "номер",
         country: auth.country,
-        creditCard: auth.creditCard || {
+        virtualcard: auth.virtualcard || {
             number: `0000 0000 0000 0000`,
             expiration: "00/00",
             cvv: `000`,
@@ -100,19 +132,6 @@ export const AuthProvider = ({ children }) => {
             objectId: `Липсва информация`,
             created: `информация`,
         },
-
-        // {
-        //     number: auth.creditCard.number || `0000 0000 0000 0000`,
-        //     expiration: auth.creditCard.expiration || "00/00",
-        //     cvv: auth.creditCard.cvv || `000`,
-        //     cardHolder: auth.fullName || `Липсва информация`,
-        //     balance: auth.creditCard.balance || Number(`00000000`),
-        //     issuer: auth.creditCard.issuer || 0,
-        //     brand: auth.creditCard.brand || `Липсва информация`,
-        //     objectId: auth.creditCard.objectId || `Липсва информация`,
-        //     created: auth.created || `Липсва информация`,
-        // }
-
         picture:
             auth.profilePicture ||
             "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
@@ -120,44 +139,6 @@ export const AuthProvider = ({ children }) => {
         friends: auth.friends || [],
         adress: auth.adress || "Липсва информация",
     };
-
-    // const userContext = {
-    //     name: userData.fullName || "потребител",
-    //     phone: userData.phoneNumber || "номер",
-    //     balance: userData.accountBalance || 0,
-    //     country: userData.country,
-    //     creditCard: cardData
-    //         ? {
-    //               cardNumber: cardData.number,
-    //               expiryDate: cardData.expiration,
-    //               cvv: cardData.cvv,
-    //               cardHolder: cardData.number,
-    //               balance: cardData.balance,
-    //               issuer: cardData.issuer,
-    //               brand: cardData.brand,
-    //               cardId: cardData.objectId,
-    //               created: userData.created,
-    //           }
-    //         : {
-    //               cardNumber: `0000 0000 0000 0000`,
-    //               expiryDate: "00/00",
-    //               cvv: `000`,
-    //               cardHolder: `Липсва информация`,
-    //               created: Number(`00000000`),
-    //               balance: 0,
-    //               issuer: `Липсва информация`,
-    //               brand: `Липсва информация`,
-    //               cardId: `Липсва информация`,
-    //           },
-    //           picture:
-    //         userData.profilePicture ||
-    //         "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
-    //     userId: userData.ownerId || "Липсва информация",
-    //     transactions: userData.transactions || [],
-    //     friends: userData.friends || [],
-    //     email: userData.email || "Липсва информация",
-    //     adress: userData.adress || "Липсва информация",
-    // };
 
     return (
         <>

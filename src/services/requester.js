@@ -12,6 +12,17 @@ const request = async (method, url, data, token = undefined) => {
         }
     }
 
+    if (method === "PUT") {
+        options.method = method;
+        if (data) {
+            options.headers = {
+                "Content-Type": "application/json",
+            };
+
+            options.body = JSON.stringify(data);
+        }
+    }
+
     if (method === "GET") {
         options.method = method;
 
