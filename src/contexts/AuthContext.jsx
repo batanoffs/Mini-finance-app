@@ -34,8 +34,6 @@ export const AuthProvider = ({ children }) => {
             const card = userDataResponse[0].virtualcard[0];
             userDataResponse[0]["virtualcard"] = card;
             userDataResponse[0]["email"] = loginData.email;
-            console.log(`userData response:`);
-            console.table(userDataResponse);
             setAuth(userDataResponse[0]);
             
             navigate("/dashboard/overview");
@@ -43,7 +41,7 @@ export const AuthProvider = ({ children }) => {
             setLoginError(true);
         }
     };
-    
+
     const onRegisterSubmitHandler = async (formData) => {
         if (
             !formData.email &&
@@ -69,8 +67,6 @@ export const AuthProvider = ({ children }) => {
         }
         try {
             const response = await authService.register({ ...registerData });
-            console.log(`Register response:`);
-            console.table(response);
             const ownerId = response["ownerId"];
             setAuth(response);
 
@@ -87,16 +83,10 @@ export const AuthProvider = ({ children }) => {
             }
             const setUserDataResponse = await dataService.setUserData(regUserData);
             const userDataObjectId = setUserDataResponse.objectId
-            console.log(`Set user data response:`);
-            console.table(setUserDataResponse);
 
             const getCard = await cardService.generateCard(formData.cardId);
-            console.log(`Generated Card response:`);
-            console.table(getCard);
             const cardObjectId = getCard.objectId
-            const cardResponse = await cardService.setVirtualCardRelation(userDataObjectId, [cardObjectId]);
-            console.log(`Set relation Card response:`);
-            console.table(cardResponse);
+            await cardService.setVirtualCardRelation(userDataObjectId, [cardObjectId]);
             window.alert("Successfully registered!");
         } catch (error) {
             console.log(error);
