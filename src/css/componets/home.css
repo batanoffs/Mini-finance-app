@@ -6,33 +6,39 @@
     ); /* Lighter blue gradient */
     width: 100dvw;
     height: 100dvh - 25px;
+    padding: 0 1em;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
 }
 
 .text-container {
     /* aling items in the center of page */
-    flex: 1;
+
+    flex: 0 0 max(35%);
     display: flex;
+    height: 500px;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.first-title-container {
-    margin: 13rem 5em 0em 6em;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 1em;
-    align-items: start;
-}
-.button-container{
-    display: flex;
-    gap: 1em;
-}
-.second-title-container {
-    margin-right: 5em;
-}
 .image-container {
-    align-self: center;
-    width: 42dvw;
-    margin-right: 5em;
+    flex: 0 0 55%;
+    height: fit-content;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-container {
+    width: 100%;
+    margin-bottom: 10em;
+    display: flex;
+    justify-content: stretch;
+    gap: 2em;
 }

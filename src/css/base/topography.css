@@ -23,17 +23,17 @@
     --logo--text-color: #5c5959;
 
     --body-font-family: "Montserrat Alternates", sans-serif;
-    --label-font-size: 14px;
-    --menu-font-size: 16px;
+    --label-font-size: 1em;
+    --menu-font-size: 1.1em;
     --menu-font-weight: 400;
-    --btn-font-size: 14px;
-    --card-title-font-size: 18px;
-    --copyright-font-size: 12px;
+    --btn-font-size: 1.2em;
+    --card-title-font-size: 1.2em;
+    --copyright-font-size: 1em;
 
-    --border-radius-large: 100px;
-    --border-radius-component: 14px;
-    --border-radius-medium: 16px;
-    --border-radius-small: 10px;
+    --border-radius-large: 20em;
+    --border-radius-component: 1em;
+    --border-radius-medium: 1.1em;
+    --border-radius-small: 0.8em;
 
     --font-weight-light: 400;
     --font-weight-normal: 500;
@@ -45,7 +45,7 @@
 -----------------------------------------*/
 
 html {
-    font: 12px/1.5 var(--body-font-family);
+    font: 14px/1.5 var(--body-font-family);
 }
 
 @media (min-width: 600px) {
@@ -92,7 +92,7 @@ li {
 
 p {
     color: var(--p-color);
-    font-size: var(--p-font-size);
+    font-size: 1.4em;
     font-weight: var(--font-weight-light);
 }
 
@@ -105,7 +105,6 @@ ul li {
 a,button {
     touch-action: manipulation;
     transition: all 0.3s;
-    font-family: var(--body-font-family);
 }
 
 label {

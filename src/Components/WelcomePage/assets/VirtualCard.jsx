@@ -14,7 +14,7 @@ export const VirtualCard = () => {
 
     return (
         <div className="custom-block custom-block-balance">
-            <h5>Наличност</h5>
+            <h3>Наличност</h3>
 
             <h4 className="mt-2 mb-3">{virtualcard.balance}</h4>
 
@@ -30,12 +30,12 @@ export const VirtualCard = () => {
                 style={{ display: "flex", justifyContent: "space-between" }}
             >
                 <div>
-                    <h6>Валидна до</h6>
+                    <h5>Валидна до</h5>
                     <small>{virtualcard.expiration}</small>
                 </div>
 
                 <div className="ms-auto">
-                    <h6>Картодържател</h6>
+                    <h5>Картодържател</h5>
                     <small>{name}</small>
                 </div>
             </div>

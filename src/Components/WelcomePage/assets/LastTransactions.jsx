@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 export const LastTransactions = () => {
     return (
         <div className="custom-block custom-block-transations">
-            <h5 className="mb-4">Последни транзакции</h5>
+            <h3 className="mb-4">Последни транзакции</h3>
 
             <div className="transactions-box-wrapper">
                 <div className="transactions-profile-wrapper">

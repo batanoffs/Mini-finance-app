@@ -11,21 +11,16 @@ export const BankingActionButtons = () => {
 
     return (
         <div className="custom-block custom-block-bottom" style={{ height: "60px"}}>
+            
+                
             <div className="custom-block-bottom-item">
+                
                 <a href="#" onClick={() => setShowTopUp(true)}>
                     <i className="custom-block-icon bi-wallet"></i>
 
                     <small>захрани</small>
                 </a>
             </div>
-
-            {/* <div className="custom-block-bottom-item">
-                <a href="#" onClick={() => setShowScan(true)}>
-                    <i className="custom-block-icon bi-upc-scan"></i>
-
-                    <small>сканирай</small>
-                </a>
-            </div> */}
 
             <div className="custom-block-bottom-item">
                 <a href="#" onClick={() => setShowSend(true)}>

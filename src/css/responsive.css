@@ -1,5 +1,24 @@
 @media (max-width: 600px) {
+    .home-container {
+        display: inline-flex;
+        flex-direction: column;
+    }
+    .text-container {
+        height: 200px;
+        flex: auto;
+        margin: 2em;
+    }
+    .image-container {
+        width: 100%;
+    }
     
+    .title-container h1 {
+        font-size: 2em;
+    }
+    
+    .button-container {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 480px) {

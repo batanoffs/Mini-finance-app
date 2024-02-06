@@ -6,28 +6,25 @@ export const Home = () => {
         //  ref={myRef}
         <div className="home-container">
             <div className="text-container">
-                <div className="first-title-container">
+                <div className="title-container">
                     {/* <h2 style={{ paddingBottom: "10px" }}>Добре дошли,</h2> */}
-                    <h2>
-                        Отворете банков акаунт и вземете вашата карта
-                    </h2>
-                    <div className="second-title-container">
-                        <p>
-                            Създадохме тази платформа безплатна, за да бъде
-                            достъпна за всеки един от вас.
-                        </p>
-                    </div>
-                    <div className="button-container">
-                        <Link to="/about"
-                            className="button-secondary"
-                            style={{ backgroundColor: "transparent" }}
-                        >
-                            Научи повече
-                        </Link>
-                        <Link to="/register" className="button-primary">
-                            Вземи своята карта
-                        </Link>
-                    </div>
+                    <h1>Отворете банков акаунт и вземете вашата карта</h1>
+                    <p>
+                        Създадохме тази платформа безплатна, за да бъде достъпна
+                        за всеки един от вас.
+                    </p>
+                </div>
+                <div className="button-container">
+                    <Link
+                        to="/about"
+                        className="button-secondary"
+                        style={{ backgroundColor: "transparent" }}
+                    >
+                        Научи повече
+                    </Link>
+                    <Link to="/register" className="button-primary">
+                        Вземи своята карта
+                    </Link>
                 </div>
             </div>
             <div className="image-container">
