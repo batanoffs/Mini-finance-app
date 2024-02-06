@@ -1,9 +1,5 @@
-// import React, { useState, useEffect, useRef } from "react";
-// import Globe from "vanta/dist/vanta.globe.min";
-// import pic from "../../images/svg/florid-web-wallet-and-online-banking.gif";
 import preview from "../../images/website-dashboard.png";
 import { Link } from "react-router-dom";
-import "./home.css";
 
 export const Home = () => {
     return (

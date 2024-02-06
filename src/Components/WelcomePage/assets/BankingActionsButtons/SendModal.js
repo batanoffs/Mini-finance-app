@@ -1,5 +1,3 @@
-import "./modal.css"
-
 export const SendMoney = ({ setShowSend }) => {
     return (
         <div className="modal-background">

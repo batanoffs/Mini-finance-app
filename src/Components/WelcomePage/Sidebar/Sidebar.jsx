@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-
 import card from "../../../images/credit-card.png";
-import "./Sidebar.module.css";
 
 export const Sidebar = () => {
     const { onLogoutHandler } = useContext(AuthContext);

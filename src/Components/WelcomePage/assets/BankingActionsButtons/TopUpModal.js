@@ -1,5 +1,3 @@
-import "./modal.css"
-
 export const TopUp = ({ setShowTopUp }) => {
     return (
         <div className="modal-background">

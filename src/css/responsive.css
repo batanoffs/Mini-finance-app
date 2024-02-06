@@ -1,3 +1,52 @@
 @media (max-width: 600px) {
     
 }
+
+@media screen and (max-width: 480px) {
+
+    .dropdown,
+    .dropdown-center,
+    .dropend,
+    .dropstart,
+    .dropup,
+    .dropup-center {
+        position: inherit;
+    }
+
+    .profile-form .profile-image {
+        width: 42px;
+        height: 42px;
+    }
+
+    .custom-block-bottom-item {
+        flex: 35%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .nav-tabs {
+        margin-bottom: 25px;
+    }
+
+    .nav-tabs .nav-link {
+        padding: 10px;
+    }
+
+    .nav-tabs .nav-link,
+    .custom-block-exchange h6 {
+        font-size: var(--btn-font-size);
+    }
+
+    .exchange-image {
+        width: 42px;
+    }
+
+    .profile-rounded {
+        width: 32px;
+        height: 23px;
+    }
+
+    .profile-rounded-icon {
+        font-size: var(--h6-font-size);
+    }
+}

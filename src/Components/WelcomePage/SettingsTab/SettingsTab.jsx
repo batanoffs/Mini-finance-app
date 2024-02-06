@@ -1,6 +1,5 @@
 import { ContactInfo } from "../assets/ContactInfo";
 import { SettingsNavigationPanel } from "./assets/SettingsNavigationPanel";
-import "./settings-tab.css";
 
 export const SettingsTab = () => {
     return (

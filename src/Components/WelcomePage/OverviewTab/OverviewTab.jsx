@@ -10,7 +10,6 @@ import { AuthContext } from "../../../contexts/AuthContext.jsx";
 import { ContactInfo } from "../assets/ContactInfo.jsx";
 import { AddFriends } from "../assets/AddFriends/AddFriends.js";
 import { useContext } from "react";
-import "./overview-tab.css";
 
 export const OverviewTab = () => {
     const { name, virtualcard, balance, picture, phone, email } =

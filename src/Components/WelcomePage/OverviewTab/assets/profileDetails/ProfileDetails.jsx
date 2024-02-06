@@ -1,6 +1,5 @@
 // import profilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
 import { Link } from "react-router-dom";
-import "./profileDetails.css";
 export const ProfileDetails = ({ email, phone, name, picture }) => {
     return (
         <div className="custom-block custom-block-profile-front custom-block-profile">

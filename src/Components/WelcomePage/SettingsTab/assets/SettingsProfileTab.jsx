@@ -4,7 +4,6 @@ import { Button, message, Upload } from "antd";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
-// import '../tab-bar.css'
 
 export const ProfileTab = () => {
 

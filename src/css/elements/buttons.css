@@ -1,0 +1,77 @@
+/*---------------------------------------
+  CUSTOM BUTTONS      
+-----------------------------------------*/
+
+.button-primary {
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1em;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 0em;
+    margin-top: 0em;
+    height: 2.2em;
+    width: auto;
+    border-radius: var(--border-radius-small);
+}
+
+.button-primary:hover {
+    background: var(--primary-hover-color);
+    color: var(--white-color);
+}
+
+.button-secondary {
+    color: var(--logo--text-color);
+    font-size: 1em;
+    padding: 6px 10px;
+    border: 1px solid var(--logo--text-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 0em;
+    margin-top: 0em;
+    height: 2.2em;
+    border-radius: var(--border-radius-small);
+}
+.button-secondary:hover {
+    border-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-top-left-radius: var(--border-radius-small);
+    border-bottom-left-radius: var(--border-radius-small);
+}
+
+.custom-btn {
+    background: var(--custom-btn-bg-color);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-large);
+    color: var(--white-color);
+    font-size: var(--btn-font-size);
+    font-weight: var(--font-weight-bold);
+    line-height: normal;
+    transition: all 0.3s;
+    padding: 10px 20px;
+}
+
+.custom-btn:hover {
+    background: var(--custom-btn-bg-hover-color);
+    color: var(--white-color);
+}
+
+.custom-border-btn {
+    background: transparent;
+    border: 2px solid var(--custom-btn-bg-color);
+    color: var(--custom-btn-bg-color);
+}
+
+.custom-btn-bg-white {
+    border-color: var(--white-color);
+    color: var(--white-color);
+}
+
+.custom-btn-italic {
+    font-style: italic;
+}

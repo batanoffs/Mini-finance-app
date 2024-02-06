@@ -1,0 +1,210 @@
+/*---------------------------------------
+  CUSTOM BLOCK               
+-----------------------------------------*/
+.custom-block {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    flex: auto;
+    padding: 1em;
+}
+
+.custom-block h2,
+.custom-block p {
+    position: relative;
+    z-index: 2;
+}
+
+.custom-block-balance::before {
+    content: "";
+    background: var(--third-bg-color);
+    background: #ff0000;
+    border-radius: 100%;
+    width: 154px;
+    height: 154px;
+    position: absolute;
+    top: -65px;
+    right: -35px;
+    transform: rotate(-25deg);
+}
+
+.custom-block-balance::after {
+    content: "";
+    background: var(--primary-color);
+    background: #ffa500;
+    border-radius: 100%;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: -70px;
+    right: -30px;
+    transform: rotate(-25deg);
+}
+
+.custom-block-edit-icon {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-large);
+    color: var(--white-color);
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.custom-block-edit-icon:hover {
+    background: var(--third-bg-color);
+    color: var(--white-color);
+}
+
+.custom-block-profile .custom-block-edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
+
+.custom-block-bottom {
+    background: var(--third-bg-color);
+    text-align: center;
+    display: flex;
+}
+
+.custom-block.custom-block-bottom small {
+    text-transform: none;
+}
+
+.custom-block-bottom-item {
+    flex: auto;
+}
+
+.custom-block-icon {
+    background: var(--custom-btn-bg-color);
+    border-radius: var(--border-radius-medium);
+    font-size: var(--h6-font-size);
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: var(--white-color);
+    display: block;
+    margin: auto;
+    transition: all 0.3s;
+}
+/* .bi-wallet:hover, .bi-upc-scan:hover, .bi-send:hover, .bi-arrow-down:hover {
+  background: white;  
+  color: var(--black-color);
+} */
+
+.custom-block-icon:hover {
+    background: white;
+    color: var(--custom-btn-bg-hover-color);
+}
+
+.custom-block p {
+    color: var(--black-color);
+    margin-bottom: 0;
+}
+
+.custom-block small {
+    color: var(--p-color);
+    font-size: var(--btn-font-size);
+    letter-spacing: -0.5px;
+    text-transform: lowercase;
+}
+
+.custom-block-balance small {
+    color: var(--p-color);
+    font-size: var(--card-title-font-size);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.custom-block-numbers {
+    margin-bottom: 10px;
+}
+
+.custom-block-numbers span {
+    color: var(--black-color);
+    vertical-align: middle;
+    font-size: var(--p-font-size);
+    margin-right: 10px;
+    top: 3px;
+}
+
+.custom-block-image {
+    border: 10px solid var(--primary-color);
+    border-radius: 100%;
+    position: absolute;
+    top: -60px;
+    right: 20px;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    object-fit: cover;
+}
+
+.custom-block-exchange,
+.custom-block-contact {
+    background: var(--third-bg-color);
+}
+
+.custom-block-exchange .border-bottom {
+    border-bottom: 1px solid #c6e5e7 !important;
+}
+
+.custom-block-exchange h6 {
+    font-size: var(--menu-font-size);
+    font-weight: var(--font-weight-normal);
+}
+
+.custom-block-exchange p + h6 {
+    color: var(--p-color);
+}
+
+.exchange-image {
+    border-radius: var(--border-radius-small);
+    width: 64px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.custom-block-transations p {
+    font-size: var(--menu-font-size);
+    margin-bottom: 0;
+}
+
+.custom-block-transations small {
+    text-transform: none;
+}
+
+.custom-block-transations p a {
+    color: var(--black-color);
+}
+
+.custom-block-transations p a:hover {
+    color: var(--primary-color);
+}
+
+.custom-block-transation-detail h6,
+.custom-block-transation-detail-item p {
+    font-size: var(--menu-font-size);
+}
+
+.custom-block-transation-detail-item {
+    flex: auto;
+}
+
+.custom-block-faq p {
+    font-size: var(--menu-font-size);
+}
+
+.custom-block-contact p a {
+    color: var(--heading-color);
+}
+
+.custom-block-contact p a:hover {
+    color: var(--white-color);
+}

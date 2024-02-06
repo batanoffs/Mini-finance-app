@@ -8,7 +8,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 import { Routes, Route } from "react-router-dom";
 import { useState, useContext } from "react";
-import "./register.css";
 
 export const Register = () => {
     const { onRegisterSubmitHandler } = useContext(AuthContext);

@@ -1,5 +1,3 @@
-import "./upgrade.css";
-
 export const Upgrade = () => {
     return (
         <div class="upgrade-wrapper">

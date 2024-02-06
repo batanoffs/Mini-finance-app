@@ -1,5 +1,3 @@
-import "./addfriends.css";
-
 export const AddFriends = () => {
     return (
         <div className="custom-block custom-block-contact">

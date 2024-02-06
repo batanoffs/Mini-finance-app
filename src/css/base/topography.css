@@ -64,14 +64,11 @@ body, table, input {
     font: inherit;
 }
 
-h2,h3,h4,h5,h6 {
-    color: var(--heading-color);
-}
-
 h1,h2,h3,h4,h5,h6 {
     font-weight: var(--font-weight-bold);
     margin: 0 0 0.3em 0;
     line-height: 1.2;
+    color: var(--heading-color);
 }
 
 h1 {font-size: 2.8em;} /* 14 * 2.8 = 39px */
@@ -105,15 +102,16 @@ ul li {
     font-weight: var(--font-weight-normal);
 }
 
-a,
-button {
+a,button {
     touch-action: manipulation;
     transition: all 0.3s;
     font-family: var(--body-font-family);
 }
+
 label {
     font-size: var(--label-font-size);
 }
+
 a {
     display: inline-block;
     color: var(--primary-color);
@@ -124,7 +122,6 @@ a:hover {
     color: var(--link-hover-color);
 }
 
-b,
-strong {
+b,strong {
     font-weight: var(--font-weight-bold);
 }

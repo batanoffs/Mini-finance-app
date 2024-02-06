@@ -1,7 +1,6 @@
 import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons.jsx";
 import { LastTransactions } from "../assets/LastTransactions.jsx";
 import { TableTransactions } from './assets/TableTransactions.js';
-import "./wallet-tab.css";
 
 export const WalletTab = () => {
     return (

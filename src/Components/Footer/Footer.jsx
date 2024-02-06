@@ -1,4 +1,3 @@
-import "./footer.css";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 export const Footer = () => {
