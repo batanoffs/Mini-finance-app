@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mini-finance/static/css/main.51c68be7.css",
-    "main.js": "/mini-finance/static/js/main.8b4ea26a.js",
+    "main.css": "/mini-finance/static/css/main.39bcd69c.css",
+    "main.js": "/mini-finance/static/js/main.65b14751.js",
     "static/media/website-dashboard.png": "/mini-finance/static/media/website-dashboard.20741267b58a5d87342b.png",
     "static/media/Montserrat-BoldItalic.woff": "/mini-finance/static/media/Montserrat-BoldItalic.bf331673b91821715c08.woff",
     "static/media/Montserrat-BlackItalic.woff": "/mini-finance/static/media/Montserrat-BlackItalic.fbf405b6c45f55a09aec.woff",
@@ -78,14 +78,14 @@
     "static/media/logo4.svg": "/mini-finance/static/media/logo4.e567de81e1366b943fb2a27c693bfff9.svg",
     "static/media/young-beautiful-woman-pink-warm-sweater.jpg": "/mini-finance/static/media/young-beautiful-woman-pink-warm-sweater.aaaf6fb8eeab53446741.jpg",
     "static/media/young-woman-with-round-glasses-yellow-sweater.jpg": "/mini-finance/static/media/young-woman-with-round-glasses-yellow-sweater.687425cbb55678f93009.jpg",
-    "static/media/money-transfer-isometric-60529.svg": "/mini-finance/static/media/money-transfer-isometric-60529.993edda0959229d2ac794eae7a2f1f7a.svg",
+    "static/media/money-transfer-isometric-60529.svg": "/mini-finance/static/media/money-transfer-isometric-60529.efb663dc524f327e44eb9d9e731709e4.svg",
     "static/media/senior-man-white-sweater-eyeglasses.jpg": "/mini-finance/static/media/senior-man-white-sweater-eyeglasses.1e4cfdb0dee2bb651735.jpg",
     "index.html": "/mini-finance/index.html",
-    "main.51c68be7.css.map": "/mini-finance/static/css/main.51c68be7.css.map",
-    "main.8b4ea26a.js.map": "/mini-finance/static/js/main.8b4ea26a.js.map"
+    "main.39bcd69c.css.map": "/mini-finance/static/css/main.39bcd69c.css.map",
+    "main.65b14751.js.map": "/mini-finance/static/js/main.65b14751.js.map"
   },
   "entrypoints": [
-    "static/css/main.51c68be7.css",
-    "static/js/main.8b4ea26a.js"
+    "static/css/main.39bcd69c.css",
+    "static/js/main.65b14751.js"
   ]
 }
