@@ -1,69 +1,11 @@
-/*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )    
------------------------------------------*/
-
 @import url("../fonts/Montserrat.css");
+@import url('./reset.css');
+@import url('./responsive.css');
+@import url('./topography.css');
 
-:root {
-    --white-color: #ffffff;
-    --black-color: #000000;
-    --primary-color: #41a6d1;
-    --primary-hover-color: #1678fb;
-    --secondary-color: #44cfcb;
-    --section-bg-color: #eee;
-    --primary-bg-color: #a60067;
-    --third-bg-color: #ccdde2ff;
-    --custom-btn-bg-color: #dc602e;
-    --custom-btn-bg-hover-color: #ccdde2ff;
-    --heading-color: #44464c;
-    --p-color: #1d3557ff;
-    --border-color: #ccdde2ff;
-    --link-hover-color: #dc602e;
-
-    --logo--background-color: #44464c;
-    --logo--icon-color: #41a6d1;
-    --logo--text-color: #5c5959;
-
-    --body-font-family: "Montserrat Alternates", sans-serif;
-    --h1-font-size: 64px;
-    --h2-font-size: 48px;
-    --h3-font-size: 32px;
-    --h4-font-size: 26px;
-    --h5-font-size: 22px;
-    --h6-font-size: 16px;
-    --p-font-size: 16px;
-    --label-font-size: 14px;
-    --menu-font-size: 16px;
-    --menu-font-weight: 400;
-    --btn-font-size: 14px;
-    --card-title-font-size: 18px;
-    --copyright-font-size: 12px;
-
-    --border-radius-large: 100px;
-    --border-radius-component: 14px;
-    --border-radius-medium: 16px;
-    --border-radius-small: 10px;
-
-    --font-weight-light: 400;
-    --font-weight-normal: 500;
-    --font-weight-bold: 600;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-
-p {
-    padding-bottom: 1em;
-}
-
-body::-webkit-scrollbar {
-    display: none;
-}
+/*---------------------------------------
+  SECTION               
+-----------------------------------------*/
 
 #root {
     background-color: var(--white-color);
@@ -80,91 +22,6 @@ main {
     justify-content: start;
 }
 
-/*---------------------------------------
-  TYPOGRAPHY               
------------------------------------------*/
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--heading-color);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: var(--font-weight-bold);
-}
-
-h1 {
-    font-size: var(--h1-font-size);
-}
-
-h2 {
-    font-size: var(--h2-font-size);
-}
-
-h3 {
-    font-size: var(--h3-font-size);
-}
-
-h4 {
-    font-size: var(--h4-font-size);
-}
-
-h5 {
-    font-size: var(--h5-font-size);
-    padding-bottom: 0.5em;
-}
-
-h6 {
-    font-size: var(--h6-font-size);
-}
-
-p {
-    color: var(--p-color);
-    font-size: var(--p-font-size);
-    font-weight: var(--font-weight-light);
-}
-
-ul li {
-    color: var(--p-color);
-    font-size: var(--card-title-font-size);
-    font-weight: var(--font-weight-normal);
-}
-
-a,
-button {
-    touch-action: manipulation;
-    transition: all 0.3s;
-    font-family: var(--body-font-family);
-}
-label {
-    font-size: var(--label-font-size);
-}
-a {
-    display: inline-block;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--link-hover-color);
-}
-
-b,
-strong {
-    font-weight: var(--font-weight-bold);
-}
-
-/*---------------------------------------
-  SECTION               
------------------------------------------*/
 .main-wrapper {
     background: var(--section-bg-color);
     max-height: calc(100dvh - 50px);
