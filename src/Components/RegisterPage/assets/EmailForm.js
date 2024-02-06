@@ -25,7 +25,7 @@ export const EmailForm = ({
         <section className="form-container">
             <div className="form-content">
                 <header>
-                    <h5>Е-майл и парола</h5>
+                    <h3>Е-майл и парола</h3>
                 </header>
                 <label htmlFor="email">
                     Е-майл <small className="star">* {error.email}</small>

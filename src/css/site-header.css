@@ -20,22 +20,22 @@
 
 .logo {
     margin-left: 2em;
-    padding-top: 0.2em;
-    height: 2.5em;
+    padding-top: 0.3em;
+    height: 3em;
 }
 .button-login {
     color: #ccdde2ff;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 500;
     cursor: pointer;
     transition: 0.4s;
     margin-bottom: 0em;
     width: fit-content;
     margin-top: 0em;
-    padding: 3px 10px 0px 10px;
+    padding: 0.1em 0.8em 0px 0.8em;
     height: 1.8em;
     border: 1px solid #ccdde2ff;
-    border-radius: var(--border-radius-small);
+    border-radius: 0.6em;
 }
 
 .button-login:hover {
@@ -49,17 +49,15 @@
 .button-register {
     background: var(--primary-color);
     color: white;
-    font-size: 1em;
-    padding: 3px 10px;
+    font-size: 1.2em;
+    padding: 0.1em 0.8em;
     border: 1px solid transparent;
     font-weight: 500;
     cursor: pointer;
     transition: 0.2s;
-    /* margin-bottom: 0em; */
-    /* margin-top: 0em; */
     height: 1.8em;
     width: fit-content;
-    border-radius: var(--border-radius-small);
+    border-radius: 0.6em;
     border-bottom-left-radius: 0em;
     border-top-left-radius: 0em;
 }

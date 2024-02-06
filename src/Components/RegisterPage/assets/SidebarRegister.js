@@ -9,6 +9,7 @@ export const SidebarRegister = (props) => {
                 <Steps
                     direction="vertical"
                     size="small"
+                
                     current={props.currentStep}
                     items={[
                         {
