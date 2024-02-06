@@ -1,7 +1,7 @@
 export const History = () => {
     return (
         <div className="custom-block bg-white">
-            <h3 className="mb-4">История на плащания</h3>
+            <h5 className="mb-4">История на плащания</h5>
 
             <div id="pie-chart"></div>
             <div className="custom-block bg-white">

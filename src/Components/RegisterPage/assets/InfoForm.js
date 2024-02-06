@@ -59,7 +59,7 @@ export const InfoForm = ({
         <section className="form-container">
             <div className="form-content">
                 <header>
-                    <h3>Моля, въведете вашите лични данни във формата</h3>
+                    <h5>Моля, въведете вашите лични данни във формата</h5>
                 </header>
                 <label htmlFor="firstName">
                     Име <small className="star">* {error.firstName}</small>

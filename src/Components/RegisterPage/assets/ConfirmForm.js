@@ -37,7 +37,7 @@ export const ConfirmForm = ({
                     method="post"
                 >
                     <header>
-                        <h3>Проверка на данните</h3>
+                        <h5>Проверка на данните</h5>
                     </header>
                     <label htmlFor="email">Е-майл</label>
                     <input

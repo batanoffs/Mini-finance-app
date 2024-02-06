@@ -34,7 +34,7 @@ export const VirtualCard = () => {
             aria-labelledby="profile-tab"
             tabIndex="0"
         >
-            <h3 className="mb-4">Добави карта</h3>
+            <h5 className="mb-4">Добави карта</h5>
             <form className="custom-form profile-form" action="#" method="post">
                 <div className="row width 25%">
                     <div className="col-md-6">

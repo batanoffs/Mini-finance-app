@@ -24,13 +24,13 @@
 
     --body-font-family: "Montserrat Alternates", sans-serif;
     --label-font-size: 1em;
-    --menu-font-size: 1.1em;
+    --menu-font-size: 1em;
     --menu-font-weight: 400;
-    --btn-font-size: 1.2em;
-    --card-title-font-size: 1.2em;
-    --copyright-font-size: 1em;
+    --btn-font-size: 1em;
+    --card-title-font-size: 1em;
+    --copyright-font-size: 0.8em;
 
-    --border-radius-large: 20em;
+    --border-radius-large: 1em;
     --border-radius-component: 1em;
     --border-radius-medium: 1.1em;
     --border-radius-small: 0.8em;
@@ -45,7 +45,7 @@
 -----------------------------------------*/
 
 html {
-    font: 14px/1.5 var(--body-font-family);
+    font: 12px/1.5 var(--body-font-family);
 }
 
 @media (min-width: 600px) {
@@ -92,7 +92,7 @@ li {
 
 p {
     color: var(--p-color);
-    font-size: 1.4em;
+    font-size: 1em;
     font-weight: var(--font-weight-light);
 }
 

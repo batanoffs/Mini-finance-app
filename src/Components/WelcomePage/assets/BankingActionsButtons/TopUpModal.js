@@ -3,7 +3,7 @@ export const TopUp = ({ setShowTopUp }) => {
         <div className="modal-background">
             <div className="modal-container">
                 <div className="modal-header">
-                    <h3 className="modal-title">Захранване на акаунт</h3>
+                    <h5 className="modal-title">Захранване на акаунт</h5>
                     <button onClick={() => setShowTopUp(false)}> x</button>
                 </div>
                 <div className="modal-body">

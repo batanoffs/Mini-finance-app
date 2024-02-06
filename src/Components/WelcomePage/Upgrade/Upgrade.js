@@ -9,7 +9,7 @@ export const Upgrade = () => {
                 <div className="bento-grid plans">
                     <div className="bento-cell">
                         <div className="plan">
-                            <h3>Безплатен</h3>
+                            <h5>Безплатен</h5>
                             <ul>
                                 <li>Basic features</li>
                                 <li>Limited access</li>
@@ -19,7 +19,7 @@ export const Upgrade = () => {
                     </div>
                     <div className="bento-cell">
                         <div className="plan">
-                            <h3>Стандартен</h3>
+                            <h5>Стандартен</h5>
                             <ul>
                                 <li>Basic features</li>
                                 <li>Limited access</li>
@@ -29,7 +29,7 @@ export const Upgrade = () => {
                     </div>
                     <div className="bento-cell">
                         <div className="plan">
-                            <h3>Оптимален</h3>
+                            <h5>Оптимален</h5>
                             <ul>
                                 <li>All features</li>
                                 <li>Full access</li>

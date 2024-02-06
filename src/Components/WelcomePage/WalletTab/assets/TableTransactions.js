@@ -85,7 +85,7 @@ const data = [
 export const TableTransactions = () => {
     return (
         <div className="custom-block" style={{ padding: "0.5em 1.5em" }}>
-            <h3 style={{ paddingBottom: "0.5em", paddingTop: "0.7em"}}>Движения по сметка</h3>
+            <h5 style={{ paddingBottom: "0.5em", paddingTop: "0.7em"}}>Движения по сметка</h5>
             <Table columns={columns} dataSource={data} />
         </div>
     );

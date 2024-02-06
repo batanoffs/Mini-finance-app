@@ -2,7 +2,7 @@ export const AddFriends = () => {
     return (
         <div className="custom-block custom-block-contact">
             <header>
-                <h3>Добави приятел</h3>
+                <h5>Добави приятел</h5>
             </header>
             <form className="add-friends-form">
                 <input

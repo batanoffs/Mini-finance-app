@@ -49,9 +49,9 @@ export const Identity = ({ currentStepsHandler }) => {
     return (
         <div className="form-container">
             <div className="form-content">
-                <h3 style={{ textAlign: "center", marginBottom: "2em" }}>
+                <h5 style={{ textAlign: "center", marginBottom: "2em" }}>
                     Лицево разпознаване
-                </h3>
+                </h5>
                 <button className="button-primary" onClick={handleEnroll}>
                     Зпочнете процеса
                 </button>

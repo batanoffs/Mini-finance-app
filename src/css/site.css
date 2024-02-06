@@ -42,7 +42,7 @@ main {
 
 .main-wrapper {
     background: var(--section-bg-color);
-    max-height: calc(100dvh - 80px);
+    max-height: calc(100dvh -45px);
     display: flex;
     width: 100dvw;
 }

@@ -7,7 +7,7 @@ export const HelpCenterTab = () => {
                 <div className="custom-block">
                     <form className="custom-form" action="#" method="post">
                         <header>
-                            <h4>Как можем да ви помогнем?</h4>
+                            <h5>Как можем да ви помогнем?</h5>
                         </header>
                         <label htmlFor="search">Търсене по тема: </label>
                         <input
@@ -28,7 +28,7 @@ export const HelpCenterTab = () => {
                 </div>
 
                 <div className="custom-block">
-                    <h3>Често задавани въпроси</h3>
+                    <h5>Често задавани въпроси</h5>
 
                     <strong>Как да създам нова карта?</strong>
 

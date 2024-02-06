@@ -29,7 +29,7 @@ export const TermsForm = ({
                 style={{ paddingLeft: "4em", paddingRight: "4em" }}
             >
                 <header style={{ marginBottom: "0.5em" }}>
-                    <h3>Правила и условия</h3>
+                    <h5>Правила и условия</h5>
                 </header>
                 <div
                     style={{

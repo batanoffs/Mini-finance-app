@@ -18,7 +18,7 @@ export const ProfileTab = () => {
         <div className="content-container">
             <main className="bento-main-column">
                 <div className="custom-block custom-block-profile">
-                    <h3>Дебитна карта</h3>
+                    <h5>Дебитна карта</h5>
                     <div>
                         <Cards
                             number={virtualcard.number}
@@ -56,7 +56,7 @@ export const ProfileTab = () => {
                 <div className="custom-block custom-block-profile">
                     <div>
                         <div>
-                            <h3>Обща информация</h3>
+                            <h5>Обща информация</h5>
                         </div>
 
                         <div>

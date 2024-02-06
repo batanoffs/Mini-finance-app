@@ -5,7 +5,7 @@ import person3 from "../../../images/profile/senior-man-white-sweater-eyeglasses
 export const SendMoney = () => {
     return (
         <div className="custom-block primary-bg">
-            <h3 className="text-white mb-4" style={{ color: "var(--section-bg-color)"}}>Бързо изпращане</h3>
+            <h5 className="text-white mb-4" style={{ color: "var(--section-bg-color)"}}>Бързо изпращане</h5>
 
             <a href="#">
                 <img src={person1} className="profile-image " alt={"person"}/>

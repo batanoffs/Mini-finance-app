@@ -29,7 +29,7 @@ export const Login = () => {
         <div className="form-container">
             <div className="form-content">
                 <header>
-                    <h3>Вход в системата</h3>
+                    <h5>Вход в системата</h5>
                 </header>
                 <form
                     style={{ display: `flex`, flexDirection: `column` }}

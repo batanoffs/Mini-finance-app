@@ -3,7 +3,7 @@ export const ReceiveMoney = ({ setShowReceive }) => {
         <div className="modal-background">
             <div className="modal-container">
                 <div className="modal-header">
-                    <h3 className="modal-title">Получаване на пари</h3>
+                    <h5 className="modal-title">Получаване на пари</h5>
                     <button onClick={() => setShowReceive(false)}> x</button>
                 </div>
                 <div className="modal-body">
