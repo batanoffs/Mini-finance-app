@@ -28,7 +28,7 @@ export const HelpCenterTab = () => {
                 </div>
 
                 <div className="custom-block">
-                    <h5>Често задавани въпроси</h5>
+                    <h3>Често задавани въпроси</h3>
 
                     <strong>Как да създам нова карта?</strong>
 

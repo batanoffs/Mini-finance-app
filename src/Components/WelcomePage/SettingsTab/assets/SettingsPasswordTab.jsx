@@ -1,7 +1,7 @@
 export const PasswordTab = () => {
     return (
         <div className="tab-pane fade active show" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabIndex="0">
-            <h6 className="mb-4">Промяна на парола</h6>
+            <h3 className="mb-4">Промяна на парола</h3>
 
             <form className="custom-form password-form" action="#" method="post">
                 <input type="password" name="password" id="password" pattern="[0-9a-zA-Z]{4,10}" className="form-control" placeholder="Стара парола" required=""/>

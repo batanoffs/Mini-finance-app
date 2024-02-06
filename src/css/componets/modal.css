@@ -13,21 +13,21 @@
 }
 
 .modal-container {
-    width: 500px;
-    height: 500px;
+    width: 40em;
+    height: 30em;
     transition: all 150ms ease-in-out;
-    border-radius: 12px;
+    border-radius: 1em;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0.3em 1em;
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    padding: 1.8em;
 }
 
 .modal-container .title {
     display: inline-block;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 1em;
 }
 
 .modal-header {
@@ -41,7 +41,7 @@
 .modal-header button {
     background-color: var(--secondary-color);
     border: none;
-    font-size: 20px;
+    font-size: 1.2em;
     margin: 0;
     padding: 0em 0.5em;
     cursor: pointer;
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.7rem;
+    font-size: 1.7em;
     text-align: center;
 }
 
@@ -64,14 +64,14 @@
 }
 
 .modal-footer button {
-    width: 150px;
-    height: 45px;
+    width: 10em;
+    height: 2em;
     margin: 10px;
     border: none;
     background-color: var(--custom-btn-bg-color);
     color: white;
-    border-radius: 8px;
-    font-size: 20px;
+    border-radius: var(--border-radius-small);
+    font-size: 1.5em;
     cursor: pointer;
 }
 

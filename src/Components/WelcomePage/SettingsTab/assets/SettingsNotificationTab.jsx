@@ -1,7 +1,7 @@
 export const NotificationTab = () => {
     return (
         <div className="tab-pane fade active show" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabIndex="0">
-            <h6 className="mb-4">Известия</h6>
+            <h3 className="mb-4">Известия</h3>
 
             <form className="custom-form notification-form" action="#" method="post">
 

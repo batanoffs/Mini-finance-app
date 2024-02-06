@@ -1,14 +1,14 @@
 export const Upgrade = () => {
     return (
-        <div class="upgrade-wrapper">
-            <div class="container">
+        <div className="upgrade-wrapper">
+            <div className="container">
                 <h1>Избор на нов финансов план</h1>
-                <div class="current-choice">
+                <div className="current-choice">
                     <p>Вашият план в момента е: Безплатен.</p>
                 </div>
-                <div class="bento-grid plans">
-                    <div class="bento-cell">
-                        <div class="plan">
+                <div className="bento-grid plans">
+                    <div className="bento-cell">
+                        <div className="plan">
                             <h3>Безплатен</h3>
                             <ul>
                                 <li>Basic features</li>
@@ -17,8 +17,8 @@ export const Upgrade = () => {
                             <button>Your Current Plan</button>
                         </div>
                     </div>
-                    <div class="bento-cell">
-                        <div class="plan">
+                    <div className="bento-cell">
+                        <div className="plan">
                             <h3>Стандартен</h3>
                             <ul>
                                 <li>Basic features</li>
@@ -27,8 +27,8 @@ export const Upgrade = () => {
                             <button>Your Current Plan</button>
                         </div>
                     </div>
-                    <div class="bento-cell">
-                        <div class="plan">
+                    <div className="bento-cell">
+                        <div className="plan">
                             <h3>Оптимален</h3>
                             <ul>
                                 <li>All features</li>
