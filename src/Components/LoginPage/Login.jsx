@@ -81,7 +81,7 @@ export const Login = () => {
                 </form>
                 <span className="signup">
                     Все още нямаш акаунт?
-                    <Link to="/mini-finance/register">Регистрация</Link>
+                    <Link to="/register">Регистрация</Link>
                 </span>
             </div>
         </div>
