@@ -1,15 +1,14 @@
 .add-friends-form {
-    display: inline-flex;
-    justify-content: stretch;
-    align-items: center;
-    gap: 2em;
-    width: 100%;
+    display: block;
+    justify-content: left;
+    align-items: left;
 }
 .add-friends-form input:not([type="submit"]) {
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-small);
+    width: 50%;
+    margin-right: 2em;
+    height: 2em;
+    border: transparent;
+    border-radius: 0.5em;
     padding: 0.5em;
 }
 

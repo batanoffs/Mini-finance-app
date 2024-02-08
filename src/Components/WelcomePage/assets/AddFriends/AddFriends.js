@@ -28,12 +28,12 @@ export const AddFriends = () => {
     return (
         <div className="custom-block custom-block-contact">
             <header>
-                <h6>Добави приятел</h6>
+                <h5>Добави приятел</h5>
             </header>
             <form onSubmit={onSubmit} className="add-friends-form">
                 <input
                     type="text"
-                    placeholder="телефонен номер"
+                    placeholder="телефон"
                     required=""
                     value={number}
                     onChange={onChangeNumber}

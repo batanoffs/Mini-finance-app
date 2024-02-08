@@ -21,6 +21,10 @@ input[type="checkbox"] {
     height: 1em;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
 /*---------------------------------------
   CUSTOM FORM               
 -----------------------------------------*/
