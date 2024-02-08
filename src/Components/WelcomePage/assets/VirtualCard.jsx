@@ -18,24 +18,21 @@ export const VirtualCard = () => {
 
             <h5 className="mt-2 mb-3">{virtualcard.balance}</h5>
 
-            <div className="custom-block-numbers d-flex align-items-center">
+            <div className="custom-block-numbers">
                 <span>****</span>
                 <span>****</span>
                 <span>****</span>
                 <small>{splitDigits(card)}</small>
             </div>
 
-            <div
-                className="d-flex"
-                style={{ display: "flex", justifyContent: "space-between" }}
-            >
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                    <h5>Валидна до</h5>
+                    <h6>Валидна до</h6>
                     <small>{virtualcard.expiration}</small>
                 </div>
 
-                <div className="ms-auto">
-                    <h5>Картодържател</h5>
+                <div>
+                    <h6>Картодържател</h6>
                     <small>{name}</small>
                 </div>
             </div>

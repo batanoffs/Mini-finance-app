@@ -1,18 +1,15 @@
 export const SendMoney = ({ setShowSend }) => {
-
-    const getFriends = () => {
-        
-    }
+    const getFriends = () => {};
     return (
         <div className="modal-background">
-            <div className="form-container">
+            <div className="modal-container">
                 <div className="modal-header">
                     <h5 className="modal-title">Изпращане на пари</h5>
                     <button onClick={() => setShowSend(false)}> x</button>
                 </div>
 
                 <div className="form-content">
-                    <form className="custom-form">
+                    <form >
                         <label htmlFor="amount">Въведи сума</label>
                         <input
                             type="text"
@@ -30,14 +27,13 @@ export const SendMoney = ({ setShowSend }) => {
                         />
 
                         <datalist id="friends">
-                            { /* friends list */ }
+                            {/* friends list */}
                             <option value="Chocolate"></option>
                             <option value="Coconut"></option>
                             <option value="Mint"></option>
                             <option value="Strawberry"></option>
                             <option value="Vanilla"></option>
                         </datalist>
-
                         <input
                             className="custom-btn"
                             type="submit"

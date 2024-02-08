@@ -6,8 +6,9 @@ export const TopUp = ({ setShowTopUp }) => {
                     <h5 className="modal-title">Захранване на акаунт</h5>
                     <button onClick={() => setShowTopUp(false)}> x</button>
                 </div>
+
                 <div className="modal-body">
-                    <form>
+                    <form >
                         <label htmlFor="amount">Въведи сума</label>
                         <input
                             type="text"
@@ -24,10 +25,12 @@ export const TopUp = ({ setShowTopUp }) => {
                             className="form-control"
                             placeholder="Add credit card"
                         />
+                        <input
+                            className="custom-btn"
+                            type="submit"
+                            value="Зареди"
+                        />
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button className="custom-btn">Захрани</button>
                 </div>
             </div>
         </div>

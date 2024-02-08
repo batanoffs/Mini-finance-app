@@ -5,7 +5,7 @@ export const HelpCenterTab = () => {
         <div className="content-container">
             <main className="bento-main-column">
                 <div className="custom-block">
-                    <form className="custom-form" action="#" method="post">
+                    <form  action="#" method="post">
                         <header>
                             <h5>Как можем да ви помогнем?</h5>
                         </header>

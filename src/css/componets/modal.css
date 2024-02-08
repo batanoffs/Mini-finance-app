@@ -1,31 +1,27 @@
 .modal-background {
     width: calc(100% - 320px);
-    height: calc(100% - 44px);
+    height: calc(100% - 46px);
     background: rgba(0, 0, 0, 0.5);
-
     position: fixed;
-    z-index: 3;
+    z-index: 2;
     left: 320px;
-    top: 44px;
+    top: 46px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .modal-container {
-    width: 40em;
-    height: 30em;
+    width: 40%;
     transition: all 150ms ease-in-out;
     border-radius: 1em;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0.3em 1em;
-    display: flex;
-    flex-direction: column;
-    padding: 1.8em;
+    padding: 1em;
+    margin: 0 auto;
 }
 
 .modal-container .title {
-    display: inline-block;
     text-align: center;
     margin-top: 1em;
 }
@@ -41,6 +37,7 @@
 .modal-header button {
     background-color: var(--secondary-color);
     border: none;
+    border-radius: 0.4em;
     font-size: 1.2em;
     margin: 0;
     padding: 0em 0.5em;
@@ -48,12 +45,14 @@
 }
 
 .modal-body {
-    flex: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.7em;
     text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .modal-footer {

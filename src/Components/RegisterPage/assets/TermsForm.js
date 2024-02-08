@@ -108,7 +108,6 @@ export const TermsForm = ({
                         value={check}
                         onChange={termsCheckHandler}
                         className="form-control"
-                        style={{ width: "1.5em", height: "1.5em" }}
                     />
                 </div>
                 <p className="text-danger">{error}</p>
