@@ -103,7 +103,7 @@ export const Sidebar = () => {
                             alt="credit card"
                         />
 
-                        <NavLink className="btn custom-btn" to="upgrade">
+                        <NavLink className="custom-btn" to="upgrade">
                             Нов План
                         </NavLink>
                     </li>

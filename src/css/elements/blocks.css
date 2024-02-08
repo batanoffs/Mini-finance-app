@@ -98,8 +98,8 @@
 } */
 
 .custom-block-icon:hover {
-    background: white;
-    color: var(--custom-btn-bg-hover-color);
+    background: var(--custom-btn-bg-hover-color);
+    color: white;
 }
 
 .custom-block p {

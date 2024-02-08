@@ -45,12 +45,6 @@
   PROFILE IMAGE              
 -----------------------------------------*/
 
-.profile-image {
-    border-radius: var(--border-radius-small);
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-}
 .custom-block-profile-image {
     border-radius: var(--border-radius-large);
     display: block;

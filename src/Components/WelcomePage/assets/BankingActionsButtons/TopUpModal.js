@@ -27,7 +27,7 @@ export const TopUp = ({ setShowTopUp }) => {
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button className="modal-title">Захрани</button>
+                    <button className="custom-btn">Захрани</button>
                 </div>
             </div>
         </div>

@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }) => {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,
         onLogoutHandler,
-        userId: auth.ownerId || "Липсва информация",
+        ownerId: auth.ownerId || "Липсва информация",
         token: auth["user-token"],
         email: auth.email || "Липсва информация",
         userStatus: auth.userStatus,
@@ -128,6 +128,7 @@ export const AuthProvider = ({ children }) => {
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         adress: auth.adress || "Липсва информация",
+        userDataId: auth.objectId || "Липсва информация",
     };
 
     return (

@@ -1,13 +1,14 @@
 export const ReceiveMoney = ({ setShowReceive }) => {
     return (
         <div className="modal-background">
-            <div className="modal-container">
+            <div className="form-container">
                 <div className="modal-header">
-                    <h5 className="modal-title">Получаване на пари</h5>
+                    <h5 className="modal-title">Поискай пари</h5>
                     <button onClick={() => setShowReceive(false)}> x</button>
                 </div>
-                <div className="modal-body">
-                    <form>
+
+                <div className="form-content">
+                    <form className="custom-form">
                         <label htmlFor="amount">Въведи сума</label>
                         <input
                             type="text"
@@ -24,10 +25,12 @@ export const ReceiveMoney = ({ setShowReceive }) => {
                             className="form-control"
                             placeholder="Add credit card"
                         />
+                        <input
+                            className="custom-btn"
+                            type="submit"
+                            value="Изпрати"
+                        />
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button className="modal-title">Поискай</button>
                 </div>
             </div>
         </div>

@@ -1,33 +1,49 @@
 export const SendMoney = ({ setShowSend }) => {
+
+    const getFriends = () => {
+        
+    }
     return (
         <div className="modal-background">
-            <div className="modal-container">
+            <div className="form-container">
                 <div className="modal-header">
                     <h5 className="modal-title">Изпращане на пари</h5>
-                    <button onClick={() => setShowSend(false)}> x</button>{" "}
+                    <button onClick={() => setShowSend(false)}> x</button>
                 </div>
-                <div className="modal-body">
-                    <form>
+
+                <div className="form-content">
+                    <form className="custom-form">
                         <label htmlFor="amount">Въведи сума</label>
                         <input
                             type="text"
                             name="amount"
                             id="amount"
                             className="form-control"
-                            placeholder="Enter amount"
+                            placeholder="10лв"
                         />
-                        <label htmlFor="card">Избери карта</label>
+                        <label htmlFor="card">Приятел</label>
                         <input
-                            type="text"
-                            name="card"
-                            id="card"
-                            className="form-control"
-                            placeholder="Add credit card"
+                            list="friends"
+                            id="friends"
+                            name="friends"
+                            onFocus={getFriends}
+                        />
+
+                        <datalist id="friends">
+                            { /* friends list */ }
+                            <option value="Chocolate"></option>
+                            <option value="Coconut"></option>
+                            <option value="Mint"></option>
+                            <option value="Strawberry"></option>
+                            <option value="Vanilla"></option>
+                        </datalist>
+
+                        <input
+                            className="custom-btn"
+                            type="submit"
+                            value="Изпрати"
                         />
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button className="modal-title">Изпрати</button>
                 </div>
             </div>
         </div>

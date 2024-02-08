@@ -41,7 +41,11 @@
     flex-direction: column;
     align-items: stretch;
 }
-
+.custom-form {
+    display: inline-flex; 
+    flex-direction: column;
+    gap: 1em;
+}
 .custom-form .form-content {
     color: var(--p-color);
     border-radius: var(--border-radius-large);

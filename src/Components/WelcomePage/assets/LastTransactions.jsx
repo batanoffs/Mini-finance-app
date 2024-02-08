@@ -65,7 +65,7 @@ export const LastTransactions = () => {
             </div>
 
             <div className="border-top pt-4 mt-4 text-center">
-                <Link className="btn custom-btn" to="/dashboard/wallet">
+                <Link className="custom-btn" to="/dashboard/wallet">
                     Виж всички транзакции
                     <i className="bi-arrow-up-right-circle-fill ms-2"></i>
                 </Link>

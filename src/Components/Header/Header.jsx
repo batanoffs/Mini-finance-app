@@ -7,18 +7,25 @@
 // import youtube from "../../images/social/youtube.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo/logo4.svg";
 
 export const Header = () => {
-    
+    const navigate = useNavigate();
     const { isAuthenticated, picture } = useContext(AuthContext);
+    const onRedirect = () => {
+        if (isAuthenticated()) {
+            navigate("/dashboard/overview");
+        } else {
+            navigate("/");
+        }
+    }
     return (
         <header className="header-container">
             <div className="header-logo">
-                <Link className="navbar-brand" to="/">
-                    <img src={logo} alt="logo" className="logo" />
-                </Link>
+                <div className="navbar-brand">
+                    <img src={logo}  onClick={onRedirect} alt="logo" className="logo" />
+                </div>
             </div>
             {!isAuthenticated() && (
                 <div className="header-buttons">

@@ -11,22 +11,23 @@ export const useForm = (initialState, onLogin, onRegister) => {
 
             if (e === undefined && photoInfo) {
                 newState["identity"] = photoInfo;
-            } else if (e.target.name && e.target.value) {
-                if (newState.virtualcard) {
-                    // newState.virtualcard[e.target.name] = e.target.value;
-                    if (
-                        e.target.name !== "balance" &&
-                        e.target.name !== "issuer" &&
-                        e.target.name !== "number" &&
-                        e.target.name !== "brand" &&
-                        e.target.name !== "expiration" &&
-                        e.target.name !== "cvv"
-                    ) {
-                        newState[e.target.name] = e.target.value;
-                    }
-                } else {
+            }
+
+            if (newState.virtualcard) {
+                // newState.virtualcard[e.target.name] = e.target.value;
+                if (
+                    e.target.name !== "balance" &&
+                    e.target.name !== "issuer" &&
+                    e.target.name !== "number" &&
+                    e.target.name !== "brand" &&
+                    e.target.name !== "expiration" &&
+                    e.target.name !== "cvv"
+                ) {
                     newState[e.target.name] = e.target.value;
                 }
+            } else {
+                newState[e.target.name] = e.target.value;
+                
             }
 
             return newState;

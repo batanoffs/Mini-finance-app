@@ -22,6 +22,7 @@
     margin-left: 2em;
     padding-top: 0.4em;
     height: 2.4em;
+    cursor: pointer;
 }
 .button-login {
     color: #ccdde2ff;
@@ -42,8 +43,8 @@
     color: var(--primary-hover-color);
     border-color: transparent;
     border: 1px solid var(--primary-hover-color);
-    border-top-left-radius: var(--border-radius-small);
-    border-bottom-left-radius: var(--border-radius-small);
+    border-top-left-radius:  0.6em;;
+    border-bottom-left-radius:  0.6em;;
 }
 
 .button-register {
@@ -74,6 +75,13 @@
 
 
 /* NOTIFICATIONS */
+
+.profile-image {
+  border-radius: var(--border-radius-small);
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
 
 .dropdown-menu.notifications-block-wrap {
     min-width: 465px;
