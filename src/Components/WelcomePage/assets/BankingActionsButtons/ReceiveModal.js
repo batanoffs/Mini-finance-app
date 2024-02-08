@@ -9,14 +9,16 @@ export const ReceiveMoney = ({ setShowReceive }) => {
 
                 <div className="form-content">
                     <form>
-                        <label htmlFor="amount">Въведи сума</label>
-                        <input
-                            type="text"
-                            name="amount"
-                            id="amount"
-                            className="form-control"
-                            placeholder="10лв"
-                        />
+                        <div>
+                            <label htmlFor="amount">Въведи сума</label>
+                            <input
+                                type="text"
+                                name="amount"
+                                id="amount"
+                                className="form-control"
+                                placeholder="10лв"
+                            />
+                        </div>
                         <input
                             className="custom-btn"
                             type="submit"

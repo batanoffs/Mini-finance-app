@@ -9,23 +9,26 @@ export const SendMoney = ({ setShowSend }) => {
                 </div>
 
                 <div className="form-content">
-                    <form >
-                        <label htmlFor="amount">Въведи сума</label>
-                        <input
-                            type="text"
-                            name="amount"
-                            id="amount"
-                            className="form-control"
-                            placeholder="10лв"
-                        />
-                        <label htmlFor="card">Приятел</label>
-                        <input
-                            list="friends"
-                            id="friends"
-                            name="friends"
-                            onFocus={getFriends}
-                        />
-
+                    <form>
+                        <div>
+                            <label htmlFor="amount">Въведи сума</label>
+                            <input
+                                type="text"
+                                name="amount"
+                                id="amount"
+                                className="form-control"
+                                placeholder="10лв"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="card">Приятел</label>
+                            <input
+                                list="friends"
+                                id="friends"
+                                name="friends"
+                                onFocus={getFriends}
+                            />
+                        </div>
                         <datalist id="friends">
                             {/* friends list */}
                             <option value="Chocolate"></option>

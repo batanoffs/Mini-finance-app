@@ -20,8 +20,8 @@
 
 .logo {
     margin-left: 2em;
-    padding-top: 0.4em;
-    height: 2.4em;
+    padding-top: 0.05em;
+    height: 2.3em;
     cursor: pointer;
 }
 .button-login {
@@ -78,8 +78,8 @@
 
 .profile-image {
   border-radius: var(--border-radius-small);
-  width: 32px;
-  height: 32px;
+  width: 2em;
+  height: 2em;
   object-fit: cover;
 }
 
