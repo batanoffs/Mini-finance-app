@@ -6,7 +6,9 @@ const endpoints = {
     setUserData: `/data/UserData`,
     mockCardObjectId: (id) => `/data/cardsMockData?where=id=${id}`,
     setRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}/${childName}`,
+    getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}`,
     attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
+    getAll: (id) => `/data/UserData?where=ownerId='${id}'`
 }
 
 const filePathURL = (path, fileName) => `https://eu.backendlessappcontent.com/7E8BB132-A50E-1B4C-FFFA-B07295175E00/CB78EA12-92CA-45CA-89DE-A8109442A370/files/${path}/${fileName}`;
@@ -57,6 +59,11 @@ const setRelation = async (parentObjectId, childName,body) => {
     return await request.put(`${baseURL}${endpoints.setRelation(parentObjectId, childName)}`, body)
 }
 
+// GET RELATIONS
+const getRelation = async (parentObjectId, childName) => {
+    return await request.get(`${baseURL}${endpoints.getRelation(parentObjectId, childName)}`)
+}
+
 // SET/GET ATTRIBUTE
 const getAttribute = async (attribute, value) => {
     return await request.get(baseURL + endpoints.attribute(attribute, value));
@@ -69,4 +76,5 @@ export const dataService = {
     getMockCardObjectId,
     setRelation,
     getAttribute,
+    getRelation,
 }

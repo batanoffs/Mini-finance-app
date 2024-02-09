@@ -1,5 +1,29 @@
+import { dataService } from "../../../../services/userDataService";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { useState, useContext, useEffect } from "react";
+
 export const SendMoney = ({ setShowSend }) => {
-    const getFriends = () => {};
+    const { userDataId } = useContext(AuthContext);
+    const [friends, setFriends] = useState([]);
+    const [friendValue, setFriendValue] = useState("");
+
+    useEffect(() => {
+        dataService.getRelation(userDataId, "friends").then((response) => {
+            const updatedFriends = response.friends.map(
+                (friend) => friend.fullName
+            );
+            setFriends(updatedFriends);
+        });
+    }, []);
+
+    const handleChange = (event) => {
+        setFriendValue(event.target.value);
+    };
+
+    const clearHandler = (e) => {
+        e.target.value = "";
+    };
+
     return (
         <div className="modal-background">
             <div className="modal-container">
@@ -10,8 +34,8 @@ export const SendMoney = ({ setShowSend }) => {
 
                 <div className="form-content">
                     <form>
-                        <field className="form-group">
-                            <label htmlFor="amount">Въведи сума</label>
+                        <div className="form-group">
+                            <label htmlFor="amount">Сума</label>
                             <input
                                 type="text"
                                 name="amount"
@@ -19,24 +43,29 @@ export const SendMoney = ({ setShowSend }) => {
                                 className="form-control"
                                 placeholder="10лв"
                             />
-                        </field>
-                        <field className="form-group">
-                            <label htmlFor="card">Приятел</label>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="friends">Приятел</label>
                             <input
                                 list="friends"
                                 id="friends"
                                 name="friends"
-                                onFocus={getFriends}
+                                onChange={handleChange}
+                                onClick={clearHandler}
+                                onFocus={clearHandler}
+                                value={friendValue}
                             />
-                        </field>
-                        <datalist id="friends">
-                            {/* friends list */}
-                            <option value="Chocolate"></option>
-                            <option value="Coconut"></option>
-                            <option value="Mint"></option>
-                            <option value="Strawberry"></option>
-                            <option value="Vanilla"></option>
-                        </datalist>
+
+                            <datalist id="friends">
+                                {friends.map((friend) => (
+                                    <option
+                                        key={friend}
+                                        value={friend}
+                                    ></option>
+                                ))}
+                            </datalist>
+                        </div>
+
                         <footer>
                             <input
                                 className="button-primary"

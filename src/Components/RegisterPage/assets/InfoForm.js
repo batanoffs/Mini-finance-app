@@ -63,7 +63,7 @@ export const InfoForm = ({
                 </header>
                 <field className="form-group">
                     <label htmlFor="firstName">
-                        Име <small className="star">* {error.firstName}</small>
+                        Име <small className="error">* {error.firstName}</small>
                     </label>
                     <input
                         type="text"
@@ -79,7 +79,7 @@ export const InfoForm = ({
                 <field className="form-group">
                     <label htmlFor="lastName">
                         Фамилия{" "}
-                        <small className="star">* {error.lastName}</small>
+                        <small className="error">* {error.lastName}</small>
                     </label>
                     <input
                         type="text"
@@ -94,7 +94,7 @@ export const InfoForm = ({
                 </field>
                 <field className="form-group">
                     <label>
-                        Пол <small className="star">* {error.gender}</small>
+                        Пол <small className="error">* {error.gender}</small>
                     </label>
                     <Radio.Group
                         name="gender"
@@ -111,7 +111,7 @@ export const InfoForm = ({
                 <field className="form-group">
                     <label htmlFor="phoneNumber">
                         Телефон{" "}
-                        <small className="star">*{error.phoneNumber}</small>
+                        <small className="error">*{error.phoneNumber}</small>
                     </label>
                     <input
                         type="tel"
@@ -126,7 +126,7 @@ export const InfoForm = ({
                 </field>
                 <field className="form-group">
                     <label htmlFor="town">
-                        Град <small className="star">*{error.town}</small>
+                        Град <small className="error">*{error.town}</small>
                     </label>
                     <input
                         type="text"
@@ -142,7 +142,7 @@ export const InfoForm = ({
                 <field className="form-group">
                     <label htmlFor="country">
                         Държава{" "}
-                        <small className="star">* {error.country}</small>
+                        <small className="error">* {error.country}</small>
                     </label>
                     <input
                         type="text"
@@ -169,7 +169,7 @@ export const InfoForm = ({
                         onFocus={onFocusClearErrorHandler}
                     />
                 </field>
-                <p className="text-danger">{errorOnNext.message}</p>
+                <p className="error">{errorOnNext.message}</p>
                 <footer>
                     <Link
                         to={"/register"}

@@ -15,7 +15,7 @@
 //                     </header>
 
 //                     <label htmlFor="cardNumber">
-//                         <p className="star">*</p>Card Number:
+//                         <p className="error">*</p>Card Number:
 //                     </label>
 //                     <input
 //                         type="text"
@@ -29,7 +29,7 @@
 //                     />
 
 //                     <label htmlFor="cardHolder">
-//                         <p className="star">*</p>Issuer:
+//                         <p className="error">*</p>Issuer:
 //                     </label>
 //                     <input
 //                         type="text"
@@ -42,7 +42,7 @@
 //                         onChange={props.changeHandler}
 //                     />
 //                     <label htmlFor="balance">
-//                         <p className="star">*</p>Balance:
+//                         <p className="error">*</p>Balance:
 //                     </label>
 //                     <input
 //                         type="text"
@@ -56,7 +56,7 @@
 //                     />
 
 //                     <label htmlFor="expiryDate">
-//                         <p className="star">*</p>Expiry Date:
+//                         <p className="error">*</p>Expiry Date:
 //                     </label>
 //                     <input
 //                         type="text"
@@ -70,7 +70,7 @@
 //                     />
 
 //                     <label htmlFor="cvv">
-//                         <p className="star">*</p>CVV:
+//                         <p className="error">*</p>CVV:
 //                     </label>
 //                     <input
 //                         type="text"

@@ -40,7 +40,7 @@ export const Login = () => {
                     <field className="form-group">
                         <label htmlFor="email">
                             Е-мейл{" "}
-                            <small className="star">* {error.email}</small>
+                            <small className="error">* {error.email}</small>
                         </label>
                         <input
                             type="text"
@@ -56,7 +56,7 @@ export const Login = () => {
                     <field className="form-group">
                         <label htmlFor="password">
                             Парола{" "}
-                            <small className="star">* {error.password}</small>
+                            <small className="error">* {error.password}</small>
                         </label>
                         <input
                             type="password"

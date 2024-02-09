@@ -125,7 +125,7 @@ export const TableTransactions = () => {
 
                 <th scope="row">C2C Transfer</th>
 
-                <th className="text-danger" scope="row">
+                <th className="error" scope="row">
                     <span className="me-1">-</span>
                     $100.00
                 </th>
@@ -194,7 +194,7 @@ export const TableTransactions = () => {
 
                 <th scope="row">QR код</th>
 
-                <th className="text-danger" scope="row">
+                <th className="error" scope="row">
                     <span className="me-2">-</span>
                     $380
                 </th>
@@ -286,7 +286,7 @@ export const TableTransactions = () => {
 
                 <th scope="row">Мобилна сметка</th>
 
-                <th className="text-danger" scope="row">
+                <th className="error" scope="row">
                     <span className="me-2">-</span>
                     $500
                 </th>

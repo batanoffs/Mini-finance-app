@@ -24,7 +24,7 @@ export const LastTransactions = () => {
 
                 <div className="transactions-amount-info">
                     <small>05/12/2023</small>
-                    <strong className="d-block text-danger" style={{color: "red", display: "block"}}><span style={{marginRight: "0.25rem"}}>-</span> $250</strong>
+                    <strong className="d-block error" style={{color: "red", display: "block"}}><span style={{marginRight: "0.25rem"}}>-</span> $250</strong>
                 </div>
             </div>
 

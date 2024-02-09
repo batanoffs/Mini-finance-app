@@ -29,7 +29,7 @@ export const EmailForm = ({
                 </header>
                 <field className="form-group">
                     <label htmlFor="email">
-                        Е-майл <small className="star">* {error.email}</small>
+                        Е-майл <small className="error">* {error.email}</small>
                     </label>
                     <input
                         type="email"
@@ -47,7 +47,7 @@ export const EmailForm = ({
                 <field className="form-group">
                     <label htmlFor="password">
                         Парола{" "}
-                        <small className="star">* {error.password}</small>
+                        <small className="error">* {error.password}</small>
                     </label>
                     <input
                         type="password"
@@ -65,7 +65,7 @@ export const EmailForm = ({
                 <field className="form-group">
                     <label htmlFor="confirmPassword">
                         Потвърди парола{" "}
-                        <small className="star">
+                        <small className="error">
                             * {error.confirmPassword}
                         </small>
                     </label>

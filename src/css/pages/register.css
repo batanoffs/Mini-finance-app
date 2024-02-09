@@ -19,13 +19,9 @@
     flex: 0 0 max(250px);
 }
 
-.star {
+.error {
     color: red;
     font-size: 12px;
     width: fit-content;
     display: inline;
-}
-
-.text-danger {
-    color: red;
 }

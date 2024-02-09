@@ -35,7 +35,6 @@ const request = async (method, url, data, token = undefined) => {
 
         options.headers = {
             "response_type": "JSON",
-            "api_key": "8b1fdb20-2d0e-4400-a885-a8b2b3331162",
             // "Access-Control-Allow-Origin": "*",
         };
     }

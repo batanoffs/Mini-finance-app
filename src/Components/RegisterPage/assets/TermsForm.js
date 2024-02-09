@@ -110,7 +110,7 @@ export const TermsForm = ({
                         className="form-control"
                     />
                 </div>
-                <p className="text-danger">{error}</p>
+                <p className="error">{error}</p>
                 <footer style={{ paddingBottom: "0", marginTop: "0em" }}>
                     <Link
                         type="button"
