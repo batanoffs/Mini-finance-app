@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
 export const ProfileTab = () => {
-
     // TO DO PICTURE
     const props = {
         name: "file",
@@ -47,86 +46,77 @@ export const ProfileTab = () => {
         console.log("updated");
     };
     return (
-        <div
-            className="tab-pane fade show active"
-            id="profile-tab-pane"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-            tabIndex="0"
-        >
+        <div className="form-container">
+            <div className="form-content">
+                <form className="custom-form" method="post">
+                    <field className="form-group">
+                        <label htmlFor="profile-name">Име и фамилия</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="profile-name"
+                            id="profile-name"
+                            value={state.fullname}
+                            onChange={inputChangeHandler}
+                            placeholder="Име и фамилия"
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="profile-email">Email</label>
+                        <input
+                            className="form-control"
+                            type="email"
+                            name="profile-email"
+                            value={state.email}
+                            onChange={inputChangeHandler}
+                            id="profile-email"
+                            placeholder="email"
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="phone_number">Телефонен номер</label>
+                        <input
+                            type="number"
+                            name="phone_number"
+                            value={state.phone_number}
+                            onChange={inputChangeHandler}
+                            autoComplete="off"
+                            placeholder="Телефонен номер"
+                            className="form-control mb-3"
+                        />
+                    </field>
+                    <field className="form-group">
+                        <img
+                            src={picture}
+                            className="profile-image "
+                            alt="person"
+                            value={state.picture}
+                            onChange={inputChangeHandler}
+                        />
+                        <Upload {...props}>
+                            <Button icon={<UploadOutlined />}>
+                                Прикачи снимка
+                            </Button>
+                        </Upload>
+                    </field>
 
-            <form className="custom-form profile-form" action="#" method="post">
-                <input
-                    className="form-control"
-                    type="text"
-                    name="profile-name"
-                    id="profile-name"
-                    value={state.fullname}
-                    onChange={inputChangeHandler}
-                    placeholder="Име и фамилия"
-                />
+                    <footer>
+                        <input
+                            type="button"
+                            onClick={onResetHandler}
+                            className="button-secondary"
+                            value="Изчисти"
+                        />
 
-                <input
-                    className="form-control"
-                    type="email"
-                    name="profile-email"
-                    value={state.email}
-                    onChange={inputChangeHandler}
-                    id="profile-email"
-                    placeholder="email"
-                />
-
-                <input
-                    type="number"
-                    name="phone_number"
-                    value={state.phone_number}
-                    onChange={inputChangeHandler}
-                    autoComplete="off"
-                    placeholder="Телефонен номер"
-                    className="form-control mb-3"
-                />
-
-                <div className="input-group mb-1">
-                    <img
-                        src={picture}
-                        className="profile-image "
-                        alt="person"
-                        value={state.picture}
-                        onChange={inputChangeHandler}
-                    />
-                    <Upload {...props}>
-                        <Button icon={<UploadOutlined />}>
-                            Click to Upload
-                        </Button>
-                    </Upload>
-                    {/* <input
-                        type="file"
-                        onChange={inputChangeHandler}
-                        value=""
-                        className="form-control"
-                        id="inputGroupFile02"
-                        placeholder="Избери снимка"
-                    /> */}
-                </div>
-
-                <footer style={{ display: "flex" }}>
-                    <button
-                        type="button"
-                        onClick={onResetHandler}
-                        className="button-secondary"
-                    >
-                        Изчисти
-                    </button>
-
-                    <button
-                        type="submit"
-                        onClick={onUpdateHandler}
-                        className="button-primary"
-                    >
-                        Запази промени
-                    </button>
-                </footer>
-            </form>
+                        <input
+                            type="submit"
+                            onClick={onUpdateHandler}
+                            className="button-primary"
+                            value="Запази промени"
+                        />
+                    </footer>
+                </form>
+            </div>
         </div>
     );
 };

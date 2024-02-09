@@ -28,20 +28,19 @@ export const VirtualCard = () => {
 
     return (
         <div
-            className="tab-pane fade show active"
             id="profile-tab-pane"
             role="tabpanel"
             aria-labelledby="profile-tab"
             tabIndex="0"
         >
-            <h5 className="mb-4">Добави карта</h5>
+            <h5 >Добави карта</h5>
             <form className="custom-form profile-form" action="#" method="post">
-                <div className="row width 25%">
-                    <div className="col-md-6">
+                <div>
+                    <div>
                         <input
                             type="number"
                             name="credit_card_number"
-                            className="form-control mt-1"
+                            className="form-control"
                             placeholder="Номер на карта"
                             value={state.cardNumber}
                             onChange={inputChangeHandler}
@@ -53,7 +52,7 @@ export const VirtualCard = () => {
                             type="text"
                             name="fullname"
                             autoComplete="off"
-                            className="form-control mt-1"
+                            className="form-control"
                             value={state.name}
                             placeholder="Картодържател"
                             onChange={inputChangeHandler}
@@ -64,7 +63,7 @@ export const VirtualCard = () => {
                         <input
                             type="string"
                             name="expiryDate"
-                            className="form-control mt-1"
+                            className="form-control"
                             placeholder="Валидна до"
                             pattern="\d\d/\d\d"
                             value={state.expiryDate}
@@ -76,7 +75,7 @@ export const VirtualCard = () => {
                         <input
                             type="password"
                             name="cvv"
-                            className="form-control mt-1"
+                            className="form-control"
                             placeholder="CVV"
                             pattern="\d{3,4}"
                             value={state.cvv}
@@ -86,7 +85,7 @@ export const VirtualCard = () => {
                         />
                     </div>
 
-                    <div className="col-md-2 mt-2 mt-md-1">
+                    <div>
                         <Cards
                             number={state.cardNumber}
                             expiry={state.expiryDate}
@@ -96,7 +95,7 @@ export const VirtualCard = () => {
                         />
                     </div>
 
-                    <div className="d-flex">
+                    <div>
                         <button
                             type="submit"
                             onClick={onUpdateHandler}

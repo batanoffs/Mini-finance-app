@@ -7,7 +7,7 @@ import  europeLogo  from "../../../images/flag/european-union.png";
 export const ExchangeRate = () => {
     return (
         <div className="custom-block custom-block-exchange">
-            <h5 className="mb-4">Обменен курс</h5>
+            <h5 >Обменен курс</h5>
 
             <div className="exchange-block-wrapper">
                 <div className="currency-wrapper">

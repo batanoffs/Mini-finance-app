@@ -60,29 +60,51 @@ html {
     }
 }
 
-body, table, input {
+body,
+table,
+input {
     font: inherit;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: var(--font-weight-bold);
     margin: 0 0 0.3em 0;
     line-height: 1.2;
     color: var(--heading-color);
 }
 
-h1 {font-size: 2.8em;} /* 14 * 2.8 = 39px */
-h2 {font-size: 2.2em;} /* 14 * 2.2 = 31px */
-h3 {font-size: 1.8em;} /* 14 * 1.8 = 25px */
-h4 {font-size: 1.6em;} /* 14 * 1.6 = 22px */
-h5 {font-size: 1.2em;} /* 14 * 1.2 = 17px */
-h6 {font-size: 1.0em;} /* 14 * 1.0 = 14px */
+h1 {
+    font-size: 2.8em;
+} /* 14 * 2.8 = 39px */
+h2 {
+    font-size: 2.2em;
+} /* 14 * 2.2 = 31px */
+h3 {
+    font-size: 1.8em;
+} /* 14 * 1.8 = 25px */
+h4 {
+    font-size: 1.6em;
+} /* 14 * 1.6 = 22px */
+h5 {
+    font-size: 1.2em;
+} /* 14 * 1.2 = 17px */
+h6 {
+    font-size: 1em;
+} /* 14 * 1.0 = 14px */
 
-p, ul, ol {
+p,
+ul,
+ol {
     padding-bottom: 1.5em;
 }
 
-ul, ol {
+ul,
+ol {
     padding-left: 1.6em;
 }
 
@@ -102,13 +124,17 @@ ul li {
     font-weight: var(--font-weight-normal);
 }
 
-a,button {
+a,
+button {
     touch-action: manipulation;
     transition: all 0.3s;
 }
 
 label {
-    font-size: var(--label-font-size);
+    display: inline-block;
+    padding-right: 0.6em;
+    width: 100px;
+    text-align: right;
 }
 
 a {
@@ -121,6 +147,7 @@ a:hover {
     color: var(--link-hover-color);
 }
 
-b,strong {
+b,
+strong {
     font-weight: var(--font-weight-bold);
 }

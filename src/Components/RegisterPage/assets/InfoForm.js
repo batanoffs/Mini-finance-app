@@ -61,102 +61,114 @@ export const InfoForm = ({
                 <header>
                     <h5>Моля, въведете вашите лични данни във формата</h5>
                 </header>
-                <label htmlFor="firstName">
-                    Име <small className="star">* {error.firstName}</small>
-                </label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="firstName"
-                    placeholder="Име"
-                    value={firstName}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                />
-
-                <label htmlFor="lastName">
-                    Фамилия <small className="star">* {error.lastName}</small>
-                </label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="lastName"
-                    placeholder="Фамилия"
-                    value={lastName}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                />
-
-                <label>
-                    Пол <small className="star">* {error.gender}</small>
-                </label>
-                <Radio.Group
-                    name="gender"
-                    value={gender}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                    style={{ marginBottom: "0.5rem" }}
-                >
-                    <Radio value="male"> Мъж </Radio>
-                    <Radio value="female"> Жена </Radio>
-                </Radio.Group>
-
-                <label htmlFor="phoneNumber">
-                    Телефон <small className="star">*{error.phoneNumber}</small>
-                </label>
-                <input
-                    type="tel"
-                    className="form-control"
-                    name="phoneNumber"
-                    placeholder="Телефон"
-                    value={phoneNumber}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                />
-
-                <label htmlFor="town">
-                    Град <small className="star">*{error.town}</small>
-                </label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="town"
-                    placeholder="Град"
-                    value={town}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                />
-
-                <label htmlFor="country">
-                    Държава <small className="star">* {error.country}</small>
-                </label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="country"
-                    id="country"
-                    placeholder="Държава"
-                    value={country}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                />
-                <label htmlFor="adress">Адрес</label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="adress"
-                    placeholder="Адрес"
-                    value={adress}
-                    onChange={changeHandler}
-                    onBlur={errorHandler}
-                    onFocus={onFocusClearErrorHandler}
-                />
+                <field className="form-group">
+                    <label htmlFor="firstName">
+                        Име <small className="star">* {error.firstName}</small>
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="firstName"
+                        placeholder="Име"
+                        value={firstName}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                    />
+                </field>
+                <field className="form-group">
+                    <label htmlFor="lastName">
+                        Фамилия{" "}
+                        <small className="star">* {error.lastName}</small>
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="lastName"
+                        placeholder="Фамилия"
+                        value={lastName}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                    />
+                </field>
+                <field className="form-group">
+                    <label>
+                        Пол <small className="star">* {error.gender}</small>
+                    </label>
+                    <Radio.Group
+                        name="gender"
+                        value={gender}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                        style={{ marginBottom: "1.2rem", display:"flex", flexDirection:"column", gap:"0.4rem" }}
+                    >
+                        <Radio style={{ fontSize: "1rem"}} value="male"> Мъж </Radio>
+                        <Radio style={{ fontSize: "1rem"}} value="female"> Жена </Radio>
+                    </Radio.Group>
+                </field>
+                <field className="form-group">
+                    <label htmlFor="phoneNumber">
+                        Телефон{" "}
+                        <small className="star">*{error.phoneNumber}</small>
+                    </label>
+                    <input
+                        type="tel"
+                        className="form-control"
+                        name="phoneNumber"
+                        placeholder="Телефон"
+                        value={phoneNumber}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                    />
+                </field>
+                <field className="form-group">
+                    <label htmlFor="town">
+                        Град <small className="star">*{error.town}</small>
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="town"
+                        placeholder="Град"
+                        value={town}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                    />
+                </field>
+                <field className="form-group">
+                    <label htmlFor="country">
+                        Държава{" "}
+                        <small className="star">* {error.country}</small>
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="country"
+                        id="country"
+                        placeholder="Държава"
+                        value={country}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                    />
+                </field>
+                <field className="form-group">
+                    <label htmlFor="adress">Адрес</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="adress"
+                        placeholder="Адрес"
+                        value={adress}
+                        onChange={changeHandler}
+                        onBlur={errorHandler}
+                        onFocus={onFocusClearErrorHandler}
+                    />
+                </field>
                 <p className="text-danger">{errorOnNext.message}</p>
                 <footer>
                     <Link
@@ -169,11 +181,7 @@ export const InfoForm = ({
                         Назад
                     </Link>
                     <Link
-                        to={
-                            errorOnNext.status
-                                ? null
-                                : "/register/identity"
-                        }
+                        to={errorOnNext.status ? null : "/register/identity"}
                         type="submit"
                         name="next"
                         className="button-primary"

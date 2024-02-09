@@ -93,7 +93,7 @@ export const TableTransactions = () => {
 
 
 /* <div className="custom-block bg-white">
-<h5 className="mb-4">Движения по сметка</h5>
+<h5 >Движения по сметка</h5>
 
 <div className="table-responsive">
     <table className="account-table table">

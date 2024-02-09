@@ -7,33 +7,34 @@ export const TopUp = ({ setShowTopUp }) => {
                     <button onClick={() => setShowTopUp(false)}> x</button>
                 </div>
 
-                <div className="modal-body">
-                    <form>
-                        <div>
+                <div className="form-content">
+                    <form className="custom-form">
+                        <field className="form-group">
                             <label htmlFor="amount">Въведи сума</label>
                             <input
                                 type="text"
                                 name="amount"
                                 id="amount"
-                                className="form-control"
                                 placeholder="Enter amount"
                             />
-                        </div>
-                        <div>
+                        </field>
+                        <field className="form-group">
                             <label htmlFor="card">Избери карта</label>
                             <input
                                 type="text"
                                 name="card"
                                 id="card"
-                                className="form-control"
                                 placeholder="Add credit card"
                             />
-                        </div>
-                        <input
-                            className="custom-btn"
-                            type="submit"
-                            value="Зареди"
-                        />
+                        </field>
+                        <footer>
+                            <input
+                                className="button-primary"
+                                style={{ width: `100%`, textAlign: `center` }}
+                                type="submit"
+                                value="Зареди"
+                            />
+                        </footer>
                     </form>
                 </div>
             </div>

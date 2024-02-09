@@ -5,7 +5,8 @@ import { useForm } from "../../hooks/useForm";
 import { useValidate } from "../../hooks/useValidate";
 
 export const Login = () => {
-    const { onLoginSubmitHandler, loginError, setLoginError } = useContext(AuthContext);
+    const { onLoginSubmitHandler, loginError, setLoginError } =
+        useContext(AuthContext);
     const { values, changeHandler, onSubmitLogin } = useForm(
         {
             email: "",
@@ -36,33 +37,38 @@ export const Login = () => {
                     method="post"
                     onSubmit={onSubmitLogin}
                 >
-                    <label htmlFor="email">
-                        Е-мейл <small className="star">* {error.email}</small>
-                    </label>
-                    <input
-                        type="text"
-                        autoComplete="on"
-                        name="email"
-                        placeholder="Въведи е-мейл"
-                        value={values.email}
-                        onChange={changeHandler}
-                        onBlur={errorHandler}
-                        onFocus={clearErrors}
-                    />
-                    <label htmlFor="password">
-                        Парола{" "}
-                        <small className="star">* {error.password}</small>
-                    </label>
-                    <input
-                        type="password"
-                        autoComplete="on"
-                        name="password"
-                        placeholder="Въведи парола"
-                        value={values.password}
-                        onChange={changeHandler}
-                        onBlur={errorHandler}
-                        onFocus={clearErrors}
-                    />
+                    <field className="form-group">
+                        <label htmlFor="email">
+                            Е-мейл{" "}
+                            <small className="star">* {error.email}</small>
+                        </label>
+                        <input
+                            type="text"
+                            autoComplete="on"
+                            name="email"
+                            placeholder="Въведи е-мейл"
+                            value={values.email}
+                            onChange={changeHandler}
+                            onBlur={errorHandler}
+                            onFocus={clearErrors}
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="password">
+                            Парола{" "}
+                            <small className="star">* {error.password}</small>
+                        </label>
+                        <input
+                            type="password"
+                            autoComplete="on"
+                            name="password"
+                            placeholder="Въведи парола"
+                            value={values.password}
+                            onChange={changeHandler}
+                            onBlur={errorHandler}
+                            onFocus={clearErrors}
+                        />
+                    </field>
                     <Link to="reset">Забравена парола?</Link>
                     {loginError && (
                         <small style={{ color: "red" }}>

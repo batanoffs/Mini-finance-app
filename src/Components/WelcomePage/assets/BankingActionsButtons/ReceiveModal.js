@@ -8,8 +8,8 @@ export const ReceiveMoney = ({ setShowReceive }) => {
                 </div>
 
                 <div className="form-content">
-                    <form>
-                        <div>
+                    <form className="custom-form">
+                        <field className="form-group">
                             <label htmlFor="amount">Въведи сума</label>
                             <input
                                 type="text"
@@ -18,12 +18,15 @@ export const ReceiveMoney = ({ setShowReceive }) => {
                                 className="form-control"
                                 placeholder="10лв"
                             />
-                        </div>
-                        <input
-                            className="custom-btn"
-                            type="submit"
-                            value="Изпрати"
-                        />
+                        </field>
+                        <footer>
+                            <input
+                                className="button-primary"
+                                type="submit"
+                                value="Изпрати"
+                                style={{ width: "100%" }}
+                            />
+                        </footer>
                     </form>
                 </div>
             </div>

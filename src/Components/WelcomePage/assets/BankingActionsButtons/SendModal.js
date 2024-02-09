@@ -10,7 +10,7 @@ export const SendMoney = ({ setShowSend }) => {
 
                 <div className="form-content">
                     <form>
-                        <div>
+                        <field className="form-group">
                             <label htmlFor="amount">Въведи сума</label>
                             <input
                                 type="text"
@@ -19,8 +19,8 @@ export const SendMoney = ({ setShowSend }) => {
                                 className="form-control"
                                 placeholder="10лв"
                             />
-                        </div>
-                        <div>
+                        </field>
+                        <field className="form-group">
                             <label htmlFor="card">Приятел</label>
                             <input
                                 list="friends"
@@ -28,7 +28,7 @@ export const SendMoney = ({ setShowSend }) => {
                                 name="friends"
                                 onFocus={getFriends}
                             />
-                        </div>
+                        </field>
                         <datalist id="friends">
                             {/* friends list */}
                             <option value="Chocolate"></option>
@@ -37,11 +37,14 @@ export const SendMoney = ({ setShowSend }) => {
                             <option value="Strawberry"></option>
                             <option value="Vanilla"></option>
                         </datalist>
-                        <input
-                            className="custom-btn"
-                            type="submit"
-                            value="Изпрати"
-                        />
+                        <footer>
+                            <input
+                                className="button-primary"
+                                type="submit"
+                                value="Изпрати"
+                                style={{ width: "100%" }}
+                            />
+                        </footer>
                     </form>
                 </div>
             </div>

@@ -39,17 +39,19 @@ export const ConfirmForm = ({
                     <header>
                         <h5>Проверка на данните</h5>
                     </header>
-                    <label htmlFor="email">Е-майл</label>
-                    <input
-                        type="email"
-                        name="email"
-                        readOnly
-                        autoComplete="off"
-                        placeholder="липсва информация"
-                        className="form-control"
-                        value={email}
-                        id="email"
-                    />
+                    <field className="form-group">
+                        <label htmlFor="email">Е-майл</label>
+                        <input
+                            type="email"
+                            name="email"
+                            readOnly
+                            autoComplete="off"
+                            placeholder="липсва информация"
+                            className="form-control"
+                            value={email}
+                            id="email"
+                        />
+                    </field>
                     <input
                         type="id"
                         name="cardId"
@@ -73,77 +75,90 @@ export const ConfirmForm = ({
                         id="password"
                     />
 
-                    <label htmlFor="firstName">Име</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="firstName"
-                        placeholder="липсва информация"
-                        value={firstName}
-                        disabled
-                    />
+                    <field className="form-group">
+                        <label htmlFor="firstName">Име</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="firstName"
+                            placeholder="липсва информация"
+                            value={firstName}
+                            disabled
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="lastName">Фамилия</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="lastName"
+                            placeholder="липсва информация"
+                            value={lastName}
+                            disabled
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label>Пол</label>
+                        <Radio.Group
+                            name="gender"
+                            value={gender}
+                            disabled
+                            style={{
+                                marginBottom: "0.5rem",
+                                display: "flex",
+                                flexDirection: "column",
+                            }}
+                        >
+                            <Radio value="male"> Мъж </Radio>
+                            <Radio value="female"> Жена </Radio>
+                        </Radio.Group>
+                    </field>
 
-                    <label htmlFor="lastName">Фамилия</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="lastName"
-                        placeholder="липсва информация"
-                        value={lastName}
-                        disabled
-                    />
-
-                    <label>Пол</label>
-                    <Radio.Group
-                        name="gender"
-                        value={gender}
-                        disabled
-                        style={{ marginBottom: "0.5rem" }}
-                    >
-                        <Radio value="male"> Мъж </Radio>
-                        <Radio value="female"> Жена </Radio>
-                    </Radio.Group>
-
-                    <label htmlFor="phoneNumber">Телефон</label>
-                    <input
-                        type="tel"
-                        className="form-control"
-                        name="phoneNumber"
-                        placeholder="липсва информация"
-                        value={phoneNumber}
-                        disabled
-                    />
-
-                    <label htmlFor="adress">Адрес</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="adress"
-                        placeholder="липсва информация"
-                        value={adress}
-                        disabled
-                    />
-
-                    <label htmlFor="town">Град</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="town"
-                        placeholder="липсва информация"
-                        value={town}
-                        disabled
-                    />
-
-                    <label htmlFor="country">Държава</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="country"
-                        id="country"
-                        placeholder="липсва информация"
-                        value={country}
-                        disabled
-                    />
+                    <field className="form-group">
+                        <label htmlFor="phoneNumber">Телефон</label>
+                        <input
+                            type="tel"
+                            className="form-control"
+                            name="phoneNumber"
+                            placeholder="липсва информация"
+                            value={phoneNumber}
+                            disabled
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="adress">Адрес</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="adress"
+                            placeholder="липсва информация"
+                            value={adress}
+                            disabled
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="town">Град</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="town"
+                            placeholder="липсва информация"
+                            value={town}
+                            disabled
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="country">Държава</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="country"
+                            id="country"
+                            placeholder="липсва информация"
+                            value={country}
+                            disabled
+                        />
+                    </field>
                 </form>
                 <footer>
                     <Link
