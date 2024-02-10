@@ -38,7 +38,6 @@ export const BankingActionButtons = () => {
                 </a>
             </div>
             {showTopUp && <TopUp setShowTopUp={setShowTopUp} />}
-            {/* {showScan && <TopUp setShowScan={setShowScan} />} */}
             {showSend && <SendMoney setShowSend={setShowSend} />}
             {showReceive && <ReceiveMoney setShowReceive={setShowReceive} />}
         </div>

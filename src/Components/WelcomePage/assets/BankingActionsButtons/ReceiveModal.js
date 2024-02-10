@@ -1,4 +1,26 @@
+import { dataService } from "../../../../services/userDataService";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { useState, useContext, useEffect } from "react";
+
 export const ReceiveMoney = ({ setShowReceive }) => {
+    const { userDataId } = useContext(AuthContext);
+    const [friends, setFriends] = useState([]);
+    const [selectedFriend, setSelectedFriend] = useState(""); // Add state to track selected friend
+
+    useEffect(() => {
+        dataService.getRelation(userDataId, "friends").then((response) => {
+            setFriends(response.friends.map((friend) => friend.fullName));
+        });
+    }, []);
+
+    const clearHandler = (e) => {
+        e.target.value = "";
+    };
+
+    const handleFriendSelection = (e) => {
+        setSelectedFriend(e.target.value); // Update selectedFriend state based on input value
+    };
+    
     return (
         <div className="modal-background">
             <div className="modal-container">
@@ -9,7 +31,7 @@ export const ReceiveMoney = ({ setShowReceive }) => {
 
                 <div className="form-content">
                     <form className="custom-form">
-                        <field className="form-group">
+                        <div className="form-group">
                             <label htmlFor="amount">Въведи сума</label>
                             <input
                                 type="text"
@@ -18,7 +40,29 @@ export const ReceiveMoney = ({ setShowReceive }) => {
                                 className="form-control"
                                 placeholder="10лв"
                             />
-                        </field>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="friends">Приятел</label>
+                            <input
+                                list="friendOptions"
+                                id="friends"
+                                name="friends"
+                                placeholder="пример: Иван Иванов"
+                                value={selectedFriend} // Set input value based on selectedFriend state
+                                onChange={handleFriendSelection} // Handle input change to update selectedFriend
+                                onBlur={clearHandler} // Clear input value on blur
+                            />
+
+                            <datalist id="friendOptions">
+                                {friends.map((friend) => (
+                                        <option
+                                            key={friend}
+                                            value={friend}
+                                        ></option>
+                                    ))}
+                            </datalist>
+                        </div>
                         <footer>
                             <input
                                 className="button-primary"

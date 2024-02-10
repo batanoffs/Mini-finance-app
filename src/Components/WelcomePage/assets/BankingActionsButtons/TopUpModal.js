@@ -1,4 +1,4 @@
-export const TopUp = ({ setShowTopUp }) => {
+export const TopUp = ({ setShowTopUp, setShowReceive }) => {
     return (
         <div className="modal-background">
             <div className="modal-container">
@@ -9,7 +9,7 @@ export const TopUp = ({ setShowTopUp }) => {
 
                 <div className="form-content">
                     <form className="custom-form">
-                        <field className="form-group">
+                        <div className="form-group">
                             <label htmlFor="amount">Въведи сума</label>
                             <input
                                 type="text"
@@ -17,8 +17,8 @@ export const TopUp = ({ setShowTopUp }) => {
                                 id="amount"
                                 placeholder="Enter amount"
                             />
-                        </field>
-                        <field className="form-group">
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="card">Избери карта</label>
                             <input
                                 type="text"
@@ -26,7 +26,7 @@ export const TopUp = ({ setShowTopUp }) => {
                                 id="card"
                                 placeholder="Add credit card"
                             />
-                        </field>
+                        </div>
                         <footer>
                             <input
                                 className="button-primary"
