@@ -7,9 +7,13 @@ const request = async (method, url, data, token = undefined) => {
             options.headers = {
                 "Content-Type": "application/json",
             };
-
-            options.body = JSON.stringify(data);
         }
+        if (token) {
+            options.headers = {
+                "user-token": `${token}`,
+            };
+        }
+        options.body = JSON.stringify(data);
     }
 
     if (method === "PUT") {
@@ -34,7 +38,7 @@ const request = async (method, url, data, token = undefined) => {
         }
 
         options.headers = {
-            "response_type": "JSON",
+            response_type: "JSON",
             // "Access-Control-Allow-Origin": "*",
         };
     }

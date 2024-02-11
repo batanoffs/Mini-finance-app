@@ -16,7 +16,6 @@ export const SendMoney = ({ setShowSend }) => {
 
     const onFormSubmitHandler = (e) => {
         e.PreventDefault();
-        dataService.setRelation
     }
 
     return (
