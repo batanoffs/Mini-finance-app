@@ -48,14 +48,14 @@
 .custom-btn {
     background: var(--custom-btn-bg-color);
     border: 1px solid transparent;
-    border-radius: var(--border-radius-large);
+    border-radius: var(--border-radius-small);
     color: var(--white-color);
     font-size: 1em;
     font-weight: var(--font-weight-bold);
     line-height: normal;
     transition: all 0.3s;
-    padding: 10px 20px;
-    height: 2.4em;
+    padding: 6px 20px;
+    height: 2.2em;
 }
 
 .custom-btn:hover {

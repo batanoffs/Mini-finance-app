@@ -1,12 +1,12 @@
 import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
-import Autocomplete from "../../../features/Autocomplate";
+import { Autocomplete } from "../../../features/Autocomplate";
 
 export const SendMoney = ({ setShowSend }) => {
     const { userDataId } = useContext(AuthContext);
     const [friends, setFriends] = useState([]);
-    const [selectedFriend, setSelectedFriend] = useState(""); // Add state to track selected friend
+    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
@@ -14,16 +14,13 @@ export const SendMoney = ({ setShowSend }) => {
         });
     }, []);
 
-    const clearHandler = (e) => {
-        e.target.value = "";
-    };
-
-    const handleFriendSelection = (e) => {
-        setSelectedFriend(e.target.value); // Update selectedFriend state based on input value
-    };
+    const onFormSubmitHandler = (e) => {
+        e.PreventDefault();
+        dataService.setRelation
+    }
 
     return (
-        <div className="modal-background" >
+        <div className="modal-background">
             <div className="modal-container">
                 <div className="modal-header">
                     <h5 className="modal-title">Изпращане на пари</h5>
@@ -31,7 +28,7 @@ export const SendMoney = ({ setShowSend }) => {
                 </div>
 
                 <div className="form-content">
-                    <form>
+                    <form onSubmit={onFormSubmitHandler}>
                         <div className="form-group">
                             <label htmlFor="amount">Сума</label>
                             <input
@@ -40,29 +37,18 @@ export const SendMoney = ({ setShowSend }) => {
                                 id="amount"
                                 className="form-control"
                                 placeholder="10лв"
+                                value={userInput.amount}
+                                onChange={(e) => console.log(e.target)}
                             />
                         </div>
                         <div className="form-group ">
                             <label htmlFor="friends">Приятел</label>
-                            <Autocomplete name="friends" suggestions={[...friends]}/>
-                            {/* <input
-                                list="friendOptions"
-                                id="friends"
+                            <Autocomplete
                                 name="friends"
-                                placeholder="пример: Иван Иванов"
-                                value={selectedFriend} // Set input value based on selectedFriend state
-                                onChange={handleFriendSelection} // Handle input change to update selectedFriend
-                                onBlur={clearHandler} // Clear input value on blur
+                                userInput={userInput}
+                                setUserInput={setUserInput}
+                                suggestions={[...friends]}
                             />
-
-                            <datalist id="friendOptions">
-                                {friends.map((friend) => (
-                                        <option
-                                            key={friend}
-                                            value={friend}
-                                        ></option>
-                                    ))}
-                            </datalist> */}
                         </div>
 
                         <footer>
