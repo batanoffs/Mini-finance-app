@@ -68,7 +68,7 @@ const getMockCardObjectId = async (id) => {
 };
 
 // SET RELATIONSHIP
-const setRelation = async (parentObjectId, childName, params) => {
+const makeTransaction = async (parentObjectId, childName, params) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -105,6 +105,10 @@ const getRelation = async (parentObjectId, childName) => {
     return await request.get(
         `${baseURL}${endpoints.getRelation(parentObjectId, childName)}`
     );
+};
+
+const setRelation = async (parentObjectId, childName, body) => {
+    return await request.put(`${baseURL}${endpoints.setRelation(parentObjectId, childName)}`, body);
 };
 
 // SET/GET ATTRIBUTE
