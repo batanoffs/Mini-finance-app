@@ -76,8 +76,8 @@ export const AuthProvider = ({ children }) => {
                 cardId: formData.cardId,
                 country: formData.country,
                 gender: formData.gender,
-                name: formData.firstName + " " + formData.lastName,
-                phone: formData.phoneNumber,
+                fullName: formData.firstName + " " + formData.lastName,
+                phoneNumber: formData.phoneNumber,
                 town: formData.town,
                 ownerId: ownerId,
             }
@@ -87,6 +87,7 @@ export const AuthProvider = ({ children }) => {
             const getCard = await cardService.generateCard(formData.cardId);
             const cardObjectId = getCard.objectId
             await cardService.setVirtualCardRelation(userDataObjectId, [cardObjectId]);
+            navigate("/login");
             window.alert("Successfully registered!");
         } catch (error) {
             console.log(error);
