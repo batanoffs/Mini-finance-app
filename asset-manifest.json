@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mini-finance/static/css/main.39bcd69c.css",
-    "main.js": "/mini-finance/static/js/main.65b14751.js",
+    "main.css": "/mini-finance/static/css/main.f207df96.css",
+    "main.js": "/mini-finance/static/js/main.4f53454c.js",
     "static/media/website-dashboard.png": "/mini-finance/static/media/website-dashboard.20741267b58a5d87342b.png",
     "static/media/Montserrat-BoldItalic.woff": "/mini-finance/static/media/Montserrat-BoldItalic.bf331673b91821715c08.woff",
     "static/media/Montserrat-BlackItalic.woff": "/mini-finance/static/media/Montserrat-BlackItalic.fbf405b6c45f55a09aec.woff",
@@ -81,11 +81,11 @@
     "static/media/money-transfer-isometric-60529.svg": "/mini-finance/static/media/money-transfer-isometric-60529.efb663dc524f327e44eb9d9e731709e4.svg",
     "static/media/senior-man-white-sweater-eyeglasses.jpg": "/mini-finance/static/media/senior-man-white-sweater-eyeglasses.1e4cfdb0dee2bb651735.jpg",
     "index.html": "/mini-finance/index.html",
-    "main.39bcd69c.css.map": "/mini-finance/static/css/main.39bcd69c.css.map",
-    "main.65b14751.js.map": "/mini-finance/static/js/main.65b14751.js.map"
+    "main.f207df96.css.map": "/mini-finance/static/css/main.f207df96.css.map",
+    "main.4f53454c.js.map": "/mini-finance/static/js/main.4f53454c.js.map"
   },
   "entrypoints": [
-    "static/css/main.39bcd69c.css",
-    "static/js/main.65b14751.js"
+    "static/css/main.f207df96.css",
+    "static/js/main.4f53454c.js"
   ]
 }
