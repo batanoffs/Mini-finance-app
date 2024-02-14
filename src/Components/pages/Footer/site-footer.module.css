@@ -1,0 +1,23 @@
+/*---------------------------------------
+  SITE FOOTER              
+-----------------------------------------*/
+.footer_container {
+    border-top: 1px solid #ddd;
+    background-color: #eeeeee;
+    padding: 0 3em;
+}
+
+.copyright_text {
+    text-align: center;
+    text-wrap: balance;
+    color: var(--logo--text-color);
+    font-weight: 500;
+    padding-bottom: 0;
+}
+
+.site-footer {
+    flex: 0 0 max(40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

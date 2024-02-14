@@ -5,6 +5,10 @@
     scrollbar-width: none; /* Firefox */
 }
 
+html {
+    box-sizing: border-box;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }
@@ -15,12 +19,10 @@ body::-webkit-scrollbar {
     box-sizing: inherit;
 }
 
-html {
-    box-sizing: border-box;
-}
-
+/* Fix images behavior - block elements have no width and height by default */
 img {
     display: block;
     width: 100%;
     height: auto;
 }
+

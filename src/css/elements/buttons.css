@@ -18,6 +18,13 @@
     border-radius: var(--border-radius-small);
 }
 
+.error {
+    color: red;
+    font-size: 12px;
+    width: fit-content;
+    display: inline;
+}
+
 .button-primary:hover {
     background: var(--primary-hover-color);
     color: var(--white-color);

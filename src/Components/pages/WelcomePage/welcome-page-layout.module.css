@@ -1,0 +1,48 @@
+.bentoMainColumn {
+    flex: 4 0 300px;
+    flex-direction: column;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.bentoGridPlans {
+    flex: 2 0 200px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.bentoCell {
+    flex: 1 0 200px;
+}
+
+.bentoFillColumn {
+    flex: 2 0 200px;
+    flex-direction: column;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.bentoSideColumn {
+    flex: 1 0 200px;
+    flex-direction: column;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.contentContainer {
+    display: flex;
+    width: 100dvw;
+    margin: 1em;
+    gap: 0.5em;
+    height: calc(100dvh - 80px);
+}
+
+.contentContainer > div {
+    display: flex;
+    gap: 0.5em;
+    flex: auto;
+}

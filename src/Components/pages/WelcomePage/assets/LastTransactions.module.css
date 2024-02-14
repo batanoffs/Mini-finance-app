@@ -1,0 +1,15 @@
+.transactionsBoxWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.transactionsProfileWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.transactionsAmountInfo {
+    margin-left: auto;
+}

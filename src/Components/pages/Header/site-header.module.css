@@ -1,0 +1,125 @@
+/*---------------------------------------
+  HEADER PAGE              
+-----------------------------------------*/
+.header_container {
+    display: flex;
+    background-color: var(--heading-color);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 max(45px);
+}
+
+.header_buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2em;
+}
+
+.logo {
+    margin-left: 2em;
+    padding-top: 0.05em;
+    height: 2.3em;
+    cursor: pointer;
+}
+.button_login {
+    color: #ccdde2ff;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-bottom: 0em;
+    width: fit-content;
+    margin-top: 0em;
+    padding: 0.1em 0.8em 0px 0.8em;
+    height: 1.8em;
+    border: 1px solid #ccdde2ff;
+    border-radius: 0.6em;
+}
+
+.button_login:hover {
+    color: var(--primary-hover-color);
+    border-color: transparent;
+    border: 1px solid var(--primary-hover-color);
+    border-top-left-radius: 0.6em;
+    border-bottom-left-radius: 0.6em;
+}
+
+.button_register {
+    background: var(--primary-color);
+    color: white;
+    font-size: 1em;
+    padding: 0.1em 0.8em;
+    border: 1px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    height: 1.8em;
+    width: fit-content;
+    border-radius: 0.6em;
+    border-bottom-left-radius: 0em;
+    border-top-left-radius: 0em;
+}
+
+.button_register:hover {
+    background: var(--primary-hover-color);
+    color: var(--white-color);
+}
+.header_dropdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* NOTIFICATIONS */
+
+.profile_image {
+    border-radius: var(--border-radius-small);
+    width: 2em;
+    height: 2em;
+    object-fit: cover;
+}
+
+.dropdown_menu.notifications_block_wrap {
+    min-width: 465px;
+}
+
+.notifications_block_wrap small {
+    background: var(--custom-btn-bg-color);
+    display: block;
+    padding: 15px 30px;
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+.notifications_block p {
+    font-size: var(--btn-font-size);
+    margin-bottom: 0;
+}
+
+.notifications_block span {
+    white-space: normal;
+}
+
+.dropdown .notifications_block .dropdown-item:hover {
+    background: transparent;
+    color: var(--dark-color);
+}
+
+.notifications_icon_wrap {
+    background: var(--section-bg-color);
+    border-radius: var(--border-radius-medium);
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.notifications_icon {
+    font-size: var(--p-font-size);
+    color: var(--white-color);
+}

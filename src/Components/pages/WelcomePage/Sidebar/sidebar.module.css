@@ -1,0 +1,111 @@
+/*---------------------------------------
+  TAB BAR              
+-----------------------------------------*/
+.tab-content {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-medium);
+}
+
+/* .nav-tabs {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 35px;
+} */
+
+.nav-tabs .navLink {
+    border-radius: 20px;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    color: var(--p-color);
+    font-size: var(--menu-font-size);
+    font-weight: var(--font-weight-normal);
+    padding: 15px 25px;
+    transition: all 0.3s;
+}
+
+/*---------------------------------------
+  NAVIGATION              
+-----------------------------------------*/
+.logo-image {
+    width: 32px;
+    height: auto;
+}
+.sidebarMenu {
+    flex: 0 0 max(20dvw);
+    background: var(--white-color);
+    padding: 1em;
+}
+
+.sidebarSticky {
+height: calc(100vh - 58px);
+overflow-x: hidden;
+overflow-y: auto;
+position: relative;
+}
+
+.nav {
+    list-style: none;
+}
+
+.navLink {
+    border-radius: var(--border-radius-small);
+    color: var(--p-color);
+    font-size: var(--menu-font-size);
+    display: inline-block;
+    position: relative;
+    margin-bottom: 0.1em;
+    margin-left: 1em;
+    padding: 0.2em;
+}
+
+.sidebarMenu .navLink.active,
+.sidebarMenu .navLink:hover {
+    background: var(--primary-hover-color);
+    color: var(--white-color);
+}
+
+.featureBox {
+    background-color: var(--section-bg-color);
+    border-radius: var(--border-radius-medium);
+    padding: 0.5em 0em;
+    margin: 0.5em;
+    text-align: center;
+}
+
+.featureBox img {
+    display: block;
+    margin: auto;
+    margin-bottom: 0.5em;
+    width: 90px;
+    height: auto;
+}
+
+
+/*---------------------------------------
+  PROFILE FORM, SEARCH
+-----------------------------------------*/
+/* .profile-form .input-group .form-control {
+    background: #e9ecef;
+}
+
+.profile-form .profile-image {
+    width: 52px;
+    height: 52px;
+}
+
+.profile-form
+    .input-group:not(.has-validation)
+    > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(
+        .form-floating
+    ) {
+    border-radius: var(--border-radius-medium);
+}
+
+.profile-form
+    .input-group
+    > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+        .valid-feedback
+    ):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: 0;
+    border-radius: var(--border-radius-medium);
+} */

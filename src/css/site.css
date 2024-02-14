@@ -1,11 +1,12 @@
 @import url("../fonts/Montserrat.css");
 @import url("./base/reset.css");
-@import url("./responsive.css");
 @import url("./base/topography.css");
 @import url("./elements/buttons.css");
 @import url("./elements/forms.css");
 @import url("./elements/blocks.css");
-@import url("./site-footer.css");
+@import url('./site-layout.css');
+
+/* @import url("./site-footer.css");
 @import url("./site-header.css");
 @import url("./componets/exchangerate.module.css");
 @import url("./pages/login.css");
@@ -19,62 +20,4 @@
 @import url("./pages/wallet-tab.css");
 @import url("./pages/settings-tab.css");
 @import url("./componets/sidebar.css");
-
-/*---------------------------------------
-  SECTION               
------------------------------------------*/
-
-#root {
-    background-color: var(--white-color);
-    font-family: var(--body-font-family);
-    font-style: var(--body-font-style);
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    justify-content: start;
-}
-
-.main-wrapper {
-    background: var(--section-bg-color);
-    max-height: calc(100dvh -45px);
-    display: flex;
-    width: 100dvw;
-}
-
-.section-padding {
-    padding: 100px 50px;
-}
-
-.title-group small {
-    font-weight: var(--font-weight-light);
-}
-
-.custom-block.section-bg,
-.section-bg {
-    background-color: var(--section-bg-color);
-}
-
-.custom-block.primary-bg {
-    background: var(--primary-bg-color);
-}
-
-.featured-box {
-    background-color: var(--section-bg-color);
-    border-radius: var(--border-radius-medium);
-    padding: 0.5em 0em;
-    margin: 0.5em;
-    text-align: center;
-}
-
-.featured-box img {
-    display: block;
-    margin: auto;
-    margin-bottom: 0.5em;
-    width: 90px;
-    height: auto;
-}
+@import url("./responsive.css");  */

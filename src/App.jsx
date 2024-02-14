@@ -1,11 +1,11 @@
 import { Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import { Header } from "./Components/Header/Header";
-import { Login } from "./Components/LoginPage/Login";
-import { WelcomePage } from "./Components/WelcomePage/WelcomePage";
-import { Footer } from "./Components/Footer/Footer";
-import { Home } from "./Components/HomePage/Home";
-import { Register } from "./Components/RegisterPage/Register";
+import { Header } from "./Components/pages/Header/Header";
+import { Login } from "./Components/pages/LoginPage/Login";
+import { WelcomePage } from "./Components/pages/WelcomePage/WelcomePage";
+import { Footer } from "./Components/pages/Footer/Footer";
+import { Home } from "./Components/pages/HomePage/Home";
+import { Register } from "./Components/pages/RegisterPage/Register";
 import { Result } from "antd";
 
 function App() {

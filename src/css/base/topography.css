@@ -48,17 +48,6 @@ html {
     font: 12px/1.5 var(--body-font-family);
 }
 
-@media (min-width: 600px) {
-    html {
-        font-size: 14px;
-    }
-}
-
-@media (min-width: 1200px) {
-    html {
-        font-size: 16px;
-    }
-}
 
 body,
 table,
@@ -66,12 +55,7 @@ input {
     font: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
     font-weight: var(--font-weight-bold);
     margin: 0 0 0.3em 0;
     line-height: 1.2;
