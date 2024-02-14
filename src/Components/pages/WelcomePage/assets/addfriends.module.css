@@ -1,17 +1,13 @@
-.add-friends-form {
+.friendsForm {
     display: block;
     justify-content: left;
     align-items: left;
 }
-.add-friends-form input:not([type="submit"]) {
+.friendsForm input:not([type="submit"]) {
     width: 50%;
     margin-right: 2em;
     height: 2em;
     border: transparent;
     border-radius: 0.5em;
     padding: 0.5em;
-}
-
-.custom-block > header > h6 {
-    padding-bottom: 0.5em;
 }

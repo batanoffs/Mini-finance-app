@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { dataService } from "../../../../services/userDataService";
-import styles from "../custom-block.module.css"
+import blocks from "../custom-block.module.css"
+import styles from "./addfriends.module.css"
 
 export const AddFriends = () => {
     const [number, setNumber] = useState('');
@@ -36,11 +37,11 @@ export const AddFriends = () => {
         setNumber("");
     }
     return (
-        <div className={`${styles.customBlock} ${styles.customBlockContact}`}>
+        <div className={`${blocks.customBlock} ${blocks.customBlockContact}`}>
             <header>
                 <h5>Добави приятел</h5>
             </header>
-            <form onSubmit={onSubmit} className="add-friends-form">
+            <form onSubmit={onSubmit} className={styles.friendsForm}>
                 { error ? <small style={{color: "red"}}>липсва телефонен номер</small> : null }
                 <input
                     type="text"

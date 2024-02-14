@@ -8,7 +8,7 @@ import block from "../custom-block.module.css";
 
 export const ExchangeRate = () => {
     return (
-        <div className={block.cusomBlockExchange && block.customBlock}>
+        <div className={`${block.cusomBlockExchange} ${block.customBlock}`}>
             <h5 >Обменен курс</h5>
 
             <div className={styles.exchangeWrapper}>
@@ -16,8 +16,8 @@ export const ExchangeRate = () => {
                     <img src={USLogo} className={styles.exchangeImage} alt={"US logo"}/>
 
                     <div>
-                        <p className="currency">USD</p>
-                        <h6>1 Щатски Долар</h6>
+                        <p className={styles.currency}>USD</p>
+                        <h6>1 Долар</h6>
                     </div>
                 </div>
 
@@ -37,8 +37,8 @@ export const ExchangeRate = () => {
                     <img src={singaporeLogo} className={styles.exchangeImage} alt={"Singapore logo"}/>
 
                     <div>
-                        <p className="currency">SGD</p>
-                        <h6>1 Сингапур Долар</h6>
+                        <p className={styles.currency}>SGD</p>
+                        <h6>1 Долар</h6>
                     </div>
                 </div>
 
@@ -58,8 +58,8 @@ export const ExchangeRate = () => {
                     <img src={UKLogo} className={styles.exchangeImage} alt={"UK logo"}/>
 
                     <div>
-                        <p className="currency">GPD</p>
-                        <h6>1 Английски Паунд</h6>
+                        <p className={styles.currency}>GPD</p>
+                        <h6>1 Паунд</h6>
                     </div>
                 </div>
 
@@ -79,8 +79,8 @@ export const ExchangeRate = () => {
                     <img src={australiaLogo} className={styles.exchangeImage} alt={"australia logo"}/>
 
                     <div>
-                        <p className="currency">AUD</p>
-                        <h6>1 Австрийски Долар</h6>
+                        <p className={styles.currency}>AUD</p>
+                        <h6>1 Долар</h6>
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@ export const ExchangeRate = () => {
                     <img src={europeLogo} className={styles.exchangeImage} alt={"europe logo"}/>
 
                     <div>
-                        <p className="currency">EUR</p>
+                        <p className={styles.currency}>EUR</p>
                         <h6>1 Евро</h6>
                     </div>
                 </div>
