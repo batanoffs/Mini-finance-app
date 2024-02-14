@@ -22,17 +22,17 @@ export const Header = () => {
         }
     }
     return (
-        <header className={styles.header_container}>
-            <div className={styles.header_logo}>
+        <header className={styles.headerContainer}>
+            <div className={styles.logo}>
                 <div className="navbar-brand">
                     <img src={logo}  onClick={onRedirect} alt="logo" className={styles.logo} />
                 </div>
             </div>
             {!isAuthenticated() && (
-                <div className={styles.header_buttons}>
+                <div className={styles.headerButtons}>
                     <Link
                         to="/login"
-                        className={styles.button_login}
+                        className={styles.buttonLogin}
                         type="button"
                         style={{
                             borderBottomRightRadius: "0px",
@@ -43,7 +43,7 @@ export const Header = () => {
                     </Link>
                     <Link
                         to="/register"
-                        className={styles.button_register}
+                        className={styles.buttonRegister}
                         name="register"
                         type="button"
                     >
@@ -53,8 +53,8 @@ export const Header = () => {
             )}
 
             {isAuthenticated() && (
-                <div className={styles.header_dropdown_container}>
-                    <div className={styles.dropdown_notifications}>
+                <div className={styles.headerDropdownContainer}>
+                    <div className={styles.dropdownNotifications}>
                         <Link
                             className="nav-link"
                             to="#"
@@ -65,12 +65,12 @@ export const Header = () => {
                         >
                             <i className="bi-bell"></i>
                             <span className="">
-                                <span className="">Нотификация</span>
+                                {/* <span className="">Нотификация</span> */}
                             </span>
                         </Link>
                     </div>
 
-                    <div className="dropdown-profile">
+                    <div className={styles.dropdownProfile}>
                         <Link
                             className="nav-link"
                             to="#"
@@ -80,7 +80,7 @@ export const Header = () => {
                         >
                             <img
                                 src={picture}
-                                className={styles.profile_image}
+                                className={styles.profileImage}
                                 alt={"happy man"}
                             />
                         </Link>
