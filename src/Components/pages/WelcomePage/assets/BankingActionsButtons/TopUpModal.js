@@ -1,4 +1,6 @@
 import modal from "./modal.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCreditCard } from "@fortawesome/free-regular-svg-icons";
 
 export const TopUp = ({ setShowTopUp, setShowReceive }) => {
     return (
@@ -8,27 +10,36 @@ export const TopUp = ({ setShowTopUp, setShowReceive }) => {
                     <h5 className="modal-title">Захранване на акаунт</h5>
                     <button onClick={() => setShowTopUp(false)}> x</button>
                 </div>
-
                 <div className="form-content">
                     <form className="custom-form">
-                        <div className="form-group">
-                            <label htmlFor="amount">Въведи сума</label>
-                            <input
-                                type="text"
-                                name="amount"
-                                id="amount"
-                                placeholder="Enter amount"
-                            />
+                        <p>Начин на плащане</p>
+                        <div className={modal.modalOptions}>
+                            <div className="form-group">
+                                <label htmlFor="amount">Въведи сума</label>
+                                <input
+                                    type="text"
+                                    name="amount"
+                                    id="amount"
+                                    placeholder="Enter amount"
+                                />
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="card">Избери карта</label>
-                            <input
-                                type="text"
-                                name="card"
-                                id="card"
-                                placeholder="Add credit card"
-                            />
+                        <div className={modal.modalOptions}>
+                            <div className="form-group">
+                                <FontAwesomeIcon icon={faCreditCard} />
+                                <label htmlFor="card">
+                                    Unicredit Bulbank AD
+                                </label>
+                                <input
+                                    type="button"
+                                    name="card"
+                                    value="промени"
+                                    id="card"
+                                    placeholder="Add credit card"
+                                />
+                            </div>
                         </div>
+
                         <footer>
                             <input
                                 className="button-primary"

@@ -2,6 +2,12 @@ import { useState } from "react";
 import { TopUp } from "./TopUpModal";
 import { SendMoney } from "./SendModal";
 import { ReceiveMoney } from "./ReceiveModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faVault,
+    faMoneyBillTransfer,
+    faHandHoldingDollar,
+} from "@fortawesome/free-solid-svg-icons";
 import blocks from "../../custom-block.module.css";
 
 export const BankingActionButtons = () => {
@@ -11,21 +17,26 @@ export const BankingActionButtons = () => {
     const [showReceive, setShowReceive] = useState(false);
 
     return (
-        <div className={`${blocks.customBlock} ${blocks.customBlockBottom}`} style={{ height: "60px"}}>
-            
-                
+        <div
+            className={`${blocks.customBlock} ${blocks.customBlockBottom}`}
+            style={{ height: "60px" }}
+        >
             <div className={blocks.customBlockBottomItem}>
-                
                 <a href="#" onClick={() => setShowTopUp(true)}>
-                    <i className={blocks.customBlockIcon}></i>
-
+                    <FontAwesomeIcon
+                        className={blocks.customBlockIcon}
+                        icon={faVault}
+                    />
                     <small>захрани</small>
                 </a>
             </div>
 
             <div className={blocks.customBlockBottomItem}>
                 <a href="#" onClick={() => setShowSend(true)}>
-                    <i className={blocks.customBlockIcon}></i>
+                    <FontAwesomeIcon
+                        className={blocks.customBlockIcon}
+                        icon={faMoneyBillTransfer}
+                    />
 
                     <small>изпрати</small>
                 </a>
@@ -33,7 +44,10 @@ export const BankingActionButtons = () => {
 
             <div className={blocks.customBlockBottomItem}>
                 <a href="#" onClick={() => setShowReceive(true)}>
-                    <i className={blocks.customBlockIcon}></i>
+                    <FontAwesomeIcon
+                        className={blocks.customBlockIcon}
+                        icon={faHandHoldingDollar}
+                    />
 
                     <small>поискай</small>
                 </a>

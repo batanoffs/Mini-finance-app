@@ -45,3 +45,10 @@
     padding: 0em 0.5em;
     cursor: pointer;
 }
+
+.modalOptions {
+    border: 1px solid #ddd;
+    border-radius: 0.4em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+}

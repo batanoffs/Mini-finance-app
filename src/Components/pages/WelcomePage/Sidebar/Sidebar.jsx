@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWallet,faGear,faHandshakeAngle,faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
 import card from "../../../../images/credit-card.png";
 import styles from "./sidebar.module.css";
 
@@ -24,7 +27,7 @@ export const Sidebar = () => {
                             name="overview"
                             to="overview"
                         >
-                            <i className="bi-house-fill"></i>
+                            <FontAwesomeIcon icon={faHouse} />
                             Общ преглед
                         </NavLink>
                     </li>
@@ -41,7 +44,7 @@ export const Sidebar = () => {
                             name="wallet"
                             to="wallet"
                         >
-                            <i className="bi-wallet"></i>
+                            <FontAwesomeIcon icon={faWallet} />
                             Портфейл
                         </NavLink>
                     </li>
@@ -58,7 +61,7 @@ export const Sidebar = () => {
                             name="profile"
                             to="profile"
                         >
-                            <i className="bi-person"></i>
+                            <FontAwesomeIcon icon={faAddressCard} />
                             Профил
                         </NavLink>
                     </li>
@@ -75,7 +78,7 @@ export const Sidebar = () => {
                             name="settings"
                             to="settings"
                         >
-                            <i className="bi-gear"></i>
+                            <FontAwesomeIcon icon={faGear} />
                             Настройки
                         </NavLink>
                     </li>
@@ -92,7 +95,7 @@ export const Sidebar = () => {
                             name="helpCenter"
                             to="help-center"
                         >
-                            <i className="bi-question-circle"></i>
+                            <FontAwesomeIcon icon={faHandshakeAngle} />
                             Помощен център
                         </NavLink>
                     </li>
