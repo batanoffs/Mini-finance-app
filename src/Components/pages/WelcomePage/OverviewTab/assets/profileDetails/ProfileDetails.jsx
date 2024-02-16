@@ -1,6 +1,8 @@
 // import profilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
 import { Link } from "react-router-dom";
 import blocks from "../../../custom-block.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
 export const ProfileDetails = ({ email, phone, name, picture }) => {
     return (
@@ -9,13 +11,15 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                 <img
                     src={picture}
                     className={blocks.customBlockProfileImage}
-                    alt="happy Man"
+                    alt="profile"
                 />
 
                 <Link
                     to="/dashboard/settings"
                     className={blocks.customBlockEditIcon}
-                ></Link>
+                >
+                   <FontAwesomeIcon icon={faPenToSquare} />
+                </Link>
             </div>
 
             <p>

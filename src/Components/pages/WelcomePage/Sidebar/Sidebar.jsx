@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWallet,faGear,faHandshakeAngle,faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faWallet,faGear,faHandshakeAngle,faHouse, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
 import card from "../../../../images/credit-card.png";
 import styles from "./sidebar.module.css";
@@ -27,8 +27,8 @@ export const Sidebar = () => {
                             name="overview"
                             to="overview"
                         >
-                            <FontAwesomeIcon icon={faHouse} />
-                            Общ преглед
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faHouse} />
+                             Общ преглед
                         </NavLink>
                     </li>
 
@@ -44,7 +44,7 @@ export const Sidebar = () => {
                             name="wallet"
                             to="wallet"
                         >
-                            <FontAwesomeIcon icon={faWallet} />
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faWallet} />
                             Портфейл
                         </NavLink>
                     </li>
@@ -61,7 +61,7 @@ export const Sidebar = () => {
                             name="profile"
                             to="profile"
                         >
-                            <FontAwesomeIcon icon={faAddressCard} />
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faAddressCard} />
                             Профил
                         </NavLink>
                     </li>
@@ -78,7 +78,7 @@ export const Sidebar = () => {
                             name="settings"
                             to="settings"
                         >
-                            <FontAwesomeIcon icon={faGear} />
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faGear} />
                             Настройки
                         </NavLink>
                     </li>
@@ -95,7 +95,7 @@ export const Sidebar = () => {
                             name="helpCenter"
                             to="help-center"
                         >
-                            <FontAwesomeIcon icon={faHandshakeAngle} />
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faHandshakeAngle} />
                             Помощен център
                         </NavLink>
                     </li>
@@ -117,7 +117,7 @@ export const Sidebar = () => {
                             onClick={onLogoutHandler}
                             to="/"
                         >
-                            <i className="bi-box-arrow-left"></i>
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faArrowRightFromBracket} />
                             Изход
                         </NavLink>
                     </li>

@@ -36,6 +36,11 @@
     padding: 1em;
 }
 
+.sidebarIcons {
+    width: 30px;
+    padding-right: 0.2em;
+}
+
 .sidebarSticky {
 height: calc(100vh - 58px);
 overflow-x: hidden;

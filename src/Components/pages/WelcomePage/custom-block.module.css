@@ -118,21 +118,17 @@
 }
 
 .customBlockBottomItem {
-    flex: auto;
+    margin: auto;
 }
 
 .customBlockIcon {
     background: var(--custom-btn-bg-color);
-    border-radius: var(--border-radius-medium);
-    font-size: var(--h6-font-size);
-    width: 55px;
-    height: 55px;
-    line-height: 55px;
-    text-align: center;
+    border-radius: 0.8em;
+    width: 40px;
+    height: 40px;
+    padding: 0.8em;
     color: var(--white-color);
-    display: block;
-    margin: auto;
-    transition: all 0.3s;
+    transition: all 0.3s ease-in;
 }
 /* .bi-wallet:hover, .bi-upc-scan:hover, .bi-send:hover, .bi-arrow-down:hover {
   background: white;  

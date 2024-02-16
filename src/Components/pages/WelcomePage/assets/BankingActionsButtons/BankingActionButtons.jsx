@@ -19,7 +19,7 @@ export const BankingActionButtons = () => {
     return (
         <div
             className={`${blocks.customBlock} ${blocks.customBlockBottom}`}
-            style={{ height: "60px" }}
+            style={{ maxHeight: "110px" }}
         >
             <div className={blocks.customBlockBottomItem}>
                 <a href="#" onClick={() => setShowTopUp(true)}>
@@ -27,7 +27,6 @@ export const BankingActionButtons = () => {
                         className={blocks.customBlockIcon}
                         icon={faVault}
                     />
-                    <small>захрани</small>
                 </a>
             </div>
 
@@ -37,8 +36,6 @@ export const BankingActionButtons = () => {
                         className={blocks.customBlockIcon}
                         icon={faMoneyBillTransfer}
                     />
-
-                    <small>изпрати</small>
                 </a>
             </div>
 
@@ -48,8 +45,6 @@ export const BankingActionButtons = () => {
                         className={blocks.customBlockIcon}
                         icon={faHandHoldingDollar}
                     />
-
-                    <small>поискай</small>
                 </a>
             </div>
             {showTopUp && <TopUp setShowTopUp={setShowTopUp} />}
