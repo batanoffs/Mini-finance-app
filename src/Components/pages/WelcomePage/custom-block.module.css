@@ -28,15 +28,21 @@
 .profileRounded {
     background: var(--white-color);
     border-radius: var(--border-radius-medium);
-    display: inline-block;
-    vertical-align: top;
+    display: flex;
     width: 55px;
     height: 55px;
-    text-align: center;
 }
-
+.sendMonkeyContainer {
+    
+    display: flex;
+}
 .profileRoundedIcon {
-    font-size: var(--h6-font-size);
+    width: 55px;
+    height: 55px;
+    color: var(--primary-bg-color);
+}
+.profileRoundedIcon:hover {
+    color: var(--primary-bg-color);
 }
 
 .customBlockProfileImageWrap {
@@ -109,23 +115,21 @@
 
 .customBlockBottom {
     background: var(--third-bg-color);
-    text-align: center;
     display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 1.4em;
 }
 
 .customBlock.customBlockBottom small {
     text-transform: none;
 }
 
-.customBlockBottomItem {
-    margin: auto;
-}
-
 .customBlockIcon {
     background: var(--custom-btn-bg-color);
-    border-radius: 0.8em;
-    width: 40px;
-    height: 40px;
+    border-radius: 1em;
+    width: 30px;
+    height: 30px;
     padding: 0.8em;
     color: var(--white-color);
     transition: all 0.3s ease-in;

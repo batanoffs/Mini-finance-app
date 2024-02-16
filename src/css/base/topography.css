@@ -57,7 +57,6 @@ input {
 
 h1,h2,h3,h4,h5,h6 {
     font-weight: var(--font-weight-bold);
-    margin: 0 0 0.3em 0;
     line-height: 1.2;
     color: var(--heading-color);
 }
@@ -76,6 +75,7 @@ h4 {
 } /* 14 * 1.6 = 22px */
 h5 {
     font-size: 1.2em;
+    padding-bottom: 1em;
 } /* 14 * 1.2 = 17px */
 h6 {
     font-size: 1em;

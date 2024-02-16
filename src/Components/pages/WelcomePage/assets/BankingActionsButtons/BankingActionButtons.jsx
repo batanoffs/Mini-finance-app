@@ -19,34 +19,23 @@ export const BankingActionButtons = () => {
     return (
         <div
             className={`${blocks.customBlock} ${blocks.customBlockBottom}`}
-            style={{ maxHeight: "110px" }}
+            style={{ maxHeight: "85px" }}
         >
-            <div className={blocks.customBlockBottomItem}>
-                <a href="#" onClick={() => setShowTopUp(true)}>
-                    <FontAwesomeIcon
-                        className={blocks.customBlockIcon}
-                        icon={faVault}
-                    />
-                </a>
-            </div>
-
-            <div className={blocks.customBlockBottomItem}>
-                <a href="#" onClick={() => setShowSend(true)}>
-                    <FontAwesomeIcon
-                        className={blocks.customBlockIcon}
-                        icon={faMoneyBillTransfer}
-                    />
-                </a>
-            </div>
-
-            <div className={blocks.customBlockBottomItem}>
-                <a href="#" onClick={() => setShowReceive(true)}>
-                    <FontAwesomeIcon
-                        className={blocks.customBlockIcon}
-                        icon={faHandHoldingDollar}
-                    />
-                </a>
-            </div>
+            <FontAwesomeIcon
+                className={blocks.customBlockIcon}
+                icon={faVault}
+                onClick={() => setShowTopUp(true)}
+            />
+            <FontAwesomeIcon
+                className={blocks.customBlockIcon}
+                icon={faMoneyBillTransfer}
+                onClick={() => setShowSend(true)}
+            />
+            <FontAwesomeIcon
+                className={blocks.customBlockIcon}
+                icon={faHandHoldingDollar}
+                onClick={() => setShowReceive(true)}
+            />
             {showTopUp && <TopUp setShowTopUp={setShowTopUp} />}
             {showSend && <SendMoney setShowSend={setShowSend} />}
             {showReceive && <ReceiveMoney setShowReceive={setShowReceive} />}
