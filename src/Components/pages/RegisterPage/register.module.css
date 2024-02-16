@@ -7,7 +7,7 @@
 } */
 .register_content_container {
     display: flex;
-    width: 100dvw;
+    width: 100%;
 }
 
 .sidebar_container {

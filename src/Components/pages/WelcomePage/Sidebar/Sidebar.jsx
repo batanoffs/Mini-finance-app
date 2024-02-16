@@ -13,7 +13,6 @@ export const Sidebar = () => {
         <nav
             className={styles.sidebarMenu}
         >
-            <div className={styles.sidebarSticky}>
                 <ul className={styles.nav}>
                     <li>
                         <NavLink
@@ -122,7 +121,6 @@ export const Sidebar = () => {
                         </NavLink>
                     </li>
                 </ul>
-            </div>
         </nav>
     );
 };

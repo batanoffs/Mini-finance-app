@@ -43,9 +43,11 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 button:hover {
     background-color: var(--custom-btn-bg-hover-color);
 }
+
 ul {
     list-style: none;
     padding: 0;

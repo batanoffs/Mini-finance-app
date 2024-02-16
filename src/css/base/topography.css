@@ -55,7 +55,7 @@ input {
     font: inherit;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6 { 
     font-weight: var(--font-weight-bold);
     line-height: 1.2;
     color: var(--heading-color);
@@ -81,15 +81,8 @@ h6 {
     font-size: 1em;
 } /* 14 * 1.0 = 14px */
 
-p,
-ul,
-ol {
-    padding-bottom: 1.5em;
-}
-
-ul,
-ol {
-    padding-left: 1.6em;
+p {
+    padding-bottom: 1,5em;
 }
 
 li {
@@ -134,4 +127,5 @@ a:hover {
 b,
 strong {
     font-weight: var(--font-weight-bold);
+    color: var(--heading-color);
 }

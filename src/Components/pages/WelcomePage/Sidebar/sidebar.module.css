@@ -5,8 +5,8 @@
     background-color: var(--white-color);
     border-radius: var(--border-radius-medium);
 }
-
-/* .nav-tabs {
+/* 
+.nav-tabs {
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 35px;
 } */
@@ -26,27 +26,18 @@
 /*---------------------------------------
   NAVIGATION              
 -----------------------------------------*/
-.logo-image {
-    width: 32px;
-    height: auto;
-}
 .sidebarMenu {
-    flex: 0 0 max(20dvw);
+    padding-top: 20px;
+    min-width: 150px;
+    flex: 0 0 max(15dvw);
     background: var(--white-color);
-    padding: 1em;
 }
 
 .sidebarIcons {
-    width: 30px;
-    padding-right: 0.2em;
+    width: 20px;
+    padding-right: 0.5em;
 }
 
-.sidebarSticky {
-height: calc(100vh - 58px);
-overflow-x: hidden;
-overflow-y: auto;
-position: relative;
-}
 
 .nav {
     list-style: none;

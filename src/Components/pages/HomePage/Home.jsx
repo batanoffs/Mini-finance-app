@@ -5,9 +5,9 @@ import styles from "./home.module.css";
 export const Home = () => {
     return (
         //  ref={myRef}
-        <div className={styles.home_container}>
-            <div className={styles.text_container}>
-                <div className={styles.title_container}>
+        <div className={styles.homeContainer}>
+            <div className={styles.textContainer}>
+                <div className={styles.titleContainer}>
                     
                     <h1>Отворете банков акаунт и вземете вашата карта</h1>
                     <p>
@@ -15,7 +15,7 @@ export const Home = () => {
                         за всеки един от вас.
                     </p>
                 </div>
-                <div className={styles.button_container}>
+                <div className={styles.buttonContainer}>
                     <Link
                         to="/about"
                         className="button-secondary"
@@ -28,8 +28,8 @@ export const Home = () => {
                     </Link>
                 </div>
             </div>
-            <div className={styles.scaling_svg_container}>
-                <svg className={styles.scaling_svg} viewBox="0 0 110 52" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <div className={styles.scalingSvgContainer}>
+                <svg className={styles.scalingSvg} viewBox="0 0 110 52" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                     <defs>
                         <pattern id="imagePattern" patternUnits="userSpaceOnUse" width="93.52" height="53.2">
                             <image href={preview} x="0" y="0" width="93.52" height="53.2" preserveAspectRatio="xMidYMid slice" />
