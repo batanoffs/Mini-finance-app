@@ -1,4 +1,4 @@
-import preview from "../../../images/website-dashboard.png";
+import preview from "../../../images/dashboard.png";
 import { Link } from "react-router-dom";
 import styles from "./home.module.css";
 
