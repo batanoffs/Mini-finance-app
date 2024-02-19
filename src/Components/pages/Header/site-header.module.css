@@ -125,3 +125,75 @@
     font-size: var(--p-font-size);
     color: var(--white-color);
 }
+
+/* DROPDOWN MENU  */
+/* Styles for the header dropdown container */
+.headerDropdownContainer {
+    position: relative;
+    display: flex;
+    gap: 1em;
+}
+
+/* Styles for the dropdown notifications */
+.dropdownNotifications {
+    position: relative;
+    display: inline-block;
+}
+.notificationsIcon {
+    width: 20px;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+.notificationDot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.hidden {
+    display: none;
+}
+
+/* Styles for the dropdown toggle */
+.dropdownToggle {
+
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    
+}
+
+/* Styles for the dropdown menu */
+.dropdownMenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 1em;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    top: 50px;
+    left: -250px; /* Adjust the left position as needed */
+}
+
+/* Show the dropdown menu on hover */
+.dropdownNotifications:hover .dropdownMenu {
+    display: block;
+}
+
+/* Style the dropdown links */
+.dropdownItem {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdownItem:hover {
+    background-color: #f1f1f1;
+}
