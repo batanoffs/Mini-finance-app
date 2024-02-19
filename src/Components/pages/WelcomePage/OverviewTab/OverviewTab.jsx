@@ -10,47 +10,43 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { ContactInfo } from "../assets/ContactInfo";
 import { AddFriends } from "../assets/AddFriends";
 import { useContext } from "react";
-import styles from "../welcome-page-layout.module.css"
+import styles from "../welcome-page-layout.module.css";
 
 export const OverviewTab = () => {
     const { name, virtualcard, balance, picture, phone, email } =
         useContext(AuthContext);
     return (
-        <div className={styles.contentContainer} style={{ flexDirection: "column" }}>
-            <div>
-                <main className={styles.bentoMainColumn}>
-                    <ExchangeRate />
-                </main>
-                <section className={styles.bentoFillColumn}>
-                    <Greetings name={name} />
-                    <VirtualCard
-                        virtualcard={virtualcard}
-                        name={name}
-                        balance={balance}
-                    />
-                    <AddFriends />
-                </section>
-                <aside className={styles.bentoSideColumn}>
-                    <ProfileDetails
-                        picture={picture}
-                        name={name}
-                        phone={phone}
-                        email={email}
-                    />
-                    <BankingActionButtons />
-                </aside>
+        <div className={styles.contentContainer}>
+            <div className={styles.bentoMainColumn}>
+                <Greetings name={name} />
+                <VirtualCard
+                    virtualcard={virtualcard}
+                    name={name}
+                    balance={balance}
+                />
+
+                <BankingActionButtons />
+
+                <ProfileDetails
+                    picture={picture}
+                    name={name}
+                    phone={phone}
+                    email={email}
+                />
+                <SendMoney />
+
+
             </div>
-            <div>
-                <div className={styles.bentoMainColumn}>
-                    <LastTransactions />
-                </div>
-                <div className={styles.bentoFillColumn}>
-                    <History />
-                </div>
-                <div className={styles.bentoSideColumn}>
-                    <SendMoney />
-                    <ContactInfo />
-                </div>
+            <div className={styles.bentoFillColumn}>
+                <ExchangeRate />
+                <LastTransactions />
+            </div>
+
+            <div className={styles.bentoSideColumn}>
+                <History />
+                <AddFriends />
+
+                <ContactInfo />
             </div>
         </div>
     );

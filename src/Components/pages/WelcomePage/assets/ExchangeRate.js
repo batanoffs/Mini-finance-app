@@ -17,7 +17,6 @@ export const ExchangeRate = () => {
 
                     <div>
                         <p className={styles.currency}>USD</p>
-                        <h6>1 Долар</h6>
                     </div>
                 </div>
 
@@ -38,7 +37,6 @@ export const ExchangeRate = () => {
 
                     <div>
                         <p className={styles.currency}>SGD</p>
-                        <h6>1 Долар</h6>
                     </div>
                 </div>
 
@@ -59,7 +57,6 @@ export const ExchangeRate = () => {
 
                     <div>
                         <p className={styles.currency}>GPD</p>
-                        <h6>1 Паунд</h6>
                     </div>
                 </div>
 
@@ -80,7 +77,6 @@ export const ExchangeRate = () => {
 
                     <div>
                         <p className={styles.currency}>AUD</p>
-                        <h6>1 Долар</h6>
                     </div>
                 </div>
 
@@ -100,8 +96,7 @@ export const ExchangeRate = () => {
                     <img src={europeLogo} className={styles.exchangeImage} alt={"europe logo"}/>
 
                     <div>
-                        <p className={styles.currency}>EUR</p>
-                        <h6>1 Евро</h6>
+                        <p className={styles.currency}>EUR</p> 
                     </div>
                 </div>
 
