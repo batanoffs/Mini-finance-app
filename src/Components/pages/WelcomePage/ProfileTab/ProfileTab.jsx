@@ -1,14 +1,17 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
-import Cards from 'react-credit-cards-2';
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
 import { ContactInfo } from "../assets/ContactInfo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import Cards from "react-credit-cards-2";
 import styles from "../welcome-page-layout.module.css";
 import blocks from "../custom-block.module.css";
+import "react-credit-cards-2/dist/es/styles-compiled.css";
 
 export const ProfileTab = () => {
-    const { adress, country, name, phone, virtualcard, picture, email } = useContext(AuthContext);
+    const { adress, country, name, phone, virtualcard, picture, email } =
+        useContext(AuthContext);
     const date = new Date(virtualcard.created);
     const month = date.getMonth();
     const year = date.getFullYear();
@@ -17,9 +20,11 @@ export const ProfileTab = () => {
 
     return (
         <div className={styles.contentContainer}>
-            <main className={styles.bentoMainColumn}>
-                <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
-                    <h5>Дебитна карта</h5>
+            <main className={styles.bentoFillColumn}>
+                <div
+                    className={`${blocks.customBlock} ${blocks.customBlockProfile}`}
+                >
+                    <h5>Виртуална карта</h5>
                     <div>
                         <Cards
                             number={virtualcard.number}
@@ -54,7 +59,9 @@ export const ProfileTab = () => {
                         </p>
                     </div>
                 </div>
-                <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
+                <div
+                    className={`${blocks.customBlock} ${blocks.customBlockProfile}`}
+                >
                     <div>
                         <div>
                             <h5>Обща информация</h5>
@@ -71,7 +78,9 @@ export const ProfileTab = () => {
                                 <Link
                                     to="mini-finance/dashboard/settings"
                                     className={blocks.customBlockEditIcon}
-                                ></Link>
+                                >
+                                    <FontAwesomeIcon icon={faPenToSquare} />
+                                </Link>
                             </div>
                         </div>
 

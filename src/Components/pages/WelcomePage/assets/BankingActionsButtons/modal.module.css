@@ -1,18 +1,18 @@
 .modalBackground {
-    width: calc(100% - 320px);
-    height: calc(100% - 46px);
+    width: 100%;
+    height: calc(100% - 45px);
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
-    z-index: 2;
-    left: 320px;
-    top: 46px;
+    z-index: 3;
+    left: 0px;
+    top: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .modalContainer {
-    width: 40%;
+    width: 60%;
     transition: all 150ms ease-in-out;
     border-radius: 1em;
     background-color: white;
@@ -51,4 +51,17 @@
     border-radius: 0.4em;
     padding: 0.5em;
     margin-top: 0.5em;
+}
+
+@media (min-width: 1200px) {
+    .modalBackground {
+        width: calc(100% - 200px);
+        height: calc(100% - 45px);
+        left: 240px;
+        top: 45px;
+    }
+
+    .modalContainer {
+        width: 40%;
+    }
 }

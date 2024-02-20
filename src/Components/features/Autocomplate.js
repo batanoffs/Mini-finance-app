@@ -6,6 +6,8 @@ export const Autocomplete = ( props ) => {
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
 
+    console.log(`props`, props);
+    
     const onChange = (e) => {
         const suggestions = props.suggestions;
         const input = e.target.value;

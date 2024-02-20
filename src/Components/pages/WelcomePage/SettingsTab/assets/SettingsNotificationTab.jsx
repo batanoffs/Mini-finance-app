@@ -1,32 +1,58 @@
 export const NotificationTab = () => {
     return (
-        <div className="tab-pane fade active show" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabIndex="0">
-            <h5 >Известия</h5>
+        <div className="form-container">
+            <div className="form-content">
+                <form className="custom-form" method="post">
+                    <field className="form-group">
+                        <label htmlFor="form-check-input">
+                            Последна активност
+                        </label>
 
-            <form className="custom-form notification-form" action="#" method="post">
+                        <input
+                            className="form-control"
+                            type="checkbox"
+                            onChange={() => {}}
+                            name="form-check-input"
+                            role="switch"
+                            id="flexSwitchCheckCheckedOne"
+                            checked=""
+                        />
+                    </field>
 
-                <div className="form-check form-switch d-flex mb-3 ps-0">
-                    <label className="form-check-label" htmlFor="flexSwitchCheckCheckedOne">Последна активност</label>
+                    <field className="form-group">
+                        <label
+                            className="form-check-label"
+                            htmlFor="flexSwitchCheckCheckedTwo"
+                        >
+                            Обновено плащане
+                        </label>
 
-                    <input className="form-check-input ms-auto" type="checkbox" onChange={() => {}} name="form-check-input" role="switch" id="flexSwitchCheckCheckedOne" checked=""/>
-                </div>
+                        <input
+                            className="form-control"
+                            type="checkbox"
+                            onChange={() => {}}
+                            name="form-check-input"
+                            role="switch"
+                            id="flexSwitchCheckCheckedTwo"
+                            checked=""
+                        />
+                    </field>
 
-                <div className="form-check form-switch d-flex mb-3 ps-0">
-                    <label className="form-check-label" htmlFor="flexSwitchCheckCheckedTwo">Обновено плащане</label>
+                    <footer>
+                        <input
+                            type="button"
+                            value="Изчисти"
+                            className="button-secondary"
+                        />
 
-                    <input className="form-check-input ms-auto" type="checkbox" onChange={() => {}} name="form-check-input" role="switch" id="flexSwitchCheckCheckedTwo" checked=""/>
-                </div>
-
-                <div className="d-flex mt-4">
-                    <button type="button" className="form-control me-3">
-                        Изчисти
-                    </button>
-
-                    <button type="submit" className="form-control ms-2">
-                        Запази промени
-                    </button>
-                </div>
-            </form>
+                        <input
+                            type="submit"
+                            value="Запази промени"
+                            className="button-primary"
+                        />
+                    </footer>
+                </form>
+            </div>
         </div>
-    )
-}
+    );
+};

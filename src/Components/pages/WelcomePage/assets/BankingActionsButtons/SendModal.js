@@ -11,13 +11,19 @@ export const SendMoney = ({ setShowSend }) => {
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
-            setFriends(response.friends.map((friend) => friend.fullName));
+            setFriends(
+                response.friends.map((friend) => {
+                    if (friend.fullName) {
+                        return friend.fullName;
+                    }
+                })
+            );
         });
     }, []);
 
     const onFormSubmitHandler = (e) => {
         e.PreventDefault();
-    }
+    };
 
     return (
         <div className={modal.modalBackground}>

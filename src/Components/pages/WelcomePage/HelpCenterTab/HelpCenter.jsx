@@ -5,7 +5,7 @@ import blocks from "../custom-block.module.css";
 export const HelpCenterTab = () => {
     return (
         <div className={styles.contentContainer}>
-            <main className={styles.bentoMainColumn}>
+            <main className={styles.bentoFillColumn}>
                 <div className={blocks.customBlock}>
                     <form  action="#" method="post">
                         <header>

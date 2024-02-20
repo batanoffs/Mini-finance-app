@@ -9,7 +9,7 @@ const endpoints = {
     setRelation: (parentObjectId, childName) =>
         `/data/UserData/${parentObjectId}/${childName}`,
     getRelation: (parentObjectId, childName) =>
-        `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=2`,
+        `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=3`,
     attribute: (attribute, value) =>
         `/data/UserData?where=${attribute}='${value}'`,
     getAll: (id) => `/data/UserData?where=ownerId='${id}'`,

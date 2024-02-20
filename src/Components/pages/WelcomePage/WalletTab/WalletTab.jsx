@@ -7,7 +7,7 @@ import styles from "../welcome-page-layout.module.css"
 export const WalletTab = () => {
     return (
         <div className={styles.contentContainer}>
-            <main className={styles.bentoMainColumn}>
+            <main className={styles.bentoFillColumn}>
                 <TableTransactions/>
             </main>
             <aside className={styles.bentoSideColumn} >

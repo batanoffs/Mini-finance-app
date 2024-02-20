@@ -4,6 +4,8 @@ import { Button, message, Upload } from "antd";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../../../contexts/AuthContext";
+import blocks from "../../custom-block.module.css";
+
 
 export const ProfileTab = () => {
     // TO DO PICTURE
@@ -50,6 +52,20 @@ export const ProfileTab = () => {
             <div className="form-content">
                 <form className="custom-form" method="post">
                     <field className="form-group">
+                        <img
+                            src={picture}
+                            className={blocks.customBlockProfileImage}
+                            alt="person"
+                            value={state.picture}
+                            onChange={inputChangeHandler}
+                        />
+                        <Upload {...props}>
+                            <Button icon={<UploadOutlined />}>
+                                Прикачи снимка
+                            </Button>
+                        </Upload>
+                    </field>
+                    <field className="form-group">
                         <label htmlFor="profile-name">Име и фамилия</label>
                         <input
                             className="form-control"
@@ -84,20 +100,6 @@ export const ProfileTab = () => {
                             placeholder="Телефонен номер"
                             className="form-control mb-3"
                         />
-                    </field>
-                    <field className="form-group">
-                        <img
-                            src={picture}
-                            className="profile-image "
-                            alt="person"
-                            value={state.picture}
-                            onChange={inputChangeHandler}
-                        />
-                        <Upload {...props}>
-                            <Button icon={<UploadOutlined />}>
-                                Прикачи снимка
-                            </Button>
-                        </Upload>
                     </field>
 
                     <footer>

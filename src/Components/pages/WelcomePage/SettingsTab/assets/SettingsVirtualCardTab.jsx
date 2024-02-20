@@ -27,16 +27,14 @@ export const VirtualCard = () => {
     };
 
     return (
-        <div
-            id="profile-tab-pane"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-            tabIndex="0"
-        >
-            <h5 >Добави карта</h5>
-            <form className="custom-form profile-form" action="#" method="post">
-                <div>
-                    <div>
+        <div className="form-container">
+            <div className="form-content">
+                <form className="custom-form" method="post">
+                    <field className="form-group">
+                        <label htmlFor="credit_card_number">
+                            Номер на карта
+                        </label>
+
                         <input
                             type="number"
                             name="credit_card_number"
@@ -47,6 +45,11 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="credit_card_number">
+                            Номер на карта
+                        </label>
 
                         <input
                             type="text"
@@ -59,6 +62,11 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="credit_card_number">
+                            Номер на карта
+                        </label>
 
                         <input
                             type="string"
@@ -71,7 +79,11 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
-
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="credit_card_number">
+                            Номер на карта
+                        </label>
                         <input
                             type="password"
                             name="cvv"
@@ -83,9 +95,8 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
-                    </div>
-
-                    <div>
+                    </field>
+                    <field className="form-group">
                         <Cards
                             number={state.cardNumber}
                             expiry={state.expiryDate}
@@ -93,19 +104,18 @@ export const VirtualCard = () => {
                             name={state.name}
                             focused={state.focus}
                         />
-                    </div>
+                    </field>
 
-                    <div>
-                        <button
+                    <footer>
+                        <input
                             type="submit"
+                            value="Запази"
                             onClick={onUpdateHandler}
-                            className="form-control"
-                        >
-                            Запази
-                        </button>
-                    </div>
-                </div>
-            </form>
+                            className="button-primary"
+                        />
+                    </footer>
+                </form>
+            </div>
         </div>
     );
 };

@@ -1,25 +1,66 @@
 export const PasswordTab = () => {
     return (
-        <div className="tab-pane fade active show" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabIndex="0">
-            <h5 >Промяна на парола</h5>
+        <div className="form-container">
+            <div className="form-content">
+                <form className="custom-form" method="post">
+                    <field className="form-group">
+                        <label htmlFor="old_password">Стара парола</label>
 
-            <form className="custom-form password-form" action="#" method="post">
-                <input type="password" name="password" id="password" pattern="[0-9a-zA-Z]{4,10}" className="form-control" placeholder="Стара парола" required=""/>
+                        <input
+                            type="password"
+                            name="old_password"
+                            id="password"
+                            pattern="[0-9a-zA-Z]{4,10}"
+                            className="form-control"
+                            placeholder="Стара парола"
+                            required=""
+                        />
+                    </field>
+                    <field className="form-group">
+                        <label htmlFor="new_password">Нова парола</label>
 
-                <input type="password" name="new_password" id="new_password" pattern="[0-9a-zA-Z]{4,10}" className="form-control" placeholder="Нова парола" required=""/>
+                        <input
+                            type="password"
+                            name="new_password"
+                            id="new_password"
+                            pattern="[0-9a-zA-Z]{4,10}"
+                            className="form-control"
+                            placeholder="Нова парола"
+                            required=""
+                        />
+                    </field>
 
-                <input type="password" name="confirm_password" id="confirm_password" pattern="[0-9a-zA-Z]{4,10}" className="form-control" placeholder="Потвърди парола" required=""/>
+                    <field className="form-group">
+                        <label htmlFor="confirm_password">
+                            Потвърди парола
+                        </label>
 
-                <div className="d-flex">
-                    <button type="button" className="form-control me-3">
-                        Изчисти
-                    </button>
+                        <input
+                            type="password"
+                            name="confirm_password"
+                            id="confirm_password"
+                            pattern="[0-9a-zA-Z]{4,10}"
+                            className="form-control"
+                            placeholder="Потвърди парола"
+                            required=""
+                        />
+                    </field>
 
-                    <button type="submit" className="form-control ms-2">
-                    Запази промени
-                    </button>
-                </div>
-            </form>
+                    <footer>
+                        <input
+                            type="button"
+                            value="Изчисти"
+                            className="button-secondary"
+                        />
+
+                        <input
+                            type="submit"
+                            value="Запази промени"
+                            className="button-primary"
+                        />
+                    </footer>
+                </form>
+            </div>
         </div>
-    )
-}
+    );
+};
