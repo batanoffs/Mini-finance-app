@@ -39,7 +39,7 @@ export const ConfirmForm = ({
                     <header>
                         <h5>Проверка на данните</h5>
                     </header>
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="email">Е-майл</label>
                         <input
                             type="email"
@@ -51,7 +51,7 @@ export const ConfirmForm = ({
                             value={email}
                             id="email"
                         />
-                    </field>
+                    </div>
                     <input
                         type="id"
                         name="cardId"
@@ -75,7 +75,7 @@ export const ConfirmForm = ({
                         id="password"
                     />
 
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="firstName">Име</label>
                         <input
                             type="text"
@@ -85,8 +85,8 @@ export const ConfirmForm = ({
                             value={firstName}
                             disabled
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="lastName">Фамилия</label>
                         <input
                             type="text"
@@ -96,8 +96,8 @@ export const ConfirmForm = ({
                             value={lastName}
                             disabled
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label>Пол</label>
                         <Radio.Group
                             name="gender"
@@ -112,9 +112,9 @@ export const ConfirmForm = ({
                             <Radio value="male"> Мъж </Radio>
                             <Radio value="female"> Жена </Radio>
                         </Radio.Group>
-                    </field>
+                    </div>
 
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="phoneNumber">Телефон</label>
                         <input
                             type="tel"
@@ -124,8 +124,8 @@ export const ConfirmForm = ({
                             value={phoneNumber}
                             disabled
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="adress">Адрес</label>
                         <input
                             type="text"
@@ -135,8 +135,8 @@ export const ConfirmForm = ({
                             value={adress}
                             disabled
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="town">Град</label>
                         <input
                             type="text"
@@ -146,8 +146,8 @@ export const ConfirmForm = ({
                             value={town}
                             disabled
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="country">Държава</label>
                         <input
                             type="text"
@@ -158,7 +158,7 @@ export const ConfirmForm = ({
                             value={country}
                             disabled
                         />
-                    </field>
+                    </div>
                 </form>
                 <footer>
                     <Link

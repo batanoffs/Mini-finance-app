@@ -62,7 +62,7 @@ export const InfoForm = ({
                 <header>
                     <h5>Моля, въведете вашите лични данни във формата</h5>
                 </header>
-                <field className="form-group">
+                <div className="form-group">
                     <label htmlFor="firstName">
                         Име <small className="error">* {error.firstName}</small>
                     </label>
@@ -76,8 +76,8 @@ export const InfoForm = ({
                         onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="lastName">
                         Фамилия{" "}
                         <small className="error">* {error.lastName}</small>
@@ -92,8 +92,8 @@ export const InfoForm = ({
                         onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label>
                         Пол <small className="error">* {error.gender}</small>
                     </label>
@@ -108,8 +108,8 @@ export const InfoForm = ({
                         <Radio style={{ fontSize: "1rem"}} value="male"> Мъж </Radio>
                         <Radio style={{ fontSize: "1rem"}} value="female"> Жена </Radio>
                     </Radio.Group>
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="phoneNumber">
                         Телефон{" "}
                         <small className="error">*{error.phoneNumber}</small>
@@ -124,8 +124,8 @@ export const InfoForm = ({
                         onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="town">
                         Град <small className="error">*{error.town}</small>
                     </label>
@@ -139,8 +139,8 @@ export const InfoForm = ({
                         onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="country">
                         Държава{" "}
                         <small className="error">* {error.country}</small>
@@ -156,8 +156,8 @@ export const InfoForm = ({
                         onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="adress">Адрес</label>
                     <input
                         type="text"
@@ -169,7 +169,7 @@ export const InfoForm = ({
                         onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
-                </field>
+                </div>
                 <p className="error">{errorOnNext.message}</p>
                 <footer>
                     <Link

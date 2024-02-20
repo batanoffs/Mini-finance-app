@@ -27,6 +27,7 @@ export const ExchangeRate = () => {
         AUD: { name: CURRENCIES.AUD, buy: 0, sell: 0, logo: australiaLogo },
         SGD: { name: CURRENCIES.SGD, buy: 0, sell: 0, logo: singaporeLogo },
     });
+
     useEffect(() => {
         exchangeRateService
             .getLatest(CURRENCIES.BGN)
@@ -34,14 +35,15 @@ export const ExchangeRate = () => {
             .then((data) =>
                 setRates((prevState) => {
                     const newState = prevState;
-                    newState["USD"]["buy"] = data.conversion_rates.USD;
-                    newState["GBP"]["buy"] = data.conversion_rates.GBP;
-                    newState["EUR"]["buy"] = data.conversion_rates.EUR;
-                    newState["AUD"]["buy"] = data.conversion_rates.AUD;
-                    newState["SGD"]["buy"] = data.conversion_rates.SGD;
+                    newState["USD"]["sell"] = data.conversion_rates.USD;
+                    newState["GBP"]["sell"] = data.conversion_rates.GBP;
+                    newState["EUR"]["sell"] = data.conversion_rates.EUR;
+                    newState["AUD"]["sell"] = data.conversion_rates.AUD;
+                    newState["SGD"]["sell"] = data.conversion_rates.SGD;
                     return newState;
                 })
-            );
+            )
+            .catch((error) => console.log(error));
     }, []);
 
     useEffect(() => {
@@ -51,86 +53,95 @@ export const ExchangeRate = () => {
             .then((data) => {
                 setRates((prevState) => {
                     const newState = prevState;
-                    newState["USD"]["sell"] = data.conversion_rate;
+                    newState["USD"]["buy"] = data.conversion_rate;
                     return newState;
                 });
-            });
+            })
+            .catch((error) => console.log(error));
         exchangeRateService
             .getSpecificRate(CURRENCIES.GBP, CURRENCIES.BGN)
             .then((response) => response.json())
             .then((data) => {
                 setRates((prevState) => {
                     const newState = prevState;
-                    newState["GBP"]["sell"] = data.conversion_rate;
+                    newState["GBP"]["buy"] = data.conversion_rate;
                     return newState;
                 });
-            });
+            })
+            .catch((error) => console.log(error));
         exchangeRateService
             .getSpecificRate(CURRENCIES.EUR, CURRENCIES.BGN)
             .then((response) => response.json())
             .then((data) => {
                 setRates((prevState) => {
                     const newState = prevState;
-                    newState["EUR"]["sell"] = data.conversion_rate;
+                    newState["EUR"]["buy"] = data.conversion_rate;
                     return newState;
                 });
-            });
+            })
+            .catch((error) => console.log(error));
         exchangeRateService
             .getSpecificRate(CURRENCIES.AUD, CURRENCIES.BGN)
             .then((response) => response.json())
             .then((data) => {
                 setRates((prevState) => {
                     const newState = prevState;
-                    newState["AUD"]["sell"] = data.conversion_rate;
+                    newState["AUD"]["buy"] = data.conversion_rate;
                     return newState;
                 });
-            });
+            })
+            .catch((error) => console.log(error));
         exchangeRateService
             .getSpecificRate(CURRENCIES.SGD, CURRENCIES.BGN)
             .then((response) => response.json())
             .then((data) => {
                 setRates((prevState) => {
                     const newState = prevState;
-                    newState["SGD"]["sell"] = data.conversion_rate;
+                    newState["SGD"]["buy"] = data.conversion_rate;
                     return newState;
                 });
-            });
+            })
+            .catch((error) => console.log(error));
     }, []);
-
+    
     return (
         <div
             className={`${block.customBlockTransactions} ${block.customBlock}`}
         >
             <h5>Обменен курс</h5>
+            <ul>
+                {Array.from(Object.entries(rates)).map((rates) => {
+                    console.log(rates[0]);
 
-            {Array.from(Object.entries(rates)).map((rates) => {
-                return (
-                    <div key={rates[0]} className={styles.exchangeWrapper}>
-                        <div className={styles.currencyWrapper}>
-                            <img
-                                src={rates[1].logo}
-                                className={styles.exchangeImage}
-                                alt={"logo"}
-                                key={rates[0]}
-                            />
+                    return (
+                        <li key={rates[0][0]} className={styles.exchangeWrapper}>
+                            <div className={styles.currencyWrapper}>
+                                <img
+                                    src={rates[1].logo}
+                                    className={styles.exchangeImage}
+                                    alt={"logo"}
+                                />
+
+                                <div>
+                                    <p className={styles.currency}>
+                                        {rates[0]}
+                                    </p>
+                                </div>
+                            </div>
 
                             <div>
-                                <p key={rates[0]} className={styles.currency}>{rates[0]}</p>
+                                <small>Продава</small>
+                                <h6>{rates[1].sell}</h6>
                             </div>
-                        </div>
 
-                        <div>
-                            <small>Продава</small>
-                            <h6 key={rates[0]}>{rates[1].sell}</h6>
-                        </div>
-
-                        <div>
-                            <small>Купува</small>
-                            <h6 key={rates[0]}>{rates[1].buy}</h6>
-                        </div>
-                    </div>
-                );
-            })}
+                            <div>
+                                <small>Купува</small>
+                                <h6>{rates[1].buy}</h6>
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
         </div>
     );
 };

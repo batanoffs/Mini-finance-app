@@ -30,7 +30,7 @@ export const VirtualCard = () => {
         <div className="form-container">
             <div className="form-content">
                 <form className="custom-form" method="post">
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="credit_card_number">
                             Номер на карта
                         </label>
@@ -45,8 +45,8 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="credit_card_number">
                             Номер на карта
                         </label>
@@ -62,8 +62,8 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="credit_card_number">
                             Номер на карта
                         </label>
@@ -79,8 +79,8 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="credit_card_number">
                             Номер на карта
                         </label>
@@ -95,8 +95,8 @@ export const VirtualCard = () => {
                             onFocus={inputFocusHandler}
                             required
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <Cards
                             number={state.cardNumber}
                             expiry={state.expiryDate}
@@ -104,7 +104,7 @@ export const VirtualCard = () => {
                             name={state.name}
                             focused={state.focus}
                         />
-                    </field>
+                    </div>
 
                     <footer>
                         <input

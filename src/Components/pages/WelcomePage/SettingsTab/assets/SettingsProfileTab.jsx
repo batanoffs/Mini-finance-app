@@ -51,7 +51,7 @@ export const ProfileTab = () => {
         <div className="form-container">
             <div className="form-content">
                 <form className="custom-form" method="post">
-                    <field className="form-group">
+                    <div className="form-group">
                         <img
                             src={picture}
                             className={blocks.customBlockProfileImage}
@@ -64,8 +64,8 @@ export const ProfileTab = () => {
                                 Прикачи снимка
                             </Button>
                         </Upload>
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="profile-name">Име и фамилия</label>
                         <input
                             className="form-control"
@@ -76,8 +76,8 @@ export const ProfileTab = () => {
                             onChange={inputChangeHandler}
                             placeholder="Име и фамилия"
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="profile-email">Email</label>
                         <input
                             className="form-control"
@@ -88,8 +88,8 @@ export const ProfileTab = () => {
                             id="profile-email"
                             placeholder="email"
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="phone_number">Телефонен номер</label>
                         <input
                             type="number"
@@ -100,7 +100,7 @@ export const ProfileTab = () => {
                             placeholder="Телефонен номер"
                             className="form-control mb-3"
                         />
-                    </field>
+                    </div>
 
                     <footer>
                         <input

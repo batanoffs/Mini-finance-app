@@ -37,7 +37,7 @@ export const Login = () => {
                     method="post"
                     onSubmit={onSubmitLogin}
                 >
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="email">
                             Е-мейл{" "}
                             <small className="error">* {error.email}</small>
@@ -52,8 +52,8 @@ export const Login = () => {
                             onBlur={errorHandler}
                             onFocus={clearErrors}
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="password">
                             Парола{" "}
                             <small className="error">* {error.password}</small>
@@ -68,7 +68,7 @@ export const Login = () => {
                             onBlur={errorHandler}
                             onFocus={clearErrors}
                         />
-                    </field>
+                    </div>
                     <Link to="reset">Забравена парола?</Link>
                     {loginError && (
                         <small style={{ color: "red" }}>

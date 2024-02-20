@@ -3,7 +3,7 @@ export const PasswordTab = () => {
         <div className="form-container">
             <div className="form-content">
                 <form className="custom-form" method="post">
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="old_password">Стара парола</label>
 
                         <input
@@ -15,8 +15,8 @@ export const PasswordTab = () => {
                             placeholder="Стара парола"
                             required=""
                         />
-                    </field>
-                    <field className="form-group">
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="new_password">Нова парола</label>
 
                         <input
@@ -28,9 +28,9 @@ export const PasswordTab = () => {
                             placeholder="Нова парола"
                             required=""
                         />
-                    </field>
+                    </div>
 
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="confirm_password">
                             Потвърди парола
                         </label>
@@ -44,7 +44,7 @@ export const PasswordTab = () => {
                             placeholder="Потвърди парола"
                             required=""
                         />
-                    </field>
+                    </div>
 
                     <footer>
                         <input

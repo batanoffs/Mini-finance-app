@@ -3,7 +3,7 @@ export const NotificationTab = () => {
         <div className="form-container">
             <div className="form-content">
                 <form className="custom-form" method="post">
-                    <field className="form-group">
+                    <div className="form-group">
                         <label htmlFor="form-check-input">
                             Последна активност
                         </label>
@@ -17,9 +17,9 @@ export const NotificationTab = () => {
                             id="flexSwitchCheckCheckedOne"
                             checked=""
                         />
-                    </field>
+                    </div>
 
-                    <field className="form-group">
+                    <div className="form-group">
                         <label
                             className="form-check-label"
                             htmlFor="flexSwitchCheckCheckedTwo"
@@ -36,7 +36,7 @@ export const NotificationTab = () => {
                             id="flexSwitchCheckCheckedTwo"
                             checked=""
                         />
-                    </field>
+                    </div>
 
                     <footer>
                         <input

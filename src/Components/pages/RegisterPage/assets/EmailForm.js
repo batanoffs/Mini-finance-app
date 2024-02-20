@@ -13,7 +13,7 @@ export const EmailForm = ({
         email: "",
         password: "",
         confirmPassword: "",
-        noFields: "",
+        nodivs: "",
     });
 
     const onNextPageHandler = (e) => {
@@ -28,7 +28,7 @@ export const EmailForm = ({
                 <header>
                     <h5>Е-майл и парола</h5>
                 </header>
-                <field className="form-group">
+                <div className="form-group">
                     <label htmlFor="email">
                         Е-майл <small className="error">* {error.email}</small>
                     </label>
@@ -44,8 +44,8 @@ export const EmailForm = ({
                         onBlur={errorHandler}
                         onFocus={clearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="password">
                         Парола{" "}
                         <small className="error">* {error.password}</small>
@@ -62,8 +62,8 @@ export const EmailForm = ({
                         onBlur={errorHandler}
                         onFocus={clearErrorHandler}
                     />
-                </field>
-                <field className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="confirmPassword">
                         Потвърди парола{" "}
                         <small className="error">
@@ -82,7 +82,7 @@ export const EmailForm = ({
                         onBlur={errorHandler}
                         onFocus={clearErrorHandler}
                     />
-                </field>
+                </div>
                 <footer>
                     <Link
                         type="button"
