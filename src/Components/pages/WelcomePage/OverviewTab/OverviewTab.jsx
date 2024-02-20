@@ -34,12 +34,11 @@ export const OverviewTab = () => {
                     email={email}
                 />
                 <SendMoney />
-
-
             </div>
             <div className={styles.bentoFillColumn}>
-                <ExchangeRate />
                 <LastTransactions />
+
+                <ExchangeRate />
             </div>
 
             <div className={styles.bentoSideColumn}>

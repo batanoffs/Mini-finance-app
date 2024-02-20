@@ -68,27 +68,27 @@ export const Header = () => {
                 <div className={styles.headerDropdownContainer}>
                     <div className={styles.dropdownNotifications}>
                         <Link
-                            class={styles.dropdownToggle}
+                            className={styles.dropdownToggle}
                             to="#"
                             role="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
                             <FontAwesomeIcon icon={faBell} className={styles.notificationsIcon}/>
-                            <span class={styles.notificationDot}>
-                                <span class={styles.hidden}>New alerts</span>
+                            <span className={styles.notificationDot}>
+                                <span className={styles.hidden}>New alerts</span>
                             </span>
                         </Link>
 
                         <ul
-                            class={styles.dropdownMenu}
+                            className={styles.dropdownMenu}
                             aria-labelledby="navbarLightDropdownMenuLink"
                         >
 
-                            <li class="notifications-block border-bottom">
-                                <Link class={styles.dropdownItem} to="#">
-                                    <div class="notifications-icon-wrap bg-success">
-                                        <i class="notifications-icon bi-check-circle-fill"></i>
+                            <li className="notifications-block border-bottom">
+                                <Link className={styles.dropdownItem} to="#">
+                                    <div className="notifications-icon-wrap bg-success">
+                                        <i className="notifications-icon bi-check-circle-fill"></i>
                                     </div>
 
                                     <div>
@@ -102,10 +102,10 @@ export const Header = () => {
                                 </Link>
                             </li>
 
-                            <li class="notifications-block border-bottom">
-                                <Link class={styles.dropdownItem} to="#">
-                                    <div class="notifications-icon-wrap bg-info">
-                                        <i class="notifications-icon bi-folder"></i>
+                            <li className="notifications-block border-bottom">
+                                <Link className={styles.dropdownItem} to="#">
+                                    <div className="notifications-icon-wrap bg-info">
+                                        <i className="notifications-icon bi-folder"></i>
                                     </div>
 
                                     <div>
@@ -119,10 +119,10 @@ export const Header = () => {
                                 </Link>
                             </li>
 
-                            <li class="notifications-block">
-                                <Link class={styles.dropdownItem} to="#">
-                                    <div class="notifications-icon-wrap">
-                                        <i class="notifications-icon bi-question-circle"></i>
+                            <li className="notifications-block">
+                                <Link className={styles.dropdownItem} to="#">
+                                    <div className="notifications-icon-wrap">
+                                        <i className="notifications-icon bi-question-circle"></i>
                                     </div>
 
                                     <div>
@@ -154,7 +154,7 @@ export const Header = () => {
                             <ul className={styles.dropdownMenu}>
                                 <li>
                                     <div
-                                        class={styles.dropdownMenuProfileThumb}
+                                        className={styles.dropdownMenuProfileThumb}
                                     >
                                         <img
                                             src={picture}
@@ -171,7 +171,7 @@ export const Header = () => {
 
                                 <li>
                                     <Link
-                                        class={styles.dropdownItem}
+                                        className={styles.dropdownItem}
                                         to="/dashboard/profile"
                                     >
                                         <FontAwesomeIcon
@@ -184,7 +184,7 @@ export const Header = () => {
 
                                 <li>
                                     <Link
-                                        class={styles.dropdownItem}
+                                        className={styles.dropdownItem}
                                         to="/dashboard/settings"
                                     >
                                         <FontAwesomeIcon
@@ -197,7 +197,7 @@ export const Header = () => {
 
                                 <li>
                                     <Link
-                                        class={styles.dropdownItem}
+                                        className={styles.dropdownItem}
                                         to="/dashboard/help-center"
                                     >
                                         <FontAwesomeIcon
@@ -208,9 +208,9 @@ export const Header = () => {
                                     </Link>
                                 </li>
 
-                                <li class="border-top">
+                                <li className="border-top">
                                     <Link
-                                        class={styles.dropdownItem}
+                                        className={styles.dropdownItem}
                                         onClick={onLogoutHandler}
                                         to=""
                                     >
