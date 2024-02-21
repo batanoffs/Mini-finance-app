@@ -19,33 +19,31 @@ export const OverviewTab = () => {
         <div className={styles.contentContainer}>
             <div className={styles.bentoMainColumn}>
                 <Greetings name={name} />
-                <VirtualCard
-                    virtualcard={virtualcard}
-                    name={name}
-                    balance={balance}
-                />
-
-                <BankingActionButtons />
-
                 <ProfileDetails
                     picture={picture}
                     name={name}
                     phone={phone}
                     email={email}
                 />
-                <SendMoney />
-            </div>
-            <div className={styles.bentoFillColumn}>
-                <LastTransactions />
+
+                <VirtualCard
+                    virtualcard={virtualcard}
+                    name={name}
+                    balance={balance}
+                />
 
                 <ExchangeRate />
             </div>
+            <div className={styles.bentoFillColumn}>
+                <LastTransactions />
+                <History />
+            </div>
 
             <div className={styles.bentoSideColumn}>
-                <History />
-                <AddFriends />
-
                 <ContactInfo />
+                <AddFriends />
+                <SendMoney />
+                <BankingActionButtons />
             </div>
         </div>
     );

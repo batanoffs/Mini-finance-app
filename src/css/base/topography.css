@@ -75,7 +75,7 @@ h4 {
 } /* 14 * 1.6 = 22px */
 h5 {
     font-size: 1.2em;
-    /* padding-bottom: 1em; */
+    padding-bottom: 0.5em;
 } /* 14 * 1.2 = 17px */
 h6 {
     font-size: 1em;

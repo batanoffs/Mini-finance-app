@@ -1,5 +1,5 @@
 .bentoMainColumn {
-    flex: 1 0 min(250px);
+    flex: 1 0 min(200px);
     flex-direction: column;
     display: inline-flex;
     flex-wrap: wrap;
@@ -18,7 +18,7 @@
 }
 
 .bentoFillColumn {
-    flex: 3 0 min(200px);
+    flex: 4 0 min(200px);
     flex-direction: column;
     display: inline-flex;
     flex-wrap: wrap;

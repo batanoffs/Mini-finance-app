@@ -105,13 +105,10 @@ export const ExchangeRate = () => {
     }, []);
 
     return (
-        <div
-            className={`${block.customBlockTransactions} ${block.customBlock}`}
-        >
+        <div className={`${block.customBlockContact} `}>
             <h5>Обменен курс</h5>
             <ul>
                 {Array.from(Object.entries(rates)).map((rates) => {
-
                     return (
                         <li key={rates[0]} className={styles.exchangeWrapper}>
                             <div className={styles.currencyWrapper}>
