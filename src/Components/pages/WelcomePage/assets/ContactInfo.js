@@ -9,7 +9,7 @@ export const ContactInfo = () => {
                 </h6>
 
                 <p>
-                    <strong>Свържи се с нас:</strong>
+                    <strong>Свържете се с нас:</strong>
                     <a href="tel: 305-240-9671">
                         (60) 305-240-9671
                     </a>
