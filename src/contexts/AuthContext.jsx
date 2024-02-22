@@ -106,7 +106,7 @@ export const AuthProvider = ({ children }) => {
         onRegisterSubmitHandler,
         onLogoutHandler,
         ownerId: auth.ownerId || "Липсва информация",
-        token: auth["user-token"],
+        token: sessionStorage.getItem("token") || "Липсва информация",
         email: auth.email || "Липсва информация",
         userStatus: auth.userStatus,
         isAuthenticated: () => sessionStorage.getItem("token"),

@@ -1,19 +1,27 @@
-const request = async (method, url, data, token = undefined) => {
+const request = async (method, url, data, file, token = undefined) => {
     const options = {};
 
     if (method === "POST") {
         options.method = method;
-        if (data) {
-            options.headers = {
-                "Content-Type": "application/json",
-            };
-        }
-        if (token) {
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            options.body = formData;
             options.headers = {
                 "user-token": `${token}`,
             };
+        } else {
+            options.headers = {
+                "Content-Type": "application/json",
+            };
+            options.body = JSON.stringify(data);
+            if (token) {
+                options.headers["user-token"] = `${token}`;
+            }
         }
-        options.body = JSON.stringify(data);
     }
 
     if (method === "PUT") {
