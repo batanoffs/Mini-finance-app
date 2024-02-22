@@ -12,7 +12,7 @@ import { AddFriends } from "../assets/AddFriends";
 import { useContext } from "react";
 import styles from "../welcome-page-layout.module.css";
 
-export const OverviewTab = () => {
+export const OverviewTab = (props) => {
     const { name, virtualcard, balance, picture, phone, email } =
         useContext(AuthContext);
     return (
@@ -32,7 +32,7 @@ export const OverviewTab = () => {
                     balance={balance}
                 />
 
-                <ExchangeRate />
+                <ExchangeRate props={props}/>
             </div>
             <div className={styles.bentoFillColumn}>
                 <LastTransactions />

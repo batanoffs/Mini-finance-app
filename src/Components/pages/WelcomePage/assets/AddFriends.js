@@ -37,7 +37,7 @@ export const AddFriends = () => {
         setNumber("");
     }
     return (
-        <div className={`${blocks.customBlock} ${blocks.customBlockContact}`}>
+        <div className={`${blocks.customBlockContact}`}>
             <header>
                 <h5>Добави приятел</h5>
             </header>
