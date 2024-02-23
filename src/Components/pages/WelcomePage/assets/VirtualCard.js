@@ -17,7 +17,7 @@ export const VirtualCard = () => {
         <div className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
             <h5>Наличност</h5>
 
-            <h5>{virtualcard.balance}</h5>
+            <h5>{virtualcard.balance}лв</h5>
 
             <div className={blocks.customBlockNumbers}>
                 <span>****</span>

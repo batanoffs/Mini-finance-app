@@ -26,7 +26,7 @@ export const LastTransactions = () => {
 
                 <div className={styles.transactionsAmountInfo}>
                     <small>05/12/2023</small>
-                    <strong className="d-block error" style={{color: "red", display: "block"}}><span style={{marginRight: "0.25rem"}}>-</span> $250</strong>
+                    <strong style={{color:"darkred", marginRight: "0.25rem", display: "block"}}><span>-</span> 250лв</strong>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@ export const LastTransactions = () => {
 
                 <div className={styles.transactionsAmountInfo}>
                     <small>22/8/2023</small>
-                    <strong style={{color:"green", marginRight: "0.25rem", display: "block"}} ><span>+</span > $280</strong>
+                    <strong style={{color:"green", marginRight: "0.25rem", display: "block"}} ><span>+</span > 280лв</strong>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@ export const LastTransactions = () => {
 
                 <div className={styles.transactionsAmountInfo}>
                     <small>22/8/2023</small>
-                    <strong style={{color:"green",  marginRight: "0.25rem", display: "block"}} ><span>+</span > $280</strong>
+                    <strong style={{color:"green",  marginRight: "0.25rem", display: "block"}} ><span>+</span > 280лв</strong>
                 </div>
             </div>
 
