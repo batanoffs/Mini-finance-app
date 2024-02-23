@@ -11,8 +11,8 @@
 
 .profileImage {
     border-radius: var(--border-radius-medium);
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
 }
 
@@ -37,12 +37,14 @@
     display: flex;
 }
 .profileRoundedIcon {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     color: var(--primary-bg-color);
 }
 .profileRoundedIcon:hover {
-    color: var(--primary-bg-color);
+    color: var(--heading-color);
+    background-color: whitesmoke;
+    
 }
 
 .customBlockProfileImageWrap {
