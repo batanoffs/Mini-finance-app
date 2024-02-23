@@ -67,7 +67,7 @@ export const Header = () => {
             {isAuthenticated() && (
                 <div className={styles.headerDropdownContainer}>
                     <div className={styles.dropdownNotifications}>
-                        <Link
+                        <div
                             className={styles.dropdownToggle}
                             to="#"
                             role="button"
@@ -78,7 +78,7 @@ export const Header = () => {
                             <span className={styles.notificationDot}>
                                 <span className={styles.hidden}>New alerts</span>
                             </span>
-                        </Link>
+                        </div>
 
                         <ul
                             className={styles.dropdownMenu}
@@ -138,7 +138,7 @@ export const Header = () => {
                     </div>
 
                     <div className={styles.dropdownNotifications}>
-                        <Link
+                        <div
                             to="#"
                             role="button"
                             data-bs-toggle="dropdown"
@@ -222,7 +222,7 @@ export const Header = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             )}

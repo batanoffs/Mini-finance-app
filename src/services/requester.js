@@ -17,7 +17,6 @@ const request = async (method, url, data, file, token = undefined) => {
             for (const key in data) {
                 formData.append(key, data[key]);
             }
-            console.log(formData);
 
             options.body = formData;
         } else {

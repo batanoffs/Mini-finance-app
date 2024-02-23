@@ -37,9 +37,7 @@ export const UploadPicture = () => {
             file,
             token
         );
-
-        console.table(response);
-        console.log(userDataId);
+        
         const data = {
             avatar: response.fileURL,
         };

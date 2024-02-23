@@ -17,7 +17,6 @@ export const AddFriends = () => {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(userDataId);
         if( !number ) {
             setError(true);
             return;
