@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseURL = "https://lavishpart.backendless.app/api";
+const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
     userData: (id) =>
         `/data/UserData?where=ownerId='${id}'&loadRelations=virtualcard%2Cfriends`,
@@ -12,36 +12,46 @@ const endpoints = {
         `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=3`,
     attribute: (attribute, value) =>
         `/data/UserData?where=${attribute}='${value}'`,
+    setAttribute: (objectId) => `/data/UserData/${objectId}`,
     getAll: (id) => `/data/UserData?where=ownerId='${id}'`,
     transactions: "/data/transaction/unit-of-work",
-    uploadURL: (fileName, ownerId, overwrite) =>
-        `https://lavishpart.backendless.app/api/files/userData/${ownerId}/${fileName}?overwrite=${overwrite}`,
+    uploadURL: (fileName, ownerId) =>
+        `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}?overwrite=true`,
     filePathURL: (ownerId, fileName) =>
-        `https://eu.backendlessappcontent.com/7E8BB132-A50E-1B4C-FFFA-B07295175E00/CB78EA12-92CA-45CA-89DE-A8109442A370/files/userData/${ownerId}/${fileName}`,
-};
-
-// SET USER PROFILE PICTURE
-const uploadProfilePicture = async (fileName, ownerId,file, token, overwrite) => {
-    const data = {
-        fileURL: `${endpoints.filePathURL(ownerId, fileName)}`,
-    };
-
-    return await request.post(endpoints.uploadURL(fileName, ownerId, overwrite), data, file, token);
-};
-
-// ADD TRANSACTIONS
-const addTransactions = async (data) => {
-    return await request.post(`${baseURL}${endpoints.addTransactions}`, data);
+        // `https://eu.backendlessappcontent.com/B34FC355-39F4-F3CB-FF3A-482164967700/3B061403-A215-44ED-841B-F04D7C4C8E60/files/app/UserData/${ownerId}/${fileName}`,
+        `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}`,
 };
 
 // GET USER DATA
 const getUserData = async (id) => {
     return await request.get(baseURL + endpoints.userData(id));
 };
-
 // SET USER DATA
 const setUserData = async (userData) => {
     return await request.post(`${baseURL}${endpoints.setUserData}`, userData);
+};
+
+// GET ATTRIBUTE
+const getAttribute = async (attribute, value) => {
+    return await request.get(baseURL + endpoints.attribute(attribute, value));
+};
+// SET ATTRIBUTE
+const changeAttribute = async (objectId, data) => {
+    return await request.put(baseURL + endpoints.setAttribute(objectId), data);
+};
+
+// GET RELATIONS
+const getRelation = async (parentObjectId, childName) => {
+    return await request.get(
+        `${baseURL}${endpoints.getRelation(parentObjectId, childName)}`
+    );
+};
+// SET RELATIONS
+const setRelation = async (parentObjectId, childName, body) => {
+    return await request.put(
+        `${baseURL}${endpoints.setRelation(parentObjectId, childName)}`,
+        body
+    );
 };
 
 // GET VIRTUAL CARD
@@ -49,7 +59,26 @@ const getMockCardObjectId = async (id) => {
     return await request.get(baseURL + endpoints.mockCardObjectId(id));
 };
 
-// SET RELATIONSHIP
+// SET USER PROFILE PICTURE
+const uploadProfilePicture = async (fileName, ownerId, file, token) => {
+    const data = {
+        "fileURL": `${endpoints.filePathURL(ownerId, fileName)}`
+    };
+
+    return await request.post(
+        endpoints.uploadURL(fileName, ownerId),
+        data,
+        file,
+        token
+    );
+};
+
+// ADD TRANSACTIONS
+const addTransactions = async (data) => {
+    return await request.post(`${baseURL}${endpoints.addTransactions}`, data);
+};
+
+// TRANSACTION
 const makeTransaction = async (parentObjectId, childName, params) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
@@ -85,33 +114,14 @@ const makeTransaction = async (parentObjectId, childName, params) => {
     );
 };
 
-// GET RELATIONS
-const getRelation = async (parentObjectId, childName) => {
-    return await request.get(
-        `${baseURL}${endpoints.getRelation(parentObjectId, childName)}`
-    );
-};
-
-// SET RELATIONS
-const setRelation = async (parentObjectId, childName, body) => {
-    return await request.put(
-        `${baseURL}${endpoints.setRelation(parentObjectId, childName)}`,
-        body
-    );
-};
-
-// SET/GET ATTRIBUTE
-const getAttribute = async (attribute, value) => {
-    return await request.get(baseURL + endpoints.attribute(attribute, value));
-};
-
 export const dataService = {
     uploadProfilePicture,
     getUserData,
     setUserData,
     getMockCardObjectId,
+    getRelation,
     setRelation,
     getAttribute,
-    getRelation,
+    changeAttribute,
     addTransactions,
 };

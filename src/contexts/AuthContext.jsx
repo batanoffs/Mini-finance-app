@@ -11,8 +11,10 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useSessionStorage(`auth`, {});
     const [loginError, setLoginError] = useState(false);
+    const [avatar, setAvatar] = useState("https://notablepen.backendless.app/api/files/app/UserData/default.png");
     const navigate = useNavigate();
     let loginData;
+    
 
     const onLoginSubmitHandler = async (formData) => {
         const data = {
@@ -34,8 +36,9 @@ export const AuthProvider = ({ children }) => {
             const card = userDataResponse[0].virtualcard[0];
             userDataResponse[0]["virtualcard"] = card;
             userDataResponse[0]["email"] = loginData.email;
+            console.table(userDataResponse[0]);
             setAuth(userDataResponse[0]);
-            
+            setAvatar(userDataResponse[0].avatar);
             navigate("/dashboard/overview");
         } catch (error) {
             setLoginError(true);
@@ -123,13 +126,14 @@ export const AuthProvider = ({ children }) => {
             objectId: `Липсва информация`,
             created: `информация`,
         },
-        picture:
-            auth.profilePicture ||
-            "https://lavishpart.backendless.app/api/files/userData/profile/picture/default.png",
+        picture: avatar,
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         adress: auth.adress || "Липсва информация",
         userDataId: auth.objectId || "Липсва информация",
+        setAuth: setAuth,
+        auth: auth,
+        setAvatar,
     };
 
     return (

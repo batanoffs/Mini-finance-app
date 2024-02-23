@@ -11,7 +11,7 @@ export const SettingsNavigationPanel = () => {
         {
             key: "1",
             label: "Профил",
-            children: <ProfileTab />,
+            children: <ProfileTab/>,
         },
         {
             key: "2",
@@ -30,6 +30,6 @@ export const SettingsNavigationPanel = () => {
         },
     ];
     return (
-        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        <Tabs defaultActiveKey="1" items={items} tabBarStyle={{fontFamily: "var(--body-font-family)"}}onChange={onChange} />
     );
 };

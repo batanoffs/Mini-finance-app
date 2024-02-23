@@ -1,11 +1,12 @@
-import person3 from "../../../../images/profile/senior-man-white-sweater-eyeglasses.jpg"
-import person2 from "../../../../images/profile/young-beautiful-woman-pink-warm-sweater.jpg"
-import person1 from "../../../../images/profile/young-woman-with-round-glasses-yellow-sweater.jpg"
 import styles from "./LastTransactions.module.css"
 import blocks from "../custom-block.module.css"
 import { Link } from "react-router-dom"
 
 export const LastTransactions = () => {
+    const person1 = "https://notablepen.backendless.app/api/files/app/AppData/people/medium-shot-happy-man-smiling.jpg";
+    const person2 = "https://notablepen.backendless.app/api/files/app/AppData/people/senior-man-white-sweater-eyeglasses.jpg";
+    const person3 = "https://notablepen.backendless.app/api/files/app/AppData/people/young-beautiful-woman-pink-warm-sweater.jpg";
+    
     return (
         <div className={`${blocks.customBlock} ${blocks.cusomBlockExchange}`}>
             <h5 >Последни транзакции</h5>

@@ -47,6 +47,7 @@ form {
 .form-container {
     background: #fff;
     border-radius: var(--border-radius-medium);
+    font-family: "Montserrat Alternates";
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     min-width: 200px;
     align-self: center;

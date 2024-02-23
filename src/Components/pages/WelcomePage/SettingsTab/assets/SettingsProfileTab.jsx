@@ -1,17 +1,15 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { UploadPicture } from "../../assets/upload/Upload";
-import blocks from "../../custom-block.module.css";
 
 export const ProfileTab = () => {
     // TO DO PICTURE
-    const { name, phone, picture, email } = useContext(AuthContext);
+    const { name, phone, email } = useContext(AuthContext);
 
     const [state, setState] = useState({
         fullname: name,
         email: email,
         phone_number: phone,
-        picture: "",
     });
 
     const inputChangeHandler = (e) => {
@@ -29,17 +27,11 @@ export const ProfileTab = () => {
     return (
         <div className="form-container">
             <div className="form-content">
+                <div className="form-group">
+                    
+                    <UploadPicture />
+                </div>
                 <form className="custom-form" method="post">
-                    <div className="form-group">
-                        <img
-                            src={picture}
-                            className={blocks.customBlockProfileImage}
-                            alt="person"
-                            value={state.picture}
-                            onChange={inputChangeHandler}
-                        />
-                        <UploadPicture />
-                    </div>
                     <div className="form-group">
                         <label htmlFor="profile-name">Име и фамилия</label>
                         <input

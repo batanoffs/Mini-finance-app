@@ -8,22 +8,16 @@ import { WalletTab } from "./WalletTab/WalletTab";
 import { Upgrade } from "./Upgrade/Upgrade";
 import { Sidebar } from "./Sidebar/Sidebar";
 
-import USLogo from "../../../images/flag/united-states.png";
-import singaporeLogo from "../../../images/flag/singapore.png";
-import UKLogo from "../../../images/flag/united-kingdom.png";
-import australiaLogo from "../../../images/flag/australia.png";
-import europeLogo from "../../../images/flag/european-union.png";
-
 export const WelcomePage = () => {
     // const t = false // TODO
 
     const [hasLoaded, setHasLoaded] = useState(false);
     const [rates, setRates] = useState({
-        USD: { name: "USD", buy: 0, sell: 0, logo: USLogo },
-        GBP: { name: "GBP", buy: 0, sell: 0, logo: UKLogo },
-        EUR: { name: "EUR", buy: 0, sell: 0, logo: europeLogo },
-        AUD: { name: "AUD", buy: 0, sell: 0, logo: australiaLogo },
-        SGD: { name: "SGD", buy: 0, sell: 0, logo: singaporeLogo },
+        USD: { name: "USD", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/united-states.png" },
+        GBP: { name: "GBP", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/united-kingdom.png" },
+        EUR: { name: "EUR", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/european-union.png" },
+        AUD: { name: "AUD", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/australia.png" },
+        SGD: { name: "SGD", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/singapore.png" },
     });
 
     return (

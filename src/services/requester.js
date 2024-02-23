@@ -4,15 +4,22 @@ const request = async (method, url, data, file, token = undefined) => {
     if (method === "POST") {
         options.method = method;
         if (file) {
-            const formData = new FormData();
-            formData.append('file', file);
-            for (const key in data) {
-                formData.append(key, data[key]);
-            }
-            options.body = formData;
+
+            options.headers = {
+                "Content-Type": 'multipart/form-data',
+            };
             options.headers = {
                 "user-token": `${token}`,
             };
+
+            const formData = new FormData();
+            formData.append("file", file);
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            console.log(formData);
+
+            options.body = formData;
         } else {
             options.headers = {
                 "Content-Type": "application/json",
@@ -60,7 +67,7 @@ const request = async (method, url, data, file, token = undefined) => {
 
         const result = await response.json();
         if (!response.ok) {
-            throw new Error(result.message);
+            console.log(result.message);
         }
         if (result) {
             return result;

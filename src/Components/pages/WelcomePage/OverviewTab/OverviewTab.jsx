@@ -13,8 +13,8 @@ import { useContext } from "react";
 import styles from "../welcome-page-layout.module.css";
 
 export const OverviewTab = (props) => {
-    const { name, virtualcard, balance, picture, phone, email } =
-        useContext(AuthContext);
+    const { name, virtualcard, balance, picture, phone, email } = useContext(AuthContext);
+    
     return (
         <div className={styles.contentContainer}>
             <div className={styles.bentoMainColumn}>
