@@ -18,7 +18,7 @@
 }
 
 .logo {
-    margin-left: 2em;
+    /* margin-left: 2em; */
     padding-top: 0.05em;
     height: 2.3em;
     cursor: pointer;
@@ -133,6 +133,15 @@
     gap: 1em;
 }
 
+.dropdownMenuProfileThumb {
+    display: flex;
+    justify-content: start;
+    gap: 1em;
+    align-items: center;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+    border-bottom:1px solid var(--border-color);
+}
 /* Styles for the dropdown notifications */
 .dropdownNotifications {
     position: relative;

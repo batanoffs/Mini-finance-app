@@ -3,83 +3,83 @@ import styles from "./ExchangeRate.module.css";
 import block from "../custom-block.module.css";
 import { exchangeRateService } from "../../../../services/exchangeRateService";
 
-export const ExchangeRate = ({props}) => {
-    useEffect(() => {
-        if (!props.hasLoaded) {
-        exchangeRateService
-            .getLatest("BGN")
-            .then((response) => response.json())
-            .then((data) =>
-            props.setRates((prevState) => {
-                    const newState = prevState;
-                    newState["USD"]["sell"] = data.conversion_rates.USD;
-                    newState["GBP"]["sell"] = data.conversion_rates.GBP;
-                    newState["EUR"]["sell"] = data.conversion_rates.EUR;
-                    newState["AUD"]["sell"] = data.conversion_rates.AUD;
-                    newState["SGD"]["sell"] = data.conversion_rates.SGD;
-                    return newState;
-                })
-            )
-            .then(() => props.setHasLoaded(true))
-            .catch((error) => console.log(error));
+export const ExchangeRate = ({ props }) => {
+    // useEffect(() => {
+    //     if (!props.hasLoaded) {
+    //         exchangeRateService
+    //             .getLatest("BGN")
+    //             .then((response) => response.json())
+    //             .then((data) =>
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState;
+    //                     newState["USD"]["sell"] = data.conversion_rates.USD;
+    //                     newState["GBP"]["sell"] = data.conversion_rates.GBP;
+    //                     newState["EUR"]["sell"] = data.conversion_rates.EUR;
+    //                     newState["AUD"]["sell"] = data.conversion_rates.AUD;
+    //                     newState["SGD"]["sell"] = data.conversion_rates.SGD;
+    //                     return newState;
+    //                 })
+    //             )
+    //             .then(() => props.setHasLoaded(true))
+    //             .catch((error) => console.log(error));
 
-            exchangeRateService
-                    .getSpecificRate("USD", "BGN")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        props.setRates((prevState) => {
-                            const newState = prevState;
-                            newState["USD"]["buy"] = data.conversion_rate;
-                            return newState;
-                        });
-                    })
-                    .catch((error) => console.log(error));
-                exchangeRateService
-                    .getSpecificRate("GBP", "BGN")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        props.setRates((prevState) => {
-                            const newState = prevState;
-                            newState["GBP"]["buy"] = data.conversion_rate;
-                            return newState;
-                        });
-                    })
-                    .catch((error) => console.log(error));
-                exchangeRateService
-                    .getSpecificRate("EUR", "BGN")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        props.setRates((prevState) => {
-                            const newState = prevState;
-                            newState["EUR"]["buy"] = data.conversion_rate;
-                            return newState;
-                        });
-                    })
-                    .catch((error) => console.log(error));
-                exchangeRateService
-                    .getSpecificRate("AUD", "BGN")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        props.setRates((prevState) => {
-                            const newState = prevState;
-                            newState["AUD"]["buy"] = data.conversion_rate;
-                            return newState;
-                        });
-                    })
-                    .catch((error) => console.log(error));
-                exchangeRateService
-                    .getSpecificRate("SGD", "BGN")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        props.setRates((prevState) => {
-                            const newState = prevState;
-                            newState["SGD"]["buy"] = data.conversion_rate;
-                            return newState;
-                        });
-                    })
-                    .catch((error) => console.log(error));
-        }
-    }, [props.hasLoaded]);
+    //         exchangeRateService
+    //             .getSpecificRate("USD", "BGN")
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState;
+    //                     newState["USD"]["buy"] = data.conversion_rate;
+    //                     return newState;
+    //                 });
+    //             })
+    //             .catch((error) => console.log(error));
+    //         exchangeRateService
+    //             .getSpecificRate("GBP", "BGN")
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState;
+    //                     newState["GBP"]["buy"] = data.conversion_rate;
+    //                     return newState;
+    //                 });
+    //             })
+    //             .catch((error) => console.log(error));
+    //         exchangeRateService
+    //             .getSpecificRate("EUR", "BGN")
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState;
+    //                     newState["EUR"]["buy"] = data.conversion_rate;
+    //                     return newState;
+    //                 });
+    //             })
+    //             .catch((error) => console.log(error));
+    //         exchangeRateService
+    //             .getSpecificRate("AUD", "BGN")
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState;
+    //                     newState["AUD"]["buy"] = data.conversion_rate;
+    //                     return newState;
+    //                 });
+    //             })
+    //             .catch((error) => console.log(error));
+    //         exchangeRateService
+    //             .getSpecificRate("SGD", "BGN")
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState;
+    //                     newState["SGD"]["buy"] = data.conversion_rate;
+    //                     return newState;
+    //                 });
+    //             })
+    //             .catch((error) => console.log(error));
+    //     }
+    // }, [props.hasLoaded]);
 
     return (
         <div className={`${block.customBlockContact} `}>
@@ -96,9 +96,7 @@ export const ExchangeRate = ({props}) => {
                                 />
 
                                 <div>
-                                    <p className={styles.currency}>
-                                        {rates[0]}
-                                    </p>
+                                    <p>{rates[0]}</p>
                                 </div>
                             </div>
 

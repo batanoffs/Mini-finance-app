@@ -42,8 +42,8 @@ export const OverviewTab = (props) => {
             <div className={styles.bentoSideColumn}>
                 <ContactInfo />
                 <AddFriends />
-                <SendMoney />
                 <BankingActionButtons />
+                <SendMoney />
             </div>
         </div>
     );

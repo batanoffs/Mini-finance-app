@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
             const card = userDataResponse[0].virtualcard[0];
             userDataResponse[0]["virtualcard"] = card;
             userDataResponse[0]["email"] = loginData.email;
-            console.table(userDataResponse[0]);
             setAuth(userDataResponse[0]);
             setAvatar(userDataResponse[0].avatar);
             navigate("/dashboard/overview");

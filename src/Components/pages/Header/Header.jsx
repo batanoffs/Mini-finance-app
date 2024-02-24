@@ -17,9 +17,9 @@ import logo from "../../../images/logo/logo4.svg";
 import styles from "./site-header.module.css";
 
 export const Header = () => {
+    const { isAuthenticated, picture, onLogoutHandler, name } = useContext(AuthContext);
     const navigate = useNavigate();
-    const { isAuthenticated, picture, onLogoutHandler } =
-        useContext(AuthContext);
+
     const onRedirect = () => {
         if (isAuthenticated()) {
             navigate("/dashboard/overview");
@@ -30,7 +30,7 @@ export const Header = () => {
 
     return (
         <header className={styles.headerContainer}>
-            <div className={styles.logo}>
+            <div style={{ alignSelf: "center", marginLeft: "1em" }}>
                 <div className="navbar-brand">
                     <img
                         src={logo}
@@ -153,19 +153,13 @@ export const Header = () => {
 
                             <ul className={styles.dropdownMenu}>
                                 <li>
-                                    <div
-                                        className={styles.dropdownMenuProfileThumb}
-                                    >
+                                    <div className={styles.dropdownMenuProfileThumb}>
                                         <img
                                             src={picture}
                                             className={styles.profileImage}
                                             alt={"happy man"}
                                         />
-
-                                        <div>
-                                            <small>Thomas</small>
-                                            <Link to="#">thomas@site.com</Link>
-                                        </div>
+                                            <small>{name}</small>
                                     </div>
                                 </li>
 
