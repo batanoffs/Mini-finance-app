@@ -37,25 +37,25 @@ export const ProfileTab = () => {
                         <p>
                             <strong>Номер:</strong>
 
-                            <span>{virtualcard.cardId}</span>
+                            <span> {virtualcard.number}</span>
                         </p>
 
                         <p>
                             <strong>Вид:</strong>
 
-                            <span>{virtualcard.brand}</span>
+                            <span> {virtualcard.brand}</span>
                         </p>
 
                         <p>
                             <strong>Създадена на:</strong>
 
-                            <span>{createdDate}</span>
+                            <span> {createdDate}</span>
                         </p>
 
                         <p>
                             <strong>Валидна до:</strong>
 
-                            <span>{virtualcard.expiryDate}</span>
+                            <span> {virtualcard.expiration}</span>
                         </p>
                     </div>
                 </div>
@@ -72,11 +72,11 @@ export const ProfileTab = () => {
                                 <img
                                     src={picture}
                                     className={blocks.customBlockProfileImage}
-                                    alt=""
+                                    alt="profile"
                                 />
 
                                 <Link
-                                    to="mini-finance/dashboard/settings"
+                                    to="/dashboard/settings"
                                     className={blocks.customBlockEditIcon}
                                 >
                                     <FontAwesomeIcon icon={faPenToSquare} />
@@ -88,31 +88,31 @@ export const ProfileTab = () => {
                             <p>
                                 <strong>Име:</strong>
 
-                                <span>{name}</span>
+                                <span> {name}</span>
                             </p>
 
                             <p>
                                 <strong>Email:</strong>
 
-                                <span>{email}</span>
+                                <span> {email}</span>
                             </p>
 
                             <p>
                                 <strong>Телефон:</strong>
 
-                                <span>{phone}</span>
+                                <span> {phone}</span>
                             </p>
 
                             <p>
                                 <strong>Държава:</strong>
 
-                                <span>{country}</span>
+                                <span> {country}</span>
                             </p>
 
                             <p>
                                 <strong>Адрес:</strong>
 
-                                <span>{adress}</span>
+                                <span> {adress}</span>
                             </p>
                         </div>
                     </div>

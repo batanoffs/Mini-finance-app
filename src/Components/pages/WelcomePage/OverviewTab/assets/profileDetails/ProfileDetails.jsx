@@ -25,15 +25,15 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
             <p>
                 <strong>Име:</strong>
 
-                <span>{name}</span>
+                <span> {name}</span>
             </p>
             <p>
                 <strong>Е-майл:</strong>
-                <span>{email}</span>
+                <span> {email}</span>
             </p>
             <p style={{ paddingBottom: "0" }}>
                 <strong>Телефон:</strong>
-                <span>{phone}</span>
+                <span> {phone}</span>
             </p>
         </div>
     );
