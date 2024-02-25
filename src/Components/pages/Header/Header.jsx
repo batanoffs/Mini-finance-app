@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
-import { faGear, faHandshakeAngle, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faHandshakeAngle, faArrowRightFromBracket,faBars } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
 
 import logo from "../../../images/logo/logo4.svg";
@@ -30,38 +30,69 @@ export const Header = () => {
 
     return (
         <header className={styles.headerContainer}>
-            <div style={{ alignSelf: "center", marginLeft: "1em" }}>
-                <div className="navbar-brand">
+            <div className={styles.logoContainer}>
                     <img
                         src={logo}
                         onClick={onRedirect}
                         alt="logo"
                         className={styles.logo}
                     />
-                </div>
             </div>
             {!isAuthenticated() && (
-                <div className={styles.headerButtons}>
-                    <Link
-                        to="/login"
-                        className={styles.buttonLogin}
-                        type="button"
-                        style={{
-                            borderBottomRightRadius: "0px",
-                            borderTopRightRadius: "0px",
-                        }}
-                    >
-                        Вход
-                    </Link>
-                    <Link
-                        to="/register"
-                        className={styles.buttonRegister}
-                        name="register"
-                        type="button"
-                    >
-                        Нов Акаунт
-                    </Link>
-                </div>
+                <>
+                    <div className={styles.headerMobileDropdown}>
+                        <FontAwesomeIcon className={styles.headerDropdownIcon} icon={faBars} />
+                        <div
+                            to="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            className={styles.dropdownToggle}
+                        >
+
+                            <ul className={styles.dropdownMenu}>
+
+                                <li>
+                                    <Link
+                                        className={styles.dropdownItem}
+                                        to="/login"
+                                    >
+                                        Вход
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        className={styles.dropdownItem}
+                                        to="/register"
+                                    >
+                                        Регистрация
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className={styles.headerButtons}>
+                        <Link
+                            to="/login"
+                            className={styles.buttonLogin}
+                            type="button"
+                            style={{
+                                borderBottomRightRadius: "0px",
+                                borderTopRightRadius: "0px",
+                            }}
+                        >
+                            Вход
+                        </Link>
+                        <Link
+                            to="/register"
+                            className={styles.buttonRegister}
+                            name="register"
+                            type="button"
+                        >
+                            Нов Акаунт
+                        </Link>
+                    </div>
+                </>
             )}
 
             {isAuthenticated() && (

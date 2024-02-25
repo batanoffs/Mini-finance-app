@@ -14,19 +14,22 @@ export const Home = () => {
                         Създадохме тази платформа безплатна, за да бъде достъпна
                         за всеки един от вас.
                     </p>
+                    
                 </div>
+
                 <div className={styles.buttonContainer}>
-                    <Link
-                        to="/about"
-                        className="button-secondary"
-                        style={{ backgroundColor: "transparent" }}
-                    >
-                        Научи повече
-                    </Link>
-                    <Link to="/register" className="button-primary">
-                        Вземи своята карта
-                    </Link>
+                        <Link
+                            to="/about"
+                            className="button-secondary"
+                            style={{ backgroundColor: "transparent" }}
+                        >
+                            Научи повече
+                        </Link>
+                        <Link to="/register" className="button-primary">
+                            Вземи своята карта
+                        </Link>
                 </div>
+                
             </div>
             <div className={styles.scalingSvgContainer}>
                 <svg className={styles.scalingSvg} viewBox="0 0 110 52" xmlns="http://www.w3.org/2000/svg" fill="#000000">

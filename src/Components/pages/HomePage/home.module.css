@@ -24,13 +24,20 @@
 .titleContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 2em;
 }
 
 .titleContainer h1 {
     margin: 0;
-    padding-bottom: 1em;
-    font-size: 2.5em;
+    margin-top: 1em;
+    text-align: center;
+    font-size: 1.8em;
+    text-wrap: balance;
+}
+
+.titleContainer p {
+    text-align: center;
+    text-wrap: balance;
 }
 
 .scalingSvgContainer {
@@ -53,6 +60,7 @@
 .buttonContainer {
     gap: 1em;
     width: 100%;
+    margin-top: 1em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -78,9 +86,7 @@
         height: auto;
         margin: 0 3em;
     }
-    .textContainer h1 {
-        font-size: 2em;
-    }
+
     .scalingSvgContainer {
         flex: 0 0 550px;
         width: 100%;
@@ -114,14 +120,20 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        padding: 0 5em;
-        gap: 2em;
+        padding: 0 2em;
+        gap: 1em;
     }
     .titleContainer {
         justify-content: center;
+        gap: 1em;
     }
+    .titleContainer h1 {
+        margin: 0;
+        margin-bottom: 2em;
+    }
+    
     .scalingSvgContainer {
-        flex: 0 0 900px;
+        flex: 0 0 800px;
         width: 100%;
         position: relative;
         padding: 0;
@@ -134,17 +146,15 @@
         justify-content: center;
         align-items: center;
         height: auto;
+
     }
 
-    .textContainer h1 {
-        font-size: 2em;
-    }
 
     .buttonContainer {
         margin-top: 2em;
         gap: 1em;
         width: 100%;
         display: flex;
-        justify-content: start;
+        justify-content: center;
     }
 }

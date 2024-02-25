@@ -1,6 +1,7 @@
 /*---------------------------------------
   HEADER PAGE              
 -----------------------------------------*/
+
 .headerContainer {
     display: flex;
     background-color: var(--heading-color);
@@ -9,20 +10,32 @@
     flex: 0 0 max(45px);
 }
 
-.headerButtons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-right: 2em;
+.logoContainer {
+    align-self: center;
+    margin-left: 1em;
 }
 
 .logo {
-    /* margin-left: 2em; */
-    padding-top: 0.05em;
-    height: 2.3em;
+    padding-top: 0.2em;
+    height: 40px;
     cursor: pointer;
 }
+
+.headerMobileDropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.headerMobileDropdown:hover .dropdownMenu {
+    display: block;
+}
+
+.headerButtons {
+    display: none;
+}
+
 .buttonLogin {
     color: #ccdde2ff;
     font-size: 1em;
@@ -37,7 +50,12 @@
     border: 1px solid #ccdde2ff;
     border-radius: 0.6em;
 }
-
+.headerDropdownIcon {
+    color: #ccdde2ff;
+    width: 25px;
+    height: auto;
+    aspect-ratio: 1/1;
+}
 .buttonLogin:hover {
     color: var(--primary-hover-color);
     border-color: transparent;
@@ -71,7 +89,6 @@
     justify-content: center;
     align-items: center;
     margin-right: 1em;
-    margin-top: 0.3em;
 }
 
 /* NOTIFICATIONS */
@@ -130,7 +147,6 @@
 .headerDropdownContainer {
     position: relative;
     display: flex;
-    gap: 1em;
 }
 
 .dropdownMenuProfileThumb {
@@ -140,7 +156,7 @@
     align-items: center;
     padding-left: 1em;
     padding-bottom: 0.5em;
-    border-bottom:1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 /* Styles for the dropdown notifications */
 .dropdownNotifications {
@@ -167,11 +183,9 @@
 
 /* Styles for the dropdown toggle */
 .dropdownToggle {
-
     position: relative;
     display: inline-block;
     cursor: pointer;
-    
 }
 
 /* Styles for the dropdown menu */
@@ -181,11 +195,11 @@
     background-color: #f9f9f9;
     border-radius: 4px;
     padding: 1em;
-    min-width: 300px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 3;
-    top: 30px;
-    left: -250px; /* Adjust the left position as needed */
+    top: 45px;
+    left: -150px; /* Adjust the left position as needed */
 }
 
 /* Show the dropdown menu on hover */
@@ -204,4 +218,32 @@
 /* Add a grey background color to dropdown links on hover */
 .dropdownItem:hover {
     background-color: #f1f1f1;
+}
+
+@media (min-width: 800px) {
+    .headerMobileDropdown {
+        display: none;
+    }
+
+    .headerButtons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 1em;
+    }
+
+    /* Styles for the dropdown menu */
+    .dropdownMenu {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        padding: 1em;
+        min-width: 300px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 3;
+        top: 40px;
+        left: -250px; /* Adjust the left position as needed */
+    }
 }
