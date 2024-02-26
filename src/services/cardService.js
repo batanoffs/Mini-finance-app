@@ -4,7 +4,7 @@ const baseURL = `https://notablepen.backendless.app/api`;
 
 
 const endpoints = {
-    generateCard: (id) => `/data/cardsMockData?where=ID=${id}`,
+    generateCard: (id) => `/data/CardsMockData?where=cards_mock_data_id=${id}`,
     setRelation: (parentObjectId) => `/data/UserData/${parentObjectId}/virtualcard`,
     }
 // https://cors-anywhere.herokuapp.com/

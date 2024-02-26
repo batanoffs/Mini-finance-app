@@ -2,24 +2,17 @@ import * as request from "./requester";
 
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
-    userData: (id) =>
-        `/data/UserData?where=ownerId='${id}'&loadRelations=virtualcard%2Cfriends`,
+    userData: (id) => `/data/UserData?where=ownerId='${id}'&loadRelations=virtualcard%2Cfriends`,
     setUserData: `/data/UserData`,
-    mockCardObjectId: (id) => `/data/cardsMockData?where=id=${id}`,
-    setRelation: (parentObjectId, childName) =>
-        `/data/UserData/${parentObjectId}/${childName}`,
-    getRelation: (parentObjectId, childName) =>
-        `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=3`,
-    attribute: (attribute, value) =>
-        `/data/UserData?where=${attribute}='${value}'`,
+    mockCardObjectId: (id) => `/data/CardsMockData?where=cards_mock_data_id=${id}`,
+    setRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}/${childName}`,
+    getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=3`,
+    attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
     setAttribute: (objectId) => `/data/UserData/${objectId}`,
     getAll: (id) => `/data/UserData?where=ownerId='${id}'`,
     transactions: "/data/transaction/unit-of-work",
-    uploadURL: (fileName, ownerId) =>
-        `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}?overwrite=true`,
-    filePathURL: (ownerId, fileName) =>
-        // `https://eu.backendlessappcontent.com/B34FC355-39F4-F3CB-FF3A-482164967700/3B061403-A215-44ED-841B-F04D7C4C8E60/files/app/UserData/${ownerId}/${fileName}`,
-        `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}`,
+    uploadURL: (fileName, ownerId) => `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}?overwrite=true`,
+    filePathURL: (ownerId, fileName) => `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}`,
 };
 
 // GET USER DATA
