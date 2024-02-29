@@ -5,13 +5,14 @@ export const About = () => {
         <section id="about">
             <div className="container">
                 <div className="about-content">
-                    <h2>About Us</h2>
+                    <h2>За приложението</h2>
                     <p>
-                        Welcome to Finance App, your ultimate solution for
-                        managing your finances with ease. Whether it's topping
-                        up your virtual card, adding friends, making
-                        transactions, or tracking your financial history, we've
-                        got you covered.
+                        Добре дошли във Mini Finance Inovations, вашето основно
+                        решение за управление на финансите с лекота. Без
+                        значение дали става въпрос за зареждане на вашата
+                        виртуална карта, добавяне на приятели, извършване на
+                        транзакции или проследяване на вашата финансова история,
+                        ние сме тук, за да ви помогнем.
                     </p>
                     <div className={style.features}>
                         <div className={style.feature}>
@@ -20,10 +21,10 @@ export const About = () => {
                                 alt="Virtual Card"
                                 className={style.featureImg}
                             />
-                            <h3>Virtual Card Top-Up</h3>
+                            <h3>Зареждане на Виртуална Карта</h3>
                             <p>
-                                Easily top up your virtual card and use it for
-                                online and in-store purchases.
+                                Лесно зареждайте вашата виртуална карта и
+                                използвайте я за онлайн и офлайн покупки.
                             </p>
                         </div>
                         <div className={style.feature}>
@@ -32,10 +33,10 @@ export const About = () => {
                                 alt="Add Friends"
                                 className={style.featureImg}
                             />
-                            <h3>Add Friends</h3>
+                            <h3>Добавяне на Приятели</h3>
                             <p>
-                                Connect with friends and family to split bills
-                                and send money instantly.
+                                Свържете се с приятели и семейство, за да
+                                споделяте сметки и да изпращате пари моментално.
                             </p>
                         </div>
                         <div className={style.feature}>
@@ -44,10 +45,10 @@ export const About = () => {
                                 alt="Make Transactions"
                                 className={style.featureImg}
                             />
-                            <h3>Make Transactions</h3>
+                            <h3>Извършване на Транзакции</h3>
                             <p>
-                                Securely send and receive money, pay bills, and
-                                manage your finances hassle-free.
+                                Сигурно изпращайте и получавайте пари, плащайте
+                                сметки и управлявайте финансите си безпроблемно.
                             </p>
                         </div>
                         <div className={style.feature}>
@@ -56,23 +57,25 @@ export const About = () => {
                                 alt="Track History"
                                 className={style.featureImg}
                             />
-                            <h3>Track History</h3>
+                            <h3>Проследяване на История</h3>
                             <p>
-                                Keep track of your spending habits and financial
-                                history for better money management.
+                                Поддържайте запис за своите финансови навици и
+                                финансова история за по-добро управление на
+                                парите си.
                             </p>
                         </div>
                     </div>
                     <p>
-                        Our platform is designed to provide a seamless and
-                        secure experience, allowing you to manage your finances
-                        confidently and conveniently.
+                        Нашата платформа е създадена, за да предостави
+                        безпроблемно и сигурно изживяване, позволяващо ви да
+                        управлявате вашите финанси с увереност и удобство.
                     </p>
                     <p>
-                        At Finance App, we understand the importance of
-                        financial well-being. That's why our team is dedicated
-                        to delivering innovative solutions tailored to your
-                        needs, empowering you to achieve your financial goals.
+                        В Mini Finance Inovations разбираме важността на
+                        финансовото благополучие. Затова нашият екип е посветен
+                        на предоставянето на иновативни решения, персонализирани
+                        според вашите нужди, за да ви помогне да постигнете
+                        вашите финансови цели.
                     </p>
                 </div>
             </div>
