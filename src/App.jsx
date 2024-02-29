@@ -6,6 +6,7 @@ import { WelcomePage } from "./Components/pages/WelcomePage/WelcomePage";
 import { Footer } from "./Components/pages/Footer/Footer";
 import { Home } from "./Components/pages/HomePage/Home";
 import { Register } from "./Components/pages/RegisterPage/Register";
+import { About } from "./Components/pages/HomePage/About";
 import { Result } from "antd";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
                         }
                     />
                     <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register/*" element={<Register />} />
                     <Route path="/dashboard/*" element={<WelcomePage />} />

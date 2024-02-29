@@ -1,0 +1,17 @@
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex: 1;
+    margin: 20px;
+    text-align: center;
+}
+
+.featureImg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
