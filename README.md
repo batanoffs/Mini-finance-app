@@ -32,6 +32,9 @@ Here are some examples of how to use this project:
 3. Making a transaction to another user in the ecosystem
 4. Viewing transaction history
 5. Customizing the user interface components
+6. Login with these credentials 
+    - username: ivo@abv.bg
+    - password: asd
 
 ## Installation
 
