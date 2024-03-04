@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { faGear, faHandshakeAngle, faArrowRightFromBracket,faBars } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
+import { Notifications } from "./assets/Notifications/Notifications";
 
 import logo from "../../../images/logo/logo4.svg";
 import styles from "./site-header.module.css";
@@ -111,61 +112,7 @@ export const Header = () => {
                             </span>
                         </div>
 
-                        <ul
-                            className={styles.dropdownMenu}
-                            aria-labelledby="navbarLightDropdownMenuLink"
-                        >
-
-                            <li className="notifications-block border-bottom">
-                                <Link className={styles.dropdownItem} to="#">
-                                    <div className="notifications-icon-wrap bg-success">
-                                        <i className="notifications-icon bi-check-circle-fill"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>
-                                            Your account has been created
-                                            successfuly.
-                                        </span>
-
-                                        <p>12 days ago</p>
-                                    </div>
-                                </Link>
-                            </li>
-
-                            <li className="notifications-block border-bottom">
-                                <Link className={styles.dropdownItem} to="#">
-                                    <div className="notifications-icon-wrap bg-info">
-                                        <i className="notifications-icon bi-folder"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>
-                                            Please check. We have sent a Daily
-                                            report.
-                                        </span>
-
-                                        <p>10 days ago</p>
-                                    </div>
-                                </Link>
-                            </li>
-
-                            <li className="notifications-block">
-                                <Link className={styles.dropdownItem} to="#">
-                                    <div className="notifications-icon-wrap">
-                                        <i className="notifications-icon bi-question-circle"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>
-                                            Account verification failed.
-                                        </span>
-
-                                        <p>1 hour ago</p>
-                                    </div>
-                                </Link>
-                            </li>
-                        </ul>
+                        <Notifications />
                     </div>
 
                     <div className={styles.dropdownNotifications}>

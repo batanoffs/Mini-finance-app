@@ -1,50 +1,53 @@
-import './notifications.css'
+import { notifications } from "../../../../../services/notificationService";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../../../contexts/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+
+import styles from "../../site-header.module.css";
+
 export const Notifications = () => {
+    const { userDataId } = useContext(AuthContext);
+    const [alerts, setAlerts] = useState([]);
+    const [hasLoaded, setHasLoaded] = useState(false);
+
+    useEffect(() => {
+        if (!hasLoaded) {
+            notifications
+                .getFriendRequest(userDataId)
+                .then((result) => {
+                    setAlerts(result);
+                    setHasLoaded(true);
+                    console.log(userDataId);
+                })
+                .catch((error) => console.log(error));
+        }
+    }, [hasLoaded, userDataId]);
+
     return (
-        <ul className="dropdown-menu dropdown-menu-lg-end notifications-block-wrap" aria-labelledby="navbarLightDropdownMenuLink">
-            <small>Notifications</small>
+        <ul
+            className={styles.dropdownMenu}
+            aria-labelledby="navbarLightDropdownMenuLink"
+        >
+            {alerts.map((alert) => (
+                <li key={alert.objectId} className="notifications-block border-bottom">
+                    <Link className={styles.dropdownItem} to="#">
+                        <div className="notifications-icon-wrap bg-success">
+                            <i className="notifications-icon bi-check-circle-fill"></i>
+                        </div>
 
-            <li className="notifications-block border-bottom">
-                <a className="dropdown-item" href="#">
-                    <div className="notifications-icon-wrap bg-success">
-                        <i className="notifications-icon bi-check-circle-fill"></i>
-                    </div>
+                        <div>
+                            <span>
+                                Покана за приятелство от {alert.sender}
+                            </span>
 
-                    <div>
-                        <span>Your account has been created successfuly.</span>
-
-                        <p>12 days ago</p>
-                    </div>
-                </a>
-            </li>
-
-            <li className="notifications-block border-bottom">
-                <a className="dropdown-item" href="#">
-                    <div className="notifications-icon-wrap bg-info">
-                        <i className="notifications-icon bi-folder"></i>
-                    </div>
-
-                    <div>
-                        <span>Please check. We have sent a Daily report.</span>
-
-                        <p>10 days ago</p>
-                    </div>
-                </a>
-            </li>
-
-            <li className="notifications-block">
-                <a className="dropdown-item" href="#">
-                    <div className="notifications-icon-wrap bg-danger">
-                        <i className="notifications-icon bi-question-circle"></i>
-                    </div>
-
-                    <div>
-                        <span>Account verification failed.</span>
-
-                        <p>1 hour ago</p>
-                    </div>
-                </a>
-            </li>
+                            <button className="button-primary" style ={{backgroundColor:"lightgreen"}}><FontAwesomeIcon icon={faCheck}/></button>
+                            <button className="button-primary" style ={{backgroundColor:"red"}}>X</button>
+                        </div>
+                    </Link>
+                </li>
+            ))}
         </ul>
-    )
-}
+    );
+};

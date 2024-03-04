@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { dataService } from "../../../../services/userDataService";
+import { notifications } from "../../../../services/notificationService";
 import blocks from "../custom-block.module.css"
 import styles from "./addfriends.module.css"
 
@@ -21,15 +21,23 @@ export const AddFriends = () => {
             setError(true);
             return;
         }
-        const checkPhone = await dataService.getAttribute(`phoneNumber`, number);
-        if (checkPhone[0]) {
-            const friendId = checkPhone[0].objectId;
-            const response = await dataService.setRelation(userDataId, "friends", [friendId]);
-            if (response === 1) {
-                window.alert("Успешно добавихте приятел");
-            } else {
-                window.alert("Вече сте добавили този приятел");
-            }
+        const response = await notifications.friendRequest(number, userDataId);
+        console.log(response);
+        console.log(number);
+        console.log(userDataId);
+        if(response.success) {
+            window.alert("Успешно добавихте приятел");
+        
+        // Add when user accepts friends request
+        // const checkPhone = await dataService.getAttribute(`phoneNumber`, number);
+        // if (checkPhone[0]) {
+        //     const friendId = checkPhone[0].objectId;
+        //     const response = await dataService.setRelation(userDataId, "friends", [friendId]);
+        //     if (response === 1) {
+        //         window.alert("Успешно добавихте приятел");
+        //     } else {
+        //         window.alert("Вече сте добавили този приятел");
+        //     }
         } else {
             window.alert("Няма такъв потребител");
         }
