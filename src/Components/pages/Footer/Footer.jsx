@@ -13,7 +13,7 @@ export const Footer = () => {
                             <a
                                 href="https://github.com/batanoffs"
                             >
-                                batanoffs github.
+                                batanoffs.
                             </a>{" "}
                             Illustration by{" "}
                             <a href="https://icons8.com/illustrations/author/627444">

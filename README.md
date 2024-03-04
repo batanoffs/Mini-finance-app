@@ -1,4 +1,4 @@
-# Project Title
+# Mini Finance Innovations
 
 This project is a practice React application inspired by the layout of "Tooplate 2135 Mini Finance Template" [link to template](https://www.tooplate.com/view/2135-mini-finance). The goal of the project is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's own credit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, CSS, and responsive design.
 
