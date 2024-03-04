@@ -2,9 +2,9 @@ import style from "./about.module.css";
 
 export const About = () => {
     return (
-        <section id="about">
-            <div className="container">
-                <div className="about-content">
+        <section id={style.about}>
+            <div className={style.container}>
+                <div className={style.aboutContent}>
                     <h2>За приложението</h2>
                     <p>
                         Добре дошли във Mini Finance Innovations, вашето основно
@@ -17,7 +17,7 @@ export const About = () => {
                     <div className={style.features}>
                         <div className={style.feature}>
                             <img
-                                src="virtual-card.png"
+                                src="https://notablepen.backendless.app/api/files/app/AppData/home/credit-card.png"
                                 alt="Virtual Card"
                                 className={style.featureImg}
                             />
@@ -29,7 +29,7 @@ export const About = () => {
                         </div>
                         <div className={style.feature}>
                             <img
-                                src="add-friends.png"
+                                src="https://notablepen.backendless.app/api/files/app/AppData/home/new-friendship.png"
                                 alt="Add Friends"
                                 className={style.featureImg}
                             />
@@ -41,7 +41,7 @@ export const About = () => {
                         </div>
                         <div className={style.feature}>
                             <img
-                                src="make-transactions.png"
+                                src="https://notablepen.backendless.app/api/files/app/AppData/home/transaction.png"
                                 alt="Make Transactions"
                                 className={style.featureImg}
                             />
@@ -53,7 +53,7 @@ export const About = () => {
                         </div>
                         <div className={style.feature}>
                             <img
-                                src="track-history.png"
+                                src="https://notablepen.backendless.app/api/files/app/AppData/home/writing.png"
                                 alt="Track History"
                                 className={style.featureImg}
                             />
