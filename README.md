@@ -21,6 +21,11 @@ The project utilizes the following libraries and services:
 
 ## Usage
 
+Test user accounts:
+
+username: ivo@abv.bg
+password: asd
+
 Here are some examples of how to use this project:
 
 1. Generating an online virtual card for a new user
