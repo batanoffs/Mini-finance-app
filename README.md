@@ -10,6 +10,8 @@ Test user accounts:
 
 - Online virtual card generation
 - Account top-up via user's credit card
+- Adding friends
+- Notifications
 - User-to-user transactions
 - Transaction history tracking
 
@@ -27,12 +29,12 @@ The project utilizes the following libraries and services:
 
 Here are some examples of how to use this project:
 
-1. Generating an online virtual card for a new user
+1. Register
 2. Topping up the account using a credit card
-3. Making a transaction to another user in the ecosystem
-4. Viewing transaction history
-5. Customizing the user interface components
-
+3. Adding friends
+4. Making a transaction to another user in the ecosystem
+5. Viewing transaction history
+6. Changing profile info and profile picture
 
 ## Installation
 
