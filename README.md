@@ -48,8 +48,8 @@ To get started with this project, follow these steps:
 
 ## Contributing
 
-Include information for contributors here.
+This project is maintained by [batanoffs](https://github.com/batanoffs) and is not open to additional contributions at this time.
 
 ## License
 
-This project is licensed under [License Name] - see the [LICENSE.md](link) file for details.
+This project is licensed under MIT Licence - see the [LICENSE.txt](https://github.com/batanoffs/mini-finance/blob/main/LICENSE.txt) file for details.
