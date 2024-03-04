@@ -3,9 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 
-import styles from "../../site-header.module.css";
+import styles from "./notifications.module.css";
 
 export const Notifications = () => {
     const { userDataId } = useContext(AuthContext);
@@ -25,40 +26,68 @@ export const Notifications = () => {
         }
     }, [hasLoaded, userDataId]);
 
+    const acceptHandler = () => {
+        //TO DO
+    }
+
+    const rejectHandler = () => {
+        //TO DO
+    }
+
     return (
-        <ul
-            className={styles.dropdownMenu}
-            aria-labelledby="navbarLightDropdownMenuLink"
-        >
-            {alerts.map((alert) => (
-                <li
-                    key={alert.objectId}
-                    className="notifications-block border-bottom"
-                >
-                    <Link className={styles.dropdownItem} to="#">
-                        <div className="notifications-icon-wrap bg-success">
-                            <i className="notifications-icon bi-check-circle-fill"></i>
-                        </div>
+        <div className={styles.dropdownNotifications}>
+            <div
+                className={styles.dropdownToggle}
+                to="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+            >
+                <FontAwesomeIcon
+                    icon={faBell}
+                    className={styles.notificationsIcon}
+                />
+                {alerts.length > 0 && (
+                    <span className={styles.notificationDot} />
+                )}
+            </div>
 
-                        <div>
-                            <span>Покана за приятелство от {alert.sender}</span>
+            <ul className={styles.dropdownMenu}>
+                {alerts.length > 0 ? (
+                    alerts.map((alert) => (
+                        <li key={alert.objectId}>
+                            <Link className={styles.dropdownItem} to="#">
+                                <div className="notifications-icon-wrap bg-success">
+                                    <i className="notifications-icon bi-check-circle-fill"></i>
+                                </div>
 
-                            <button
-                                className="button-primary"
-                                style={{ backgroundColor: "lightgreen" }}
-                            >
-                                <FontAwesomeIcon icon={faCheck} />
-                            </button>
-                            <button
-                                className="button-primary"
-                                style={{ backgroundColor: "red" }}
-                            >
-                                <FontAwesomeIcon icon={faXmark} />
-                            </button>
-                        </div>
-                    </Link>
-                </li>
-            ))}
-        </ul>
+                                <div>
+                                    <span>
+                                        {/* TO DO NAME */}
+                                        Покана за приятелство от Иво Киров{" "}
+                                    </span>
+
+                                    <FontAwesomeIcon
+                                        onClick={acceptHandler}
+                                        className={styles.accept}
+                                        icon={faCheck}
+                                    />
+
+                                    <FontAwesomeIcon
+                                        onClick={rejectHandler}
+                                        className={styles.reject}
+                                        icon={faXmark}
+                                    />
+                                </div>
+                            </Link>
+                        </li>
+                    ))
+                ) : (
+                    <li className="notifications-block border-bottom">
+                        <span>Нямате известия</span>
+                    </li>
+                )}
+            </ul>
+        </div>
     );
 };

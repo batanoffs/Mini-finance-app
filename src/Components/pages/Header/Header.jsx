@@ -1,21 +1,13 @@
-// To do: Add Search and Social Icons to data base
-// import search from "../../images/social/search.png";
-// import spotify from "../../images/social/spotify.png";
-// import telegram from "../../images/social/telegram.png";
-// import snapchat from "../../images/social/snapchat.png";
-// import tiktok from "../../images/social/tiktok.png";
-// import youtube from "../../images/social/youtube.png";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
-import { faGear, faHandshakeAngle, faArrowRightFromBracket,faBars } from "@fortawesome/free-solid-svg-icons";
-import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
+import { faBars} from "@fortawesome/free-solid-svg-icons";
 import { Notifications } from "./assets/Notifications/Notifications";
-
-import logo from "../../../images/logo/logo4.svg";
+import { ProfileDropdown } from "./assets/Profile/ProfileDropdown";
 import styles from "./site-header.module.css";
+
+// import logo from "../../../images/logo/logo4.svg";
 
 export const Header = () => {
     const { isAuthenticated, picture, onLogoutHandler, name } = useContext(AuthContext);
@@ -32,17 +24,20 @@ export const Header = () => {
     return (
         <header className={styles.headerContainer}>
             <div className={styles.logoContainer}>
-                    <img
-                        src={logo}
-                        onClick={onRedirect}
-                        alt="logo"
-                        className={styles.logo}
-                    />
+                <img
+                    src="https://notablepen.backendless.app/api/files/app/AppData/home/logo4.svg"
+                    onClick={onRedirect}
+                    alt="logo"
+                    className={styles.logo}
+                />
             </div>
             {!isAuthenticated() && (
                 <>
                     <div className={styles.headerMobileDropdown}>
-                        <FontAwesomeIcon className={styles.headerDropdownIcon} icon={faBars} />
+                        <FontAwesomeIcon
+                            className={styles.headerDropdownIcon}
+                            icon={faBars}
+                        />
                         <div
                             to="#"
                             role="button"
@@ -50,9 +45,7 @@ export const Header = () => {
                             aria-expanded="false"
                             className={styles.dropdownToggle}
                         >
-
                             <ul className={styles.dropdownMenu}>
-
                                 <li>
                                     <Link
                                         className={styles.dropdownItem}
@@ -66,7 +59,7 @@ export const Header = () => {
                                         className={styles.dropdownItem}
                                         to="/register"
                                     >
-                                        Регистрация
+                                        Нов Акаунт
                                     </Link>
                                 </li>
                             </ul>
@@ -98,104 +91,12 @@ export const Header = () => {
 
             {isAuthenticated() && (
                 <div className={styles.headerDropdownContainer}>
-                    <div className={styles.dropdownNotifications}>
-                        <div
-                            className={styles.dropdownToggle}
-                            to="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            <FontAwesomeIcon icon={faBell} className={styles.notificationsIcon}/>
-                            <span className={styles.notificationDot}>
-                                <span className={styles.hidden}>New alerts</span>
-                            </span>
-                        </div>
-
-                        <Notifications />
-                    </div>
-
-                    <div className={styles.dropdownNotifications}>
-                        <div
-                            to="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            className={styles.dropdownToggle}
-                        >
-                            <img
-                                src={picture}
-                                className={styles.profileImage}
-                                alt={"happy man"}
-                            />
-
-                            <ul className={styles.dropdownMenu}>
-                                <li>
-                                    <div className={styles.dropdownMenuProfileThumb}>
-                                        <img
-                                            src={picture}
-                                            className={styles.profileImage}
-                                            alt={"happy man"}
-                                        />
-                                            <small>{name}</small>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <Link
-                                        className={styles.dropdownItem}
-                                        to="/dashboard/profile"
-                                    >
-                                        <FontAwesomeIcon
-                                            className={styles.sidebarIcons}
-                                            icon={faAddressCard}
-                                        />
-                                        Профил
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link
-                                        className={styles.dropdownItem}
-                                        to="/dashboard/settings"
-                                    >
-                                        <FontAwesomeIcon
-                                            className={styles.sidebarIcons}
-                                            icon={faGear}
-                                        />
-                                        Настройки
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link
-                                        className={styles.dropdownItem}
-                                        to="/dashboard/help-center"
-                                    >
-                                        <FontAwesomeIcon
-                                            className={styles.sidebarIcons}
-                                            icon={faHandshakeAngle}
-                                        />
-                                        Помощен център
-                                    </Link>
-                                </li>
-
-                                <li className="border-top">
-                                    <Link
-                                        className={styles.dropdownItem}
-                                        onClick={onLogoutHandler}
-                                        to=""
-                                    >
-                                        <FontAwesomeIcon
-                                            className={styles.sidebarIcons}
-                                            icon={faArrowRightFromBracket}
-                                        />
-                                        Изход
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <Notifications />
+                    <ProfileDropdown
+                        onLogoutHandler={onLogoutHandler}
+                        name={name}
+                        picture={picture}
+                    />
                 </div>
             )}
         </header>
