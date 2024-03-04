@@ -1,6 +1,6 @@
 # Mini Finance Innovations
 
-This project is a practice React application inspired by the layout of "Tooplate 2135 Mini Finance Template" [link to template](https://www.tooplate.com/view/2135-mini-finance). The goal of the project is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's own credit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, CSS, and responsive design.
+This is a finance mock project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's own credit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, CSS, and responsive design.
 
 Test user accounts:
 - username: ivo@abv.bg
@@ -10,6 +10,8 @@ Test user accounts:
 
 - Online virtual card generation
 - Account top-up via user's credit card
+- Adding friends
+- Notifications
 - User-to-user transactions
 - Transaction history tracking
 
@@ -27,14 +29,12 @@ The project utilizes the following libraries and services:
 
 Here are some examples of how to use this project:
 
-1. Generating an online virtual card for a new user
+1. Register
 2. Topping up the account using a credit card
-3. Making a transaction to another user in the ecosystem
-4. Viewing transaction history
-5. Customizing the user interface components
-6. Login with these credentials 
-    - username: ivo@abv.bg
-    - password: asd
+3. Adding friends
+4. Making a transaction to another user in the ecosystem
+5. Viewing transaction history
+6. Changing profile info and profile picture
 
 ## Installation
 
@@ -45,10 +45,14 @@ To get started with this project, follow these steps:
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 5. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the app.
+6. Login with these credentials 
+    - username: ivo@abv.bg
+    - password: asd
 
 ## Contributing
 
 This project is maintained by [batanoffs](https://github.com/batanoffs) and is not open to additional contributions at this time.
+It is inspired by the layout of "Tooplate 2135 Mini Finance Template" [link to template](https://www.tooplate.com/view/2135-mini-finance).
 
 ## License
 
