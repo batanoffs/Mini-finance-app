@@ -28,12 +28,13 @@ export const VirtualCard = () => {
 
     return (
         <div className="form-container">
-            <div className="form-content">
+            <div
+                className="form-content"
+                style={{ display: "flex", flexDirection: "row", gap: "10em" }}
+            >
                 <form className="custom-form" method="post">
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">
-                            Номер на карта
-                        </label>
+                        <label htmlFor="credit_card_number">Номер</label>
 
                         <input
                             type="number"
@@ -47,9 +48,7 @@ export const VirtualCard = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">
-                            Номер на карта
-                        </label>
+                        <label htmlFor="credit_card_number">Име</label>
 
                         <input
                             type="text"
@@ -64,9 +63,7 @@ export const VirtualCard = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">
-                            Номер на карта
-                        </label>
+                        <label htmlFor="credit_card_number">Валидна до</label>
 
                         <input
                             type="string"
@@ -81,9 +78,7 @@ export const VirtualCard = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">
-                            Номер на карта
-                        </label>
+                        <label htmlFor="credit_card_number">CVV</label>
                         <input
                             type="password"
                             name="cvv"
@@ -96,15 +91,6 @@ export const VirtualCard = () => {
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <Cards
-                            number={state.cardNumber}
-                            expiry={state.expiryDate}
-                            cvc={state.cvv}
-                            name={state.name}
-                            focused={state.focus}
-                        />
-                    </div>
 
                     <footer>
                         <input
@@ -115,6 +101,15 @@ export const VirtualCard = () => {
                         />
                     </footer>
                 </form>
+                <div className="form-group">
+                    <Cards
+                        number={state.cardNumber}
+                        expiry={state.expiryDate}
+                        cvc={state.cvv}
+                        name={state.name}
+                        focused={state.focus}
+                    />
+                </div>
             </div>
         </div>
     );
