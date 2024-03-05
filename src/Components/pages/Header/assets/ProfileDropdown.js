@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faHandshakeAngle, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
-import styles from "../../site-header.module.css";
+import styles from "../site-header.module.css";
 
 export const ProfileDropdown = (props) => {
-    
-    const [dropMenu, setDropMenu] = useState(false);
     return (
         <div className={styles.dropdownNotifications}>
             <div

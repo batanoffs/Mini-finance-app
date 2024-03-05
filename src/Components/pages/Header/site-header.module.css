@@ -99,7 +99,34 @@
 
 
 /* NOTIFICATIONS */
+.accept {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: green;
+}
+.accept:hover {
+    background: whitesmoke;
+}
 
+.reject {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(162, 0, 0);
+}
+
+.reject:hover {
+    background: whitesmoke;
+}
 .profileImage {
     border-radius: var(--border-radius-small);
     width: 2em;
@@ -145,8 +172,23 @@
 }
 
 .notificationsIcon {
+    width: 20px;
+    height: auto;
+    aspect-ratio: 1/1;
     font-size: var(--p-font-size);
     color: var(--white-color);
+    padding-top: 10px;
+
+}
+
+.notificationDot {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    background-color: red;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
 }
 
 /* DROPDOWN MENU  */
@@ -167,20 +209,8 @@
     display: inline-block;
     height: 44px;
 }
-.notificationsIcon {
-    width: 20px;
-    height: auto;
-    aspect-ratio: 1/1;
-}
-.notificationDot {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
+
+
 .hidden {
     display: none;
 }
@@ -254,31 +284,3 @@
 }
 
 
-.accept {
-    border: 1px solid rgba(168, 168, 168, 0.857);
-    border-radius: 8px;
-    padding: 0.1em;
-    width: 1.3em;
-    height: 1.3em;
-    cursor: pointer;
-    background-color: transparent;
-    color: green;
-}
-.accept:hover {
-    background: whitesmoke;
-}
-
-.reject {
-    border: 1px solid rgba(168, 168, 168, 0.857);
-    border-radius: 8px;
-    padding: 0.1em;
-    width: 1.3em;
-    height: 1.3em;
-    cursor: pointer;
-    background-color: transparent;
-    color: rgb(162, 0, 0);
-}
-
-.reject:hover {
-    background: whitesmoke;
-}

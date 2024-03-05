@@ -1,10 +1,10 @@
-import { notifications } from "../../../../../services/notificationService";
+import { notifications } from "../../../../services/notificationService";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../../../contexts/AuthContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
-import styles from "./notifications.module.css";
+import styles from "../site-header.module.css";
 
 export const Notifications = () => {
     const { userDataId } = useContext(AuthContext);
@@ -24,9 +24,12 @@ export const Notifications = () => {
         }
     }, [hasLoaded, userDataId]);
 
-    const acceptHandler = () => {
+    const acceptHandler = async () => {
         //TO DO
+
+        // const response = await notifications.updateNotification();
         console.log("accepted");
+        console.log(userDataId);
     };
 
     const rejectHandler = () => {

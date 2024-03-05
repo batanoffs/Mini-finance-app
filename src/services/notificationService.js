@@ -5,7 +5,7 @@ const endpoints = {
     // setRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}/${childName}`,
     // getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=3`,
     // attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
-    // setAttribute: (objectId) => `/data/UserData/${objectId}`,
+    selectNotification: (objectId) => `/data/UserNotifications/${objectId}`,
     getTransactions: (owenerId) => `/data/UserNotifications?where=event_type LIKE 'friend_request' and status LIKE 'pending' and receiver = '${owenerId}'`,
     transactions: "/transaction/unit-of-work",
 };
@@ -16,6 +16,14 @@ const endpoints = {
 //     return await request.get(baseURL + endpoints.attribute(attribute, value));
 // };
 
+// Update Notification status
+const updateNotification = async (objectId, status) => {
+    const body = {
+        "status": `${status}`
+    }
+    return await request.put(`${baseURL}${endpoints.selectNotification(objectId)}`, body);
+}
+
 
 // Get Friend Requests 
 const getFriendRequest = async (reciverId) => {
@@ -23,7 +31,7 @@ const getFriendRequest = async (reciverId) => {
 }
 
 // Send Friend Request
-const friendRequest = async (phone, senderId) => {
+const friendRequest = async (phone) => {
     const body = {
         "isolationLevelEnum": "READ_COMMITTED",
         "operations": [
@@ -46,7 +54,12 @@ const friendRequest = async (phone, senderId) => {
                         "resultIndex": 0,
                         "propName": "objectId"
                     },
-                    "sender": `${senderId}`,
+                    "sender": {
+                        "___ref": true,
+                        "opResultId": "findUser",
+                        "resultIndex": 0,
+                        "propName": "objectId"
+                    },
                 }
             }
         ]
@@ -57,4 +70,5 @@ const friendRequest = async (phone, senderId) => {
 export const notifications = {
     friendRequest,
     getFriendRequest,
+    updateNotification,
 };
