@@ -33,7 +33,7 @@ export const ReceiveMoney = ({ setShowReceive }) => {
                 <div className="form-content">
                     <form className="custom-form">
                         <div className="form-group">
-                            <label htmlFor="amount">Въведи сума</label>
+                            <label htmlFor="amount">Сума</label>
                             <input
                                 type="text"
                                 name="amount"

@@ -8,12 +8,8 @@ export const Autocomplete = ( props ) => {
     
     const onChange = (e) => {
         const suggestions = props.suggestions;
+        const filtered = suggestions.filter((suggestion) => suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1);
         const input = e.target.value;
-
-        const filtered = suggestions.filter(
-            (suggestion) =>
-                suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1
-        );
 
         setActiveSuggestion(0);
         setFilteredSuggestions(filtered);

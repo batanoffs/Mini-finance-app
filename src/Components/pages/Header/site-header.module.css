@@ -15,11 +15,15 @@
     margin-left: 1em;
 }
 
-.logo {
-    padding-top: 0.2em;
-    height: 40px;
-    cursor: pointer;
+.headerDropdownContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-right: 1em;
 }
+
+
 
 .headerMobileDropdown {
     display: flex;
@@ -30,6 +34,12 @@
 
 .headerMobileDropdown:hover .dropdownMenu {
     display: block;
+}
+
+.logo {
+    padding-top: 0.2em;
+    height: 40px;
+    cursor: pointer;
 }
 
 .headerButtons {
@@ -50,12 +60,14 @@
     border: 1px solid #ccdde2ff;
     border-radius: 0.6em;
 }
+
 .headerDropdownIcon {
     color: #ccdde2ff;
     width: 25px;
     height: auto;
     aspect-ratio: 1/1;
 }
+
 .buttonLogin:hover {
     color: var(--primary-hover-color);
     border-color: transparent;
@@ -84,13 +96,7 @@
     background: var(--primary-hover-color);
     color: var(--white-color);
 }
-.headerDropdownContainer {
-    display: flex;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1em;
-}
+
 
 /* NOTIFICATIONS */
 
@@ -145,10 +151,6 @@
 
 /* DROPDOWN MENU  */
 /* Styles for the header dropdown container */
-.headerDropdownContainer {
-    position: relative;
-    display: flex;
-}
 
 .dropdownMenuProfileThumb {
     display: flex;
@@ -163,6 +165,7 @@
 .dropdownNotifications {
     position: relative;
     display: inline-block;
+    height: 44px;
 }
 .notificationsIcon {
     width: 20px;
@@ -187,6 +190,7 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+    padding-top: 5px;
 }
 
 /* Styles for the dropdown menu */
@@ -247,4 +251,34 @@
         top: 40px;
         left: -250px; /* Adjust the left position as needed */
     }
+}
+
+
+.accept {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: green;
+}
+.accept:hover {
+    background: whitesmoke;
+}
+
+.reject {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(162, 0, 0);
+}
+
+.reject:hover {
+    background: whitesmoke;
 }

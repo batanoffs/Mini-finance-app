@@ -8,22 +8,34 @@
 }
 
 .accept {
-    border: none;
-    width: 1.5em;
-    height: 1.5em;
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
     cursor: pointer;
     background-color: transparent;
     color: green;
 }
+.accept:hover {
+    background: whitesmoke;
+}
 
 .reject {
-    border: none;
-    width: 1.5em;
-    height: 1.5em;
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
     cursor: pointer;
     background-color: transparent;
     color: rgb(162, 0, 0);
 }
+
+.reject:hover {
+    background: whitesmoke;
+}
+
 .dropdownMenu.notificationsBlockWrap {
     min-width: 465px;
 }
@@ -60,12 +72,25 @@
     text-align: center;
     margin-right: 10px;
 }
-
+.notificationsIcon {
+    width: 20px;
+    height: auto;
+    aspect-ratio: 1/1;
+}
 .notificationsIcon {
     font-size: var(--p-font-size);
     color: var(--white-color);
+    padding-top: 10px;
 }
-
+.notificationDot {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    background-color: red;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
 /* DROPDOWN MENU  */
 /* Styles for the header dropdown container */
 .headerDropdownContainer {
@@ -78,29 +103,17 @@
     justify-content: start;
     gap: 1em;
     align-items: center;
-    padding-left: 1em;
-    padding-bottom: 0.5em;
     border-bottom: 1px solid var(--border-color);
 }
 /* Styles for the dropdown notifications */
 .dropdownNotifications {
     position: relative;
     display: inline-block;
+    height: 44px;
+    align-self: center;
 }
-.notificationsIcon {
-    width: 20px;
-    height: auto;
-    aspect-ratio: 1/1;
-}
-.notificationDot {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
+
+
 .hidden {
     display: none;
 }
@@ -164,11 +177,11 @@
         background-color: #f9f9f9;
         border-radius: 4px;
         padding: 0.5em;
-        min-width: 500px;
+        min-width: 420px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 3;
         top: 35px;
-        left: -416px; /* Adjust the left position as needed */
+        left: -330px; /* Adjust the left position as needed */
     }
 }
 

@@ -4,8 +4,6 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
-
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {
@@ -28,58 +26,40 @@ export const Notifications = () => {
 
     const acceptHandler = () => {
         //TO DO
-    }
+        console.log("accepted");
+    };
 
     const rejectHandler = () => {
         //TO DO
-    }
+        console.log("rejected");
+    };
 
     return (
         <div className={styles.dropdownNotifications}>
-            <div
-                className={styles.dropdownToggle}
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-            >
-                <FontAwesomeIcon
-                    icon={faBell}
-                    className={styles.notificationsIcon}
-                />
-                {alerts.length > 0 && (
-                    <span className={styles.notificationDot} />
-                )}
-            </div>
+            <FontAwesomeIcon icon={faBell} className={styles.notificationsIcon} />
+
+            { alerts.length > 0 && <span className={styles.notificationDot}/> }
 
             <ul className={styles.dropdownMenu}>
                 {alerts.length > 0 ? (
                     alerts.map((alert) => (
                         <li key={alert.objectId}>
-                            <Link className={styles.dropdownItem} to="#">
-                                <div className="notifications-icon-wrap bg-success">
-                                    <i className="notifications-icon bi-check-circle-fill"></i>
-                                </div>
+                            <span>
+                                {/* TO DO NAME */}
+                                Покана за приятелство от Иво Киров{" "}
+                            </span>
 
-                                <div>
-                                    <span>
-                                        {/* TO DO NAME */}
-                                        Покана за приятелство от Иво Киров{" "}
-                                    </span>
+                            <FontAwesomeIcon
+                                onClick={acceptHandler}
+                                className={`${styles.accept}`}
+                                icon={faCheck}
+                            />
 
-                                    <FontAwesomeIcon
-                                        onClick={acceptHandler}
-                                        className={styles.accept}
-                                        icon={faCheck}
-                                    />
-
-                                    <FontAwesomeIcon
-                                        onClick={rejectHandler}
-                                        className={styles.reject}
-                                        icon={faXmark}
-                                    />
-                                </div>
-                            </Link>
+                            <FontAwesomeIcon
+                                onClick={rejectHandler}
+                                className={styles.reject}
+                                icon={faXmark}
+                            />
                         </li>
                     ))
                 ) : (
