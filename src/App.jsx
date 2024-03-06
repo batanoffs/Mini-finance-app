@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Header } from "./Components/pages/Header/Header";
 import { Login } from "./Components/pages/LoginPage/Login";

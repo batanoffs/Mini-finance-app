@@ -12,7 +12,7 @@ export const ReceiveMoney = ({ setShowReceive }) => {
         dataService.getRelation(userDataId, "friends").then((response) => {
             setFriends(response.friends.map((friend) => friend.fullName));
         });
-    }, []);
+    }, [userDataId]);
 
     const clearHandler = (e) => {
         e.target.value = "";

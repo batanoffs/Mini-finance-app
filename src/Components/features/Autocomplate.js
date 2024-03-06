@@ -22,10 +22,14 @@ export const Autocomplete = ( props ) => {
     };
 
     const onClick = (e) => {
-        setActiveSuggestion(0);
-        setFilteredSuggestions([]);
-        setShowSuggestions(false);
-        props.setUserInput((state) => ({...state,['friends']: e.target.innerText}));
+        if (e && e.target && e.target.innerText) {
+            setActiveSuggestion(0);
+            setFilteredSuggestions([]);
+            setShowSuggestions(false);
+            props.setUserInput((state) => ({...state, friends: e.target.innerText}));
+        } else {
+            return;
+        }
     };
 
     const onKeyDown = (e) => {

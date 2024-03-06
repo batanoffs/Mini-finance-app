@@ -1,5 +1,5 @@
 import React from "react";
-import { Space, Table, Tag } from "antd";
+import { Table, Tag } from "antd";
 import blocks from "../../custom-block.module.css";
 
 const columns = [
