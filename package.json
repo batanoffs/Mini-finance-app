@@ -1,6 +1,6 @@
 {
-  "homepage": "http://batanoffs.github.io/mini-finance",
   "name": "mini-finance",
+  "homepage": "http://batanoffs.github.io/mini-finance",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -53,5 +53,11 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1"
-  }
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/batanoff/mini-finance.git"
+  },
+  "author": "Daniel Batanov",
+  "license": "MIT"
 }

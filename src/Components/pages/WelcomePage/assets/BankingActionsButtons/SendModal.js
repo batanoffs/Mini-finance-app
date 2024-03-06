@@ -15,11 +15,13 @@ export const SendMoney = ({ setShowSend }) => {
                 response.friends.map((friend) => {
                     if (friend.fullName) {
                         return friend.fullName;
+                    } else {
+                        return null;
                     }
                 })
             );
         });
-    }, []);
+    }, [userDataId]);
 
     const onFormSubmitHandler = (e) => {
         e.PreventDefault();

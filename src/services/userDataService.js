@@ -71,42 +71,6 @@ const addTransactions = async (data) => {
     return await request.post(`${baseURL}${endpoints.addTransactions}`, data);
 };
 
-// TRANSACTION
-const makeTransaction = async (parentObjectId, childName, params) => {
-    const body = {
-        isolationLevelEnum: "READ_COMMITTED",
-        operations: [
-            {
-                operationType: "CREATE",
-                table: `${params.createTableName}`,
-                opResultId: `${params.createTableId}`,
-                payload: {
-                    key1: "value",
-                    key2: "value",
-                },
-            },
-            {
-                operationType: "SET_RELATION",
-                table: `${params.relationTableName}`,
-                opResultId: "OPRESULT-ID",
-                payload: {
-                    parentObject: `${params.relationparentObjectId}`,
-                    relationColumn: `${params.relationColumn}`,
-                    unconditional: [
-                        "objectId VALUE",
-                        "objectId VALUE",
-                        "objectId VALUE",
-                    ],
-                },
-            },
-        ],
-    };
-    return await request.put(
-        `${baseURL}${endpoints.setRelation(parentObjectId, childName)}`,
-        body
-    );
-};
-
 export const dataService = {
     uploadProfilePicture,
     getUserData,

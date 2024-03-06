@@ -3,7 +3,7 @@
 main {
     flex: 1;
     display: flex;
-    justify-content: start;
+    justify-content: flex-clerastart;
 }
 
 .main-wrapper {
