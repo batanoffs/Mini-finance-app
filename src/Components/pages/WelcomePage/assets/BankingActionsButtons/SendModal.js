@@ -7,7 +7,7 @@ import modal from "./modal.module.css";
 export const SendMoney = ({ setShowSend }) => {
     const { userDataId } = useContext(AuthContext);
     const [friends, setFriends] = useState([]);
-    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
+    const [userInput, setUserInput] = useState({ amount: 0, friends: "" });
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
@@ -23,8 +23,17 @@ export const SendMoney = ({ setShowSend }) => {
         });
     }, [userDataId]);
 
+    const setUserInputHandler = (e) => {
+        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    }
+
     const onFormSubmitHandler = (e) => {
-        e.PreventDefault();
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const { amount, friends } = Object.fromEntries(form);
+        console.log(amount);
+        console.log(friends);
+        console.log(form);
     };
 
     return (
@@ -46,7 +55,7 @@ export const SendMoney = ({ setShowSend }) => {
                                 className="form-control"
                                 placeholder="10лв"
                                 value={userInput.amount}
-                                onChange={(e) => console.log(e.target)}
+                                onChange={setUserInputHandler}
                             />
                         </div>
                         <div className="form-group ">

@@ -7,9 +7,9 @@ export const Autocomplete = ( props ) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     
     const onChange = (e) => {
+        const input = e.target.value;
         const suggestions = props.suggestions;
         const filtered = suggestions.filter((suggestion) => suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1);
-        const input = e.target.value;
 
         setActiveSuggestion(0);
         setFilteredSuggestions(filtered);
