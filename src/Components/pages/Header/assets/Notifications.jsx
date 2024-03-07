@@ -4,55 +4,64 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
+import { dataService } from "../../../../services/userDataService";
 import styles from "../site-header.module.css";
 
 export const Notifications = () => {
     const { userDataId } = useContext(AuthContext);
-    const [alerts, setAlerts] = useState([]);
-    const [hasLoaded, setHasLoaded] = useState(false);
+    const [ notificationsState, setnotificationsState] = useState([]);
 
     useEffect(() => {
-        if (!hasLoaded) {
-            notifications
-                .getFriendRequest(userDataId)
-                .then((result) => {
-                    setAlerts(result);
-                    setHasLoaded(true);
-                    console.log(userDataId);
-                })
-                .catch((error) => console.log(error));
+        notifications
+            .getFriendRequest(userDataId)
+            .then((result) => setnotificationsState(result))
+            .catch((error) => console.log(error));
+    }, [userDataId]);
+
+    const acceptHandler = async (e) => {
+        const id = e.currentTarget.parentElement.getAttribute("data-key");
+        const senderId = e.currentTarget.getAttribute("data-sender");
+        await notifications.updateNotification(id, "accepted");
+        await notifications.getFriendRequest(userDataId)
+        .then((result) => setnotificationsState(result))
+        .catch((error) => console.log(error));
+     
+        
+        const setFriend = await dataService.setRelation(userDataId, "friends", [senderId]);
+        if (setFriend === 1) {
+            window.alert("Успешно добавихте приятел");
+        } else {
+            window.alert("Вече сте добавили този приятел");
         }
-    }, [hasLoaded, userDataId]);
-
-    const acceptHandler = async () => {
-        //TO DO
-
-        // const response = await notifications.updateNotification();
-        console.log("accepted");
-        console.log(userDataId);
     };
 
-    const rejectHandler = () => {
-        //TO DO
-        console.log("rejected");
+    const rejectHandler = async (e) => {
+        const id = e.currentTarget.parentElement.getAttribute("data-key");
+        await notifications.updateNotification(id, "declined");
+        await notifications.getFriendRequest(userDataId)
+        .then((result) => setnotificationsState(result))
+        .catch((error) => console.log(error));
+
+        window.alert("Поканата за приятелство е отхвърлена");
     };
 
     return (
         <div className={styles.dropdownNotifications}>
             <FontAwesomeIcon icon={faBell} className={styles.notificationsIcon} />
 
-            { alerts.length > 0 && <span className={styles.notificationDot}/> }
+            { notificationsState.length > 0 && <span className={styles.notificationDot}/> }
 
             <ul className={styles.dropdownMenu}>
-                {alerts.length > 0 ? (
-                    alerts.map((alert) => (
-                        <li key={alert.objectId}>
-                            <span>
+                {notificationsState.length > 0 ? (
+                    notificationsState.map((alert) => (
+                        <li key={alert.objectId} data-key={alert.objectId}>
+                            <span >
                                 {/* TO DO NAME */}
-                                Покана за приятелство от Иво Киров{" "}
+                                Покана за приятелство от {alert.sender_name}
                             </span>
 
                             <FontAwesomeIcon
+                                data-sender={`${alert.sender}`}
                                 onClick={acceptHandler}
                                 className={`${styles.accept}`}
                                 icon={faCheck}
@@ -74,3 +83,5 @@ export const Notifications = () => {
         </div>
     );
 };
+
+

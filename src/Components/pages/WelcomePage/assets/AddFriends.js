@@ -23,21 +23,9 @@ export const AddFriends = () => {
         }
         const response = await notifications.friendRequest(number, userDataId);
         console.log(response);
-        console.log(number);
-        console.log(userDataId);
-        if(response.success) {
-            window.alert("Успешно добавихте приятел");
         
-        // Add when user accepts friends request
-        // const checkPhone = await dataService.getAttribute(`phoneNumber`, number);
-        // if (checkPhone[0]) {
-        //     const friendId = checkPhone[0].objectId;
-        //     const response = await dataService.setRelation(userDataId, "friends", [friendId]);
-        //     if (response === 1) {
-        //         window.alert("Успешно добавихте приятел");
-        //     } else {
-        //         window.alert("Вече сте добавили този приятел");
-        //     }
+        if(response.success) {
+            window.alert("Успешно изпратихте покана за приятелство");
         } else {
             window.alert("Няма такъв потребител");
         }
