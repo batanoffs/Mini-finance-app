@@ -7,7 +7,10 @@ import styles from "./addfriends.module.css"
 export const AddFriends = () => {
     const [number, setNumber] = useState('');
     const [error, setError] = useState(false);
-    const { userDataId } = useContext(AuthContext);
+    const { userDataId, token } = useContext(AuthContext);
+
+    console.log(token);
+
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
     }
@@ -15,13 +18,14 @@ export const AddFriends = () => {
     const onFocusClearErrorHandler = (e) => {
         setError(false);
     }
+
     const onSubmit = async (e) => {
         e.preventDefault();
         if( !number ) {
             setError(true);
             return;
         }
-        const response = await notifications.friendRequest(number, userDataId);
+        const response = await notifications.friendRequest(number, userDataId, token);
         console.log(response);
         
         if(response.success) {

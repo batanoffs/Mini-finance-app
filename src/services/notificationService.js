@@ -33,7 +33,7 @@ const getFriendRequest = async (reciverId) => {
 };
 
 // Send Friend Request
-const friendRequest = async (phone, currentUserId) => {
+const friendRequest = async (phone, currentUserId, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -80,7 +80,7 @@ const friendRequest = async (phone, currentUserId) => {
             },
         ],
     };
-    return await request.post(`${baseURL}${endpoints.transactions}`, body);
+    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
 };
 
 export const notifications = {

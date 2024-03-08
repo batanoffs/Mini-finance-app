@@ -2,9 +2,6 @@ import * as request from "./requester";
 
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
-    selectNotification: (objectId) => `/data/UserNotifications/${objectId}`,
-    getTransactions: (owenerId) =>
-        `/data/UserNotifications?where=event_type LIKE 'friend_request' and status LIKE 'pending' and receiver = '${owenerId}'`,
     transactions: "/transaction/unit-of-work",
 };
 
@@ -21,6 +18,7 @@ const friendRequest = async (fullname, currentUserId) => {
                     whereClause: `fullName = '${fullname}'`,
                 },
             },
+            
         ],
     };
     return await request.post(`${baseURL}${endpoints.transactions}`, body);
