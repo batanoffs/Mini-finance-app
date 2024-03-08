@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-// import { cardService } from "../../services/cardService";
+// import { cardService } from "../../services/cardGenetarionService.js";
 
 // export const CardForm = (props) => {
 //     // { balance: 0, issuer: "", number: "", brand: "", expiration: "", cvv: 0 }

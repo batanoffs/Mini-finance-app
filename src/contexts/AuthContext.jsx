@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../services/authService";
-import { cardService } from "../services/cardService";
+import { cardService } from "../services/cardGenetarionService";
 import { useSessionStorage } from "../hooks/useSessionStorage";
 import { dataService } from "../services/userDataService";
 

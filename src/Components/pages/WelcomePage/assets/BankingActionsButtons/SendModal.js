@@ -27,13 +27,11 @@ export const SendMoney = ({ setShowSend }) => {
         setUserInput({ ...userInput, [e.target.name]: e.target.value });
     }
 
-    const onFormSubmitHandler = (e) => {
+    const onFormSubmitHandler = async (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const { amount, friends } = Object.fromEntries(form);
-        console.log(amount);
-        console.log(friends);
-        console.log(form);
+        // const response = await 
     };
 
     return (

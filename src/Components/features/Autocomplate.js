@@ -78,7 +78,7 @@ export const Autocomplete = ( props ) => {
         } else {
             suggestionsListComponent = (
                 <div className="no-suggestions">
-                    <em>No suggestions available.</em>
+                    <em>Няма съвпадения</em>
                 </div>
             );
         }
