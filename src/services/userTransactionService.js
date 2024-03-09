@@ -6,7 +6,7 @@ const endpoints = {
 };
 
 // Send Money
-const send = async (fullname, amount, type, currentUserId) => {
+const send = async (fullname, amount, type) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -52,7 +52,7 @@ const send = async (fullname, amount, type, currentUserId) => {
     };
 
     const response2 = await request.post(`${baseURL}${endpoints.transactions}`, body2);
-    console.log("2", response2);
+    return response2;
 };
 
 export const transactions = {

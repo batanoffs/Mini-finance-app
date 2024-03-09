@@ -7,12 +7,12 @@ import modal from "./modal.module.css";
 
 export const SendMoney = ({ setShowSend }) => {
     const { userDataId } = useContext(AuthContext);
-    const [friends, setFriends] = useState([]);
+    const [receiver, setReceiver] = useState([]);
     const [userInput, setUserInput] = useState({ amount: 0, friends: "" });
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
-            setFriends(
+            setReceiver(
                 response.friends.map((friend) => {
                     if (friend.fullName) {
                         return friend.fullName;
@@ -31,10 +31,13 @@ export const SendMoney = ({ setShowSend }) => {
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
-        const { amount, reciever } = Object.fromEntries(form);
-
+        const { amount, friends } = Object.fromEntries(form);
+        console.log(amount, friends);
+        if( !amount || !friends ) {
+            return;
+        }
         
-        const response = await transactions.send(reciever, Number(amount), "+", 1);
+        const response = await transactions.send(friends, Number(amount), "+");
         console.log(response);
     };
 
@@ -66,7 +69,7 @@ export const SendMoney = ({ setShowSend }) => {
                                 name="friends"
                                 userInput={userInput}
                                 setUserInput={setUserInput}
-                                suggestions={[...friends]}
+                                suggestions={[...receiver]}
                             />
                         </div>
 
