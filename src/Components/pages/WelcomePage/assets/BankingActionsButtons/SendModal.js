@@ -2,6 +2,7 @@ import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
+import { transactions } from "../../../../../services/userTransactionService";
 import modal from "./modal.module.css";
 
 export const SendMoney = ({ setShowSend }) => {
@@ -30,8 +31,11 @@ export const SendMoney = ({ setShowSend }) => {
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
-        const { amount, friends } = Object.fromEntries(form);
-        // const response = await 
+        const { amount, reciever } = Object.fromEntries(form);
+
+        
+        const response = await transactions.send(reciever, Number(amount), "+", 1);
+        console.log(response);
     };
 
     return (

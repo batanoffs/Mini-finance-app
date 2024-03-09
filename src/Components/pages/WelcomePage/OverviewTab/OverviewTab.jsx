@@ -4,7 +4,7 @@ import { ExchangeRate } from "../assets/ExchangeRate";
 import { ProfileDetails } from "./assets/profileDetails/ProfileDetails";
 import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
 import { LastTransactions } from "../assets/LastTransactions";
-import { SendMoney } from "../assets/SendMoney";
+import { QuickSendMoney } from "../assets/QuickSend";
 import { Greetings } from "./assets/Greetings";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { ContactInfo } from "../assets/ContactInfo";
@@ -43,7 +43,7 @@ export const OverviewTab = (props) => {
                 <ContactInfo />
                 <AddFriends />
                 <BankingActionButtons />
-                <SendMoney />
+                <QuickSendMoney />
             </div>
         </div>
     );

@@ -9,11 +9,12 @@ import { Register } from "./Components/pages/RegisterPage/Register";
 import { About } from "./Components/pages/HomePage/About";
 import { Result } from "antd";
 
-function App() {
+const App = () => {
     let navigate = useNavigate();
     let goBack = () => {
         navigate(-1);
     };
+
     return (
         <AuthProvider>
             <Header />
@@ -51,6 +52,6 @@ function App() {
             <Footer />
         </AuthProvider>
     );
-}
+};
 
 export default App;
