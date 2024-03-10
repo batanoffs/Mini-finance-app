@@ -57,11 +57,11 @@ export const Notifications = () => {
                         <li key={alert.objectId} data-key={alert.objectId}>
                             <span >
                                 {/* TO DO NAME */}
-                                Покана за приятелство от {alert.sender_name}
+                                Покана за приятелство от {alert.sender[0].fullName}
                             </span>
 
                             <FontAwesomeIcon
-                                data-sender={`${alert.sender}`}
+                                data-sender={`${alert.sender[0].objectId}`}
                                 onClick={acceptHandler}
                                 className={`${styles.accept}`}
                                 icon={faCheck}

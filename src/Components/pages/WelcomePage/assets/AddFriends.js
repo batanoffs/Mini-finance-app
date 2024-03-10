@@ -9,8 +9,6 @@ export const AddFriends = () => {
     const [error, setError] = useState(false);
     const { userDataId, token } = useContext(AuthContext);
 
-    console.log(token);
-
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
     }
@@ -25,8 +23,7 @@ export const AddFriends = () => {
             setError(true);
             return;
         }
-        const response = await notifications.friendRequest(number, userDataId, token);
-        console.log(response);
+        const response = await notifications.createNotification(number, "friend request", userDataId, token);
         
         if(response.success) {
             window.alert("Успешно изпратихте покана за приятелство");
