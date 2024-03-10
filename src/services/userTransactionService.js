@@ -33,26 +33,30 @@ const send = async (fullname, amount, type) => {
     const response = await request.post(`${baseURL}${endpoints.transactions}`, body);    
     console.log("1", response);
 
-    const body2 = {
-        isolationLevelEnum: "READ_COMMITTED",
-        operations: [
-            {
-                operationType: "ADD_RELATION",
-                table: "MoneyTransactions",
-                opResultId: "setReciver",
-                payload: {
-                    parentObject: response.results.newEntry.result.objectId,
-                    relationColumn: "receiver",
-                    unconditional: [
-                        response.results.findReciever.result[0].objectId,
-                    ],
+    if(response.success) {
+        const body2 = {
+            isolationLevelEnum: "READ_COMMITTED",
+            operations: [
+                {
+                    operationType: "ADD_RELATION",
+                    table: "MoneyTransactions",
+                    opResultId: "setReciver",
+                    payload: {
+                        parentObject: response.results.newEntry.result.objectId,
+                        relationColumn: "receiver",
+                        unconditional: [
+                            response.results.findReciever.result[0].objectId,
+                        ],
+                    },
                 },
-            },
-        ],
-    };
+            ],
+        };
+    
+        const response2 = await request.post(`${baseURL}${endpoints.transactions}`, body2);
+        return response2;
+    }
 
-    const response2 = await request.post(`${baseURL}${endpoints.transactions}`, body2);
-    return response2;
+    
 };
 
 export const transactions = {
