@@ -1,6 +1,6 @@
 # Mini Finance Innovations
 
-This is a finance mock project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's own credit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, CSS, and responsive design.
+This is a finance mock project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, CSS, and responsive design.
 
 Test user accounts:
 - username: ivo@abv.bg
