@@ -2,7 +2,7 @@ import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
-import { transactions } from "../../../../../services/userTransactionService";
+import { transactions } from "../../../../../services/transactionService";
 import modal from "./modal.module.css";
 
 export const SendMoney = ({ setShowSend }) => {
@@ -38,8 +38,11 @@ export const SendMoney = ({ setShowSend }) => {
         
         const response = await transactions.send(friends, Number(amount), "+", userDataId, token);
         if (response.success) {
+            await transactions.notify(friends, Number(amount), userDataId, token);
             setShowSend(false);
             alert("Успешно изпратихте парите");
+        } else {
+            console.log(response);
         }
     };
 

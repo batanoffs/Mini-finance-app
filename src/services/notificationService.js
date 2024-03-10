@@ -3,8 +3,8 @@ import * as request from "./requester";
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
     selectNotification: (objectId) => `/data/UserNotifications/${objectId}`,
-    getTransactions: (owenerId) =>
-        `/data/UserNotifications?where=event_type LIKE 'friend_request' and status LIKE 'pending' and receiver = '${owenerId}'&loadRelations&relationsDepth=1`,
+    notifications: (owenerId) =>
+        `/data/UserNotifications?where=status LIKE 'pending' and receiver = '${owenerId}'&loadRelations&relationsDepth=1`, //event_type LIKE 'friend_request' and 
     transactions: "/transaction/unit-of-work",
 };
 
@@ -16,14 +16,14 @@ const updateNotification = async (objectId, status) => {
     );
 };
 
-// Get Friend Requests
-const getFriendRequest = async (reciverId) => {
+// Get Notifications
+const getNotifications = async (reciverId) => {
     return await request.get(
-        `${baseURL}${endpoints.getTransactions(reciverId)}`
+        `${baseURL}${endpoints.notifications(reciverId)}`
     );
 };
 
-// Send Friend Request
+// Create Notifications
 const createNotification = async (phone, event, currentUserId, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
@@ -88,7 +88,7 @@ const createNotification = async (phone, event, currentUserId, token) => {
 
 export const notifications = {
     createNotification,
-    getFriendRequest,
+    getNotifications,
     updateNotification,
 };
 

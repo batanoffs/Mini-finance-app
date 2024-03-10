@@ -13,7 +13,7 @@ export const Notifications = () => {
 
     useEffect(() => {
         notifications
-            .getFriendRequest(userDataId)
+            .getNotifications(userDataId)
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
     }, [userDataId]);
@@ -22,7 +22,7 @@ export const Notifications = () => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
         const senderId = e.currentTarget.getAttribute("data-sender");
         await notifications.updateNotification(id, "accepted");
-        await notifications.getFriendRequest(userDataId)
+        await notifications.getNotifications(userDataId)
         .then((result) => setnotificationsState(result))
         .catch((error) => console.log(error));
      
@@ -38,12 +38,20 @@ export const Notifications = () => {
     const rejectHandler = async (e) => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
         await notifications.updateNotification(id, "declined");
-        await notifications.getFriendRequest(userDataId)
+        await notifications.getNotifications(userDataId)
         .then((result) => setnotificationsState(result))
         .catch((error) => console.log(error));
 
         window.alert("Поканата за приятелство е отхвърлена");
     };
+
+    const okey = async (e) => {
+        const id = e.currentTarget.parentElement.getAttribute("data-key");
+        await notifications.updateNotification(id, "accepted");
+        await notifications.getNotifications(userDataId)
+        .then((result) => setnotificationsState(result))
+        .catch((error) => console.log(error));
+    }
 
     return (
         <div className={styles.dropdownNotifications}>
@@ -53,7 +61,7 @@ export const Notifications = () => {
 
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
-                    notificationsState.map((alert) => (
+                    notificationsState.filter((alert) => alert.event_type === "friend request").map((alert) => (
                         <li key={alert.objectId} data-key={alert.objectId}>
                             <span >
                                 {/* TO DO NAME */}
@@ -74,7 +82,22 @@ export const Notifications = () => {
                             />
                         </li>
                     ))
-                ) : (
+                ) && ((
+                    notificationsState.filter((alert) => alert.event_type === "money received").map((money) => (
+                        <li key={money.objectId} data-key={money.objectId}>
+                            <span >
+                                {/* TO DO NAME */}
+                                Получихте {money.amount}лв. от {money.sender[0].fullName}.
+                            </span>
+
+                            <FontAwesomeIcon
+                                onClick={okey}
+                                className={styles.reject}
+                                icon={faXmark}
+                            />
+                        </li>
+                    ))
+                )) : (
                     <li className="notifications-block border-bottom">
                         <span>Нямате известия</span>
                     </li>

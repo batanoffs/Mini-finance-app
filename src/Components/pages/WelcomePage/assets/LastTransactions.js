@@ -1,77 +1,86 @@
-import styles from "./LastTransactions.module.css"
-import blocks from "../custom-block.module.css"
-import { Link } from "react-router-dom"
+import styles from "./LastTransactions.module.css";
+import blocks from "../custom-block.module.css";
+import { Link } from "react-router-dom";
+import { transactions } from "../../../../services/transactionService";
+import { useEffect, useContext, useState } from "react";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 export const LastTransactions = () => {
-    const person1 = "https://notablepen.backendless.app/api/files/app/AppData/people/medium-shot-happy-man-smiling.jpg";
-    const person2 = "https://notablepen.backendless.app/api/files/app/AppData/people/senior-man-white-sweater-eyeglasses.jpg";
-    const person3 = "https://notablepen.backendless.app/api/files/app/AppData/people/young-beautiful-woman-pink-warm-sweater.jpg";
-    
+    const [allTransactions, setAllTransactions] = useState([]);
+    const { userDataId } = useContext(AuthContext);
+
+    useEffect(() => {
+        transactions
+            .getTransactions(userDataId)
+            .then((result) => setAllTransactions(result))
+            .catch((error) => console.log(error));
+    }, [userDataId]);
+
     return (
         <div className={`${blocks.customBlock} ${blocks.cusomBlockExchange}`}>
-            <h5 >Последни транзакции</h5>
+            <h5>Последни транзакции</h5>
+            <ul>
+                {allTransactions.slice(0, 3).map((entry) => (
+                    <li key={entry.objectId} data-key={entry.objectId}>
+                        <div className={styles.transactionsBoxWrapper}>
+                            <div
+                                className={
+                                    styles.transactionsProfileWrapper
+                                }
+                            >
+                                <img
+                                    src={entry.sender[0].avatar}
+                                    className={blocks.profileImage}
+                                    alt={"avatar"}
+                                />
 
-            <div className={styles.transactionsBoxWrapper}>
-                <div className={styles.transactionsProfileWrapper}>
-                    <img src={person3} className={blocks.profileImage} alt={"person"}/>
+                                <div>
+                                    <p>
+                                        <strong>{entry.sender[0].fullName}</strong>
+                                    </p>
 
-                    <div>
-                        <p>
-                            <strong>Daniel Jones</strong>
-                        </p>
+                                    <small>{(entry.transaction_type === "+"
+                                            ? "изпрати"
+                                            : "получи")}</small>
+                                </div>
+                            </div>
 
-                        <small >C2C Transfer</small>
-                    </div>
-                </div>
-
-                <div className={styles.transactionsAmountInfo}>
-                    <small>05/12/2023</small>
-                    <strong style={{color:"darkred", marginRight: "0.25rem", display: "block"}}><span>-</span> 250лв</strong>
-                </div>
-            </div>
-
-            <div className={styles.transactionsBoxWrapper}>
-                <div className={styles.transactionsProfileWrapper}>
-                    <img src={person2} className={blocks.profileImage} alt={"person"}/>
-
-                    <div>
-                        <p>
-                            <strong>Public Bank</strong>
-                        </p>
-
-                        <small >Mobile Reload</small>
-                    </div>
-                </div>
-
-                <div className={styles.transactionsAmountInfo}>
-                    <small>22/8/2023</small>
-                    <strong style={{color:"green", marginRight: "0.25rem", display: "block"}} ><span>+</span > 280лв</strong>
-                </div>
-            </div>
-
-            <div className={styles.transactionsBoxWrapper}>
-                <div className={styles.transactionsProfileWrapper}>
-                    <img src={person1} className={blocks.profileImage} alt={"person"}/>
-
-                    <div>
-                        <p><strong>Store</strong></p>
-
-                        <small >Payment Received</small>
-                    </div>
-                </div>
-
-                <div className={styles.transactionsAmountInfo}>
-                    <small>22/8/2023</small>
-                    <strong style={{color:"green",  marginRight: "0.25rem", display: "block"}} ><span>+</span > 280лв</strong>
-                </div>
-            </div>
-
-            <div className="border-top pt-4 mt-4 text-center">
+                            <div className={styles.transactionsAmountInfo}>
+                                <small>
+                                    {new Intl.DateTimeFormat("en-US", {
+                                        year: "numeric",
+                                        month: "numeric",
+                                        day: "numeric",
+                                        hour: "numeric",
+                                        minute: "numeric",
+                                    }).format(new Date(entry.created))}
+                                </small>
+                                <strong
+                                    style={{
+                                        display: "block",
+                                        textAlign: "right",
+                                        ...(entry.transaction_type === "+"
+                                            ? {
+                                                  color: "green",
+                                              }
+                                            : {
+                                                  color: "darkred",
+                                              }),
+                                    }}
+                                >
+                                    <span>{entry.transaction_type}</span>{" "}
+                                    {entry.amount}лв
+                                </strong>
+                            </div>
+                        </div>
+                    </li>
+                ))}
+            </ul>
+            <div>
                 <Link className="custom-btn" to="/dashboard/wallet">
                     Виж всички транзакции
-                    <i className="bi-arrow-up-right-circle-fill ms-2"></i>
                 </Link>
             </div>
         </div>
-    )
-}
+    );
+};

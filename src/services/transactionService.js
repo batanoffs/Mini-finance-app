@@ -3,7 +3,12 @@ import * as request from "./requester";
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
     transactions: "/transaction/unit-of-work",
+    getAll: (owenerId) => `/data/MoneyTransactions?where=receiver='${owenerId}'&loadRelations&relationsDepth=1`, 
 };
+
+const getTransactions = async (reciverId) => {
+    return await request.get(`${baseURL}${endpoints.getAll(reciverId)}`);
+}
 
 // Send Money
 const send = async (fullname, amount, type, sender, token) => {
@@ -30,7 +35,7 @@ const send = async (fullname, amount, type, sender, token) => {
             {
                 operationType: "ADD_RELATION",
                 table: "MoneyTransactions",
-                opResultId: "setReciver",
+                opResultId: "moneyReciever",
                 payload: {
                     parentObject: {
                         ___ref: true,
@@ -47,7 +52,7 @@ const send = async (fullname, amount, type, sender, token) => {
             {
                 operationType: "ADD_RELATION",
                 table: "MoneyTransactions",
-                opResultId: "setSender",
+                opResultId: "moneySender",
                 payload: {
                     parentObject: {
                         ___ref: true,
@@ -57,15 +62,74 @@ const send = async (fullname, amount, type, sender, token) => {
                     relationColumn: "sender",
                     unconditional: [sender],
                 },
-            },
+            }
         ],
     };
 
     return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
 };
 
+const notify = async (fullname, amount, sender, token) => {
+    const body = {
+        isolationLevelEnum: "READ_COMMITTED",
+        operations: [
+            {
+                operationType: "FIND",
+                table: "UserData",
+                opResultId: "findReciever",
+                payload: {
+                    whereClause: `fullName = '${fullname}'`,
+                },
+            },
+            {
+                operationType: "CREATE",
+                table: "UserNotifications",
+                opResultId: "notifyEnrty",
+                payload: {
+                    event_type: "money received",
+                    amount: amount,
+                },
+            },
+            {
+                operationType: "ADD_RELATION",
+                table: "UserNotifications",
+                opResultId: "notificationReceiver",
+                payload: {
+                    parentObject: {
+                        ___ref: true,
+                        opResultId: "notifyEnrty",
+                        propName: "objectId",
+                    },
+                    relationColumn: "receiver",
+                    unconditional: {
+                        ___ref: true,
+                        opResultId: "findReciever",
+                    },
+                },
+            },
+            {
+                operationType: "ADD_RELATION",
+                table: "UserNotifications",
+                opResultId: "notificationSender",
+                payload: {
+                    parentObject: {
+                        ___ref: true,
+                        opResultId: "notifyEnrty",
+                        propName: "objectId",
+                    },
+                    relationColumn: "sender",
+                    unconditional: [sender],
+                },
+            },
+        ]
+    }
+    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
+}
+
 export const transactions = {
     send,
+    notify,
+    getTransactions
 };
 
 

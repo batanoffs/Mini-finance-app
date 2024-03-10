@@ -6,7 +6,7 @@ const endpoints = {
     setUserData: `/data/UserData`,
     mockCardObjectId: (id) => `/data/CardsMockData?where=cards_mock_data_id=${id}`,
     setRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}/${childName}`,
-    getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=3`,
+    getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=1`,
     attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
     setAttribute: (objectId) => `/data/UserData/${objectId}`,
     getAll: (id) => `/data/UserData?where=ownerId='${id}'`,
