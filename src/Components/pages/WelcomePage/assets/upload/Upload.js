@@ -5,7 +5,7 @@ import blocks from "../../custom-block.module.css";
 
 export const UploadPicture = () => {
     const [error, setError] = useState(null);
-    const { ownerId, token, userDataId, picture, setAvatar } =
+    const { ownerId, token, userDataId, picture, setAvatar, setAuth } =
         useContext(AuthContext);
 
     const handleDrop = (e) => {
@@ -37,7 +37,7 @@ export const UploadPicture = () => {
             file,
             token
         );
-        
+
         const data = {
             avatar: response.fileURL,
         };
@@ -49,6 +49,7 @@ export const UploadPicture = () => {
 
         if (avatarResponse) {
             setAvatar(avatarResponse.avatar);
+            setAuth((state) => ({ ...state, avatar: avatarResponse.avatar }));
         }
     };
 
