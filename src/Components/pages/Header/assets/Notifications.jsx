@@ -9,7 +9,7 @@ import styles from "../site-header.module.css";
 
 export const Notifications = () => {
     const { userDataId } = useContext(AuthContext);
-    const [ notificationsState, setnotificationsState] = useState([]);
+    const [notificationsState, setnotificationsState] = useState([]);
 
     useEffect(() => {
         notifications
@@ -22,12 +22,14 @@ export const Notifications = () => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
         const senderId = e.currentTarget.getAttribute("data-sender");
         await notifications.updateNotification(id, "accepted");
-        await notifications.getNotifications(userDataId)
-        .then((result) => setnotificationsState(result))
-        .catch((error) => console.log(error));
-     
-        
-        const setFriend = await dataService.setRelation(userDataId, "friends", [senderId]);
+        await notifications
+            .getNotifications(userDataId)
+            .then((result) => setnotificationsState(result))
+            .catch((error) => console.log(error));
+
+        const setFriend = await dataService.setRelation(userDataId, "friends", [
+            senderId,
+        ]);
         if (setFriend === 1) {
             window.alert("Успешно добавихте приятел");
         } else {
@@ -38,66 +40,79 @@ export const Notifications = () => {
     const rejectHandler = async (e) => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
         await notifications.updateNotification(id, "declined");
-        await notifications.getNotifications(userDataId)
-        .then((result) => setnotificationsState(result))
-        .catch((error) => console.log(error));
+        await notifications
+            .getNotifications(userDataId)
+            .then((result) => setnotificationsState(result))
+            .catch((error) => console.log(error));
 
         window.alert("Поканата за приятелство е отхвърлена");
     };
 
-    const okey = async (e) => {
-        const id = e.currentTarget.parentElement.getAttribute("data-key");
-        await notifications.updateNotification(id, "accepted");
-        await notifications.getNotifications(userDataId)
-        .then((result) => setnotificationsState(result))
-        .catch((error) => console.log(error));
-    }
+    // const okey = async (e) => {
+    //     const id = e.currentTarget.parentElement.getAttribute("data-key");
+    //     await notifications.updateNotification(id, "accepted");
+    //     await notifications
+    //         .getNotifications(userDataId)
+    //         .then((result) => setnotificationsState(result))
+    //         .catch((error) => console.log(error));
+    // };
 
     return (
         <div className={styles.dropdownNotifications}>
-            <FontAwesomeIcon icon={faBell} className={styles.notificationsIcon} />
+            <FontAwesomeIcon
+                icon={faBell}
+                className={styles.notificationsIcon}
+            />
 
-            { notificationsState.length > 0 && <span className={styles.notificationDot}/> }
+            {notificationsState.length > 0 && (
+                <span className={styles.notificationDot} />
+            )}
 
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
-                    notificationsState.filter((alert) => alert.event_type === "friend request").map((alert) => (
-                        <li key={alert.objectId} data-key={alert.objectId}>
-                            <span >
-                                {/* TO DO NAME */}
-                                Покана за приятелство от {alert.sender[0].fullName}
-                            </span>
+                    notificationsState
+                        .filter(
+                            (alert) =>
+                                alert.event_type === "friend request" ||
+                                alert.event_type === "money received"
+                        )
+                        .map((alert) =>
+                            alert.event_type === "friend request" ? (
+                                <li key={alert.objectId} data-key={alert.objectId}>
+                                    <span>
+                                        Покана за приятелство от{" "}
+                                        {alert.sender[0].fullName}
+                                    </span>
 
-                            <FontAwesomeIcon
-                                data-sender={`${alert.sender[0].objectId}`}
-                                onClick={acceptHandler}
-                                className={`${styles.accept}`}
-                                icon={faCheck}
-                            />
+                                    <FontAwesomeIcon
+                                        data-sender={`${alert.sender[0].objectId}`}
+                                        onClick={acceptHandler}
+                                        className={`${styles.accept}`}
+                                        icon={faCheck}
+                                    />
 
-                            <FontAwesomeIcon
-                                onClick={rejectHandler}
-                                className={styles.reject}
-                                icon={faXmark}
-                            />
-                        </li>
-                    ))
-                ) && ((
-                    notificationsState.filter((alert) => alert.event_type === "money received").map((money) => (
-                        <li key={money.objectId} data-key={money.objectId}>
-                            <span >
-                                {/* TO DO NAME */}
-                                Получихте {money.amount}лв. от {money.sender[0].fullName}.
-                            </span>
+                                    <FontAwesomeIcon
+                                        onClick={rejectHandler}
+                                        className={styles.reject}
+                                        icon={faXmark}
+                                    />
+                                </li>
+                            ) : (
+                                <li key={alert.objectId} data-key={alert.objectId}>
+                                    <span>
+                                        Получихте {alert.amount}лв. от{" "}
+                                        {alert.sender[0].fullName}.
+                                    </span>
 
-                            <FontAwesomeIcon
-                                onClick={okey}
-                                className={styles.reject}
-                                icon={faXmark}
-                            />
-                        </li>
-                    ))
-                )) : (
+                                    {/* <FontAwesomeIcon
+                                        onClick={okey}
+                                        className={styles.reject}
+                                        icon={faXmark}
+                                    /> */}
+                                </li>
+                            )
+                        )
+                ) : (
                     <li className="notifications-block border-bottom">
                         <span>Нямате известия</span>
                     </li>
@@ -106,5 +121,3 @@ export const Notifications = () => {
         </div>
     );
 };
-
-
