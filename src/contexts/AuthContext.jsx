@@ -125,7 +125,7 @@ export const AuthProvider = ({ children }) => {
             objectId: `Липсва информация`,
             created: `информация`,
         },
-        picture: avatar,
+        picture: auth.avatar,
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         adress: auth.adress || "Липсва информация",
