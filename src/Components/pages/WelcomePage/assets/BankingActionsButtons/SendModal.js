@@ -32,13 +32,15 @@ export const SendMoney = ({ setShowSend }) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const { amount, friends } = Object.fromEntries(form);
-        console.log(amount, friends);
         if( !amount || !friends ) {
             return;
         }
         
         const response = await transactions.send(friends, Number(amount), "+", userDataId, token);
-        console.log(response);
+        if (response.success) {
+            setShowSend(false);
+            alert("Успешно изпратихте парите");
+        }
     };
 
     return (

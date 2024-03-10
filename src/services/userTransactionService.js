@@ -61,13 +61,7 @@ const send = async (fullname, amount, type, sender, token) => {
         ],
     };
 
-    const response = await request.post(
-        `${baseURL}${endpoints.transactions}`,
-        body,
-        null,
-        token
-    );
-    console.log("1", response);
+    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
 };
 
 export const transactions = {
