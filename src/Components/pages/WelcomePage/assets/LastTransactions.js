@@ -20,7 +20,7 @@ export const LastTransactions = () => {
         <div className={`${blocks.customBlock} ${blocks.cusomBlockExchange}`}>
             <h5>Последни транзакции</h5>
             <ul>
-                {allTransactions.slice(0, 3).map((entry) => (
+                {allTransactions.slice(0, 4).map((entry) => (
                     <li key={entry.objectId} data-key={entry.objectId}>
                         <div className={styles.transactionsBoxWrapper}>
                             <div
