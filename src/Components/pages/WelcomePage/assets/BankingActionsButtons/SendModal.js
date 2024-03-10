@@ -6,7 +6,7 @@ import { transactions } from "../../../../../services/userTransactionService";
 import modal from "./modal.module.css";
 
 export const SendMoney = ({ setShowSend }) => {
-    const { userDataId } = useContext(AuthContext);
+    const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
     const [userInput, setUserInput] = useState({ amount: 0, friends: "" });
 
@@ -37,7 +37,7 @@ export const SendMoney = ({ setShowSend }) => {
             return;
         }
         
-        const response = await transactions.send(friends, Number(amount), "+");
+        const response = await transactions.send(friends, Number(amount), "+", userDataId, token);
         console.log(response);
     };
 

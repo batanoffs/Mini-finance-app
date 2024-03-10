@@ -6,7 +6,7 @@ const endpoints = {
 };
 
 // Send Money
-const send = async (fullname, amount, type) => {
+const send = async (fullname, amount, type, sender, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -30,10 +30,15 @@ const send = async (fullname, amount, type) => {
         ],
     };
 
-    const response = await request.post(`${baseURL}${endpoints.transactions}`, body);    
+    const response = await request.post(
+        `${baseURL}${endpoints.transactions}`,
+        body,
+        null,
+        token
+    );
     console.log("1", response);
 
-    if(response.success) {
+    if (response.success) {
         const body2 = {
             isolationLevelEnum: "READ_COMMITTED",
             operations: [
@@ -49,14 +54,25 @@ const send = async (fullname, amount, type) => {
                         ],
                     },
                 },
+                {
+                    operationType: "ADD_RELATION",
+                    table: "MoneyTransactions",
+                    opResultId: "setSender",
+                    payload: {
+                        parentObject: response.results.newEntry.result.objectId,
+                        relationColumn: "sender",
+                        unconditional: [sender],
+                    },
+                },
             ],
         };
-    
-        const response2 = await request.post(`${baseURL}${endpoints.transactions}`, body2);
+
+        const response2 = await request.post(
+            `${baseURL}${endpoints.transactions}`,
+            body2
+        );
         return response2;
     }
-
-    
 };
 
 export const transactions = {
@@ -96,7 +112,7 @@ export const transactions = {
 //                     "propName": "objectId"
 //                 }
 //             }
-//         }, 
+//         },
 //         {
 //              "operationType": "ADD_RELATION",
 //              "table": "MoneyTransactions",
