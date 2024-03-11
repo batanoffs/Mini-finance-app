@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import "./autocomplate.css";
 
-export const Autocomplete = ( props ) => {
+export const Autocomplete = (props) => {
     const [activeSuggestion, setActiveSuggestion] = useState(0);
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
-    
+
     const onChange = (e) => {
         const input = e.target.value;
         const suggestions = props.suggestions;
-        const filtered = suggestions.filter((suggestion) => suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1);
+        const filtered = suggestions.filter(
+            (suggestion) =>
+                suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1
+        );
 
         setActiveSuggestion(0);
         setFilteredSuggestions(filtered);
         setShowSuggestions(true);
+
         props.setUserInput((state) => ({
             ...state,
             [e.target.name]: e.target.value,
         }));
-        
     };
 
     const onClick = (e) => {
@@ -26,7 +29,10 @@ export const Autocomplete = ( props ) => {
             setActiveSuggestion(0);
             setFilteredSuggestions([]);
             setShowSuggestions(false);
-            props.setUserInput((state) => ({...state, friends: e.target.innerText}));
+            props.setUserInput((state) => ({
+                ...state,
+                friends: e.target.innerText,
+            }));
         } else {
             return;
         }
@@ -92,10 +98,14 @@ export const Autocomplete = ( props ) => {
                     name="friends"
                     placeholder="Иван Иванов"
                     type="text"
-                    style={{ marginBottom: "0px", border: "0px", borderBottom: "1px solid var(--border-color)"}}
+                    style={{
+                        marginBottom: "0px",
+                        border: "0px",
+                        borderBottom: "1px solid var(--border-color)",
+                    }}
                     onChange={onChange}
                     onKeyDown={onKeyDown}
-                    value={props.userInput.friends}
+                    value={props.friendClick ? props.friendClick : props.userInput.friends}
                 />
                 {suggestionsListComponent}
             </div>

@@ -5,7 +5,12 @@ import { Autocomplete } from "../../../../features/Autocomplate";
 import { transactions } from "../../../../../services/transactionService";
 import modal from "./modal.module.css";
 
-export const SendMoney = ({ showModal, setShowModal }) => {
+export const SendMoney = ({
+    friendClick,
+    setFriendClick,
+    showModal,
+    setShowModal,
+}) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
     const [userInput, setUserInput] = useState({ amount: "", friends: "" });
@@ -63,9 +68,10 @@ export const SendMoney = ({ showModal, setShowModal }) => {
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Изпращане на пари</h5>
                     <button
-                        onClick={() =>
-                            setShowModal({ ...showModal, [`send`]: false })
-                        }
+                        onClick={() => {
+                            setShowModal({ ...showModal, [`send`]: false });
+                            setFriendClick(null);
+                        }}
                     >
                         X
                     </button>
@@ -88,6 +94,7 @@ export const SendMoney = ({ showModal, setShowModal }) => {
                         <div className="form-group ">
                             <label htmlFor="friends">Приятел</label>
                             <Autocomplete
+                                friendClick={friendClick}
                                 name="friends"
                                 userInput={userInput}
                                 setUserInput={setUserInput}

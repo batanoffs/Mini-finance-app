@@ -5,7 +5,7 @@ import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 
-export const QuickSendMoney = () => {
+export const QuickSendMoney = ({showModal, setShowModal, friendClick, setFriendClick}) => {
     const [friends, setFriends] = useState([]);
     const { userDataId, token } = useContext(AuthContext);
 
@@ -28,6 +28,13 @@ export const QuickSendMoney = () => {
             });
     }, [userDataId]);
 
+    const onClickHandler = (e) => {
+        const friend = e.currentTarget.parentElement.getAttribute("data-key")
+        console.table(friend);
+        setShowModal({ ...showModal, [`send`]: true })
+        setFriendClick(friend)
+    }
+
 
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
@@ -36,14 +43,12 @@ export const QuickSendMoney = () => {
             </h5>
             <ul className={blocks.sendMonkeyContainer}>
                 {friends.map((friend) => (
-                    <li key={friend.objectId}>
+                    <li key={friend.objectId} data-key={friend.fullName}>
                         <img
                             src={friend.avatar}
                             className={blocks.profileImage}
                             alt={"avatar"}
-                            onClick={() => {
-                                console.log(friend.objectId);
-                            }}
+                            onClick={onClickHandler}
                         />
                     </li>
                 ))}

@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import blocks from "../../custom-block.module.css";
 
-export const BankingActionButtons = ({showModal, setShowModal}) => {
+export const BankingActionButtons = ({friendClick, setFriendClick, showModal, setShowModal}) => {
     
 
     const handleShowModal = (type) => () => {
@@ -40,7 +40,7 @@ export const BankingActionButtons = ({showModal, setShowModal}) => {
                 onClick={handleShowModal("receive")}
             />
             {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
-            {showModal.send && <SendMoney showModal={showModal} setShowModal={setShowModal} />}
+            {showModal.send && <SendMoney friendClick={friendClick} setFriendClick={setFriendClick} showModal={showModal} setShowModal={setShowModal} />}
             {showModal.receive && <ReceiveMoney showModal={showModal} setShowModal={setShowModal} />}
         </div>
     );

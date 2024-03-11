@@ -9,11 +9,12 @@ import { Greetings } from "./assets/Greetings";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { ContactInfo } from "../assets/ContactInfo";
 import { AddFriends } from "../assets/AddFriends";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import styles from "../welcome-page-layout.module.css";
 
 export const OverviewTab = (props) => {
     const { name, virtualcard, balance, picture, phone, email } = useContext(AuthContext);
+    const [friendClick, setFriendClick] = useState("");
     
     return (
         <div className={styles.contentContainer}>
@@ -42,8 +43,8 @@ export const OverviewTab = (props) => {
             <div className={styles.bentoSideColumn}>
                 <ContactInfo />
                 <AddFriends />
-                <BankingActionButtons showModal={props.showModal} setShowModal={props.setShowModal}/>
-                <QuickSendMoney />
+                <BankingActionButtons friendClick={friendClick} setFriendClick={setFriendClick} showModal={props.showModal} setShowModal={props.setShowModal}/>
+                <QuickSendMoney friendClick={friendClick} setFriendClick={setFriendClick} showModal={props.showModal} setShowModal={props.setShowModal}/>
             </div>
         </div>
     );
