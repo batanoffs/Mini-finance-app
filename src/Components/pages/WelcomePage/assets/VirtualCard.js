@@ -28,12 +28,12 @@ export const VirtualCard = () => {
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                    <h6>Валидна до</h6>
+                    <h6>Валидна</h6>
                     <small>{virtualcard.expiration}</small>
                 </div>
 
                 <div>
-                    <h6>Картодържател</h6>
+                    <h6>Притежател</h6>
                     <small>{name}</small>
                 </div>
             </div>

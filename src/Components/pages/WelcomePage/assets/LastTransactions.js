@@ -23,38 +23,28 @@ export const LastTransactions = () => {
                 {allTransactions.slice(0, 4).map((entry) => (
                     <li key={entry.objectId} data-key={entry.objectId}>
                         <div className={styles.transactionsBoxWrapper}>
-                            <div
-                                className={
-                                    styles.transactionsProfileWrapper
-                                }
-                            >
+                            <div className={styles.transactionsProfileWrapper}>
                                 <img
                                     src={entry.sender[0].avatar}
                                     className={blocks.profileImage}
                                     alt={"avatar"}
                                 />
-
                                 <div>
                                     <p>
-                                        <strong>{entry.sender[0].fullName}</strong>
+                                        <strong>
+                                            {entry.sender[0].fullName}
+                                        </strong>
                                     </p>
 
-                                    <small>{(entry.transaction_type === "+"
+                                    <small>
+                                        {entry.transaction_type === "+"
                                             ? "изпрати"
-                                            : "получи")}</small>
+                                            : "получи"}
+                                    </small>
                                 </div>
                             </div>
 
                             <div className={styles.transactionsAmountInfo}>
-                                <small>
-                                    {new Intl.DateTimeFormat("en-US", {
-                                        year: "numeric",
-                                        month: "numeric",
-                                        day: "numeric",
-                                        hour: "numeric",
-                                        minute: "numeric",
-                                    }).format(new Date(entry.created))}
-                                </small>
                                 <strong
                                     style={{
                                         display: "block",
@@ -71,6 +61,16 @@ export const LastTransactions = () => {
                                     <span>{entry.transaction_type}</span>{" "}
                                     {entry.amount}лв
                                 </strong>
+                                <small>
+                                    {new Intl.DateTimeFormat("en-US", {
+                                        hour: "numeric",
+                                        minute: "numeric",
+                                        year: "numeric",
+                                        month: "numeric",
+                                        day: "numeric",
+                                        hour12: false,
+                                    }).format(new Date(entry.created))}
+                                </small>
                             </div>
                         </div>
                     </li>
@@ -78,7 +78,7 @@ export const LastTransactions = () => {
             </ul>
             <div>
                 <Link className="custom-btn" to="/dashboard/wallet">
-                    Виж всички транзакции
+                    Всички транзакции
                 </Link>
             </div>
         </div>

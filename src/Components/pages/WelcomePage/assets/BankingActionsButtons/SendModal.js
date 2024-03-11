@@ -8,7 +8,7 @@ import modal from "./modal.module.css";
 export const SendMoney = ({ setShowSend }) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
-    const [userInput, setUserInput] = useState({ amount: 0, friends: "" });
+    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {

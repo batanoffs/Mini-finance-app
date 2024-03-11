@@ -55,13 +55,11 @@
 
 @media (min-width: 1200px) {
     .modalBackground {
-        width: calc(100% - 200px);
         height: calc(100% - 45px);
-        left: 240px;
         top: 45px;
     }
 
     .modalContainer {
-        width: 40%;
+        width: 35%;
     }
 }

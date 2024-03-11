@@ -12,7 +12,6 @@ import blocks from "../../custom-block.module.css";
 
 export const BankingActionButtons = () => {
     const [showTopUp, setShowTopUp] = useState(false);
-    // const [showScan, setShowScan] = useState(false);
     const [showSend, setShowSend] = useState(false);
     const [showReceive, setShowReceive] = useState(false);
 

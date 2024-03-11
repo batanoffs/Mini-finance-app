@@ -90,6 +90,7 @@ export const Autocomplete = ( props ) => {
                 <input
                     className="suggestion-box"
                     name="friends"
+                    placeholder="Иван Иванов"
                     type="text"
                     style={{ marginBottom: "0px", border: "0px", borderBottom: "1px solid var(--border-color)"}}
                     onChange={onChange}
