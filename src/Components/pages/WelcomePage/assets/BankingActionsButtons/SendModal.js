@@ -49,7 +49,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                 userDataId,
                 token
             );
-            setShowModal({ ...showModal, [`send`]: true });
+            setShowModal({ ...showModal, [`send`]: false });
             alert("Успешно изпратихте парите");
         } else {
             console.log(response);

@@ -125,6 +125,21 @@
 }
 
 .reject:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.remove {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color:gray
+}
+
+.reject:hover {
     background: whitesmoke;
 }
 .profileImage {
@@ -275,11 +290,11 @@
         background-color: #f9f9f9;
         border-radius: 4px;
         padding: 1em;
-        min-width: 400px;
+        min-width: 450px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 3;
         top: 40px;
-        left: -320px; /* Adjust the left position as needed */
+        left: -350px; /* Adjust the left position as needed */
     }
 }
 

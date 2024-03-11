@@ -8,15 +8,20 @@
 }
 
 .feature {
+    border: 1px solid var(--logo--text-color);
+    border-radius: 1em;
+    background-color: white;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    margin: 20px;
-    text-align: center;
+    flex: 1 1;
+    text-align:center;
 }
 
 .featureImg {
+    border: 4px solid var(--logo--text-color);
+    border-radius: 100%;
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
@@ -36,5 +41,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2em;
+    gap: 1em;
+    margin: 0em 10em;
 }

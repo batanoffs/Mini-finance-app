@@ -133,14 +133,13 @@ export const Notifications = () => {
                                 <li key={alert.objectId} data-key={alert.objectId}>
                                     <span>
                                         Получихте {alert.amount ?? "Unknown"}лв. от{" "}
-                                        {alert.sender?.[0]?.fullName ?? "Unknown"}.
+                                        {alert.sender?.[0]?.fullName ?? "Unknown"}. {" "}
                                     </span>
 
-                                    <FontAwesomeIcon
+                                    <small
                                         onClick={okey}
-                                        className={styles.reject}
-                                        icon={faXmark}
-                                    />
+                                        className={styles.remove}
+                                    >премахни</small>
                                 </li>
                             ) : alert?.event_type === "friend accept" ? (
                                 <li key={alert.objectId} data-key={alert.objectId}>
@@ -149,11 +148,10 @@ export const Notifications = () => {
                                         прие вашата покана.
                                     </span>
 
-                                    <FontAwesomeIcon
+                                    <small
                                         onClick={okey}
-                                        className={styles.reject}
-                                        icon={faXmark}
-                                    />
+                                        className={styles.remove}
+                                    >премахни</small>
                                 </li>
                             ) : (
                                 <li className="notifications-block border-bottom">
