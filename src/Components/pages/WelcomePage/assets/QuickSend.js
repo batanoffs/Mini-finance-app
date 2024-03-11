@@ -5,9 +5,14 @@ import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 
-export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput}) => {
+export const QuickSendMoney = ({
+    showModal,
+    setShowModal,
+    userInput,
+    setUserInput,
+}) => {
     const [friends, setFriends] = useState([]);
-    const { userDataId, token } = useContext(AuthContext);
+    const { userDataId } = useContext(AuthContext);
 
     useEffect(() => {
         if (!userDataId) {
@@ -29,12 +34,10 @@ export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput
     }, [userDataId]);
 
     const onClickHandler = (e) => {
-        const friend = e.currentTarget.parentElement.getAttribute("data-key")
-        console.table(friend);
-        setShowModal({ ...showModal, [`send`]: true })
-        setUserInput({...userInput, [`friends`]: friend})
-    }
-
+        const friend = e.currentTarget.parentElement.getAttribute("data-key");
+        setShowModal({ ...showModal, [`send`]: true });
+        setUserInput({ ...userInput, [`friends`]: friend });
+    };
 
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
