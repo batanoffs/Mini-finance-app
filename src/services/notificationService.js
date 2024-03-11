@@ -23,8 +23,14 @@ const getNotifications = async (reciverId) => {
     );
 };
 
+const deleteNotification = async (objectId) => {
+    return await request.del(
+        `${baseURL}${endpoints.selectNotification(objectId)}`
+    )
+}
+
 // Create Notifications
-const createNotification = async (phone, event, currentUserId, token) => {
+const createNotification = async (phone, sender, event, currentUserId, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -33,7 +39,7 @@ const createNotification = async (phone, event, currentUserId, token) => {
                 table: "UserData",
                 opResultId: "findReciever",
                 payload: {
-                    whereClause: `phoneNumber = '${phone}'`,
+                    whereClause: phone? `phoneNumber = '${phone}'`: `objectId = '${sender}'`,
                 },
             },
             {
@@ -90,6 +96,7 @@ export const notifications = {
     createNotification,
     getNotifications,
     updateNotification,
+    deleteNotification
 };
 
 // const body = {

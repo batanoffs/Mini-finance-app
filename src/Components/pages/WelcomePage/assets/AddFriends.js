@@ -23,7 +23,7 @@ export const AddFriends = () => {
             setError(true);
             return;
         }
-        const response = await notifications.createNotification(number, "friend request", userDataId, token);
+        const response = await notifications.createNotification(number, null, "friend request", userDataId, token);
         
         if(response.success) {
             window.alert("Успешно изпратихте покана за приятелство");

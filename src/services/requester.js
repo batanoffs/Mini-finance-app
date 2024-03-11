@@ -57,6 +57,22 @@ const request = async (method, url, data, file, token = undefined) => {
         };
     }
 
+    if (method === "DELETE") {
+        options.method = method;
+
+        if (token) {
+            options.headers = {
+                "user-token": `${token}`,
+                "content-type": "application/json",
+            };
+        }
+
+        options.headers = {
+            response_type: "JSON",
+            // "Access-Control-Allow-Origin": "*",
+        };
+    }
+
     try {
         const response = await fetch(url, options);
 
