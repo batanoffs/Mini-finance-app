@@ -105,7 +105,7 @@ export const Autocomplete = (props) => {
                     }}
                     onChange={onChange}
                     onKeyDown={onKeyDown}
-                    value={props.friendClick ? props.friendClick : props.userInput.friends}
+                    value={props.userInput.friends}
                 />
                 {suggestionsListComponent}
             </div>

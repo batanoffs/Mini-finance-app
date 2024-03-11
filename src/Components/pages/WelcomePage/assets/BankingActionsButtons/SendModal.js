@@ -6,14 +6,14 @@ import { transactions } from "../../../../../services/transactionService";
 import modal from "./modal.module.css";
 
 export const SendMoney = ({
-    friendClick,
-    setFriendClick,
+    userInput,
+    setUserInput,
     showModal,
     setShowModal,
 }) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
-    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
+    // const [userInput, setUserInput] = useState({ amount: "", friends: "" });
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
@@ -62,19 +62,17 @@ export const SendMoney = ({
         }
     };
 
+    const onClose = () => {
+        setShowModal({ ...showModal, [`send`]: false });
+        setUserInput({ amount: "", friends: "" });
+    };
+
     return (
         <div className={modal.modalBackground}>
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Изпращане на пари</h5>
-                    <button
-                        onClick={() => {
-                            setShowModal({ ...showModal, [`send`]: false });
-                            setFriendClick(null);
-                        }}
-                    >
-                        X
-                    </button>
+                    <button onClick={onClose}>X</button>
                 </div>
 
                 <div className="form-content">
@@ -94,7 +92,6 @@ export const SendMoney = ({
                         <div className="form-group ">
                             <label htmlFor="friends">Приятел</label>
                             <Autocomplete
-                                friendClick={friendClick}
                                 name="friends"
                                 userInput={userInput}
                                 setUserInput={setUserInput}

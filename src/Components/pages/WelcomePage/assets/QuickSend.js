@@ -5,7 +5,7 @@ import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 
-export const QuickSendMoney = ({showModal, setShowModal, friendClick, setFriendClick}) => {
+export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput}) => {
     const [friends, setFriends] = useState([]);
     const { userDataId, token } = useContext(AuthContext);
 
@@ -32,7 +32,7 @@ export const QuickSendMoney = ({showModal, setShowModal, friendClick, setFriendC
         const friend = e.currentTarget.parentElement.getAttribute("data-key")
         console.table(friend);
         setShowModal({ ...showModal, [`send`]: true })
-        setFriendClick(friend)
+        setUserInput({...userInput, [`friends`]: friend})
     }
 
 

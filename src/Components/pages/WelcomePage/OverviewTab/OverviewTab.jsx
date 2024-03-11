@@ -13,8 +13,8 @@ import { useContext,useState } from "react";
 import styles from "../welcome-page-layout.module.css";
 
 export const OverviewTab = (props) => {
+    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
     const { name, virtualcard, balance, picture, phone, email } = useContext(AuthContext);
-    const [friendClick, setFriendClick] = useState("");
     
     return (
         <div className={styles.contentContainer}>
@@ -43,8 +43,8 @@ export const OverviewTab = (props) => {
             <div className={styles.bentoSideColumn}>
                 <ContactInfo />
                 <AddFriends />
-                <BankingActionButtons friendClick={friendClick} setFriendClick={setFriendClick} showModal={props.showModal} setShowModal={props.setShowModal}/>
-                <QuickSendMoney friendClick={friendClick} setFriendClick={setFriendClick} showModal={props.showModal} setShowModal={props.setShowModal}/>
+                <BankingActionButtons userInput={userInput} setUserInput={setUserInput} showModal={props.showModal} setShowModal={props.setShowModal}/>
+                <QuickSendMoney userInput={userInput} setUserInput={setUserInput} showModal={props.showModal} setShowModal={props.setShowModal}/>
             </div>
         </div>
     );
