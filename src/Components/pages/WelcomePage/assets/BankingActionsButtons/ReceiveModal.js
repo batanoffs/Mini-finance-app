@@ -3,7 +3,7 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import modal from "./modal.module.css";
 
-export const ReceiveMoney = ({ setShowReceive }) => {
+export const ReceiveMoney = ({ showModal, setShowModal }) => {
     const { userDataId } = useContext(AuthContext);
     const [friends, setFriends] = useState([]);
     const [selectedFriend, setSelectedFriend] = useState(""); // Add state to track selected friend
@@ -27,7 +27,9 @@ export const ReceiveMoney = ({ setShowReceive }) => {
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Поискай пари</h5>
-                    <button onClick={() => setShowReceive(false)}> x</button>
+                    <button onClick={() =>
+                            setShowModal({ ...showModal, [`receive`]: false })
+                        }> x</button>
                 </div>
 
                 <div className="form-content">

@@ -42,7 +42,7 @@ export const OverviewTab = (props) => {
             <div className={styles.bentoSideColumn}>
                 <ContactInfo />
                 <AddFriends />
-                <BankingActionButtons />
+                <BankingActionButtons showModal={props.showModal} setShowModal={props.setShowModal}/>
                 <QuickSendMoney />
             </div>
         </div>

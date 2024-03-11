@@ -10,11 +10,24 @@ export const QuickSendMoney = () => {
     const { userDataId, token } = useContext(AuthContext);
 
     useEffect(() => {
-        dataService.getAllFrineds(userDataId).then((response) => {
-            setFriends(response);
-            console.log(response);
-        });
+        if (!userDataId) {
+            console.error("QuickSendMoney.userDataId is null");
+            return;
+        }
+        dataService
+            .getAllFrineds(userDataId)
+            .then((response) => {
+                if (!response) {
+                    console.error("QuickSendMoney.response is null");
+                    return;
+                }
+                setFriends(response);
+            })
+            .catch((error) => {
+                console.error("QuickSendMoney.error", error);
+            });
     }, [userDataId]);
+
 
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
@@ -28,6 +41,9 @@ export const QuickSendMoney = () => {
                             src={friend.avatar}
                             className={blocks.profileImage}
                             alt={"avatar"}
+                            onClick={() => {
+                                console.log(friend.objectId);
+                            }}
                         />
                     </li>
                 ))}

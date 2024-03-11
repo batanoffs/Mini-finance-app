@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { TopUp } from "./TopUpModal";
 import { SendMoney } from "./SendModal";
 import { ReceiveMoney } from "./ReceiveModal";
@@ -10,10 +9,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import blocks from "../../custom-block.module.css";
 
-export const BankingActionButtons = () => {
-    const [showTopUp, setShowTopUp] = useState(false);
-    const [showSend, setShowSend] = useState(false);
-    const [showReceive, setShowReceive] = useState(false);
+export const BankingActionButtons = ({showModal, setShowModal}) => {
+    
+
+    const handleShowModal = (type) => () => {
+        setShowModal({
+            ...showModal,
+            [type]: true,
+        });
+    };
 
     return (
         <div
@@ -23,21 +27,22 @@ export const BankingActionButtons = () => {
             <FontAwesomeIcon
                 className={blocks.customBlockIcon}
                 icon={faVault}
-                onClick={() => setShowTopUp(true)}
+                onClick={handleShowModal("topUp")}
             />
             <FontAwesomeIcon
                 className={blocks.customBlockIcon}
                 icon={faMoneyBillTransfer}
-                onClick={() => setShowSend(true)}
+                onClick={handleShowModal("send")}
             />
             <FontAwesomeIcon
                 className={blocks.customBlockIcon}
                 icon={faHandHoldingDollar}
-                onClick={() => setShowReceive(true)}
+                onClick={handleShowModal("receive")}
             />
-            {showTopUp && <TopUp setShowTopUp={setShowTopUp} />}
-            {showSend && <SendMoney setShowSend={setShowSend} />}
-            {showReceive && <ReceiveMoney setShowReceive={setShowReceive} />}
+            {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
+            {showModal.send && <SendMoney showModal={showModal} setShowModal={setShowModal} />}
+            {showModal.receive && <ReceiveMoney showModal={showModal} setShowModal={setShowModal} />}
         </div>
     );
 };
+

@@ -5,7 +5,7 @@ import { Autocomplete } from "../../../../features/Autocomplate";
 import { transactions } from "../../../../../services/transactionService";
 import modal from "./modal.module.css";
 
-export const SendMoney = ({ setShowSend }) => {
+export const SendMoney = ({ showModal, setShowModal }) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
     const [userInput, setUserInput] = useState({ amount: "", friends: "" });
@@ -26,20 +26,31 @@ export const SendMoney = ({ setShowSend }) => {
 
     const setUserInputHandler = (e) => {
         setUserInput({ ...userInput, [e.target.name]: e.target.value });
-    }
+    };
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const { amount, friends } = Object.fromEntries(form);
-        if( !amount || !friends ) {
+        if (!amount || !friends) {
             return;
         }
-        
-        const response = await transactions.send(friends, Number(amount), "+", userDataId, token);
+
+        const response = await transactions.send(
+            friends,
+            Number(amount),
+            "+",
+            userDataId,
+            token
+        );
         if (response.success) {
-            await transactions.notify(friends, Number(amount), userDataId, token);
-            setShowSend(false);
+            await transactions.notify(
+                friends,
+                Number(amount),
+                userDataId,
+                token
+            );
+            setShowModal({ ...showModal, [`send`]: true });
             alert("Успешно изпратихте парите");
         } else {
             console.log(response);
@@ -51,7 +62,13 @@ export const SendMoney = ({ setShowSend }) => {
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Изпращане на пари</h5>
-                    <button onClick={() => setShowSend(false)}>X</button>
+                    <button
+                        onClick={() =>
+                            setShowModal({ ...showModal, [`send`]: false })
+                        }
+                    >
+                        X
+                    </button>
                 </div>
 
                 <div className="form-content">

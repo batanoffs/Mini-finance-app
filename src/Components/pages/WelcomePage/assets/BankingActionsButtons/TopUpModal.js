@@ -2,13 +2,17 @@ import modal from "./modal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard } from "@fortawesome/free-regular-svg-icons";
 
-export const TopUp = ({ setShowTopUp, setShowReceive }) => {
+export const TopUp = ({ showModal, setShowModal }) => {
     return (
         <div className={modal.modalBackground}>
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Захранване на акаунт</h5>
-                    <button onClick={() => setShowTopUp(false)}> x</button>
+                    <button
+                        onClick={() =>
+                            setShowModal({ ...showModal, [`topUp`]: false })
+                        }
+                    >X</button>
                 </div>
                 <div className="form-content">
                     <form className="custom-form">
