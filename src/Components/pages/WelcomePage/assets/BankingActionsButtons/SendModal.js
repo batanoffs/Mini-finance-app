@@ -5,15 +5,9 @@ import { Autocomplete } from "../../../../features/Autocomplate";
 import { transactions } from "../../../../../services/transactionService";
 import modal from "./modal.module.css";
 
-export const SendMoney = ({
-    userInput,
-    setUserInput,
-    showModal,
-    setShowModal,
-}) => {
+export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
-    // const [userInput, setUserInput] = useState({ amount: "", friends: "" });
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {

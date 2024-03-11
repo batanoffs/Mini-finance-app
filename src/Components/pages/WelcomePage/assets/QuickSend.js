@@ -1,16 +1,11 @@
-import blocks from "../custom-block.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
+import blocks from "../custom-block.module.css";
 
-export const QuickSendMoney = ({
-    showModal,
-    setShowModal,
-    userInput,
-    setUserInput,
-}) => {
+export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput}) => {
     const [friends, setFriends] = useState([]);
     const { userDataId } = useContext(AuthContext);
 
