@@ -27,10 +27,14 @@ export const Notifications = () => {
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
 
-        const setFriend = await dataService.setRelation(userDataId, "friends", [
+        const setReceiverFriend = await dataService.setRelation(userDataId, "friends", [
             senderId,
         ]);
-        if (setFriend === 1) {
+        const setSenderFriend = await dataService.setRelation(senderId, "friends", [
+            userDataId,
+        ])
+        console.log(setReceiverFriend, setSenderFriend);
+        if (setReceiverFriend === 1 && setSenderFriend === 1) {
             window.alert("Успешно добавихте приятел");
         } else {
             window.alert("Вече сте добавили този приятел");
