@@ -1,40 +1,41 @@
 import blocks from "../custom-block.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { dataService } from "../../../../services/userDataService";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { useContext, useEffect, useState } from "react";
 
 export const QuickSendMoney = () => {
-    const person1 = "https://notablepen.backendless.app/api/files/app/AppData/people/medium-shot-happy-man-smiling.jpg";
-    const person2 = "https://notablepen.backendless.app/api/files/app/AppData/people/senior-man-white-sweater-eyeglasses.jpg";
-    const person3 = "https://notablepen.backendless.app/api/files/app/AppData/people/young-beautiful-woman-pink-warm-sweater.jpg";
+    const [friends, setFriends] = useState([]);
+    const { userDataId, token } = useContext(AuthContext);
+
+    useEffect(() => {
+        dataService.getAllFrineds(userDataId).then((response) => {
+            setFriends(response);
+            console.log(response);
+        });
+    }, [userDataId]);
 
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
             <h5 style={{ color: "var(--section-bg-color)" }}>
                 Бързо изпращане
             </h5>
-            <div className={blocks.sendMonkeyContainer}>
-                <img
-                    src={person1}
-                    className={blocks.profileImage}
-                    alt={"person"}
-                />
-
-                <img
-                    src={person2}
-                    className={blocks.profileImage}
-                    alt={"person"}
-                />
-
-                <img
-                    src={person3}
-                    className={blocks.profileImage}
-                    alt={"person"}
-                />
+            <ul className={blocks.sendMonkeyContainer}>
+                {friends.map((friend) => (
+                    <li key={friend.objectId}>
+                        <img
+                            src={friend.avatar}
+                            className={blocks.profileImage}
+                            alt={"avatar"}
+                        />
+                    </li>
+                ))}
                 <FontAwesomeIcon
                     className={`${blocks.profileRounded} ${blocks.profileRoundedIcon}`}
                     icon={faPlus}
                 />
-            </div>
+            </ul>
         </div>
     );
 };

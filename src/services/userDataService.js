@@ -7,6 +7,7 @@ const endpoints = {
     mockCardObjectId: (id) => `/data/CardsMockData?where=cards_mock_data_id=${id}`,
     setRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}/${childName}`,
     getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=1`,
+    getFriends: (parentObjectId) => `/data/UserData/${parentObjectId}/friends?loadRelations=friends&relationsDepth=1`,
     attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
     setAttribute: (objectId) => `/data/UserData/${objectId}`,
     getAll: (id) => `/data/UserData?where=ownerId='${id}'`,
@@ -37,6 +38,13 @@ const changeAttribute = async (objectId, data) => {
 const getRelation = async (parentObjectId, childName) => {
     return await request.get(
         `${baseURL}${endpoints.getRelation(parentObjectId, childName)}`
+    );
+};
+
+// GET ALL FRINEDS
+const getAllFrineds = async (parentObjectId) => {
+    return await request.get(
+        `${baseURL}${endpoints.getFriends(parentObjectId)}`
     );
 };
 // SET RELATIONS
@@ -81,4 +89,5 @@ export const dataService = {
     getAttribute,
     changeAttribute,
     addTransactions,
+    getAllFrineds,
 };
