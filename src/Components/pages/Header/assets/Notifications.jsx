@@ -132,7 +132,7 @@ export const Notifications = () => {
                             ) : alert?.event_type === "money received" ? (
                                 <li key={alert.objectId} data-key={alert.objectId}>
                                     <span>
-                                        Получихте {alert.amount ?? "Unknown"}лв. от{" "}
+                                        Получихте <bold style={{ color: "green" }}>{alert.amount ?? "Unknown"}лв</bold> от{" "}
                                         {alert.sender?.[0]?.fullName ?? "Unknown"}. {" "}
                                     </span>
 
