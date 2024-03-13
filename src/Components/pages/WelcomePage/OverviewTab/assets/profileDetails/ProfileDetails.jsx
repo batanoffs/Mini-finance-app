@@ -28,7 +28,7 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                 <span> {name}</span>
             </p>
             <p>
-                <strong>Е-майл:</strong>
+                <strong>Имейл:</strong>
                 <span> {email}</span>
             </p>
             <p style={{ paddingBottom: "0" }}>

@@ -25,18 +25,18 @@ export const EmailForm = ({
         <section className="form-container">
             <div className="form-content">
                 <header>
-                    <h5>Е-майл и парола</h5>
+                    <h5>Имейл и парола</h5>
                 </header>
                 <div className="form-group">
                     <label htmlFor="email">
-                        Е-майл <small className="error">* {error.email}</small>
+                        Имейл <small className="error">* {error.email}</small>
                     </label>
                     <input
                         type="email"
                         name="email"
                         id="email"
                         autoComplete="off"
-                        placeholder="въведи е-майла"
+                        placeholder="въведи имейл"
                         className="form-control"
                         value={email}
                         onChange={changeHandler}

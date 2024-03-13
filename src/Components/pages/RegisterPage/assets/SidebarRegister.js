@@ -16,7 +16,7 @@ export const SidebarRegister = (props) => {
                         {
                             title: "Създаване на акаунт",
                             description:
-                                "емаил и парола.",
+                                "Имейл и парола.",
                         },
                         {
                             title: "Лична информация",

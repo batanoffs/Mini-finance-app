@@ -1,0 +1,126 @@
+/* NOTIFICATIONS */
+
+@media (min-width: 800px) {
+    /* Styles for the dropdown menu */
+    .dropdownMenu {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        min-width: 450px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 3;
+        top: 40px;
+        left: -350px; /* Adjust the left position as needed */
+    }
+}
+
+.singleNotification {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    transition: 0.2s;
+}
+
+.singleNotification:hover {
+    box-shadow: 0 0.3em 12px rgba(0, 0, 0, 0.2);
+}
+
+.singleNotification:hover .btnRemove {
+    display: block;
+    margin: auto 0 auto auto;
+}
+
+.btnRemove {
+    display: none;
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: gray;
+}
+
+.btnRemove:hover {
+    color: var(--primary-hover-color);
+    background-color: white;
+    border-color: var(--primary-hover-color);
+}
+
+.dropdownNotifications {
+    position: relative;
+    display: inline-block;
+    height: 44px;
+}
+
+.notificationsIcon {
+    width: 20px;
+    height: auto;
+    aspect-ratio: 1/1;
+    font-size: var(--p-font-size);
+    color: var(--white-color);
+    padding-top: 10px;
+}
+
+.notificationDot {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    background-color: red;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.dropdownMenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    min-width: 400px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    top: 45px;
+    left: -350px; /* Adjust the left position as needed */
+}
+
+/* Show the dropdown menu on hover */
+.dropdownNotifications:hover .dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    padding: 0.5em;
+}
+
+.accept {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: green;
+}
+.accept:hover {
+    background: whitesmoke;
+}
+
+.reject {
+    border: 1px solid rgba(168, 168, 168, 0.857);
+    border-radius: 8px;
+    padding: 0.1em;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(162, 0, 0);
+}
+
+.reject:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}

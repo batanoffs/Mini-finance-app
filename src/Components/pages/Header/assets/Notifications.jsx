@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { dataService } from "../../../../services/userDataService";
-import styles from "../site-header.module.css";
+import styles from "./notifications.module.css";
 
 export const Notifications = () => {
     const { userDataId, token } = useContext(AuthContext);
@@ -24,7 +24,10 @@ export const Notifications = () => {
         const senderId = e.currentTarget.getAttribute("data-sender");
 
         if (!id || !senderId) {
-            console.error("Missing data to accept notification", { id, senderId });
+            console.error("Missing data to accept notification", {
+                id,
+                senderId,
+            });
             return;
         }
 
@@ -35,24 +38,37 @@ export const Notifications = () => {
                 .then((result) => setnotificationsState(result))
                 .catch((error) => console.log(error));
 
-            const setReceiverFriend = await dataService.setRelation(userDataId, "friends", [
-                senderId,
-            ]);
-            const setSenderFriend = await dataService.setRelation(senderId, "friends", [
+            const setReceiverFriend = await dataService.setRelation(
                 userDataId,
-            ]);
+                "friends",
+                [senderId]
+            );
+            const setSenderFriend = await dataService.setRelation(
+                senderId,
+                "friends",
+                [userDataId]
+            );
 
             if (setReceiverFriend === 1 && setSenderFriend === 1) {
                 window.alert("Успешно добавихте приятел");
-                await notifications.createNotification(null, senderId, "friend accept", userDataId, token);
+                await notifications.createNotification(
+                    null,
+                    senderId,
+                    "friend accept",
+                    userDataId,
+                    token
+                );
             } else {
                 window.alert("Вече сте добавили този приятел");
             }
         } catch (error) {
-            console.error("Error while accepting notification", { id, senderId }, error);
+            console.error(
+                "Error while accepting notification",
+                { id, senderId },
+                error
+            );
         }
     };
-
 
     const rejectHandler = async (e) => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
@@ -87,7 +103,6 @@ export const Notifications = () => {
         }
     };
 
-
     return (
         <div className={styles.dropdownNotifications}>
             <FontAwesomeIcon
@@ -110,14 +125,21 @@ export const Notifications = () => {
                         )
                         .map((alert) =>
                             alert?.event_type === "friend request" ? (
-                                <li key={alert.objectId} data-key={alert.objectId}>
-                                    <span>
+                                <li
+                                    className={styles.singleNotification}
+                                    key={alert.objectId}
+                                    data-key={alert.objectId}
+                                >
+                                    <small>
                                         Покана за приятелство от{" "}
-                                        {alert.sender?.[0]?.fullName ?? "Unknown"}
-                                    </span>
+                                        {alert.sender?.[0]?.fullName ??
+                                            "Unknown"}
+                                    </small>
 
                                     <FontAwesomeIcon
-                                        data-sender={`${alert.sender?.[0]?.objectId ?? ""}`}
+                                        data-sender={`${
+                                            alert.sender?.[0]?.objectId ?? ""
+                                        }`}
                                         onClick={acceptHandler}
                                         className={`${styles.accept}`}
                                         icon={faCheck}
@@ -130,38 +152,58 @@ export const Notifications = () => {
                                     />
                                 </li>
                             ) : alert?.event_type === "money received" ? (
-                                <li key={alert.objectId} data-key={alert.objectId}>
-                                    <span>
-                                        Получихте <bold style={{ color: "green" }}>{alert.amount ?? "Unknown"}лв</bold> от{" "}
-                                        {alert.sender?.[0]?.fullName ?? "Unknown"}. {" "}
-                                    </span>
-
-                                    <small
+                                <li
+                                    className={styles.singleNotification}
+                                    key={alert.objectId}
+                                    data-key={alert.objectId}
+                                >
+                                    <div>
+                                        <small>
+                                            Получихте{" "}
+                                            <bold style={{ color: "green" }}>
+                                                {alert.amount ?? "Unknown"}лв
+                                            </bold>{" "}
+                                            от{" "}
+                                            {alert.sender?.[0]?.fullName ??
+                                                "Unknown"}
+                                            {" "}
+                                        </small>
+                                    </div>
+                                    <button
                                         onClick={okey}
-                                        className={styles.remove}
-                                    >премахни</small>
+                                        className={styles.btnRemove}
+                                    >
+                                        изтриване
+                                    </button>
                                 </li>
                             ) : alert?.event_type === "friend accept" ? (
-                                <li key={alert.objectId} data-key={alert.objectId}>
-                                    <span>
-                                        {alert.sender?.[0]?.fullName ?? "Unknown"}
-                                        прие вашата покана.
-                                    </span>
+                                <li
+                                    className={styles.singleNotification}
+                                    key={alert.objectId}
+                                    data-key={alert.objectId}
+                                >
+                                    <small>
+                                        {alert.sender?.[0]?.fullName ??
+                                            "Unknown"}
+                                        прие вашата покана
+                                    </small>
 
                                     <small
                                         onClick={okey}
                                         className={styles.remove}
-                                    >премахни</small>
+                                    >
+                                        изтриване
+                                    </small>
                                 </li>
                             ) : (
                                 <li className="notifications-block border-bottom">
-                                    <span>Нямате известия</span>
+                                    <small>Нямате известия</small>
                                 </li>
                             )
                         )
                 ) : (
                     <li className="notifications-block border-bottom">
-                        <span>Нямате известия</span>
+                        <small>Нямате известия</small>
                     </li>
                 )}
             </ul>

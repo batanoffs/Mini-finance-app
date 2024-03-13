@@ -39,14 +39,14 @@ export const Login = () => {
                 >
                     <div className="form-group">
                         <label htmlFor="email">
-                            Е-мейл{" "}
+                        Имейл{" "}
                             <small className="error">* {error.email}</small>
                         </label>
                         <input
                             type="text"
                             autoComplete="on"
                             name="email"
-                            placeholder="Въведи е-мейл"
+                            placeholder="Въведи имейл"
                             value={values.email}
                             onChange={changeHandler}
                             onBlur={errorHandler}
