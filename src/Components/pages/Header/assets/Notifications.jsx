@@ -2,14 +2,16 @@ import { notifications } from "../../../../services/notificationService";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+// import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { dataService } from "../../../../services/userDataService";
+import { Button, message, Space } from "antd";
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {
     const { userDataId, token } = useContext(AuthContext);
     const [notificationsState, setnotificationsState] = useState([]);
+    const [messageApi, contextHolder] = message.useMessage();
 
     useEffect(() => {
         notifications
@@ -18,8 +20,36 @@ export const Notifications = () => {
             .catch((error) => console.log(error));
     }, [userDataId]);
 
+    console.log(notificationsState);
+
+    const updateNotifyHandler = async (e) => {
+        
+
+        const id = e.currentTarget.getAttribute("data-key");
+        if (!id) {
+            console.error("notification id is null");
+            return;
+        }
+
+        try {
+            await notifications.updateSeenStatus(id, true, token);
+            const result = await notifications.getNotifications(userDataId);
+            setnotificationsState(result);
+            messageApi.open({
+                type: "success",
+                content: "Нотификацията е изтрита!",
+            });
+        } catch (error) {
+            console.error("error while deleting notification", error);
+            messageApi.open({
+                type: "error",
+                content: "Грешка при изтриване.",
+            });
+        }
+    };
+
     const acceptHandler = async (e) => {
-        const parentElement = e.currentTarget.parentElement;
+        const parentElement = e.currentTarget.parentElement.parentElement.parentElement;
         const id = parentElement && parentElement.getAttribute("data-key");
         const senderId = e.currentTarget.getAttribute("data-sender");
 
@@ -32,7 +62,7 @@ export const Notifications = () => {
         }
 
         try {
-            await notifications.updateNotification(id, "accepted");
+            await notifications.updateFriendRequestStatus(id, "accepted", token);
             await notifications
                 .getNotifications(userDataId)
                 .then((result) => setnotificationsState(result))
@@ -41,25 +71,25 @@ export const Notifications = () => {
             const setReceiverFriend = await dataService.setRelation(
                 userDataId,
                 "friends",
-                [senderId]
+                [senderId],
             );
             const setSenderFriend = await dataService.setRelation(
                 senderId,
                 "friends",
-                [userDataId]
+                [userDataId],
             );
 
+            console.log(setReceiverFriend, setSenderFriend);
             if (setReceiverFriend === 1 && setSenderFriend === 1) {
-                window.alert("Успешно добавихте приятел");
-                await notifications.createNotification(
-                    null,
-                    senderId,
-                    "friend accept",
-                    userDataId,
-                    token
-                );
-            } else {
-                window.alert("Вече сте добавили този приятел");
+                messageApi.open({
+                    type: "success",
+                    content: "Успешно добавихте прител",
+                });
+            } else {                
+                messageApi.open({
+                    type: "warning",
+                    content: "Вече сте добавили този приятел",
+                });
             }
         } catch (error) {
             console.error(
@@ -72,36 +102,17 @@ export const Notifications = () => {
 
     const rejectHandler = async (e) => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
-        await notifications.updateNotification(id, "declined");
+        await notifications.updateFriendRequestStatus(id, "declined",token);
         await notifications
-            .getNotifications(userDataId)
+            .getNotifications(userDataId, token)
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
 
         window.alert("Поканата за приятелство е отхвърлена");
     };
 
-    const okey = async (e) => {
-        const notificationElement = e.currentTarget.parentElement;
-        if (!notificationElement) {
-            console.error("notification element is null");
-            return;
-        }
-
-        const id = notificationElement.getAttribute("data-key");
-        if (!id) {
-            console.error("notification id is null");
-            return;
-        }
-
-        try {
-            await notifications.deleteNotification(id);
-            const result = await notifications.getNotifications(userDataId);
-            setnotificationsState(result);
-        } catch (error) {
-            console.error("error while deleting notification", error);
-        }
-    };
+    const receiverCheck = notificationsState.filter((notify) => notify?.sender?.[0]?.objectId === userDataId && notify?.status === "accepted" && notify?.event_type === "friend request" && notify?.seen === false);
+    console.log("receiverCheck", receiverCheck);
 
     return (
         <div className={styles.dropdownNotifications}>
@@ -113,87 +124,103 @@ export const Notifications = () => {
             {notificationsState.length > 0 && (
                 <span className={styles.notificationDot} />
             )}
+            {receiverCheck.length > 0 && (
+                <span className={styles.notificationDot} />
+            )}
 
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
                     notificationsState
                         .filter(
-                            (alert) =>
-                                alert?.event_type === "friend request" ||
-                                alert?.event_type === "friend accept" ||
-                                alert?.event_type === "money received"
+                            (notify) =>
+                                notify?.event_type === "friend request" ||
+                                notify?.event_type === "money received"
                         )
-                        .map((alert) =>
-                            alert?.event_type === "friend request" ? (
+                        .map((notify) =>
+                            notify?.event_type === "friend request" &&
+                            notify?.status === "pending" ? (
                                 <li
                                     className={styles.singleNotification}
-                                    key={alert.objectId}
-                                    data-key={alert.objectId}
+                                    key={notify.objectId}
+                                    data-key={notify.objectId}
                                 >
                                     <small>
                                         Покана за приятелство от{" "}
-                                        {alert.sender?.[0]?.fullName ??
+                                        {notify.sender?.[0]?.fullName ??
                                             "Unknown"}
                                     </small>
-
-                                    <FontAwesomeIcon
-                                        data-sender={`${
-                                            alert.sender?.[0]?.objectId ?? ""
-                                        }`}
-                                        onClick={acceptHandler}
-                                        className={`${styles.accept}`}
-                                        icon={faCheck}
-                                    />
-
-                                    <FontAwesomeIcon
-                                        onClick={rejectHandler}
-                                        className={styles.reject}
-                                        icon={faXmark}
-                                    />
+                                    <Space>
+                                        <Button
+                                            data-sender={`${notify.sender?.[0]?.objectId ?? ""}`}
+                                            type="submit"
+                                            className={styles.btnRemove}
+                                            onClick={acceptHandler}
+                                        >
+                                            приеми
+                                        </Button>
+                                    </Space>
+                                    <Space>
+                                        <Button
+                                            data-sender={`${notify.sender?.[0]?.objectId ?? ""}`}
+                                            type="submit"
+                                            className={styles.btnRemove}
+                                            onClick={rejectHandler}
+                                        >
+                                            откажи
+                                        </Button>
+                                    </Space>
                                 </li>
-                            ) : alert?.event_type === "money received" ? (
+                            ) : notify?.reciver?.[0]?.objectId === userDataId && notify?.event_type === "friend request" &&
+                              notify?.seen === false ? (
                                 <li
                                     className={styles.singleNotification}
-                                    key={alert.objectId}
-                                    data-key={alert.objectId}
+                                    key={`${notify.objectId} ${notify.status} ${notify.seen}`}
+                                    data-key={notify.objectId}
+                                >
+                                    <small>
+                                        {notify.sender?.[0]?.fullName ??
+                                            "Unknown"}
+                                        {" "}прие вашата покана
+                                    </small>
+
+                                    {contextHolder}
+                                    <Space>
+                                        <Button
+                                            data-key={notify.objectId}
+                                            className={styles.btnRemove}
+                                            onClick={updateNotifyHandler}
+                                        >
+                                            Изтриване
+                                        </Button>
+                                    </Space>
+                                </li>
+                            ) : notify?.event_type === "money received" ? (
+                                <li
+                                    className={styles.singleNotification}
+                                    key={notify.objectId}
+                                    data-key={notify.objectId}
                                 >
                                     <div>
                                         <small>
                                             Получихте{" "}
                                             <bold style={{ color: "green" }}>
-                                                {alert.amount ?? "Unknown"}лв
+                                                {notify.amount ?? "Unknown"}лв
                                             </bold>{" "}
                                             от{" "}
-                                            {alert.sender?.[0]?.fullName ??
-                                                "Unknown"}
-                                            {" "}
+                                            {notify.sender?.[0]?.fullName ??
+                                                "Unknown"}{" "}
                                         </small>
                                     </div>
-                                    <button
-                                        onClick={okey}
-                                        className={styles.btnRemove}
-                                    >
-                                        изтриване
-                                    </button>
-                                </li>
-                            ) : alert?.event_type === "friend accept" ? (
-                                <li
-                                    className={styles.singleNotification}
-                                    key={alert.objectId}
-                                    data-key={alert.objectId}
-                                >
-                                    <small>
-                                        {alert.sender?.[0]?.fullName ??
-                                            "Unknown"}
-                                        прие вашата покана
-                                    </small>
-
-                                    <small
-                                        onClick={okey}
-                                        className={styles.remove}
-                                    >
-                                        изтриване
-                                    </small>
+                                    {contextHolder}
+                                    <Space>
+                                        <Button
+                                            data-key={notify.objectId}
+                                            className={styles.btnRemove}
+                                            onClick={updateNotifyHandler}
+                                        >
+                                            Изтриване
+                                        </Button>
+                                    </Space>
                                 </li>
                             ) : (
                                 <li className="notifications-block border-bottom">
@@ -210,3 +237,4 @@ export const Notifications = () => {
         </div>
     );
 };
+

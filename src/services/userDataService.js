@@ -49,10 +49,7 @@ const getAllFrineds = async (parentObjectId) => {
 };
 // SET RELATIONS
 const setRelation = async (parentObjectId, childName, body) => {
-    return await request.put(
-        `${baseURL}${endpoints.setRelation(parentObjectId, childName)}`,
-        body
-    );
+    return await request.put(`${baseURL}${endpoints.setRelation(parentObjectId, childName)}`, body);
 };
 
 // GET VIRTUAL CARD

@@ -3,34 +3,51 @@ import * as request from "./requester";
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
     selectNotification: (objectId) => `/data/UserNotifications/${objectId}`,
-    notifications: (owenerId) =>
-        `/data/UserNotifications?where=status LIKE 'pending' and receiver = '${owenerId}'&loadRelations&relationsDepth=1`, //event_type LIKE 'friend_request' and 
+    notificationById: (owenerId) =>
+        `/data/UserNotifications?where=receiver='${owenerId}' and seen='false'&loadRelations&relationsDepth=1`,
+    allFriendRequest: `/data/UserNotifications?loadRelations&relationsDepth=1&where=event_type='friend request'`,
     transactions: "/transaction/unit-of-work",
 };
-
-const updateNotification = async (objectId, status) => {
-    const body = { status: `${status}` };
-    return await request.put(
-        `${baseURL}${endpoints.selectNotification(objectId)}`,
-        body
-    );
+//
+const updateFriendRequestStatus = async (objectId, statuState, token) => {
+        const body = { status: `${statuState}` };
+        return await request.put(
+            `${baseURL}${endpoints.selectNotification(objectId)}`,
+            body,
+            token
+        );
 };
 
-// Get Notifications
+const updateSeenStatus = async (objectId, seenState, token) => {
+        const body = { seen: seenState };
+        return await request.put(
+            `${baseURL}${endpoints.selectNotification(objectId)}`,
+            body,
+            token
+        );
+};
+
 const getNotifications = async (reciverId) => {
-    return await request.get(
-        `${baseURL}${endpoints.notifications(reciverId)}`
-    );
+    return await request.get(`${baseURL}${endpoints.notificationById(reciverId)}`);
 };
 
 const deleteNotification = async (objectId) => {
     return await request.del(
         `${baseURL}${endpoints.selectNotification(objectId)}`
-    )
-}
+    );
+};
 
-// Create Notifications
-const createNotification = async (phone, sender, event, currentUserId, token) => {
+const getAllFriendRequests = async (token) => {
+    return await request.get(`${baseURL}${endpoints.allFriendRequest}`, token);
+};
+
+const createNotification = async (
+    phone,
+    receiver,
+    event,
+    currentUserId,
+    token
+) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -39,7 +56,17 @@ const createNotification = async (phone, sender, event, currentUserId, token) =>
                 table: "UserData",
                 opResultId: "findReciever",
                 payload: {
-                    whereClause: phone? `phoneNumber = '${phone}'`: `objectId = '${sender}'`,
+                    whereClause: phone
+                        ? `phoneNumber = '${phone}'`
+                        : `objectId = '${receiver}'`,
+                },
+            },
+            {
+                operationType: "FIND",
+                table: "UserNotifications",
+                opResultId: "check",
+                payload: {
+                    whereClause: `event_type = '${event}' and receiver = 'findReciever.result[0]' and sender = '${receiver}'`,
                 },
             },
             {
@@ -95,53 +122,8 @@ const createNotification = async (phone, sender, event, currentUserId, token) =>
 export const notifications = {
     createNotification,
     getNotifications,
-    updateNotification,
-    deleteNotification
+    updateFriendRequestStatus,
+    deleteNotification,
+    getAllFriendRequests,
+    updateSeenStatus,
 };
-
-// const body = {
-//     isolationLevelEnum: "READ_COMMITTED",
-//     operations: [
-//         {
-//             operationType: "FIND",
-//             table: "UserData",
-//             opResultId: "findReciever",
-//             payload: {
-//                 whereClause: `phoneNumber = '${phone}'`,
-//             },
-//         },
-//         {
-//             operationType: "FIND",
-//             table: "UserData",
-//             opResultId: "findSender",
-//             payload: {
-//                 whereClause: `objectId = '${currentUserId}'`,
-//             },
-//         },
-//         {
-//             operationType: "CREATE",
-//             table: "UserNotifications",
-//             payload: {
-//                 event_type: "friend_request",
-//                 receiver: {
-//                     ___ref: true,
-//                     opResultId: "findReciever",
-//                     resultIndex: 0,
-//                     propName: "objectId",
-//                 },
-//                 sender: {
-//                     ___ref: true,
-//                     opResultId: "findSender",
-//                     resultIndex: 0,
-//                     propName: "objectId",
-//                 },
-//                 sender_name: {
-//                     ___ref: true,
-//                     opResultId: "findSender",
-//                     resultIndex: 0,
-//                     propName: "fullName",
-//                 }
-//             },
-//         },
-//     ],
-// };
