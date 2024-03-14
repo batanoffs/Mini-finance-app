@@ -9,9 +9,8 @@ import { dataService } from "../../../../services/userDataService";
 export const AddFriends = () => {
     const [number, setNumber] = useState("");
     const [error, setError] = useState(false);
-    const { userDataId, token } = useContext(AuthContext);
+    const { userDataId, token, phone } = useContext(AuthContext);
     const { message } = App.useApp();
-
 
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
@@ -33,6 +32,13 @@ export const AddFriends = () => {
         e.preventDefault();
         if (!number) {
             setError(true);
+            setNumber("");
+            showMessage("warning", "Не сте въвели телефонен номер");
+            return;
+        }
+        if(number === phone){
+            setNumber("");
+            showMessage("warning", "Не можете да добавите себе си като приятел");
             return;
         }
 
