@@ -8,27 +8,30 @@ const endpoints = {
     allFriendRequest: `/data/UserNotifications?loadRelations&relationsDepth=1&where=event_type='friend request'`,
     transactions: "/transaction/unit-of-work",
 };
+
 //
-const updateFriendRequestStatus = async (objectId, statuState, token) => {
-        const body = { status: `${statuState}` };
-        return await request.put(
-            `${baseURL}${endpoints.selectNotification(objectId)}`,
-            body,
-            token
-        );
+const updateFriendRequestStatus = async (objectId, statuState, seen, token) => {
+    const body = { status: `${statuState}`, seen: seen };
+    return await request.put(
+        `${baseURL}${endpoints.selectNotification(objectId)}`,
+        body,
+        token
+    );
 };
 
 const updateSeenStatus = async (objectId, seenState, token) => {
-        const body = { seen: seenState };
-        return await request.put(
-            `${baseURL}${endpoints.selectNotification(objectId)}`,
-            body,
-            token
-        );
+    const body = { seen: seenState };
+    return await request.put(
+        `${baseURL}${endpoints.selectNotification(objectId)}`,
+        body,
+        token
+    );
 };
 
 const getNotifications = async (reciverId) => {
-    return await request.get(`${baseURL}${endpoints.notificationById(reciverId)}`);
+    return await request.get(
+        `${baseURL}${endpoints.notificationById(reciverId)}`
+    );
 };
 
 const deleteNotification = async (objectId) => {

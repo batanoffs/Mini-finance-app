@@ -1,17 +1,16 @@
 import { notifications } from "../../../../services/notificationService";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../../contexts/AuthContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { dataService } from "../../../../services/userDataService";
-import { Button, message, Space } from "antd";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { useContext, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-regular-svg-icons";
+import { Button, Space, App } from 'antd';
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {
     const { userDataId, token } = useContext(AuthContext);
     const [notificationsState, setnotificationsState] = useState([]);
-    const [messageApi, contextHolder] = message.useMessage();
+    const { message } = App.useApp();
 
     useEffect(() => {
         notifications
@@ -20,11 +19,17 @@ export const Notifications = () => {
             .catch((error) => console.log(error));
     }, [userDataId]);
 
-    console.log(notificationsState);
+    console.log("all notifys", notificationsState);
+
+    const showMessage = (type, text) => {
+        type === "error" ? message.error(text) :
+        type === "success" ? message.success(text) :
+        type === "warning" ? message.warning(text) :
+        type === "info" ? message.info(text) :
+        message(text);
+    };
 
     const updateNotifyHandler = async (e) => {
-        
-
         const id = e.currentTarget.getAttribute("data-key");
         if (!id) {
             console.error("notification id is null");
@@ -35,16 +40,10 @@ export const Notifications = () => {
             await notifications.updateSeenStatus(id, true, token);
             const result = await notifications.getNotifications(userDataId);
             setnotificationsState(result);
-            messageApi.open({
-                type: "success",
-                content: "Нотификацията е изтрита!",
-            });
+            showMessage("success", "Успешно изтрито съобщение");
         } catch (error) {
             console.error("error while deleting notification", error);
-            messageApi.open({
-                type: "error",
-                content: "Грешка при изтриване.",
-            });
+            showMessage("error", "Грешка при изтриване");
         }
     };
 
@@ -62,7 +61,13 @@ export const Notifications = () => {
         }
 
         try {
-            await notifications.updateFriendRequestStatus(id, "accepted", token);
+            await notifications.updateFriendRequestStatus(
+                id,
+                "accepted",
+                true,
+                token
+            );
+
             await notifications
                 .getNotifications(userDataId)
                 .then((result) => setnotificationsState(result))
@@ -71,48 +76,50 @@ export const Notifications = () => {
             const setReceiverFriend = await dataService.setRelation(
                 userDataId,
                 "friends",
-                [senderId],
+                [senderId]
             );
             const setSenderFriend = await dataService.setRelation(
                 senderId,
                 "friends",
-                [userDataId],
+                [userDataId]
             );
 
             console.log(setReceiverFriend, setSenderFriend);
             if (setReceiverFriend === 1 && setSenderFriend === 1) {
-                messageApi.open({
-                    type: "success",
-                    content: "Успешно добавихте прител",
-                });
-            } else {                
-                messageApi.open({
-                    type: "warning",
-                    content: "Вече сте добавили този приятел",
-                });
+                showMessage("success", "Успешно добавихте прител");
+            } else {
+                showMessage("warning", "Вече сте добавили този приятел");
             }
         } catch (error) {
+            
             console.error(
-                "Error while accepting notification",
+                "Error loading friend request or setting relation",
                 { id, senderId },
                 error
             );
+            showMessage("error", "Грешка при зареждане");
         }
     };
 
     const rejectHandler = async (e) => {
         const id = e.currentTarget.parentElement.getAttribute("data-key");
-        await notifications.updateFriendRequestStatus(id, "declined",token);
+        await notifications.updateFriendRequestStatus(id, "declined", token);
         await notifications
             .getNotifications(userDataId, token)
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
 
-        window.alert("Поканата за приятелство е отхвърлена");
+        showMessage("error", "Поканата за приятелство е отхвърлена");
     };
 
-    const receiverCheck = notificationsState.filter((notify) => notify?.sender?.[0]?.objectId === userDataId && notify?.status === "accepted" && notify?.event_type === "friend request" && notify?.seen === false);
-    console.log("receiverCheck", receiverCheck);
+    // const receiverCheck = notificationsState.filter(
+    //     (notify) =>
+    //         notify?.sender?.[0]?.objectId === userDataId &&
+    //         notify?.status === "accepted" &&
+    //         notify?.event_type === "friend request" &&
+    //         notify?.seen === false
+    // );
+    // console.log("receiverCheck", receiverCheck);
 
     return (
         <div className={styles.dropdownNotifications}>
@@ -122,9 +129,6 @@ export const Notifications = () => {
             />
 
             {notificationsState.length > 0 && (
-                <span className={styles.notificationDot} />
-            )}
-            {receiverCheck.length > 0 && (
                 <span className={styles.notificationDot} />
             )}
 
@@ -144,6 +148,7 @@ export const Notifications = () => {
                                     key={notify.objectId}
                                     data-key={notify.objectId}
                                 >
+                                    <img className={styles.profileImage} src={notify.sender?.[0]?.avatar} alt="avatar" />
                                     <small>
                                         Покана за приятелство от{" "}
                                         {notify.sender?.[0]?.fullName ??
@@ -151,8 +156,11 @@ export const Notifications = () => {
                                     </small>
                                     <Space>
                                         <Button
-                                            data-sender={`${notify.sender?.[0]?.objectId ?? ""}`}
-                                            type="submit"
+                                            data-sender={`${
+                                                notify.sender?.[0]?.objectId ??
+                                                ""
+                                            }`}
+                                            type="primary"
                                             className={styles.btnRemove}
                                             onClick={acceptHandler}
                                         >
@@ -161,8 +169,11 @@ export const Notifications = () => {
                                     </Space>
                                     <Space>
                                         <Button
-                                            data-sender={`${notify.sender?.[0]?.objectId ?? ""}`}
-                                            type="submit"
+                                            data-sender={`${
+                                                notify.sender?.[0]?.objectId ??
+                                                ""
+                                            }`}
+                                            type="primary"
                                             className={styles.btnRemove}
                                             onClick={rejectHandler}
                                         >
@@ -170,7 +181,8 @@ export const Notifications = () => {
                                         </Button>
                                     </Space>
                                 </li>
-                            ) : notify?.reciver?.[0]?.objectId === userDataId && notify?.event_type === "friend request" &&
+                            ) : notify?.reciver?.[0]?.objectId === userDataId &&
+                              notify?.event_type === "friend request" &&
                               notify?.seen === false ? (
                                 <li
                                     className={styles.singleNotification}
@@ -179,16 +191,17 @@ export const Notifications = () => {
                                 >
                                     <small>
                                         {notify.sender?.[0]?.fullName ??
-                                            "Unknown"}
-                                        {" "}прие вашата покана
+                                            "Unknown"}{" "}
+                                        прие вашата покана
                                     </small>
 
-                                    {contextHolder}
+                                    
                                     <Space>
                                         <Button
                                             data-key={notify.objectId}
                                             className={styles.btnRemove}
                                             onClick={updateNotifyHandler}
+                                            type="primary"
                                         >
                                             Изтриване
                                         </Button>
@@ -203,17 +216,18 @@ export const Notifications = () => {
                                     <div>
                                         <small>
                                             Получихте{" "}
-                                            <bold style={{ color: "green" }}>
+                                            <b style={{ color: "green" }}>
                                                 {notify.amount ?? "Unknown"}лв
-                                            </bold>{" "}
+                                            </b>{" "}
                                             от{" "}
                                             {notify.sender?.[0]?.fullName ??
                                                 "Unknown"}{" "}
                                         </small>
                                     </div>
-                                    {contextHolder}
-                                    <Space>
+                                    
+                                    <Space style={{ margin: "auto 0 auto auto" }}>
                                         <Button
+                                        type="primary"
                                             data-key={notify.objectId}
                                             className={styles.btnRemove}
                                             onClick={updateNotifyHandler}
@@ -223,13 +237,13 @@ export const Notifications = () => {
                                     </Space>
                                 </li>
                             ) : (
-                                <li className="notifications-block border-bottom">
+                                <li key="empty" className="notifications-block border-bottom">
                                     <small>Нямате известия</small>
                                 </li>
                             )
                         )
                 ) : (
-                    <li className="notifications-block border-bottom">
+                    <li key="empty" className="notifications-block border-bottom">
                         <small>Нямате известия</small>
                     </li>
                 )}
@@ -237,4 +251,3 @@ export const Notifications = () => {
         </div>
     );
 };
-

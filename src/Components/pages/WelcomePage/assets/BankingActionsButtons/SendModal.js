@@ -3,11 +3,13 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
 import { transactions } from "../../../../../services/transactionService";
+import { Button, Space, App } from "antd";
 import modal from "./modal.module.css";
 
 export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
+    const { message } = App.useApp();
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
@@ -22,6 +24,15 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
             );
         });
     }, [userDataId]);
+    
+   
+    const showMessage = (type, text) => {
+        type === "error" ? message.error(text) :
+        type === "success" ? message.success(text) :
+        type === "warning" ? message.warning(text) :
+        type === "info" ? message.info(text) :
+        message(text);
+    };
 
     const setUserInputHandler = (e) => {
         setUserInput({ ...userInput, [e.target.name]: e.target.value });
@@ -29,7 +40,10 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
-        const form = new FormData(e.target);
+        const formElementSelect =
+            e.target.parentElement.parentElement.parentElement.parentElement
+                .parentElement;
+        const form = new FormData(formElementSelect);
         const { amount, friends } = Object.fromEntries(form);
         if (!amount || !friends) {
             return;
@@ -50,9 +64,14 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                 token
             );
             setShowModal({ ...showModal, [`send`]: false });
-            alert("Успешно изпратихте парите");
+            setUserInput({ amount: "", friends: "" });
+            showMessage("success", "Успешно изпратихте парите");
+
         } else {
-            console.log(response);
+            setShowModal({ ...showModal, [`send`]: false });
+            setUserInput({ amount: "", friends: "" });
+            showMessage("error", `Грешка при изпращане: ${response.message}`);
+            console.log("error", response);
         }
     };
 
@@ -70,7 +89,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                 </div>
 
                 <div className="form-content">
-                    <form onSubmit={onFormSubmitHandler}>
+                    <form>
                         <div className="form-group">
                             <label htmlFor="amount">Сума</label>
                             <input
@@ -94,12 +113,18 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                         </div>
 
                         <footer>
-                            <input
-                                className="button-primary"
-                                type="submit"
-                                value="Изпрати"
-                                style={{ width: "100%" }}
-                            />
+                            <Space style={{ margin: "0 auto" }}>
+                                <Button
+                                    type="primary"
+                                    className="button-primary"
+                                    style={{
+                                        fontFamily: "var(--body-font-family)",
+                                    }}
+                                    onClick={onFormSubmitHandler}
+                                >
+                                    Изпрати
+                                </Button>
+                            </Space>
                         </footer>
                     </form>
                 </div>

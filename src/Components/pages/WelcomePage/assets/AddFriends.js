@@ -1,16 +1,17 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { notifications } from "../../../../services/notificationService";
-import { Button, message, Space } from "antd";
+import { Button, App, Space } from 'antd';
 import blocks from "../custom-block.module.css";
 import styles from "./addfriends.module.css";
 import { dataService } from "../../../../services/userDataService";
 
 export const AddFriends = () => {
-    const [messageApi, contextHolder] = message.useMessage();
     const [number, setNumber] = useState("");
     const [error, setError] = useState(false);
     const { userDataId, token } = useContext(AuthContext);
+    const { message } = App.useApp();
+
 
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
@@ -21,18 +22,34 @@ export const AddFriends = () => {
         setError(false);
     };
 
+    const showMessage = (type, text) => {
+        type === "error" ? message.error(text) :
+        type === "success" ? message.success(text) :
+        type === "warning" ? message.warning(text) :
+        type === "info" ? message.info(text) :
+        message(text);
+    };
     const onSubmit = async (e) => {
         e.preventDefault();
         if (!number) {
             setError(true);
             return;
         }
-        
-        const findReceiver = await dataService.getAttribute("phoneNumber", number);
+
+        const findReceiver = await dataService.getAttribute(
+            "phoneNumber",
+            number
+        );
         const receiver = findReceiver[0].objectId;
-        const allFriendRequestsResponse = await notifications.getAllFriendRequests(token);
+        const allFriendRequestsResponse =
+            await notifications.getAllFriendRequests(token);
         let requests = allFriendRequestsResponse;
-        const filtered = requests.filter((request) => request.receiver?.length && request.receiver[0].objectId === receiver && request.sender[0].objectId === userDataId);
+        const filtered = requests.filter(
+            (request) =>
+                request.receiver?.length &&
+                request.receiver[0].objectId === receiver &&
+                request.sender[0].objectId === userDataId
+        );
 
         if (filtered.length === 0) {
             const response = await notifications.createNotification(
@@ -42,26 +59,16 @@ export const AddFriends = () => {
                 userDataId,
                 token
             );
-    
+
             if (response.success) {
-                messageApi.open({
-                    type: "success",
-                    content: "Успешно изпратихте покана за приятелство.",
-                });
+                showMessage("success", "Успешно изпратихте покана за приятелство");
             } else {
-                messageApi.open({
-                    type: "error",
-                    content: "Няма такъв потребител",
-                });
+                showMessage("error", "Потребител с такъв номер не е намерен");
             }
             setNumber("");
         } else {
-            messageApi.open({
-                type: "warning",
-                content: "Потребителят вече ви е приятел.",
-            })
+            showMessage("warning", "Потребителят вече ви е приятел.");
         }
-        
     };
 
     return (
@@ -88,11 +95,10 @@ export const AddFriends = () => {
                     onChange={onChangeNumber}
                     onFocus={onFocusClearErrorHandler}
                 />
-                {contextHolder}
                 <Space>
                     <Button
                         data-key={alert.objectId}
-                        type="submit"
+                        type="primary"
                         className="custom-btn"
                         onClick={onSubmit}
                     >

@@ -25,16 +25,17 @@ export const WelcomePage = () => {
     });
 
     return (
-        <div className="main-wrapper">
-            <Sidebar />
-            <Routes>
-                <Route path="/overview" element={<OverviewTab showModal={showModal} setShowModal={setShowModal} rates={rates} setRates={setRates} hasLoaded={hasLoaded} setHasLoaded={setHasLoaded}/>} />
-                <Route path="/wallet" element={<WalletTab showModal={showModal} setShowModal={setShowModal}/>} />
-                <Route path="/profile" element={<ProfileTab />} />
-                <Route path="/settings/*" element={<SettingsTab />} />
-                <Route path="/help-center" element={<HelpCenterTab />} />
-                <Route path="/upgrade" element={<Upgrade />} />
-            </Routes>
-        </div>
+            <div className="main-wrapper">
+                    <Sidebar />
+                
+                    <Routes>
+                        <Route path="/overview" element={<OverviewTab showModal={showModal} setShowModal={setShowModal} rates={rates} setRates={setRates} hasLoaded={hasLoaded} setHasLoaded={setHasLoaded}/>} />
+                        <Route path="/wallet" element={<WalletTab showModal={showModal} setShowModal={setShowModal}/>} />
+                        <Route path="/profile" element={<ProfileTab />} />
+                        <Route path="/settings/*" element={<SettingsTab />} />
+                        <Route path="/help-center" element={<HelpCenterTab />} />
+                        <Route path="/upgrade" element={<Upgrade />} />
+                    </Routes>
+            </div>
     );
 };

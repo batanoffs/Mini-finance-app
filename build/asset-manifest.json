@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mini-finance/static/css/main.6ead5108.css",
-    "main.js": "/mini-finance/static/js/main.94782caa.js",
+    "main.css": "/mini-finance/static/css/main.c4471877.css",
+    "main.js": "/mini-finance/static/js/main.13968f01.js",
     "static/media/dashboard.png": "/mini-finance/static/media/dashboard.ded7356a86681b9efeda.png",
     "static/media/Montserrat-BoldItalic.woff": "/mini-finance/static/media/Montserrat-BoldItalic.bf331673b91821715c08.woff",
     "static/media/Montserrat-BlackItalic.woff": "/mini-finance/static/media/Montserrat-BlackItalic.fbf405b6c45f55a09aec.woff",
@@ -77,11 +77,11 @@
     "static/media/MontserratAlternates-Thin.woff2": "/mini-finance/static/media/MontserratAlternates-Thin.71edc5673abb2057ec43.woff2",
     "static/media/money-transfer-isometric-60529.svg": "/mini-finance/static/media/money-transfer-isometric-60529.efb663dc524f327e44eb9d9e731709e4.svg",
     "index.html": "/mini-finance/index.html",
-    "main.6ead5108.css.map": "/mini-finance/static/css/main.6ead5108.css.map",
-    "main.94782caa.js.map": "/mini-finance/static/js/main.94782caa.js.map"
+    "main.c4471877.css.map": "/mini-finance/static/css/main.c4471877.css.map",
+    "main.13968f01.js.map": "/mini-finance/static/js/main.13968f01.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ead5108.css",
-    "static/js/main.94782caa.js"
+    "static/css/main.c4471877.css",
+    "static/js/main.13968f01.js"
   ]
 }

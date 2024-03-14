@@ -15,6 +15,13 @@
     }
 }
 
+.profileImage {
+    border-radius: 0.3em;
+    width: 35px;
+    height: 35px;
+    margin-right: 0.2em;
+}
+
 .singleNotification {
     display: flex;
     justify-content: start;
