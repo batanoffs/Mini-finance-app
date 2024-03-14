@@ -1,18 +1,26 @@
 .modalBackground {
     width: 100%;
-    height: calc(100% - 45px);
+    height: 100vh;
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
     z-index: 3;
     left: 0px;
-    top: 45px;
+    top: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+@media (min-width: 768px) {
+    .modalBackground {
+        height: calc(100vh - 45px);
+        top: 45px;
+    }
+}
+
 .modalContainer {
-    width: 60%;
+    width: calc(min(100%, 400px) - 2em); /* subtract 2em for padding */
+    max-width: calc(100vw - 2em); /* subtract 2em for padding */
     transition: all 150ms ease-in-out;
     border-radius: 1em;
     background-color: white;
@@ -55,7 +63,7 @@
 
 @media (min-width: 1200px) {
     .modalBackground {
-        height: calc(100% - 45px);
+        height: calc(100vh - 45px);
         top: 45px;
     }
 
@@ -63,3 +71,4 @@
         width: 35%;
     }
 }
+

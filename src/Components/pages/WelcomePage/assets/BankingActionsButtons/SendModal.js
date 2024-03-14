@@ -23,8 +23,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                 })
             );
         });
-    }, [userDataId]);
-    
+    }, [userDataId, setReceiver]);
    
     const showMessage = (type, text) => {
         type === "error" ? message.error(text) :
