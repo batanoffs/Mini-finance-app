@@ -19,8 +19,6 @@ export const Notifications = () => {
             .catch((error) => console.log(error));
     }, [userDataId]);
 
-    console.log("all notifys", notificationsState);
-
     const showMessage = (type, text) => {
         type === "error" ? message.error(text) :
         type === "success" ? message.success(text) :
@@ -30,14 +28,14 @@ export const Notifications = () => {
     };
 
     const updateNotifyHandler = async (e) => {
-        const id = e.currentTarget.getAttribute("data-key");
-        if (!id) {
+        const notificationId = e.currentTarget.getAttribute("data-key");
+        if (!notificationId) {
             console.error("notification id is null");
             return;
         }
 
         try {
-            await notifications.updateSeenStatus(id, true, token);
+            await notifications.updateSeenStatus(notificationId, true, token);
             const result = await notifications.getNotifications(userDataId);
             setnotificationsState(result);
             showMessage("success", "Успешно изтрито съобщение");
@@ -49,52 +47,31 @@ export const Notifications = () => {
 
     const acceptHandler = async (e) => {
         const parentElement = e.currentTarget.parentElement.parentElement.parentElement;
-        const id = parentElement && parentElement.getAttribute("data-key");
+        const notificationId = parentElement && parentElement.getAttribute("data-key");
         const senderId = e.currentTarget.getAttribute("data-sender");
 
-        if (!id || !senderId) {
-            console.error("Missing data to accept notification", {
-                id,
-                senderId,
-            });
+        if (!notificationId || !senderId) {
+            console.error("Missing data to accept notification", { id: notificationId, senderId});
             return;
         }
 
         try {
-            await notifications.updateFriendRequestStatus(
-                id,
-                "accepted",
-                true,
-                token
-            );
+            await notifications.updateFriendRequestStatus(notificationId, "accepted", true, token);
+            const result = await notifications.getNotifications(userDataId);
+            setnotificationsState(result);
 
-            await notifications
-                .getNotifications(userDataId)
-                .then((result) => setnotificationsState(result))
-                .catch((error) => console.log(error));
+            const setReceiverFriend = await dataService.setRelation(userDataId, "friends", [senderId]);
+            const setSenderFriend = await dataService.setRelation(senderId, "friends", [userDataId]);
 
-            const setReceiverFriend = await dataService.setRelation(
-                userDataId,
-                "friends",
-                [senderId]
-            );
-            const setSenderFriend = await dataService.setRelation(
-                senderId,
-                "friends",
-                [userDataId]
-            );
-
-            console.log(setReceiverFriend, setSenderFriend);
             if (setReceiverFriend === 1 && setSenderFriend === 1) {
                 showMessage("success", "Успешно добавихте прител");
             } else {
                 showMessage("warning", "Вече сте добавили този приятел");
             }
         } catch (error) {
-            
             console.error(
                 "Error loading friend request or setting relation",
-                { id, senderId },
+                { id: notificationId, senderId },
                 error
             );
             showMessage("error", "Грешка при зареждане");
@@ -102,24 +79,18 @@ export const Notifications = () => {
     };
 
     const rejectHandler = async (e) => {
-        const id = e.currentTarget.parentElement.getAttribute("data-key");
-        await notifications.updateFriendRequestStatus(id, "declined", token);
-        await notifications
-            .getNotifications(userDataId, token)
-            .then((result) => setnotificationsState(result))
-            .catch((error) => console.log(error));
-
-        showMessage("error", "Поканата за приятелство е отхвърлена");
+        const parentElement = e.currentTarget.parentElement.parentElement.parentElement;
+        const notificationId = parentElement && parentElement.getAttribute("data-key");
+        try {
+            await notifications.updateFriendRequestStatus(notificationId, "declined", true, token);
+            const result = await notifications.getNotifications(userDataId, token);
+            setnotificationsState(result);
+            showMessage("error", "Поканата за приятелство е отхвърлена");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
-    // const receiverCheck = notificationsState.filter(
-    //     (notify) =>
-    //         notify?.sender?.[0]?.objectId === userDataId &&
-    //         notify?.status === "accepted" &&
-    //         notify?.event_type === "friend request" &&
-    //         notify?.seen === false
-    // );
-    // console.log("receiverCheck", receiverCheck);
 
     return (
         <div className={styles.dropdownNotifications}>

@@ -4,7 +4,7 @@ import blocks from "../../../custom-block.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
-export const ProfileDetails = ({ email, phone, name, picture }) => {
+export const ProfileDetails = ({ email, phone, name, picture, adress, country }) => {
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
             <div className={blocks.customBlockProfileImageWrap}>
@@ -35,6 +35,8 @@ export const ProfileDetails = ({ email, phone, name, picture }) => {
                 <strong>Телефон:</strong>
                 <span> {phone}</span>
             </p>
+            {country && <p><strong>Държава:</strong><span> {country}</span></p>}
+            {adress &&<p><strong>Адрес:</strong><span>{adress}</span></p>}
         </div>
     );
 };

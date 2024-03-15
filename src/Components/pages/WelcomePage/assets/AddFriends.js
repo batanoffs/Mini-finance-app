@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { notifications } from "../../../../services/notificationService";
+import { dataService } from "../../../../services/userDataService";
 import { Button, App, Space } from 'antd';
 import blocks from "../custom-block.module.css";
 import styles from "./addfriends.module.css";
-import { dataService } from "../../../../services/userDataService";
 
 export const AddFriends = () => {
     const [number, setNumber] = useState("");
     const [error, setError] = useState(false);
-    const { userDataId, token, phone } = useContext(AuthContext);
+    const { userDataId, token, phone, friends } = useContext(AuthContext);
     const { message } = App.useApp();
 
     const onChangeNumber = (e) => {
@@ -47,16 +47,23 @@ export const AddFriends = () => {
             number
         );
         const receiver = findReceiver[0].objectId;
-        const allFriendRequestsResponse =
-            await notifications.getAllFriendRequests(token);
-        let requests = allFriendRequestsResponse;
-        const filtered = requests.filter(
+        const findFriend = friends.some((friend) => friend.objectId === receiver);
+        if (findFriend) {
+            showMessage("warning", "Потребителят вече ви е приятел");
+            console.log("found friend");
+            return;
+        }
+
+        // GET NOTIFICATIONS AND FILTER FOR SENDER RECEIVER
+        const allFriendRequestNotifications = await notifications.getAllFriendRequests(token);
+        const filtered = allFriendRequestNotifications.filter(
             (request) =>
                 request.receiver?.length &&
                 request.receiver[0].objectId === receiver &&
                 request.sender[0].objectId === userDataId
         );
 
+        // CHECK IF FILTERED NOTIFICATIONS EXIST
         if (filtered.length === 0) {
             const response = await notifications.createNotification(
                 number,
@@ -73,7 +80,8 @@ export const AddFriends = () => {
             }
             setNumber("");
         } else {
-            showMessage("warning", "Потребителят вече ви е приятел.");
+            showMessage("warning", "Потребителят вече ви е приятел");
+            console.warn("Notification with same sender and receiver already exists");
         }
     };
 
@@ -115,3 +123,4 @@ export const AddFriends = () => {
         </div>
     );
 };
+

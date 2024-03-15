@@ -1,123 +1,54 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { Link } from "react-router-dom";
 import { ContactInfo } from "../assets/ContactInfo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { ProfileDetails } from "../OverviewTab/assets/profileDetails/ProfileDetails";
 import Cards from "react-credit-cards-2";
 import styles from "../welcome-page-layout.module.css";
 import blocks from "../custom-block.module.css";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import { Friends } from "../assets/Friends/Friends";
 
 export const ProfileTab = () => {
-    const { adress, country, name, phone, virtualcard, picture, email } =
-        useContext(AuthContext);
+    const { adress, country, name, phone, virtualcard, picture, email } = useContext(AuthContext);
     const date = new Date(virtualcard.created);
     const month = date.getMonth();
     const year = date.getFullYear();
     const day = date.getDate();
-    const createdDate = `${month} ${day}, ${year}`;
+    const createdDate = `${day}, ${month}, ${year}`;
 
     return (
         <div className={styles.contentContainer}>
-            <main className={styles.bentoFillColumn}>
-                <div
-                    className={`${blocks.customBlock} ${blocks.customBlockProfile}`}
-                >
-                    <h5>Виртуална карта</h5>
-                    <div>
-                        <Cards
-                            number={virtualcard.number}
-                            expiry={virtualcard.expiration}
-                            cvc={virtualcard.cvv}
-                            name={name}
-                        />
-                    </div>
-                    <div>
-                        <p>
-                            <strong>Номер:</strong>
+            <section className={styles.bentoMainColumn}>
+                <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
+                    <section> 
+                        <h5>Виртуална карта</h5>
 
-                            <span> {virtualcard.number}</span>
-                        </p>
+                        <strong>Номер:</strong>
+                        <span> {virtualcard.number}</span>
+                    
+                        <strong>Вид:</strong>
+                        <span> {virtualcard.brand}</span>
 
-                        <p>
-                            <strong>Вид:</strong>
+                        <strong>Създадена на:</strong>
+                        <span> {createdDate}</span>
 
-                            <span> {virtualcard.brand}</span>
-                        </p>
-
-                        <p>
-                            <strong>Създадена на:</strong>
-
-                            <span> {createdDate}</span>
-                        </p>
-
-                        <p>
-                            <strong>Валидна до:</strong>
-
-                            <span> {virtualcard.expiration}</span>
-                        </p>
-                    </div>
+                        <strong>Валидна до:</strong>
+                        <span> {virtualcard.expiration}</span>
+                    </section>
+                    
+                    <Cards
+                        number={virtualcard.number}
+                        expiry={virtualcard.expiration}
+                        cvc={virtualcard.cvv}
+                        name={name}
+                    />
                 </div>
-                <div
-                    className={`${blocks.customBlock} ${blocks.customBlockProfile}`}
-                >
-                    <div>
-                        <div>
-                            <h5>Обща информация</h5>
-                        </div>
-
-                        <div>
-                            <div className={blocks.customBlockProfileImageWrap}>
-                                <img
-                                    src={picture}
-                                    className={blocks.customBlockProfileImage}
-                                    alt="profile"
-                                />
-
-                                <Link
-                                    to="/dashboard/settings"
-                                    className={blocks.customBlockEditIcon}
-                                >
-                                    <FontAwesomeIcon icon={faPenToSquare} />
-                                </Link>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p>
-                                <strong>Име:</strong>
-
-                                <span> {name}</span>
-                            </p>
-
-                            <p>
-                                <strong>Email:</strong>
-
-                                <span> {email}</span>
-                            </p>
-
-                            <p>
-                                <strong>Телефон:</strong>
-
-                                <span> {phone}</span>
-                            </p>
-
-                            <p>
-                                <strong>Държава:</strong>
-
-                                <span> {country}</span>
-                            </p>
-
-                            <p>
-                                <strong>Адрес:</strong>
-
-                                <span> {adress}</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </main>
+                <ProfileDetails adress={adress} country={country} email={email} phone={phone} name={name} picture={picture}/>
+                
+            </section>
+            <section className={styles.bentoFillColumn}>
+                <Friends />
+            </section>
 
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />

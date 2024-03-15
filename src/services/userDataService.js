@@ -5,8 +5,8 @@ const endpoints = {
     userData: (id) => `/data/UserData?where=ownerId='${id}'&loadRelations=virtualcard%2Cfriends`,
     setUserData: `/data/UserData`,
     mockCardObjectId: (id) => `/data/CardsMockData?where=cards_mock_data_id=${id}`,
-    setRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}/${childName}`,
-    getRelation: (parentObjectId, childName) => `/data/UserData/${parentObjectId}?loadRelations=${childName}&relationsDepth=1`,
+    targetRelationName: (parentObjectId, relationName) => `/data/UserData/${parentObjectId}/${relationName}`,
+    loadSpecificRelation: (parentObjectId, relationName) => `/data/UserData/${parentObjectId}?loadRelations=${relationName}&relationsDepth=1`,
     getFriends: (parentObjectId) => `/data/UserData/${parentObjectId}/friends?loadRelations=friends&relationsDepth=1`,
     attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
     setAttribute: (objectId) => `/data/UserData/${objectId}`,
@@ -20,6 +20,7 @@ const endpoints = {
 const getUserData = async (id) => {
     return await request.get(baseURL + endpoints.userData(id));
 };
+
 // SET USER DATA
 const setUserData = async (userData) => {
     return await request.post(`${baseURL}${endpoints.setUserData}`, userData);
@@ -35,9 +36,9 @@ const changeAttribute = async (objectId, data) => {
 };
 
 // GET RELATIONS
-const getRelation = async (parentObjectId, childName) => {
+const getRelation = async (parentObjectId, relationName) => {
     return await request.get(
-        `${baseURL}${endpoints.getRelation(parentObjectId, childName)}`
+        `${baseURL}${endpoints.loadSpecificRelation(parentObjectId, relationName)}`
     );
 };
 
@@ -48,8 +49,14 @@ const getAllFrineds = async (parentObjectId) => {
     );
 };
 // SET RELATIONS
-const setRelation = async (parentObjectId, childName, body) => {
-    return await request.put(`${baseURL}${endpoints.setRelation(parentObjectId, childName)}`, body);
+const setRelation = async (parentObjectId, relationName, body) => {
+    return await request.put(`${baseURL}${endpoints.targetRelationName(parentObjectId, relationName)}`, body);
+};
+
+// REMOVE RELATION
+const removeRelation = async (parentObjectId, relationName, friendId, token) => {
+    const body = [friendId];
+    return await request.del(`${baseURL}${endpoints.targetRelationName(parentObjectId, relationName)}`, body, null, token);
 };
 
 // GET VIRTUAL CARD
@@ -83,6 +90,7 @@ export const dataService = {
     getMockCardObjectId,
     getRelation,
     setRelation,
+    removeRelation,
     getAttribute,
     changeAttribute,
     addTransactions,

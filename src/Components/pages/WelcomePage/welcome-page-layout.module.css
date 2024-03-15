@@ -41,6 +41,13 @@
     gap: 0.5em;
     height: calc(100dvh - 80px);
 }
+.contentContainerProfileTab {
+    display: flex;
+    width: 100dvw;
+    margin: 1em;
+    gap: 0.5em;
+    height: calc(100dvh - 80px);
+}
 
 @media (min-width: 800px) {
     .contentContainer {
