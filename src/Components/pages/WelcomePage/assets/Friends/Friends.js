@@ -75,7 +75,7 @@ export const Friends = () => {
                         return null;
                     }
                     return (
-                        <li key={friend.objectId} data-key={friend.objectId}>
+                        <li className={styles.entryWrapper} key={friend.objectId} data-key={friend.objectId}>
                             <img
                                 src={friend.avatar}
                                 className={styles.profileImage}
