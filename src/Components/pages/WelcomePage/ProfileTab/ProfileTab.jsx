@@ -19,6 +19,8 @@ export const ProfileTab = () => {
     return (
         <div className={styles.contentContainer}>
             <section className={styles.bentoMainColumn}>
+                <ProfileDetails adress={adress} country={country} email={email} phone={phone} name={name} picture={picture}/>
+
                 <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
                     <section> 
                         <h5>Виртуална карта</h5>
@@ -43,8 +45,6 @@ export const ProfileTab = () => {
                         name={name}
                     />
                 </div>
-                <ProfileDetails adress={adress} country={country} email={email} phone={phone} name={name} picture={picture}/>
-                
             </section>
             <section className={styles.bentoFillColumn}>
                 <Friends />
