@@ -30,59 +30,85 @@ export const AddFriends = () => {
     };
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (!number) {
-            setError(true);
-            setNumber("");
-            showMessage("warning", "Не сте въвели телефонен номер");
-            return;
-        }
-        if(number === phone){
-            setNumber("");
-            showMessage("warning", "Не можете да добавите себе си като приятел");
-            return;
-        }
-
-        const findReceiver = await dataService.getAttribute(
-            "phoneNumber",
-            number
-        );
-        const receiver = findReceiver[0].objectId;
-        const findFriend = friends.some((friend) => friend.objectId === receiver);
-        if (findFriend) {
-            showMessage("warning", "Потребителят вече ви е приятел");
-            console.log("found friend");
-            return;
-        }
-
-        // GET NOTIFICATIONS AND FILTER FOR SENDER RECEIVER
-        const allFriendRequestNotifications = await notifications.getAllFriendRequests(token);
-        const filtered = allFriendRequestNotifications.filter(
-            (request) =>
-                request.receiver?.length &&
-                request.receiver[0].objectId === receiver &&
-                request.sender[0].objectId === userDataId
-        );
-
-        // CHECK IF FILTERED NOTIFICATIONS EXIST
-        if (filtered.length === 0) {
-            const response = await notifications.createNotification(
-                number,
-                null,
-                "friend request",
-                userDataId,
-                token
-            );
-
-            if (response.success) {
-                showMessage("success", "Успешно изпратихте покана за приятелство");
-            } else {
-                showMessage("error", "Потребител с такъв номер не е намерен");
+        try {
+            if (!number) {
+                throw new Error("Липсва телефонен номер");
             }
-            setNumber("");
-        } else {
-            showMessage("warning", "Потребителят вече ви е приятел");
-            console.warn("Notification with same sender and receiver already exists");
+            if (number === phone) {
+                throw new Error("Не може да добавяте себе си");
+            }
+
+            const findReceiver = await dataService.getAttribute(
+                "phoneNumber",
+                number
+            );
+            if (!findReceiver || findReceiver.length === 0) {
+                throw new Error("Потребителят с този телефонен номер не съществува");
+            }
+
+            const receiver = findReceiver[0].objectId;
+            const findFriend = friends?.some((friend) => friend.objectId === receiver);
+
+            if (findFriend) {
+                throw new Error("Потребителят вече е ваш приятел");
+            }
+            // GET NOTIFICATIONS AND FILTER FOR SENDER RECEIVER
+            const allFriendRequestNotifications = await notifications.getAllFriendRequests(token);
+            if (!allFriendRequestNotifications) {
+                throw new Error("Failed to fetch friend request notifications");
+            }
+            const checkFriendNotification = allFriendRequestNotifications.filter(
+                (request) =>
+                    (request.receiver?.length &&
+                        request.receiver[0].objectId === receiver &&
+                        request.sender[0].objectId === userDataId) ||
+                    (request.receiver?.length &&
+                        request.receiver[0].objectId === userDataId &&
+                        request.sender[0].objectId === receiver)
+            );
+            //CHECK IF FILTERED NOTIFICATIONS EXIST
+            if (checkFriendNotification.length === 0) {
+                const response = await notifications.createNotification(
+                    number,
+                    null,
+                    "friend request",
+                    userDataId,
+                    token
+                );
+
+                if (!response || !response.success) {
+                    throw new Error("Failed to send friend request");
+                }
+                showMessage("success", "Successfully sent friend request");
+            } else {
+                const status = checkFriendNotification[0]?.status;
+                const responseAction =
+                    status === "pending" ?
+                        new Error("Вече сте направили заявка за приятелство") :
+                        status === "accepted" ?
+                            new Error("Вие сте приятел") :
+                            status === "declined" ?
+                                await notifications.updateFriendRequestStatus(
+                                    checkFriendNotification[0].objectId,
+                                    "pending",
+                                    false,
+                                    token
+                                ) :
+                                null;
+
+                if (responseAction instanceof Error) {
+                    throw responseAction;
+                } else if (responseAction) {
+                    showMessage("success", "Поканата за приятелство е изпратена");
+                } else {
+                    throw new Error("Грешка при приемането на заявката");
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            showMessage("error", error.message);
         }
+        setNumber("");
     };
 
     return (

@@ -1,15 +1,12 @@
 import { useState, useContext, useEffect } from "react";
 import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoneyBill, faPiggyBank, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { App } from "antd";
 import blocks from "../../custom-block.module.css";
 import styles from "./friends.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faMoneyBill,
-    faPiggyBank,
-    faTrashAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { App } from "antd";
+import { notifications } from "../../../../../services/notificationService";
 
 export const Friends = () => {
     const { userDataId, token } = useContext(AuthContext);
@@ -34,36 +31,39 @@ export const Friends = () => {
             : message(text);
     };
 
-    const onRemoveFriend = (e) => {
-        const friendId =
-            e.currentTarget.parentElement.parentElement.getAttribute(
-                "data-key"
-            );
-        dataService
-            .removeRelation(userDataId, "friends", friendId, token)
-            .then((response) => {
-                if (!response) {
-                    showMessage("error", "Неуспешно премахнат приятел");
-                    return;
-                }
-                if (!response.success) {
-                    showMessage("error", "Неуспешно премахнат приятел");
-                    return;
-                }
-                setUserFriends(
-                    userFriends.filter((friend) => friend.objectId !== friendId)
+    const onRemoveFriend = async (e) => {
+        const friendId = e.currentTarget.parentElement.parentElement.getAttribute("data-key");
+
+        try {
+            const allFriendRequestNotifications = await notifications.getAllFriendRequests(token);
+            if (!allFriendRequestNotifications) {
+                throw new Error("Failed to fetch friend request notifications");
+            }
+
+            const checkFriendNotification = allFriendRequestNotifications.filter((request) => {
+                return (
+                    (request.receiver?.length &&
+                        request.receiver[0].objectId === friendId &&
+                        request.sender[0].objectId === userDataId) ||
+                    (request.receiver?.length &&
+                        request.receiver[0].objectId === userDataId &&
+                        request.sender[0].objectId === friendId)
                 );
-                dataService
-                    .getRelation(userDataId, "friends")
-                    .then((response) =>
-                        setUserFriends(response?.friends || [])
-                    );
-                showMessage("success", "Успешно премахнат приятел");
-            })
-            .catch((error) => {
-                showMessage("error", "Неуспешно премахнат приятел");
-                console.log(error);
             });
+
+            await notifications.deleteNotification(checkFriendNotification[0].objectId);
+            await dataService.removeRelation(userDataId, "friends", friendId, token);
+            await dataService.removeRelation(friendId, "friends", userDataId, token);
+
+            setUserFriends(userFriends.filter((friend) => friend.objectId !== friendId));
+
+            const response = await dataService.getRelation(userDataId, "friends");
+            setUserFriends(response?.friends || []);
+            showMessage("success", "Успешно премахнат приятел");
+        } catch (error) {
+            showMessage("error", error.message);
+            console.error(error);
+        }
     };
 
     return (

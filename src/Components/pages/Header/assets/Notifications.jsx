@@ -27,11 +27,10 @@ export const Notifications = () => {
         message(text);
     };
 
-    const updateNotifyHandler = async (e) => {
+    const deleteNotificationHandler = async (e) => {
         const notificationId = e.currentTarget.getAttribute("data-key");
         if (!notificationId) {
-            console.error("notification id is null");
-            return;
+            throw new Error("Notification id is null");
         }
 
         try {
@@ -41,7 +40,7 @@ export const Notifications = () => {
             showMessage("success", "Успешно изтрито съобщение");
         } catch (error) {
             console.error("error while deleting notification", error);
-            showMessage("error", "Грешка при изтриване");
+            showMessage("error", error.message);
         }
     };
 
@@ -74,7 +73,7 @@ export const Notifications = () => {
                 { id: notificationId, senderId },
                 error
             );
-            showMessage("error", "Грешка при зареждане");
+            showMessage("error", error.message);
         }
     };
 
@@ -171,7 +170,7 @@ export const Notifications = () => {
                                         <Button
                                             data-key={notify.objectId}
                                             className={styles.btnRemove}
-                                            onClick={updateNotifyHandler}
+                                            onClick={deleteNotificationHandler}
                                             type="primary"
                                         >
                                             Изтриване
@@ -201,7 +200,7 @@ export const Notifications = () => {
                                         type="primary"
                                             data-key={notify.objectId}
                                             className={styles.btnRemove}
-                                            onClick={updateNotifyHandler}
+                                            onClick={deleteNotificationHandler}
                                         >
                                             Изтриване
                                         </Button>
