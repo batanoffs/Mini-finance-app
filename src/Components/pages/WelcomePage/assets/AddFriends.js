@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { notifications } from "../../../../services/notificationService";
 import { dataService } from "../../../../services/userDataService";
-import { Button, App, Space } from 'antd';
+import { App } from 'antd';
 import blocks from "../custom-block.module.css";
 import styles from "./addfriends.module.css";
 
@@ -28,8 +28,8 @@ export const AddFriends = () => {
         type === "info" ? message.info(text) :
         message(text);
     };
-    const onSubmit = async (e) => {
-        e.preventDefault();
+    const onSubmit = async (event) => {
+        event.preventDefault();
         try {
             if (!number) {
                 throw new Error("Липсва телефонен номер");
@@ -116,7 +116,7 @@ export const AddFriends = () => {
             <header>
                 <h5>Добави приятел</h5>
             </header>
-            <form className={styles.friendsForm}>
+            <form onSubmit={onSubmit} className={styles.friendsForm}>
                 {error ? (
                     <small style={{ color: "red" }}>
                         липсва телефонен номер
@@ -135,18 +135,12 @@ export const AddFriends = () => {
                     onChange={onChangeNumber}
                     onFocus={onFocusClearErrorHandler}
                 />
-                <Space>
-                    <Button
-                        data-key={alert.objectId}
-                        type="primary"
-                        className="custom-btn"
-                        onClick={onSubmit}
-                    >
-                        Добави
-                    </Button>
-                </Space>
+                <input
+                    type="submit"
+                    className="custom-btn"
+                    value="Добави"
+                />
             </form>
         </div>
     );
 };
-
