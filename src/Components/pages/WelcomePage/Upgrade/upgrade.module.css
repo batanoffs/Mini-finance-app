@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* height: 100vh; */
     margin: 0 auto;
     background-color: var(--section-bg-color);
 }
@@ -28,6 +29,21 @@
 
 .plan:hover {
     transform: scale(1.05);
+}
+
+.confirmButton {
+    padding: 1em 2em;
+    margin-top: 1em;
+    border: none;
+    border-radius: 0.3em;
+    background-color: var(--custom-btn-bg-color);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirmButton:hover {
+    background-color: var(--custom-btn-bg-hover-color);
 }
 
 .list {
