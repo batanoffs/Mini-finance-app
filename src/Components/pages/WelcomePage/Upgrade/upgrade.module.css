@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
     margin: 0 auto;
     background-color: var(--section-bg-color);
 }
@@ -46,7 +45,7 @@
     background-color: var(--custom-btn-bg-hover-color);
 }
 
-.list {
+.displayFeatures {
     list-style:circle;
     text-align: left;
     padding-left: 1em;
