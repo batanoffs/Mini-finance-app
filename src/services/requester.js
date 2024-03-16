@@ -8,23 +8,15 @@ const request = async (method, url, data, file, token = undefined) => {
         options.method = method;
         if (file) {
 
-            if (!options.headers) {
-                options.headers = {};
-            }
-            options.headers["Content-Type"] = 'multipart/form-data';
-
-            if (!options.headers) {
-                options.headers = {};
-            }
-            if (token) {
-                options.headers["user-token"] = `${token}`;
-            }
+            options.headers = {
+                "Content-Type": 'multipart/form-data',
+            };
+            options.headers = {
+                "user-token": `${token}`,
+            };
 
             const formData = new FormData();
             formData.append("file", file);
-            for (const key in data) {
-                formData.append(key, data[key]);
-            }
 
             options.body = formData;
         } else {

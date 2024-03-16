@@ -11,14 +11,14 @@ export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput
 
     useEffect(() => {
         if (!userDataId) {
-            console.error("QuickSendMoney.userDataId is null");
+            console.error("QuickSendMoney.userDataId is null", userDataId);
             return;
         }
         dataService
-            .getAllFrineds(userDataId)
+            .getAllFriends(userDataId)
             .then((response) => {
                 if (!response) {
-                    console.error("QuickSendMoney.response is null");
+                    console.error("QuickSendMoney.response is null", response);
                     return;
                 }
                 setFriends(response);
