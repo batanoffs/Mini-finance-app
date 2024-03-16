@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { dataService } from "../../../../services/userDataService";
-import { AuthContext } from "../../../../contexts/AuthContext";
+import { dataService } from "../../../../../services/userDataService";
+import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
-import blocks from "../custom-block.module.css";
+import { AddToFavorites } from "./AddFavourites";
+import blocks from "../../custom-block.module.css";
 
 export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput}) => {
-    const [friends, setFriends] = useState([]);
+    const [showFavourites, setShowFavourites] = useState(false);
     const { userDataId } = useContext(AuthContext);
+    const [friends, setFriends] = useState([]);
 
     useEffect(() => {
         if (!userDataId) {
@@ -34,6 +36,10 @@ export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput
         setUserInput({ ...userInput, [`friends`]: friend });
     };
 
+    const addToFavoritesHandler = () => {
+        setShowFavourites(true);
+    };
+
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
             <h5 style={{ color: "var(--section-bg-color)" }}>
@@ -53,8 +59,11 @@ export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput
                 <FontAwesomeIcon
                     className={`${blocks.profileRounded} ${blocks.profileRoundedIcon}`}
                     icon={faPlus}
+                    onClick={addToFavoritesHandler}
                 />
+                {showFavourites && <AddToFavorites showFavourites={showFavourites} setShowFavourites={setShowFavourites} />}
             </ul>
         </div>
     );
 };
+

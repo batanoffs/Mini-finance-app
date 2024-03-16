@@ -15,6 +15,16 @@ const MyApp = () => {
         navigate(-1);
     };
 
+    //TODO if not authorized user implement logic for the forbidden page 
+    // const Forbidden = () => (
+    //     <Result
+    //       status="403"
+    //       title="403"
+    //       subTitle="Sorry, you are not authorized to access this page."
+    //       extra={<Button type="primary">Back Home</Button>}
+    //     />
+    //   );
+    
     return (
         <AuthProvider>
             <App style={{fontFamily: "var(--body-font-family)"}}>

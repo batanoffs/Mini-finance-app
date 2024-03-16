@@ -4,6 +4,7 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill, faPiggyBank, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { App } from "antd";
+import { Empty } from 'antd';
 import blocks from "../../custom-block.module.css";
 import styles from "./friends.module.css";
 import { notifications } from "../../../../../services/notificationService";
@@ -70,7 +71,7 @@ export const Friends = () => {
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
             <h5>Приятели</h5>
             <ul className={styles.friendsList}>
-                {userFriends.map((friend) => {
+                {userFriends.length > 0 ? userFriends.map((friend) => {
                     if (!friend) {
                         return null;
                     }
@@ -84,8 +85,7 @@ export const Friends = () => {
                             <div className={styles.friendInfo}>
                                 <strong>{friend.fullName}</strong>
                                 <p>{friend.email}</p>
-                                <p>{friend.phone}</p>
-                                <p>{friend.country}</p>
+                                <p>{friend.phoneNumber}</p>
                             </div>
                             <div className={styles.friendButtons}>
                                 <button
@@ -119,7 +119,7 @@ export const Friends = () => {
                             </div>
                         </li>
                     );
-                })}
+                }): <Empty style={{ fontFamily: "var(--body-font-family)", marginBottom: "20px" }} description="Все още нямате приятели, може да добавите от началото меню"/>}
             </ul>
         </div>
     );

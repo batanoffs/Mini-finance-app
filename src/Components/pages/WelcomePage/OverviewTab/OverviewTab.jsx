@@ -4,7 +4,7 @@ import { ExchangeRate } from "../assets/ExchangeRate";
 import { ProfileDetails } from "./assets/profileDetails/ProfileDetails";
 import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
 import { LastTransactions } from "../assets/LastTransactions";
-import { QuickSendMoney } from "../assets/QuickSend";
+import { QuickSendMoney } from "../assets/Quicksend/QuickSend";
 import { Greetings } from "./assets/Greetings";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { ContactInfo } from "../assets/ContactInfo";

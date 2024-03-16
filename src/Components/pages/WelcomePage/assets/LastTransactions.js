@@ -1,5 +1,6 @@
 import styles from "./LastTransactions.module.css";
 import blocks from "../custom-block.module.css";
+import { Empty } from 'antd';
 import { Link } from "react-router-dom";
 import { transactions } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
@@ -20,7 +21,7 @@ export const LastTransactions = () => {
         <div className={`${blocks.customBlock} ${blocks.cusomBlockExchange}`}>
             <h5>Последни транзакции</h5>
             <ul>
-                {allTransactions
+                {allTransactions.length > 0 ? allTransactions
                     .slice(0, 5)
                     .sort((a, b) => new Date(b.created) - new Date(a.created))
                     .map((entry) => (
@@ -77,7 +78,7 @@ export const LastTransactions = () => {
                                 </div>
                             </div>
                         </li>
-                    ))}
+                    )) : <Empty style={{ fontFamily: "var(--body-font-family)", marginBottom: "20px" }} description="Няма транзакции" />}
             </ul>
             <div>
                 <Link className="custom-btn" to="/dashboard/wallet">

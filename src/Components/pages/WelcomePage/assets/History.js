@@ -1,6 +1,7 @@
 import { transactions } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import { Empty } from 'antd';
 import blocks from "../custom-block.module.css";
 
 export const History = () => {
@@ -18,7 +19,7 @@ export const History = () => {
             <h5>История на плащания</h5>
 
             <div className={blocks.customBlock}>
-                {allTransactions.length > 0 && ((
+                {allTransactions.length > 0 ? ((
                     allTransactions.filter((entry) => entry.transaction_type === "-").map((money) => (
                         <li key={money.objectId} data-key={money.objectId}>
                             <span >
@@ -27,7 +28,7 @@ export const History = () => {
                             </span>
                         </li>
                     ))
-                ))}
+                )) : <Empty style={{ fontFamily: "var(--body-font-family)", marginBottom: "20px" }} description="Липсва история" />}
             </div>
         </div>
     );
