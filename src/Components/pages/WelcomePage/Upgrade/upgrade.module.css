@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0 auto;
     background-color: var(--section-bg-color);
 }
@@ -24,36 +23,18 @@
     width: 300px; 
     height: 400px;
     cursor: pointer;
-    transition: transform 0.1s ease; /* Add a smooth transition effect */
+    transition: transform 0.1s ease;
 }
 
 .plan:hover {
-    transform: scale(1.05); /* Enlarge the element slightly on hover */
-}
-h1 {
-    margin-bottom: 2em;
-    color: var(--heading-color);
-}
-button {
-    padding: 1em 2em;
-    margin-top: 1em;
-    border: none;
-    border-radius: 0.3em;
-    background-color: var(--custom-btn-bg-color);
-    color: var(--white-color);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    transform: scale(1.05);
 }
 
-button:hover {
-    background-color: var(--custom-btn-bg-hover-color);
-}
-
-ul {
+.list {
     list-style:circle;
     text-align: left;
-    margin: 2em 1em;
-    padding: 0;
+    padding-left: 1em;
+    margin-top: 1em;
 }
 
 .bentoMainColumn {

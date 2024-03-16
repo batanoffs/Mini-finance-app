@@ -14,9 +14,9 @@ export const Upgrade = () => {
                 <div className={styles.bentoGridPlans}>
                     <div className={styles.bentoCell} onClick={() => handlePlanClick("Безплатен")}>
                         <div className={styles.plan}>
-                            <h3>Базов план</h3>
+                            <h3>Базов</h3>
                             <p>безплатен</p>
-                            <ul>
+                            <ul className={styles.list}>
                                 <li>Виртуални трансакции</li>
                                 <li>Защитени данни</li>
                                 <li>Поддръжка 24/7</li>
@@ -25,9 +25,9 @@ export const Upgrade = () => {
                     </div>
                     <div className={styles.bentoCell} onClick={() => handlePlanClick("Стандартен")}>
                         <div className={styles.plan}>
-                            <h3>Премиум план</h3>
+                            <h3>Премиум</h3>
                             <p>20 лв./месечно</p>
-                            <ul>
+                            <ul className={styles.list}>
                                 <li>Виртуални трансакции</li>
                                 <li>Разширени безопасностни функции</li>
                                 <li>Приоритетна поддръжка</li>
@@ -36,9 +36,9 @@ export const Upgrade = () => {
                     </div>
                     <div className={styles.bentoCell} onClick={() => handlePlanClick("Оптимален")}>
                         <div className={styles.plan}>
-                            <h3>Премиум план за корпорации</h3>
+                            <h3>Ентърпрайс</h3>
                             <p>50 лв./месечно</p>
-                            <ul>
+                            <ul className={styles.list}>
                                 <li>Виртуални трансакции</li>
                                 <li>Персонализирани сигурностни решения</li>
                                 <li>Акаунт мениджър и финансов анализатор</li>
