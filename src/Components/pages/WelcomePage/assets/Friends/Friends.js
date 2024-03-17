@@ -14,6 +14,9 @@ export const Friends = () => {
     const [userFriends, setUserFriends] = useState([]);
     const { message } = App.useApp();
 
+    //TODO update friends state
+
+
     useEffect(() => {
         dataService
             .getRelation(userDataId, "friends")

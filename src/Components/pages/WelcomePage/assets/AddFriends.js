@@ -12,6 +12,8 @@ export const AddFriends = () => {
     const { userDataId, token, phone, friends } = useContext(AuthContext);
     const { message } = App.useApp();
 
+
+    //TODO update friends state
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
     };
@@ -48,6 +50,8 @@ export const AddFriends = () => {
 
             const receiver = findReceiver[0].objectId;
             const findFriend = friends?.some((friend) => friend.objectId === receiver);
+            console.log(friends);
+            console.log(findFriend);
 
             if (findFriend) {
                 throw new Error("Потребителят вече е ваш приятел");
