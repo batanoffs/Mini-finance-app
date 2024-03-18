@@ -34,7 +34,7 @@ const endpoints = {
 
 // GET USER DATA
 const getUserData = async (id) => {
-  return await request.get(`${endpoints.user}?where=ownerId='${id}'&loadRelations=virtualcard,friends`);
+  return await request.get(`${endpoints.user}?where=ownerId='${id}'&loadRelations=virtualcard,friends,favorite_friends`);
 };
 
 // SET USER DATA
@@ -57,14 +57,14 @@ const getRelation = async (parentObjectId, relationName) => {
   return await request.get(endpoints.loadSpecificRelation(parentObjectId, relationName));
 };
 
+// SET RELATIONS
+const setRelation = async (parentObjectId, relationName, body, token) => {
+  return await request.put(endpoints.relation(parentObjectId, relationName), body, token);
+};
+
 // GET ALL FRIENDS
 const getAllFriends = async (parentObjectId) => {
   return await request.get(endpoints.friends(parentObjectId));
-};
-
-// SET RELATIONS
-const setRelation = async (parentObjectId, relationName, body) => {
-  return await request.put(endpoints.relation(parentObjectId, relationName), body);
 };
 
 // REMOVE RELATION

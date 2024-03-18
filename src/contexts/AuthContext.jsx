@@ -128,6 +128,7 @@ export const AuthProvider = ({ children }) => {
         picture: auth.avatar,
         transactions: auth.transactions || [],
         friends: auth.friends || [],
+        favorites: auth.favorite_friends || [],
         adress: auth.adress || "Липсва информация",
         userDataId: auth.objectId || "Липсва информация",
         setAuth: setAuth,

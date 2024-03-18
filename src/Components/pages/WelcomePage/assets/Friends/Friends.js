@@ -44,7 +44,7 @@ export const Friends = () => {
                         request.sender[0].objectId === friendId)
                 );
             });
-            
+
             await notifications.deleteNotification(checkFriendNotification[0].objectId);
             await dataService.removeRelation(userDataId, "friends", friendId, token);
             await dataService.removeRelation(friendId, "friends", userDataId, token);
@@ -112,7 +112,7 @@ export const Friends = () => {
                             </div>
                         </li>
                     );
-                }): <Empty style={{ fontFamily: "var(--body-font-family)", marginBottom: "20px" }} description="Все още нямате приятели, може да добавите от началото меню"/>}
+                }): <Empty style={{ margin: "1em auto", fontFamily: "var(--body-font-family)"}} description="Все още нямате приятели, може да добавите от началото меню"/>}
             </ul>
         </div>
     );
