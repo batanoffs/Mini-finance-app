@@ -20,14 +20,17 @@ export const AddToFavorites = ({ setShowFavourites }) => {
     const onSubmit = async (event) => {
         event.preventDefault();
         const inputName = userInput.friends;
-        const findFriend = auth.friends.filter((friend) => friend.fullName === inputName);
-        console.log(findFriend);
-        console.log(inputName);
-        const body = [findFriend[0].objectId];
+        
 
         try {
-            if(!userInput) throw new Error("Моля въведете име!");
+            const findFriend = auth.friends.filter((friend) => friend.fullName === inputName);
             if(!findFriend) throw new Error("Този потребител не е ваш приятел!");
+            if(!findFriend.length) throw new Error("Този потребител не е ваш приятел!");
+
+            console.log(findFriend);
+            console.log(inputName);
+            const body = [findFriend[0].objectId];
+            if(!userInput) throw new Error("Моля въведете име!");
             if(!userDataId) throw new Error("Нещо се обърка");
 
             const response = await dataService.setRelation(userDataId, "favorite_friends", body, token);
@@ -36,10 +39,13 @@ export const AddToFavorites = ({ setShowFavourites }) => {
                 setShowFavourites(false);
                 throw new Error("Нещо се обърка!");
                 
-            } else {
+            }
+
+            if (response === 1) {
                 setAuth({ ...auth, favorite_friends: [...auth.favorite_friends, findFriend[0]] });
                 sessionStorage.setItem("auth", JSON.stringify({ ...auth, favorite_friends: [...auth.favorite_friends, findFriend[0]] }));
                 setShowFavourites(false);
+                showMessage("success", `${findFriend[0].fullName} е добавен към любими!`);
             }
         } catch (error) {
             showMessage("error", error.message);

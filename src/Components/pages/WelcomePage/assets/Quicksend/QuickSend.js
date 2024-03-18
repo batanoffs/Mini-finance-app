@@ -1,17 +1,16 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useContext, useState } from "react";
 import { AddToFavorites } from "./AddFavourites";
 import { App } from "antd";
 import blocks from "../../custom-block.module.css";
 import styles from "./quicksend.module.css";
+import { Actions } from "./assets/Actions";
+import { ActionsMenu } from "./assets/ActionsMenu";
 
 export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {
     const [showFavourites, setShowFavourites] = useState(false);
     const [showBtns, setShowBtns] = useState(false);
-    const { favorites, userDataId, token } = useContext(AuthContext);
+    const { favorites } = useContext(AuthContext);
     const { message } = App.useApp();
 
     const showMessage = (type, text) => {
@@ -45,52 +44,13 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
         e.currentTarget.style.display = e.currentTarget.style.display === "block" ? "none" : "block";
     };
 
-    const onConfirmHandler = (e) => {
-        const friendId = e.currentTarget.getAttribute("data-key");
-        if (!friendId) {
-            showMessage("error", "Възникна грешка, опитайте отново");
-            return;
-        }
-        dataService
-            .removeRelation(userDataId, "favorite_friends", friendId, token)
-            .then(() => showMessage("success", "Успешно премахнат приятел"))
-            .catch((error) => {
-                console.error(error);
-                showMessage("error", error.message);
-            });
-    };
-
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <h5 style={{ color: "var(--section-bg-color)" }}>
                     Бързо изпращане
                 </h5>
-                <FontAwesomeIcon
-                    icon={faEllipsisV}
-                    className={styles.ellipsisIcon}
-                    onClick={showActionsHandler}
-                />
-
-                <div
-                    className={styles.actionButtons}
-                    onMouseOut={closeMenuHandler}
-                >
-                    <ul>
-                        <li
-                            className={styles.actionButton}
-                            onClick={() => setShowBtns((prevState) => !prevState)}
-                        >
-                            промени
-                        </li>
-                        <li
-                            className={styles.actionButton}
-                            onClick={() => setShowFavourites(true)}
-                        >
-                            добави
-                        </li>
-                    </ul>
-                </div>
+                <ActionsMenu setShowBtns={setShowBtns} closeMenuHandler={closeMenuHandler} showActionsHandler={showActionsHandler} setShowFavourites={setShowFavourites}/>
             </div>
 
             <ul className={blocks.sendMonkeyContainer}>
@@ -106,29 +66,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                             alt={"avatar"}
                             onClick={openSendMenu}
                         />
-                        {showBtns && (
-                            <>
-                                <FontAwesomeIcon
-                                    className={styles.deleteIconBtn}
-                                    icon={faTimes}
-                                    onClick={showActionsHandler}
-                                />
-                                <div
-                                    className={styles.actionButtons}
-                                    onMouseOut={closeMenuHandler}
-                                >
-                                    <ul>
-                                        <li
-                                            className={styles.actionButton}
-                                            data-key={friend.objectId}
-                                            onClick={onConfirmHandler}
-                                        >
-                                            изтрий
-                                        </li>
-                                    </ul>
-                                </div>
-                            </>
-                        )}
+                        {showBtns && <Actions friend={friend} showActionsHandler={showActionsHandler} closeMenuHandler={closeMenuHandler} showMessage={showMessage} />}
                     </li>
                 ))}
                 {showFavourites && (

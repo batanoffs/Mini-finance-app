@@ -58,7 +58,7 @@ export const Autocomplete = (props) => {
 
     let suggestionsListComponent;
 
-    if (showSuggestions && props.userInput.friends) {
+    if (showSuggestions && props.userInput?.friends) {
         if (filteredSuggestions.length) {
             suggestionsListComponent = (
                 <ul className="suggestions">

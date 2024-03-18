@@ -25,10 +25,6 @@
     cursor: pointer;
 }
 
-.deleteIconBtn:hover {
-    border: 2px solid var(--primary-color);
-}
-
 .actionButtons {
     position: absolute;
     right: 2.2em;
