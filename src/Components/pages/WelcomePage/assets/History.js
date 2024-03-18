@@ -14,13 +14,15 @@ export const History = () => {
             .then((result) => setAllTransactions(result))
             .catch((error) => console.log(error));
     }, [userDataId]);
+
+    const payments =  allTransactions.filter((entry) => entry.transaction_type === "-");
     return (
         <div className={blocks.customBlock}>
             <h5>История на плащания</h5>
 
             <div className={blocks.customBlock}>
-                {allTransactions.length > 0 ? ((
-                    allTransactions.filter((entry) => entry.transaction_type === "-").map((money) => (
+                {payments.length > 0 ? ((
+                    payments.map((money) => (
                         <li key={money.objectId} data-key={money.objectId}>
                             <span >
                                 {/* TO DO NAME */}
