@@ -4,6 +4,8 @@ const baseUrl = "https://notablepen.backendless.app/api";
 const endpoints = {
   user: `${baseUrl}/data/UserData`,
   transactions: `${baseUrl}/data/transaction/unit-of-work`,
+  getUserById: (ownerId) =>
+    `${baseUrl}/data/UserData/${ownerId}`,
   relation: (parentObjectId, relationName) =>
     `${baseUrl}/data/UserData/${parentObjectId}/${relationName}`,
   loadSpecificRelation: (parentObjectId, relationName) =>
@@ -89,6 +91,10 @@ const addTransactions = async (data) => {
   return await request.post(endpoints.transactions, data);
 };
 
+const getUser = async (ownerId) => {
+  return await request.get(endpoints.getUserById(ownerId));
+}
+
 export const dataService = {
     uploadProfilePicture,
     getUserData,
@@ -101,4 +107,5 @@ export const dataService = {
     changeAttribute,
     addTransactions,
     getAllFriends,
+    getUser,
 };

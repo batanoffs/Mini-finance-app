@@ -8,7 +8,7 @@ import { Button, Space, App } from 'antd';
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {
-    const { userDataId, token } = useContext(AuthContext);
+    const { userDataId, token, auth, setAuth } = useContext(AuthContext);
     const [notificationsState, setnotificationsState] = useState([]);
     const { message } = App.useApp();
 
@@ -61,8 +61,13 @@ export const Notifications = () => {
 
             const setReceiverFriend = await dataService.setRelation(userDataId, "friends", [senderId]);
             const setSenderFriend = await dataService.setRelation(senderId, "friends", [userDataId]);
+            const getSender = await dataService.getUser(senderId);
+            console.log("sendner", getSender);
 
+            
             if (setReceiverFriend === 1 && setSenderFriend === 1) {
+                setAuth({...auth, friends: [...auth.friends, getSender]});
+                sessionStorage.setItem("auth", JSON.stringify({ ...auth, friends: [...auth.friends, getSender] }));
                 showMessage("success", "Успешно добавихте прител");
             } else {
                 showMessage("warning", "Вече сте добавили този приятел");

@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,18 +10,8 @@ import styles from "./friends.module.css";
 import { notifications } from "../../../../../services/notificationService";
 
 export const Friends = () => {
-    const { userDataId, token } = useContext(AuthContext);
-    const [userFriends, setUserFriends] = useState([]);
+    const { userDataId, token, auth, setAuth } = useContext(AuthContext);
     const { message } = App.useApp();
-
-    //TODO update friends state
-
-
-    useEffect(() => {
-        dataService
-            .getRelation(userDataId, "friends")
-            .then((response) => setUserFriends(response?.friends || []));
-    }, [userDataId]);
 
     const showMessage = (type, text) => {
         type === "error"
@@ -54,15 +44,15 @@ export const Friends = () => {
                         request.sender[0].objectId === friendId)
                 );
             });
-
+            
             await notifications.deleteNotification(checkFriendNotification[0].objectId);
             await dataService.removeRelation(userDataId, "friends", friendId, token);
             await dataService.removeRelation(friendId, "friends", userDataId, token);
 
-            setUserFriends(userFriends.filter((friend) => friend.objectId !== friendId));
+            const filterFriends = auth.friends.filter((friend) => friend.objectId !== friendId);
 
-            const response = await dataService.getRelation(userDataId, "friends");
-            setUserFriends(response?.friends || []);
+            setAuth({...auth, friends: filterFriends || []});
+            sessionStorage.setItem("auth", JSON.stringify({ ...auth, friends: filterFriends }));
             showMessage("success", "Успешно премахнат приятел");
         } catch (error) {
             showMessage("error", error.message);
@@ -74,7 +64,7 @@ export const Friends = () => {
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
             <h5>Приятели</h5>
             <ul className={styles.friendsList}>
-                {userFriends.length > 0 ? userFriends.map((friend) => {
+                {auth.friends.length > 0 ? auth.friends.map((friend) => {
                     if (!friend) {
                         return null;
                     }

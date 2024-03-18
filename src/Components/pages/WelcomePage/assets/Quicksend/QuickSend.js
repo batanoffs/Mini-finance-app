@@ -4,31 +4,21 @@ import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { AddToFavorites } from "./AddFavourites";
+import { App } from 'antd';
 import blocks from "../../custom-block.module.css";
 
 export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput}) => {
     const [showFavourites, setShowFavourites] = useState(false);
-    const { userDataId } = useContext(AuthContext);
-    const [friends, setFriends] = useState([]);
+    const { userDataId, auth, setAuth } = useContext(AuthContext);
+    const { message } = App.useApp();
 
-    useEffect(() => {
-        if (!userDataId) {
-            console.error("QuickSendMoney.userDataId is null", userDataId);
-            return;
-        }
-        dataService
-            .getAllFriends(userDataId)
-            .then((response) => {
-                if (!response) {
-                    console.error("QuickSendMoney.response is null", response);
-                    return;
-                }
-                setFriends(response);
-            })
-            .catch((error) => {
-                console.error("QuickSendMoney.error", error);
-            });
-    }, [userDataId]);
+    const showMessage = (type, text) => {
+        type === "error" ? message.error(text) :
+        type === "success" ? message.success(text) :
+        type === "warning" ? message.warning(text) :
+        type === "info" ? message.info(text) :
+        message(text);
+    };
 
     const onClickHandler = (e) => {
         const friend = e.currentTarget.parentElement.getAttribute("data-key");
@@ -46,7 +36,7 @@ export const QuickSendMoney = ({showModal, setShowModal, userInput, setUserInput
                 Бързо изпращане
             </h5>
             <ul className={blocks.sendMonkeyContainer}>
-                {friends.map((friend) => (
+                {auth.friends?.map((friend) => (
                     <li key={friend.objectId} data-key={friend.fullName}>
                         <img
                             src={friend.avatar}
