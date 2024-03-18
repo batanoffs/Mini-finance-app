@@ -32,7 +32,7 @@ export const Actions = ({
             dataService
                 .removeRelation(userDataId, "favorite_friends", friendId, token)
                 .then(() => {
-                    showMessage("success", "Успешно премахнат приятел")
+                    showMessage("success", "Успешно премахнат приятел от списъка");
                     setAuth({
                         ...auth,
                         favorite_friends: favorites.filter(

@@ -5,7 +5,7 @@ import { Autocomplete } from "../../../../features/Autocomplate";
 import { App } from 'antd';
 
 export const AddToFavorites = ({ setShowFavourites }) => {
-    const { auth, setAuth, favorites, token, userDataId } = useContext(AuthContext);
+    const { auth, setAuth, token, userDataId } = useContext(AuthContext);
     const [ userInput, setUserInput ] = useState("");
     const { message } = App.useApp();
         
