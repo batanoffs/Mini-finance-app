@@ -32,7 +32,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
             return;
         }
         setShowModal({ ...showModal, [`send`]: true });
-        setUserInput({ ...userInput, [`favorites`]: name });
+        setUserInput({ ...userInput, [`friends`]: name });
     };
 
     const showActionsHandler = (e) => {
@@ -66,7 +66,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                             alt={"avatar"}
                             onClick={openSendMenu}
                         />
-                        {showBtns && <Actions friend={friend} showActionsHandler={showActionsHandler} closeMenuHandler={closeMenuHandler} showMessage={showMessage} />}
+                        {showBtns && <Actions setShowBtns={setShowBtns} friend={friend} showActionsHandler={showActionsHandler} closeMenuHandler={closeMenuHandler} showMessage={showMessage} />}
                     </li>
                 ))}
                 {showFavourites && (

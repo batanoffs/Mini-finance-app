@@ -17,7 +17,7 @@ export const ProfileDropdown = (props) => {
                 <img
                     src={props.picture}
                     className={styles.profileImage}
-                    alt={"happy man"}
+                    alt={"avatar"}
                 />
 
                 <ul className={styles.dropdownMenu}>
@@ -26,7 +26,7 @@ export const ProfileDropdown = (props) => {
                             <img
                                 src={props.picture}
                                 className={styles.profileImage}
-                                alt={"happy man"}
+                                alt={"avatar"}
                             />
                                 <small>{props.name}</small>
                         </div>

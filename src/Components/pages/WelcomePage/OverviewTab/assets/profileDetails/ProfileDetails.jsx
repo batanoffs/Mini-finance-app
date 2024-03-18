@@ -11,7 +11,7 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
                 <img
                     src={picture}
                     className={blocks.customBlockProfileImage}
-                    alt="profile"
+                    alt="avatar"
                 />
 
                 <Link
