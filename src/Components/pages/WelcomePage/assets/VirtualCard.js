@@ -44,7 +44,7 @@ export const VirtualCard = () => {
 
                 <div>
                     <h6>Притежател</h6>
-                    <small>{auth.name}</small>
+                    <small>{auth.fullName}</small>
                 </div>
             </div>
         </div>
