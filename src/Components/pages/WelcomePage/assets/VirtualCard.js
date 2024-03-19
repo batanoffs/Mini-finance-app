@@ -14,7 +14,7 @@ export const VirtualCard = () => {
                 setAuth({...auth, virtualcard: {...card, balance: data.results.updateMoney.result.balance}});
             })
             .catch((err) => console.log(err));
-    }, [userDataId, card.objectId, token]);
+    }, [userDataId, card, token ]);
 
     const splitDigits = (number) => {
         if (number) {
