@@ -11,8 +11,7 @@ export const LastTransactions = () => {
     const { userDataId } = useContext(AuthContext);
 
     useEffect(() => {
-        transactions
-            .getTransactions(userDataId)
+        transactions.getAllReceiver(userDataId)
             .then((result) => setAllTransactions(result))
             .catch((error) => console.log(error));
     }, [userDataId]);

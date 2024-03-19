@@ -3,35 +3,66 @@ import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { Empty } from 'antd';
 import blocks from "../custom-block.module.css";
+import styles from "./LastTransactions.module.css"
 
 export const History = () => {
-    const [allTransactions, setAllTransactions] = useState([]);
+    const [transactionsList, setTransactionsList] = useState([]);
     const { userDataId } = useContext(AuthContext);
 
     useEffect(() => {
         transactions
-            .getTransactions(userDataId)
-            .then((result) => setAllTransactions(result))
-            .catch((error) => console.log(error));
+            .getAllSender(userDataId)
+            .then(setTransactionsList)
+            .catch(console.error);
     }, [userDataId]);
 
-    const payments =  allTransactions.filter((entry) => entry.transaction_type === "-");
     return (
         <div className={blocks.customBlock}>
             <h5>История на плащания</h5>
+            <ul>
+                {transactionsList.length > 0 ? transactionsList
+                    .slice()
+                    .sort((a, b) => new Date(b.created) - new Date(a.created))
+                    .slice(0, 4)
+                    .map((transaction) => (
+                        <li key={transaction.objectId} data-key={transaction.objectId}>
+                            <div className={styles.transactionsBoxWrapper}>
+                                <div className={styles.transactionsProfileWrapper}>
+                                    <img
+                                        src={transaction.receiver[0].avatar}
+                                        className={blocks.profileImage}
+                                        alt="avatar"
+                                    />
+                                    <div>
+                                        <p>
+                                            <strong>
+                                                {transaction.receiver[0].fullName}
+                                            </strong>
+                                        </p>
 
-            <div className={blocks.customBlock}>
-                {payments.length > 0 ? ((
-                    payments.map((money) => (
-                        <li key={money.objectId} data-key={money.objectId}>
-                            <span >
-                                {/* TO DO NAME */}
-                                Преведени {money.amount}лв. към {money.sender[0].fullName}.
-                            </span>
+                                        <small> получил</small>
+                                    </div>
+                                </div>
+                                <div className={styles.transactionsAmountInfo}>
+                                    <strong style={{ display: "block", textAlign: "right", color: "darkred" }}>
+                                        <span> - </span>{" "}
+                                        {transaction.amount}лв
+                                    </strong>
+                                    <small>
+                                        {new Intl.DateTimeFormat("en-US", {
+                                            hour: "numeric",
+                                            minute: "numeric",
+                                            year: "numeric",
+                                            month: "numeric",
+                                            day: "numeric",
+                                        }).format(new Date(transaction.created))}
+                                    </small>
+                                </div>
+                            </div>
                         </li>
-                    ))
-                )) : <Empty style={{ fontFamily: "var(--body-font-family)", marginBottom: "20px" }} description="Липсва история" />}
-            </div>
+                    )) : <Empty description="Липсва история" />}
+            </ul>
         </div>
     );
 };
+
