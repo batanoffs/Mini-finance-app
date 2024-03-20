@@ -34,14 +34,14 @@ export const BankingActionButtons = ({userInput, setUserInput, showModal, setSho
 
             <FontAwesomeIcon
                 className={blocks.customBlockIcon}
-                data-text="Receive money"
+                data-text="Request money"
                 icon={faHandHoldingDollar}
-                onClick={handleShowModal("receive")}
+                onClick={handleShowModal("request")}
             />
             
             {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
             {showModal.send && <SendMoney userInput={userInput} setUserInput={setUserInput} showModal={showModal} setShowModal={setShowModal} />}
-            {showModal.receive && <RequestMoney showModal={showModal} setShowModal={setShowModal} />}
+            {showModal.request && <RequestMoney userInput={userInput} setUserInput={setUserInput} showModal={showModal} setShowModal={setShowModal} />}
         </div>
     );
 };

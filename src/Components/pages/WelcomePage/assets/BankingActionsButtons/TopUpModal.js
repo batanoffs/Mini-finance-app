@@ -43,50 +43,44 @@ export const TopUp = ({ showModal, setShowModal }) => {
                     </button>
                 </div>
                 <form onSubmit={onSubmitHandler} className="custom-form">
-                        <div className="form-group">
-                            <label htmlFor="amount">Сума:</label>
-                            <input
-                                type="text"
-                                name="amount"
-                                value={inputState.amount}
-                                onChange={setInputState}
-                                id="amount"
-                                placeholder="Enter amount"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="payment-method">
-                                Начин на плащане:
-                            </label>
-                            <select
-                                id="payment-method"
-                                value={inputState.payment_method}
-                                onChange={(e) => {
-                                    setInputState({
-                                        ...inputState,
-                                        payment_method: e.target.value,
-                                    });
-                                }}
-                            >
-                                <option value="">
-                                    Изберете начин на плащане
-                                </option>
-                                <option value="banktransfer">
-                                    Банков трансфер
-                                </option>
-
-                                <option value="debitcard">
-                                    {" "}
-                                    <FontAwesomeIcon icon={faCreditCard} />
-                                    Дебитна карта{" "}
-                                </option>
-                                <option value="paypal">PayPal</option>
-                            </select>
-                        </div>
-                        <PaymentForm
-                            inputState={inputState}
-                            setInputState={setInputState}
+                    <div className="form-group">
+                        <label htmlFor="amount">Сума:</label>
+                        <input
+                            type="text"
+                            name="amount"
+                            value={inputState.amount}
+                            onChange={setInputState}
+                            id="amount"
+                            placeholder="Enter amount"
                         />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="payment-method">
+                            <FontAwesomeIcon icon={faCreditCard} />
+                            Начин на плащане:
+                        </label>
+                        <select
+                            id="payment-method"
+                            value={inputState.payment_method}
+                            onChange={(e) => {
+                                setInputState({
+                                    ...inputState,
+                                    payment_method: e.target.value,
+                                });
+                            }}
+                        >
+                            <option value="">Изберете начин на плащане</option>
+                            <option value="banktransfer">
+                                Банков трансфер
+                            </option>
+                            <option value="debitcard"> Дебитна карта </option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                    <PaymentForm
+                        inputState={inputState}
+                        setInputState={setInputState}
+                    />
 
                     <footer>
                         <input

@@ -13,7 +13,7 @@ export const WelcomePage = () => {
     const [showModal, setShowModal] = useState({
         topUp: false,
         send: false,
-        receive: false,
+        request: false,
     });
     const [hasLoaded, setHasLoaded] = useState(false);
     const [rates, setRates] = useState({

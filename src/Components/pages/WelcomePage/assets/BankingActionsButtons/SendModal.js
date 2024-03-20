@@ -3,7 +3,7 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
 import { transactions } from "../../../../../services/transactionService";
-import { Button, Space, App } from "antd";
+import { App } from "antd";
 import modal from "./modal.module.css";
 
 export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) => {
@@ -90,11 +90,10 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                     <h5 className="modal-title">Изпращане на пари</h5>
                     <button onClick={onClose}>X</button>
                 </div>
-
                 <div className="form-content">
                     <form>
                         <div className="form-group">
-                            <label htmlFor="amount">Сума</label>
+                            <label htmlFor="amount">Сума:</label>
                             <input
                                 type="text"
                                 name="amount"
@@ -106,7 +105,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                             />
                         </div>
                         <div className="form-group ">
-                            <label htmlFor="friends">Приятел</label>
+                            <label htmlFor="friends">Приятел:</label>
                             <Autocomplete
                                 name="friends"
                                 userInput={userInput}
@@ -116,18 +115,14 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                         </div>
 
                         <footer>
-                            <Space style={{ margin: "0 auto" }}>
-                                <Button
-                                    type="primary"
-                                    className="button-primary"
-                                    style={{
-                                        fontFamily: "var(--body-font-family)",
-                                    }}
-                                    onClick={onFormSubmitHandler}
-                                >
-                                    Изпрати
-                                </Button>
-                            </Space>
+                            <input
+                                className="button-primary"
+                                type="submit"
+                                value="Изпрати"
+                                style={{ width: "100%" }}
+                                onClick={onFormSubmitHandler}
+
+                            />
                         </footer>
                     </form>
                 </div>
