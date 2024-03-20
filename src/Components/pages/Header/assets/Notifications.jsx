@@ -68,9 +68,7 @@ export const Notifications = () => {
                 className={styles.notificationsIcon}
             />
 
-            {notificationsState.length > 0 && (
-                <span className={styles.notificationDot} />
-            )}
+            {notificationsState.length > 0 && <span className={styles.notificationDot} />}
 
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
@@ -114,3 +112,4 @@ export const Notifications = () => {
         </div>
     );
 };
+

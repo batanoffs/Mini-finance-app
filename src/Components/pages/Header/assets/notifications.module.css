@@ -36,7 +36,11 @@
     box-shadow: 0 0.3em 12px rgba(0, 0, 0, 0.2);
 }
 
-.singleNotification:hover .btnRemove {
+.singleNotification:hover .btnRemove{
+    display: block;
+    margin: auto 0 auto auto;
+}
+.singleNotification:hover .btnAccept{
     display: block;
     margin: auto 0 auto auto;
 }
@@ -52,8 +56,36 @@
 }
 
 .btnRemove:hover {
+    color:  darkred;
+    border-color: darkred;
+}
+
+.notificationContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+.btnAccept {
+    display: none;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    padding: 0.3em;
+    cursor: pointer;
+    background-color: transparent;
+    color: gray;
+}
+.date {
+    display: inline-block;
+}
+
+.singleNotification:hover .date{
+    display: none;
+}
+
+.btnAccept:hover {
     color:  white;
-    background-color:var(--primary-hover-color);
+    background-color: var(--primary-hover-color);
     border-color: var(--primary-hover-color);
 }
 
