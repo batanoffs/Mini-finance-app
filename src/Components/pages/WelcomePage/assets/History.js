@@ -5,7 +5,7 @@ import { Empty } from 'antd';
 import blocks from "../custom-block.module.css";
 import styles from "./LastTransactions.module.css"
 
-export const History = () => {
+export const History = ({formatDate}) => {
     const [transactionsList, setTransactionsList] = useState([]);
     const { userDataId } = useContext(AuthContext);
 
@@ -31,26 +31,20 @@ export const History = () => {
                                 className={blocks.profileImage}
                                 alt="avatar"
                             />
-                            <div className={styles.detailsWrapper}>
+                            <div className={styles.historyDetailsWrapper}>
                                 <div className={styles.detailsBox}>
                                     <strong>
-                                        {transaction.receiver[0].fullName}
+                                        Платихте
                                     </strong>
                                     <strong style={{ display: "block", textAlign: "right", color: "darkred" }}>
                                        - {transaction.amount}лв
                                     </strong>
                                 </div>
                                 <div className={styles.detailsBox}>
-                                    <small> получи</small>
+                                    <small> на {transaction.receiver[0].fullName}</small>
                                    
                                     <small>
-                                        {new Intl.DateTimeFormat("en-US", {
-                                            hour: "numeric",
-                                            minute: "numeric",
-                                            year: "numeric",
-                                            month: "numeric",
-                                            day: "numeric",
-                                        }).format(new Date(transaction.created))}
+                                        {formatDate(transaction.created)}
                                     </small>
                                 </div>
                             </div>

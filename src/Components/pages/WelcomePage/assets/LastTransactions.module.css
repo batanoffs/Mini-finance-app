@@ -18,5 +18,12 @@
     justify-content: space-between;
     flex-direction: column;
     width: calc(100% - 60px);
+}
+.historyDetailsWrapper {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    flex-direction: column;
+    width: calc(100% - 60px);
 
 }

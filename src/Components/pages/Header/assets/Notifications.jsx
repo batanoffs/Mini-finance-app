@@ -55,7 +55,7 @@ export const Notifications = () => {
         return new Intl.DateTimeFormat("bg-BG", {
             hour: "numeric",
             minute: "numeric",
-            year: "numeric",
+            year: "2-digit",
             month: "numeric",
             day: "numeric",
         }).format(new Date(date));
@@ -68,7 +68,9 @@ export const Notifications = () => {
                 className={styles.notificationsIcon}
             />
 
-            {notificationsState.length > 0 && <span className={styles.notificationDot} />}
+            {notificationsState.length > 0 && (
+                <span className={styles.notificationDot} />
+            )}
 
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
@@ -78,7 +80,9 @@ export const Notifications = () => {
                             <FriendRequestNotification
                                 formatDate={formatDate}
                                 showMessage={showMessage}
-                                deleteNotificationHandler={deleteNotificationHandler}
+                                deleteNotificationHandler={
+                                    deleteNotificationHandler
+                                }
                                 setnotificationsState={setnotificationsState}
                                 notify={notify}
                             />
@@ -88,7 +92,9 @@ export const Notifications = () => {
                             <FriendAcceptNotification
                                 formatDate={formatDate}
                                 showMessage={showMessage}
-                                deleteNotificationHandler={deleteNotificationHandler}
+                                deleteNotificationHandler={
+                                    deleteNotificationHandler
+                                }
                                 notify={notify}
                             />
                         ) : notify?.event_type === "money received" ? (
@@ -105,11 +111,14 @@ export const Notifications = () => {
                                 showMessage={showMessage}
                                 notify={notify}
                             />
-                        ) :  <NotFoundNotifications />
+                        ) : (
+                            <NotFoundNotifications />
+                        )
                     )
-                ) : <NotFoundNotifications />}
+                ) : (
+                    <NotFoundNotifications />
+                )}
             </ul>
         </div>
     );
 };
-

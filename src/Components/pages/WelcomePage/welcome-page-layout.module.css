@@ -1,14 +1,14 @@
 .bentoMainColumn {
     flex: 1 0 min(200px);
     flex-direction: column;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
 }
 
 .bentoGridPlans {
     flex: 1 0 200px;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
 }
@@ -20,8 +20,7 @@
 .bentoFillColumn {
     flex: 5 0 min(200px);
     flex-direction: column;
-    display: inline-flex;
-    flex-wrap: wrap;
+    display: flex;
     gap: 0.5em;
 }
 
@@ -29,7 +28,6 @@
     flex: 0 0 max(150px);
     flex-direction: column;
     display: flex;
-    flex-wrap: inline-flex;
     gap: 0.5em;
 }
 

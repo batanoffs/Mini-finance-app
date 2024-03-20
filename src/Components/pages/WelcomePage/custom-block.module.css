@@ -87,7 +87,7 @@
 }
 
 .customBlockEditIcon {
-    background: var(--primary-color);
+    background: var(--custom-btn-bg-color);
     border-radius: var(--border-radius-large);
     color: var(--white-color);
     width: 35px;
@@ -97,7 +97,7 @@
 }
 
 .customBlockEditIcon:hover {
-    background: var(--third-bg-color);
+    background: var(--custom-btn-bg-hover-color);
     color: var(--primary-hover-color);
 }
 

@@ -60,14 +60,15 @@
     font-size: 1em;
     font-weight: var(--font-weight-bold);
     line-height: normal;
-    transition: all 0.3s;
+    transition: all 0.1s;
     padding: 6px 20px;
     height: 2.2em;
 }
 
 .custom-btn:hover {
     background: var(--custom-btn-bg-hover-color);
-    color: var(--white-color);
+    color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
 }
 
 .custom-border-btn {

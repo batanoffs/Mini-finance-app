@@ -25,9 +25,8 @@ export const VirtualCard = () => {
 
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
-            <h5>Наличност</h5>
-
-            <h5>{card.balance}лв</h5>
+            <h5 >Наличност</h5>
+            <h4 style={{ color: "var(--white-color)" }}>{card.balance}лв</h4>
 
             <div className={blocks.customBlockNumbers}>
                 <span>****</span>

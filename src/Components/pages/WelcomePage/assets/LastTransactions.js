@@ -6,7 +6,7 @@ import { transactions } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
-export const LastTransactions = () => {
+export const LastTransactions = ({formatDate}) => {
     const [allTransactions, setAllTransactions] = useState([]);
     const { userDataId } = useContext(AuthContext);
 
@@ -59,14 +59,7 @@ export const LastTransactions = () => {
                                                 : "получи"}
                                         </small>
                                         <small>
-                                            {new Intl.DateTimeFormat("en-US", {
-                                                hour: "numeric",
-                                                minute: "numeric",
-                                                year: "numeric",
-                                                month: "numeric",
-                                                day: "numeric",
-                                                hour12: false,
-                                            }).format(new Date(entry.created))}
+                                            {formatDate(entry.created)}
                                         </small>
                                     </div>
                                 </div>

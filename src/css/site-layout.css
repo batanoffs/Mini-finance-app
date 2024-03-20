@@ -1,7 +1,7 @@
 main {
     flex: 1;
     display: flex;
-    justify-content: flex-clerastart;
+    justify-content: flex-start;
 }
 
 .main-wrapper {
