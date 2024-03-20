@@ -98,7 +98,7 @@
 
 .customBlockEditIcon:hover {
     background: var(--third-bg-color);
-    color: var(--white-color);
+    color: var(--primary-hover-color);
 }
 
 .customBlockProfile .customBlockEditIcon {
@@ -160,7 +160,7 @@
 
 .customBlockIcon:hover {
     background: var(--custom-btn-bg-hover-color);
-    color: #0056b3;
+    color: var(--primary-hover-color);
 }
 
 .customBlockIcon:hover::before {

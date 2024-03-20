@@ -10,11 +10,11 @@ export const VirtualCard = () => {
     useEffect(() => {
         transactions.updateBalance(userDataId, card.objectId, token)
             .then((data) => {
-                setCard(data.results.updateMoney.result);
+                setCard({...card, balance: data.results.updateMoney.result.balance});
                 setAuth({...auth, virtualcard: {...card, balance: data.results.updateMoney.result.balance}});
             })
             .catch((err) => console.log(err));
-    }, [userDataId, card, token ]);
+    }, []);
 
     const splitDigits = (number) => {
         if (number) {

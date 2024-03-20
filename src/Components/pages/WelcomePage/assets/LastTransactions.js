@@ -24,58 +24,52 @@ export const LastTransactions = () => {
                     .slice(0, 5)
                     .sort((a, b) => new Date(b.created) - new Date(a.created))
                     .map((entry) => (
-                        <li key={entry.objectId} data-key={entry.objectId}>
-                            <div className={styles.transactionsBoxWrapper}>
-                                <div className={styles.transactionsProfileWrapper}>
-                                    <img
-                                        src={entry.sender[0].avatar}
-                                        className={blocks.profileImage}
-                                        alt={"avatar"}
+                        <li key={entry.objectId} data-key={entry.objectId} className={styles.transactionsBoxWrapper}>
+                                <img
+                                    src={entry.sender[0].avatar}
+                                    className={blocks.profileImage}
+                                    alt={"avatar"}
                                     />
-                                    <div>
-                                        <p>
-                                            <strong>
-                                                {entry.sender[0].fullName}
-                                            </strong>
-                                        </p>
-
-                                        <small>
-                                            {entry.transaction_type === "+"
-                                                ? "изпрати"
-                                                : "получи"}
-                                        </small>
-                                    </div>
-                                </div>
-
-                                <div className={styles.transactionsAmountInfo}>
-                                    <strong
+                                <div className={styles.detailsWrapper}>
+                                    <div className={styles.detailsBox}>
+                                        <strong>
+                                            {entry.sender[0].fullName}
+                                        </strong>
+                                        <strong
                                         style={{
                                             display: "block",
                                             textAlign: "right",
                                             ...(entry.transaction_type === "+"
                                                 ? {
-                                                      color: "green",
-                                                  }
+                                                    color: "green",
+                                                }
                                                 : {
-                                                      color: "darkred",
-                                                  }),
+                                                    color: "darkred",
+                                                }),
                                         }}
-                                    >
-                                        <span>{entry.transaction_type}</span>{" "}
-                                        {entry.amount}лв
-                                    </strong>
-                                    <small>
-                                        {new Intl.DateTimeFormat("en-US", {
-                                            hour: "numeric",
-                                            minute: "numeric",
-                                            year: "numeric",
-                                            month: "numeric",
-                                            day: "numeric",
-                                            hour12: false,
-                                        }).format(new Date(entry.created))}
-                                    </small>
+                                        >
+                                            {entry.transaction_type} {entry.amount}лв
+                                        </strong>
+                                    </div>
+
+                                    <div className={styles.detailsBox}>
+                                        <small>
+                                            {entry.transaction_type === "+"
+                                                ? "изпрати"
+                                                : "получи"}
+                                        </small>
+                                        <small>
+                                            {new Intl.DateTimeFormat("en-US", {
+                                                hour: "numeric",
+                                                minute: "numeric",
+                                                year: "numeric",
+                                                month: "numeric",
+                                                day: "numeric",
+                                                hour12: false,
+                                            }).format(new Date(entry.created))}
+                                        </small>
+                                    </div>
                                 </div>
-                            </div>
                         </li>
                     )) : <Empty style={{ fontFamily: "var(--body-font-family)", marginBottom: "20px" }} description="Няма транзакции" />}
             </ul>

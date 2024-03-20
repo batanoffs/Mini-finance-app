@@ -18,7 +18,7 @@
 }
 
 .bentoFillColumn {
-    flex: 4 0 min(200px);
+    flex: 5 0 min(200px);
     flex-direction: column;
     display: inline-flex;
     flex-wrap: wrap;
@@ -26,10 +26,10 @@
 }
 
 .bentoSideColumn {
-    flex: 0 0 max(200px);
+    flex: 0 0 max(150px);
     flex-direction: column;
-    display: inline-flex;
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: inline-flex;
     gap: 0.5em;
 }
 
@@ -39,7 +39,7 @@
     width: 100dvw;
     margin: 1em;
     gap: 0.5em;
-    height: calc(100dvh - 80px);
+    height: calc(100dvh - 70px);
 }
 .contentContainerProfileTab {
     display: flex;
@@ -59,6 +59,6 @@
         flex-direction: row;
     }
     .bentoSideColumn {
-        flex: 0 0 max(200px);
+        flex: 0 0 max(250px);
     }
 }

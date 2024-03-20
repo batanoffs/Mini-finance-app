@@ -1,15 +1,22 @@
 .transactionsBoxWrapper {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    gap: 0.5em;
     margin-bottom: 1em;
 }
 
-.transactionsProfileWrapper {
+.detailsBox {
     display: flex;
-    align-items: center;
+    align-content: space-between;
+    justify-content: space-between;
+
 }
 
-.transactionsAmountInfo {
-    margin-left: auto;
+.detailsWrapper {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    flex-direction: column;
+    width: calc(100% - 60px);
+
 }

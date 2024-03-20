@@ -25,29 +25,24 @@ export const History = () => {
                     .sort((a, b) => new Date(b.created) - new Date(a.created))
                     .slice(0, 4)
                     .map((transaction) => (
-                        <li key={transaction.objectId} data-key={transaction.objectId}>
-                            <div className={styles.transactionsBoxWrapper}>
-                                <div className={styles.transactionsProfileWrapper}>
-                                    <img
-                                        src={transaction.receiver[0].avatar}
-                                        className={blocks.profileImage}
-                                        alt="avatar"
-                                    />
-                                    <div>
-                                        <p>
-                                            <strong>
-                                                {transaction.receiver[0].fullName}
-                                            </strong>
-                                        </p>
-
-                                        <small> получил</small>
-                                    </div>
-                                </div>
-                                <div className={styles.transactionsAmountInfo}>
-                                    <strong style={{ display: "block", textAlign: "right", color: "darkred" }}>
-                                        <span> - </span>{" "}
-                                        {transaction.amount}лв
+                        <li key={transaction.objectId} data-key={transaction.objectId} className={styles.transactionsBoxWrapper}>
+                            <img
+                                src={transaction.receiver[0].avatar}
+                                className={blocks.profileImage}
+                                alt="avatar"
+                            />
+                            <div className={styles.detailsWrapper}>
+                                <div className={styles.detailsBox}>
+                                    <strong>
+                                        {transaction.receiver[0].fullName}
                                     </strong>
+                                    <strong style={{ display: "block", textAlign: "right", color: "darkred" }}>
+                                       - {transaction.amount}лв
+                                    </strong>
+                                </div>
+                                <div className={styles.detailsBox}>
+                                    <small> получил</small>
+                                   
                                     <small>
                                         {new Intl.DateTimeFormat("en-US", {
                                             hour: "numeric",
