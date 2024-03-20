@@ -4,7 +4,7 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
-import { Button, Space, App } from 'antd';
+import { Button, App } from 'antd';
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {
@@ -19,6 +19,7 @@ export const Notifications = () => {
             .catch((error) => console.log(error));
     }, [userDataId]);
 
+        console.table(notificationsState);
     const showMessage = (type, text) => {
         type === "error" ? message.error(text) :
         type === "success" ? message.success(text) :
@@ -32,7 +33,6 @@ export const Notifications = () => {
         if (!notificationId) {
             throw new Error("Notification id is null");
         }
-
         try {
             await notifications.updateSeenStatus(notificationId, true, token);
             const result = await notifications.getNotifications(userDataId);
@@ -53,7 +53,6 @@ export const Notifications = () => {
             console.error("Missing data to accept notification", { id: notificationId, senderId});
             return;
         }
-
         try {
             await notifications.updateFriendRequestStatus(notificationId, "accepted", true, token);
             const result = await notifications.getNotifications(userDataId);
@@ -62,8 +61,6 @@ export const Notifications = () => {
             const setReceiverFriend = await dataService.setRelation(userDataId, "friends", [senderId]);
             const setSenderFriend = await dataService.setRelation(senderId, "friends", [userDataId]);
             const getSender = await dataService.getUser(senderId);
-            console.log("sendner", getSender);
-
             
             if (setReceiverFriend === 1 && setSenderFriend === 1) {
                 setAuth({...auth, friends: [...auth.friends, getSender]});
@@ -73,11 +70,7 @@ export const Notifications = () => {
                 showMessage("warning", "Вече сте добавили този приятел");
             }
         } catch (error) {
-            console.error(
-                "Error loading friend request or setting relation",
-                { id: notificationId, senderId },
-                error
-            );
+            console.error("Error loading friend request or setting relation",{ id: notificationId, senderId }, error);
             showMessage("error", error.message);
         }
     };
@@ -95,6 +88,29 @@ export const Notifications = () => {
         }
     };
 
+    const onTransactionApprove = async (e) => {
+        const parentElement = e.currentTarget.parentElement.parentElement.parentElement;
+        const notificationId = parentElement && parentElement.getAttribute("data-key");
+        try {
+            //TODO
+            console.log("Transaction approved!");
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const onTransactionDecline = async (e) => {
+        const parentElement = e.currentTarget.parentElement.parentElement.parentElement;
+        const notificationId = parentElement && parentElement.getAttribute("data-key");
+        try {
+            //TODO
+            console.log("Transaction declined!");
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className={styles.dropdownNotifications}>
@@ -110,11 +126,6 @@ export const Notifications = () => {
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
                     notificationsState
-                        .filter(
-                            (notify) =>
-                                notify?.event_type === "friend request" ||
-                                notify?.event_type === "money received"
-                        )
                         .map((notify) =>
                             notify?.event_type === "friend request" &&
                             notify?.status === "pending" ? (
@@ -124,37 +135,29 @@ export const Notifications = () => {
                                     data-key={notify.objectId}
                                 >
                                     <img className={styles.profileImage} src={notify.sender?.[0]?.avatar} alt="avatar" />
-                                    <small>
-                                        Покана за приятелство от{" "}
-                                        {notify.sender?.[0]?.fullName ??
-                                            "Unknown"}
-                                    </small>
-                                    <Space>
-                                        <Button
-                                            data-sender={`${
-                                                notify.sender?.[0]?.objectId ??
-                                                ""
-                                            }`}
-                                            type="primary"
-                                            className={styles.btnRemove}
-                                            onClick={acceptHandler}
-                                        >
-                                            приеми
-                                        </Button>
-                                    </Space>
-                                    <Space>
-                                        <Button
-                                            data-sender={`${
-                                                notify.sender?.[0]?.objectId ??
-                                                ""
-                                            }`}
-                                            type="primary"
-                                            className={styles.btnRemove}
-                                            onClick={rejectHandler}
-                                        >
-                                            откажи
-                                        </Button>
-                                    </Space>
+                                    <small> Покана за приятелство от{" "}{notify.sender?.[0]?.fullName ?? "Unknown"} </small>
+                                    <Button
+                                        data-sender={`${
+                                            notify.sender?.[0]?.objectId ??
+                                            ""
+                                        }`}
+                                        type="primary"
+                                        className={styles.btnRemove}
+                                        onClick={acceptHandler}
+                                    >
+                                        приеми
+                                    </Button>
+                                    <Button
+                                        data-sender={`${
+                                            notify.sender?.[0]?.objectId ??
+                                            ""
+                                        }`}
+                                        type="primary"
+                                        className={styles.btnRemove}
+                                        onClick={rejectHandler}
+                                    >
+                                        откажи
+                                    </Button>
                                 </li>
                             ) : notify?.reciver?.[0]?.objectId === userDataId &&
                               notify?.event_type === "friend request" &&
@@ -164,23 +167,15 @@ export const Notifications = () => {
                                     key={`${notify.objectId} ${notify.status} ${notify.seen}`}
                                     data-key={notify.objectId}
                                 >
-                                    <small>
-                                        {notify.sender?.[0]?.fullName ??
-                                            "Unknown"}{" "}
-                                        прие вашата покана
-                                    </small>
-
-                                    
-                                    <Space>
-                                        <Button
-                                            data-key={notify.objectId}
-                                            className={styles.btnRemove}
-                                            onClick={deleteNotificationHandler}
-                                            type="primary"
-                                        >
-                                            Изтриване
-                                        </Button>
-                                    </Space>
+                                    <small> {notify.sender?.[0]?.fullName ?? "Unknown"}{" "}прие вашата покана</small>
+                                    <Button
+                                        data-key={notify.objectId}
+                                        className={styles.btnRemove}
+                                        onClick={deleteNotificationHandler}
+                                        type="primary"
+                                    >
+                                        изтриване
+                                    </Button>
                                 </li>
                             ) : notify?.event_type === "money received" ? (
                                 <li
@@ -189,27 +184,53 @@ export const Notifications = () => {
                                     data-key={notify.objectId}
                                 >
                                     <div>
-                                        <small>
-                                            Получихте{" "}
+                                        <small>Получихте{" "}
                                             <b style={{ color: "green" }}>
                                                 {notify.amount ?? "Unknown"}лв
                                             </b>{" "}
-                                            от{" "}
-                                            {notify.sender?.[0]?.fullName ??
-                                                "Unknown"}{" "}
+                                            от{" "} {notify.sender?.[0]?.fullName ?? "Unknown"}
                                         </small>
                                     </div>
-                                    
-                                    <Space style={{ margin: "auto 0 auto auto" }}>
-                                        <Button
+                                    <Button
                                         type="primary"
-                                            data-key={notify.objectId}
-                                            className={styles.btnRemove}
-                                            onClick={deleteNotificationHandler}
-                                        >
-                                            Изтриване
-                                        </Button>
-                                    </Space>
+                                        data-key={notify.objectId}
+                                        className={styles.btnRemove}
+                                        onClick={deleteNotificationHandler}
+                                    >
+                                        изтриване
+                                    </Button>
+                                </li>
+                            ) : notify?.event_type === "money request" ? (
+                                <li
+                                    className={styles.singleNotification}
+                                    key={notify.objectId}
+                                    data-key={notify.objectId}
+                                >
+                                    <img className={styles.profileImage} src={notify.sender?.[0]?.avatar} alt="avatar" />
+                                    <small>{notify.sender?.[0]?.fullName ?? "Unknown"} {" "}поиска {" "}
+                                        <b style={{ color: "darkred" }}>
+                                            {notify.amount ?? "Unknown"}лв
+                                        </b>{" "}от Вас
+                                    </small>
+                                    <Button
+                                        data-sender={`${
+                                            notify.sender?.[0]?.objectId ??
+                                            ""
+                                        }`}
+                                        type="primary"
+                                        className={styles.btnRemove}
+                                        onClick={onTransactionApprove}
+                                    >
+                                        изпрати
+                                    </Button>
+                                    <Button
+                                        data-sender={`${ notify.sender?.[0]?.objectId ?? "" }`}
+                                        type="primary"
+                                        className={styles.btnRemove}
+                                        onClick={onTransactionDecline}
+                                    >
+                                        откажи
+                                    </Button>
                                 </li>
                             ) : (
                                 <li key="empty" className="notifications-block border-bottom">

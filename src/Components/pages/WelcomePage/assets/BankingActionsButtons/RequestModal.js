@@ -45,29 +45,23 @@ export const RequestMoney = ({userInput, setUserInput, showModal, setShowModal})
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
-        const formElementSelect =
-            e.target.parentElement.parentElement.parentElement.parentElement
-                .parentElement;
+        const formElementSelect = e.target;
         const form = new FormData(formElementSelect);
         const { amount, friends } = Object.fromEntries(form);
         if (!amount || !friends) {
+            showMessage("error", "Моля, попълнете всички полета");
             return;
         }
+        console.log(amount, friends);
 
-        const response = await transactions.request(
+        const response = await transactions.requestNotify(
             friends,
             Number(amount),
-            "+",
             userDataId,
             token
         );
         if (response.success) {
-            await transactions.notify(
-                friends,
-                Number(amount),
-                userDataId,
-                token
-            );
+            
             setShowModal({ ...showModal, [`request`]: false });
             setUserInput({ amount: "", friends: "" });
             showMessage("success", "Успешно поискахте парите");

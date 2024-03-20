@@ -24,12 +24,10 @@ export const AddToFavorites = ({ setShowFavourites }) => {
 
         try {
             const findFriend = auth.friends.filter((friend) => friend.fullName === inputName);
+            const body = [findFriend[0].objectId];
+
             if(!findFriend) throw new Error("Този потребител не е ваш приятел!");
             if(!findFriend.length) throw new Error("Този потребител не е ваш приятел!");
-
-            console.log(findFriend);
-            console.log(inputName);
-            const body = [findFriend[0].objectId];
             if(!userInput) throw new Error("Моля въведете име!");
             if(!userDataId) throw new Error("Нещо се обърка");
 
@@ -38,7 +36,6 @@ export const AddToFavorites = ({ setShowFavourites }) => {
             if (response !== 1) {
                 setShowFavourites(false);
                 throw new Error("Нещо се обърка!");
-                
             }
 
             if (response === 1) {
@@ -62,11 +59,17 @@ export const AddToFavorites = ({ setShowFavourites }) => {
                                 name="favorite-name"
                                 userInput={userInput}
                                 setUserInput={setUserInput}
-                                suggestions={[...auth.friends.map((friend) => friend.fullName)]}
+                                suggestions={[...auth.friends.map((friend) =>  {
+                                    return {
+                                        name: friend.fullName,
+                                        avatar: friend.avatar,
+                                        objectId: friend.objectId
+                                    }
+                                })]}
                         />
                         <input type="submit" className="custom-btn" value="Добави към любими" />
                     </form>
-                </div>
+                </div> 
             </div>
     );
 };

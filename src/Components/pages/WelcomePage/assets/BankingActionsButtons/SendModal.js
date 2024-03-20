@@ -10,7 +10,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
     const { message } = App.useApp();
-
+    
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {
             setReceiver(
@@ -43,16 +43,14 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
-        const formElementSelect =
-            e.target.parentElement.parentElement.parentElement.parentElement
-                .parentElement;
+        const formElementSelect = e.target;
         const form = new FormData(formElementSelect);
         const { amount, friends } = Object.fromEntries(form);
         if (!amount || !friends) {
             return;
         }
 
-        const response = await transactions.send(
+        const response = await transactions.sendMoney(
             friends,
             Number(amount),
             "+",
@@ -91,7 +89,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                     <button onClick={onClose}>X</button>
                 </div>
                 <div className="form-content">
-                    <form>
+                    <form onSubmit={onFormSubmitHandler}>
                         <div className="form-group">
                             <label htmlFor="amount">Сума:</label>
                             <input
@@ -119,9 +117,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
                                 className="button-primary"
                                 type="submit"
                                 value="Изпрати"
-                                style={{ width: "100%" }}
-                                onClick={onFormSubmitHandler}
-
+                                style={{ width: "100%" }}                                
                             />
                         </footer>
                     </form>

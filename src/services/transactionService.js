@@ -66,9 +66,66 @@ const getAllReceiver = async (reciverId) => {
 const getAllSender = async (reciverId) => {
     return await request.get(`${baseURL}${endpoints.transactionsSender(reciverId)}`);
 }
+// Request Money 
+const requestNotify = async (fullname, amount, sender, token) => {
+    const body = {
+        isolationLevelEnum: "READ_COMMITTED",
+        operations: [
+            {
+                operationType: "FIND",
+                table: "UserData",
+                opResultId: "findReciever",
+                payload: {
+                    whereClause: `fullName = '${fullname}'`,
+                },
+            },
+            {
+                operationType: "CREATE",
+                table: "UserNotifications",
+                opResultId: "newEntry",
+                payload: {
+                    event_type: "money request",
+                    amount: amount,
+                },
+            },
+            {
+                operationType: "ADD_RELATION",
+                table: "UserNotifications",
+                opResultId: "notificationReceiver",
+                payload: {
+                    parentObject: {
+                        ___ref: true,
+                        opResultId: "newEntry",
+                        propName: "objectId",
+                    },
+                    relationColumn: "sender",
+                    unconditional: [sender],
+                },
+            },
+            {
+                operationType: "ADD_RELATION",
+                table: "UserNotifications",
+                opResultId: "notificationSender",
+                payload: {
+                    parentObject: {
+                        ___ref: true,
+                        opResultId: "newEntry",
+                        propName: "objectId",
+                    },
+                    relationColumn: "receiver",
+                    unconditional: {
+                        ___ref: true,
+                        opResultId: "findReciever",
+                    },
+                },
+            },
+        ],
+    };
+    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
+}
 
 // Send Money
-const send = async (fullname, amount, type, sender, token) => {
+const sendMoney = async (fullname, amount, type, sender, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -185,9 +242,10 @@ const notify = async (fullname, amount, sender, token) => {
 }
 
 export const transactions = {
-    send,
+    sendMoney,
     notify,
     getAllReceiver,
     getAllSender,
     updateBalance,
+    requestNotify
 };

@@ -15,7 +15,7 @@ const MyApp = () => {
         navigate(-1);
     };
 
-    //TODO if not authorized user implement logic for the forbidden page 
+    //TODO if not authorized user - implement logic for the forbidden page 
     // const Forbidden = () => (
     //     <Result
     //       status="403"
