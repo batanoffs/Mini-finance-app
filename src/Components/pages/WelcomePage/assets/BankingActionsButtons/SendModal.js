@@ -16,7 +16,11 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
             setReceiver(
                 response.friends.map((friend) => {
                     if (friend.fullName) {
-                        return friend.fullName;
+                        return {
+                            "name": friend.fullName,
+                            "avatar": friend.avatar,
+                            "objectId": friend.objectId,
+                        };
                     } else {
                         return null;
                     }

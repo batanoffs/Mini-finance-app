@@ -1,4 +1,4 @@
-.ellipsisIcon {
+.threeDotsIcon {
     aspect-ratio: 1;
     height: 1.3em;
     display: inline-block;
@@ -7,8 +7,8 @@
     color: var(--white-color);
 }
 
-.ellipsisIcon:hover {
-    color: var(--primary-color);
+.threeDotsIcon:hover {
+    color: var(--primary-hover-color);
     transition: 0.1s ease;
 }
 

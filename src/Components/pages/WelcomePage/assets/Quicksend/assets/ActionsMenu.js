@@ -9,7 +9,7 @@ export const ActionsMenu = ({setShowFavourites, setShowBtns, showActionsHandler,
         <>
             <FontAwesomeIcon
                 icon={faEllipsisV}
-                className={styles.ellipsisIcon}
+                className={styles.threeDotsIcon}
                 onClick={showActionsHandler}
             />
 

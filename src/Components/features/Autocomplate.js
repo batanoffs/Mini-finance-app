@@ -11,7 +11,7 @@ export const Autocomplete = (props) => {
         const suggestions = props.suggestions;
         const filtered = suggestions.filter(
             (suggestion) =>
-                suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1
+                suggestion.name.toLowerCase().indexOf(input.toLowerCase()) > -1
         );
 
         setActiveSuggestion(0);
@@ -71,11 +71,12 @@ export const Autocomplete = (props) => {
                         return (
                             <li
                                 className={className}
-                                key={suggestion}
+                                key={suggestion.objectId}
                                 onClick={onClick}
                                 name="friends"
-                            >
-                                {suggestion}
+                            > 
+                            <img className="profile-image" src={suggestion.avatar} alt={suggestion.name} />
+                            <p>{suggestion.name}</p> 
                             </li>
                         );
                     })}
@@ -100,8 +101,8 @@ export const Autocomplete = (props) => {
                     type="text"
                     style={{
                         marginBottom: "0px",
-                        border: "0px",
-                        borderBottom: "1px solid var(--border-color)",
+                        border: "none",
+                        width: "100%"
                     }}
                     onChange={onChange}
                     onKeyDown={onKeyDown}

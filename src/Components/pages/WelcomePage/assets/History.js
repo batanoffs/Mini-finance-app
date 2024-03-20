@@ -41,7 +41,7 @@ export const History = () => {
                                     </strong>
                                 </div>
                                 <div className={styles.detailsBox}>
-                                    <small> получил</small>
+                                    <small> получи</small>
                                    
                                     <small>
                                         {new Intl.DateTimeFormat("en-US", {

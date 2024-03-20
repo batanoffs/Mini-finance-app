@@ -1,10 +1,10 @@
 .suggestion-box {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #ddd;
   padding: 0.5rem;
 }
 
 .no-suggestions {
-  color: var(--border-color);
+  color: #ddd;
   text-align: left;
   padding-left: 0.8em;
 }
@@ -21,15 +21,17 @@
 }
 
 .suggestions li {
-  text-align: start;
-  padding-left: 0.8em;
-  
+  padding: 0.3em;
+  display: flex;
+  gap: 0.3em;
+  align-items: center;
 }
 
 .suggestions-wrapper {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-color);
+  width: 60%;
+  border: 1px solid #ddd;
   /* border-top-style: none; */
   border-bottom-left-radius: 0.8em;
   border-bottom-right-radius: 0.8em;
@@ -37,8 +39,18 @@
   border-top-left-radius: 0.8em;
 }
 
-.suggestion-active,
-.suggestions li:hover {
+.profile-image{
+  width: 20px;
+  height: 20px;
+  border-radius: 20%;
+}
+
+.suggestion-active {
+  border-top: 1px solid #ddd;
+}
+
+.suggestion-active p,
+.suggestions li, .suggestions li p:hover {
   color: var(--primary-color);
   cursor: pointer;
   font-weight: 500;
@@ -46,6 +58,6 @@
 }
 
 .suggestions li:not(:last-of-type) {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #ddd;
   
 }

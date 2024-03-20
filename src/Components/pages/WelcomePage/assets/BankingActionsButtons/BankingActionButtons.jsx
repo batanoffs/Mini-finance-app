@@ -1,6 +1,6 @@
 import { TopUp } from "./TopUpModal";
 import { SendMoney } from "./SendModal";
-import { ReceiveMoney } from "./ReceiveModal";
+import { RequestMoney } from "./RequestModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVault, faMoneyBillTransfer, faHandHoldingDollar} from "@fortawesome/free-solid-svg-icons";
 import blocks from "../../custom-block.module.css";
@@ -41,7 +41,7 @@ export const BankingActionButtons = ({userInput, setUserInput, showModal, setSho
             
             {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
             {showModal.send && <SendMoney userInput={userInput} setUserInput={setUserInput} showModal={showModal} setShowModal={setShowModal} />}
-            {showModal.receive && <ReceiveMoney showModal={showModal} setShowModal={setShowModal} />}
+            {showModal.receive && <RequestMoney showModal={showModal} setShowModal={setShowModal} />}
         </div>
     );
 };
