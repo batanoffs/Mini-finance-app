@@ -1,4 +1,4 @@
-import { transactions } from "../../../../services/transactionService";
+import { transactionService } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { Empty } from 'antd';
@@ -10,7 +10,7 @@ export const History = ({formatDate}) => {
     const { userDataId } = useContext(AuthContext);
 
     useEffect(() => {
-        transactions
+        transactionService
             .getAllSender(userDataId)
             .then(setTransactionsList)
             .catch(console.error);

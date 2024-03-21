@@ -2,10 +2,8 @@ import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
-import { transactions } from "../../../../../services/transactionService";
-
+import { transactionService } from "../../../../../services/transactionService";
 import { App } from "antd";
-
 import modal from "./modal.module.css";
 
 export const RequestMoney = ({userInput, setUserInput, showModal, setShowModal}) => {
@@ -43,39 +41,63 @@ export const RequestMoney = ({userInput, setUserInput, showModal, setShowModal})
         setUserInput({ ...userInput, [e.target.name]: e.target.value });
     };
 
-    const onFormSubmitHandler = async (e) => {
-        e.preventDefault();
-        const formElementSelect = e.target;
-        const form = new FormData(formElementSelect);
-        const { amount, friends } = Object.fromEntries(form);
-        if (!amount || !friends) {
-            showMessage("error", "Моля, попълнете всички полета");
-            return;
-        }
-        console.log(amount, friends);
+    const onFormSubmitHandler = async (event) => {
+        try {
+            if (!event) throw new Error("Event is null");
 
-        const response = await transactions.requestNotify(
-            friends,
-            Number(amount),
-            userDataId,
-            token
-        );
-        if (response.success) {
-            
-            setShowModal({ ...showModal, [`request`]: false });
-            setUserInput({ amount: "", friends: "" });
-            showMessage("success", "Успешно поискахте парите");
+            event.preventDefault();
 
-        } else {
-            setShowModal({ ...showModal, [`request`]: false });
-            setUserInput({ amount: "", friends: "" });
-            showMessage("error", `Грешка при изпращане: ${response.message}`);
-            console.log("error", response);
+            if (!event.target) throw new Error("Form element is null");
+
+            const formElementSelect = event.target;
+            const form = new FormData(formElementSelect);
+
+            if (!form) throw new Error("FormData is null");
+
+            const formEntries = Object.fromEntries(form);
+
+            const { amount, friends } = formEntries;
+
+            if (!amount || !friends) throw new Error("Amount or friends is null or empty");
+
+            const response = await transactionService.requestNotify(
+                friends,
+                Number(amount),
+                userDataId,
+                token
+            );
+
+            if (!response) throw new Error("TransactionService response is null");
+
+            if (response.success) {
+                setShowModal({ ...showModal, [`request`]: false });
+                setUserInput({ amount: "", friends: "" });
+                showMessage("success", "Успешно поискахте парите");
+            } else {
+                setShowModal({ ...showModal, [`request`]: false });
+                setUserInput({ amount: "", friends: "" });
+                showMessage("error", `Грешка при изпращане: ${response.message}`);
+                console.error("error", response);
+            }
+        } catch (error) {
+            showMessage("error", "Грешка при изпращане");
+            console.error(error);
         }
     };
 
     const onClose = () => {
+        if (!showModal) {
+            console.error("showModal is null");
+            return;
+        }
+
         setShowModal({ ...showModal, [`request`]: false });
+
+        if (!userInput) {
+            console.error("userInput is null");
+            return;
+        }
+
         setUserInput({ amount: "", friends: "" });
     };
 

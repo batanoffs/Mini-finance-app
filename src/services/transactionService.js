@@ -241,7 +241,7 @@ const notify = async (fullname, amount, sender, token) => {
     return await request.post(endpoints.transactions, body, null, token);
 }
 
-export const transactions = {
+export const transactionService = {
     sendMoney,
     notify,
     getAllReceiver,

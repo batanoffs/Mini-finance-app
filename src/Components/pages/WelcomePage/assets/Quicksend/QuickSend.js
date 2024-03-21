@@ -54,7 +54,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
             </div>
 
             <ul className={blocks.sendMonkeyContainer}>
-                {favorites?.map((friend) => (
+                {favorites.length > 0 ? favorites?.map((friend) => (
                     <li
                         key={friend.objectId}
                         data-key={friend.fullName}
@@ -68,7 +68,12 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                         />
                         {showBtns && <Actions setShowBtns={setShowBtns} friend={friend} showActionsHandler={showActionsHandler} closeMenuHandler={closeMenuHandler} showMessage={showMessage} />}
                     </li>
-                ))}
+                )) : (
+                    <>
+                        <p style={{display: "inline"}}>Добавете приятели</p>
+                        <AddToFavorites setShowFavourites={setShowFavourites}/>
+                    </>
+                )}
                 {showFavourites && (
                     <AddToFavorites setShowFavourites={setShowFavourites} />
                 )}

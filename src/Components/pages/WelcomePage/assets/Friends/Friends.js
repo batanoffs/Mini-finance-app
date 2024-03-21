@@ -7,7 +7,7 @@ import { App } from "antd";
 import { Empty } from 'antd';
 import blocks from "../../custom-block.module.css";
 import styles from "./friends.module.css";
-import { notifications } from "../../../../../services/notificationService";
+import { notificationService } from "../../../../../services/notificationService";
 
 export const Friends = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
@@ -29,7 +29,7 @@ export const Friends = () => {
         const friendId = e.currentTarget.parentElement.parentElement.getAttribute("data-key");
 
         try {
-            const allFriendRequestNotifications = await notifications.getAllFriendRequests(token);
+            const allFriendRequestNotifications = await notificationService.getAllFriendRequests(token);
             if (!allFriendRequestNotifications) {
                 throw new Error("Failed to fetch friend request notifications");
             }
@@ -45,7 +45,7 @@ export const Friends = () => {
                 );
             });
 
-            await notifications.deleteNotification(checkFriendNotification[0].objectId);
+            await notificationService.deleteNotification(checkFriendNotification[0].objectId);
             await dataService.removeRelation(userDataId, "friends", friendId, token);
             await dataService.removeRelation(friendId, "friends", userDataId, token);
 

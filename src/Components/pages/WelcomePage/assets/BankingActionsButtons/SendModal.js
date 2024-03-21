@@ -2,7 +2,7 @@ import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
-import { transactions } from "../../../../../services/transactionService";
+import { transactionService } from "../../../../../services/transactionService";
 import { App } from "antd";
 import modal from "./modal.module.css";
 
@@ -38,27 +38,43 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
     };
 
     const setUserInputHandler = (e) => {
-        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+        if (!e || !e.target) {
+            throw new Error("Null pointer exception: e.target is null");
+        }
+        const { name, value } = e.target;
+        if (!name) {
+            throw new Error("Null pointer exception: e.target.name is null");
+        }
+        setUserInput({ ...userInput, [name]: value });
     };
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
-        const formElementSelect = e.target;
-        const form = new FormData(formElementSelect);
-        const { amount, friends } = Object.fromEntries(form);
-        if (!amount || !friends) {
-            return;
-        }
+        try {
+            if (!e.target) {
+                throw new Error("Target element does not exist.");
+            }
+            const formElementSelect = e.target;
+            const form = new FormData(formElementSelect);
+            const { amount, friends } = Object.fromEntries(form);
+            if (!amount || !friends) {
+                throw new Error("Amount or friends are not given.");
+            }
 
-        const response = await transactions.sendMoney(
-            friends,
-            Number(amount),
-            "+",
-            userDataId,
-            token
-        );
-        if (response.success) {
-            await transactions.notify(
+            const response = await transactionService.sendMoney(
+                friends,
+                Number(amount),
+                "+",
+                userDataId,
+                token
+            );
+            if (!response) {
+                throw new Error("Transaction service response is null.");
+            }
+            if (!response.success) {
+                throw new Error(`Transaction service error: ${response.message}`);
+            }
+            await transactionService.notify(
                 friends,
                 Number(amount),
                 userDataId,
@@ -67,19 +83,33 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
             setShowModal({ ...showModal, [`send`]: false });
             setUserInput({ amount: "", friends: "" });
             showMessage("success", "Успешно изпратихте парите");
-
-        } else {
+        }
+        catch (error) {
+            console.log("Error in onFormSubmitHandler: ", error);
             setShowModal({ ...showModal, [`send`]: false });
             setUserInput({ amount: "", friends: "" });
-            showMessage("error", `Грешка при изпращане: ${response.message}`);
-            console.log("error", response);
+            showMessage("error", `Грешка при изпращане: ${error.message}`);
         }
     };
 
     const onClose = () => {
+        if (!showModal) {
+            console.error("showModal is null");
+            return;
+        }
+        if (!showModal["send"]) {
+            console.error("showModal.send is null");
+            return;
+        }
         setShowModal({ ...showModal, [`send`]: false });
+
+        if (!userInput) {
+            console.error("userInput is null");
+            return;
+        }
         setUserInput({ amount: "", friends: "" });
     };
+
 
     return (
         <div className={modal.modalBackground}>

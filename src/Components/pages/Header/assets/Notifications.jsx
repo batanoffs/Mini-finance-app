@@ -1,4 +1,4 @@
-import { notifications } from "../../../../services/notificationService";
+import { notificationService } from "../../../../services/notificationService";
 import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
@@ -17,7 +17,7 @@ export const Notifications = () => {
     const { message } = App.useApp();
 
     useEffect(() => {
-        notifications
+        notificationService
             .getNotifications(userDataId)
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
@@ -41,8 +41,8 @@ export const Notifications = () => {
             throw new Error("Notification id is null");
         }
         try {
-            await notifications.updateSeenStatus(notificationId, true, token);
-            const result = await notifications.getNotifications(userDataId);
+            await notificationService.updateSeenStatus(notificationId, true, token);
+            const result = await notificationService.getNotifications(userDataId);
             setnotificationsState(result);
             showMessage("success", "Успешно изтрито съобщение");
         } catch (error) {
@@ -110,6 +110,9 @@ export const Notifications = () => {
                                 formatDate={formatDate}
                                 showMessage={showMessage}
                                 notify={notify}
+                                userDataId={userDataId}
+                                token={token}
+                                setnotificationsState={setnotificationsState}
                             />
                         ) : (
                             <NotFoundNotifications />

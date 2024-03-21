@@ -1,6 +1,6 @@
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
-import { transactions } from "../../../../services/transactionService";
+import { transactionService } from "../../../../services/transactionService";
 import blocks from "../custom-block.module.css";
 
 export const VirtualCard = () => {
@@ -8,7 +8,7 @@ export const VirtualCard = () => {
     const [ card, setCard ] = useState(auth.virtualcard);
 
     useEffect(() => {
-        transactions.updateBalance(userDataId, card.objectId, token)
+        transactionService.updateBalance(userDataId, card.objectId, token)
             .then((data) => {
                 setCard({...card, balance: data.results.updateMoney.result.balance});
                 setAuth({...auth, virtualcard: {...card, balance: data.results.updateMoney.result.balance}});
@@ -26,7 +26,7 @@ export const VirtualCard = () => {
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
             <h5 >Наличност</h5>
-            <h4 style={{ color: "var(--white-color)" }}>{card.balance}лв</h4>
+            <h4 style={{ color: "var(--primary-hover-color)" }}>{card.balance}лв</h4>
 
             <div className={blocks.customBlockNumbers}>
                 <span>****</span>

@@ -54,7 +54,6 @@ export const AddToFavorites = ({ setShowFavourites }) => {
             <div className="modal-backdrop">
                 <div className="popup-modal">
                     <form onSubmit={onSubmit}>
-                        <label htmlFor="favorite-name">Въведи име:</label>
                         <Autocomplete
                                 name="favorite-name"
                                 userInput={userInput}
@@ -67,7 +66,7 @@ export const AddToFavorites = ({ setShowFavourites }) => {
                                     }
                                 })]}
                         />
-                        <input type="submit" className="custom-btn" value="Добави към любими" />
+                        <input type="submit" className="custom-btn-fill" value="Добави към любими" />
                     </form>
                 </div> 
             </div>

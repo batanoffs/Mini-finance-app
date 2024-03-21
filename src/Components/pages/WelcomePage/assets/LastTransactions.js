@@ -2,7 +2,7 @@ import styles from "./LastTransactions.module.css";
 import blocks from "../custom-block.module.css";
 import { Empty } from 'antd';
 import { Link } from "react-router-dom";
-import { transactions } from "../../../../services/transactionService";
+import { transactionService } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
@@ -11,7 +11,7 @@ export const LastTransactions = ({formatDate}) => {
     const { userDataId } = useContext(AuthContext);
 
     useEffect(() => {
-        transactions.getAllReceiver(userDataId)
+        transactionService.getAllReceiver(userDataId)
             .then((result) => setAllTransactions(result))
             .catch((error) => console.log(error));
     }, [userDataId]);

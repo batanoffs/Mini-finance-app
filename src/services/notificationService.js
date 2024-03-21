@@ -2,35 +2,39 @@ import * as request from "./requester";
 
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
-    selectNotification: (objectId) => `/data/UserNotifications/${objectId}`,
-    notificationsRelations: `/data/UserNotifications?loadRelations&relationsDepth=1`,
-    transactions: "/transaction/unit-of-work",
+    selectNotification: (objectId) => `${baseURL}/data/UserNotifications/${objectId}`,
+    notificationsRelations: `${baseURL}/data/UserNotifications?loadRelations&relationsDepth=1`,
+    transactions: `${baseURL}/transaction/unit-of-work`,
+    relation: (parentObjectId, relationName) => `${baseURL}/data/UserNotifications/${parentObjectId}/${relationName}`,
 };
 
-const updateFriendRequestStatus = async (objectId, statuState, seen, token) => {
+const updateNotificationStatus = async (objectId, statuState, seen, token, ) => { //senderId, receiverId
     const body = { status: `${statuState}`, seen: seen };
-    return await request.put(`${baseURL}${endpoints.selectNotification(objectId)}`,body, token);
+    return await request.put(endpoints.selectNotification(objectId),body, token);
+};
+
+const updateRelation = async (parentObjectId, relationName, id, token) => {
+    const body = [id];
+    return await request.put(endpoints.relation(parentObjectId, relationName), body, token);
 };
 
 const updateSeenStatus = async (objectId, seenState, token) => {
     const body = { seen: seenState };
-    return await request.put(`${baseURL}${endpoints.selectNotification(objectId)}`,body,token);
+    return await request.put(endpoints.selectNotification(objectId),body,token);
 };
 
 const getNotifications = async (reciverId, token) => {
     const query = encodeURIComponent(`receiver='${reciverId}' and seen='false'`);
-    return await request.get(`${baseURL}${endpoints.notificationsRelations}&where=${query}`, token);
+    return await request.get(`${endpoints.notificationsRelations}&where=${query}`, token);
 };
 
 const deleteNotification = async (objectId) => {
-    return await request.del(
-        `${baseURL}${endpoints.selectNotification(objectId)}`
-    );
+    return await request.del(endpoints.selectNotification(objectId));
 };
 
 const getAllFriendRequests = async (token) => {
     const query = encodeURIComponent(`event_type='friend request'`);
-    return await request.get(`${baseURL}${endpoints.notificationsRelations}&where=${query}`, token);
+    return await request.get(`${endpoints.notificationsRelations}&where=${query}`, token);
 };
 
 const createNotification = async ( phone, receiver, event, currentUserId, token ) => {
@@ -95,14 +99,15 @@ const createNotification = async ( phone, receiver, event, currentUserId, token 
         ],
     };
 
-    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token );
+    return await request.post(endpoints.transactions, body, null, token );
 };
 
-export const notifications = {
+export const notificationService = {
     createNotification,
     getNotifications,
-    updateFriendRequestStatus,
+    updateNotificationStatus,
     deleteNotification,
     getAllFriendRequests,
     updateSeenStatus,
+    updateRelation,
 };

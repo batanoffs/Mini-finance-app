@@ -1,4 +1,4 @@
-import { notifications } from "../../../../services/notificationService";
+import { notificationService } from "../../../../services/notificationService";
 import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,27 +15,25 @@ export const FriendRequestNotification = ({
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
 
     const acceptFriendHandler = async (e) => {
-        const parentElement =
-            e.currentTarget.parentElement.parentElement.parentElement;
-        const notificationId =
-            parentElement && parentElement.getAttribute("data-key");
+        const notificationId = e.currentTarget.parentElement.getAttribute("data-key");
         const senderId = e.currentTarget.getAttribute("data-sender");
 
         if (!notificationId || !senderId) {
-            console.error("Missing data to accept notification", {
+            console.error("Missing notification id or sender id", {
                 id: notificationId,
                 senderId,
             });
+            showMessage("error", "Липсва ID");
             return;
         }
         try {
-            await notifications.updateFriendRequestStatus(
+            await notificationService.updateNotificationStatus(
                 notificationId,
                 "accepted",
                 true,
                 token
             );
-            const result = await notifications.getNotifications(userDataId);
+            const result = await notificationService.getNotifications(userDataId);
             setnotificationsState(result);
 
             const setReceiverFriend = await dataService.setRelation(
@@ -74,25 +72,34 @@ export const FriendRequestNotification = ({
     };
 
     const rejectFriendHandler = async (e) => {
-        const parentElement =
-            e.currentTarget.parentElement.parentElement.parentElement;
-        const notificationId =
-            parentElement && parentElement.getAttribute("data-key");
+        const notificationId = e.currentTarget.parentElement.getAttribute("data-key");
+
+        if (!notificationId) {
+            console.error("Missing notification id", notificationId);
+            showMessage("error", "Липсва ID");
+            return;
+        }
+
         try {
-            await notifications.updateFriendRequestStatus(
+            await notificationService.updateNotificationStatus(
                 notificationId,
                 "declined",
                 true,
                 token
             );
-            const result = await notifications.getNotifications(
+            const response = await notificationService.getNotifications(
                 userDataId,
                 token
             );
-            setnotificationsState(result);
-            showMessage("error", "Поканата за приятелство е отхвърлена");
+            if (response) {
+                showMessage("error", "Поканата за приятелство е отхвърлена");
+                setnotificationsState(response);
+            } else {
+                showMessage("error", "Възникна грешка при отхвърляне на покана");
+            }
         } catch (error) {
-            console.log(error);
+            showMessage("warning", "Възникна грешка при отхвърляне на покана");
+            console.error(error);
         }
     };
 

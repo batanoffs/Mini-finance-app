@@ -1,42 +1,78 @@
-import { notifications } from "../../../../services/notificationService";
-import { dataService } from "../../../../services/userDataService";
-import { AuthContext } from "../../../../contexts/AuthContext";
-import { useContext, useEffect, useState } from "react";
-import { App } from "antd";
+import { notificationService } from "../../../../services/notificationService";
+import { transactionService } from "../../../../services/transactionService";
 import styles from "./notifications.module.css";
 
 export const MoneyRequestNotification = ({
     formatDate,
     showMessage,
     notify,
+    userDataId,
+    token,
+    setnotificationsState
 }) => {
     const onTransactionApprove = async (e) => {
-        const parentElement =
-            e.currentTarget.parentElement.parentElement.parentElement;
-        const notificationId =
-            parentElement && parentElement.getAttribute("data-key");
+        const notificationElement = e.currentTarget.parentElement;
+        if (!notificationElement) {
+            showMessage("error", "Възникна грешка при изпращането");
+            return;
+        }
+        const notificationId = notificationElement.getAttribute("data-key");
+        if (!notificationId) {
+            showMessage("error", "Възникна грешка при изпращането");
+            return;
+        }
+        const requesterName = e.currentTarget.getAttribute("data-requester-name");
+        if (!requesterName) {
+            showMessage("error", "Възникна грешка при изпращането");
+            return;
+        }
+        const amountStr = e.currentTarget.getAttribute("data-amount");
+        if (!amountStr) {
+            showMessage("error", "Възникна грешка при изпращането");
+            return;
+        }
+        const amount = Number(amountStr);
+        if (isNaN(amount)) {
+            showMessage("error", "Възникна грешка при изпращането");
+            return;
+        }
         try {
             //TODO
-            console.log("Transaction approved!");
-            showMessage("success", "Транзакцията е потвърдена");
+            const response = await transactionService.sendMoney(requesterName, amount, "+", userDataId, token);
+            if (response.success) {
+                await notificationService.updateNotificationStatus(notificationId, "accepted", true, token);
+                await notificationService.updateSeenStatus(notificationId, true, token);
+                const getNotificationsResponse  = await notificationService.getNotifications(userDataId);
+                await transactionService.notify(requesterName, amount, userDataId, token); // make new notification for transaction approved
+                setnotificationsState(getNotificationsResponse);
+                showMessage("success", "Изпращането е успешно");
+            } 
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            showMessage("error", "Възникна грешка при изпращането");
+        }
+    };
+ 
+    const onTransactionDecline = async (e) => {
+        const notificationId = e.currentTarget.parentElement?.getAttribute("data-key");
+        if (!notificationId) {
+            console.error("Notification id is null");
+            showMessage("error", "Възникна грешка при изпращането");
+            return;
+        }
+
+        try {
+            await notificationService.updateNotificationStatus(notificationId, "declined", true, token);
+            const getNotificationsResponse  = await notificationService.getNotifications(userDataId);
+
+            setnotificationsState(getNotificationsResponse);
+            showMessage("error", "Транзакцията е отказана");
+        } catch (error) {
+            console.error(error);
+            showMessage("error", "Възникна грешка при изпращането");
         }
     };
 
-    const onTransactionDecline = async (e) => {
-        const parentElement =
-            e.currentTarget.parentElement.parentElement.parentElement;
-        const notificationId =
-            parentElement && parentElement.getAttribute("data-key");
-        try {
-            //TODO
-            console.log("Transaction declined!");
-            showMessage("error", "Транзакцията е отхвърлена");
-        } catch (error) {
-            console.log(error);
-        }
-    };
     return (
         <li
             className={styles.singleNotification}
@@ -60,6 +96,8 @@ export const MoneyRequestNotification = ({
             </section>
             <button
                 data-sender={`${notify.sender?.[0]?.objectId ?? ""}`}
+                data-requester-name={notify.sender?.[0]?.fullName ?? "Unknown"}
+                data-amount={notify.amount ?? "Unknown"}
                 className={styles.btnAccept}
                 onClick={onTransactionApprove}
             >
@@ -67,6 +105,7 @@ export const MoneyRequestNotification = ({
             </button>
             <button
                 data-sender={`${notify.sender?.[0]?.objectId ?? ""}`}
+                data-requester-name={notify.sender?.[0]?.fullName ?? "Unknown"}
                 className={styles.btnRemove}
                 onClick={onTransactionDecline}
             >
