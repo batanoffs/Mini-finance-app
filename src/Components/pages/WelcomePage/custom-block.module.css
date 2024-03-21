@@ -89,7 +89,8 @@
 .customBlockEditIcon {
     background: var(--custom-btn-bg-color);
     border-radius: var(--border-radius-large);
-    color: var(--white-color);
+    color: var(--primary-hover-color);
+
     width: 35px;
     height: 35px;
     line-height: 35px;
@@ -97,8 +98,8 @@
 }
 
 .customBlockEditIcon:hover {
-    background: var(--custom-btn-bg-hover-color);
-    color: var(--primary-hover-color);
+    background: var(--primary-hover-color);
+    color: var(--white-color);
 }
 
 .customBlockProfile .customBlockEditIcon {
@@ -131,8 +132,8 @@
 
 .customBlockIcon {
     position: relative;
-    background: var(--custom-btn-bg-color);
-    color: white;
+    color: var(--white-color);
+    background: var(--primary-hover-color);
     width: 30px;
     height: 30px;
     border: none;
@@ -159,8 +160,8 @@
 }
 
 .customBlockIcon:hover {
-    background: var(--custom-btn-bg-hover-color);
     color: var(--primary-hover-color);
+    background: var(--custom-btn-bg-color);
 }
 
 .customBlockIcon:hover::before {

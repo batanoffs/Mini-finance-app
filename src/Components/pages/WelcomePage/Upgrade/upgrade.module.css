@@ -42,7 +42,7 @@
 }
 
 .confirmButton:hover {
-    background-color: var(--custom-btn-bg-hover-color);
+    background-color: var(--primary-hover-color);
 }
 
 .displayFeatures {

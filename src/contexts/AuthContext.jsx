@@ -125,7 +125,7 @@ export const AuthProvider = ({ children }) => {
             objectId: `Липсва информация`,
             created: `информация`,
         },
-        picture: auth.avatar,
+        picture: auth.avatar || "https://notablepen.backendless.app/api/files/app/UserData/default.png",
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         favorites: auth.favorite_friends || [],
