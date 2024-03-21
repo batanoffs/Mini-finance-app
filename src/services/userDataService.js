@@ -4,6 +4,7 @@ const baseUrl = "https://notablepen.backendless.app/api";
 const endpoints = {
   user: `${baseUrl}/data/UserData`,
   transactions: `${baseUrl}/data/transaction/unit-of-work`,
+  cardsMockData : `${baseUrl}/data/CardsMockData`,
   getUserById: (ownerId) =>
     `${baseUrl}/data/UserData/${ownerId}`,
   relation: (parentObjectId, relationName) =>
@@ -19,22 +20,11 @@ const endpoints = {
   uploadURL: (ownerId, fileName) =>
     `${baseUrl}/files/app/UserData/${ownerId}/${fileName}`,
 };
-// -    getUserCardFriends: (ownerId) => `/data/UserData?where=ownerId='${ownerId}'&loadRelations=virtualcard%2Cfriends`,
-// -    setUserData: `/data/UserData`,
-// -    mockCardObjectId: (id) => `/data/CardsMockData?where=cards_mock_data_id=${id}`,
-// -    targetRelation: (parentObjectId, relationName) => `/data/UserData/${parentObjectId}/${relationName}`,
-// -    loadSpecificRelation: (parentObjectId, relationName) => `/data/UserData/${parentObjectId}?loadRelations=${relationName}&relationsDepth=1`,
-// -    getFriends: (parentObjectId) => `/data/UserData/${parentObjectId}/friends?loadRelations=friends&relationsDepth=1`,
-// -    attribute: (attribute, value) => `/data/UserData?where=${attribute}='${value}'`,
-// -    setAttribute: (objectId) => `/data/UserData/${objectId}`,
-// -    getAll: (ownerId) => `/data/UserData?where=ownerId='${ownerId}'`,
-// -    transactions: "/data/transaction/unit-of-work",
-// -    uploadURL: (ownerId, fileName) => `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}?overwrite=true`,
-// -    filePathURL: (ownerId, fileName) => `https://notablepen.backendless.app/api/files/app/UserData/${ownerId}/${fileName}`,
 
 // GET USER DATA
-const getUserData = async (id) => {
-  return await request.get(`${endpoints.user}?where=ownerId='${id}'&loadRelations=virtualcard,friends,favorite_friends`);
+const getUserData = async (ownerId) => {
+  const query = encodeURIComponent(`ownerId='${ownerId}'`); // EncodeURI
+  return await request.get(`${endpoints.user}?loadRelations=virtualcard,friends,favorite_friends&where=${query}`);
 };
 
 // SET USER DATA
@@ -74,7 +64,8 @@ const removeRelation = async (parentObjectId, relationName, friendId, token) => 
 
 // GET VIRTUAL CARD
 const getMockCardObjectId = async (id) => {
-  return await request.get(`${baseUrl}/data/CardsMockData?where=cards_mock_data_id=${id}`);
+  const query = encodeURIComponent(`cards_mock_data_id='${id}'`);
+  return await request.get(`${endpoints.cardsMockData}?where=${query}`);
 };
 
 // SET USER PROFILE PICTURE

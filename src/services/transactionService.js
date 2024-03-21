@@ -2,10 +2,8 @@ import * as request from "./requester";
 
 const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
-    transactions: "/transaction/unit-of-work",
-    transactionsReceiver: (owenerId) => `/data/MoneyTransactions?where=receiver='${owenerId}'&loadRelations&relationsDepth=1`, 
-    transactionsSender: (owenerId) => `/data/MoneyTransactions?where=sender='${owenerId}'&loadRelations&relationsDepth=1`, 
-    allSorted: "/data/MoneyTransactions?loadRelations&relationsDepth=1",
+    transactions: `${baseURL}/transaction/unit-of-work`,
+    moneyTransactions: `${baseURL}/data/MoneyTransactions?loadRelations&relationsDepth=1`,
 };
 
 const updateBalance = async (owenerId,cardId, token) => {
@@ -54,17 +52,19 @@ const updateBalance = async (owenerId,cardId, token) => {
         ],
     };
 
-    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
+    return await request.post(endpoints.transactions, body, null, token);
 }
 
 // Get all transactions with id for receiver
 const getAllReceiver = async (reciverId) => {
-    return await request.get(`${baseURL}${endpoints.transactionsReceiver(reciverId)}`);
+    const query = encodeURIComponent(`receiver='${reciverId}'`);
+    return await request.get(`${endpoints.moneyTransactions}&where=${query}`);
 }
 
 // Get all transactions with id for sender
-const getAllSender = async (reciverId) => {
-    return await request.get(`${baseURL}${endpoints.transactionsSender(reciverId)}`);
+const getAllSender = async (senderId) => {
+    const query = encodeURIComponent(`sender='${senderId}'`);
+    return await request.get(`${endpoints.moneyTransactions}&where=${query}`);
 }
 // Request Money 
 const requestNotify = async (fullname, amount, sender, token) => {
@@ -121,7 +121,7 @@ const requestNotify = async (fullname, amount, sender, token) => {
             },
         ],
     };
-    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
+    return await request.post(endpoints.transactions, body, null, token);
 }
 
 // Send Money
@@ -180,7 +180,7 @@ const sendMoney = async (fullname, amount, type, sender, token) => {
         ],
     };
 
-    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
+    return await request.post(endpoints.transactions, body, null, token);
 };
 
 // Notify
@@ -238,7 +238,7 @@ const notify = async (fullname, amount, sender, token) => {
             },
         ]
     }
-    return await request.post(`${baseURL}${endpoints.transactions}`, body, null, token);
+    return await request.post(endpoints.transactions, body, null, token);
 }
 
 export const transactions = {
