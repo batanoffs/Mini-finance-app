@@ -184,7 +184,7 @@ const sendMoney = async (fullname, amount, type, sender, token) => {
 };
 
 // Notify
-const notify = async (fullname, amount, sender, token) => {
+const notifyMoneyReceived = async (fullname, amount, sender, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -243,7 +243,7 @@ const notify = async (fullname, amount, sender, token) => {
 
 export const transactionService = {
     sendMoney,
-    notify,
+    notifyMoneyReceived,
     getAllReceiver,
     getAllSender,
     updateBalance,

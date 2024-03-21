@@ -33,15 +33,15 @@ export const History = ({formatDate}) => {
                             />
                             <div className={styles.historyDetailsWrapper}>
                                 <div className={styles.detailsBox}>
-                                    <strong>
-                                        Платихте
-                                    </strong>
+                                    <small>
+                                        Платихте на
+                                    </small>
                                     <strong style={{ display: "block", textAlign: "right", color: "darkred" }}>
                                        - {transaction.amount}лв
                                     </strong>
                                 </div>
                                 <div className={styles.detailsBox}>
-                                    <small> на {transaction.receiver[0].fullName}</small>
+                                    <strong>  {transaction.receiver[0].fullName}</strong>
                                    
                                     <small>
                                         {formatDate(transaction.created)}

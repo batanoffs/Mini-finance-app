@@ -74,7 +74,7 @@ export const SendMoney = ({userInput, setUserInput, showModal, setShowModal}) =>
             if (!response.success) {
                 throw new Error(`Transaction service error: ${response.message}`);
             }
-            await transactionService.notify(
+            await transactionService.notifyMoneyReceived(
                 friends,
                 Number(amount),
                 userDataId,

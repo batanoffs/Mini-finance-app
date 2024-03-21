@@ -43,7 +43,7 @@ export const MoneyRequestNotification = ({
                 await notificationService.updateNotificationStatus(notificationId, "accepted", true, token);
                 await notificationService.updateSeenStatus(notificationId, true, token);
                 const getNotificationsResponse  = await notificationService.getNotifications(userDataId);
-                await transactionService.notify(requesterName, amount, userDataId, token); // make new notification for transaction approved
+                await transactionService.notifyMoneyReceived(requesterName, amount, userDataId, token); // make new notification for transaction approved
                 setnotificationsState(getNotificationsResponse);
                 showMessage("success", "Изпращането е успешно");
             } 
