@@ -4,7 +4,6 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet,faGear,faHandshakeAngle,faHouse, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
-import card from "../../../../images/credit-card.png";
 import styles from "./sidebar.module.css";
 
 export const Sidebar = () => {
@@ -101,7 +100,7 @@ export const Sidebar = () => {
 
                     <li className={styles.featureBox}>
                         <img
-                            src={card}
+                            src="https://notablepen.backendless.app/api/files/app/AppData/home/credit-card2.png"
                             alt="credit card"
                         />
 

@@ -1,4 +1,7 @@
 import * as request from "./requester";
+// import 'dotenv/config'
+
+// const { APPLICATION_ID, REST_API_KEY } = process.env;
 
 const baseUrl = "https://notablepen.backendless.app/api";
 const endpoints = {
@@ -19,6 +22,7 @@ const endpoints = {
     `${baseUrl}/data/UserData/${objectId}`,
   uploadURL: (ownerId, fileName) =>
     `${baseUrl}/files/app/UserData/${ownerId}/${fileName}`,
+  // download : (fileName, path) => `https://eu.backendlessappcontent.com/${APPLICATION_ID}/${REST_API_KEY}/files/${path}/${fileName}`
 };
 
 // GET USER DATA
@@ -77,6 +81,10 @@ const uploadProfilePicture = async (fileName, ownerId, file, token) => {
   return await request.post(`${endpoints.uploadURL(ownerId, fileName)}?overwrite=true`, data, file, token);
 };
 
+// const downloadFile = async (fileName, path) => {
+//   return await request.get(endpoints.download(fileName, path));
+// }
+
 // ADD TRANSACTIONS
 const addTransactions = async (data) => {
   return await request.post(endpoints.transactions, data);
@@ -99,4 +107,5 @@ export const dataService = {
     addTransactions,
     getAllFriends,
     getUser,
+    // downloadFile
 };

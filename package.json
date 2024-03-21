@@ -17,6 +17,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.13.1",
+    "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-credit-cards-2": "^1.0.2",
     "react-dom": "^18.2.0",
@@ -52,11 +53,12 @@
     ]
   },
   "devDependencies": {
+    "dotenv-webpack": "^8.0.1",
     "gh-pages": "^6.1.1"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/batanoff/mini-finance.git"
+    "type": "git",
+    "url": "https://github.com/batanoff/mini-finance.git"
   },
   "author": "Daniel Batanov",
   "license": "MIT"

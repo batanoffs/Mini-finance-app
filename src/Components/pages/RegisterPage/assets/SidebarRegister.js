@@ -1,5 +1,4 @@
-import pic from "../../../../images/svg/money-transfer-isometric-60529.svg";
-import React from "react";
+// import pic from "../../../../images/svg/money-transfer-isometric-60529.svg";
 import { Divider, Steps } from "antd";
 import styles from "../register.module.css";
 
@@ -43,7 +42,7 @@ export const SidebarRegister = (props) => {
 
             <Divider />
             
-            <img src={pic} alt="theme display" />
+            <img src="https://notablepen.backendless.app/api/files/app/AppData/home/money-transfer-isometric-60529.svg" alt="theme display" />
         </div>
     );
 };
