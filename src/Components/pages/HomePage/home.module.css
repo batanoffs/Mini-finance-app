@@ -1,17 +1,23 @@
-.homeContainer {
-    background: linear-gradient(
-        to right,
-        #b3cde0,
-        #9ad2ee
-    ); /* Lighter blue gradient */
-    width: 100dvw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 1em;
+:root {
+    --home-padding: 1em;
+    --home-gap: 1em;
+    --hero-aspect-ratio: 93.52/53.2;
 }
 
+.homeContainer {
+    background: linear-gradient(to right, #b3cde0, #9ad2ee);
+    display: flex;
+    width: 100dvw;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--home-padding);
+    gap: var(--home-gap);
+}
+
+.loginContainer {
+    display: none;
+}
 .textContainer {
     display: flex;
     flex: 1;
@@ -19,81 +25,73 @@
     justify-content: space-between;
     align-items: center;
     height: 0;
+    gap: var(--home-gap);
 }
-
-.titleContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-}
-
-.titleContainer h1 {
+.homeContainer h1 {
     margin: 0;
-    margin-top: 1em;
+    font-size: 1.6em;
     text-align: center;
-    font-size: 1.8em;
-    text-wrap: balance;
 }
 
-.titleContainer p {
-    text-align: center;
-    text-wrap: balance;
+.buttonContainer {
+    font-size: 0.6em;
 }
 
-.scalingSvgContainer {
-    flex: 0 0 350px;
-    width: 100%;
+.buttonContainer a {
+    z-index: 1;
+}
+.heroSection {
+    flex: 0 0 calc(100vh / var(--hero-aspect-ratio));
     position: relative;
-    padding: 0;
-    padding-bottom: 56.92%; /* Aspect ratio 93.52:53.2 */
-    /* override this inline for aspect ratio other than square */
+    text-align: center;
 }
 
 .scalingSvg {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
+    z-index: 0;
+    aspect-ratio: var(--hero-aspect-ratio);
+    object-fit: cover;
     left: 0;
-    top: 0;
-    /* bottom: 1em; */
+    top: calc(100dvh / var(--hero-aspect-ratio) / 2);
 }
+
 .buttonContainer {
-    gap: 1em;
-    width: 100%;
-    margin-top: 1em;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    margin-top: 2em;
+    gap: var(--home-gap);
+    width: 100%;
+    z-index: 4em;
 }
 
-@media screen and (min-width: 700px) and (max-width: 1100px) {
-    html {
-        font-size: 14px;
+@media screen and (min-width: 700px) and (max-width: 1099px) {
+    :root {
+        --home-padding: 3em;
     }
-
+    .scalingSvg {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
     .homeContainer {
+        flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
-        padding: 1em;
-        gap: 0em;
+        padding: var(--home-padding);
     }
 
-    .textContainer {
-        flex: auto;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
-        height: auto;
-        margin: 0 3em;
+    .loginContainer {
+        display: none;
     }
-
-    .scalingSvgContainer {
-        flex: 0 0 550px;
-        width: 100%;
+    .heroSection {
+        flex: 1 0 calc(100vh / var(--hero-aspect-ratio));
         position: relative;
-        padding: 0;
-        padding-bottom: 56.92%; /* Aspect ratio 93.52:53.2 */
-        /* override this inline for aspect ratio other than square */
     }
 
     .titleContainer {
@@ -101,60 +99,97 @@
         justify-content: start;
         gap: 2em;
     }
+    .homeContainer h1 {
+        margin: 0;
+        font-size: 3em;
+        text-align: center;
+    }
 
     .buttonContainer {
+        font-size: 1em;
+    }
+    .buttonContainer {
         gap: 0.5em;
-        margin: 0em;
+        margin: 0;
         width: 100%;
-        display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+    }
+    .buttonContainer a {
+        z-index: 1;
     }
 }
 
 @media (min-width: 1100px) {
-    html {
-        font-size: 16px;
+    :root {
+        --home-padding: 2em;
+    }
+    .scalingSvg {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
     }
 
     .homeContainer {
         flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0 2em;
-        gap: 1em;
+        justify-content: space-between;
+        align-items: inherit;
+        padding: var(--home-padding);
+        gap: var(--home-gap);
     }
+    .homeContainer h1 {
+        margin: 0;
+        font-size: 3em;
+        text-align: center;
+    }
+    .loginContainer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        margin: 0 auto;
+        gap: 2em;
+    }
+
+    .loginContainer h1 {
+        margin: 0;
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    .loginContainer p {
+        text-align: center;
+    }
+
     .titleContainer {
         justify-content: center;
-        gap: 1em;
+        gap: var(--home-gap);
     }
+
     .titleContainer h1 {
         margin: 0;
         margin-bottom: 2em;
     }
-    
-    .scalingSvgContainer {
+
+    .heroSection {
         flex: 0 0 800px;
         width: 100%;
         position: relative;
-        padding: 0;
-        padding-bottom: 56.92%; /* Aspect ratio 93.52:53.2 */
-        /* override this inline for aspect ratio other than square */
-    }
-    .textContainer {
-        flex: auto;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-
+        border-radius: 2em;
+        animation: rainbowBorder 12s ease-in-out infinite;
     }
 
+    .buttonContainer a {
+        z-index: 1;
+    }
 
     .buttonContainer {
         margin-top: 2em;
-        gap: 1em;
         width: 100%;
         display: flex;
         justify-content: center;
+        font-size: 1em;
     }
 }

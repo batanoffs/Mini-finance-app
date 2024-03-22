@@ -9,13 +9,13 @@ export const SidebarRegister = (props) => {
                 <Steps
                     direction="vertical"
                     size="small"
-                
+                    style={{fontFamily: "var(--body-font-family)", padding: "0 20px"}}
                     current={props.currentStep}
                     items={[
                         {
                             title: "Създаване на акаунт",
                             description:
-                                "Имейл и парола.",
+                                "въведете имейл и парола",
                         },
                         {
                             title: "Лична информация",
@@ -23,18 +23,17 @@ export const SidebarRegister = (props) => {
                                 "данни от потребителя",
                         },
                         {
-                            title: "Общи условия",
-                            description: "условия за ползване",
-                        },
-                        {
-                            title: "Проферка на идентичност",
+                            title: "Идентичност",
                             description:
                                 "моля пуснете вашата камера",
                         },
-                        
                         {
-                            title: "Проверка и регистрация",
+                            title: "Общи условия",
                             description: "",
+                        },
+                        {
+                            title: "Регистрация",
+                            description: "проверете данните",
                         },
                     ]}
                 />
