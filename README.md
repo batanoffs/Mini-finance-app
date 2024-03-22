@@ -8,12 +8,13 @@ Test user accounts:
 
 ## Features
 
-- Online virtual card generation
-- Account top-up via user's credit card
-- Adding friends
-- Notifications
-- User-to-user transactions
+- Get online virtual card generation upon register
+- Account top-up via user's debit card, paypal or bank transfer
+- Add friends, manage friends, add favourite friends
+- Real-time notifications
+- User-to-user transactions send receive money
 - Transaction history tracking
+- User profile management (picture, profile details)
 
 ## Libraries and Services
 
@@ -24,6 +25,7 @@ The project utilizes the following libraries and services:
 - [react-router](https://reactrouter.com/en/main) library
 - [react credit card](https://www.npmjs.com/package/react-credit-cards-2) library
 - [Ant Design](https://ant.design/) library for a few components
+- [FaceIO](https://console.faceio.net) library for face recognition
 
 ## Usage
 
@@ -35,6 +37,7 @@ Here are some examples of how to use this project:
 4. Making a transaction to another user in the ecosystem
 5. Viewing transaction history
 6. Changing profile info and profile picture
+7. Interact with notifications
 
 ## Installation
 
