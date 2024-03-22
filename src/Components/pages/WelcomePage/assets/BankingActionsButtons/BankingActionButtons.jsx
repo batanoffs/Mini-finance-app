@@ -18,26 +18,38 @@ export const BankingActionButtons = ({userInput, setUserInput, showModal, setSho
             className={`${blocks.customBlock} ${blocks.customBlockBottom}`}
             style={{ maxHeight: "85px" }}
         >
-            <FontAwesomeIcon
-                className={blocks.customBlockIcon}
-                data-text="Top up"
-                icon={faVault}
-                onClick={handleShowModal("topUp")}
-            />
-
-            <FontAwesomeIcon
-                className={blocks.customBlockIcon}
-                data-text="Send money"
-                icon={faMoneyBillTransfer}
-                onClick={handleShowModal("send")}
-            />
-
-            <FontAwesomeIcon
-                className={blocks.customBlockIcon}
-                data-text="Request money"
-                icon={faHandHoldingDollar}
-                onClick={handleShowModal("request")}
-            />
+            <div className={blocks.transactionBtns}>
+                <button
+                    className={blocks.transactionBtn}
+                    data-text="Зареди сметка"
+                    onClick={handleShowModal("topUp")}
+                >
+                    <FontAwesomeIcon
+                        className={blocks.icon}
+                        icon={faVault}
+                    />
+                </button>
+                <button
+                    className={blocks.transactionBtn}
+                    data-text="Изпрати пари"
+                    onClick={handleShowModal("send")}
+                >
+                    <FontAwesomeIcon
+                        className={blocks.icon}
+                        icon={faMoneyBillTransfer}
+                    />
+                </button>
+                <button
+                    className={blocks.transactionBtn}
+                    data-text="Поискай пари"
+                    onClick={handleShowModal("request")}
+                >
+                    <FontAwesomeIcon
+                        className={blocks.icon}
+                        icon={faHandHoldingDollar}
+                    />
+                </button>
+            </div>
             
             {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
             {showModal.send && <SendMoney userInput={userInput} setUserInput={setUserInput} showModal={showModal} setShowModal={setShowModal} />}

@@ -9,7 +9,6 @@
     display: flex;
     width: 100dvw;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     padding: var(--home-padding);
     gap: var(--home-gap);
@@ -63,7 +62,7 @@
     margin-top: 2em;
     gap: var(--home-gap);
     width: 100%;
-    z-index: 4em;
+    z-index: 3;
 }
 
 @media screen and (min-width: 700px) and (max-width: 1099px) {
@@ -123,6 +122,7 @@
     :root {
         --home-padding: 2em;
     }
+    
     .scalingSvg {
         position: absolute;
         width: 90%;
@@ -135,22 +135,23 @@
 
     .homeContainer {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: inherit;
         padding: var(--home-padding);
         gap: var(--home-gap);
     }
+
     .homeContainer h1 {
         margin: 0;
         font-size: 3em;
         text-align: center;
     }
+
     .loginContainer {
         display: flex;
         flex-direction: column;
         align-self: center;
         margin: 0 auto;
-        gap: 2em;
     }
 
     .loginContainer h1 {

@@ -1,23 +1,18 @@
-import { Link } from "react-router-dom";
-import { useValidate } from "../../../../hooks/useValidate";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const EmailForm = ({
     email,
     password,
     confirmPassword,
+    error,
     changeHandler,
     currentStepsHandler,
 }) => {
-    const { error, errorHandler, clearErrorHandler } = useValidate({
-        email: "",
-        password: "",
-        confirmPassword: "",
-        nodivs: "",
-    });
-
     const onNextPageHandler = (e) => {
         if (!!email && !!password && confirmPassword === password) {
             currentStepsHandler(e);
+            console.log(email, password, confirmPassword);
         }
     };
 
@@ -40,13 +35,11 @@ export const EmailForm = ({
                         className="form-control"
                         value={email}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
-                        onFocus={clearErrorHandler}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">
-                        Парола{" "}
+                        Парола{' '}
                         <small className="error">* {error.password}</small>
                     </label>
                     <input
@@ -58,13 +51,11 @@ export const EmailForm = ({
                         className="form-control"
                         value={password}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
-                        onFocus={clearErrorHandler}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="confirmPassword">
-                        Потвърди парола{" "}
+                        Потвърди парола{' '}
                         <small className="error">
                             * {error.confirmPassword}
                         </small>
@@ -78,8 +69,6 @@ export const EmailForm = ({
                         className="form-control"
                         value={confirmPassword}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
-                        onFocus={clearErrorHandler}
                     />
                 </div>
                 <footer>
@@ -96,6 +85,11 @@ export const EmailForm = ({
                                 : null
                         }
                         onClick={onNextPageHandler}
+                        disabled={
+                            !email ||
+                            !password ||
+                            confirmPassword !== password
+                        }
                     >
                         Напред
                     </Link>
@@ -108,3 +102,4 @@ export const EmailForm = ({
         </section>
     );
 };
+

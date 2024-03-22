@@ -1,60 +1,37 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Radio } from "antd";
-import { useValidate } from "../../../../hooks/useValidate";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Radio } from 'antd';
 
 export const InfoForm = ({
     firstName,
     lastName,
     gender,
     phoneNumber,
-    adress,
     town,
     country,
+    adress,
+    validateHandler,
+    error,
     changeHandler,
     currentStepsHandler,
 }) => {
-    const [errorOnNext, setError] = useState({
-        status: true,
-        message: "",
-    });
-
-    const { error, errorHandler, clearErrorHandler } = useValidate({
-        firstName: "",
-        lastName: "",
-        gender: "",
-        phoneNumber: "",
-        adress: "",
-        town: "",
-        country: "",
-    });
-
-    const onFocusClearErrorHandler = (e) => {
-        setError({ message: "" });
-        clearErrorHandler(e);
+    const onFocusClearErrorHandler = () => {
+        // Clear error when input is focused
     };
 
     const onNextPageHandler = (e) => {
-        if (
-            !!firstName &&
-            !!lastName &&
-            !!gender &&
-            !!phoneNumber &&
-            !!town &&
-            !!country
-        ) {
-            currentStepsHandler(e);
-            setError({
-                status: false,
-                message: "",
-            });
+        e.preventDefault();
+        const requiredFields = [firstName, lastName, gender, phoneNumber, town, country];
+        const hasEmptyField = requiredFields.some(field => !field);
+
+        if (!hasEmptyField) {
+            currentStepsHandler(e); // Move to the next step
         } else {
-            setError({
-                status: true,
-                message: "Въведете задължителните полета",
-            });
+            // Show error message for empty fields
         }
     };
+    const isNextDisabled = [firstName, lastName, gender, phoneNumber, town, country].some(field => !field);
+
     return (
         <section className="form-container">
             <div className="form-content">
@@ -72,13 +49,14 @@ export const InfoForm = ({
                         placeholder="Име"
                         value={firstName}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
+                        onBlur={validateHandler}
+                        required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="lastName">
-                        Фамилия{" "}
+                        Фамилия{' '}
                         <small className="error">* {error.lastName}</small>
                     </label>
                     <input
@@ -88,7 +66,6 @@ export const InfoForm = ({
                         placeholder="Фамилия"
                         value={lastName}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
                 </div>
@@ -100,17 +77,16 @@ export const InfoForm = ({
                         name="gender"
                         value={gender}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
-                        style={{ marginBottom: "1.2rem", display:"flex", flexDirection:"column", gap:"0.4rem" }}
+                        style={{ marginBottom: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}
                     >
-                        <Radio style={{ fontSize: "1rem"}} value="male"> Мъж </Radio>
-                        <Radio style={{ fontSize: "1rem"}} value="female"> Жена </Radio>
+                        <Radio style={{ fontSize: '1rem' }} value="male"> Мъж </Radio>
+                        <Radio style={{ fontSize: '1rem' }} value="female"> Жена </Radio>
                     </Radio.Group>
                 </div>
                 <div className="form-group">
                     <label htmlFor="phoneNumber">
-                        Телефон{" "}
+                        Телефон{' '}
                         <small className="error">*{error.phoneNumber}</small>
                     </label>
                     <input
@@ -120,7 +96,6 @@ export const InfoForm = ({
                         placeholder="Телефон"
                         value={phoneNumber}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
                 </div>
@@ -135,13 +110,12 @@ export const InfoForm = ({
                         placeholder="Град"
                         value={town}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="country">
-                        Държава{" "}
+                        Държава{' '}
                         <small className="error">* {error.country}</small>
                     </label>
                     <input
@@ -152,7 +126,6 @@ export const InfoForm = ({
                         placeholder="Държава"
                         value={country}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
                 </div>
@@ -165,11 +138,10 @@ export const InfoForm = ({
                         placeholder="Адрес"
                         value={adress}
                         onChange={changeHandler}
-                        onBlur={errorHandler}
                         onFocus={onFocusClearErrorHandler}
                     />
                 </div>
-                <p className="error">{errorOnNext.message}</p>
+                {/* <p className="error">{errorOnNext}</p> */}
                 <footer>
                     <Link
                         to={"/register"}
@@ -181,11 +153,11 @@ export const InfoForm = ({
                         Назад
                     </Link>
                     <Link
-                        to={errorOnNext.status ? null : "/register/identity"}
                         type="submit"
                         name="next"
                         className="button-primary"
                         onClick={onNextPageHandler}
+                        disabled={isNextDisabled}
                     >
                         Напред
                     </Link>

@@ -11,7 +11,7 @@ export const Actions = ({
     closeMenuHandler,
     showMessage,
 }) => {
-    const { favorites, auth, setAuth, userDataId, token, setShowBtns} = useContext(AuthContext);
+    const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext);
 
     const onConfirmHandler = (e) => {
         if (!e) {
@@ -38,7 +38,8 @@ export const Actions = ({
                         favorite_friends: favorites.filter(
                             (favorite) => favorite.objectId !== friendId
                         )});
-                    setShowBtns(false);
+                        // hide fontawesomeicon with showactionshandler
+                    showActionsHandler();
                 })
                 .catch((error) => {
                     console.error(error);

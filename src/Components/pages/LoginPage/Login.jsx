@@ -2,30 +2,38 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 import { useForm } from "../../../hooks/useForm";
-import { useValidate } from "../../../hooks/useValidate";
+import styles from "../RegisterPage/register.module.css";
+import { App } from "antd";
 
 export const Login = () => {
-    const { onLoginSubmitHandler, loginError, setLoginError } =
-        useContext(AuthContext);
-    const { values, changeHandler, onSubmitLogin } = useForm(
+    const { message } = App.useApp();
+    const { onLoginSubmitHandler } = useContext(AuthContext);
+    const { values, error, validateHandler, onFocusHandler, changeHandler, onSubmitLogin } = useForm(
         {
             email: "",
             password: "",
-            confirmPassword: "",
         },
         onLoginSubmitHandler
     );
 
-    const { error, errorHandler, clearErrorHandler } = useValidate({
-        email: "",
-        password: "",
-    });
-
-    const clearErrors = (e) => {
-        clearErrorHandler(e);
-        setLoginError(false);
+    const showMessage = (type, text) => {
+        type === "error" ? message.error(text) :
+        type === "success" ? message.success(text) :
+        type === "warning" ? message.warning(text) :
+        type === "info" ? message.info(text) :
+        message(text);
     };
 
+    const onLogin = async (event) => {
+        const response = await onSubmitLogin(event);
+        console.log("Login response: ", response);
+        if (response) {
+            showMessage("success", "Login successful");
+        } else {
+            showMessage("error", "Login failed");
+        }
+    }
+    
     return (
         <div className="form-container">
             <div className="form-content">
@@ -35,12 +43,11 @@ export const Login = () => {
                 <form
                     style={{ display: `flex`, flexDirection: `column` }}
                     method="post"
-                    onSubmit={onSubmitLogin}
+                    onSubmit={onLogin}
                 >
                     <div className="form-group">
                         <label htmlFor="email">
                         Имейл{" "}
-                            <small className="error">* {error.email}</small>
                         </label>
                         <input
                             type="text"
@@ -49,14 +56,15 @@ export const Login = () => {
                             placeholder="Въведи имейл"
                             value={values.email}
                             onChange={changeHandler}
-                            onBlur={errorHandler}
-                            onFocus={clearErrors}
+                            onBlur={validateHandler}
+                            onFocus={onFocusHandler}
                         />
                     </div>
+                    <small className={styles.error}> {error.email}</small>
+
                     <div className="form-group">
                         <label htmlFor="password">
                             Парола{" "}
-                            <small className="error">* {error.password}</small>
                         </label>
                         <input
                             type="password"
@@ -65,22 +73,19 @@ export const Login = () => {
                             placeholder="Въведи парола"
                             value={values.password}
                             onChange={changeHandler}
-                            onBlur={errorHandler}
-                            onFocus={clearErrors}
+                            onBlur={validateHandler}
+                            onFocus={onFocusHandler}
                         />
                     </div>
+                    <small className={styles.error}> {error.password}</small>
+
                     <Link to="reset">Забравена парола?</Link>
-                    {loginError && (
-                        <small style={{ color: "red" }}>
-                            Грешен е-майл или парола
-                        </small>
-                    )}
                     <footer style={{ marginTop: "1em" }}>
                         <input
                             type="submit"
                             style={{ width: `100%`, textAlign: `center` }}
                             className="button-primary"
-                            onSubmit={onSubmitLogin}
+                            onSubmit={onLogin}
                             value="Вход"
                         />
                     </footer>

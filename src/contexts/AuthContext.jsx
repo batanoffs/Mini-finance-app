@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
     const [avatar, setAvatar] = useState("https://notablepen.backendless.app/api/files/app/UserData/default.png");
     const navigate = useNavigate();
     let loginData;
+
     
 
     const onLoginSubmitHandler = async (formData) => {
@@ -23,26 +24,53 @@ export const AuthProvider = ({ children }) => {
         };
 
         if (!data.login || !data.password) {
-            return;
+            return false;
         }
         try {
             loginData = await authService.login(data);
-            
+
+            if (loginData.message === "Invalid login or password") {
+                console.error(loginData.message);
+                return false;
+            }
+
             const token = loginData["user-token"];
             const ownerId = loginData["ownerId"];
             // Store the token in session storage
             sessionStorage.setItem("token", token);
-            const userDataResponse = await dataService.getUserData(ownerId)
+
+            const userDataResponse = await dataService.getUserData(ownerId);
+
+            if (userDataResponse === null) {
+                throw new Error("userDataResponse is null");
+            }
+
+            if (userDataResponse.length === 0) {
+                throw new Error("userDataResponse has no elements");
+            }
+
             const card = userDataResponse[0].virtualcard[0];
-            userDataResponse[0]["virtualcard"] = card;
-            userDataResponse[0]["email"] = loginData.email;
-            setAuth(userDataResponse[0]);
-            setAvatar(userDataResponse[0].avatar);
+
+            if (card === null) {
+                throw new Error("card is null");
+            }
+
+            const userData = userDataResponse[0];
+
+            userData.virtualcard = card;
+            userData.email = loginData.email;
+
+            setAuth(userData);
+            setAvatar(userData.avatar);
             navigate("/dashboard/overview");
+            return true;
         } catch (error) {
+            console.error(error);
             setLoginError(true);
+            return false;
         }
     };
+
 
     const onRegisterSubmitHandler = async (formData) => {
         if (

@@ -1,7 +1,7 @@
 input:not([type="submit"], [type="button"], [type="radio"], [type="checkbox"]) {
     height: 2em;
     width: 60%;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     padding-left: 0.7em;
     margin-left: 0em;
     border: 1px solid #ddd;
