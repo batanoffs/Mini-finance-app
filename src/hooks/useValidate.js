@@ -79,7 +79,6 @@ export const useValidate = (initialState) => {
                     e.target.parentElement.previousElementSibling.previousElementSibling.querySelector(
                         "input[name='password']"
                     );
-                console.log(target);
                 newErrors[e.target.name] =
                     e.target.value === target.value
                         ? ""
