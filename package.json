@@ -27,7 +27,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+
+    "start": "set \"REACT_APP_NOT_SECRET_CODE=B34FC355-39F4-F3CB-FF3A-482164967700\" && react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",

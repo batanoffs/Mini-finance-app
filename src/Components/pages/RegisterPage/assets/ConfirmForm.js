@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Radio } from "antd";
 import { useState } from "react";
-
+import { App } from "antd";
 export const ConfirmForm = ({
     email,
     password,
@@ -11,15 +11,28 @@ export const ConfirmForm = ({
     country,
     phoneNumber,
     cardId,
-    adress,
+    address,
     town,
     currentStepsHandler,
     onSubmitRegister,
     changeHandler,
 }) => {
     const [isHidden, setHidden] = useState(false);
+    const navigate = useNavigate();
+    const { message } = App.useApp();
+
+    const showMessage = (type, text) => {
+        type === "error" ? message.error(text) :
+        type === "success" ? message.success(text) :
+        type === "warning" ? message.warning(text) :
+        type === "info" ? message.info(text) :
+        message(text);
+    };
     const cardIdGenerator = () => {
+
         const id = Math.floor(Math.random() * 100) + 1;
+        //TODO check if this id has not already been assigned to current users
+        //maybe make request to userData check ids
         return id;
     };
     const onConfirmHandler = (e) => {
@@ -28,6 +41,18 @@ export const ConfirmForm = ({
         setHidden(true);
         changeHandler({ target: { name: "cardId", value: cardIdGenerator() } });
     };
+
+    const onRegisterSubmitHandler = async (e) => {
+        e.preventDefault();
+        const response = await onSubmitRegister(e);
+        if (response) {
+            navigate("/login");
+            showMessage("success", "Registration successful");
+        } else {
+            console.error("response is null", response);
+            showMessage("error", "Registration failed");
+        }
+    }
     return (
         <div className="form-container">
             <div className="form-content">
@@ -49,6 +74,7 @@ export const ConfirmForm = ({
                             placeholder="липсва информация"
                             className="form-control"
                             value={email}
+                            onChange={changeHandler}
                             id="email"
                         />
                     </div>
@@ -61,6 +87,7 @@ export const ConfirmForm = ({
                         placeholder="липсва информация"
                         className="form-control"
                         value={cardId}
+                        onChange={changeHandler}
                         id="cardId"
                     />
                     <input
@@ -72,6 +99,7 @@ export const ConfirmForm = ({
                         placeholder="липсва информация"
                         className="form-control"
                         value={password}
+                        onChange={changeHandler}
                         id="password"
                     />
 
@@ -83,6 +111,7 @@ export const ConfirmForm = ({
                             name="firstName"
                             placeholder="липсва информация"
                             value={firstName}
+                            onChange={changeHandler}
                             disabled
                         />
                     </div>
@@ -94,6 +123,7 @@ export const ConfirmForm = ({
                             name="lastName"
                             placeholder="липсва информация"
                             value={lastName}
+                            onChange={changeHandler}
                             disabled
                         />
                     </div>
@@ -102,6 +132,7 @@ export const ConfirmForm = ({
                         <Radio.Group
                             name="gender"
                             value={gender}
+                            onChange={changeHandler}
                             disabled
                             style={{
                                 marginBottom: "0.5rem",
@@ -122,17 +153,19 @@ export const ConfirmForm = ({
                             name="phoneNumber"
                             placeholder="липсва информация"
                             value={phoneNumber}
+                            onChange={changeHandler}
                             disabled
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="adress">Адрес</label>
+                        <label htmlFor="address">Адрес</label>
                         <input
                             type="text"
                             className="form-control"
-                            name="adress"
+                            name="address"
                             placeholder="липсва информация"
-                            value={adress}
+                            value={address}
+                            onChange={changeHandler}
                             disabled
                         />
                     </div>
@@ -144,6 +177,7 @@ export const ConfirmForm = ({
                             name="town"
                             placeholder="липсва информация"
                             value={town}
+                            onChange={changeHandler}
                             disabled
                         />
                     </div>
@@ -156,6 +190,7 @@ export const ConfirmForm = ({
                             id="country"
                             placeholder="липсва информация"
                             value={country}
+                            onChange={changeHandler}
                             disabled
                         />
                     </div>
@@ -173,7 +208,7 @@ export const ConfirmForm = ({
 
                     <input
                         name="register"
-                        type="submit"
+                        type="button"
                         className="button-primary"
                         value={"Потвърди данните"}
                         onClick={onConfirmHandler}
@@ -184,7 +219,7 @@ export const ConfirmForm = ({
                             type="submit"
                             className="button-primary"
                             value={"Регистрация"}
-                            onClick={onSubmitRegister}
+                            onClick={onRegisterSubmitHandler}
                         />
                     )}
                 </footer>

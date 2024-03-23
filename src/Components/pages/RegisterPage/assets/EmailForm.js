@@ -8,11 +8,12 @@ export const EmailForm = ({
     error,
     changeHandler,
     currentStepsHandler,
+    validateHandler,
+    onFocusHandler,
 }) => {
     const onNextPageHandler = (e) => {
         if (!!email && !!password && confirmPassword === password) {
             currentStepsHandler(e);
-            console.log(email, password, confirmPassword);
         }
     };
 
@@ -35,6 +36,8 @@ export const EmailForm = ({
                         className="form-control"
                         value={email}
                         onChange={changeHandler}
+                        onBlur={validateHandler}
+                        onFocus={onFocusHandler}
                     />
                 </div>
                 <div className="form-group">
@@ -51,6 +54,8 @@ export const EmailForm = ({
                         className="form-control"
                         value={password}
                         onChange={changeHandler}
+                        onBlur={validateHandler}
+                        onFocus={onFocusHandler}
                     />
                 </div>
                 <div className="form-group">
@@ -69,6 +74,8 @@ export const EmailForm = ({
                         className="form-control"
                         value={confirmPassword}
                         onChange={changeHandler}
+                        onBlur={validateHandler}
+                        onFocus={onFocusHandler}
                     />
                 </div>
                 <footer>

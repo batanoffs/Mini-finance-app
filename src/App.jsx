@@ -15,6 +15,8 @@ const MyApp = () => {
         navigate(-1);
     };
 
+    // console.log(process.env.REACT_APP_APPLICATION_ID);
+
     //TODO if not authorized user - implement logic for the forbidden page 
     // const Forbidden = () => (
     //     <Result

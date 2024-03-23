@@ -10,8 +10,8 @@ export const Login = () => {
     const { onLoginSubmitHandler } = useContext(AuthContext);
     const { values, error, validateHandler, onFocusHandler, changeHandler, onSubmitLogin } = useForm(
         {
-            email: "",
-            password: "",
+            email: '',
+            password: '',
         },
         onLoginSubmitHandler
     );
@@ -85,7 +85,7 @@ export const Login = () => {
                             type="submit"
                             style={{ width: `100%`, textAlign: `center` }}
                             className="button-primary"
-                            onSubmit={onLogin}
+                            disabled={!values.email || !values.password}
                             value="Вход"
                         />
                     </footer>
@@ -98,3 +98,4 @@ export const Login = () => {
         </div>
     );
 };
+

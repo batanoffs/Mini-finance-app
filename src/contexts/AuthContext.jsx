@@ -74,21 +74,21 @@ export const AuthProvider = ({ children }) => {
 
     const onRegisterSubmitHandler = async (formData) => {
         if (
-            !formData.email &&
-            !formData.password &&
-            !formData.confirmPassword &&
-            !formData.firstName &&
-            !formData.lastName &&
-            !formData.gender &&
-            !formData.country &&
-            !formData.phoneNumber &&
-            !formData.virtualcard &&
-            !formData.identity &&
-            !formData.adress &&
-            !formData.town &&
+            !formData.email ||
+            !formData.password ||
+            !formData.confirmPassword ||
+            !formData.firstName ||
+            !formData.lastName ||
+            !formData.gender ||
+            !formData.country ||
+            !formData.phoneNumber ||
+            !formData.virtualcard ||
+            !formData.address ||
+            !formData.town ||
             !formData.cardId
         ) {
-            return;
+            console.error("Null or empty value in formData");
+            return false;
         }
 
         const registerData = {
@@ -96,33 +96,37 @@ export const AuthProvider = ({ children }) => {
             password: formData.password,
         }
         try {
-            const response = await authService.register({ ...registerData });
-            const ownerId = response["ownerId"];
-            setAuth(response);
+            const [registerResponse, setUserDataResponse, getCardResponse, setVirtualCardRelationResponse] = await Promise.all([
+                authService.register({ ...registerData }),
+                dataService.setUserData({
+                    adress: formData.address,
+                    cardId: formData.cardId,
+                    country: formData.country,
+                    gender: formData.gender,
+                    fullName: formData.firstName + " " + formData.lastName,
+                    phoneNumber: formData.phoneNumber,
+                    town: formData.town,
+                    ownerId: registerResponse["ownerId"],
+                }),
+                cardService.generateCard(formData.cardId),
+                cardService.setVirtualCardRelation(setUserDataResponse.objectId, [getCardResponse.objectId])
+            ]).then(([registerResponse, setUserDataResponse, getCardResponse, setVirtualCardRelationResponse]) => {
+                if (!registerResponse || !setUserDataResponse || !getCardResponse || !setVirtualCardRelationResponse) {
+                    throw new Error("Not all promises were fullfiled");
+                }
 
-            // SET USER DATA
-            const regUserData = {
-                adress: formData.adress,
-                cardId: formData.cardId,
-                country: formData.country,
-                gender: formData.gender,
-                fullName: formData.firstName + " " + formData.lastName,
-                phoneNumber: formData.phoneNumber,
-                town: formData.town,
-                ownerId: ownerId,
-            }
-            const setUserDataResponse = await dataService.setUserData(regUserData);
-            const userDataObjectId = setUserDataResponse.objectId
+                return [registerResponse, setUserDataResponse, getCardResponse, setVirtualCardRelationResponse];
+            });
 
-            const getCard = await cardService.generateCard(formData.cardId);
-            const cardObjectId = getCard.objectId
-            await cardService.setVirtualCardRelation(userDataObjectId, [cardObjectId]);
             navigate("/login");
             window.alert("Successfully registered!");
         } catch (error) {
             console.log(error);
         }
     };
+
+
+    
     const onLogoutHandler = async () => {
         const token = sessionStorage.getItem("token");
         await authService.logout(token);

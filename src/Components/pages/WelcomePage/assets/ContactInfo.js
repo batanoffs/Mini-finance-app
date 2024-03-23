@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styles from "../custom-block.module.css"
 
 export const ContactInfo = () => {
@@ -15,12 +15,12 @@ export const ContactInfo = () => {
                     </a>
                 </p>
 
-                <Link
+                {/* <Link
                     to="#"
                     className="custom-btn"
                 >
                     Започни Чат
-                </Link>
+                </Link> */}
             </div>
     );
 };

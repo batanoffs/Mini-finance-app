@@ -88,9 +88,9 @@ const request = async (method, url, data, file, token = undefined) => {
         if (!response.ok) {
             console.log(result.message);
         }
-        if (result) {
-            return result;
-        }
+        
+        return result;
+        
     } catch (error) {
         console.warn("Error while requesting data", error);
     }
