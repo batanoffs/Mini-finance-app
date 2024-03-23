@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./about.module.css";
 
 export const About = () => {
@@ -77,8 +78,17 @@ export const About = () => {
                         според вашите нужди, за да ви помогне да постигнете
                         вашите финансови цели.
                     </p>
+                    <Link
+                        to="/"
+                        style={{ fontFamily: "Montserrat", color: "white", margin: "2em auto" }}
+                        className="button-primary"
+                    >
+                        Към начална страница
+                    </Link>
                 </div>
+                
             </div>
+            
         </section>
     );
 };

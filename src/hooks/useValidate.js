@@ -75,11 +75,13 @@ export const useValidate = (initialState) => {
                     : newErrors[e.target.name];
                 break;
             case "confirmPassword":
-                newErrors[e.target.name] =
-                    e.target.value ===
-                    e.target.parentElement.previousElementSibling.querySelector(
+                const target =
+                    e.target.parentElement.previousElementSibling.previousElementSibling.querySelector(
                         "input[name='password']"
-                    ).value
+                    );
+                console.log(target);
+                newErrors[e.target.name] =
+                    e.target.value === target.value
                         ? ""
                         : newErrors[e.target.name];
                 break;

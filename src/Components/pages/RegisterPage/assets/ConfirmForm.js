@@ -47,10 +47,10 @@ export const ConfirmForm = ({
         const response = await onSubmitRegister(e);
         if (response) {
             navigate("/login");
-            showMessage("success", "Registration successful");
+            showMessage("success", "Успешна регистрация, влезте в профила си");
         } else {
             console.error("response is null", response);
-            showMessage("error", "Registration failed");
+            showMessage("error", "Неуспешна регистрация");
         }
     }
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../register.module.css';
 
 export const EmailForm = ({
     email,
@@ -25,7 +26,7 @@ export const EmailForm = ({
                 </header>
                 <div className="form-group">
                     <label htmlFor="email">
-                        Имейл <small className="error">* {error.email}</small>
+                        Имейл <small className="error">*</small>
                     </label>
                     <input
                         type="email"
@@ -40,10 +41,12 @@ export const EmailForm = ({
                         onFocus={onFocusHandler}
                     />
                 </div>
+                <small className={styles.error}> {error.email}</small>
+
                 <div className="form-group">
                     <label htmlFor="password">
                         Парола{' '}
-                        <small className="error">* {error.password}</small>
+                        <small className="error">*</small>
                     </label>
                     <input
                         type="password"
@@ -58,11 +61,13 @@ export const EmailForm = ({
                         onFocus={onFocusHandler}
                     />
                 </div>
+                <small className={styles.error}>{error.password}</small>
+
                 <div className="form-group">
                     <label htmlFor="confirmPassword">
                         Потвърди парола{' '}
                         <small className="error">
-                            * {error.confirmPassword}
+                            * 
                         </small>
                     </label>
                     <input
@@ -78,6 +83,8 @@ export const EmailForm = ({
                         onFocus={onFocusHandler}
                     />
                 </div>
+                <small className={styles.error}>{error.confirmPassword}</small>
+
                 <footer>
                     <Link
                         type="button"
