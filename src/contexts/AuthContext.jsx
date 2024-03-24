@@ -15,8 +15,6 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     let loginData;
 
-    
-
     const onLoginSubmitHandler = async (formData) => {
         const data = {
             login: formData.email,
@@ -24,14 +22,14 @@ export const AuthProvider = ({ children }) => {
         };
 
         if (!data.login || !data.password) {
-            return false;
+            return ;
         }
         try {
             loginData = await authService.login(data);
 
             if (loginData.message === "Invalid login or password") {
                 console.error(loginData.message);
-                return false;
+                return ;
             }
 
             const token = loginData["user-token"];
@@ -67,12 +65,12 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error(error);
             setLoginError(true);
-            return false;
         }
     };
 
 
     const onRegisterSubmitHandler = async (formData) => {
+        console.log(formData);
         if (
             !formData.email ||
             !formData.password ||
@@ -82,7 +80,6 @@ export const AuthProvider = ({ children }) => {
             !formData.gender ||
             !formData.country ||
             !formData.phoneNumber ||
-            !formData.virtualcard ||
             !formData.address ||
             !formData.town ||
             !formData.cardId
@@ -90,40 +87,37 @@ export const AuthProvider = ({ children }) => {
             console.error("Null or empty value in formData");
             return false;
         }
-
+        if(formData.password !== formData.confirmPassword) {
+            console.error("Passwords do not match");
+            return false;
+        }
         const registerData = {
             email: formData.email,
             password: formData.password,
         }
         try {
-            const [registerResponse, setUserDataResponse, getCardResponse, setVirtualCardRelationResponse] = await Promise.all([
-                authService.register({ ...registerData }),
-                dataService.setUserData({
-                    adress: formData.address,
-                    cardId: formData.cardId,
-                    country: formData.country,
-                    gender: formData.gender,
-                    fullName: formData.firstName + " " + formData.lastName,
-                    phoneNumber: formData.phoneNumber,
-                    town: formData.town,
-                    ownerId: registerResponse["ownerId"],
-                }),
-                cardService.generateCard(formData.cardId),
-                cardService.setVirtualCardRelation(setUserDataResponse.objectId, [getCardResponse.objectId])
-            ]).then(([registerResponse, setUserDataResponse, getCardResponse, setVirtualCardRelationResponse]) => {
-                if (!registerResponse || !setUserDataResponse || !getCardResponse || !setVirtualCardRelationResponse) {
-                    throw new Error("Not all promises were fullfiled");
-                }
-
-                return [registerResponse, setUserDataResponse, getCardResponse, setVirtualCardRelationResponse];
+            const registerResponse = await authService.register(registerData);
+            const setUserDataResponse = await dataService.setUserData({
+                adress: formData.address,
+                cardId: formData.cardId,
+                country: formData.country,
+                gender: formData.gender,
+                fullName: formData.firstName + " " + formData.lastName,
+                phoneNumber: formData.phoneNumber,
+                town: formData.town,
+                ownerId: registerResponse["ownerId"],
             });
+            const getCardResponse = await cardService.generateCard(formData.cardId);
+            
+            await cardService.setVirtualCardRelation(setUserDataResponse.objectId, [getCardResponse.objectId]);
 
             navigate("/login");
-            window.alert("Successfully registered!");
         } catch (error) {
             console.log(error);
+            window.alert("Неуспешна регистрация");
         }
     };
+
 
 
     

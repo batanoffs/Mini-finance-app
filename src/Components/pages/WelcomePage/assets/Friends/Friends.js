@@ -3,7 +3,7 @@ import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill, faPiggyBank, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { App } from "antd";
+import { useMessage } from "../../../../../hooks/useMessage";
 import { Empty } from 'antd';
 import blocks from "../../custom-block.module.css";
 import styles from "./friends.module.css";
@@ -11,19 +11,7 @@ import { notificationService } from "../../../../../services/notificationService
 
 export const Friends = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
-    const { message } = App.useApp();
-
-    const showMessage = (type, text) => {
-        type === "error"
-            ? message.error(text)
-            : type === "success"
-            ? message.success(text)
-            : type === "warning"
-            ? message.warning(text)
-            : type === "info"
-            ? message.info(text)
-            : message(text);
-    };
+    const showMessage = useMessage();
 
     const onRemoveFriend = async (e) => {
         const friendId = e.currentTarget.parentElement.parentElement.getAttribute("data-key");

@@ -1,12 +1,13 @@
 import styles from "./LastTransactions.module.css";
 import blocks from "../custom-block.module.css";
+import { formatDate } from "../../../../utils/formatDate";
 import { Empty } from 'antd';
 import { Link } from "react-router-dom";
 import { transactionService } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
-export const LastTransactions = ({formatDate}) => {
+export const LastTransactions = () => {
     const [allTransactions, setAllTransactions] = useState([]);
     const { userDataId } = useContext(AuthContext);
 
@@ -39,13 +40,7 @@ export const LastTransactions = ({formatDate}) => {
                                         style={{
                                             display: "block",
                                             textAlign: "right",
-                                            ...(entry.transaction_type === "+"
-                                                ? {
-                                                    color: "green",
-                                                }
-                                                : {
-                                                    color: "darkred",
-                                                }),
+                                            color: "green",
                                         }}
                                         >
                                             {entry.transaction_type} {entry.amount}лв
@@ -54,9 +49,7 @@ export const LastTransactions = ({formatDate}) => {
 
                                     <div className={styles.detailsBox}>
                                         <small>
-                                            {entry.transaction_type === "+"
-                                                ? "изпрати"
-                                                : "получи"}
+                                            {entry.transaction_type ="изпрати"}
                                         </small>
                                         <small>
                                             {formatDate(entry.created)}

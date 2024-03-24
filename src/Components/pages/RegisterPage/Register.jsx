@@ -3,7 +3,6 @@ import { SidebarRegister } from "./assets/SidebarRegister";
 import { InfoForm } from "./assets/InfoForm";
 import { TermsForm } from "./assets/TermsForm";
 import { ConfirmForm } from "./assets/ConfirmForm";
-import { Identity } from "./assets/Identity";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useForm } from "../../../hooks/useForm";
 import { Routes, Route } from "react-router-dom";
@@ -18,7 +17,6 @@ export const Register = () => {
     const {
         values,
         error,
-        clearErrorHandler,
         onFocusHandler,
         validateHandler,
         changeHandler,
@@ -83,16 +81,6 @@ export const Register = () => {
                             changeHandler={changeHandler}
                             validateHandler={validateHandler}
                             onFocusHandler={onFocusHandler}
-                        />
-                    }
-                />
-                <Route
-                    path="/identity"
-                    element={
-                        <Identity
-                            identity={values.identity}
-                            currentStepsHandler={currentStepsHandler}
-                            changeHandler={changeHandler}
                         />
                     }
                 />

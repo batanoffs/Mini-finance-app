@@ -116,7 +116,7 @@ export const TermsForm = ({
                         type="button"
                         name="prev"
                         className="button-secondary"
-                        to={"/register/identity"}
+                        to={"/register/userinfo"}
                         onClick={currentStepsHandler}
                     >
                         Назад

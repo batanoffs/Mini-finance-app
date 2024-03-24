@@ -3,12 +3,12 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 import { useForm } from "../../../hooks/useForm";
 import styles from "../RegisterPage/register.module.css";
-import { App } from "antd";
+import { useMessage } from "../../../hooks/useMessage";
 
 export const Login = () => {
-    const { message } = App.useApp();
+    const showMessage = useMessage();
     const { onLoginSubmitHandler } = useContext(AuthContext);
-    const { values, error, validateHandler, onFocusHandler, changeHandler, onSubmitLogin } = useForm(
+    const { values, error, changeHandler, onSubmitLogin } = useForm(
         {
             email: '',
             password: '',
@@ -16,20 +16,10 @@ export const Login = () => {
         onLoginSubmitHandler
     );
 
-    const showMessage = (type, text) => {
-        type === "error" ? message.error(text) :
-        type === "success" ? message.success(text) :
-        type === "warning" ? message.warning(text) :
-        type === "info" ? message.info(text) :
-        message(text);
-    };
-
-    const onLogin = async (event) => {
+    const onSubmitLoginHandler = async (event) => {
         const response = await onSubmitLogin(event);
         console.log("Login response: ", response);
-        if (response) {
-            showMessage("success", "Login successful");
-        } else {
+        if (!response) {
             showMessage("error", "Login failed");
         }
     }
@@ -43,7 +33,7 @@ export const Login = () => {
                 <form
                     style={{ display: `flex`, flexDirection: `column` }}
                     method="post"
-                    onSubmit={onLogin}
+                    onSubmit={onSubmitLoginHandler}
                 >
                     <div className="form-group">
                         <label htmlFor="email">
@@ -56,8 +46,6 @@ export const Login = () => {
                             placeholder="Въведи имейл"
                             value={values.email}
                             onChange={changeHandler}
-                            onBlur={validateHandler}
-                            onFocus={onFocusHandler}
                         />
                     </div>
                     <small className={styles.error}> {error.email}</small>
@@ -73,8 +61,6 @@ export const Login = () => {
                             placeholder="Въведи парола"
                             value={values.password}
                             onChange={changeHandler}
-                            onBlur={validateHandler}
-                            onFocus={onFocusHandler}
                         />
                     </div>
                     <small className={styles.error}> {error.password}</small>

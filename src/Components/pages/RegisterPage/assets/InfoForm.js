@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Radio } from "antd";
 import styles from "../register.module.css";
+import { useMessage } from "../../../../hooks/useMessage";
 
 export const InfoForm = ({
     firstName,
@@ -18,6 +18,7 @@ export const InfoForm = ({
     currentStepsHandler,
 }) => {
     const navigate = useNavigate();
+    const showMessage = useMessage();
     const onNextPageHandler = (e) => {
         e.preventDefault();
         const requiredFields = [
@@ -32,9 +33,10 @@ export const InfoForm = ({
 
         if (!hasEmptyField) {
             currentStepsHandler(e); // Move to the next step
-            navigate("/register/identity");
+            navigate("/register/terms");
         } else {
             // Show error message for empty fields
+            showMessage("error", "Моля, попълнете всички полета");
         }
     };
     const isNextDisabled = [

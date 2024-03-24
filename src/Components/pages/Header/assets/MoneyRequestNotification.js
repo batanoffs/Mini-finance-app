@@ -1,15 +1,16 @@
 import { notificationService } from "../../../../services/notificationService";
 import { transactionService } from "../../../../services/transactionService";
+import { useMessage } from "../../../../hooks/useMessage";
 import styles from "./notifications.module.css";
+import { formatDate } from "../../../../utils/formatDate";
 
 export const MoneyRequestNotification = ({
-    formatDate,
-    showMessage,
     notify,
     userDataId,
     token,
     setnotificationsState
 }) => {
+    const showMessage = useMessage();
     const onTransactionApprove = async (e) => {
         const notificationElement = e.currentTarget.parentElement;
         if (!notificationElement) {
@@ -38,7 +39,7 @@ export const MoneyRequestNotification = ({
         }
         try {
             //TODO
-            const response = await transactionService.sendMoney(requesterName, amount, "+", userDataId, token);
+            const response = await transactionService.sendMoney(requesterName, amount, userDataId, token);
             if (response.success) {
                 await notificationService.updateNotificationStatus(notificationId, "accepted", true, token);
                 await notificationService.updateSeenStatus(notificationId, true, token);

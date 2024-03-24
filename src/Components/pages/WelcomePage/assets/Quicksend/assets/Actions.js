@@ -3,16 +3,16 @@ import { AuthContext } from "../../../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
+import { useMessage } from "../../../../../../hooks/useMessage";
 import styles from "../quicksend.module.css";
 
 export const Actions = ({
     friend,
     showActionsHandler,
     closeMenuHandler,
-    showMessage,
 }) => {
     const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext);
-
+    const showMessage = useMessage();
     const onConfirmHandler = (e) => {
         if (!e) {
             console.error("NullPointerException: e is null");

@@ -2,20 +2,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { dataService } from "../../../../../services/userDataService";
 import { Autocomplete } from "../../../../features/Autocomplate";
-import { App } from 'antd';
+import { useMessage } from "../../../../../hooks/useMessage";
 
 export const AddToFavorites = ({ setShowFavourites }) => {
     const { auth, setAuth, token, userDataId } = useContext(AuthContext);
     const [ userInput, setUserInput ] = useState("");
-    const { message } = App.useApp();
-        
-    const showMessage = (type, text) => {
-        type === "error" ? message.error(text) :
-        type === "success" ? message.success(text) :
-        type === "warning" ? message.warning(text) :
-        type === "info" ? message.info(text) :
-        message(text);
-    };
+    const showMessage = useMessage();
 
     const onSubmit = async (event) => {
         event.preventDefault();

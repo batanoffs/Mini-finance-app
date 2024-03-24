@@ -1,5 +1,4 @@
 import { notificationService } from "../../../../services/notificationService";
-import { dataService } from "../../../../services/userDataService";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,13 +7,13 @@ import { FriendRequestNotification, FriendAcceptNotification } from "./FriendReq
 import { IncomeNotification } from "./IncomeNotification";
 import { MoneyRequestNotification } from "./MoneyRequestNotification";
 import { NotFoundNotifications } from "./NotFound";
-import { App } from "antd";
+import { useMessage } from "../../../../hooks/useMessage";
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {
-    const { userDataId, token, auth, setAuth } = useContext(AuthContext);
+    const { userDataId, token } = useContext(AuthContext);
     const [notificationsState, setnotificationsState] = useState([]);
-    const { message } = App.useApp();
+    const showMessage = useMessage();
 
     useEffect(() => {
         notificationService
@@ -22,18 +21,6 @@ export const Notifications = () => {
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
     }, [userDataId]);
-
-    const showMessage = (type, text) => {
-        type === "error"
-            ? message.error(text)
-            : type === "success"
-            ? message.success(text)
-            : type === "warning"
-            ? message.warning(text)
-            : type === "info"
-            ? message.info(text)
-            : message(text);
-    };
 
     const deleteNotificationHandler = async (e) => {
         const notificationId = e.currentTarget.getAttribute("data-key");
@@ -49,16 +36,6 @@ export const Notifications = () => {
             console.error("error while deleting notification", error);
             showMessage("error", error.message);
         }
-    };
-
-    const formatDate = (date) => {
-        return new Intl.DateTimeFormat("bg-BG", {
-            hour: "numeric",
-            minute: "numeric",
-            year: "2-digit",
-            month: "numeric",
-            day: "numeric",
-        }).format(new Date(date));
     };
 
     return (
@@ -78,8 +55,6 @@ export const Notifications = () => {
                         notify?.event_type === "friend request" &&
                         notify?.status === "pending" ? (
                             <FriendRequestNotification
-                                formatDate={formatDate}
-                                showMessage={showMessage}
                                 deleteNotificationHandler={
                                     deleteNotificationHandler
                                 }
@@ -90,8 +65,6 @@ export const Notifications = () => {
                           notify?.event_type === "friend request" &&
                           notify?.seen === false ? (
                             <FriendAcceptNotification
-                                formatDate={formatDate}
-                                showMessage={showMessage}
                                 deleteNotificationHandler={
                                     deleteNotificationHandler
                                 }
@@ -99,7 +72,6 @@ export const Notifications = () => {
                             />
                         ) : notify?.event_type === "money received" ? (
                             <IncomeNotification
-                                formatDate={formatDate}
                                 notify={notify}
                                 deleteNotificationHandler={
                                     deleteNotificationHandler
@@ -107,8 +79,6 @@ export const Notifications = () => {
                             />
                         ) : notify?.event_type === "money request" ? (
                             <MoneyRequestNotification
-                                formatDate={formatDate}
-                                showMessage={showMessage}
                                 notify={notify}
                                 userDataId={userDataId}
                                 token={token}

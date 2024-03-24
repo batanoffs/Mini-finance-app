@@ -1,29 +1,17 @@
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useContext, useState } from "react";
 import { AddToFavorites } from "./AddFavourites";
-import { App } from "antd";
 import blocks from "../../custom-block.module.css";
 import styles from "./quicksend.module.css";
 import { Actions } from "./assets/Actions";
 import { ActionsMenu } from "./assets/ActionsMenu";
+import { useMessage } from "../../../../../hooks/useMessage";
 
 export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {
     const [showFavourites, setShowFavourites] = useState(false);
     const [showBtns, setShowBtns] = useState(false);
     const { favorites } = useContext(AuthContext);
-    const { message } = App.useApp();
-
-    const showMessage = (type, text) => {
-        type === "error"
-            ? message.error(text)
-            : type === "success"
-            ? message.success(text)
-            : type === "warning"
-            ? message.warning(text)
-            : type === "info"
-            ? message.info(text)
-            : message(text);
-    };
+    const showMessage = useMessage();
 
     const openSendMenu = (event) => {
         const name = event.currentTarget.parentElement.getAttribute("data-key");
@@ -67,7 +55,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                             alt={"avatar"}
                             onClick={openSendMenu}
                         />
-                        {showBtns && <Actions setShowBtns={setShowBtns} friend={friend} showActionsHandler={showActionsHandler} closeMenuHandler={closeMenuHandler} showMessage={showMessage} />}
+                        {showBtns && <Actions setShowBtns={setShowBtns} friend={friend} showActionsHandler={showActionsHandler} closeMenuHandler={closeMenuHandler}/>}
                     </li>
                 )) : (
                     <>

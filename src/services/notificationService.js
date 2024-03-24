@@ -1,6 +1,6 @@
 import * as request from "./requester";
+import { baseURL} from "../constants/baseUrl"
 
-const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
     selectNotification: (objectId) => `${baseURL}/data/UserNotifications/${objectId}`,
     notificationsRelations: `${baseURL}/data/UserNotifications?loadRelations&relationsDepth=1`,

@@ -1,6 +1,6 @@
 import * as request from "./requester";
+import { baseURL } from "../constants/baseUrl";
 
-const baseURL = "https://notablepen.backendless.app/api";
 const endpoints = {
     transactions: `${baseURL}/transaction/unit-of-work`,
     moneyTransactions: `${baseURL}/data/MoneyTransactions?loadRelations&relationsDepth=1`,
@@ -125,7 +125,7 @@ const requestNotify = async (fullname, amount, sender, token) => {
 }
 
 // Send Money
-const sendMoney = async (fullname, amount, type, sender, token) => {
+const sendMoney = async (fullname, amount, sender, token) => {
     const body = {
         isolationLevelEnum: "READ_COMMITTED",
         operations: [
@@ -142,8 +142,7 @@ const sendMoney = async (fullname, amount, type, sender, token) => {
                 table: "MoneyTransactions",
                 opResultId: "newEntry",
                 payload: {
-                    amount: amount,
-                    transaction_type: type,
+                    amount: amount
                 },
             },
             {

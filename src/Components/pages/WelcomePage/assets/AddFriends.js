@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { notificationService } from "../../../../services/notificationService";
 import { dataService } from "../../../../services/userDataService";
-import { App } from 'antd';
+import { useMessage } from "../../../../hooks/useMessage";
 import blocks from "../custom-block.module.css";
 import styles from "./addfriends.module.css";
 
@@ -10,10 +10,8 @@ export const AddFriends = () => {
     const [number, setNumber] = useState("");
     const [error, setError] = useState(false);
     const { userDataId, token, phone, friends } = useContext(AuthContext);
-    const { message } = App.useApp();
-
-
-    //TODO update friends state
+    const showMessage = useMessage();
+    
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
     };
@@ -21,14 +19,6 @@ export const AddFriends = () => {
     const onFocusClearErrorHandler = (e) => {
         e.target.style.border = `1px solid var(--primary-hover-color)`;
         setError(false);
-    };
-
-    const showMessage = (type, text) => {
-        type === "error" ? message.error(text) :
-        type === "success" ? message.success(text) :
-        type === "warning" ? message.warning(text) :
-        type === "info" ? message.info(text) :
-        message(text);
     };
     const onSubmit = async (event) => {
         event.preventDefault();

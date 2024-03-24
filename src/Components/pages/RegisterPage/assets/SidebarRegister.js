@@ -21,10 +21,6 @@ export const SidebarRegister = (props) => {
                             description:"",
                         },
                         {
-                            title: "Идентичност",
-                            description: "изисква камера",
-                        },
-                        {
                             title: "Общи условия",
                             description: "",
                         },

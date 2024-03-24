@@ -1,28 +1,28 @@
 import * as request from "./requester";
-// import 'dotenv/config'
+import { baseURL } from "../constants/baseUrl";
 
-// const { APPLICATION_ID, REST_API_KEY } = process.env;
+const APPLICATION_ID = process.env.REACT_APP_APPLICATION_ID;
+const REST_API_KEY = process.env.REACT_APP_APPLICATION_ID;
 
-const baseUrl = "https://notablepen.backendless.app/api";
 const endpoints = {
-  user: `${baseUrl}/data/UserData`,
-  transactions: `${baseUrl}/data/transaction/unit-of-work`,
-  cardsMockData : `${baseUrl}/data/CardsMockData`,
+  user: `${baseURL}/data/UserData`,
+  transactions: `${baseURL}/data/transaction/unit-of-work`,
+  cardsMockData : `${baseURL}/data/CardsMockData`,
   getUserById: (ownerId) =>
-    `${baseUrl}/data/UserData/${ownerId}`,
+    `${baseURL}/data/UserData/${ownerId}`,
   relation: (parentObjectId, relationName) =>
-    `${baseUrl}/data/UserData/${parentObjectId}/${relationName}`,
+    `${baseURL}/data/UserData/${parentObjectId}/${relationName}`,
   loadSpecificRelation: (parentObjectId, relationName) =>
-    `${baseUrl}/data/UserData/${parentObjectId}?loadRelations=${relationName}&relationsDepth=1`,
+    `${baseURL}/data/UserData/${parentObjectId}?loadRelations=${relationName}&relationsDepth=1`,
   friends: (parentObjectId) =>
-    `${baseUrl}/data/UserData/${parentObjectId}/friends?loadRelations=friends&relationsDepth=1`,
+    `${baseURL}/data/UserData/${parentObjectId}/friends?loadRelations=friends&relationsDepth=1`,
   attribute: (attribute, value) =>
-    `${baseUrl}/data/UserData?where=${attribute}='${value}'`,
+    `${baseURL}/data/UserData?where=${attribute}='${value}'`,
   setAttribute: (objectId) => 
-    `${baseUrl}/data/UserData/${objectId}`,
+    `${baseURL}/data/UserData/${objectId}`,
   uploadURL: (ownerId, fileName) =>
-    `${baseUrl}/files/app/UserData/${ownerId}/${fileName}`,
-  // download : (fileName, path) => `https://eu.backendlessappcontent.com/${APPLICATION_ID}/${REST_API_KEY}/files/${path}/${fileName}`
+    `${baseURL}/files/app/UserData/${ownerId}/${fileName}`,
+  download : (fileName, path) => `https://eu.backendlessappcontent.com/${APPLICATION_ID}/${REST_API_KEY}/files/${path}/${fileName}`
 };
 
 // GET USER DATA
@@ -81,14 +81,16 @@ const uploadProfilePicture = async (fileName, ownerId, file, token) => {
   return await request.post(`${endpoints.uploadURL(ownerId, fileName)}?overwrite=true`, data, file, token);
 };
 
-// const downloadFile = async (fileName, path) => {
-//   return await request.get(endpoints.download(fileName, path));
-// }
+const downloadFile = async (fileName, path) => {
+  return await request.get(endpoints.download(fileName, path));
+}
 
 // ADD TRANSACTIONS
 const addTransactions = async (data) => {
   return await request.post(endpoints.transactions, data);
 };
+
+
 
 const getUser = async (ownerId) => {
   return await request.get(endpoints.getUserById(ownerId));
@@ -107,5 +109,5 @@ export const dataService = {
     addTransactions,
     getAllFriends,
     getUser,
-    // downloadFile
+    downloadFile
 };

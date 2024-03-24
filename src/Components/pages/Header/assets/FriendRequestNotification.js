@@ -4,16 +4,16 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { useContext } from "react";
+import { formatDate } from "../../../../utils/formatDate"
+import { useMessage } from "../../../../hooks/useMessage";
 import styles from "./notifications.module.css";
 
 export const FriendRequestNotification = ({
-    formatDate,
-    showMessage,
     notify,
     setnotificationsState,
 }) => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
-
+    const showMessage = useMessage();
     const acceptFriendHandler = async (e) => {
         const notificationId = e.currentTarget.parentElement.getAttribute("data-key");
         const senderId = e.currentTarget.getAttribute("data-sender");
@@ -147,7 +147,6 @@ export const FriendRequestNotification = ({
 export const FriendAcceptNotification = ({
     deleteNotificationHandler,
     notify,
-    formatDate,
 }) => {
     return (
         <li

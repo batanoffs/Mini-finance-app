@@ -3,21 +3,13 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
 import { transactionService } from "../../../../../services/transactionService";
-import { App } from "antd";
 import modal from "./modal.module.css";
+import { useMessage } from "../../../../../hooks/useMessage";
 
 export const RequestMoney = ({userInput, setUserInput, showModal, setShowModal}) => {
     const { userDataId, token } = useContext(AuthContext);
     const [receiver, setReceiver] = useState([]);
-    const { message } = App.useApp();
-
-    const showMessage = (type, text) => {
-        type === "error" ? message.error(text) :
-        type === "success" ? message.success(text) :
-        type === "warning" ? message.warning(text) :
-        type === "info" ? message.info(text) :
-        message(text);
-    };
+    const showMessage = useMessage();
 
     useEffect(() => {
         dataService.getRelation(userDataId, "friends").then((response) => {

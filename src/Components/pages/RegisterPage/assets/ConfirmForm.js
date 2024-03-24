@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Radio } from "antd";
 import { useState } from "react";
-import { App } from "antd";
+import { setNewGeneratedId } from "../../../../utils/setNewGeneratedId";
 export const ConfirmForm = ({
     email,
     password,
@@ -18,41 +18,13 @@ export const ConfirmForm = ({
     changeHandler,
 }) => {
     const [isHidden, setHidden] = useState(false);
-    const navigate = useNavigate();
-    const { message } = App.useApp();
-
-    const showMessage = (type, text) => {
-        type === "error" ? message.error(text) :
-        type === "success" ? message.success(text) :
-        type === "warning" ? message.warning(text) :
-        type === "info" ? message.info(text) :
-        message(text);
-    };
-    const cardIdGenerator = () => {
-
-        const id = Math.floor(Math.random() * 100) + 1;
-        //TODO check if this id has not already been assigned to current users
-        //maybe make request to userData check ids
-        return id;
-    };
-    const onConfirmHandler = (e) => {
+    
+    const onConfirmHandler = async (e) => {
         e.preventDefault();
         e.target.hidden = true;
         setHidden(true);
-        changeHandler({ target: { name: "cardId", value: cardIdGenerator() } });
+        changeHandler({ target: { name: "cardId", value: await setNewGeneratedId() } });
     };
-
-    const onRegisterSubmitHandler = async (e) => {
-        e.preventDefault();
-        const response = await onSubmitRegister(e);
-        if (response) {
-            navigate("/login");
-            showMessage("success", "Успешна регистрация, влезте в профила си");
-        } else {
-            console.error("response is null", response);
-            showMessage("error", "Неуспешна регистрация");
-        }
-    }
     return (
         <div className="form-container">
             <div className="form-content">
@@ -207,7 +179,7 @@ export const ConfirmForm = ({
                     </Link>
 
                     <input
-                        name="register"
+                        name="confirm"
                         type="button"
                         className="button-primary"
                         value={"Потвърди данните"}
@@ -215,11 +187,11 @@ export const ConfirmForm = ({
                     />
                     {isHidden && (
                         <input
-                            name="register"
-                            type="submit"
-                            className="button-primary"
-                            value={"Регистрация"}
-                            onClick={onRegisterSubmitHandler}
+                        name="register"
+                        type="submit"
+                        className="button-primary"
+                        value={"Регистрация"}
+                        onClick={onSubmitRegister}
                         />
                     )}
                 </footer>

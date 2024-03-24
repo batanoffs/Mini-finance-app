@@ -15,16 +15,6 @@ import styles from "../welcome-page-layout.module.css";
 export const OverviewTab = (props) => {
     const [userInput, setUserInput] = useState({ amount: "", friends: "" });
     const { name, virtualcard, balance, picture, phone, email } = useContext(AuthContext);
-
-    const formatDate = (date) => {
-        return new Intl.DateTimeFormat("bg-BG", {
-            hour: "numeric",
-            minute: "numeric",
-            year: "2-digit",
-            month: "numeric",
-            day: "numeric",
-        }).format(new Date(date));
-    };
     
     return (
         <div className={styles.contentContainer}>
@@ -46,8 +36,8 @@ export const OverviewTab = (props) => {
                 <ExchangeRate props={props}/>
             </div>
             <div className={styles.bentoFillColumn}>
-                <LastTransactions  formatDate={formatDate}/>
-                <History formatDate={formatDate} />
+                <LastTransactions />
+                <History />
             </div>
 
             <div className={styles.bentoSideColumn}>

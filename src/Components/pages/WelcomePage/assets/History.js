@@ -2,10 +2,11 @@ import { transactionService } from "../../../../services/transactionService";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { Empty } from 'antd';
+import { formatDate } from "../../../../utils/formatDate";
 import blocks from "../custom-block.module.css";
 import styles from "./LastTransactions.module.css"
 
-export const History = ({formatDate}) => {
+export const History = () => {
     const [transactionsList, setTransactionsList] = useState([]);
     const { userDataId } = useContext(AuthContext);
 
