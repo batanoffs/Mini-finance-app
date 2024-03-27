@@ -78,8 +78,8 @@ To get started with this project, follow these steps:
 4. Start the development server: `npm start`
 5. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the app.
 6. Login with these credentials 
-    - username: ivo@abv.bg
-    - password: Minifinance123
+    - `username`: ivo@abv.bg
+    - `password`: Minifinance123
 
 ## Project content
 ### Login Register
@@ -106,7 +106,7 @@ To get started with this project, follow these steps:
 component through useContext from React. Additionally exports `useAuthContext()`
 
 #### Custom Hooks
-- `useMessage` - returns function message from Antd, which takes type and text
+- `useMessage()` - returns function message from Antd, which takes type and text
 - `useForm(initialState, onLogin, onRegister)` - takes initial state for form,
 and functions to be called on login and register. Inside it there's also useValidate hook which validates input from user. Finally it returns:
     - `values` – updated form values
@@ -143,19 +143,22 @@ new one and returns it
 - `showLastCardDidgits(number)` – takes bank card number and returns last
 four digits
 
-
 #### Services
-- Authentication (authService)
-- Virtual card generation (cardGeneratorService)
-- Exchange Rate (exchangeRateService)
-- Notifications (notificationService)
-- Transactions (transactionService)
-- User Data (userDataService)
+- Authentication `authService`
+- Virtual card generation `cardGeneratorService`
+- Exchange Rate `exchangeRateService`
+- Notifications `notificationService`
+- Transactions `transactionService`
+- User Data `userDataService`
+
+#### Database schema - tables and relations 
+
+![Database schema](https://notablepen.backendless.app/api/files/app/AppData/docs/schema.png)
 
 
 ## Contributing
 This project is maintained by [batanoffs](https://github.com/batanoffs) and is not open to additional contributions at this time.
-It is inspired by the layout of "Tooplate 2135 Mini Finance Template" [link to template](https://www.tooplate.com/view/2135-mini-finance).
+It is inspired by the layout of [Tooplate 2135 Mini Finance Template](https://www.tooplate.com/view/2135-mini-finance).
 Some icons are used from [Julia G](https://icons8.com/illustrations/author/627444) at www.icons8.com
 
 ## License
