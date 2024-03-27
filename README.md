@@ -2,9 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[LIVE DEMO](https://batanoffs.github.io/mini-finance/)
-
-This is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
+[Mini Finance Innovations](https://batanoffs.github.io/mini-finance/) is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
 
 ![MiniFinance-frontend](https://notablepen.backendless.app/api/files/app/AppData/home/homepage.png)
 
@@ -50,22 +48,25 @@ Table of Contents
 - User profile management (picture, profile details etc.)
 
 ## Future updates
-- [ ] oAuth authentication 
+- [ ] oAuth 
 - [ ] Change notification settings
 - [ ] Change profile info 
+- [ ] Age check on register
 - [ ] Top up account
+- [ ] Language change
+- [ ] Dark theme
 - [ ] Chat bot
-- [ ] Help center search
+- [ ] Help center search topic
 - [ ] Update subscription plan
 - [ ] Wallet transactions
 
 ## Libraries and Services
 The project utilizes the following libraries and services:
-- [backendless](https://backendless.com/) as the backend service
-- [exchangerate API](https://www.exchangerate-api.com/) for real-time exchange rates
-- [create-react-app](https://create-react-app.dev/) library
-- [react-router](https://reactrouter.com/en/main) library
-- [react credit card 2](https://www.npmjs.com/package/react-credit-cards-2) library
+- [Backendless](https://backendless.com/) as the backend service
+- [Exchange Rate API](https://www.exchangerate-api.com/) for real-time exchange rates
+- [Create-react-app](https://create-react-app.dev/) library
+- [React-router](https://reactrouter.com/en/main) library
+- [React credit card 2](https://www.npmjs.com/package/react-credit-cards-2) library
 - [Ant Design](https://ant.design/) library for a few components
 - [Font Awesome Icons](https://fontawesome.com/icons) library
 - [Dotenv](https://www.npmjs.com/package/dotenv) library for secret keys
@@ -99,23 +100,95 @@ npm install
 ```bash
 npm start
 ```
-5. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the app.
+5. Open your browser and go to [http://localhost:3000/mini-finance/](http://localhost:3000/mini-finance/) to view the app.
 6. Login with test credentials or register new account
 
 ## Project content
+
 ### Login Register
+The user can log in to the app with an existing account or register a new one.
+The registration is a multi-step process as shown below and clearly displays the user's current stage.
+There is validation implemented for the user's input.
+
+1 step                                                                                          | 2 step 
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) | ![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png)
+
+3 step                                                                                          | 4 step 
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) | ![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png)
+
+
 ### About
+![About page](https://notablepen.backendless.app/api/files/app/AppData/docs/aboutpage.png) 
+
 ### Dashboard
+Provides a central interface for managing the account, navigation, including virtual
+card, balance, last transactions, quick actions and buttons.
+
+Web                                                                                               |  Mobile 
+:------------------------------------------------------------------------------------------------:|:-------------------------:
+![Dashboard web](https://notablepen.backendless.app/api/files/app/AppData/docs/dashoboardWeb.png) |  ![Dashboard mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/dashoboardMobile.png)
+
 ### Notifications
+Provides real-time notifications for friend requests and money transactions to inform
+users in real-time. The notifications also display the time when the notification was
+created and possible actions, when the user hovers over the notification with the mouse.
+
+
+ - #### Friend request notification
+
+Friend request notification                                                                     |  Accept Friend request message 
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![Friend request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png)  |![Message accept](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png)
+
+- #### Money recieved notification
+Money recieved notification                                                                     |  Delete notification message 
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![Money recieved](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png)  |![Message delete](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyDeleted.png)
+
+- #### Money request notification - users can **request money** from other users in the ecosystem as long as they are in their list of friends.The form is invoked from a button located on the dashboard and allows automatic filling / **Autocomplete** of the field if the friend has been found.
+
+Money request notification                                                                               |  Message reject  
+:-------------------------------------------------------------------------------------------------------:|:-------------------------:
+![Money request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png) |  ![Message reject](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png)
+
 ### Profile menu
+Web                                                                                               |  Mobile 
+:------------------------------------------------------------------------------------------------:|:-------------------------:
+![Profile web](https://notablepen.backendless.app/api/files/app/AppData/docs/navigationMenu.png) |  ![Profile mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/navigatioMenuMobile.png)
+
 ### Transactions
 ### Profile settings
+Users can change information about their account, including email, profile picture
+and information about credit card, as well as manage their notifications.
+
+![Profile settings](https://notablepen.backendless.app/api/files/app/AppData/docs/settingsPage.png)
 ### Quick actions
+Provides a quick way to execute tasks such as sending money, adding friends,
+requesting money, and adding friends to a category of favorite
+
+Quick actions                                                                                     | Add Friends and transaction buttons                    
+:------------------------------------------------------------------------------------------------:|--------------------------------------------------------------------:
+![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png)  | ![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) 
+ 
+Change                                                                         | Show buttons                                                              | Delete
+:--------------------------------------------------------------------------:|--------------------------------------------------------------------:| --------------------------------------------------------------------:
+![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
+
 ### Last transactions
 ### Autocomplete
 ### Wallet
 ### Profile overview
+here the user can view their data and perform actions towards their friends, as well as see who they are
+
+Overview                                                                                          |  Hover friends action buttons 
+:------------------------------------------------------------------------------------------------:|:-------------------------:
+![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) |  ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
 ### Help center
+menu for help and frequently asked questions with search functionality (still not implemented)
+
+![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/help.png)
 
 ## Design and Architecture
 
