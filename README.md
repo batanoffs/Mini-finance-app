@@ -25,7 +25,7 @@ The project utilizes the following libraries and services:
 - [react-router](https://reactrouter.com/en/main) library
 - [react credit card](https://www.npmjs.com/package/react-credit-cards-2) library
 - [Ant Design](https://ant.design/) library for a few components
-- [FaceIO](https://console.faceio.net) library for face recognition
+- ~~[FaceIO](https://console.faceio.net) library for face recognition~~ (removed due to trail version)
 
 ## Usage
 
