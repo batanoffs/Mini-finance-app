@@ -1,10 +1,24 @@
-# Mini Finance Innovations
+# Mini Finance Innovations [LIVE DEMO](https://batanoffs.github.io/mini-finance/)
 
-This is a finance mock project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, CSS, and responsive design.
+This is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
 
 Test user accounts:
 - username: ivo@abv.bg
 - password: Minifinance123
+- username: test@abv.bg
+- password: Minifinance123
+
+
+Table of Contents
+=================
+* [Features](#features)
+* [Libraries and Services](#libraries-and-services)
+* [Usage](#usage)
+* [Installation](#installation)
+* [Contributing](#contributing)
+* [License](#license)
+
+
 ## Features
 
 - Get online virtual card generation upon register
@@ -22,8 +36,10 @@ The project utilizes the following libraries and services:
 - [exchangerate API](https://www.exchangerate-api.com/) for real-time exchange rates
 - [create-react-app](https://create-react-app.dev/) library
 - [react-router](https://reactrouter.com/en/main) library
-- [react credit card](https://www.npmjs.com/package/react-credit-cards-2) library
+- [react credit card 2](https://www.npmjs.com/package/react-credit-cards-2) library
 - [Ant Design](https://ant.design/) library for a few components
+- [Font Awesome Icons](https://fontawesome.com/icons) library
+- [Dotenv](https://www.npmjs.com/package/dotenv) library for secret keys
 - ~~[FaceIO](https://console.faceio.net) library for face recognition~~ (removed due to trail version)
 
 ## Usage
@@ -49,7 +65,7 @@ To get started with this project, follow these steps:
 5. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the app.
 6. Login with these credentials 
     - username: ivo@abv.bg
-    - password: asd
+    - password: Minifinance123
 
 ## Contributing
 
@@ -59,3 +75,5 @@ It is inspired by the layout of "Tooplate 2135 Mini Finance Template" [link to t
 ## License
 
 This project is licensed under MIT Licence - see the [LICENSE.txt](https://github.com/batanoffs/mini-finance/blob/main/LICENSE.txt) file for details.
+
+
