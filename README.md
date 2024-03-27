@@ -155,7 +155,7 @@ Web                                                                             
 ![Profile web](https://notablepen.backendless.app/api/files/app/AppData/docs/NavigationMenuWeb.png)  |![Profile mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/navigatioMenuMobile.png)
 
 ### Transactions
-needs update
+Needs update
 
 ### Profile settings
 Users can change information about their account, including email, profile picture
@@ -175,16 +175,24 @@ Change                                                                      | Sh
 ![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
 
 ### Last transactions
+Users can view their transaction history, which shows the last 5 transactions
+
 ### Autocomplete
+![Autocomplete](https://notablepen.backendless.app/api/files/app/AppData/docs/autocomplete.png)
+
 ### Wallet
+Shows all movements in the account, as well as quick buttons for
+sending money, loading money and searching for an amount
+![Autocomplete](https://notablepen.backendless.app/api/files/app/AppData/docs/wallet.png)
+
 ### Profile overview
-here the user can view their data and perform actions towards their friends, as well as see who they are
+Here the user can view their data and perform actions towards their friends, as well as see who they are
 
 Overview                                                                                          | Hover friends action buttons 
 :------------------------------------------------------------------------------------------------:|:-------------------------:
 ![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) |  ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
 ### Help center
-menu for help and frequently asked questions with search functionality (still not implemented)
+Menu for help and frequently asked questions with search functionality (still not implemented)
 
 ![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/help.png)
 
