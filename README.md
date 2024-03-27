@@ -152,7 +152,7 @@ Users can **request money** from other users in the ecosystem as long as they ar
 ### Profile menu
 Web                                                                                               |  Mobile 
 :------------------------------------------------------------------------------------------------:|:-------------------------:
-![Profile web](https://notablepen.backendless.app/api/files/app/AppData/docs/navigationMenu.png)  |![Profile mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/navigatioMenuMobile.png)
+![Profile web](https://notablepen.backendless.app/api/files/app/AppData/docs/NavigationMenuWeb.png)  |![Profile mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/navigatioMenuMobile.png)
 
 ### Transactions
 needs update
