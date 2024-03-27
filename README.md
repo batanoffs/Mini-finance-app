@@ -27,6 +27,7 @@ Table of Contents
     - [Last transactions](#last-transactions)
     - [Autocomplete](#autocomplete)
     - [Wallet](#wallet)
+    - [User balance](#user-balance)
     - [Profile overview](#profile-overview)
     - [Help center](#help-center)
 - [Design and Architecture](#design-and-architecture)
@@ -129,6 +130,11 @@ card, balance, last transactions, quick actions and buttons.
 Web                                                                                               |  Mobile 
 :------------------------------------------------------------------------------------------------:|:-------------------------:
 ![Dashboard web](https://notablepen.backendless.app/api/files/app/AppData/docs/dashoboardWeb.png) |  ![Dashboard mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/dashoboardMobile.png)
+
+### User balance
+The dashboard contains the information about the current balance of the user for quick financial overview as well virtual card details
+
+![User balance](https://notablepen.backendless.app/api/files/app/AppData/docs/cardBalance.png)
 
 ### Notifications
 Provides real-time notifications for friend requests and money transactions to inform
