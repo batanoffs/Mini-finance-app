@@ -4,8 +4,7 @@ This is a finance mock project. The goal is to simulate online banking by genera
 
 Test user accounts:
 - username: ivo@abv.bg
-- password: asd
-
+- password: Minifinance123
 ## Features
 
 - Get online virtual card generation upon register
