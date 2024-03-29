@@ -15,7 +15,7 @@ export const VirtualCard = () => {
                 setAuth({...auth, virtualcard: {...card, balance: data.results.updateMoney.result.balance}});
             })
             .catch((err) => console.log(err));
-    }, [userDataId, token, card, setAuth, auth]);
+    }, []);
 
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
