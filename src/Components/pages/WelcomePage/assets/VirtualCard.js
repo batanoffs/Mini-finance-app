@@ -1,5 +1,5 @@
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { transactionService } from "../../../../services/transactionService";
 import { showLastCardDidgits } from "../../../../utils/showLastCardDidgits";
 import blocks from "../custom-block.module.css";
@@ -7,6 +7,16 @@ import blocks from "../custom-block.module.css";
 export const VirtualCard = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
     const [ card, setCard ] = useState(auth.virtualcard);
+
+    // TODO
+    // const getBalance = useCallback(() => {
+    //     transactionService.updateBalance(userDataId, card.objectId, token)
+    //         .then((data) => {
+    //             setCard({...card, balance: data.results.updateMoney.result.balance});
+    //             setAuth({...auth, virtualcard: {...card, balance: data.results.updateMoney.result.balance}});
+    //         })
+    //         .catch((err) => console.log(err));
+    // }, []);
 
     useEffect(() => {
         transactionService.updateBalance(userDataId, card.objectId, token)
