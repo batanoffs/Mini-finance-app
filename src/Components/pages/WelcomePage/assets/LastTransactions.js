@@ -9,13 +9,13 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 
 export const LastTransactions = () => {
     const [allTransactions, setAllTransactions] = useState([]);
-    const { userDataId } = useContext(AuthContext);
+    const { userDataId, token } = useContext(AuthContext);
 
     useEffect(() => {
-        transactionService.getAllReceiver(userDataId)
+        transactionService.getAllReceiver(userDataId, token)
             .then((result) => setAllTransactions(result))
             .catch((error) => console.log(error));
-    }, [userDataId]);
+    }, [userDataId, token]);
 
     return (
         <div className={`${blocks.customBlock} ${blocks.cusomBlockExchange}`}>

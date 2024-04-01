@@ -13,6 +13,11 @@ const updateNotificationStatus = async (objectId, statuState, seen, token, ) => 
     return await request.put(endpoints.selectNotification(objectId),body, token);
 };
 
+const getMoneyRequestNotifications = async (senderId, token) => {
+    const query = encodeURIComponent(`event_type='money request' and status!='accepted' AND sender='${senderId}'`);
+    return await request.get(`${endpoints.notificationsRelations}&where=${query}`, token);
+};
+
 const updateRelation = async (parentObjectId, relationName, id, token) => {
     const body = [id];
     return await request.put(endpoints.relation(parentObjectId, relationName), body, token);
@@ -23,7 +28,7 @@ const updateSeenStatus = async (objectId, seenState, token) => {
     return await request.put(endpoints.selectNotification(objectId),body,token);
 };
 
-const getNotifications = async (reciverId, token) => {
+const getNotSeenNotifications = async (reciverId, token) => {
     const query = encodeURIComponent(`receiver='${reciverId}' and seen='false'`);
     return await request.get(`${endpoints.notificationsRelations}&where=${query}`, token);
 };
@@ -104,10 +109,11 @@ const createNotification = async ( phone, receiver, event, currentUserId, token 
 
 export const notificationService = {
     createNotification,
-    getNotifications,
+    getNotSeenNotifications,
     updateNotificationStatus,
     deleteNotification,
     getAllFriendRequests,
+    getMoneyRequestNotifications,
     updateSeenStatus,
     updateRelation,
 };

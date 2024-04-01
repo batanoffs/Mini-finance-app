@@ -18,7 +18,6 @@ export const Login = () => {
 
     const onSubmitLoginHandler = async (event) => {
         const response = await onSubmitLogin(event);
-        console.log("Login response: ", response);
         if (!response) {
             showMessage("error", "Login failed");
         }

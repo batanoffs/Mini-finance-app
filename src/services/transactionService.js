@@ -56,9 +56,9 @@ const updateBalance = async (owenerId,cardId, token) => {
 }
 
 // Get all transactions with id for receiver
-const getAllReceiver = async (reciverId) => {
+const getAllReceiver = async (reciverId, token) => {
     const query = encodeURIComponent(`receiver='${reciverId}'`);
-    return await request.get(`${endpoints.moneyTransactions}&where=${query}`);
+    return await request.get(`${endpoints.moneyTransactions}&where=${query}`, token);
 }
 
 // Get all transactions with id for sender
@@ -66,6 +66,7 @@ const getAllSender = async (senderId) => {
     const query = encodeURIComponent(`sender='${senderId}'`);
     return await request.get(`${endpoints.moneyTransactions}&where=${query}`);
 }
+
 // Request Money 
 const requestNotify = async (fullname, amount, sender, token) => {
     const body = {
@@ -246,5 +247,5 @@ export const transactionService = {
     getAllReceiver,
     getAllSender,
     updateBalance,
-    requestNotify
+    requestNotify,
 };

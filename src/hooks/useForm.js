@@ -62,7 +62,6 @@ export const useForm = (initialState, onLogin, onRegister) => {
         e.preventDefault();
         const loginResponse = await onLogin(values);
         const isLoginSuccessful = !Object.values(error).some((value) => value) && loginResponse;
-        console.log("Result of login: ", loginResponse);
         resetFormHandler();
         return await isLoginSuccessful;
     };

@@ -17,7 +17,7 @@ export const Notifications = () => {
 
     useEffect(() => {
         notificationService
-            .getNotifications(userDataId)
+            .getNotSeenNotifications(userDataId)
             .then((result) => setnotificationsState(result))
             .catch((error) => console.log(error));
     }, [userDataId]);
@@ -29,7 +29,7 @@ export const Notifications = () => {
         }
         try {
             await notificationService.updateSeenStatus(notificationId, true, token);
-            const result = await notificationService.getNotifications(userDataId);
+            const result = await notificationService.getNotSeenNotifications(userDataId);
             setnotificationsState(result);
             showMessage("success", "Успешно изтрито съобщение");
         } catch (error) {

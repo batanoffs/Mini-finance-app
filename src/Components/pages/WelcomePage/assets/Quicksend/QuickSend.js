@@ -25,7 +25,6 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
 
     const showActionsHandler = (e) => {
         const tooltip = e.currentTarget.nextElementSibling;
-        console.log(tooltip);
         tooltip.style.display = tooltip.style.display === "block" ? "none" : "block";
     };
 

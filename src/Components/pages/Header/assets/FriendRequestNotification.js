@@ -33,7 +33,7 @@ export const FriendRequestNotification = ({
                 true,
                 token
             );
-            const result = await notificationService.getNotifications(userDataId);
+            const result = await notificationService.getNotSeenNotifications(userDataId);
             setnotificationsState(result);
 
             const setReceiverFriend = await dataService.setRelation(
@@ -87,7 +87,7 @@ export const FriendRequestNotification = ({
                 true,
                 token
             );
-            const response = await notificationService.getNotifications(
+            const response = await notificationService.getNotSeenNotifications(
                 userDataId,
                 token
             );

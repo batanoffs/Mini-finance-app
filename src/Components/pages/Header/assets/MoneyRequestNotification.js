@@ -43,7 +43,7 @@ export const MoneyRequestNotification = ({
             if (response.success) {
                 await notificationService.updateNotificationStatus(notificationId, "accepted", true, token);
                 await notificationService.updateSeenStatus(notificationId, true, token);
-                const getNotificationsResponse  = await notificationService.getNotifications(userDataId);
+                const getNotificationsResponse  = await notificationService.getNotSeenNotifications(userDataId);
                 await transactionService.notifyMoneyReceived(requesterName, amount, userDataId, token); // make new notification for transaction approved
                 setnotificationsState(getNotificationsResponse);
                 showMessage("success", "Изпращането е успешно");
@@ -64,7 +64,7 @@ export const MoneyRequestNotification = ({
 
         try {
             await notificationService.updateNotificationStatus(notificationId, "declined", true, token);
-            const getNotificationsResponse  = await notificationService.getNotifications(userDataId);
+            const getNotificationsResponse  = await notificationService.getNotSeenNotifications(userDataId);
 
             setnotificationsState(getNotificationsResponse);
             showMessage("error", "Транзакцията е отказана");
