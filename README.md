@@ -59,7 +59,7 @@ Table of Contents
 - [ ] Chat bot
 - [ ] Help center search topic
 - [ ] Update subscription plan
-- [ ] Wallet transactions
+- [x] Wallet transactions
 
 ## Libraries and Services
 The project utilizes the following libraries and services:
