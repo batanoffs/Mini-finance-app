@@ -86,7 +86,7 @@ export const Friend = ({ showMessage, key, token, userDataId, auth, setAuth }) =
                 />
                 <div className={styles.friendInfo}>
                     <strong>{friend.fullName}</strong>
-                    <small>{friend.country}</small>
+                    <p>{friend.country}</p>
                     <a href={`tel:${friend.phoneNumber}`}>
                         {friend.phoneNumber}
                     </a>
