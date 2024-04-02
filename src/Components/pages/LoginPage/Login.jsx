@@ -21,7 +21,7 @@ export const Login = () => {
     const onSubmitLoginHandler = async (event) => {
         const response = await onSubmitLogin(event);
         if (!response) {
-            showMessage("error", "Login failed");
+            showMessage("error", "Грешен имейл или парола");
         }
     }
     
