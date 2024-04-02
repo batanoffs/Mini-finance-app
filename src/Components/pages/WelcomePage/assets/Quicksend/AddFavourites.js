@@ -59,7 +59,7 @@ export const AddToFavorites = ({ setShowFavourites }) => {
                                     }
                                 })]}
                         />
-                        <input type="submit" className="custom-btn-fill" value="Добави към любими" />
+                        <input style={{marginTop: "0.5em"}}type="submit" className="custom-btn-fill" value="Добави към любими" />
                     </form>
                 </div> 
             </div>
