@@ -91,7 +91,7 @@ export const QuickSendMoney = ({
                     ))
                 ) : (
                     <>
-                        <p style={{ display: "inline", color: "var(--p-color)" }}>Нямате приятели в списъка</p>
+                        <p style={{ display: "inline", fontStyle: "italic", color: "#eee" }}>Нямате приятели в списъка</p>
                         <AddToFavorites setShowFavourites={setShowFavourites} />
                     </>
                 )}
