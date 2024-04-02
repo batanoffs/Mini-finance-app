@@ -59,7 +59,7 @@ Table of Contents
 - [ ] Chat bot
 - [ ] Help center search topic
 - [ ] Update subscription plan
-- [ ] Wallet transactions
+- [x] Wallet transactions
 
 ## Libraries and Services
 The project utilizes the following libraries and services:
@@ -111,11 +111,11 @@ The user can log in to the app with an existing account or register a new one.
 The registration is a multi-step process as shown below and clearly displays the user's current stage.
 There is validation implemented for the user's input.
 
-1 step                                                                                          | 2 step 
+Step 1                                                                                          | Step 2
 :----------------------------------------------------------------------------------------------:|:-------------------------:
 ![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) | ![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png)
 
-3 step                                                                                          | 4 step 
+Step 3                                                                                          | Step 4
 :----------------------------------------------------------------------------------------------:|:-------------------------:
 ![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) | ![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png)
 
