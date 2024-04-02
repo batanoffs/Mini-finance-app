@@ -1,108 +1,64 @@
-import { faMoneyBill, faPiggyBank, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
-import { Empty } from 'antd';
+import { useContext, useState } from "react";
+import { Empty, Input } from "antd";
 
-import { notificationService } from "../../../../../services/notificationService";
-import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { useMessage } from "../../../../../hooks/useMessage";
 
 import blocks from "../../custom-block.module.css";
 import styles from "./friends.module.css";
+import { Friend } from "./assets/FriendEntry";
 
 export const Friends = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
+    const [filteredFriends, setFilteredFriends] = useState(auth.friends);
+    const [search, setSearch] = useState("");
     const showMessage = useMessage();
 
-    const onRemoveFriend = async (e) => {
-        const friendId = e.currentTarget.parentElement.parentElement.getAttribute("data-key");
+    const onSearch = (e) => {
+        const value = e.target.value;
+        setSearch(value);
 
-        try {
-            const allFriendRequestNotifications = await notificationService.getAllFriendRequests(token);
-            if (!allFriendRequestNotifications) {
-                throw new Error("Failed to fetch friend request notifications");
-            }
+        const filteredList = auth.friends.filter((friend) => {
+            return friend.fullName.toLowerCase().includes(value.toLowerCase());
+        });
 
-            const checkFriendNotification = allFriendRequestNotifications.filter((request) => {
-                return (
-                    (request.receiver?.length &&
-                        request.receiver[0].objectId === friendId &&
-                        request.sender[0].objectId === userDataId) ||
-                    (request.receiver?.length &&
-                        request.receiver[0].objectId === userDataId &&
-                        request.sender[0].objectId === friendId)
-                );
-            });
-
-            await notificationService.deleteNotification(checkFriendNotification[0].objectId);
-            await dataService.removeRelation(userDataId, "friends", friendId, token);
-            await dataService.removeRelation(friendId, "friends", userDataId, token);
-
-            const filterFriends = auth.friends.filter((friend) => friend.objectId !== friendId);
-
-            setAuth({...auth, friends: filterFriends || []});
-            sessionStorage.setItem("auth", JSON.stringify({ ...auth, friends: filterFriends }));
-            showMessage("success", "Успешно премахнат приятел");
-        } catch (error) {
-            showMessage("error", error.message);
-            console.error(error);
-        }
+        setFilteredFriends(filteredList);
     };
-
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
             <h5>Приятели</h5>
+            <div className={styles.searchWrapper}>
+                <FontAwesomeIcon
+                    className={styles.searchIcon}
+                    icon={faSearch}
+                />
+                <Input
+                    className={styles.searchInput}
+                    placeholder="Търси приятел"
+                    onChange={onSearch}
+                    value={search}
+                />
+            </div>
             <ul className={styles.friendsList}>
-                {auth.friends.length > 0 ? auth.friends.map((friend) => {
-                    if (!friend) {
-                        return null;
-                    }
-                    return (
-                        <li className={styles.entryWrapper} key={friend.objectId} data-key={friend.objectId}>
-                            <img
-                                src={friend.avatar}
-                                className={styles.profileImage}
-                                alt={"avatar"}
-                            />
-                            <div className={styles.friendInfo}>
-                                <strong>{friend.fullName}</strong>
-                                <p>{friend.email}</p>
-                                <p>{friend.phoneNumber}</p>
-                            </div>
-                            <div className={styles.friendButtons}>
-                                <button
-                                    className={styles.friendButton}
-                                    data-text="Поискай пари"
-                                >
-                                    <FontAwesomeIcon
-                                        className={styles.icon}
-                                        icon={faMoneyBill}
-                                    />
-                                </button>
-                                <button
-                                    className={styles.friendButton}
-                                    data-text="Изпрати пари"
-                                >
-                                    <FontAwesomeIcon
-                                        className={styles.icon}
-                                        icon={faPiggyBank}
-                                    />
-                                </button>
-                                <button
-                                    className={styles.friendButton}
-                                    data-text="Премахни приятел"
-                                    onClick={onRemoveFriend}
-                                >
-                                    <FontAwesomeIcon
-                                        className={styles.icon}
-                                        icon={faTrashAlt}
-                                    />
-                                </button>
-                            </div>
-                        </li>
-                    );
-                }): <Empty style={{ margin: "1em auto", fontFamily: "var(--body-font-family)"}} description="Все още нямате приятели, може да добавите от началото меню"/>}
+                {auth.friends.length > 0 ? (
+                    <Friend
+                        userDataId={userDataId}
+                        token={token}
+                        setAuth={setAuth}
+                        auth={auth}
+                        showMessage={showMessage}
+                    />
+                ) : (
+                    <Empty
+                        style={{
+                            margin: "1em auto",
+                            fontFamily: "var(--body-font-family)",
+                        }}
+                        description="Все още нямате приятели, може да добавите от началото меню"
+                    />
+                )}
             </ul>
         </div>
     );

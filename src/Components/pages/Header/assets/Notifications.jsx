@@ -63,6 +63,7 @@ export const Notifications = () => {
                                 }
                                 setnotificationsState={setnotificationsState}
                                 notify={notify}
+                                key={notify.objectId}
                             />
                         ) : notify?.reciver?.[0]?.objectId === userDataId &&
                           notify?.event_type === "friend request" &&
@@ -72,6 +73,7 @@ export const Notifications = () => {
                                     deleteNotificationHandler
                                 }
                                 notify={notify}
+                                key={notify.objectId}
                             />
                         ) : notify?.event_type === "money received" ? (
                             <IncomeNotification
@@ -79,6 +81,7 @@ export const Notifications = () => {
                                 deleteNotificationHandler={
                                     deleteNotificationHandler
                                 }
+                                key={notify.objectId}
                             />
                         ) : notify?.event_type === "money request" ? (
                             <MoneyRequestNotification
@@ -86,6 +89,7 @@ export const Notifications = () => {
                                 userDataId={userDataId}
                                 token={token}
                                 setnotificationsState={setnotificationsState}
+                                key={notify.objectId}
                             />
                         ) : (
                             <NotFoundNotifications />

@@ -30,11 +30,11 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
             </p>
             <p>
                 <strong>Имейл:</strong>
-                <span> {email}</span>
+                <a href={`mailto:${email}`}>{email}</a>
             </p>
             <p style={{ paddingBottom: "0" }}>
                 <strong>Телефон:</strong>
-                <span> {phone}</span>
+                <a href={`tel:${phone}`}>{phone}</a>
             </p>
             {country && <p><strong>Държава:</strong><span> {country}</span></p>}
             {adress &&<p><strong>Адрес:</strong><span>{adress}</span></p>}

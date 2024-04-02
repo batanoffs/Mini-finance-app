@@ -3,7 +3,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../quicksend.module.css";
 
-export const ActionsMenu = ({setShowFavourites, setShowBtns, showActionsHandler, closeMenuHandler}) => {
+export const ActionsMenu = ({showFavouritesHandler, setShowBtns, showActionsHandler, closeMenuHandler}) => {
     return (
         <>
             <FontAwesomeIcon
@@ -22,7 +22,7 @@ export const ActionsMenu = ({setShowFavourites, setShowBtns, showActionsHandler,
                     </li>
                     <li
                         className={styles.actionButton}
-                        onClick={() => setShowFavourites(true)}
+                        onClick={showFavouritesHandler}
                     >
                         добави
                     </li>

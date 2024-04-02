@@ -42,18 +42,27 @@ export const QuickSendMoney = ({
             e.currentTarget.style.display === "block" ? "none" : "block";
     };
 
+    const showFavouritesHandler = () => {
+        if (favorites.length === 0) {
+            return;
+        }
+        setShowFavourites(!showFavourites);
+    };
+
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <h5 style={{ color: "var(--section-bg-color)" }}>
                     Бързо изпращане
                 </h5>
+                {favorites.length > 0 ? 
                 <ActionsMenu
                     setShowBtns={setShowBtns}
                     closeMenuHandler={closeMenuHandler}
                     showActionsHandler={showActionsHandler}
-                    setShowFavourites={setShowFavourites}
+                    showFavouritesHandler={showFavouritesHandler}
                 />
+                : null}
             </div>
 
             <ul className={blocks.sendMonkeyContainer}>

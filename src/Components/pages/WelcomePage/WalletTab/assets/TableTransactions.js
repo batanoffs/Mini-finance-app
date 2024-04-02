@@ -4,7 +4,7 @@ import { Table, Tag } from "antd";
 import { notificationService } from "../../../../../services/notificationService";
 import { transactionService } from "../../../../../services/transactionService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
-import { formatDate } from "../../../../../utils/formatDate";
+import { formatDateTable } from "../../../../../utils/formatDate";
 
 import blocks from "../../custom-block.module.css";
 
@@ -30,21 +30,21 @@ const columns = [
         key: "type",
         filters: [
             {
-              text: 'приход',
-              value: 'приход',
+                text: "приход",
+                value: "приход",
             },
             {
-              text: 'разход',
-              value: 'разход',
+                text: "разход",
+                value: "разход",
             },
-          ],
-          onFilter: (value, record) => record.type.indexOf(value) === 0,
+        ],
+        onFilter: (value, record) => record.type.indexOf(value) === 0,
     },
     {
         title: "Сума",
         dataIndex: "price",
         key: "price",
-        defaultSortOrder: 'descend',
+        defaultSortOrder: "descend",
         sorter: (a, b) => a.price - b.price,
     },
     {
@@ -98,12 +98,15 @@ export const TableTransactions = () => {
 
             const modified = allTransactions.map((transaction, index) => ({
                 key: index + "",
-                date: formatDate(transaction.created)
+                date: formatDateTable(transaction.created)
                     .split(" ")
                     .slice(0, 2)
-                    .join("")
+                    .join(" ")
                     .replace(",", ""),
-                time: formatDate(transaction.created).split(" ").slice(2),
+                time: formatDateTable(transaction.created)
+                    .split(" ")
+                    .slice(3)
+                    .join(" "),
                 description:
                     transaction.receiver[0].objectId === userDataId
                         ? transaction.sender[0].fullName
@@ -138,10 +141,16 @@ export const TableTransactions = () => {
 
         if (action === "sort") {
             currentArray.sort((a, b) => {
-                if (Number(a.price.props.children.split(" ")[1]) > Number(b.price.props.children.split(" ")[1])) {
+                if (
+                    Number(a.price.props.children.split(" ")[1]) >
+                    Number(b.price.props.children.split(" ")[1])
+                ) {
                     return sorter.order === "ascend" ? 1 : -1;
                 }
-                if (Number(a.price.props.children.split(" ")[1]) < Number(b.price.props.children.split(" ")[1])) {
+                if (
+                    Number(a.price.props.children.split(" ")[1]) <
+                    Number(b.price.props.children.split(" ")[1])
+                ) {
                     return sorter.order === "descend" ? -1 : 1;
                 }
                 return 0;
