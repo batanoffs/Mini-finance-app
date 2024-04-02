@@ -7,7 +7,7 @@ export const WalletTab = (props) => {
     return (
         <div className={styles.contentContainer}>
             <main className={styles.bentoFillColumn}>
-                <TableTransactions/>
+                <TableTransactions />
             </main>
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />

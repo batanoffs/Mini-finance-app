@@ -62,9 +62,9 @@ const getAllReceiver = async (reciverId, token) => {
 }
 
 // Get all transactions with id for sender
-const getAllSender = async (senderId) => {
+const getAllSender = async (senderId, token) => {
     const query = encodeURIComponent(`sender='${senderId}'`);
-    return await request.get(`${endpoints.moneyTransactions}&where=${query}`);
+    return await request.get(`${endpoints.moneyTransactions}&where=${query}`, token);
 }
 
 // Request Money 

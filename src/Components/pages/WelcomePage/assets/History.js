@@ -8,14 +8,14 @@ import styles from "./LastTransactions.module.css"
 
 export const History = () => {
     const [transactionsList, setTransactionsList] = useState([]);
-    const { userDataId } = useContext(AuthContext);
+    const { userDataId, token } = useContext(AuthContext);
 
     useEffect(() => {
         transactionService
-            .getAllSender(userDataId)
+            .getAllSender(userDataId, token)
             .then(setTransactionsList)
             .catch(console.error);
-    }, [userDataId]);
+    }, [userDataId, token]);
 
     return (
         <div className={blocks.customBlock}>
