@@ -1,15 +1,18 @@
-import { VirtualCard } from "../assets/VirtualCard";
-import { History } from "../assets/History";
-import { ExchangeRate } from "../assets/ExchangeRate";
+import { useContext,useState } from "react";
+
 import { ProfileDetails } from "./assets/profileDetails/ProfileDetails";
-import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
-import { LastTransactions } from "../assets/LastTransactions";
-import { QuickSendMoney } from "../assets/Quicksend/QuickSend";
 import { Greetings } from "./assets/Greetings";
+
+import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import { QuickSendMoney } from "../assets/Quicksend/QuickSend";
+import { LastTransactions } from "../assets/LastTransactions";
+import { ExchangeRate } from "../assets/ExchangeRate";
+import { VirtualCard } from "../assets/VirtualCard";
 import { ContactInfo } from "../assets/ContactInfo";
 import { AddFriends } from "../assets/AddFriends";
-import { useContext,useState } from "react";
+import { History } from "../assets/History";
+
 import styles from "../welcome-page-layout.module.css";
 
 export const OverviewTab = (props) => {

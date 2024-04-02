@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "../quicksend.module.css";
 
-
 export const ActionsMenu = ({setShowFavourites, setShowBtns, showActionsHandler, closeMenuHandler}) => {
-
     return (
         <>
             <FontAwesomeIcon

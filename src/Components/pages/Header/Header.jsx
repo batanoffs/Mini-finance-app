@@ -1,10 +1,13 @@
-import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import { Notifications } from "./assets/Notifications";
 import { ProfileDropdown } from "./assets/ProfileDropdown";
+
+import { AuthContext } from "../../../contexts/AuthContext";
+
 import styles from "./site-header.module.css";
 
 export const Header = () => {

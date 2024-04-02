@@ -1,10 +1,12 @@
+import { useState, useContext, useEffect } from "react";
+
+import { transactionService } from "../../../../../services/transactionService";
 import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
-import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "../../../../features/Autocomplate";
-import { transactionService } from "../../../../../services/transactionService";
-import modal from "./modal.module.css";
 import { useMessage } from "../../../../../hooks/useMessage";
+
+import modal from "./modal.module.css";
 
 export const RequestMoney = ({userInput, setUserInput, showModal, setShowModal}) => {
     const { userDataId, token } = useContext(AuthContext);

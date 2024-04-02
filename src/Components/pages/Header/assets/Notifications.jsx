@@ -1,13 +1,16 @@
-import { notificationService } from "../../../../services/notificationService";
-import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
+
 import { FriendRequestNotification, FriendAcceptNotification } from "./FriendRequestNotification";
-import { IncomeNotification } from "./IncomeNotification";
 import { MoneyRequestNotification } from "./MoneyRequestNotification";
+import { IncomeNotification } from "./IncomeNotification";
 import { NotFoundNotifications } from "./NotFound";
+
+import { notificationService } from "../../../../services/notificationService";
+import { AuthContext } from "../../../../contexts/AuthContext";
 import { useMessage } from "../../../../hooks/useMessage";
+
 import styles from "./notifications.module.css";
 
 export const Notifications = () => {

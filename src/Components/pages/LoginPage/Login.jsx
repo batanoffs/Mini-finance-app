@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
-import { useForm } from "../../../hooks/useForm";
-import styles from "../RegisterPage/register.module.css";
+import { Link } from "react-router-dom";
+
+import { AuthContext } from "../../../contexts/AuthContext";
 import { useMessage } from "../../../hooks/useMessage";
+import { useForm } from "../../../hooks/useForm";
+
+import styles from "../RegisterPage/register.module.css";
 
 export const Login = () => {
     const showMessage = useMessage();

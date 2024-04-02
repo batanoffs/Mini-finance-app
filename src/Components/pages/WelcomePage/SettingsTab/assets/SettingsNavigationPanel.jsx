@@ -1,8 +1,9 @@
 import { Tabs } from "antd";
-import { ProfileTab } from "./SettingsProfileTab";
-import { PasswordTab } from "./SettingsPasswordTab";
+
 import { NotificationTab } from "./SettingsNotificationTab";
 import { VirtualCard } from "./SettingsVirtualCardTab";
+import { PasswordTab } from "./SettingsPasswordTab";
+import { ProfileTab } from "./SettingsProfileTab";
 
 export const SettingsNavigationPanel = () => {
     const onChange = (key) => {

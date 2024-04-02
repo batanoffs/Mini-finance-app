@@ -1,7 +1,10 @@
-import styles from "./notifications.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+
 import { formatDate } from "../../../../utils/formatDate";
+
+import styles from "./notifications.module.css";
+
 export const IncomeNotification = ({
     notify,
     deleteNotificationHandler,

@@ -1,8 +1,9 @@
 // import profilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
-import { Link } from "react-router-dom";
-import blocks from "../../../custom-block.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+
+import blocks from "../../../custom-block.module.css";
 
 export const ProfileDetails = ({ email, phone, name, picture, adress, country }) => {
     return (

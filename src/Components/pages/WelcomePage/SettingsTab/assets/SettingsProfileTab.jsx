@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
+
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { UploadPicture } from "../../assets/upload/Upload";
 
 export const ProfileTab = () => {
-    // TO DO PICTURE
     const { name, phone, email } = useContext(AuthContext);
-
     const [state, setState] = useState({
         fullname: name,
         email: email,

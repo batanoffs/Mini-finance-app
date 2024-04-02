@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import "./autocomplate.css";
 
 export const Autocomplete = (props) => {

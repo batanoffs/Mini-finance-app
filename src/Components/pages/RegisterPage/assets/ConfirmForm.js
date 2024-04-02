@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Radio } from "antd";
 import { useState } from "react";
+
 import { setNewGeneratedId } from "../../../../utils/setNewGeneratedId";
+
 export const ConfirmForm = ({
     email,
     password,

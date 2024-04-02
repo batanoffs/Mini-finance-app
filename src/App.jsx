@@ -1,4 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { Result, App } from "antd";
+
 import { AuthProvider } from "./contexts/AuthContext";
 import { Header } from "./Components/pages/Header/Header";
 import { Login } from "./Components/pages/LoginPage/Login";
@@ -7,7 +9,6 @@ import { Footer } from "./Components/pages/Footer/Footer";
 import { Home } from "./Components/pages/HomePage/Home";
 import { Register } from "./Components/pages/RegisterPage/Register";
 import { About } from "./Components/pages/HomePage/About";
-import { Result, App } from "antd";
 
 const MyApp = () => {
     let navigate = useNavigate();

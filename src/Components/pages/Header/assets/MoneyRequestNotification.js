@@ -1,8 +1,9 @@
 import { notificationService } from "../../../../services/notificationService";
 import { transactionService } from "../../../../services/transactionService";
 import { useMessage } from "../../../../hooks/useMessage";
-import styles from "./notifications.module.css";
 import { formatDate } from "../../../../utils/formatDate";
+
+import styles from "./notifications.module.css";
 
 export const MoneyRequestNotification = ({
     notify,

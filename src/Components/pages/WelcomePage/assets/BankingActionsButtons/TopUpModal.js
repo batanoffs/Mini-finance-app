@@ -1,8 +1,10 @@
-import modal from "./modal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
+
 import { PaymentForm } from "./PaymentForm";
+
+import modal from "./modal.module.css";
 
 export const TopUp = ({ showModal, setShowModal }) => {
     const [inputState, setInputState] = useState({});

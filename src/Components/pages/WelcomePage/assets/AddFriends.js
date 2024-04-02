@@ -1,8 +1,10 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "../../../../contexts/AuthContext";
+
 import { notificationService } from "../../../../services/notificationService";
 import { dataService } from "../../../../services/userDataService";
+import { AuthContext } from "../../../../contexts/AuthContext";
 import { useMessage } from "../../../../hooks/useMessage";
+
 import blocks from "../custom-block.module.css";
 import styles from "./addfriends.module.css";
 

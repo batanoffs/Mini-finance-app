@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
+import { HelpCenterTab } from "./HelpCenterTab/HelpCenter";
+import { SettingsTab } from "./SettingsTab/SettingsTab";
 import { OverviewTab } from "./OverviewTab/OverviewTab";
 import { ProfileTab } from "./ProfileTab/ProfileTab";
-import { SettingsTab } from "./SettingsTab/SettingsTab";
-import { HelpCenterTab } from "./HelpCenterTab/HelpCenter";
 import { WalletTab } from "./WalletTab/WalletTab";
 import { Upgrade } from "./Upgrade/Upgrade";
 import { Sidebar } from "./Sidebar/Sidebar";

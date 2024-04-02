@@ -1,12 +1,14 @@
+import Cards from "react-credit-cards-2";
 import { useContext } from "react";
+
+import { ProfileDetails } from "../OverviewTab/assets/profileDetails/ProfileDetails";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { ContactInfo } from "../assets/ContactInfo";
-import { ProfileDetails } from "../OverviewTab/assets/profileDetails/ProfileDetails";
-import Cards from "react-credit-cards-2";
+import { Friends } from "../assets/Friends/Friends";
+
+import "react-credit-cards-2/dist/es/styles-compiled.css";
 import styles from "../welcome-page-layout.module.css";
 import blocks from "../custom-block.module.css";
-import "react-credit-cards-2/dist/es/styles-compiled.css";
-import { Friends } from "../assets/Friends/Friends";
 
 export const ProfileTab = () => {
     const { adress, country, name, phone, virtualcard, picture, email } = useContext(AuthContext);

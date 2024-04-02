@@ -1,9 +1,11 @@
+import { faWallet,faGear,faHandshakeAngle,faHouse, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
+
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWallet,faGear,faHandshakeAngle,faHouse, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
+
 import styles from "./sidebar.module.css";
 
 export const Sidebar = () => {

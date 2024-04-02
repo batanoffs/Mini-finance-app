@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react"; // added useState
+
 import faceIO from "@faceio/fiojs";
 
 export const Identity = ({ currentStepsHandler }) => {

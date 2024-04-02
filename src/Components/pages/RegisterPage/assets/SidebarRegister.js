@@ -1,5 +1,6 @@
 // import pic from "../../../../images/svg/money-transfer-isometric-60529.svg";
 import { Divider, Steps } from "antd";
+
 import styles from "../register.module.css";
 
 export const SidebarRegister = (props) => {

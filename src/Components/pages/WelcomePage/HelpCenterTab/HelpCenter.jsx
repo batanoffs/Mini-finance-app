@@ -1,4 +1,5 @@
 import { ContactInfo } from "../assets/ContactInfo";
+
 import styles from "../welcome-page-layout.module.css";
 import blocks from "../custom-block.module.css";
 

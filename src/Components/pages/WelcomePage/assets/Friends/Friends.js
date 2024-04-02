@@ -1,13 +1,15 @@
+import { faMoneyBill, faPiggyBank, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
+import { Empty } from 'antd';
+
+import { notificationService } from "../../../../../services/notificationService";
 import { dataService } from "../../../../../services/userDataService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoneyBill, faPiggyBank, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { useMessage } from "../../../../../hooks/useMessage";
-import { Empty } from 'antd';
+
 import blocks from "../../custom-block.module.css";
 import styles from "./friends.module.css";
-import { notificationService } from "../../../../../services/notificationService";
 
 export const Friends = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);

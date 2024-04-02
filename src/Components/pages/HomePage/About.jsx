@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import style from "./about.module.css";
 
 export const About = () => {

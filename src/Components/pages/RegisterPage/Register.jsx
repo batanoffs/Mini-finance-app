@@ -1,13 +1,15 @@
-import React from "react";
-import { SidebarRegister } from "./assets/SidebarRegister";
-import { InfoForm } from "./assets/InfoForm";
-import { TermsForm } from "./assets/TermsForm";
-import { ConfirmForm } from "./assets/ConfirmForm";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { useForm } from "../../../hooks/useForm";
 import { Routes, Route } from "react-router-dom";
 import { useState, useContext } from "react";
+
+import { SidebarRegister } from "./assets/SidebarRegister";
+import { ConfirmForm } from "./assets/ConfirmForm";
 import { EmailForm } from "./assets/EmailForm"; // Import refactored EmailForm component
+import { TermsForm } from "./assets/TermsForm";
+import { InfoForm } from "./assets/InfoForm";
+
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useForm } from "../../../hooks/useForm";
+
 import styles from "./register.module.css";
 
 export const Register = () => {

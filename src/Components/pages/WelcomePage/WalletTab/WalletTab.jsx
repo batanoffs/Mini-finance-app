@@ -1,6 +1,8 @@
-import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
 import { TableTransactions } from "./assets/TableTransactions";
+
+import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
 import { ContactInfo } from "../assets/ContactInfo";
+
 import styles from "../welcome-page-layout.module.css";
 
 export const WalletTab = (props) => {

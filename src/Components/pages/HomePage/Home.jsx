@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Login } from "../LoginPage/Login";
-import styles from "./home.module.css";
 import { Preview } from "./assets/Preview";
+import { Login } from "../LoginPage/Login";
+
+import styles from "./home.module.css";
 
 export const Home = () => {
     return (

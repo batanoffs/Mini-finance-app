@@ -1,10 +1,12 @@
-import { Table, Tag } from "antd";
 import { useEffect, useContext, useState } from "react";
-import blocks from "../../custom-block.module.css";
+import { Table, Tag } from "antd";
+
+import { notificationService } from "../../../../../services/notificationService";
 import { transactionService } from "../../../../../services/transactionService";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { formatDate } from "../../../../../utils/formatDate";
-import { notificationService } from "../../../../../services/notificationService";
+
+import blocks from "../../custom-block.module.css";
 
 const columns = [
     {

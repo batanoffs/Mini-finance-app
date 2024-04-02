@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+
+import { exchangeRateService } from "../../../../services/exchangeRateService";
+
 import styles from "./ExchangeRate.module.css";
 import block from "../custom-block.module.css";
-import { exchangeRateService } from "../../../../services/exchangeRateService";
 
 export const ExchangeRate = ({ props }) => {
     // useEffect(() => {
