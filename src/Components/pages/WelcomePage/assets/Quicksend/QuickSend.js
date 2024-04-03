@@ -33,6 +33,8 @@ export const QuickSendMoney = ({
 
     const showActionsHandler = (e) => {
         const tooltip = e.currentTarget.nextElementSibling;
+        const ul = e.currentTarget.nextElementSibling.children[0];
+        ul.style.display = ul.style.display === "block" ? "none" : "block";
         tooltip.style.display =
             tooltip.style.display === "block" ? "none" : "block";
     };
@@ -58,7 +60,6 @@ export const QuickSendMoney = ({
                 {favorites.length > 0 ? 
                 <ActionsMenu
                     setShowBtns={setShowBtns}
-                    closeMenuHandler={closeMenuHandler}
                     showActionsHandler={showActionsHandler}
                     showFavouritesHandler={showFavouritesHandler}
                 />
@@ -83,7 +84,6 @@ export const QuickSendMoney = ({
                                 <Actions
                                     setShowBtns={setShowBtns}
                                     friend={friend}
-                                    showActionsHandler={showActionsHandler}
                                     closeMenuHandler={closeMenuHandler}
                                 />
                             )}

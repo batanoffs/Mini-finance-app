@@ -10,11 +10,18 @@ import styles from "../quicksend.module.css";
 
 export const Actions = ({
     friend,
-    showActionsHandler,
     closeMenuHandler,
+    setShowBtns,
 }) => {
     const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext);
     const showMessage = useMessage();
+    
+    const showActionsHandler = (e) => {
+        const tooltip = e.currentTarget.nextElementSibling;
+        tooltip.style.display =
+            tooltip.style.display === "block" ? "none" : "block";
+    };
+
     const onConfirmHandler = (e) => {
         if (!e) {
             console.error("NullPointerException: e is null");
@@ -41,7 +48,7 @@ export const Actions = ({
                             (favorite) => favorite.objectId !== friendId
                         )});
                         // hide fontawesomeicon with showactionshandler
-                    showActionsHandler();
+                    setShowBtns(false);
                 })
                 .catch((error) => {
                     console.error(error);

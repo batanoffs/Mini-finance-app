@@ -3,7 +3,30 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../quicksend.module.css";
 
-export const ActionsMenu = ({showFavouritesHandler, setShowBtns, showActionsHandler, closeMenuHandler}) => {
+export const ActionsMenu = ({
+    showFavouritesHandler,
+    setShowBtns,
+    showActionsHandler,
+}) => {
+    const onChangeHandler = (e) => {
+        const menuElement = e.currentTarget.parentElement;
+        const divElement = e.currentTarget.parentElement.parentElement;
+        menuElement.style.display =
+            menuElement.style.display === "block" ? "none" : "block";
+        divElement.style.display =
+            divElement.style.display === "block" ? "none" : "block";
+        setShowBtns((prevState) => !prevState);
+    };
+
+    const onAddHandller = (e) => {
+        showFavouritesHandler(e);
+        const menuElement = e.currentTarget.parentElement;
+        const divElement = e.currentTarget.parentElement.parentElement;
+        divElement.style.display =
+            divElement.style.display === "block" ? "none" : "block";
+        menuElement.style.display =
+            menuElement.style.display === "block" ? "none" : "block";
+    };
     return (
         <>
             <FontAwesomeIcon
@@ -12,18 +35,15 @@ export const ActionsMenu = ({showFavouritesHandler, setShowBtns, showActionsHand
                 onClick={showActionsHandler}
             />
 
-            <div className={styles.actionButtons} onMouseOut={closeMenuHandler}>
+            <div className={styles.actionButtons}>
                 <ul>
                     <li
                         className={styles.actionButton}
-                        onClick={() => setShowBtns((prevState) => !prevState)}
+                        onClick={onChangeHandler}
                     >
                         промени
                     </li>
-                    <li
-                        className={styles.actionButton}
-                        onClick={showFavouritesHandler}
-                    >
+                    <li className={styles.actionButton} onClick={onAddHandller}>
                         добави
                     </li>
                 </ul>

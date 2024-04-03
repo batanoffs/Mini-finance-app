@@ -7,7 +7,7 @@ import { useMessage } from "../../../../../hooks/useMessage";
 
 export const AddToFavorites = ({ setShowFavourites }) => {
     const { auth, setAuth, token, userDataId } = useContext(AuthContext);
-    const [ userInput, setUserInput ] = useState("");
+    const [ userInput, setUserInput ] = useState({});
     const showMessage = useMessage();
 
     const onSubmit = async (event) => {
