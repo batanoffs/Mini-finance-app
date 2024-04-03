@@ -175,12 +175,3 @@ export const TableTransactions = () => {
         </div>
     );
 };
-
-// TODO NOTES PESENTATION
-
-// <a tag= tel/ mail> tel/ mail </a> to redirect
-// balance separation
-// filters in table sorting etc
-// presentation
-// language
-// add new cards
