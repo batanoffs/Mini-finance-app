@@ -11,7 +11,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useSessionStorage(`auth`, {});
     const [loginError, setLoginError] = useState(false);
-    const [avatar, setAvatar] = useState("https://notablepen.backendless.app/api/files/app/UserData/default.png");
     const navigate = useNavigate();
     let loginData;
 
@@ -59,7 +58,6 @@ export const AuthProvider = ({ children }) => {
             userData.email = loginData.email;
 
             setAuth(userData);
-            setAvatar(userData.avatar);
             navigate("/dashboard/overview");
             return true;
         } catch (error) {
@@ -159,7 +157,6 @@ export const AuthProvider = ({ children }) => {
         userDataId: auth.objectId || "Липсва информация",
         setAuth: setAuth,
         auth: auth,
-        setAvatar,
     };
 
     return (

@@ -2,13 +2,13 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { Result, App } from "antd";
 
 import { AuthProvider } from "./contexts/AuthContext";
-import { Header } from "./Components/pages/Header/Header";
-import { Login } from "./Components/pages/LoginPage/Login";
-import { WelcomePage } from "./Components/pages/WelcomePage/WelcomePage";
-import { Footer } from "./Components/pages/Footer/Footer";
-import { Home } from "./Components/pages/HomePage/Home";
-import { Register } from "./Components/pages/RegisterPage/Register";
-import { About } from "./Components/pages/HomePage/About";
+import { Header } from "./components/pages/Header/Header";
+import { Login } from "./components/pages/LoginPage/Login";
+import { WelcomePage } from "./components/pages/WelcomePage/WelcomePage";
+import { Footer } from "./components/pages/Footer/Footer";
+import { Home } from "./components/pages/HomePage/Home";
+import { Register } from "./components/pages/RegisterPage/Register";
+import { About } from "./components/pages/HomePage/About";
 
 const MyApp = () => {
     let navigate = useNavigate();
