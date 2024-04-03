@@ -180,7 +180,6 @@ export const InfoForm = ({
                         placeholder="Адрес"
                         value={address}
                         onChange={changeHandler}
-                        onBlur={validateHandler}
                         onFocus={onFocusHandler}
                     />
                 </div>

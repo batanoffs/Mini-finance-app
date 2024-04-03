@@ -12,13 +12,11 @@ export const useValidate = (initialState) => {
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gm;
         const validatePhone = /0[8-9][6-9]{2}\d{6}/gm;
         const validateName = /^[a-zA-Zа-яА-Я]{2,30}$/gm;
-        const validateAdress = /^[a-zA-Zа-яА-Я]{2,30}$/gm;
 
         const errorMessage = {
             email: "Invalid email",
             firstName: "Min 2 chars",
             lastName: "Min 2 chars",
-            address: "Min 5 chars",
             country: "Min 2 chars",
             town: "Min 2 chars",
             phoneNumber: "Invalid phone number",
@@ -43,11 +41,6 @@ export const useValidate = (initialState) => {
                 break;
             case "lastName":
                 newErrors[e.target.name] = validateName.test(e.target.value)
-                    ? ""
-                    : newErrors[e.target.name];
-                break;
-            case "address":
-                newErrors[e.target.name] = validateAdress.test(e.target.value)
                     ? ""
                     : newErrors[e.target.name];
                 break;

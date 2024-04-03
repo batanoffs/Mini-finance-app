@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useValidate } from "./useValidate";
+import { useMessage } from "./useMessage";
 
 export const useForm = (initialState, onLogin, onRegister) => {
     const [values, setValues] = useState(initialState);
     const { error, errorHandler, clearErrorHandler } = useValidate({});
+    const message = useMessage();
 
     const changeHandler = (e, photoInfo) => {
         setValues((state) => {
@@ -68,9 +70,14 @@ export const useForm = (initialState, onLogin, onRegister) => {
 
     const onSubmitRegister = async(e) => {
         e.preventDefault();
-        if (!Object.values(error).some((value) => value)) {
+        const checkError = Object.values(error).some((value) => value);
+        const listErrors = Object.values(error).find((value) => value);
+        if (!checkError) {
             onRegister(values);
             resetFormHandler();
+        } else {
+            console.error("Errors found during registration", listErrors);
+            message("error", `Валидацията е неуспешна, намерени грешки: ${listErrors}`);
         }
     };
 
