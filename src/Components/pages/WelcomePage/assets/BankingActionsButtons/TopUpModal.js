@@ -31,6 +31,11 @@ export const TopUp = ({ showModal, setShowModal }) => {
         setShowModal({ ...showModal, [`topUp`]: false });
     };
 
+    const handleChange = (event) => {
+        const result = event.target.value.replace(/\D/g, '');
+        setInputState({ ...inputState, [event.target.name]: result });
+    };
+
     return (
         <div className={modal.modalBackground}>
             <div className={modal.modalContainer}>
@@ -51,23 +56,24 @@ export const TopUp = ({ showModal, setShowModal }) => {
                             type="text"
                             name="amount"
                             value={inputState.amount}
-                            onChange={setInputState}
+                            onChange={handleChange}
                             id="amount"
-                            placeholder="Enter amount"
+                            placeholder="10 лв."
+                            required
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="payment-method">
+                        <label htmlFor="paymethod">
                             <FontAwesomeIcon icon={faCreditCard} />
                             Начин на плащане:
                         </label>
                         <select
-                            id="payment-method"
-                            value={inputState.payment_method}
+                            id="paymethod"
+                            value={inputState.method}
                             onChange={(e) => {
                                 setInputState({
                                     ...inputState,
-                                    payment_method: e.target.value,
+                                    paymethod: e.target.value,
                                 });
                             }}
                         >

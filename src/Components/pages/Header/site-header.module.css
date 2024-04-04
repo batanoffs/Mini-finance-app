@@ -34,6 +34,7 @@
 
 .headerMobileDropdown:hover .dropdownMenu {
     display: block;
+    z-index: 5;
     top: 25px;
 }
 
@@ -293,7 +294,7 @@
         padding: 1em;
         min-width: 450px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 4;
+        z-index: 5;
         top: 40px;
         left: -350px; /* Adjust the left position as needed */
     }

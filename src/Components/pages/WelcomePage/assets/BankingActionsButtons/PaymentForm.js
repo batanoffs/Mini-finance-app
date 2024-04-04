@@ -1,186 +1,94 @@
+import { useValidate } from "../../../../../hooks/useValidate";
+
 import modal from "./modal.module.css";
+import errorstyle from "../../../RegisterPage/register.module.css";
 
 export const PaymentForm = ({ inputState, setInputState }) => {
+    const { error, errorHandler, clearErrorHandler } = useValidate({});
+
     const handleChange = (e) => {
         setInputState({ ...inputState, [e.target.name]: e.target.value });
     };
 
-    const validateEmail = (email) => {
-        const re =
-            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        return re.test(String(email).toLowerCase());
-    };
-
-    const validateIBAN = (iban) => {
-        const re = /^[a-zA-Z]{2}\d{2}[a-zA-Z0-9]{4}\d{7}([a-zA-Z0-9]?){0,16}$/;
-        return re.test(String(iban).toUpperCase());
-    };
-
-    const validateCVV = (cvv) => {
-        const re = /^\d{3,4}$/;
-        return re.test(String(cvv));
-    };
-
-    const validateExpiry = (expiry) => {
-        const re = /^((0[1-9])|(1[0-2]))\/([0-9]{2}|[1-9][0-9])$/;
-        return re.test(String(expiry));
-    };
-
     const checkInputHandler = (e) => {
-        if (!e.target.checkValidity()) {
-            e.target.style.borderColor = "red";
-            e.target.nextElementSibling.style.display = "block";
+        if (e.target.value === "") {
+            return;
         } else {
-            e.target.style.borderColor = "lightgreen";
-            e.target.nextElementSibling.style.display = "none";
+            if (errorHandler(e)) {
+                e.target.style.borderColor = "red";
+            } else {
+                e.target.style.borderColor = "lightgreen";
+            }
         }
     };
 
-    if (inputState.payment_method === "banktransfer") {
+    if (inputState.paymethod === "debitcard") {
         return (
             <div className={modal.modalOptions}>
                 <div className="form-group">
-                    <label htmlFor="bank">Bank:</label>
+                    <label htmlFor="debitcard">Номер:</label>
                     <input
-                        type="text"
-                        name="bank"
-                        value={inputState.bank}
-                        onChange={handleChange}
-                        onBlur={checkInputHandler}
                         required
-                        className={modal.input}
-                        pattern="[a-zA-Z\s]+"
-                    />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must only contain letters
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="iban">IBAN:</label>
-                    <input
                         type="text"
-                        name="iban"
-                        value={inputState.iban}
-                        onChange={handleChange}
-                        onBlur={checkInputHandler}
-                        required
-                        className={modal.input}
-                        pattern={validateIBAN.source}
-                    />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must only contain letters and numbers
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="swift">SWIFT:</label>
-                    <input
-                        type="text"
-                        name="swift"
-                        value={inputState.swift}
-                        onChange={handleChange}
-                        onBlur={checkInputHandler}
-                        required
-                        className={modal.input}
-                        pattern="[a-zA-Z0-9]{4,5}"
-                    />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must only contain letters and numbers, 4-5 max
-                        characters
-                    </small>
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="description">Описание:</label>
-                    <input
-                        type="text"
-                        name="description"
-                        value={inputState.description}
-                        onChange={handleChange}
-                        onBlur={checkInputHandler}
-                        required
-                        className={modal.input}
-                        pattern="^[a-zA-Z\s]+$"
-                    />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must only contain letters and spaces
-                    </small>
-                </div>
-            </div>
-        );
-    } else if (inputState.payment_method === "debitcard") {
-        return (
-            <div className={modal.modalOptions}>
-
-                <div className="form-group">
-                    <label htmlFor="number">Номер:</label>
-                    <input
-                        type="text"
-                        name="number"
+                        name="debitcard"
                         value={inputState.number}
                         onChange={handleChange}
                         onBlur={checkInputHandler}
-                        required
+                        onFocus={clearErrorHandler}
                         className={modal.input}
-                        pattern="^\d{16}$"
                     />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must only contain 16 digits
-                    </small>
                 </div>
+                <small className={errorstyle.error}>{error.debitcard}</small>
 
                 <div className="form-group">
                     <label htmlFor="expiry">Валидност:</label>
                     <input
+                        required
                         type="text"
                         name="expiry"
                         value={inputState.expiry}
                         onChange={handleChange}
-                        required
                         onBlur={checkInputHandler}
+                        onFocus={clearErrorHandler}
                         className={modal.input}
-                        pattern={validateExpiry.source}
                     />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must be in format MM/YY
-                    </small>
                 </div>
+                <small className={errorstyle.error}>{error.expiry}</small>
 
                 <div className="form-group">
                     <label htmlFor="cvv">CVV:</label>
                     <input
+                        required
                         type="text"
                         name="cvv"
+                        className={modal.input}
                         value={inputState.cvv}
                         onChange={handleChange}
-                        required
                         onBlur={checkInputHandler}
-                        className={modal.input}
-                        pattern={validateCVV.source}
+                        onFocus={clearErrorHandler}
                     />
-                    <small style={{ display: "none", color: "red" }}>
-                        Must only contain 3 or 4 digits
-                    </small>
                 </div>
+                <small className={errorstyle.error}>{error.cvv}</small>
             </div>
         );
-    } else if (inputState.payment_method === "paypal") {
+    } else if (inputState.paymethod === "paypal") {
         return (
-            <div className={modal.modalOptions}>
-                <label htmlFor="email">Имейл:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={inputState.email}
-                    onChange={handleChange}
-                    required
-                    onBlur={checkInputHandler}
-                    className={modal.input}
-                    pattern={validateEmail.source}
-                />
-                <small style={{ display: "none", color: "red" }}>
-                    Must only contain letters, digits, symbols ._%+ and @
-                </small>
-            </div>
+            <>
+                <div className={modal.modalOptions}>
+                    <label htmlFor="email">Имейл:</label>
+                    <input
+                        required
+                        type="email"
+                        name="email"
+                        className={modal.input}
+                        value={inputState.email}
+                        onChange={handleChange}
+                        onBlur={checkInputHandler}
+                        onFocus={clearErrorHandler}
+                    />
+                </div>
+                <small className={errorstyle.error}>{error.email}</small>
+            </>
         );
     }
 };

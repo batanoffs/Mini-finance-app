@@ -70,7 +70,7 @@
 
 .error {
     color: red;
-    font-size: 12px;
+    font-size: 10px;
     width: fit-content;
     display: inline;
     align-self: flex-end;
