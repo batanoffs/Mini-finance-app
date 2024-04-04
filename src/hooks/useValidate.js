@@ -5,28 +5,27 @@ export const useValidate = (initialState) => {
 
     const errorHandler = (e) => {
         const newErrors = { ...error };
-        const validateEmail =
-            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gm;
+        const validateEmail = /\w+@\w+\.\w+/gm;
         const validateUsername = /^[a-zA-Z0-9-]{3,16}$/gm;
-        const validatePassword =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gm;
-        const validatePhone = /0[8-9][6-9]{2}\d{6}/gm;
+        const validatePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gm;
+        const validatePhone = /08[7-9][0-9]{7}/gm;
         const validateName = /^[a-zA-Zа-яА-Я]{2,30}$/gm;
+        const validateCityCountry = /^[a-zA-Zа-яА-Я]{3,30}$/gm;
 
         const errorMessage = {
-            email: "Invalid email",
-            firstName: "Min 2 chars",
-            lastName: "Min 2 chars",
-            country: "Min 2 chars",
-            town: "Min 2 chars",
-            phoneNumber: "Invalid phone number",
-            username: "3-16 chars, -, a-z, A-Z",
-            password: "Upper, lower, digit, min 8 chars",
-            confirmPassword: "Passwords don't match",
+            email: "Невалиден e-mail",
+            firstName: "Минимално 2 символа",
+            lastName: "Минимално 2 символа",
+            country: "Минимално 3 символа",
+            town: "Минимално 3 символа",
+            phoneNumber: "Невалиден BG телефон",
+            username: "3-16 символа, -, a-z, A-Z",
+            password: "Големи и малки букви, цифри, минимално 8 символа",
+            confirmPassword: "Паролите не съвпадат",
+
         };
 
-        newErrors[e.target.name] =
-            errorMessage[e.target.name] || newErrors[e.target.name];
+        newErrors[e.target.name] = errorMessage[e.target.name] || newErrors[e.target.name];
 
         switch (e.target.name) {
             case "email":
@@ -45,12 +44,14 @@ export const useValidate = (initialState) => {
                     : newErrors[e.target.name];
                 break;
             case "country":
-                newErrors[e.target.name] =
-                    e.target.value.length >= 2 ? "" : newErrors[e.target.name];
+                newErrors[e.target.name] = validateCityCountry.test(e.target.value)
+                    ? ""
+                    : newErrors[e.target.name];
                 break;
             case "town":
-                newErrors[e.target.name] =
-                    e.target.value.length >= 5 ? "" : newErrors[e.target.name];
+                newErrors[e.target.name] = validateCityCountry.test(e.target.value)
+                    ? ""
+                    : newErrors[e.target.name];
                 break;
             case "phoneNumber":
                 newErrors[e.target.name] = validatePhone.test(e.target.value)

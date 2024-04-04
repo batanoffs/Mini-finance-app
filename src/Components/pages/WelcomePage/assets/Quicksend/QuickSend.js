@@ -77,6 +77,7 @@ export const QuickSendMoney = ({
                             <img
                                 src={friend.avatar}
                                 className={styles.profileImage}
+                                data-key={friend.fullName}
                                 alt={"avatar"}
                                 onClick={openSendMenu}
                             />
