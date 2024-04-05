@@ -6,13 +6,12 @@ import { PasswordTab } from "./SettingsPasswordTab";
 import { ProfileTab } from "./SettingsProfileTab";
 
 export const SettingsNavigationPanel = () => {
-    const onChange = (key) => {
-    };
+    const onChange = (key) => {};
     const items = [
         {
             key: "1",
             label: "Профил",
-            children: <ProfileTab/>,
+            children: <ProfileTab />,
         },
         {
             key: "2",
@@ -31,6 +30,11 @@ export const SettingsNavigationPanel = () => {
         },
     ];
     return (
-        <Tabs defaultActiveKey="1" items={items} tabBarStyle={{fontFamily: "var(--body-font-family)"}}onChange={onChange} />
+        <Tabs
+            defaultActiveKey="1"
+            items={items}
+            tabBarStyle={{ fontFamily: "var(--body-font-family)" }}
+            onChange={onChange}
+        />
     );
 };

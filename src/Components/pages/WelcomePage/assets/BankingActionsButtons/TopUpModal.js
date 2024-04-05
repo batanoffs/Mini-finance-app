@@ -1,38 +1,76 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState, useContext } from "react";
 
 import { PaymentForm } from "./PaymentForm";
+
+import { AuthContext } from "../../../../../contexts/AuthContext";
+import { cardService } from "../../../../../services/cardGenetarionService";
+import { useMessage } from "../../../../../hooks/useMessage";
 
 import modal from "./modal.module.css";
 
 export const TopUp = ({ showModal, setShowModal }) => {
     const [inputState, setInputState] = useState({});
+    const { virtualcard, token } = useContext(AuthContext);
+    const message = useMessage();
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         const form = e.target;
         if (!form) {
             console.error("Form element is null");
+            message("error", "Не сте въвели данни. Опитайте отново.");
             return;
         }
         const formData = new FormData(form);
         const data = {};
+
         for (const [name, value] of formData) {
             if (name && value) {
                 data[name] = value;
             } else {
                 console.error("Null pointer exception: name or value is null");
+                message("error", "Въведени са грешни даннни. Опитайте отново.");
                 return;
             }
         }
-        console.log(data);
 
-        setShowModal({ ...showModal, [`topUp`]: false });
+        const amount = Number(data.amount) + Number(virtualcard.balance);
+
+        const response = await cardService.topUp(
+            virtualcard.objectId,
+            amount,
+            token
+        );
+
+        console.log(response);
+
+
+        if (!response) {
+            message(
+                "error",
+                "Възникна грешка при изпращане на данните. Моля опитайте отново."
+            );
+            return;
+        } else {
+            const balance = response.balance;
+            const topUp = response.top_up;
+            const prevData = JSON.parse(sessionStorage.getItem("auth") || "{}");
+            sessionStorage.setItem(
+                "auth",
+                JSON.stringify({
+                    ...prevData,
+                    virtualcard: { ...prevData.virtualcard, top_up: topUp, balance: balance },
+                })
+            );
+            setShowModal({ ...showModal, [`topUp`]: false });
+            message("success", "Транзакцията е успешна");
+        }
     };
 
     const handleChange = (event) => {
-        const result = event.target.value.replace(/\D/g, '');
+        const result = event.target.value.replace(/\D/g, "");
         setInputState({ ...inputState, [event.target.name]: result });
     };
 
@@ -78,9 +116,6 @@ export const TopUp = ({ showModal, setShowModal }) => {
                             }}
                         >
                             <option value="">Изберете начин на плащане</option>
-                            <option value="banktransfer">
-                                Банков трансфер
-                            </option>
                             <option value="debitcard"> Дебитна карта </option>
                             <option value="paypal">PayPal</option>
                         </select>
@@ -96,6 +131,14 @@ export const TopUp = ({ showModal, setShowModal }) => {
                             style={{ width: `100%`, textAlign: `center` }}
                             type="submit"
                             value="Зареди"
+                            disabled={
+                                !inputState.amount ||
+                                !inputState.paymethod ||
+                                !inputState.fullName ||
+                                !inputState.cardnumber ||
+                                !inputState.expiry ||
+                                !inputState.cvv
+                            }
                         />
                     </footer>
                 </form>

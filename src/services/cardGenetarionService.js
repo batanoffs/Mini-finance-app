@@ -3,14 +3,14 @@ import * as request from "./requester";
 
 const endpoints = {
     user: `${baseURL}/data/UserData`,
-    generateCard: `/data/CardsMockData`,
+    mockcards: `${baseURL}/data/CardsMockData`,
     setRelation: (parentObjectId) => `${baseURL}/data/UserData/${parentObjectId}/virtualcard`,
     }
 // https://cors-anywhere.herokuapp.com/
 
 const generateCard = async (id) => {
     const query = encodeURIComponent(`cards_mock_data_id=${id}`); // EncodeURI
-    const response = await request.get(`${baseURL}${endpoints.generateCard}?where=${query}`);
+    const response = await request.get(`${endpoints.mockcards}?where=${query}`);
     const date = response[0].expiration.split("/");
     const money = response[0].balance;
     date.shift();
@@ -27,6 +27,17 @@ const generateCard = async (id) => {
     };
 };
 
+// GET VIRTUAL CARD
+const getCard = async (id) => {
+    const query = encodeURIComponent(`cards_mock_data_id='${id}'`);
+    return await request.get(`${endpoints.mockcards}?where=${query}`);
+  };
+
+const topUp = async (objectId, value, token) => {
+    const data = { top_up: value };
+return await request.put(`${endpoints.mockcards}/${objectId}`, data, token);
+}
+
 const getVirtualcardIds = async () => {
     const query = encodeURIComponent(`property=cardId`); // EncodeURI
     return await request.get(`${endpoints.user}?${query}`);
@@ -39,5 +50,7 @@ const setVirtualCardRelation = async(parentObjectId, body) => {
 export const cardService = {
     generateCard,
     setVirtualCardRelation,
-    getVirtualcardIds
+    getVirtualcardIds,
+    getCard,
+    topUp
 };

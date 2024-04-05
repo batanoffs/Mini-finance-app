@@ -13,7 +13,8 @@ export const useValidate = (initialState) => {
         const validateCityCountry = /^[a-zA-Zа-яА-Я]{3,30}$/gm;
         const validateExpiry = /^((0[1-9])|(1[0-2]))\/([0-9]{2}|[1-9][0-9])$/;
         const validateCVV = /^\d{3,4}$/;
-        const validateIBAN = /^[a-zA-Z]{2}\d{2}[a-zA-Z0-9]{4}\d{7}([a-zA-Z0-9]?){0,16}$/;
+        const validateCardNumber = /^((?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12})|(4[0-9]{12}(?:[0-9]{3})?)$/gm;
+        const validateFullname = /^[a-zA-Zа-яА-Я]{2,} [a-zA-Zа-яА-Я]{2,}$/gm;
         const errorMessage = {
             email: "само букви, цифри, символи ._%+ и @",
             firstName: "минимален брой символи 2",
@@ -30,14 +31,20 @@ export const useValidate = (initialState) => {
             swift: "само букви и цифри, 4-5 символа",
             bank: "само букви и цифри, до 30 символа",
             description: "само букви и цифри, 2-30 символа",
-            debitcard: "номерът трябва да е 16 цифри",
+            cardnumber: "номерът трябва да е 16 цифри",
+            fullName: "само букви, име и фамилия",
         };
 
         newErrors[e.target.name] = errorMessage[e.target.name] || newErrors[e.target.name];
 
         switch (e.target.name) {
-            case "debitcard":
-                newErrors[e.target.name] = validateIBAN.test(e.target.value)
+            case "fullName":
+                newErrors[e.target.name] = validateFullname.test(e.target.value)
+                    ? ""
+                    : newErrors[e.target.name];
+                break;
+            case "cardnumber":
+                newErrors[e.target.name] = validateCardNumber.test(e.target.value)
                     ? ""
                     : newErrors[e.target.name];
                 break;

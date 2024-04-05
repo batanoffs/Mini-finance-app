@@ -4,9 +4,8 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 import { UploadPicture } from "../../assets/upload/Upload";
 
 export const ProfileTab = () => {
-    const { name, phone, email } = useContext(AuthContext);
+    const { phone, email } = useContext(AuthContext);
     const [state, setState] = useState({
-        fullname: name,
         email: email,
         phone_number: phone,
     });
@@ -23,6 +22,7 @@ export const ProfileTab = () => {
     const onUpdateHandler = () => {
         console.log("updated");
     };
+    
     return (
         <div className="form-container">
             <div className="form-content">
@@ -31,18 +31,6 @@ export const ProfileTab = () => {
                     <UploadPicture />
                 </div>
                 <form className="custom-form" method="post">
-                    <div className="form-group">
-                        <label htmlFor="profile-name">Име и фамилия</label>
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="profile-name"
-                            id="profile-name"
-                            value={state.fullname}
-                            onChange={inputChangeHandler}
-                            placeholder="Име и фамилия"
-                        />
-                    </div>
                     <div className="form-group">
                         <label htmlFor="profile-email">Email</label>
                         <input
@@ -56,7 +44,7 @@ export const ProfileTab = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="phone_number">Телефонен номер</label>
+                        <label htmlFor="phone_number">Промяна на телефон</label>
                         <input
                             type="number"
                             name="phone_number"
