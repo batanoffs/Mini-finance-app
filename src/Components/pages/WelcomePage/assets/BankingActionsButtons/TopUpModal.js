@@ -36,16 +36,12 @@ export const TopUp = ({ showModal, setShowModal }) => {
             }
         }
 
-        const amount = Number(data.amount) + Number(virtualcard.balance);
-
+        const amount = Number(data.amount) + Number(virtualcard.top_up);
         const response = await cardService.topUp(
             virtualcard.objectId,
             amount,
             token
         );
-
-        console.log(response);
-
 
         if (!response) {
             message(
@@ -57,9 +53,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
             const balance = response.balance;
             const topUp = response.top_up;
             const prevData = JSON.parse(sessionStorage.getItem("auth") || "{}");
-            sessionStorage.setItem(
-                "auth",
-                JSON.stringify({
+            sessionStorage.setItem( "auth", JSON.stringify({
                     ...prevData,
                     virtualcard: { ...prevData.virtualcard, top_up: topUp, balance: balance },
                 })

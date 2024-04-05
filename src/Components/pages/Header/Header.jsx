@@ -86,7 +86,7 @@ export const Header = () => {
         <header className={styles.headerContainer}>
             <div className={styles.logoContainer}>
                 <img
-                    src="https://notablepen.backendless.app/api/files/app/AppData/home/logo4.svg"
+                    src="https://notablepen.backendless.app/api/files/app/AppData/home/newLogo.svg"
                     onClick={onRedirect}
                     alt="logo"
                     className={styles.logo}
