@@ -16,7 +16,6 @@ import { History } from "../assets/History";
 import styles from "../welcome-page-layout.module.css";
 
 export const OverviewTab = (props) => {
-    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
     const { name, virtualcard, balance, picture, phone, email } = useContext(AuthContext);
     
     return (
@@ -46,8 +45,8 @@ export const OverviewTab = (props) => {
             <div className={styles.bentoSideColumn}>
                 <ContactInfo />
                 <AddFriends />
-                <BankingActionButtons userInput={userInput} setUserInput={setUserInput} showModal={props.showModal} setShowModal={props.setShowModal}/>
-                <QuickSendMoney userInput={userInput} setUserInput={setUserInput} showModal={props.showModal} setShowModal={props.setShowModal}/>
+                <BankingActionButtons userInput={props.userInput} setUserInput={props.setUserInput} showModal={props.showModal} setShowModal={props.setShowModal}/>
+                <QuickSendMoney userInput={props.userInput} setUserInput={props.setUserInput} showModal={props.showModal} setShowModal={props.setShowModal}/>
             </div>
         </div>
     );

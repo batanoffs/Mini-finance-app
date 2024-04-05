@@ -17,6 +17,8 @@ export const WelcomePage = () => {
         request: false,
     });
     const [hasLoaded, setHasLoaded] = useState(false);
+    const [userInput, setUserInput] = useState({ amount: "", friends: "" });
+
     const [rates, setRates] = useState({
         USD: { name: "USD", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/united-states.png" },
         GBP: { name: "GBP", buy: 0, sell: 0, logo: "https://notablepen.backendless.app/api/files/app/AppData/flags/united-kingdom.png" },
@@ -30,8 +32,8 @@ export const WelcomePage = () => {
                     <Sidebar />
                 
                     <Routes>
-                        <Route path="/overview" element={<OverviewTab showModal={showModal} setShowModal={setShowModal} rates={rates} setRates={setRates} hasLoaded={hasLoaded} setHasLoaded={setHasLoaded}/>} />
-                        <Route path="/wallet" element={<WalletTab showModal={showModal} setShowModal={setShowModal}/>} />
+                        <Route path="/overview" element={<OverviewTab showModal={showModal} userInput={userInput} setUserInput={setUserInput} setShowModal={setShowModal} rates={rates} setRates={setRates} hasLoaded={hasLoaded} setHasLoaded={setHasLoaded}/>} />
+                        <Route path="/wallet" element={<WalletTab showModal={showModal} userInput={userInput} setUserInput={setUserInput} setShowModal={setShowModal}/>} />
                         <Route path="/profile" element={<ProfileTab />} />
                         <Route path="/settings/*" element={<SettingsTab />} />
                         <Route path="/help-center" element={<HelpCenterTab />} />

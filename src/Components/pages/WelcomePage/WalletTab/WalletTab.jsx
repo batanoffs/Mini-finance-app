@@ -13,7 +13,7 @@ export const WalletTab = (props) => {
             </main>
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />
-                <BankingActionButtons showModal={props.showModal} setShowModal={props.setShowModal} />
+                <BankingActionButtons showModal={props.showModal} userInput={props.userInput} setUserInput={props.setUserInput} setShowModal={props.setShowModal} />
             </aside>
         </div>
     );
