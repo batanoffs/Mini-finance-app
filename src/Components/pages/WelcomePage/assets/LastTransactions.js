@@ -45,7 +45,7 @@ export const LastTransactions = () => {
                                             color: "green",
                                         }}
                                         >
-                                            {entry.transaction_type} {entry.amount}лв
+                                            + {entry.amount}лв
                                         </strong>
                                     </div>
 
