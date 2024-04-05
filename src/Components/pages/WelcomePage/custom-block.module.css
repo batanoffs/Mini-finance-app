@@ -69,8 +69,8 @@
     background: var(--third-bg-color);
     background: #ff0000;
     border-radius: 100%;
-    width: 154px;
-    height: 154px;
+    width: 135px;
+    height: 135px;
     position: absolute;
     top: -65px;
     right: -35px;
@@ -82,8 +82,8 @@
     background: var(--primary-color);
     background: #ffa500;
     border-radius: 100%;
-    width: 140px;
-    height: 140px;
+    width: 125px;
+    height: 125px;
     position: absolute;
     top: -70px;
     right: -30px;

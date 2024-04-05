@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 
 import blocks from "../../../custom-block.module.css";
 
-export const ProfileDetails = ({ email, phone, name, picture, adress, country }) => {
+export const ProfileDetails = ({
+    email,
+    phone,
+    name,
+    picture,
+    adress,
+    country,
+}) => {
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
             <div className={blocks.customBlockProfileImageWrap}>
@@ -19,7 +26,7 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
                     to="/dashboard/settings"
                     className={blocks.customBlockEditIcon}
                 >
-                   <FontAwesomeIcon icon={faPenToSquare} />
+                    <FontAwesomeIcon icon={faPenToSquare} />
                 </Link>
             </div>
 
@@ -30,14 +37,41 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
             </p>
             <p>
                 <strong>Имейл:</strong>
-                <a href={`mailto:${email}`}>{email}</a>
+                <a
+                    href={`mailto:${email}`}
+                    style={{
+                        paddingLeft: "5px",
+                        color: "var(--heading-color)",
+                        hover: "white",
+                    }}
+                >
+                    {email}
+                </a>
             </p>
             <p style={{ paddingBottom: "0" }}>
                 <strong>Телефон:</strong>
-                <a href={`tel:${phone}`}>{phone}</a>
+                <a
+                    href={`tel:${phone}`}
+                    style={{
+                        paddingLeft: "5px",
+                        color: "var(--heading-color)",
+                    }}
+                >
+                    {phone}
+                </a>
             </p>
-            {country && <p><strong>Държава:</strong><span> {country}</span></p>}
-            {adress &&<p><strong>Адрес:</strong><span>{adress}</span></p>}
+            {country && (
+                <p>
+                    <strong>Държава:</strong>
+                    <span> {country}</span>
+                </p>
+            )}
+            {adress && (
+                <p>
+                    <strong>Адрес:</strong>
+                    <span>{adress}</span>
+                </p>
+            )}
         </div>
     );
 };

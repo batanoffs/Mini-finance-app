@@ -5,6 +5,7 @@ import { showLastCardDidgits } from "../../../../utils/showLastCardDidgits";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
 import blocks from "../custom-block.module.css";
+import { balanceFormat } from "../../../../utils/balanceFormat";
 
 export const VirtualCard = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext);
@@ -28,11 +29,13 @@ export const VirtualCard = () => {
             })
             .catch((err) => console.log(err));
     }, []);
+    
 
+    
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
             <h5 >Наличност</h5>
-            <h4 style={{ color: "var(--white-color)" }}>{card.balance ? card.balance + 'лв' : '0лв'}</h4>
+            <h4 style={{ color: "var(--white-color)" }}>{card.balance ? balanceFormat(card.balance) + ' лв'  : '0 лв'}</h4>
 
             <div className={blocks.customBlockNumbers}>
                 <span>****</span>
@@ -55,3 +58,4 @@ export const VirtualCard = () => {
         </div>
     );
 };
+
