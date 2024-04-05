@@ -12,7 +12,7 @@
 
 .logoContainer {
     align-self: center;
-    margin-left: 1em;
+    margin-left: 0.3em;
 }
 
 .headerDropdownContainer {
@@ -39,7 +39,7 @@
 }
 
 .logo {
-    height: 45px;
+    height: 40px;
     cursor: pointer;
 }
 
