@@ -1,7 +1,7 @@
 {
   "name": "mini-finance",
   "homepage": "http://batanoffs.github.io/mini-finance",
-  "version": "1.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
