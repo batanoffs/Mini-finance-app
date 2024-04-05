@@ -7,9 +7,9 @@ export const SidebarRegister = (props) => {
 
     const checkWidth = () => {
         if (window.innerWidth < 700) {
-            return "vertical";
-        } else {
             return "horizontal";
+        } else {
+            return "vertical";
         }
     }
     return (
