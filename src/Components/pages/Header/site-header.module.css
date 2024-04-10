@@ -23,8 +23,6 @@
     margin-right: 1em;
 }
 
-
-
 .headerMobileDropdown {
     display: flex;
     justify-content: center;
@@ -98,7 +96,6 @@
     color: var(--white-color);
 }
 
-
 /* NOTIFICATIONS */
 .accept {
     border: 1px solid rgba(168, 168, 168, 0.857);
@@ -137,7 +134,7 @@
     height: 1.3em;
     cursor: pointer;
     background-color: transparent;
-    color:gray
+    color: gray;
 }
 
 .reject:hover {
@@ -194,7 +191,6 @@
     font-size: var(--p-font-size);
     color: var(--white-color);
     padding-top: 10px;
-
 }
 
 .notificationDot {
@@ -225,7 +221,6 @@
     display: inline-block;
     height: 44px;
 }
-
 
 .hidden {
     display: none;
@@ -298,5 +293,3 @@
         left: -350px; /* Adjust the left position as needed */
     }
 }
-
-

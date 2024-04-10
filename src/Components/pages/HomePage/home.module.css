@@ -122,7 +122,7 @@
     :root {
         --home-padding: 2em;
     }
-    
+
     .scalingSvg {
         position: absolute;
         width: 90%;

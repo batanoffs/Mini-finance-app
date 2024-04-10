@@ -1,9 +1,9 @@
-import { TableTransactions } from "./assets/TableTransactions";
+import { TableTransactions } from './assets/TableTransactions'
 
-import { BankingActionButtons } from "../assets/BankingActionsButtons/BankingActionButtons";
-import { ContactInfo } from "../assets/ContactInfo";
+import { BankingActionButtons } from '../assets/BankingActionsButtons/BankingActionButtons'
+import { ContactInfo } from '../assets/ContactInfo'
 
-import styles from "../welcome-page-layout.module.css";
+import styles from '../welcome-page-layout.module.css'
 
 export const WalletTab = (props) => {
     return (
@@ -13,8 +13,13 @@ export const WalletTab = (props) => {
             </main>
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />
-                <BankingActionButtons showModal={props.showModal} userInput={props.userInput} setUserInput={props.setUserInput} setShowModal={props.setShowModal} />
+                <BankingActionButtons
+                    showModal={props.showModal}
+                    userInput={props.userInput}
+                    setUserInput={props.setUserInput}
+                    setShowModal={props.setShowModal}
+                />
             </aside>
         </div>
-    );
-};
+    )
+}

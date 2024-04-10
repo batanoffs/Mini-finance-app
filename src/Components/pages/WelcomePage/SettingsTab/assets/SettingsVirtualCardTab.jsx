@@ -1,37 +1,37 @@
-import { useState, useContext } from "react";
-import Cards from "react-credit-cards-2";
+import { useState, useContext } from 'react'
+import Cards from 'react-credit-cards-2'
 
-import { AuthContext } from "../../../../../contexts/AuthContext";
+import { AuthContext } from '../../../../../contexts/AuthContext'
 
-import "react-credit-cards-2/dist/es/styles-compiled.css";
+import 'react-credit-cards-2/dist/es/styles-compiled.css'
 
 export const VirtualCard = () => {
-    const { name, virtualcard } = useContext(AuthContext);
+    const { name, virtualcard } = useContext(AuthContext)
     const [state, setState] = useState({
         name: name,
         cardNumber: virtualcard.number,
         expiryDate: virtualcard.expiration,
         cvc: virtualcard.cvv,
-        focus: "",
-    });
+        focus: '',
+    })
 
     const inputChangeHandler = (e) => {
-        const { name, value } = e.target;
-        setState((prev) => ({ ...prev, [name]: value }));
-    };
+        const { name, value } = e.target
+        setState((prev) => ({ ...prev, [name]: value }))
+    }
     const inputFocusHandler = (e) => {
-        setState((prev) => ({ ...prev, focus: e.target.name }));
-    };
+        setState((prev) => ({ ...prev, focus: e.target.name }))
+    }
 
     const onUpdateHandler = () => {
-        console.log("updated");
-    };
+        console.log('updated')
+    }
 
     return (
         <div className="form-container">
             <div
                 className="form-content"
-                style={{ display: "flex", flexDirection: "row", gap: "10em" }}
+                style={{ display: 'flex', flexDirection: 'row', gap: '10em' }}
             >
                 <form className="custom-form" method="post">
                     <div className="form-group">
@@ -113,5 +113,5 @@ export const VirtualCard = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

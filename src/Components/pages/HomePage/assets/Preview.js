@@ -1,4 +1,4 @@
-import styles from "../home.module.css";
+import styles from '../home.module.css'
 
 export const Preview = () => {
     return (
@@ -26,11 +26,7 @@ export const Preview = () => {
                 </pattern>
             </defs>
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            ></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
                 <g
                     id="laptop_macbook_pro"
@@ -74,5 +70,5 @@ export const Preview = () => {
                 </g>
             </g>
         </svg>
-    );
-};
+    )
+}

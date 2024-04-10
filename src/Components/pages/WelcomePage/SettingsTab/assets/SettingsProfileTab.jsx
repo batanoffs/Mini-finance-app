@@ -1,33 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useState } from 'react'
 
-import { AuthContext } from "../../../../../contexts/AuthContext";
-import { UploadPicture } from "../../assets/upload/Upload";
+import { AuthContext } from '../../../../../contexts/AuthContext'
+import { UploadPicture } from '../../assets/upload/Upload'
 
 export const ProfileTab = () => {
-    const { phone, email } = useContext(AuthContext);
+    const { phone, email } = useContext(AuthContext)
     const [state, setState] = useState({
         email: email,
         phone_number: phone,
-    });
+    })
 
     const inputChangeHandler = (e) => {
-        const { name, value } = e.target;
-        setState((prev) => ({ ...prev, [name]: value }));
-    };
+        const { name, value } = e.target
+        setState((prev) => ({ ...prev, [name]: value }))
+    }
 
     const onResetHandler = () => {
-        console.log("resetted");
-    };
+        console.log('resetted')
+    }
 
     const onUpdateHandler = () => {
-        console.log("updated");
-    };
-    
+        console.log('updated')
+    }
+
     return (
         <div className="form-container">
             <div className="form-content">
                 <div className="form-group">
-                    
                     <UploadPicture />
                 </div>
                 <form className="custom-form" method="post">
@@ -74,5 +73,5 @@ export const ProfileTab = () => {
                 </form>
             </div>
         </div>
-    );
-};
+    )
+}

@@ -20,7 +20,7 @@
     border-radius: 1em;
     background-color: var(--white-color);
     box-shadow: 0 0.3em 1em rgba(0, 0, 0, 0.1);
-    width: 300px; 
+    width: 300px;
     height: 400px;
     cursor: pointer;
     transition: transform 0.1s ease;
@@ -46,7 +46,7 @@
 }
 
 .displayFeatures {
-    list-style:circle;
+    list-style: circle;
     text-align: left;
     padding-left: 1em;
     margin-top: 1em;

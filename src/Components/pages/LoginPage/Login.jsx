@@ -1,30 +1,30 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
-import { AuthContext } from "../../../contexts/AuthContext";
-import { useMessage } from "../../../hooks/useMessage";
-import { useForm } from "../../../hooks/useForm";
+import { AuthContext } from '../../../contexts/AuthContext'
+import { useMessage } from '../../../hooks/useMessage'
+import { useForm } from '../../../hooks/useForm'
 
-import styles from "../RegisterPage/register.module.css";
+import styles from '../RegisterPage/register.module.css'
 
 export const Login = () => {
-    const showMessage = useMessage();
-    const { onLoginSubmitHandler } = useContext(AuthContext);
+    const showMessage = useMessage()
+    const { onLoginSubmitHandler } = useContext(AuthContext)
     const { values, error, changeHandler, onSubmitLogin } = useForm(
         {
             email: '',
             password: '',
         },
         onLoginSubmitHandler
-    );
+    )
 
     const onSubmitLoginHandler = async (event) => {
-        const response = await onSubmitLogin(event);
+        const response = await onSubmitLogin(event)
         if (!response) {
-            showMessage("error", "Грешен имейл или парола");
+            showMessage('error', 'Грешен имейл или парола')
         }
     }
-    
+
     return (
         <div className="form-container">
             <div className="form-content">
@@ -37,9 +37,7 @@ export const Login = () => {
                     onSubmit={onSubmitLoginHandler}
                 >
                     <div className="form-group">
-                        <label htmlFor="email">
-                        Имейл{" "}
-                        </label>
+                        <label htmlFor="email">Имейл </label>
                         <input
                             type="text"
                             autoComplete="on"
@@ -52,9 +50,7 @@ export const Login = () => {
                     <small className={styles.error}> {error.email}</small>
 
                     <div className="form-group">
-                        <label htmlFor="password">
-                            Парола{" "}
-                        </label>
+                        <label htmlFor="password">Парола </label>
                         <input
                             type="password"
                             autoComplete="on"
@@ -67,7 +63,7 @@ export const Login = () => {
                     <small className={styles.error}> {error.password}</small>
 
                     <Link to="reset">Забравена парола?</Link>
-                    <footer style={{ marginTop: "1em" }}>
+                    <footer style={{ marginTop: '1em' }}>
                         <input
                             type="submit"
                             style={{ width: `100%`, textAlign: `center` }}
@@ -83,6 +79,5 @@ export const Login = () => {
                 </span>
             </div>
         </div>
-    );
-};
-
+    )
+}

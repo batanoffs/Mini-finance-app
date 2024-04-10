@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import styles from '../register.module.css';
+import styles from '../register.module.css'
 
 export const EmailForm = ({
     email,
@@ -14,9 +14,9 @@ export const EmailForm = ({
 }) => {
     const onNextPageHandler = (e) => {
         if (!!email && !!password && confirmPassword === password) {
-            currentStepsHandler(e);
+            currentStepsHandler(e)
         }
-    };
+    }
 
     return (
         <section className="form-container">
@@ -45,8 +45,7 @@ export const EmailForm = ({
 
                 <div className="form-group">
                     <label htmlFor="password">
-                        Парола{' '}
-                        <small className="error">*</small>
+                        Парола <small className="error">*</small>
                     </label>
                     <input
                         type="password"
@@ -65,10 +64,7 @@ export const EmailForm = ({
 
                 <div className="form-group">
                     <label htmlFor="confirmPassword">
-                        Потвърди парола{' '}
-                        <small className="error">
-                            * 
-                        </small>
+                        Потвърди парола <small className="error">*</small>
                     </label>
                     <input
                         type="password"
@@ -92,18 +88,12 @@ export const EmailForm = ({
                         className="button-primary"
                         style={{ width: `100%`, textAlign: `center` }}
                         to={
-                            !!email &&
-                            !!password &&
-                            confirmPassword === password
-                                ? "userInfo"
+                            !!email && !!password && confirmPassword === password
+                                ? 'userInfo'
                                 : null
                         }
                         onClick={onNextPageHandler}
-                        disabled={
-                            !email ||
-                            !password ||
-                            confirmPassword !== password
-                        }
+                        disabled={!email || !password || confirmPassword !== password}
                     >
                         Напред
                     </Link>
@@ -114,6 +104,5 @@ export const EmailForm = ({
                 </span>
             </div>
         </section>
-    );
-};
-
+    )
+}

@@ -1,22 +1,22 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { Result, App } from "antd";
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Result, App } from 'antd'
 
-import { AuthProvider } from "./contexts/AuthContext";
-import { Header } from "./components/pages/Header/Header";
-import { Login } from "./components/pages/LoginPage/Login";
-import { WelcomePage } from "./components/pages/WelcomePage/WelcomePage";
-import { Footer } from "./components/pages/Footer/Footer";
-import { Home } from "./components/pages/HomePage/Home";
-import { Register } from "./components/pages/RegisterPage/Register";
-import { About } from "./components/pages/HomePage/About";
+import { AuthProvider } from './contexts/AuthContext'
+import { Header } from './components/pages/Header/Header'
+import { Login } from './components/pages/LoginPage/Login'
+import { WelcomePage } from './components/pages/WelcomePage/WelcomePage'
+import { Footer } from './components/pages/Footer/Footer'
+import { Home } from './components/pages/HomePage/Home'
+import { Register } from './components/pages/RegisterPage/Register'
+import { About } from './components/pages/HomePage/About'
 
 const MyApp = () => {
-    let navigate = useNavigate();
+    let navigate = useNavigate()
     let goBack = () => {
-        navigate(-1);
-    };
+        navigate(-1)
+    }
 
-    //TODO if not authorized user - implement logic for the forbidden page 
+    //TODO if not authorized user - implement logic for the forbidden page
     // const Forbidden = () => (
     //     <Result
     //       status="403"
@@ -25,10 +25,10 @@ const MyApp = () => {
     //       extra={<Button type="primary">Back Home</Button>}
     //     />
     //   );
-    
+
     return (
         <AuthProvider>
-            <App style={{fontFamily: "var(--body-font-family)"}}>
+            <App style={{ fontFamily: 'var(--body-font-family)' }}>
                 <Header />
                 <main>
                     <Routes>
@@ -37,17 +37,14 @@ const MyApp = () => {
                             element={
                                 <Result
                                     style={{
-                                        alignSelf: "center",
-                                        margin: "0 auto",
+                                        alignSelf: 'center',
+                                        margin: '0 auto',
                                     }}
                                     status="404"
                                     title="Грешка 404, не е намерена страница."
                                     subTitle="Страницата, която търсите не съществува."
                                     extra={
-                                        <button
-                                            onClick={goBack}
-                                            className="button-primary"
-                                        >
+                                        <button onClick={goBack} className="button-primary">
                                             Назад
                                         </button>
                                     }
@@ -64,7 +61,7 @@ const MyApp = () => {
                 <Footer />
             </App>
         </AuthProvider>
-    );
-};
+    )
+}
 
-export default MyApp;
+export default MyApp

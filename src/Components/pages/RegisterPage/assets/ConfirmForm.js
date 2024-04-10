@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { Radio } from "antd";
-import { useState } from "react";
+import { Link } from 'react-router-dom'
+import { Radio } from 'antd'
+import { useState } from 'react'
 
-import { setNewGeneratedId } from "../../../../utils/setNewGeneratedId";
+import { setNewGeneratedId } from '../../../../utils/setNewGeneratedId'
 
 export const ConfirmForm = ({
     email,
@@ -19,14 +19,14 @@ export const ConfirmForm = ({
     onSubmitRegister,
     changeHandler,
 }) => {
-    const [isHidden, setHidden] = useState(false);
-    
+    const [isHidden, setHidden] = useState(false)
+
     const onConfirmHandler = async (e) => {
-        e.preventDefault();
-        e.target.hidden = true;
-        setHidden(true);
-        changeHandler({ target: { name: "cardId", value: await setNewGeneratedId() } });
-    };
+        e.preventDefault()
+        e.target.hidden = true
+        setHidden(true)
+        changeHandler({ target: { name: 'cardId', value: await setNewGeneratedId() } })
+    }
     return (
         <div className="form-container">
             <div className="form-content">
@@ -109,9 +109,9 @@ export const ConfirmForm = ({
                             onChange={changeHandler}
                             disabled
                             style={{
-                                marginBottom: "0.5rem",
-                                display: "flex",
-                                flexDirection: "column",
+                                marginBottom: '0.5rem',
+                                display: 'flex',
+                                flexDirection: 'column',
                             }}
                         >
                             <Radio value="male"> Мъж </Radio>
@@ -173,7 +173,7 @@ export const ConfirmForm = ({
                     <Link
                         type="button"
                         name="prev"
-                        to={"/register/terms"}
+                        to={'/register/terms'}
                         className="button-secondary"
                         onClick={currentStepsHandler}
                     >
@@ -184,20 +184,20 @@ export const ConfirmForm = ({
                         name="confirm"
                         type="button"
                         className="button-primary"
-                        value={"Потвърди данните"}
+                        value={'Потвърди данните'}
                         onClick={onConfirmHandler}
                     />
                     {isHidden && (
                         <input
-                        name="register"
-                        type="submit"
-                        className="button-primary"
-                        value={"Регистрация"}
-                        onClick={onSubmitRegister}
+                            name="register"
+                            type="submit"
+                            className="button-primary"
+                            value={'Регистрация'}
+                            onClick={onSubmitRegister}
                         />
                     )}
                 </footer>
             </div>
         </div>
-    );
-};
+    )
+}

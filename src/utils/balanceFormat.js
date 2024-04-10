@@ -3,7 +3,5 @@ export const balanceFormat = (balance) => {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     })
-    return balanceFormatted;
-};
-
-
+    return balanceFormatted
+}

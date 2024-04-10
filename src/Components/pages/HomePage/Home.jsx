@@ -1,24 +1,22 @@
-import { Link } from "react-router-dom";
-import { Preview } from "./assets/Preview";
-import { Login } from "../LoginPage/Login";
+import { Link } from 'react-router-dom'
+import { Preview } from './assets/Preview'
+import { Login } from '../LoginPage/Login'
 
-import styles from "./home.module.css";
+import styles from './home.module.css'
 
 export const Home = () => {
     return (
         <div className={styles.homeContainer}>
-            
             <div className={styles.heroSection}>
                 <h1>Отворете банков акаунт и вземете вашата карта</h1>
                 <p>
-                    Създадохме тази платформа безплатна, за да бъде достъпна за
-                    всеки един от вас.
+                    Създадохме тази платформа безплатна, за да бъде достъпна за всеки един от вас.
                 </p>
                 <div className={styles.buttonContainer}>
                     <Link
                         to="/about"
                         className="button-secondary"
-                        style={{ backgroundColor: "transparent" }}
+                        style={{ backgroundColor: 'transparent' }}
                     >
                         Научи повече
                     </Link>
@@ -33,5 +31,5 @@ export const Home = () => {
                 <Login />
             </div>
         </div>
-    );
-};
+    )
+}

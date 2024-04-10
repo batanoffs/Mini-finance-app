@@ -1,21 +1,21 @@
-import { Routes, Route } from "react-router-dom";
-import { useState, useContext } from "react";
+import { Routes, Route } from 'react-router-dom'
+import { useState, useContext } from 'react'
 
-import { SidebarRegister } from "./assets/SidebarRegister";
-import { ConfirmForm } from "./assets/ConfirmForm";
-import { EmailForm } from "./assets/EmailForm"; // Import refactored EmailForm component
-import { TermsForm } from "./assets/TermsForm";
-import { InfoForm } from "./assets/InfoForm";
+import { SidebarRegister } from './assets/SidebarRegister'
+import { ConfirmForm } from './assets/ConfirmForm'
+import { EmailForm } from './assets/EmailForm' // Import refactored EmailForm component
+import { TermsForm } from './assets/TermsForm'
+import { InfoForm } from './assets/InfoForm'
 
-import { AuthContext } from "../../../contexts/AuthContext";
-import { useForm } from "../../../hooks/useForm";
+import { AuthContext } from '../../../contexts/AuthContext'
+import { useForm } from '../../../hooks/useForm'
 
-import styles from "./register.module.css";
+import styles from './register.module.css'
 
 export const Register = () => {
-    const { onRegisterSubmitHandler } = useContext(AuthContext);
-    const [currentStep, setCurrentStep] = useState(0);
-    const [check, setCheck] = useState(false);
+    const { onRegisterSubmitHandler } = useContext(AuthContext)
+    const [currentStep, setCurrentStep] = useState(0)
+    const [check, setCheck] = useState(false)
     const {
         values,
         error,
@@ -26,35 +26,35 @@ export const Register = () => {
         resetFormHandler,
     } = useForm(
         {
-            email: "",
-            password: "",
-            confirmPassword: "",
-            firstName: "",
-            lastName: "",
-            gender: "",
-            country: "",
-            phoneNumber: "",
+            email: '',
+            password: '',
+            confirmPassword: '',
+            firstName: '',
+            lastName: '',
+            gender: '',
+            country: '',
+            phoneNumber: '',
             cardId: 0,
-            address: "",
-            town: "",
+            address: '',
+            town: '',
         },
         null,
         onRegisterSubmitHandler
-    );
+    )
 
     const termsCheckHandler = (e) => {
-        setCheck(e.target.checked);
-    };
+        setCheck(e.target.checked)
+    }
 
     const currentStepsHandler = (e) => {
-        if (e.target.name === "next") {
-            setCurrentStep((prev) => prev + 1);
+        if (e.target.name === 'next') {
+            setCurrentStep((prev) => prev + 1)
         }
 
-        if (e.target.name === "prev") {
-            setCurrentStep((prev) => prev - 1);
+        if (e.target.name === 'prev') {
+            setCurrentStep((prev) => prev - 1)
         }
-    };
+    }
 
     return (
         <div className={styles.register_content_container}>
@@ -114,5 +114,5 @@ export const Register = () => {
                 />
             </Routes>
         </div>
-    );
-};
+    )
+}

@@ -1,5 +1,3 @@
-
-
 /*---------------------------------------
   ACCOUNT TABLE               
 -----------------------------------------*/
@@ -8,89 +6,89 @@
     border-radius: var(--border-radius-small);
     position: relative;
     overflow: hidden;
-  }
-  
-  .account-table>:not(caption)>*>* {
+}
+
+.account-table > :not(caption) > * > * {
     border-bottom: 0;
     padding: 6px 2px;
-  }
-  
-  .account-table thead {
+}
+
+.account-table thead {
     background: var(--custom-btn-bg-color);
-  }
-  
-  .account-table th,
-  .account-table tr {
+}
+
+.account-table th,
+.account-table tr {
     font-size: 12px;
     font-weight: 400;
-  }
+}
 
-  .account-table thead th {
+.account-table thead th {
     font-size: 14px;
     font-weight: 500;
     padding: 2px 4px;
-  }
-  
-  .account-table th {
+}
+
+.account-table th {
     padding: 2px 16px;
-    
-  }
-  
-  .account-table tr {
+}
+
+.account-table tr {
     font-weight: 300;
-  }
-  
-  .account-table tbody tr:nth-child(odd) {
+}
+
+.account-table tbody tr:nth-child(odd) {
     background: var(--white-color);
-  }
-  
-  .badge {
+}
+
+.badge {
     border-radius: var(--border-radius-large);
     font-weight: var(--font-weight-normal);
     line-height: normal;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 4px;
-  }
+}
 
 /*---------------------------------------
   PAGINATION              
 -----------------------------------------*/
 .pagination {
     margin-top: 20px;
-  }
-  
-  .page-link {
+}
+
+.page-link {
     border-radius: var(--border-radius-medium);
     color: var(--p-color);
     font-size: var(--btn-font-size);
     margin: 0 5px;
     padding: 10px 20px;
-  }
-  
-  .page-link:hover,
-  .page-item:first-child .page-link:hover,
-  .page-item:last-child .page-link:hover {
+}
+
+.page-link:hover,
+.page-item:first-child .page-link:hover,
+.page-item:last-child .page-link:hover {
     background-color: var(--custom-btn-bg-color);
     color: var(--white-color);
-  }
-  
-  .page-item:not(:first-child) .page-link {
+}
+
+.page-item:not(:first-child) .page-link {
     margin-left: 10px;
-  }
-  
-  .page-item:first-child .page-link {
+}
+
+.page-item:first-child .page-link {
     margin-right: 10px;
-  }
-  
-  .page-item:first-child .page-link,
-  .page-item:last-child .page-link {
+}
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
     border-radius: var(--border-radius-medium);
     font-weight: var(--font-weight-bold);
     margin-left: 15px;
-  }
-  
-  .active>.page-link, .page-link.active {
+}
+
+.active > .page-link,
+.page-link.active {
     background-color: var(--custom-btn-bg-color);
     border-color: var(--secondary-color);
-  }
+}

@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Radio } from "antd";
+import { Link, useNavigate } from 'react-router-dom'
+import { Radio } from 'antd'
 
-import { useMessage } from "../../../../hooks/useMessage";
+import { useMessage } from '../../../../hooks/useMessage'
 
-import styles from "../register.module.css";
+import styles from '../register.module.css'
 
 export const InfoForm = ({
     firstName,
@@ -19,36 +19,24 @@ export const InfoForm = ({
     changeHandler,
     currentStepsHandler,
 }) => {
-    const navigate = useNavigate();
-    const showMessage = useMessage();
+    const navigate = useNavigate()
+    const showMessage = useMessage()
     const onNextPageHandler = (e) => {
-        e.preventDefault();
-        const requiredFields = [
-            firstName,
-            lastName,
-            gender,
-            phoneNumber,
-            town,
-            country,
-        ];
-        const hasEmptyField = requiredFields.some((field) => !field);
+        e.preventDefault()
+        const requiredFields = [firstName, lastName, gender, phoneNumber, town, country]
+        const hasEmptyField = requiredFields.some((field) => !field)
 
         if (!hasEmptyField) {
-            currentStepsHandler(e); // Move to the next step
-            navigate("/register/terms");
+            currentStepsHandler(e) // Move to the next step
+            navigate('/register/terms')
         } else {
             // Show error message for empty fields
-            showMessage("error", "Моля, попълнете всички полета");
+            showMessage('error', 'Моля, попълнете всички полета')
         }
-    };
-    const isNextDisabled = [
-        firstName,
-        lastName,
-        gender,
-        phoneNumber,
-        town,
-        country,
-    ].some((field) => !field);
+    }
+    const isNextDisabled = [firstName, lastName, gender, phoneNumber, town, country].some(
+        (field) => !field
+    )
 
     return (
         <section className="form-container">
@@ -101,19 +89,19 @@ export const InfoForm = ({
                         onBlur={validateHandler}
                         onFocus={onFocusHandler}
                         style={{
-                            marginBottom: "1.2rem",
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "0.4rem",
+                            marginBottom: '1.2rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.4rem',
                         }}
                     >
-                        <Radio style={{ fontSize: "1rem" }} value="male">
-                            {" "}
-                            Мъж{" "}
+                        <Radio style={{ fontSize: '1rem' }} value="male">
+                            {' '}
+                            Мъж{' '}
                         </Radio>
-                        <Radio style={{ fontSize: "1rem" }} value="female">
-                            {" "}
-                            Жена{" "}
+                        <Radio style={{ fontSize: '1rem' }} value="female">
+                            {' '}
+                            Жена{' '}
                         </Radio>
                     </Radio.Group>
                 </div>
@@ -185,7 +173,7 @@ export const InfoForm = ({
                 </div>
                 <footer>
                     <Link
-                        to={"/register"}
+                        to={'/register'}
                         type="submit"
                         name="prev"
                         className="button-secondary"
@@ -206,5 +194,5 @@ export const InfoForm = ({
                 </footer>
             </div>
         </section>
-    );
-};
+    )
+}

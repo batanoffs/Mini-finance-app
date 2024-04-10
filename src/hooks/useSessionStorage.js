@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export const useSessionStorage = (key, initialValue) => {
     const [state, setState] = useState(() => {
-        const presistStateSerialized = sessionStorage.getItem(key);
+        const presistStateSerialized = sessionStorage.getItem(key)
         if (presistStateSerialized) {
-            const presistState = JSON.parse(presistStateSerialized);
-            return presistState;
+            const presistState = JSON.parse(presistStateSerialized)
+            return presistState
         } else {
-            return initialValue;
+            return initialValue
         }
-    });
+    })
 
     const setSessionStorageState = (value) => {
-        if (typeof value === "function") {
-            setState((prev) => value(prev));
+        if (typeof value === 'function') {
+            setState((prev) => value(prev))
         } else {
-            setState(value);
-            sessionStorage.setItem(key, JSON.stringify(value)); // предполага се да е селиризуем стейта
+            setState(value)
+            sessionStorage.setItem(key, JSON.stringify(value)) // предполага се да е селиризуем стейта
         }
-    };
+    }
 
-    return [state, setSessionStorageState];
-};
+    return [state, setSessionStorageState]
+}

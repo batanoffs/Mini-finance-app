@@ -1,69 +1,60 @@
-import { useContext, useState } from "react";
+import { useContext, useState } from 'react'
 
-import { ActionsMenu } from "./assets/ActionsMenu";
-import { AddToFavorites } from "./AddFavourites";
-import { Actions } from "./assets/Actions";
+import { ActionsMenu } from './assets/ActionsMenu'
+import { AddToFavorites } from './AddFavourites'
+import { Actions } from './assets/Actions'
 
-import { AuthContext } from "../../../../../contexts/AuthContext";
-import { useMessage } from "../../../../../hooks/useMessage";
+import { AuthContext } from '../../../../../contexts/AuthContext'
+import { useMessage } from '../../../../../hooks/useMessage'
 
-import blocks from "../../custom-block.module.css";
-import styles from "./quicksend.module.css";
+import blocks from '../../custom-block.module.css'
+import styles from './quicksend.module.css'
 
-export const QuickSendMoney = ({
-    showModal,
-    setShowModal,
-    userInput,
-    setUserInput,
-}) => {
-    const [showFavourites, setShowFavourites] = useState(false);
-    const [showBtns, setShowBtns] = useState(false);
-    const { favorites } = useContext(AuthContext);
-    const showMessage = useMessage();
+export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {
+    const [showFavourites, setShowFavourites] = useState(false)
+    const [showBtns, setShowBtns] = useState(false)
+    const { favorites } = useContext(AuthContext)
+    const showMessage = useMessage()
 
     const openSendMenu = (event) => {
-        const name = event.currentTarget.parentElement.getAttribute("data-key");
+        const name = event.currentTarget.parentElement.getAttribute('data-key')
         if (!name) {
-            showMessage("error", "Възникна грешка, опитайте отново");
-            return;
+            showMessage('error', 'Възникна грешка, опитайте отново')
+            return
         }
-        setShowModal({ ...showModal, [`send`]: true });
-        setUserInput({ ...userInput, [`friends`]: name });
-    };
+        setShowModal({ ...showModal, [`send`]: true })
+        setUserInput({ ...userInput, [`friends`]: name })
+    }
 
     const showActionsHandler = (e) => {
-        const tooltip = e.currentTarget.nextElementSibling;
-        const ul = e.currentTarget.nextElementSibling.children[0];
-        ul.style.display = ul.style.display === "block" ? "none" : "block";
-        tooltip.style.display =
-            tooltip.style.display === "block" ? "none" : "block";
-    };
+        const tooltip = e.currentTarget.nextElementSibling
+        const ul = e.currentTarget.nextElementSibling.children[0]
+        ul.style.display = ul.style.display === 'block' ? 'none' : 'block'
+        tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block'
+    }
 
     const closeMenuHandler = (e) => {
-        e.currentTarget.style.display =
-            e.currentTarget.style.display === "block" ? "none" : "block";
-    };
+        e.currentTarget.style.display = e.currentTarget.style.display === 'block' ? 'none' : 'block'
+    }
 
     const showFavouritesHandler = () => {
         if (favorites.length === 0) {
-            return;
+            return
         }
-        setShowFavourites(!showFavourites);
-    };
+        setShowFavourites(!showFavourites)
+    }
 
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <h5 style={{ color: "var(--section-bg-color)" }}>
-                    Бързо изпращане
-                </h5>
-                {favorites.length > 0 ? 
-                <ActionsMenu
-                    setShowBtns={setShowBtns}
-                    showActionsHandler={showActionsHandler}
-                    showFavouritesHandler={showFavouritesHandler}
-                />
-                : null}
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <h5 style={{ color: 'var(--section-bg-color)' }}>Бързо изпращане</h5>
+                {favorites.length > 0 ? (
+                    <ActionsMenu
+                        setShowBtns={setShowBtns}
+                        showActionsHandler={showActionsHandler}
+                        showFavouritesHandler={showFavouritesHandler}
+                    />
+                ) : null}
             </div>
 
             <ul className={blocks.sendMonkeyContainer}>
@@ -72,13 +63,13 @@ export const QuickSendMoney = ({
                         <li
                             key={friend.objectId}
                             data-key={friend.fullName}
-                            style={{ position: "relative" }}
+                            style={{ position: 'relative' }}
                         >
                             <img
                                 src={friend.avatar}
                                 className={styles.profileImage}
                                 data-key={friend.fullName}
-                                alt={"avatar"}
+                                alt={'avatar'}
                                 onClick={openSendMenu}
                             />
                             {showBtns && (
@@ -92,14 +83,14 @@ export const QuickSendMoney = ({
                     ))
                 ) : (
                     <>
-                        <p style={{ display: "inline", fontStyle: "italic", color: "#eee" }}>Нямате приятели в списъка</p>
+                        <p style={{ display: 'inline', fontStyle: 'italic', color: '#eee' }}>
+                            Нямате приятели в списъка
+                        </p>
                         <AddToFavorites setShowFavourites={setShowFavourites} />
                     </>
                 )}
-                {showFavourites && (
-                    <AddToFavorites setShowFavourites={setShowFavourites} />
-                )}
+                {showFavourites && <AddToFavorites setShowFavourites={setShowFavourites} />}
             </ul>
         </div>
-    );
-};
+    )
+}

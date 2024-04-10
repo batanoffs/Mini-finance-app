@@ -29,7 +29,6 @@
     align-items: left;
 }
 
-
 .customForm {
     border-radius: var(--border-radius-large);
     padding: 0.4em 1.4em;
@@ -41,7 +40,7 @@
 .formContainer {
     background: #fff;
     border-radius: var(--border-radius-medium);
-    font-family: "Montserrat Alternates";
+    font-family: 'Montserrat Alternates';
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     min-width: 200px;
     align-self: center;

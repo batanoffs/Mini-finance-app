@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
-import { faGear, faHandshakeAngle, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
+import { Link } from 'react-router-dom'
+import {
+    faGear,
+    faHandshakeAngle,
+    faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 
-import styles from "../site-header.module.css";
+import styles from '../site-header.module.css'
 
 export const ProfileDropdown = (props) => {
     return (
@@ -15,11 +19,7 @@ export const ProfileDropdown = (props) => {
                 aria-expanded="false"
                 className={styles.dropdownToggle}
             >
-                <img
-                    src={props.picture}
-                    className={styles.profileImage}
-                    alt={"avatar"}
-                />
+                <img src={props.picture} className={styles.profileImage} alt={'avatar'} />
 
                 <ul className={styles.dropdownMenu}>
                     <li>
@@ -27,43 +27,28 @@ export const ProfileDropdown = (props) => {
                             <img
                                 src={props.picture}
                                 className={styles.profileImage}
-                                alt={"avatar"}
+                                alt={'avatar'}
                             />
-                                <small>{props.name}</small>
+                            <small>{props.name}</small>
                         </div>
                     </li>
 
                     <li>
-                        <Link
-                            className={styles.dropdownItem}
-                            to="/dashboard/profile"
-                        >
-                            <FontAwesomeIcon
-                                className={styles.sidebarIcons}
-                                icon={faAddressCard}
-                            />
+                        <Link className={styles.dropdownItem} to="/dashboard/profile">
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faAddressCard} />
                             Профил
                         </Link>
                     </li>
 
                     <li>
-                        <Link
-                            className={styles.dropdownItem}
-                            to="/dashboard/settings"
-                        >
-                            <FontAwesomeIcon
-                                className={styles.sidebarIcons}
-                                icon={faGear}
-                            />
+                        <Link className={styles.dropdownItem} to="/dashboard/settings">
+                            <FontAwesomeIcon className={styles.sidebarIcons} icon={faGear} />
                             Настройки
                         </Link>
                     </li>
 
                     <li>
-                        <Link
-                            className={styles.dropdownItem}
-                            to="/dashboard/help-center"
-                        >
+                        <Link className={styles.dropdownItem} to="/dashboard/help-center">
                             <FontAwesomeIcon
                                 className={styles.sidebarIcons}
                                 icon={faHandshakeAngle}
@@ -73,11 +58,7 @@ export const ProfileDropdown = (props) => {
                     </li>
 
                     <li className="border-top">
-                        <Link
-                            className={styles.dropdownItem}
-                            onClick={props.onLogoutHandler}
-                            to=""
-                        >
+                        <Link className={styles.dropdownItem} onClick={props.onLogoutHandler} to="">
                             <FontAwesomeIcon
                                 className={styles.sidebarIcons}
                                 icon={faArrowRightFromBracket}

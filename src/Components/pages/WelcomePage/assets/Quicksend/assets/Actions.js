@@ -1,63 +1,59 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from 'react'
 
-import { dataService } from "../../../../../../services/userDataService";
-import { AuthContext } from "../../../../../../contexts/AuthContext";
-import { useMessage } from "../../../../../../hooks/useMessage";
+import { dataService } from '../../../../../../services/userDataService'
+import { AuthContext } from '../../../../../../contexts/AuthContext'
+import { useMessage } from '../../../../../../hooks/useMessage'
 
-import styles from "../quicksend.module.css";
+import styles from '../quicksend.module.css'
 
-export const Actions = ({
-    friend,
-    closeMenuHandler,
-    setShowBtns,
-}) => {
-    const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext);
-    const showMessage = useMessage();
-    
+export const Actions = ({ friend, closeMenuHandler, setShowBtns }) => {
+    const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext)
+    const showMessage = useMessage()
+
     const showActionsHandler = (e) => {
-        const tooltip = e.currentTarget.nextElementSibling;
-        tooltip.style.display =
-            tooltip.style.display === "block" ? "none" : "block";
-    };
+        const tooltip = e.currentTarget.nextElementSibling
+        tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block'
+    }
 
     const onConfirmHandler = (e) => {
         if (!e) {
-            console.error("NullPointerException: e is null");
-            return;
+            console.error('NullPointerException: e is null')
+            return
         }
-        const target = e.currentTarget;
+        const target = e.currentTarget
         if (!target) {
-            console.error("NullPointerException: target is null");
-            return;
+            console.error('NullPointerException: target is null')
+            return
         }
-        const friendId = target.getAttribute("data-key");
+        const friendId = target.getAttribute('data-key')
         if (!friendId) {
-            console.error("NullPointerException: friendId is null");
-            return;
+            console.error('NullPointerException: friendId is null')
+            return
         }
         try {
             dataService
-                .removeRelation(userDataId, "favorite_friends", friendId, token)
+                .removeRelation(userDataId, 'favorite_friends', friendId, token)
                 .then(() => {
-                    showMessage("success", "Успешно премахнат приятел от списъка");
+                    showMessage('success', 'Успешно премахнат приятел от списъка')
                     setAuth({
                         ...auth,
                         favorite_friends: favorites.filter(
                             (favorite) => favorite.objectId !== friendId
-                        )});
-                        // hide fontawesomeicon with showactionshandler
-                    setShowBtns(false);
+                        ),
+                    })
+                    // hide fontawesomeicon with showactionshandler
+                    setShowBtns(false)
                 })
                 .catch((error) => {
-                    console.error(error);
-                    showMessage("error", error.message);
-                });
+                    console.error(error)
+                    showMessage('error', error.message)
+                })
         } catch (error) {
-            console.error(error);
+            console.error(error)
         }
-    };
+    }
     return (
         <>
             <FontAwesomeIcon
@@ -77,5 +73,5 @@ export const Actions = ({
                 </ul>
             </div>
         </>
-    );
-};
+    )
+}

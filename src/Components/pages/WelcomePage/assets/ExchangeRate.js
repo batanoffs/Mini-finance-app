@@ -1,79 +1,84 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
-import { exchangeRateService } from "../../../../services/exchangeRateService";
+import { exchangeRateService } from '../../../../services/exchangeRateService'
 
-import styles from "./ExchangeRate.module.css";
-import block from "../custom-block.module.css";
+import styles from './ExchangeRate.module.css'
+import block from '../custom-block.module.css'
 
 export const ExchangeRate = ({ props }) => {
     useEffect(() => {
         if (!props.hasLoaded) {
             exchangeRateService
-                .getLatest("BGN")
+                .getLatest('BGN')
                 .then((response) => response.json())
                 .then((data) =>
                     props.setRates((prevState) => {
-                        const newState = prevState;
-                        newState["USD"]["sell"] = data.conversion_rates.USD;
-                        newState["GBP"]["sell"] = data.conversion_rates.GBP;
-                        newState["EUR"]["sell"] = data.conversion_rates.EUR;
-                        newState["AUD"]["sell"] = data.conversion_rates.AUD;
-                        newState["SGD"]["sell"] = data.conversion_rates.SGD;
-                        return newState;
+                        const newState = prevState
+                        newState['USD']['sell'] = data.conversion_rates.USD
+                        newState['GBP']['sell'] = data.conversion_rates.GBP
+                        newState['EUR']['sell'] = data.conversion_rates.EUR
+                        newState['AUD']['sell'] = data.conversion_rates.AUD
+                        newState['SGD']['sell'] = data.conversion_rates.SGD
+                        return newState
                     })
                 )
                 .then(() => props.setHasLoaded(true))
-                .catch((error) => console.log(error));
+                .catch((error) => console.log(error))
 
             exchangeRateService
-                .getSpecificRate("USD", "BGN")
+                .getSpecificRate('USD', 'BGN')
                 .then((response) => response.json())
                 .then(({ conversion_rate }) =>
-                    props.setRates(prevState => ({
+                    props.setRates((prevState) => ({
                         ...prevState,
-                        USD: { ...prevState.USD, buy: conversion_rate }
+                        USD: { ...prevState.USD, buy: conversion_rate },
                     }))
-                ).catch((error) => console.log(error));
+                )
+                .catch((error) => console.log(error))
 
             exchangeRateService
-                .getSpecificRate("GBP", "BGN")
+                .getSpecificRate('GBP', 'BGN')
                 .then((response) => response.json())
                 .then(({ conversion_rate }) =>
-                    props.setRates(prevState => ({
+                    props.setRates((prevState) => ({
                         ...prevState,
-                        GBP: { ...prevState.GBP, buy: conversion_rate }
+                        GBP: { ...prevState.GBP, buy: conversion_rate },
                     }))
-                ).catch((error) => console.log(error));
+                )
+                .catch((error) => console.log(error))
 
             exchangeRateService
-                .getSpecificRate("EUR", "BGN")
+                .getSpecificRate('EUR', 'BGN')
                 .then((response) => response.json())
                 .then(({ conversion_rate }) =>
-                    props.setRates(prevState => ({
+                    props.setRates((prevState) => ({
                         ...prevState,
-                        EUR: { ...prevState.EUR, buy: conversion_rate }
+                        EUR: { ...prevState.EUR, buy: conversion_rate },
                     }))
-                ).catch((error) => console.log(error));
+                )
+                .catch((error) => console.log(error))
             exchangeRateService
-                .getSpecificRate("AUD", "BGN")
+                .getSpecificRate('AUD', 'BGN')
                 .then((response) => response.json())
                 .then(({ conversion_rate }) =>
-                    props.setRates(prevState => ({
+                    props.setRates((prevState) => ({
                         ...prevState,
-                        AUD: { ...prevState.AUD, buy: conversion_rate }
+                        AUD: { ...prevState.AUD, buy: conversion_rate },
                     }))
-                ).catch((error) => console.log(error));
+                )
+                .catch((error) => console.log(error))
             exchangeRateService
-                .getSpecificRate("SGD", "BGN")
+                .getSpecificRate('SGD', 'BGN')
                 .then((response) => response.json())
                 .then(({ conversion_rate }) =>
-                    props.setRates(prevState => ({
+                    props.setRates((prevState) => ({
                         ...prevState,
-                        SGD: { ...prevState.SGD, buy: conversion_rate }
+                        SGD: { ...prevState.SGD, buy: conversion_rate },
                     }))
-                ).catch((error) => console.log(error));
+                )
+                .catch((error) => console.log(error))
         }
-    }, []);
+    }, [])
 
     return (
         <div className={`${block.customBlockContact} `}>
@@ -86,7 +91,7 @@ export const ExchangeRate = ({ props }) => {
                                 <img
                                     src={rates[1].logo}
                                     className={styles.exchangeImage}
-                                    alt={"logo"}
+                                    alt={'logo'}
                                 />
 
                                 <div>
@@ -104,10 +109,9 @@ export const ExchangeRate = ({ props }) => {
                                 <h6>{rates[1].buy}</h6>
                             </div>
                         </li>
-                    );
+                    )
                 })}
             </ul>
         </div>
-    );
-};
-
+    )
+}

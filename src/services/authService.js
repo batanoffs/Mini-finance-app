@@ -2,12 +2,11 @@ import { baseURL } from '../constants/baseUrl'
 import * as request from './requester'
 
 const endpoints = {
-    login: "/users/login",
-    register: "/users/register",
-    logout: "/users/logout",
-    authO: "/users/oauth/<providerCode>/request_url", // To Do implement AuthO hidden passowrd thirds API
+    login: '/users/login',
+    register: '/users/register',
+    logout: '/users/logout',
+    authO: '/users/oauth/<providerCode>/request_url', // To Do implement AuthO hidden passowrd thirds API
 }
-
 
 const login = async (loginData) => {
     return await request.post(`${baseURL}${endpoints.login}`, loginData)
@@ -20,8 +19,6 @@ const logout = async (token) => {
 const register = async (registerData) => {
     return await request.post(`${baseURL}${endpoints.register}`, registerData)
 }
-
-
 
 export const authService = {
     login,

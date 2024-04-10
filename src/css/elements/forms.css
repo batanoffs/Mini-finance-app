@@ -1,4 +1,4 @@
-input:not([type="submit"], [type="button"], [type="radio"], [type="checkbox"]) {
+input:not([type='submit'], [type='button'], [type='radio'], [type='checkbox']) {
     height: 2em;
     width: 60%;
     margin-bottom: 0.5em;
@@ -10,14 +10,14 @@ input:not([type="submit"], [type="button"], [type="radio"], [type="checkbox"]) {
     text-align: left;
 }
 
-input[type="radio"] {
+input[type='radio'] {
     width: 1em;
     height: 1em;
     border: 0em;
     margin: 0;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
     width: 1em;
     height: 1em;
 }
@@ -36,7 +36,6 @@ form {
     align-items: left;
 }
 
-
 .custom-form {
     border-radius: var(--border-radius-large);
     padding: 0.4em 1.4em;
@@ -48,7 +47,7 @@ form {
 .form-container {
     background: #fff;
     border-radius: var(--border-radius-medium);
-    font-family: "Montserrat Alternates";
+    font-family: 'Montserrat Alternates';
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     min-width: 200px;
     align-self: center;
@@ -78,4 +77,3 @@ form {
     justify-content: space-between;
     font-size: 1em;
 }
-

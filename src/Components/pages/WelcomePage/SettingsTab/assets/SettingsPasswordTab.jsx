@@ -31,9 +31,7 @@ export const PasswordTab = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="confirm_password">
-                            Потвърди парола
-                        </label>
+                        <label htmlFor="confirm_password">Потвърди парола</label>
 
                         <input
                             type="password"
@@ -47,20 +45,12 @@ export const PasswordTab = () => {
                     </div>
 
                     <footer>
-                        <input
-                            type="button"
-                            value="Изчисти"
-                            className="button-secondary"
-                        />
+                        <input type="button" value="Изчисти" className="button-secondary" />
 
-                        <input
-                            type="submit"
-                            value="Запази промени"
-                            className="button-primary"
-                        />
+                        <input type="submit" value="Запази промени" className="button-primary" />
                     </footer>
                 </form>
             </div>
         </div>
-    );
-};
+    )
+}

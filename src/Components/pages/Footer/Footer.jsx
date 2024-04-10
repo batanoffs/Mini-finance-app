@@ -1,33 +1,25 @@
-import { useContext } from "react";
+import { useContext } from 'react'
 
-import { AuthContext } from "../../../contexts/AuthContext";
+import { AuthContext } from '../../../contexts/AuthContext'
 
-import styles from "./site-footer.module.css";
+import styles from './site-footer.module.css'
 
 export const Footer = () => {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext)
     return (
         <>
-        {!isAuthenticated() && (
-            <footer className={styles.site_footer}>
+            {!isAuthenticated() && (
+                <footer className={styles.site_footer}>
                     <div className={styles.footer_container}>
-                        <p className={styles.copyright_text} >
-                            Всички права запазени © Mini Finance Innovations 2030. Дизайн от - {" "}
-                            <a
-                                href="https://github.com/batanoffs"
-                            >
-                                batanoffs.
-                            </a>{" "}
-                            Illustration by{" "}
-                            <a href="https://icons8.com/illustrations/author/627444">
-                                Julia G
-                            </a>{" "}
-                            from{" "}
-                            <a href="https://icons8.com/illustrations">Ouch!</a>
+                        <p className={styles.copyright_text}>
+                            Всички права запазени © Mini Finance Innovations 2030. Дизайн от -{' '}
+                            <a href="https://github.com/batanoffs">batanoffs.</a> Illustration by{' '}
+                            <a href="https://icons8.com/illustrations/author/627444">Julia G</a>{' '}
+                            from <a href="https://icons8.com/illustrations">Ouch!</a>
                         </p>
                     </div>
-        </footer>
-        )}
-       </> 
-    );
-};
+                </footer>
+            )}
+        </>
+    )
+}

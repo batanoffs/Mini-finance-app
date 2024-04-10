@@ -1,73 +1,72 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-import "./autocomplate.css";
+import './autocomplate.css'
 
 export const Autocomplete = (props) => {
-    const [activeSuggestion, setActiveSuggestion] = useState(0);
-    const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [activeSuggestion, setActiveSuggestion] = useState(0)
+    const [filteredSuggestions, setFilteredSuggestions] = useState([])
+    const [showSuggestions, setShowSuggestions] = useState(false)
 
     const onChange = (e) => {
-        const input = e.target.value;
-        const suggestions = props.suggestions;
+        const input = e.target.value
+        const suggestions = props.suggestions
         const filtered = suggestions.filter(
-            (suggestion) =>
-                suggestion.name.toLowerCase().indexOf(input.toLowerCase()) > -1
-        );
+            (suggestion) => suggestion.name.toLowerCase().indexOf(input.toLowerCase()) > -1
+        )
 
-        setActiveSuggestion(0);
-        setFilteredSuggestions(filtered);
-        setShowSuggestions(true);
+        setActiveSuggestion(0)
+        setFilteredSuggestions(filtered)
+        setShowSuggestions(true)
 
         props.setUserInput((state) => ({
             ...state,
             [e.target.name]: e.target.value,
-        }));
-    };
+        }))
+    }
 
     const onClick = (e) => {
         if (e && e.target && e.target.innerText) {
-            setActiveSuggestion(0);
-            setFilteredSuggestions([]);
-            setShowSuggestions(false);
+            setActiveSuggestion(0)
+            setFilteredSuggestions([])
+            setShowSuggestions(false)
             props.setUserInput((state) => ({
                 ...state,
                 friends: e.target.innerText,
-            }));
+            }))
         } else {
-            return;
+            return
         }
-    };
+    }
 
     const onKeyDown = (e) => {
         if (e.keyCode === 13) {
-            setActiveSuggestion(0);
-            setShowSuggestions(false);
-            props.setUserInput(filteredSuggestions[activeSuggestion]);
+            setActiveSuggestion(0)
+            setShowSuggestions(false)
+            props.setUserInput(filteredSuggestions[activeSuggestion])
         } else if (e.keyCode === 38) {
             if (activeSuggestion === 0) {
-                return;
+                return
             }
-            setActiveSuggestion(activeSuggestion - 1);
+            setActiveSuggestion(activeSuggestion - 1)
         } else if (e.keyCode === 40) {
             if (activeSuggestion - 1 === filteredSuggestions.length) {
-                return;
+                return
             }
-            setActiveSuggestion(activeSuggestion + 1);
+            setActiveSuggestion(activeSuggestion + 1)
         }
-    };
+    }
 
-    let suggestionsListComponent;
+    let suggestionsListComponent
 
     if (showSuggestions && props.userInput?.friends) {
         if (filteredSuggestions.length) {
             suggestionsListComponent = (
                 <ul className="suggestions">
                     {filteredSuggestions.map((suggestion, index) => {
-                        let className;
+                        let className
 
                         if (index === activeSuggestion) {
-                            className = "suggestion-active";
+                            className = 'suggestion-active'
                         }
                         return (
                             <li
@@ -75,20 +74,24 @@ export const Autocomplete = (props) => {
                                 key={suggestion.objectId}
                                 onClick={onClick}
                                 name="friends"
-                            > 
-                            <img className="profile-image" src={suggestion.avatar} alt={suggestion.name} />
-                            <p>{suggestion.name}</p> 
+                            >
+                                <img
+                                    className="profile-image"
+                                    src={suggestion.avatar}
+                                    alt={suggestion.name}
+                                />
+                                <p>{suggestion.name}</p>
                             </li>
-                        );
+                        )
                     })}
                 </ul>
-            );
+            )
         } else {
             suggestionsListComponent = (
                 <div className="no-suggestions">
                     <em>Няма съвпадения</em>
                 </div>
-            );
+            )
         }
     }
 
@@ -101,9 +104,9 @@ export const Autocomplete = (props) => {
                     placeholder="Иван Иванов"
                     type="text"
                     style={{
-                        marginBottom: "0px",
-                        border: "none",
-                        width: "100%"
+                        marginBottom: '0px',
+                        border: 'none',
+                        width: '100%',
                     }}
                     onChange={onChange}
                     onKeyDown={onKeyDown}
@@ -112,5 +115,5 @@ export const Autocomplete = (props) => {
                 {suggestionsListComponent}
             </div>
         </>
-    );
-};
+    )
+}

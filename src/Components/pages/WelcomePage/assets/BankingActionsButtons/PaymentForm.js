@@ -1,33 +1,33 @@
-import { useValidate } from "../../../../../hooks/useValidate";
-import React from "react";
-import Cards from "react-credit-cards-2";
+import { useValidate } from '../../../../../hooks/useValidate'
+import React from 'react'
+import Cards from 'react-credit-cards-2'
 
-import modal from "./modal.module.css";
-import errorstyle from "../../../RegisterPage/register.module.css";
-import "react-credit-cards-2/dist/es/styles-compiled.css";
+import modal from './modal.module.css'
+import errorstyle from '../../../RegisterPage/register.module.css'
+import 'react-credit-cards-2/dist/es/styles-compiled.css'
 
 export const PaymentForm = ({ inputState, setInputState }) => {
-    const { error, errorHandler, clearErrorHandler } = useValidate({});
+    const { error, errorHandler, clearErrorHandler } = useValidate({})
 
     const handleChange = (e) => {
-        setInputState({ ...inputState, [e.target.name]: e.target.value });
-    };
+        setInputState({ ...inputState, [e.target.name]: e.target.value })
+    }
 
     const checkInputHandler = (e) => {
-        const inputName = e.target.name;
-        const currentValue = inputState[inputName];
+        const inputName = e.target.name
+        const currentValue = inputState[inputName]
         if (!currentValue) {
-            return;
+            return
         } else {
             if (errorHandler(e)) {
-                e.target.style.borderColor = "red";
+                e.target.style.borderColor = 'red'
             } else {
-                e.target.style.borderColor = "lightgreen";
+                e.target.style.borderColor = 'lightgreen'
             }
         }
-    };
+    }
 
-    if (inputState.paymethod === "debitcard") {
+    if (inputState.paymethod === 'debitcard') {
         return (
             <div className={modal.modalOptions}>
                 <div className="form-group">
@@ -42,12 +42,9 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                         onFocus={clearErrorHandler}
                         className={modal.input}
                         maxLength="30"
-
                     />
                 </div>
-                <small className={errorstyle.error}>
-                        {error.fullName}
-                    </small>
+                <small className={errorstyle.error}>{error.fullName}</small>
                 <div>
                     <div className="form-group">
                         <label htmlFor="cardnumber">Номер:</label>
@@ -64,9 +61,7 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                         />
                     </div>
 
-                    <small className={errorstyle.error}>
-                        {error.debitcard}
-                    </small>
+                    <small className={errorstyle.error}>{error.debitcard}</small>
 
                     <div className="form-group">
                         <label htmlFor="expiry">Валидност:</label>
@@ -101,14 +96,14 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                     <small className={errorstyle.error}>{error.cvv}</small>
                 </div>
                 <Cards
-                    number={Number(inputState.cardnumber) || ""}
-                    expiry={inputState.expiry || ""}
-                    cvc={inputState.cvv || ""}
-                    name={inputState.fullName || ""}
+                    number={Number(inputState.cardnumber) || ''}
+                    expiry={inputState.expiry || ''}
+                    cvc={inputState.cvv || ''}
+                    name={inputState.fullName || ''}
                 />
             </div>
-        );
-    } else if (inputState.paymethod === "paypal") {
+        )
+    } else if (inputState.paymethod === 'paypal') {
         return (
             <>
                 <div className={modal.modalOptions}>
@@ -126,6 +121,6 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                 </div>
                 <small className={errorstyle.error}>{error.email}</small>
             </>
-        );
+        )
     }
-};
+}

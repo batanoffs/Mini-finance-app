@@ -9,7 +9,6 @@
     display: flex;
     align-content: space-between;
     justify-content: space-between;
-
 }
 
 .detailsWrapper {
@@ -25,5 +24,4 @@
     justify-content: space-between;
     flex-direction: column;
     width: calc(100% - 60px);
-
 }

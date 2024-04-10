@@ -1,62 +1,70 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVault, faMoneyBillTransfer, faHandHoldingDollar} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faVault,
+    faMoneyBillTransfer,
+    faHandHoldingDollar,
+} from '@fortawesome/free-solid-svg-icons'
 
-import { TopUp } from "./TopUpModal";
-import { SendMoney } from "./SendModal";
-import { RequestMoney } from "./RequestModal";
+import { TopUp } from './TopUpModal'
+import { SendMoney } from './SendModal'
+import { RequestMoney } from './RequestModal'
 
-import blocks from "../../custom-block.module.css";
+import blocks from '../../custom-block.module.css'
 
-export const BankingActionButtons = ({userInput, setUserInput, showModal, setShowModal}) => {
+export const BankingActionButtons = ({ userInput, setUserInput, showModal, setShowModal }) => {
     const handleShowModal = (type) => () => {
         setShowModal({
             ...showModal,
             [type]: true,
-        });
-    };
+        })
+    }
 
     return (
         <div
             className={`${blocks.customBlock} ${blocks.customBlockBottom}`}
-            style={{ maxHeight: "85px" }}
+            style={{ maxHeight: '85px' }}
         >
             <div className={blocks.transactionBtns}>
                 <button
                     className={blocks.transactionBtn}
                     data-text="Зареди сметка"
-                    onClick={handleShowModal("topUp")}
+                    onClick={handleShowModal('topUp')}
                 >
-                    <FontAwesomeIcon
-                        className={blocks.icon}
-                        icon={faVault}
-                    />
+                    <FontAwesomeIcon className={blocks.icon} icon={faVault} />
                 </button>
                 <button
                     className={blocks.transactionBtn}
                     data-text="Изпрати пари"
-                    onClick={handleShowModal("send")}
+                    onClick={handleShowModal('send')}
                 >
-                    <FontAwesomeIcon
-                        className={blocks.icon}
-                        icon={faMoneyBillTransfer}
-                    />
+                    <FontAwesomeIcon className={blocks.icon} icon={faMoneyBillTransfer} />
                 </button>
                 <button
                     className={blocks.transactionBtn}
                     data-text="Поискай пари"
-                    onClick={handleShowModal("request")}
+                    onClick={handleShowModal('request')}
                 >
-                    <FontAwesomeIcon
-                        className={blocks.icon}
-                        icon={faHandHoldingDollar}
-                    />
+                    <FontAwesomeIcon className={blocks.icon} icon={faHandHoldingDollar} />
                 </button>
             </div>
-            
-            {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
-            {showModal.send && <SendMoney userInput={userInput} setUserInput={setUserInput} showModal={showModal} setShowModal={setShowModal} />}
-            {showModal.request && <RequestMoney userInput={userInput} setUserInput={setUserInput} showModal={showModal} setShowModal={setShowModal} />}
-        </div>
-    );
-};
 
+            {showModal.topUp && <TopUp showModal={showModal} setShowModal={setShowModal} />}
+            {showModal.send && (
+                <SendMoney
+                    userInput={userInput}
+                    setUserInput={setUserInput}
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                />
+            )}
+            {showModal.request && (
+                <RequestMoney
+                    userInput={userInput}
+                    setUserInput={setUserInput}
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                />
+            )}
+        </div>
+    )
+}

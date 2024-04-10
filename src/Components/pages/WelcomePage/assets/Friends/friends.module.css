@@ -6,7 +6,7 @@
     margin: 0;
 }
 
-.entryWrapper{
+.entryWrapper {
     align-items: center;
     background-color: #ddd;
     border: 1px solid transparent;
@@ -22,8 +22,6 @@
     object-fit: cover;
     margin-right: 20px;
 }
-
-
 
 .friendInfo {
     flex: 1;

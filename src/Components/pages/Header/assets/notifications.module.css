@@ -36,11 +36,11 @@
     box-shadow: 0 0.3em 12px rgba(0, 0, 0, 0.2);
 }
 
-.singleNotification:hover .btnRemove{
+.singleNotification:hover .btnRemove {
     display: block;
     margin: auto 0 auto auto;
 }
-.singleNotification:hover .btnAccept{
+.singleNotification:hover .btnAccept {
     display: block;
     margin: auto 0 auto auto;
 }
@@ -56,11 +56,11 @@
 }
 
 .btnRemove:hover {
-    color:  darkred;
+    color: darkred;
     border-color: darkred;
 }
 
-.notificationContent{
+.notificationContent {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -79,12 +79,12 @@
     display: inline-block;
 }
 
-.singleNotification:hover .date{
+.singleNotification:hover .date {
     display: none;
 }
 
 .btnAccept:hover {
-    color:  white;
+    color: white;
     background-color: var(--primary-hover-color);
     border-color: var(--primary-hover-color);
 }

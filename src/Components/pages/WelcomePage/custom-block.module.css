@@ -65,7 +65,7 @@
 }
 
 .customBlockBalance::before {
-    content: "";
+    content: '';
     background: var(--third-bg-color);
     background: #ff0000;
     border-radius: 100%;
@@ -78,7 +78,7 @@
 }
 
 .customBlockBalance::after {
-    content: "";
+    content: '';
     background: var(--primary-color);
     background: #ffa500;
     border-radius: 100%;

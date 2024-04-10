@@ -11,7 +11,7 @@
     --section-bg-color: #eee;
     --primary-bg-color: #a60067;
     --third-bg-color: #ccdde2ff;
-    --custom-btn-bg-color:  #ccdde2ff;
+    --custom-btn-bg-color: #ccdde2ff;
     --heading-color: #44464c;
     --p-color: #1d3557ff;
     --border-color: #ccdde2ff;
@@ -21,7 +21,7 @@
     --logo--icon-color: #41a6d1;
     --logo--text-color: #5c5959;
 
-    --body-font-family: "Montserrat Alternates", sans-serif;
+    --body-font-family: 'Montserrat Alternates', sans-serif;
     --label-font-size: 1em;
     --menu-font-size: 1em;
     --menu-font-weight: 400;
@@ -47,14 +47,18 @@ html {
     font: 16px/1.5 var(--body-font-family);
 }
 
-
 body,
 table,
 input {
     font: inherit;
 }
 
-h1,h2,h3,h4,h5,h6 { 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: var(--font-weight-bold);
     line-height: 1.2;
     color: var(--heading-color);
@@ -81,7 +85,7 @@ h6 {
 } /* 14 * 1.0 = 14px */
 
 p {
-    padding-bottom: 1,5em;
+    padding-bottom: 1, 5em;
 }
 
 li {
