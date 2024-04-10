@@ -51,14 +51,14 @@ Table of Contents
 ## Future updates
 - [ ] oAuth 
 - [ ] Change notification settings
-- [ ] Change profile info 
+- [x] Change profile info 
 - [ ] Age check on register
-- [ ] Top up account
+- [x] Top up account
 - [ ] Language change
 - [ ] Dark theme
 - [ ] Chat bot
 - [ ] Help center search topic
-- [ ] Update subscription plan
+- [x] Update subscription plan
 - [x] Wallet transactions
 
 ## Libraries and Services
