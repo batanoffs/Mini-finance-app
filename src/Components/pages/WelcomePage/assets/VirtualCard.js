@@ -12,7 +12,12 @@ export const VirtualCard = () => {
     const [card, setCard] = useState(auth.virtualcard)
 
     const style = {
-        animation: 'spin 2s linear infinite',
+        animation: 'spin 2s linear 1',
+
+        '@keyframes spin': {
+            from: { transform: 'rotate(0deg)' },
+            to: { transform: 'rotate(360deg)' },
+        },
     }
 
     useEffect(() => {
