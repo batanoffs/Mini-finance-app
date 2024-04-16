@@ -6,79 +6,79 @@ import styles from './ExchangeRate.module.css'
 import block from '../custom-block.module.css'
 
 export const ExchangeRate = ({ props }) => {
-    useEffect(() => {
-        if (!props.hasLoaded) {
-            exchangeRateService
-                .getLatest('BGN')
-                .then((response) => response.json())
-                .then((data) =>
-                    props.setRates((prevState) => {
-                        const newState = prevState
-                        newState['USD']['sell'] = data.conversion_rates.USD
-                        newState['GBP']['sell'] = data.conversion_rates.GBP
-                        newState['EUR']['sell'] = data.conversion_rates.EUR
-                        newState['AUD']['sell'] = data.conversion_rates.AUD
-                        newState['SGD']['sell'] = data.conversion_rates.SGD
-                        return newState
-                    })
-                )
-                .then(() => props.setHasLoaded(true))
-                .catch((error) => console.log(error))
+    // useEffect(() => {
+    //     if (!props.hasLoaded) {
+    //         exchangeRateService
+    //             .getLatest('BGN')
+    //             .then((response) => response.json())
+    //             .then((data) =>
+    //                 props.setRates((prevState) => {
+    //                     const newState = prevState
+    //                     newState['USD']['sell'] = data.conversion_rates.USD
+    //                     newState['GBP']['sell'] = data.conversion_rates.GBP
+    //                     newState['EUR']['sell'] = data.conversion_rates.EUR
+    //                     newState['AUD']['sell'] = data.conversion_rates.AUD
+    //                     newState['SGD']['sell'] = data.conversion_rates.SGD
+    //                     return newState
+    //                 })
+    //             )
+    //             .then(() => props.setHasLoaded(true))
+    //             .catch((error) => console.log(error))
 
-            exchangeRateService
-                .getSpecificRate('USD', 'BGN')
-                .then((response) => response.json())
-                .then(({ conversion_rate }) =>
-                    props.setRates((prevState) => ({
-                        ...prevState,
-                        USD: { ...prevState.USD, buy: conversion_rate },
-                    }))
-                )
-                .catch((error) => console.log(error))
+    //         exchangeRateService
+    //             .getSpecificRate('USD', 'BGN')
+    //             .then((response) => response.json())
+    //             .then(({ conversion_rate }) =>
+    //                 props.setRates((prevState) => ({
+    //                     ...prevState,
+    //                     USD: { ...prevState.USD, buy: conversion_rate },
+    //                 }))
+    //             )
+    //             .catch((error) => console.log(error))
 
-            exchangeRateService
-                .getSpecificRate('GBP', 'BGN')
-                .then((response) => response.json())
-                .then(({ conversion_rate }) =>
-                    props.setRates((prevState) => ({
-                        ...prevState,
-                        GBP: { ...prevState.GBP, buy: conversion_rate },
-                    }))
-                )
-                .catch((error) => console.log(error))
+    //         exchangeRateService
+    //             .getSpecificRate('GBP', 'BGN')
+    //             .then((response) => response.json())
+    //             .then(({ conversion_rate }) =>
+    //                 props.setRates((prevState) => ({
+    //                     ...prevState,
+    //                     GBP: { ...prevState.GBP, buy: conversion_rate },
+    //                 }))
+    //             )
+    //             .catch((error) => console.log(error))
 
-            exchangeRateService
-                .getSpecificRate('EUR', 'BGN')
-                .then((response) => response.json())
-                .then(({ conversion_rate }) =>
-                    props.setRates((prevState) => ({
-                        ...prevState,
-                        EUR: { ...prevState.EUR, buy: conversion_rate },
-                    }))
-                )
-                .catch((error) => console.log(error))
-            exchangeRateService
-                .getSpecificRate('AUD', 'BGN')
-                .then((response) => response.json())
-                .then(({ conversion_rate }) =>
-                    props.setRates((prevState) => ({
-                        ...prevState,
-                        AUD: { ...prevState.AUD, buy: conversion_rate },
-                    }))
-                )
-                .catch((error) => console.log(error))
-            exchangeRateService
-                .getSpecificRate('SGD', 'BGN')
-                .then((response) => response.json())
-                .then(({ conversion_rate }) =>
-                    props.setRates((prevState) => ({
-                        ...prevState,
-                        SGD: { ...prevState.SGD, buy: conversion_rate },
-                    }))
-                )
-                .catch((error) => console.log(error))
-        }
-    }, [])
+    //         exchangeRateService
+    //             .getSpecificRate('EUR', 'BGN')
+    //             .then((response) => response.json())
+    //             .then(({ conversion_rate }) =>
+    //                 props.setRates((prevState) => ({
+    //                     ...prevState,
+    //                     EUR: { ...prevState.EUR, buy: conversion_rate },
+    //                 }))
+    //             )
+    //             .catch((error) => console.log(error))
+    //         exchangeRateService
+    //             .getSpecificRate('AUD', 'BGN')
+    //             .then((response) => response.json())
+    //             .then(({ conversion_rate }) =>
+    //                 props.setRates((prevState) => ({
+    //                     ...prevState,
+    //                     AUD: { ...prevState.AUD, buy: conversion_rate },
+    //                 }))
+    //             )
+    //             .catch((error) => console.log(error))
+    //         exchangeRateService
+    //             .getSpecificRate('SGD', 'BGN')
+    //             .then((response) => response.json())
+    //             .then(({ conversion_rate }) =>
+    //                 props.setRates((prevState) => ({
+    //                     ...prevState,
+    //                     SGD: { ...prevState.SGD, buy: conversion_rate },
+    //                 }))
+    //             )
+    //             .catch((error) => console.log(error))
+    //     }
+    // }, [])
 
     return (
         <div className={`${block.customBlockContact} `}>

@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { transactionService } from '../../../../services/transactionService'
 import { showLastCardDidgits } from '../../../../utils/showLastCardDidgits'
@@ -11,15 +11,9 @@ export const VirtualCard = () => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext)
     const [card, setCard] = useState(auth.virtualcard)
 
-    // TODO
-    // const getBalance = useCallback(() => {
-    //     transactionService.updateBalance(userDataId, card.objectId, token)
-    //         .then((data) => {
-    //             setCard({...card, balance: data.results.updateMoney.result.balance});
-    //             setAuth({...auth, virtualcard: {...card, balance: data.results.updateMoney.result.balance}});
-    //         })
-    //         .catch((err) => console.log(err));
-    // }, []);
+    const style = {
+        animation: 'spin 2s linear infinite',
+    }
 
     useEffect(() => {
         transactionService
@@ -35,7 +29,7 @@ export const VirtualCard = () => {
     }, [])
 
     return (
-        <div className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
+        <div style={style} className={`${blocks.customBlock} ${blocks.customBlockBalance}`}>
             <h5>Наличност</h5>
             <h4 style={{ color: 'var(--white-color)' }}>
                 {card.balance ? balanceFormat(card.balance) + ' лв' : '0 лв'}
