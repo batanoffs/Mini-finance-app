@@ -7,7 +7,7 @@
 .homeContainer {
     background: linear-gradient(to right, #b3cde0, #9ad2ee);
     display: flex;
-    width: 100dvw;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: var(--home-padding);
@@ -17,6 +17,7 @@
 .loginContainer {
     display: none;
 }
+
 .textContainer {
     display: flex;
     flex: 1;
@@ -28,16 +29,20 @@
 }
 .homeContainer h1 {
     margin: 0;
-    font-size: 1.6em;
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
     text-align: center;
 }
 
 .buttonContainer {
-    font-size: 0.6em;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1em;
 }
 
 .buttonContainer a {
     z-index: 1;
+    width: 100%;
 }
 .heroSection {
     flex: 0 0 calc(100vh / var(--hero-aspect-ratio));
@@ -59,8 +64,8 @@
 .buttonContainer {
     display: flex;
     justify-content: center;
-    margin-top: 2em;
-    gap: var(--home-gap);
+    margin-top: 1em;
+    gap: 0.5em;
     width: 100%;
     z-index: 3;
 }
@@ -99,8 +104,8 @@
         gap: 2em;
     }
     .homeContainer h1 {
-        margin: 0;
-        font-size: 3em;
+        margin-bottom: 0.5em;
+        font-size: 2.5em;
         text-align: center;
     }
 
@@ -108,13 +113,15 @@
         font-size: 1em;
     }
     .buttonContainer {
-        gap: 0.5em;
+        gap: 1em;
         margin: 0;
         width: 100%;
         justify-content: center;
+        padding-top: 1em;
     }
     .buttonContainer a {
         z-index: 1;
+        width: auto;
     }
 }
 
@@ -184,6 +191,7 @@
 
     .buttonContainer a {
         z-index: 1;
+        width: 40%;
     }
 
     .buttonContainer {
