@@ -1,10 +1,21 @@
 .features {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    gap: 2em;
+    align-items: left;
+    align-content: left;
+    gap: 0.5em;
     flex-wrap: wrap;
+}
+
+.feature h5 {
+    padding-bottom: 1em;
+}
+
+.feature p {
+    text-align: left;
+    padding: 0 1em;
+    line-height: 1.5em;
 }
 
 .feature {
@@ -13,6 +24,7 @@
     background-color: white;
     padding: 1em;
     display: flex;
+    min-width: 200px;
     flex-direction: column;
     align-items: center;
     flex: 1 1;
@@ -32,15 +44,55 @@
 }
 
 .container {
-    margin: 5em;
+    padding: 1em;
 }
 
 .aboutContent {
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     gap: 1em;
-    margin: 0em 10em;
+    margin: 0em;
+}
+
+@media (min-width: 1200px) {
+    .features {
+        flex-direction: row;
+    }
+    .feature p {
+        position: relative;
+        bottom: 0px;
+    }
+    .aboutContent {
+        padding: 0em 20em;
+    }
+    .featureImg {
+        width: 130px;
+        height: 130px;
+    }
+    .features {
+        gap: 1em;
+    }
+    .aboutContent > p {
+        font-size: medium;
+    }
+    .container {
+        padding: 2em 0em;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+    .features {
+        flex-direction: row;
+        gap: 0.5em;
+    }
+
+    .aboutContent {
+        padding: 0em 5em;
+    }
+    .feature {
+        min-width: 250px;
+    }
 }
