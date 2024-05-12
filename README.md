@@ -265,7 +265,8 @@ four digits
 
 
 ## Contributing
-This project is maintained by [batanoffs](https://github.com/batanoffs) and is not open to additional contributions at this time.
+This project is maintained by [batanoffs](https://github.com/batanoffs) and tested by [Ivan-0101](https://github.com/Ivan-0101). Currently is not open to additional contributions.
+
 It is inspired by the layout of [Tooplate 2135 Mini Finance Template](https://www.tooplate.com/view/2135-mini-finance).
 Some icons are used from [Julia G](https://icons8.com/illustrations/author/627444) at www.icons8.com
 
