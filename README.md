@@ -1,4 +1,4 @@
-<a href="https://batanoffs.github.io/mini-finance/"> <h1 align="center">Mini Finance Innovations</h1> </a>
+# Mini Finance Innovations
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
