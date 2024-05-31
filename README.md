@@ -1,12 +1,11 @@
 # Mini Finance Innovations
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[](https://status.david-dm.org/gh/ValentinnDimitroff/ra-auth-ui.svg)
-
+[![License: MIT](https://img.shields.io/badge/Softuniada2024-TOP10-blu)](https://softuniada.softuni.bg/) 
+[![License: MIT](https://img.shields.io/badge/Licence-MIT-teal)](https://opensource.org/licenses/MIT) 
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-teal)](https://github.com/prettier/prettier)
+[![styled with prettier](https://img.shields.io/badge/Finance-web_app-teal)]()
+ 
 [Mini Finance Innovations](https://batanoffs.github.io/mini-finance/) is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
-
-![MiniFinance-frontend](https://notablepen.backendless.app/api/files/app/AppData/home/homepage.png)
 
 
 Table of Contents
