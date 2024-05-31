@@ -237,13 +237,13 @@ Menu for help and frequently asked questions with search functionality (still no
 - Used Exhange Rate API for live update rates
 
 ### Context Providers
-AuthContext provides data of authenticated user to welcomePage
+**AuthContext** provides data of authenticated user to welcomePage
 component through useContext from React. Additionally exports useAuthContext()
 
 ### Custom Hooks
-useMessage() returns function message from Antd, which takes type and text
+**useMessage()** returns function message from Antd, which takes type and text
 
-useForm(initialState, onLogin, onRegister) takes initial state for form, and functions to be called on login and register.
+**useForm(initialState, onLogin, onRegister)** takes initial state for form, and functions to be called on login and register.
 Inside it there's also useValidate hook which validates input from user. Finally it returns:
 - values updated form values
 - error errors if there were any during validation
@@ -254,39 +254,39 @@ Inside it there's also useValidate hook which validates input from user. Finally
 - onSubmitRegister checks if request was successful
 - onFocusHandler clears currently focused input field
 
-useSessionStorage(key, initialValue) takes key to store in sessionStorage
+**useSessionStorage(key, initialValue)** takes key to store in sessionStorage
 and initial value. Finally it returns:
 - setSessionStorageState function to set current state
 - state current state
 
-useValidate(initialStatе) takes initial state which comes from useForm. Finally it returns:
+**useValidate(initialStatе)** takes initial state which comes from useForm. Finally it returns:
 - error state of errors in the current moment
 - errorHandler function that validates errors and sets them in state
 - clearErrorHandler function that clears errors
 
 ### Routers
-- Main router located in App component
-- Secondary router located in WelcomePage component
+- Main router is located in **App** component
+- Secondary router is located in **WelcomePage** component
   
 ### Constants
-baseURL stores base URL for backendless and exchangerate api
+**baseURL** stores base URL for backendless and exchangerate api
 
 ### Utils
-setNewGeneratedId() takes nothing. Generates random number from 0 – 100
+**setNewGeneratedId()** takes nothing. Generates random number from 0 – 100
 and checks if there's already user with such id and if there is, generates
 new one and returns it
 
-formatDate(date) takes date and returns formatted
+**formatDate(date)** takes date and returns formatted
 
-showLastCardDidgits(number) takes bank card number and returns last four digits
+**showLastCardDidgits(number)** takes bank card number and returns last four digits
 
 ### Services
-- Authentication authService
-- Virtual card generation cardGeneratorService
-- Exchange Rate exchangeRateService
-- Notifications notificationService
-- Transactions transactionService
-- User Data userDataService
+- **authService** for Authentication 
+- **cardGeneratorService** for Virtual card generation 
+- **exchangeRateService** for Exchange Rate
+- **notificationService** for Notifications
+- **transactionService** for Transactions
+- **userDataService** for User Data
 
 ### Database schema - tables and relations 
 
