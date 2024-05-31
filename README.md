@@ -38,7 +38,7 @@ Table of Contents
 
 ## Test account
 - username `ivo@abv.bg` password `Minifinance123` 
-- username `test@abv.bg` password `Minifinance123`<br>
+- username `test@abv.bg` password `Minifinance123`
 
 ## Features
 - Get online virtual card generation upon register
@@ -73,7 +73,6 @@ The project utilizes the following libraries and services:
 - [Ant Design](https://ant.design/) library for a few components
 - [Font Awesome Icons](https://fontawesome.com/icons) library
 - [Dotenv](https://www.npmjs.com/package/dotenv) library for secret keys
-- ~~[FaceIO](https://console.faceio.net) library for face recognition~~ (removed due to trail version)
 
 ## Usage
 Here are some examples of how to use this project:
@@ -113,13 +112,10 @@ The user can log in to the app with an existing account or register a new one.
 The registration is a multi-step process as shown below and clearly displays the user's current stage.
 There is validation implemented for the user's input.
 
-Step 1                                                                                          | Step 2
-:----------------------------------------------------------------------------------------------:|:-------------------------:
-![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) | ![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png)
-
-Step 3                                                                                          | Step 4
-:----------------------------------------------------------------------------------------------:|:-------------------------:
-![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) | ![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png)
+![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) 
+![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png)
+![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) 
+![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png)
 
 
 ### About
@@ -143,17 +139,25 @@ Provides real-time notifications for friend requests and money transactions to i
 users in real-time. The notifications also display the time when the notification was
 created and possible actions, when the user hovers over the notification with the mouse.
 
-Friend request notification                                                                     |  Accept Friend request message 
-:----------------------------------------------------------------------------------------------:|:-------------------------:
-![Friend request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png)  |![Message accept](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png)
+#### Friend request notification   
 
-Money recieved notification                                                                     |  Delete notification message 
-:----------------------------------------------------------------------------------------------:|:-------------------------:
-![Money recieved](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png)  |![Message delete](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyDeleted.png)
+![Friend request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png) 
 
-Money request notification                                                                               |  Message reject  
-:-------------------------------------------------------------------------------------------------------:|:-------------------------:
-![Money request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png)   |![Message reject](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png)
+#### Accept Friend request message 
+
+![Message accept](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png)
+
+#### Money recieved notification                                                                   
+![Money recieved](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png)  
+
+#### Delete notification message 
+![Message delete](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyDeleted.png)
+
+#### Money request notification                                                                      
+![Money request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png) 
+
+#### Message reject  
+![Message reject](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png)
 
 Users can **request money** from other users in the ecosystem as long as they are in their list of friends.The form is invoked from a button located on the dashboard and allows automatic filling / **Autocomplete** of the field if the friend has been found.
 
@@ -170,17 +174,30 @@ Users can change information about their account, including email, profile pictu
 and information about credit card, as well as manage their notifications.
 
 ![Profile settings](https://notablepen.backendless.app/api/files/app/AppData/docs/settingsPage.png)
+
 ### Quick actions
 Provides a quick way to execute tasks such as sending money, adding friends,
 requesting money, and adding friends to a category of favorite
 
-Quick actions                                                                                       | Add Friends and transaction buttons                    
-:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------:
-![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) |![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) 
+#### Quick actions
+
+![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) 
+
+#### Add Friends and transaction buttons
+
+![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) 
  
-Change                                                                      | Show buttons                                               | Delete
-:--------------------------------------------------------------------------:|:----------------------------------------------------------:|:----------------------------------------:
-![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
+#### Change
+
+![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) 
+
+#### Show buttons
+
+![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) 
+
+#### Delete
+
+![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
 
 ### Last transactions
 Users can view their transaction history, which shows the last 5 transactions
@@ -196,9 +213,14 @@ sending money, loading money and searching for an amount
 ### Profile overview
 Here the user can view their data and perform actions towards their friends, as well as see who they are
 
-Overview                                                                                          | Hover friends action buttons 
-:------------------------------------------------------------------------------------------------:|:-------------------------:
-![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) |  ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
+#### OverviewHover 
+
+![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) 
+
+#### friends action buttons 
+
+![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
+
 ### Help center
 Menu for help and frequently asked questions with search functionality (still not implemented)
 
@@ -210,45 +232,45 @@ Menu for help and frequently asked questions with search functionality (still no
 - Used `Exhange Rate API` for live update rates
 
 #### Context Providers
-`AuthContext` – provides data of authenticated user to welcomePage
+`AuthContext` provides data of authenticated user to welcomePage
 component through useContext from React. Additionally exports `useAuthContext()`
 
 #### Custom Hooks
-`useMessage()` - returns function message from Antd, which takes type and text
+`useMessage()` returns function message from Antd, which takes type and text
 `useForm(initialState, onLogin, onRegister)` - takes initial state for form,
 and functions to be called on login and register. Inside it there's also useValidate hook which validates input from user. Finally it returns:
-- `values` – updated form values
-- `error` – errors if there were any during validation
-- `changeHandler` – updates form values and is used as onChange prop for input
-- `validateHandler` – validates input from user
-- `onSubmitLogin` – checks if request was successful
-- `resetFormHandler` – clears input fields
-- `onSubmitRegister` - checks if request was successful
-- `onFocusHandler` – clears currently focused input field
+- `values` updated form values
+- `error` errors if there were any during validation
+- `changeHandler` updates form values and is used as onChange prop for input
+- `validateHandler` validates input from user
+- `onSubmitLogin` checks if request was successful
+- `resetFormHandler` clears input fields
+- `onSubmitRegister` checks if request was successful
+- `onFocusHandler` clears currently focused input field
 
-`useSessionStorage(key, initialValue)` - takes key to store in sessionStorage
+`useSessionStorage(key, initialValue)` takes key to store in sessionStorage
 and initial value. Finally it returns:
-- `setSessionStorageState` – function to set current state
-- `state` - current state
+- `setSessionStorageState` function to set current state
+- `state` current state
 
-`useValidate(initialStatе)` – takes initial state which comes from useForm. Finally it returns:
-- `error` – state of errors in the current moment
-- `errorHandler` – function that validates errors and sets them in state
-- `clearErrorHandler` – function that clears errors
+`useValidate(initialStatе)` takes initial state which comes from useForm. Finally it returns:
+- `error` state of errors in the current moment
+- `errorHandler` function that validates errors and sets them in state
+- `clearErrorHandler` function that clears errors
 
 #### Routers
-- `Main router` – located in App component
-- `Secondary router` – located in WelcomePage component
+- `Main router` located in App component
+- `Secondary router` located in WelcomePage component
 #### Constants
-`baseURL` – stores base URL for backendless and exchangerate api
+`baseURL` stores base URL for backendless and exchangerate api
 #### Utils
-`setNewGeneratedId()` - takes nothing. Generates random number from 0 – 100
+`setNewGeneratedId()` takes nothing. Generates random number from 0 – 100
 and checks if there's already user with such id and if there is, generates
 new one and returns it
 
-`formatDate(date)` – takes date and returns formatted
+`formatDate(date)` takes date and returns formatted
 
-`showLastCardDidgits(number)` – takes bank card number and returns last
+`showLastCardDidgits(number)` takes bank card number and returns last
 four digits
 
 #### Services
