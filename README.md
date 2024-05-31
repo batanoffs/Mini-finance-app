@@ -37,8 +37,13 @@ Table of Contents
 - [License](#license)
 
 ## Test account
-- username `ivo@abv.bg` password `Minifinance123` 
-- username `test@abv.bg` password `Minifinance123`
+
+```bash
+username `ivo@abv.bg` password `Minifinance123`
+```
+```bash
+username `test@abv.bg` password `Minifinance123`
+```
 
 ## Features
 - Get online virtual card generation upon register
