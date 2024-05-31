@@ -233,61 +233,62 @@ Menu for help and frequently asked questions with search functionality (still no
 ![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/help.png)
 
 ## Design and Architecture
+- Serverless architecture, based on Backendless as a provider. 
+- Used Exhange Rate API for live update rates
 
-- Serverless architecture, based on `Backendless` as a provider. 
-- Used `Exhange Rate API` for live update rates
+### Context Providers
+AuthContext provides data of authenticated user to welcomePage
+component through useContext from React. Additionally exports useAuthContext()
 
-#### Context Providers
-`AuthContext` provides data of authenticated user to welcomePage
-component through useContext from React. Additionally exports `useAuthContext()`
+### Custom Hooks
+useMessage() returns function message from Antd, which takes type and text
 
-#### Custom Hooks
-`useMessage()` returns function message from Antd, which takes type and text
-`useForm(initialState, onLogin, onRegister)` - takes initial state for form,
-and functions to be called on login and register. Inside it there's also useValidate hook which validates input from user. Finally it returns:
-- `values` updated form values
-- `error` errors if there were any during validation
-- `changeHandler` updates form values and is used as onChange prop for input
-- `validateHandler` validates input from user
-- `onSubmitLogin` checks if request was successful
-- `resetFormHandler` clears input fields
-- `onSubmitRegister` checks if request was successful
-- `onFocusHandler` clears currently focused input field
+useForm(initialState, onLogin, onRegister) takes initial state for form, and functions to be called on login and register.
+Inside it there's also useValidate hook which validates input from user. Finally it returns:
+- values updated form values
+- error errors if there were any during validation
+- changeHandler updates form values and is used as onChange prop for input
+- validateHandler validates input from user
+- onSubmitLogin checks if request was successful
+- resetFormHandler clears input fields
+- onSubmitRegister checks if request was successful
+- onFocusHandler clears currently focused input field
 
-`useSessionStorage(key, initialValue)` takes key to store in sessionStorage
+useSessionStorage(key, initialValue) takes key to store in sessionStorage
 and initial value. Finally it returns:
-- `setSessionStorageState` function to set current state
-- `state` current state
+- setSessionStorageState function to set current state
+- state current state
 
-`useValidate(initialStatе)` takes initial state which comes from useForm. Finally it returns:
-- `error` state of errors in the current moment
-- `errorHandler` function that validates errors and sets them in state
-- `clearErrorHandler` function that clears errors
+useValidate(initialStatе) takes initial state which comes from useForm. Finally it returns:
+- error state of errors in the current moment
+- errorHandler function that validates errors and sets them in state
+- clearErrorHandler function that clears errors
 
-#### Routers
-- `Main router` located in App component
-- `Secondary router` located in WelcomePage component
-#### Constants
-`baseURL` stores base URL for backendless and exchangerate api
-#### Utils
-`setNewGeneratedId()` takes nothing. Generates random number from 0 – 100
+### Routers
+- Main router located in App component
+- Secondary router located in WelcomePage component
+  
+### Constants
+baseURL stores base URL for backendless and exchangerate api
+
+### Utils
+setNewGeneratedId() takes nothing. Generates random number from 0 – 100
 and checks if there's already user with such id and if there is, generates
 new one and returns it
 
-`formatDate(date)` takes date and returns formatted
+formatDate(date) takes date and returns formatted
 
-`showLastCardDidgits(number)` takes bank card number and returns last
-four digits
+showLastCardDidgits(number) takes bank card number and returns last four digits
 
-#### Services
-- Authentication `authService`
-- Virtual card generation `cardGeneratorService`
-- Exchange Rate `exchangeRateService`
-- Notifications `notificationService`
-- Transactions `transactionService`
-- User Data `userDataService`
+### Services
+- Authentication authService
+- Virtual card generation cardGeneratorService
+- Exchange Rate exchangeRateService
+- Notifications notificationService
+- Transactions transactionService
+- User Data userDataService
 
-#### Database schema - tables and relations 
+### Database schema - tables and relations 
 
 ![Database schema](https://notablepen.backendless.app/api/files/app/AppData/docs/schema.png)
 
