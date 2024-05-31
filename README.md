@@ -94,6 +94,7 @@ To get started with this project, follow these steps:
 git clone https://github.com/batanoffs/mini-finance.git
 ```
 2. Navigate to the project directory: `cd your-project-directory`
+
 3. Install dependencies: 
 ```bash
 npm install
