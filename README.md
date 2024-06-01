@@ -118,11 +118,13 @@ The user can log in to the app with an existing account or register a new one.
 The registration is a multi-step process as shown below and clearly displays the user's current stage.
 There is validation implemented for the user's input.
 
-![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) 
-![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png)
-![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) 
-![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png)
+Step 1                                                                                          | Step 2
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) | ![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png)
 
+Step 3                                                                                          | Step 4
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) | ![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png)
 
 ### About
 ![About page](https://notablepen.backendless.app/api/files/app/AppData/docs/aboutpage.png) 
@@ -145,25 +147,21 @@ Provides real-time notifications for friend requests and money transactions to i
 users in real-time. The notifications also display the time when the notification was
 created and possible actions, when the user hovers over the notification with the mouse.
 
-#### Friend request notification   
+Money recieved notification                                                                     |  Delete notification message 
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![Money recieved](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png)  |![Message delete](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyDeleted.png)
 
-![Friend request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png) 
 
-#### Accept Friend request message 
+Friend request notification                                                                     |  Accept Friend request message 
+:----------------------------------------------------------------------------------------------:|:-------------------------:
+![Friend request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png)  |![Message accept](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png)
 
-![Message accept](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png)
 
-#### Money recieved notification                                                                   
-![Money recieved](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png)  
 
-#### Delete notification message 
-![Message delete](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyDeleted.png)
+Money request notification                                                                               |  Message reject  
+:-------------------------------------------------------------------------------------------------------:|:-------------------------:
+![Money request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png)   |![Message reject](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png)
 
-#### Money request notification                                                                      
-![Money request](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png) 
-
-#### Message reject  
-![Message reject](https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png)
 
 Users can **request money** from other users in the ecosystem as long as they are in their list of friends.The form is invoked from a button located on the dashboard and allows automatic filling / **Autocomplete** of the field if the friend has been found.
 
@@ -185,25 +183,13 @@ and information about credit card, as well as manage their notifications.
 Provides a quick way to execute tasks such as sending money, adding friends,
 requesting money, and adding friends to a category of favorite
 
-#### Quick actions
+Quick actions                                                                                       | Add Friends and transaction buttons                    
+:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------:
+![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) |![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) 
 
-![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) 
-
-#### Add Friends and transaction buttons
-
-![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) 
- 
-#### Change
-
-![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) 
-
-#### Show buttons
-
-![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) 
-
-#### Delete
-
-![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
+Change                                                                      | Show buttons                                               | Delete
+:--------------------------------------------------------------------------:|:----------------------------------------------------------:|:----------------------------------------:
+![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
 
 ### Last transactions
 Users can view their transaction history, which shows the last 5 transactions
@@ -219,13 +205,9 @@ sending money, loading money and searching for an amount
 ### Profile overview
 Here the user can view their data and perform actions towards their friends, as well as see who they are
 
-#### OverviewHover 
-
-![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) 
-
-#### friends action buttons 
-
-![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
+Overview                                                                                          | Hover friends action buttons 
+:------------------------------------------------------------------------------------------------:|:-------------------------:
+![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) |  ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
 
 ### Help center
 Menu for help and frequently asked questions with search functionality (still not implemented)
