@@ -74,19 +74,19 @@ Here are some examples of how to use this project:
 To get started with this project, follow these steps:
 
 1. Clone the repository
-```bash
-git clone https://github.com/batanoffs/mini-finance.git
-```
+    ```bash
+    git clone https://github.com/batanoffs/mini-finance.git
+    ```
 2. Navigate to the project directory: `cd your-project-directory`
 
 3. Install dependencies: 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 4. Start the development server:
-```bash
-npm start
-```
+    ```bash
+    npm start
+    ```
 5. Open your browser and go to [http://localhost:3000/mini-finance/](http://localhost:3000/mini-finance/) to view the app.
 6. Login with test credentials or register new account
 
