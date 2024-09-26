@@ -153,13 +153,13 @@ npm start
     Provides a quick way to execute tasks such as sending money, adding friends,
     requesting money, and adding friends to a category of favorite
 
-Quick actions                                                                                       | Add Friends and transaction buttons                    
-:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------:
-![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) |![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) 
+    |                                            Quick actions                                            |                             Add Friends and transaction buttons                             |
+    | :-------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+    | ![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) | ![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) |
 
-Change                                                                      | Show buttons                                               | Delete
-:--------------------------------------------------------------------------:|:----------------------------------------------------------:|:----------------------------------------:
-![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png)
+    |                                               Change                                                |                                             Show buttons                                              |                                              Delete                                               |
+    | :-------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+    | ![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png) |
 
 - ### Last transactions
     Users can view their transaction history, which shows the last 5 transactions
@@ -175,9 +175,9 @@ Change                                                                      | Sh
 - ### Profile overview
     Here the user can view their data and perform actions towards their friends, as well as see who they are
 
-Overview                                                                                          | Hover friends action buttons 
-:------------------------------------------------------------------------------------------------:|:-------------------------:
-![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) |  ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png)
+    |                                            Overview                                            |                                Hover friends action buttons                                |
+    | :--------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+    | ![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) | ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png) |
 
 - ### Help center
     Menu for help and frequently asked questions with search functionality (still not implemented)
