@@ -9,24 +9,23 @@ https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a0
 
 [Mini Finance Innovations](https://batanoffs.github.io/mini-finance/) is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
 
-<details open>
-  <summary>
-    <h2> 📝 Table of Contents</h2>
-  </summary>
+Notes
+- Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day
 
+
+## Table of content
 - [Mini Finance Innovations](#mini-finance-innovations)
-  - [Test account](#test-account)
-  - [Features](#features)
-  - [Libraries and Services](#libraries-and-services)
-  - [Usage](#usage)
-  - [Installation](#installation)
-  - [Project content](#project-content)
-  - [Design and Architecture](#design-and-architecture)
-  - [Future updates](#future-updates)
-  - [Contributing](#contributing)
-  - [License](#license)
+- [Test account](#test-account)
+- [Features](#features)
+- [Libraries and Services](#libraries-and-services)
+- [Usage](#usage)
+- [Installation](#installation)
+- [Project content](#project-content)
+- [Design and Architecture](#design-and-architecture)
+- [Future updates](#future-updates)
+- [Contributing](#contributing)
+- [License](#license)
   
-</details>
 
 ## Test account
 
