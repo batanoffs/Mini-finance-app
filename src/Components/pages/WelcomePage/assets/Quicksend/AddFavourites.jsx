@@ -2,9 +2,12 @@ import { useContext, useState } from 'react'
 
 import { AuthContext } from '../../../../../contexts/AuthContext'
 import { dataService } from '../../../../../services/userDataService'
-import { Autocomplete } from '../../../../features/Autocomplate'
+import { Autocomplete } from '../../../../features/Autocomplete'
 import { useMessage } from '../../../../../hooks/useMessage'
 
+// TODO A component is changing an uncontrolled input to be controlled. 
+// This is likely caused by the value changing from undefined to a defined value, 
+// which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
 export const AddToFavorites = ({ setShowFavourites }) => {
     const { auth, setAuth, token, userDataId } = useContext(AuthContext)
     const [userInput, setUserInput] = useState({})

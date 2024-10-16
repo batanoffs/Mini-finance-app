@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from 'react'
 import { transactionService } from '../../../../../services/transactionService'
 import { dataService } from '../../../../../services/userDataService'
 import { AuthContext } from '../../../../../contexts/AuthContext'
-import { Autocomplete } from '../../../../features/Autocomplate'
+import { Autocomplete } from '../../../../features/Autocomplete'
 import { useMessage } from '../../../../../hooks/useMessage'
 
 import modal from './modal.module.css'
