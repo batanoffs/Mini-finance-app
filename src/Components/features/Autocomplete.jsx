@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import './autocomplate.css'
+import './autocomplete.css'
 
 export const Autocomplete = (props) => {
     const [activeSuggestion, setActiveSuggestion] = useState(0)
