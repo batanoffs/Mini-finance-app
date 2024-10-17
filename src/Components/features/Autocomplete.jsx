@@ -11,7 +11,7 @@ export const Autocomplete = (props) => {
         const input = e.target.value
         const suggestions = props.suggestions
         const filtered = suggestions.filter(
-            (suggestion) => suggestion.name.toLowerCase().indexOf(input.toLowerCase()) > -1
+            (suggestion) => suggestion.name.toLowerCase().trim().indexOf(input.toLowerCase()) > -1
         )
 
         setActiveSuggestion(0)
