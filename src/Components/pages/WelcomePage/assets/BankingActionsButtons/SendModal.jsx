@@ -13,23 +13,29 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
     const [receiver, setReceiver] = useState([])
     const showMessage = useMessage()
 
-    useEffect(() => {
-        dataService.getRelation(userDataId, 'friends').then((response) => {
-            setReceiver(
-                response.friends.map((friend) => {
-                    if (friend.fullName) {
-                        return {
-                            name: friend.fullName,
-                            avatar: friend.avatar,
-                            objectId: friend.objectId,
-                        }
-                    } else {
-                        return null
+    const getReceivers = useCallback(async () => {
+        try {
+            const response = dataService.getRelation(userDataId, 'friends')
+            const friends = response.friends.map((friend) => {
+                if (friend.fullName) {
+                    return {
+                        name: friend.fullName,
+                        avatar: friend.avatar,
+                        objectId: friend.objectId,
                     }
-                })
-            )
-        })
-    }, [userDataId, setReceiver])
+                } else {
+                    return null
+                }
+            })
+            setReceiver(friends)
+        } catch (error) {
+            showMessage('error', 'Error during fetching friends')
+        }
+    }, [])
+
+    useEffect(() => {
+        getReceivers()
+    }, [getReceivers])
 
     const setUserInputHandler = (e) => {
         if (!e || !e.target) {

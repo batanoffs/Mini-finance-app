@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react'
 
 import { transactionService } from '../../../../../services/transactionService'
 import { dataService } from '../../../../../services/userDataService'
@@ -13,23 +13,29 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
     const [receiver, setReceiver] = useState([])
     const showMessage = useMessage()
 
-    useEffect(() => {
-        dataService.getRelation(userDataId, 'friends').then((response) => {
-            setReceiver(
-                response.friends.map((friend) => {
-                    if (friend.fullName) {
-                        return {
-                            name: friend.fullName,
-                            avatar: friend.avatar,
-                            objectId: friend.objectId,
-                        }
-                    } else {
-                        return null
+    const getRelations = useCallback(async () => {
+        try {
+            const response = await dataService.getRelation(userDataId, 'friends')
+            const friends = response.friends.map((friend) => {
+                if (friend.fullName) {
+                    return {
+                        name: friend.fullName,
+                        avatar: friend.avatar,
+                        objectId: friend.objectId,
                     }
-                })
-            )
-        })
-    }, [userDataId, setReceiver])
+                } else {
+                    return null
+                }
+            })
+            setReceiver(friends)
+        } catch (error) {
+            showMessage('error', 'Error getting friends')
+        }
+    }, [userDataId])
+
+    useEffect(() => {
+        getRelations()
+    }, [getRelations])
 
     const setUserInputHandler = (e) => {
         setUserInput({ ...userInput, [e.target.name]: e.target.value })
@@ -49,7 +55,6 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
             if (!form) throw new Error('FormData is null')
 
             const formEntries = Object.fromEntries(form)
-
             const { amount, friends } = formEntries
 
             if (!amount || !friends) throw new Error('Amount or friends is null or empty')
