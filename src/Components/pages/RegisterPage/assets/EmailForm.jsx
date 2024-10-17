@@ -18,6 +18,8 @@ export const EmailForm = ({
         }
     }
 
+    const navigateTo = !!email && !!password && confirmPassword === password ? 'userInfo' : null
+
     return (
         <section className="form-container">
             <div className="form-content">
@@ -87,11 +89,7 @@ export const EmailForm = ({
                         name="next"
                         className="button-primary"
                         style={{ width: `100%`, textAlign: `center` }}
-                        to={
-                            !!email && !!password && confirmPassword === password
-                                ? 'userInfo'
-                                : null
-                        }
+                        to={navigateTo}
                         onClick={onNextPageHandler}
                         disabled={!email || !password || confirmPassword !== password}
                     >
