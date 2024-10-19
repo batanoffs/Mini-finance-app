@@ -1,23 +1,16 @@
-import { baseURL } from '../constants/baseUrl'
+import { API } from '../constants/baseUrl'
 import * as request from './requester'
 
-const endpoints = {
-    login: '/users/login',
-    register: '/users/register',
-    logout: '/users/logout',
-    authO: '/users/oauth/<providerCode>/request_url', // To Do implement AuthO hidden passowrd thirds API
-}
-
-const login = async (loginData) => {
-    return await request.post(`${baseURL}${endpoints.login}`, loginData)
+const login = async (data) => {
+    return await request.post(API.LOGIN, data)
 }
 
 const logout = async (token) => {
-    await request.get(`${baseURL}${endpoints.logout}`, token)
+    await request.get(API.LOGOUT, token)
 }
 
-const register = async (registerData) => {
-    return await request.post(`${baseURL}${endpoints.register}`, registerData)
+const register = async (data) => {
+    return await request.post(API.REGISTER, data)
 }
 
 export const authService = {

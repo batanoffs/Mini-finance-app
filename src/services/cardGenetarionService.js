@@ -1,16 +1,9 @@
-import { baseURL } from '../constants/baseUrl'
+import { API } from '../constants/baseUrl'
 import * as request from './requester'
-
-const endpoints = {
-    user: `${baseURL}/data/UserData`,
-    mockcards: `${baseURL}/data/CardsMockData`,
-    setRelation: (parentObjectId) => `${baseURL}/data/UserData/${parentObjectId}/virtualcard`,
-}
-// https://cors-anywhere.herokuapp.com/
 
 const generateCard = async (id) => {
     const query = encodeURIComponent(`cards_mock_data_id=${id}`) // EncodeURI
-    const response = await request.get(`${endpoints.mockcards}?where=${query}`)
+    const response = await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`)
     const date = response[0].expiration.split('/')
     const money = response[0].balance
     date.shift()
@@ -27,30 +20,29 @@ const generateCard = async (id) => {
     }
 }
 
-// GET VIRTUAL CARD
 const getCard = async (id) => {
     const query = encodeURIComponent(`cards_mock_data_id='${id}'`)
-    return await request.get(`${endpoints.mockcards}?where=${query}`)
+    return await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`)
 }
 
 const topUp = async (objectId, value, token) => {
     const data = { top_up: value }
-    return await request.put(`${endpoints.mockcards}/${objectId}`, data, token)
+    return await request.put(API.MOCK_CREDIT_CARDS + `/${objectId}`, data, token)
 }
 
-const getVirtualcardIds = async () => {
+const getVirtualCardIds = async () => {
     const query = encodeURIComponent(`property=cardId`) // EncodeURI
-    return await request.get(`${endpoints.user}?${query}`)
+    return await request.get(API.USERS + `?${query}`)
 }
 
 const setVirtualCardRelation = async (parentObjectId, body) => {
-    return await request.put(endpoints.setRelation(parentObjectId), body)
+    return await request.put(API.USERS + `/${parentObjectId}/virtualcard`, body)
 }
 
 export const cardService = {
     generateCard,
     setVirtualCardRelation,
-    getVirtualcardIds,
+    getVirtualcardIds: getVirtualCardIds,
     getCard,
     topUp,
 }
