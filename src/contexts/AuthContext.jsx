@@ -1,7 +1,7 @@
 import { useState, useContext, createContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { cardService } from '../services/cardGenetarionService'
+import { cardService } from '../services/cardGenerationService'
 import { useSessionStorage } from '../hooks/useSessionStorage'
 import { dataService } from '../services/userDataService'
 import { authService } from '../services/authService'
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useSessionStorage(`auth`, {})
     const [loginError, setLoginError] = useState(false)
     const navigate = useNavigate()
-    let loginData
+    let loginResponse
 
     const onLoginSubmitHandler = async (formData) => {
         const data = {
@@ -24,15 +24,16 @@ export const AuthProvider = ({ children }) => {
             return
         }
         try {
-            loginData = await authService.login(data)
+            loginResponse = await authService.login(data)
+            console.log('response from login', loginResponse)
 
-            if (loginData.message === 'Invalid login or password') {
-                console.error(loginData.message)
+            if (loginResponse.message) {
+                console.error(loginResponse.message)
                 return
             }
 
-            const token = loginData['user-token']
-            const ownerId = loginData['ownerId']
+            const token = loginResponse['user-token']
+            const ownerId = loginResponse['ownerId']
             // Store the token in session storage
             sessionStorage.setItem('token', token)
 
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
                 throw new Error('userDataResponse has no elements')
             }
 
-            const card = userDataResponse[0].virtualcard[0]
+            const card = userDataResponse[0].virtualCard[0]
 
             if (card === null) {
                 throw new Error('card is null')
@@ -54,8 +55,8 @@ export const AuthProvider = ({ children }) => {
 
             const userData = userDataResponse[0]
 
-            userData.virtualcard = card
-            userData.email = loginData.email
+            userData.virtualCard = card
+            userData.email = loginResponse.email
 
             setAuth(userData)
             navigate('/dashboard/overview')
@@ -95,7 +96,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const registerResponse = await authService.register(registerData)
             const setUserDataResponse = await dataService.setUserData({
-                adress: formData.address,
+                address: formData.address,
                 cardId: formData.cardId,
                 country: formData.country,
                 gender: formData.gender,
@@ -113,7 +114,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/login')
         } catch (error) {
             console.log(error)
-            window.alert('Неуспешна регистрация')
+            window.alert('Unsuccessful registration')
         }
     }
 
@@ -129,31 +130,31 @@ export const AuthProvider = ({ children }) => {
         onLoginSubmitHandler,
         onRegisterSubmitHandler,
         onLogoutHandler,
-        ownerId: auth.ownerId || 'Липсва информация',
-        token: sessionStorage.getItem('token') || 'Липсва информация',
-        email: auth.email || 'Липсва информация',
+        ownerId: auth.ownerId || 'No information',
+        token: sessionStorage.getItem('token') || 'No information',
+        email: auth.email || 'No information',
         userStatus: auth.userStatus,
         isAuthenticated: () => sessionStorage.getItem('token'),
-        name: auth.fullName || 'потребител',
-        phone: auth.phoneNumber || 'номер',
-        country: auth.country,
-        virtualcard: auth.virtualcard || {
+        name: auth.fullName || 'user',
+        phone: auth.phoneNumber || 'phone number',
+        country: auth.country || 'country',
+        virtualCard: auth.virtualCard || {
             number: `0000 0000 0000 0000`,
             expiration: '00/00',
             cvv: `000`,
             balance: Number(`00000000`),
             issuer: 0,
-            brand: `Липсва информация`,
-            objectId: `Липсва информация`,
-            created: `информация`,
+            brand: `No information`,
+            objectId: `No information`,
+            created: `information`,
         },
         picture:
             auth.avatar || 'https://notablepen.backendless.app/api/files/app/UserData/default.png',
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         favorites: auth.favorite_friends || [],
-        adress: auth.adress || 'Липсва информация',
-        userDataId: auth.objectId || 'Липсва информация',
+        address: auth.address || 'No information',
+        userDataId: auth.objectId || 'No information',
         setAuth: setAuth,
         auth: auth,
     }
