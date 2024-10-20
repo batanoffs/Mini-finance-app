@@ -1,22 +1,22 @@
-const BASE_URL = import.meta.env.API_BASE_URL
-const EXCHANGE_RATE_BASE_URL = import.meta.env.EXCHANGE_BASE_URL
-const FILE_BASE_URL = import.meta.env.API_FILE_BASE_URL
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+const EXCHANGE_RATE_BASE_URL = import.meta.env.VITE_EXCHANGE_BASE_URL
+const FILE_BASE_URL = import.meta.env.VITE_API_FILE_BASE_URL
 
-const APPLICATION_ID = process.env.REACT_APP_APPLICATION_ID
-const REST_API_KEY = process.env.REACT_APP_APPLICATION_ID
+const APPLICATION_ID = import.meta.env.VITE_APP_APPLICATION_ID
+const REST_API_KEY = import.meta.env.VITE_APP_REST_API_KEY
 
 export const API = {
-    LOGIN: BASE_URL + '/users/login/',
-    LOGOUT: BASE_URL + '/users/logout/',
-    REGISTER: BASE_URL + '/users/register/',
-    USERS: BASE_URL + '/data/UserData/',
-    NOTIFICATIONS: BASE_URL + '/data/UserNotifications/',
+    LOGIN: BASE_URL + '/users/login',
+    LOGOUT: BASE_URL + '/users/logout',
+    REGISTER: BASE_URL + '/users/register',
+    USERS: BASE_URL + '/data/UserData',
+    NOTIFICATIONS: BASE_URL + '/data/UserNotifications',
     MOCK_CREDIT_CARDS: BASE_URL + '/data/CardsMockData',
     MONEY: BASE_URL + '/data/MoneyTransactions',
     TRANSACTION: BASE_URL + '/transaction/unit-of-work',
     DATA_TRANSACTION: BASE_URL + '/data/transaction/unit-of-work',
     FILES: {
-        USER: BASE_URL + '/files/app/UserData/',
+        USER: BASE_URL + '/files/app/UserData',
         DOWNLOAD: FILE_BASE_URL + APPLICATION_ID + REST_API_KEY + '/files/',
     },
 }
