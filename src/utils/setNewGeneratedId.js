@@ -1,4 +1,4 @@
-import { cardService } from '../services/cardGenetarionService'
+import { cardService } from '../services/cardGenerationService'
 
 export const setNewGeneratedId = async () => {
     let newCardId
@@ -9,6 +9,5 @@ export const setNewGeneratedId = async () => {
         const usersCardIds = getUsersCardIds.map((id) => id.cardId)
         checkMatch = usersCardIds.includes(newCardId)
     }
-    console.log(newCardId)
     return newCardId
 }

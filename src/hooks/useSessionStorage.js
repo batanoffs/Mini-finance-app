@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 export const useSessionStorage = (key, initialValue) => {
     const [state, setState] = useState(() => {
-        const presistStateSerialized = sessionStorage.getItem(key)
-        if (presistStateSerialized) {
-            const presistState = JSON.parse(presistStateSerialized)
-            return presistState
+        const persistStateSerialized = sessionStorage.getItem(key)
+        if (persistStateSerialized) {
+            const persistState = JSON.parse(persistStateSerialized)
+            return persistState
         } else {
             return initialValue
         }

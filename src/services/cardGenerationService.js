@@ -36,13 +36,13 @@ const getVirtualCardIds = async () => {
 }
 
 const setVirtualCardRelation = async (parentObjectId, body) => {
-    return await request.put(API.USERS + `/${parentObjectId}/virtualcard`, body)
+    return await request.put(API.USERS + `/${parentObjectId}/virtualCard`, body)
 }
 
 export const cardService = {
     generateCard,
     setVirtualCardRelation,
-    getVirtualcardIds: getVirtualCardIds,
+    getVirtualCardIds,
     getCard,
     topUp,
 }
