@@ -1,18 +1,35 @@
 export const formatDate = (date) => {
-    return new Intl.DateTimeFormat('bg-BG', {
+    if (!date) return 'no data'
+
+    const today = new Date()
+    const currentDateDay = new Date(date)
+
+    const formattedDate = new Intl.DateTimeFormat('en-En', {
         hour: 'numeric',
         minute: 'numeric',
-        year: '2-digit',
-        month: 'numeric',
+        month: 'long',
+        hourCycle: 'h23',
         day: 'numeric',
-    }).format(new Date(date))
+    })
+        .format(currentDateDay)
+        .replace(' at ', ', ')
+
+    if (today.toDateString() === currentDateDay.toDateString()) {
+        return formattedDate.replace(
+            new Intl.DateTimeFormat('en-En', { month: 'long' }).format(today),
+            'Today'
+        )
+    }
+
+    return formattedDate
 }
 
 export const formatDateTable = (date) => {
-    return new Intl.DateTimeFormat('bg-BG', {
+    return new Intl.DateTimeFormat('en-En', {
         hour: 'numeric',
         minute: 'numeric',
-        day: 'numeric',
+        hourCycle: 'h23',
         month: 'long',
+        day: 'numeric',
     }).format(new Date(date))
 }
