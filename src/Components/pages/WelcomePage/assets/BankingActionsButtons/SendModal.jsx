@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react'
 
 import { transactionService } from '../../../../../services/transactionService'
 import { dataService } from '../../../../../services/userDataService'
@@ -76,12 +76,12 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
             await transactionService.notifyMoneyReceived(friends, Number(amount), userDataId, token)
             setShowModal({ ...showModal, [`send`]: false })
             setUserInput({ amount: '', friends: '' })
-            showMessage('success', 'Успешно изпратихте парите')
+            showMessage('success', 'Successfully sent the money')
         } catch (error) {
             console.log('Error in onFormSubmitHandler: ', error)
             setShowModal({ ...showModal, [`send`]: false })
             setUserInput({ amount: '', friends: '' })
-            showMessage('error', `Грешка при изпращане: ${error.message}`)
+            showMessage('error', `Error sending money: ${error.message}`)
         }
     }
 
@@ -107,25 +107,25 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
         <div className={modal.modalBackground}>
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
-                    <h5 className="modal-title">Изпращане на пари</h5>
+                    <h5 className="modal-title">Send Money</h5>
                     <button onClick={onClose}>X</button>
                 </div>
                 <div className="form-content">
                     <form onSubmit={onFormSubmitHandler}>
                         <div className="form-group">
-                            <label htmlFor="amount">Сума:</label>
+                            <label htmlFor="amount">Amount:</label>
                             <input
                                 type="text"
                                 name="amount"
                                 id="amount"
                                 className="form-control"
-                                placeholder="10лв"
+                                placeholder="10$"
                                 value={userInput.amount}
                                 onChange={setUserInputHandler}
                             />
                         </div>
                         <div className="form-group ">
-                            <label htmlFor="friends">Приятел:</label>
+                            <label htmlFor="friends">Friend:</label>
                             <Autocomplete
                                 name="friends"
                                 userInput={userInput}
@@ -138,7 +138,7 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
                             <input
                                 className="button-primary"
                                 type="submit"
-                                value="Изпрати"
+                                value="Send"
                                 style={{ width: '100%' }}
                             />
                         </footer>

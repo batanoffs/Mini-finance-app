@@ -11,8 +11,8 @@ import styles from '../welcome-page-layout.module.css'
 import blocks from '../custom-block.module.css'
 
 export const ProfileTab = () => {
-    const { adress, country, name, phone, virtualcard, picture, email } = useContext(AuthContext)
-    const date = new Date(virtualcard.created)
+    const { address, country, name, phone, virtualCard, picture, email } = useContext(AuthContext)
+    const date = new Date(virtualCard.created)
     const month = date.getMonth()
     const year = date.getFullYear()
     const day = date.getDate()
@@ -22,7 +22,7 @@ export const ProfileTab = () => {
         <div className={styles.contentContainer}>
             <section className={styles.bentoMainColumn}>
                 <ProfileDetails
-                    adress={adress}
+                    address={address}
                     country={country}
                     email={email}
                     phone={phone}
@@ -32,25 +32,25 @@ export const ProfileTab = () => {
 
                 <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
                     <section>
-                        <h5>Виртуална карта</h5>
+                        <h5>Virtual Card</h5>
 
-                        <strong>Номер:</strong>
-                        <span> {virtualcard.number}</span>
+                        <strong>Number:</strong>
+                        <span> {virtualCard.number}</span>
 
-                        <strong>Вид:</strong>
-                        <span> {virtualcard.brand}</span>
+                        <strong>Type:</strong>
+                        <span> {virtualCard.brand}</span>
 
-                        <strong>Създадена на:</strong>
+                        <strong>Created on:</strong>
                         <span> {createdDate}</span>
 
-                        <strong>Валидна до:</strong>
-                        <span> {virtualcard.expiration}</span>
+                        <strong>Valid until:</strong>
+                        <span> {virtualCard.expiration}</span>
                     </section>
 
                     <Cards
-                        number={virtualcard.number}
-                        expiry={virtualcard.expiration}
-                        cvc={virtualcard.cvv}
+                        number={virtualCard.number}
+                        expiry={virtualCard.expiration}
+                        cvc={virtualCard.cvv}
                         name={name}
                     />
                 </div>

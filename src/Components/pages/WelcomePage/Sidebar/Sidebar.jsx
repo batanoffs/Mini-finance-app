@@ -32,7 +32,7 @@ export const Sidebar = () => {
                         to="overview"
                     >
                         <FontAwesomeIcon className={styles.sidebarIcons} icon={faHouse} />
-                        Общ преглед
+                        Overview
                     </NavLink>
                 </li>
 
@@ -49,7 +49,7 @@ export const Sidebar = () => {
                         to="wallet"
                     >
                         <FontAwesomeIcon className={styles.sidebarIcons} icon={faWallet} />
-                        Портфейл
+                        Wallet
                     </NavLink>
                 </li>
 
@@ -66,7 +66,7 @@ export const Sidebar = () => {
                         to="profile"
                     >
                         <FontAwesomeIcon className={styles.sidebarIcons} icon={faAddressCard} />
-                        Профил
+                        Profile
                     </NavLink>
                 </li>
 
@@ -83,7 +83,7 @@ export const Sidebar = () => {
                         to="settings"
                     >
                         <FontAwesomeIcon className={styles.sidebarIcons} icon={faGear} />
-                        Настройки
+                        Settings
                     </NavLink>
                 </li>
 
@@ -100,7 +100,7 @@ export const Sidebar = () => {
                         to="help-center"
                     >
                         <FontAwesomeIcon className={styles.sidebarIcons} icon={faHandshakeAngle} />
-                        Помощен център
+                        Help Center
                     </NavLink>
                 </li>
 
@@ -111,7 +111,7 @@ export const Sidebar = () => {
                     />
 
                     <NavLink className="custom-btn-fill" to="upgrade">
-                        Нов План
+                        Upgrade
                     </NavLink>
                 </li>
 
@@ -121,7 +121,7 @@ export const Sidebar = () => {
                             className={styles.sidebarIcons}
                             icon={faArrowRightFromBracket}
                         />
-                        Изход
+                        Logout
                     </NavLink>
                 </li>
             </ul>

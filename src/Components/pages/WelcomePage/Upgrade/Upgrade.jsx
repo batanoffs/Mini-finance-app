@@ -4,79 +4,79 @@ import styles from './upgrade.module.css'
 
 export const Upgrade = () => {
     const [selectedPlan, setSelectedPlan] = useState(null)
-    const [currentPlan, setCurrentPlan] = useState('Базов')
+    const [currentPlan, setCurrentPlan] = useState('Basic')
 
     const handlePlanClick = (plan) => {
         setSelectedPlan(plan)
     }
 
     const handleConfirmClick = () => {
-        console.log(`Плана е потвърден: ${selectedPlan}`)
+        console.log(`Plan confirmed: ${selectedPlan}`)
         setCurrentPlan(selectedPlan)
     }
 
     return (
         <div className={styles.upgradeWrapper}>
             <div className={styles.container}>
-                <h1>Избор на нов финансов план</h1>
+                <h1>Select a New Financial Plan</h1>
                 <div className="current-choice">
                     <p>
-                        Вашият план в момента е: <b>{currentPlan}</b>.
+                        Your current plan is: <b>{currentPlan}</b>.
                     </p>
                     {selectedPlan ? (
                         <p style={{ color: 'green' }}>
-                            Вие избрахте <b>{selectedPlan}</b> план.
+                            You have selected the <b>{selectedPlan}</b> plan.
                         </p>
                     ) : null}
                 </div>
                 <div className={styles.bentoGridPlans}>
                     <div
                         className={
-                            selectedPlan === 'Базов' ? styles.bentoCellSelected : styles.bentoCell
+                            selectedPlan === 'Basic' ? styles.bentoCellSelected : styles.bentoCell
                         }
-                        onClick={() => handlePlanClick('Базов')}
+                        onClick={() => handlePlanClick('Basic')}
                     >
                         <div className={styles.plan}>
-                            <h3>Базов</h3>
-                            <p>безплатен</p>
+                            <h3>Basic</h3>
+                            <p>free</p>
                             <ul className={styles.displayFeatures}>
-                                <li>Виртуални трансакции</li>
-                                <li>Защитени данни</li>
-                                <li>Поддръжка 24/7</li>
+                                <li>Virtual transactions</li>
+                                <li>Data protection</li>
+                                <li>24/7 Support</li>
                             </ul>
                         </div>
                     </div>
                     <div
                         className={
-                            selectedPlan === 'Премиум' ? styles.bentoCellSelected : styles.bentoCell
+                            selectedPlan === 'Premium' ? styles.bentoCellSelected : styles.bentoCell
                         }
-                        onClick={() => handlePlanClick('Премиум')}
+                        onClick={() => handlePlanClick('Premium')}
                     >
                         <div className={styles.plan}>
-                            <h3>Премиум</h3>
-                            <p>20 лв./месечно</p>
+                            <h3>Premium</h3>
+                            <p>20 BGN/month</p>
                             <ul className={styles.displayFeatures}>
-                                <li>Виртуални трансакции</li>
-                                <li>Разширени безопасностни функции</li>
-                                <li>Приоритетна поддръжка</li>
+                                <li>Virtual transactions</li>
+                                <li>Advanced security features</li>
+                                <li>Priority support</li>
                             </ul>
                         </div>
                     </div>
                     <div
                         className={
-                            selectedPlan === 'Ентърпрайс'
+                            selectedPlan === 'Enterprise'
                                 ? styles.bentoCellSelected
                                 : styles.bentoCell
                         }
-                        onClick={() => handlePlanClick('Ентърпрайс')}
+                        onClick={() => handlePlanClick('Enterprise')}
                     >
                         <div className={styles.plan}>
-                            <h3>Ентърпрайс</h3>
-                            <p>50 лв./месечно</p>
+                            <h3>Enterprise</h3>
+                            <p>50 BGN/month</p>
                             <ul className={styles.displayFeatures}>
-                                <li>Виртуални трансакции</li>
-                                <li>Персонализирани сигурностни решения</li>
-                                <li>Акаунт мениджър и финансов анализатор</li>
+                                <li>Virtual transactions</li>
+                                <li>Custom security solutions</li>
+                                <li>Account manager and financial analyst</li>
                             </ul>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ export const Upgrade = () => {
 
                 <div className={styles.confirmContainer}>
                     <button className={styles.confirmButton} onClick={handleConfirmClick}>
-                        Потвърди
+                        Confirm
                     </button>
                 </div>
             </div>

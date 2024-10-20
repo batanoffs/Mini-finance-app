@@ -4,7 +4,7 @@ export const PasswordTab = () => {
             <div className="form-content">
                 <form className="custom-form" method="post">
                     <div className="form-group">
-                        <label htmlFor="old_password">Стара парола</label>
+                        <label htmlFor="old_password">Old Password</label>
 
                         <input
                             type="password"
@@ -12,12 +12,12 @@ export const PasswordTab = () => {
                             id="password"
                             pattern="[0-9a-zA-Z]{4,10}"
                             className="form-control"
-                            placeholder="Стара парола"
+                            placeholder="Old Password"
                             required=""
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="new_password">Нова парола</label>
+                        <label htmlFor="new_password">New Password</label>
 
                         <input
                             type="password"
@@ -25,13 +25,13 @@ export const PasswordTab = () => {
                             id="new_password"
                             pattern="[0-9a-zA-Z]{4,10}"
                             className="form-control"
-                            placeholder="Нова парола"
+                            placeholder="New Password"
                             required=""
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="confirm_password">Потвърди парола</label>
+                        <label htmlFor="confirm_password">Confirm Password</label>
 
                         <input
                             type="password"
@@ -39,15 +39,15 @@ export const PasswordTab = () => {
                             id="confirm_password"
                             pattern="[0-9a-zA-Z]{4,10}"
                             className="form-control"
-                            placeholder="Потвърди парола"
+                            placeholder="Confirm Password"
                             required=""
                         />
                     </div>
 
                     <footer>
-                        <input type="button" value="Изчисти" className="button-secondary" />
+                        <input type="button" value="Clear" className="button-secondary" />
 
-                        <input type="submit" value="Запази промени" className="button-primary" />
+                        <input type="submit" value="Save Changes" className="button-primary" />
                     </footer>
                 </form>
             </div>

@@ -36,14 +36,14 @@ export const ProfileDropdown = (props) => {
                     <li>
                         <Link className={styles.dropdownItem} to="/dashboard/profile">
                             <FontAwesomeIcon className={styles.sidebarIcons} icon={faAddressCard} />
-                            Профил
+                            Profile
                         </Link>
                     </li>
 
                     <li>
                         <Link className={styles.dropdownItem} to="/dashboard/settings">
                             <FontAwesomeIcon className={styles.sidebarIcons} icon={faGear} />
-                            Настройки
+                            Settings
                         </Link>
                     </li>
 
@@ -53,7 +53,7 @@ export const ProfileDropdown = (props) => {
                                 className={styles.sidebarIcons}
                                 icon={faHandshakeAngle}
                             />
-                            Помощен център
+                            Help Center
                         </Link>
                     </li>
 
@@ -63,7 +63,7 @@ export const ProfileDropdown = (props) => {
                                 className={styles.sidebarIcons}
                                 icon={faArrowRightFromBracket}
                             />
-                            Изход
+                            Logout
                         </Link>
                     </li>
                 </ul>

@@ -7,7 +7,7 @@ export const ProfileTab = () => {
     const { phone, email } = useContext(AuthContext)
     const [state, setState] = useState({
         email: email,
-        phone_number: phone,
+        phoneNumber: phone,
     })
 
     const inputChangeHandler = (e) => {
@@ -35,7 +35,7 @@ export const ProfileTab = () => {
                         <input
                             className="form-control"
                             type="email"
-                            name="profile-email"
+                            name="email"
                             value={state.email}
                             onChange={inputChangeHandler}
                             id="profile-email"
@@ -43,14 +43,14 @@ export const ProfileTab = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="phone_number">Промяна на телефон</label>
+                        <label htmlFor="phoneNumber">Change phone number</label>
                         <input
                             type="number"
-                            name="phone_number"
-                            value={state.phone_number}
+                            name="phoneNumber"
+                            value={state.phoneNumber}
                             onChange={inputChangeHandler}
                             autoComplete="off"
-                            placeholder="Телефонен номер"
+                            placeholder="Phone number"
                             className="form-control mb-3"
                         />
                     </div>
@@ -60,14 +60,14 @@ export const ProfileTab = () => {
                             type="button"
                             onClick={onResetHandler}
                             className="button-secondary"
-                            value="Изчисти"
+                            value="Reset"
                         />
 
                         <input
                             type="submit"
                             onClick={onUpdateHandler}
                             className="button-primary"
-                            value="Запази промени"
+                            value="Save changes"
                         />
                     </footer>
                 </form>
@@ -75,3 +75,5 @@ export const ProfileTab = () => {
         </div>
     )
 }
+
+

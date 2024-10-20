@@ -10,7 +10,7 @@ import { useMessage } from '../../../../hooks/useMessage'
 
 import styles from './notifications.module.css'
 
-export const FriendRequestNotification = ({ notify, setnotificationsState }) => {
+export const FriendRequestNotification = ({ notify, setNotificationsState }) => {
     const { userDataId, token, auth, setAuth } = useContext(AuthContext)
     const showMessage = useMessage()
     const acceptFriendHandler = async (e) => {
@@ -22,7 +22,7 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
                 id: notificationId,
                 senderId,
             })
-            showMessage('error', 'Липсва ID')
+            showMessage('error', 'ID is missing')
             return
         }
         try {
@@ -33,7 +33,7 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
                 token
             )
             const result = await notificationService.getNotSeenNotifications(userDataId)
-            setnotificationsState(result)
+            setNotificationsState(result)
 
             const setReceiverFriend = await dataService.setRelation(userDataId, 'friends', [
                 senderId,
@@ -50,9 +50,9 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
                         friends: [...auth.friends, getSender],
                     })
                 )
-                showMessage('success', 'Успешно добавихте прител')
+                showMessage('success', 'You have successfully added a friend')
             } else {
-                showMessage('warning', 'Вече сте добавили този приятел')
+                showMessage('warning', 'You have already added this friend')
             }
         } catch (error) {
             console.error(
@@ -69,7 +69,7 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
 
         if (!notificationId) {
             console.error('Missing notification id', notificationId)
-            showMessage('error', 'Липсва ID')
+            showMessage('error', 'ID is missing')
             return
         }
 
@@ -82,13 +82,13 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
             )
             const response = await notificationService.getNotSeenNotifications(userDataId, token)
             if (response) {
-                showMessage('error', 'Поканата за приятелство е отхвърлена')
-                setnotificationsState(response)
+                showMessage('error', 'The friend request has been declined')
+                setNotificationsState(response)
             } else {
-                showMessage('error', 'Възникна грешка при отхвърляне на покана')
+                showMessage('error', 'An error occurred while declining the request')
             }
         } catch (error) {
-            showMessage('warning', 'Възникна грешка при отхвърляне на покана')
+            showMessage('warning', 'An error occurred while declining the request')
             console.error(error)
         }
     }
@@ -97,7 +97,7 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
         <li className={styles.singleNotification} key={notify.objectId} data-key={notify.objectId}>
             <img className={styles.profileImage} src={notify.sender?.[0]?.avatar} alt="avatar" />
             <section className={styles.notificationContent}>
-                <small>Покана за приятелство от {notify.sender?.[0]?.fullName ?? 'Unknown'} </small>
+                <small>Friend request from {notify.sender?.[0]?.fullName ?? 'Unknown'} </small>
                 <small className={styles.date}> {formatDate(notify.created)}</small>
             </section>
             <button
@@ -106,7 +106,7 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
                 className={styles.btnAccept}
                 onClick={acceptFriendHandler}
             >
-                приеми
+                accept
             </button>
             <button
                 data-sender={`${notify.sender?.[0]?.objectId ?? ''}`}
@@ -114,7 +114,7 @@ export const FriendRequestNotification = ({ notify, setnotificationsState }) => 
                 className={styles.btnRemove}
                 onClick={rejectFriendHandler}
             >
-                откажи
+                reject
             </button>
         </li>
     )
@@ -128,7 +128,10 @@ export const FriendAcceptNotification = ({ deleteNotificationHandler, notify }) 
             data-key={notify.objectId}
         >
             <section className={styles.notificationContent}>
-                <small> {notify.sender?.[0]?.fullName ?? 'Unknown'} прие вашата покана</small>
+                <small>
+                    {' '}
+                    {notify.sender?.[0]?.fullName ?? 'Unknown'} has accepted your friend request
+                </small>
                 <small className={styles.date}> {formatDate(notify.created)}</small>
             </section>
 

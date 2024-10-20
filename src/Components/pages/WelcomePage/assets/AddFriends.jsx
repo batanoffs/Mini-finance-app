@@ -26,22 +26,22 @@ export const AddFriends = () => {
         event.preventDefault()
         try {
             if (!number) {
-                throw new Error('Липсва телефонен номер')
+                throw new Error('No phone number')
             }
             if (number === phone) {
-                throw new Error('Не може да добавяте себе си')
+                throw new Error('You cannot add yourself')
             }
 
             const findReceiver = await dataService.getAttribute('phoneNumber', number)
             if (!findReceiver || findReceiver.length === 0) {
-                throw new Error('Потребителят с този телефонен номер не съществува')
+                throw new Error('User with this phone number does not exist')
             }
 
             const receiver = findReceiver[0].objectId
             const findFriend = friends?.some((friend) => friend.objectId === receiver)
 
             if (findFriend) {
-                throw new Error('Потребителят вече е ваш приятел')
+                throw new Error('User is already your friend')
             }
             // GET NOTIFICATIONS AND FILTER FOR SENDER RECEIVER
             const allFriendRequestNotifications = await notificationService.getAllFriendRequests(
@@ -72,27 +72,27 @@ export const AddFriends = () => {
                 if (!response || !response.success) {
                     throw new Error('Failed to send friend request')
                 }
-                showMessage('success', 'Поканата за приятелство е изпратена')
+                showMessage('success', 'Friend request sent')
             } else {
                 const senderID = checkFriendNotification[0]?.sender[0]?.objectId
                 const receiverID = checkFriendNotification[0]?.receiver[0]?.objectId
-                const notificatinID = checkFriendNotification[0].objectId
+                const notificationId = checkFriendNotification[0].objectId
                 const status = checkFriendNotification[0]?.status
 
-                if (status === 'pending') new Error('Вече сте направили заявка за приятелство')
-                if (status === 'accepted') new Error('Вие сте приятел')
+                if (status === 'pending') new Error('You have already sent a friend request')
+                if (status === 'accepted') new Error('You are already friends')
                 if (status === 'declined') {
                     // CHECK IF FILTERED NOTIFICATION SENDER's ID IS CURRENT USER ID OR NOT
                     // UPDATE RALATIONS to flip the friend request to the other user
                     if (receiverID === userDataId) {
                         const setSenderResponse = await notificationService.updateRelation(
-                            notificatinID,
+                            notificationId,
                             'sender',
                             receiverID,
                             token
                         )
                         const setReceiverResponse = await notificationService.updateRelation(
-                            notificatinID,
+                            notificationId,
                             'receiver',
                             senderID,
                             token
@@ -110,29 +110,29 @@ export const AddFriends = () => {
                             throw new Error('Failed to update relation')
                         }
                         const response = await notificationService.updateNotificationStatus(
-                            notificatinID,
+                            notificationId,
                             'pending',
                             false,
                             token
                         )
                         if (!response) {
-                            throw new Error('Грешка при приемането на заявката')
+                            throw new Error('Error accepting friend request')
                         }
-                        showMessage('success', 'Поканата за приятелство е изпратена')
+                        showMessage('success', 'Friend request sent')
                     }
 
                     // ELSE ONLY CHANGE THE STATUS FOR SEEN AND STATUS TO PENDING
                     if (senderID === userDataId) {
                         const response = await notificationService.updateNotificationStatus(
-                            notificatinID,
+                            notificationId,
                             'pending',
                             false,
                             token
                         )
                         if (!response || !response.success) {
-                            throw new Error('Грешка при приемането на заявката')
+                            throw new Error('Error accepting friend request')
                         }
-                        showMessage('success', 'Поканата за приятелство е изпратена')
+                        showMessage('success', 'Friend request sent')
                     }
                 }
             }
@@ -146,13 +146,13 @@ export const AddFriends = () => {
     return (
         <div className={`${blocks.customBlockContact}`}>
             <header>
-                <h5>Добави приятел</h5>
+                <h5>Add Friend via phone</h5>
             </header>
             <form onSubmit={onSubmit} className={styles.friendsForm}>
-                {error ? <small style={{ color: 'red' }}>липсва телефонен номер</small> : null}
+                {error ? <small style={{ color: 'red' }}>No phone number</small> : null}
                 <input
                     type="text"
-                    placeholder="телефон"
+                    placeholder="phone number"
                     onBlur={(e) => {
                         if (!number) {
                             e.target.style.border = `1px solid transparent`
@@ -163,7 +163,7 @@ export const AddFriends = () => {
                     onChange={onChangeNumber}
                     onFocus={onFocusClearErrorHandler}
                 />
-                <input type="submit" className="custom-btn" value="Добави" />
+                <input type="submit" className="custom-btn" value="Add" />
             </form>
         </div>
     )

@@ -31,7 +31,7 @@ export const InfoForm = ({
             navigate('/register/terms')
         } else {
             // Show error message for empty fields
-            showMessage('error', 'Моля, попълнете всички полета')
+            showMessage('error', 'Please fill in all fields')
         }
     }
     const isNextDisabled = [firstName, lastName, gender, phoneNumber, town, country].some(
@@ -42,17 +42,17 @@ export const InfoForm = ({
         <section className="form-container">
             <div className="form-content">
                 <header>
-                    <h5>Моля, въведете вашите лични данни във формата</h5>
+                    <h5>Please enter your personal information in the form</h5>
                 </header>
                 <div className="form-group">
                     <label htmlFor="firstName">
-                        Име <small className="error">*</small>
+                        Name <small className="error">*</small>
                     </label>
                     <input
                         type="text"
                         className="form-control"
                         name="firstName"
-                        placeholder="Име"
+                        placeholder="Name"
                         value={firstName}
                         onChange={changeHandler}
                         onBlur={validateHandler}
@@ -64,13 +64,13 @@ export const InfoForm = ({
 
                 <div className="form-group">
                     <label htmlFor="lastName">
-                        Фамилия <small className="error">*</small>
+                        Last Name<small className="error">*</small>
                     </label>
                     <input
                         type="text"
                         className="form-control"
                         name="lastName"
-                        placeholder="Фамилия"
+                        placeholder="Last Name"
                         value={lastName}
                         onChange={changeHandler}
                         onBlur={validateHandler}
@@ -80,7 +80,7 @@ export const InfoForm = ({
                 <small className={styles.error}>{error.lastName}</small>
                 <div className="form-group">
                     <label>
-                        Пол <small className="error">*</small>
+                        Gender <small className="error">*</small>
                     </label>
                     <Radio.Group
                         name="gender"
@@ -97,11 +97,11 @@ export const InfoForm = ({
                     >
                         <Radio style={{ fontSize: '1rem' }} value="male">
                             {' '}
-                            Мъж{' '}
+                            Male{' '}
                         </Radio>
                         <Radio style={{ fontSize: '1rem' }} value="female">
                             {' '}
-                            Жена{' '}
+                            Female{' '}
                         </Radio>
                     </Radio.Group>
                 </div>
@@ -109,13 +109,13 @@ export const InfoForm = ({
 
                 <div className="form-group">
                     <label htmlFor="phoneNumber">
-                        Телефон <small className="error">*</small>
+                        Phone number <small className="error">*</small>
                     </label>
                     <input
                         type="tel"
                         className="form-control"
                         name="phoneNumber"
-                        placeholder="Телефон"
+                        placeholder="Phone number"
                         value={phoneNumber}
                         onChange={changeHandler}
                         onBlur={validateHandler}
@@ -126,13 +126,13 @@ export const InfoForm = ({
 
                 <div className="form-group">
                     <label htmlFor="town">
-                        Град <small className="error">*</small>
+                        Town <small className="error">*</small>
                     </label>
                     <input
                         type="text"
                         className="form-control"
                         name="town"
-                        placeholder="Град"
+                        placeholder="your town..."
                         value={town}
                         onChange={changeHandler}
                         onBlur={validateHandler}
@@ -143,14 +143,14 @@ export const InfoForm = ({
 
                 <div className="form-group">
                     <label htmlFor="country">
-                        Държава <small className="error">*</small>
+                        Country <small className="error">*</small>
                     </label>
                     <input
                         type="text"
                         className="form-control"
                         name="country"
                         id="country"
-                        placeholder="Държава"
+                        placeholder="Country"
                         value={country}
                         onChange={changeHandler}
                         onBlur={validateHandler}
@@ -160,12 +160,12 @@ export const InfoForm = ({
                 <small className={styles.error}>{error.country}</small>
 
                 <div className="form-group">
-                    <label htmlFor="address">Адрес</label>
+                    <label htmlFor="address">Address</label>
                     <input
                         type="text"
                         className="form-control"
                         name="address"
-                        placeholder="Адрес"
+                        placeholder="Address"
                         value={address}
                         onChange={changeHandler}
                         onFocus={onFocusHandler}
@@ -179,7 +179,7 @@ export const InfoForm = ({
                         className="button-secondary"
                         onClick={currentStepsHandler}
                     >
-                        Назад
+                        Back
                     </Link>
                     <Link
                         type="submit"
@@ -189,7 +189,7 @@ export const InfoForm = ({
                         onClick={onNextPageHandler}
                         disabled={isNextDisabled}
                     >
-                        Напред
+                        Next
                     </Link>
                 </footer>
             </div>

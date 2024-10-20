@@ -1,11 +1,15 @@
 // import profilePicture from "../../../images/medium-shot-happy-man-smiling.jpg"
+import { useContext } from 'react'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../../../../contexts/AuthContext'
 
 import blocks from '../../../custom-block.module.css'
 
-export const ProfileDetails = ({ email, phone, name, picture, adress, country }) => {
+export const ProfileDetails = () => {
+    const { name, picture, phone, email, address, country } = useContext(AuthContext)
+    
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
             <div className={blocks.customBlockProfileImageWrap}>
@@ -17,12 +21,12 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
             </div>
 
             <p>
-                <strong>Име:</strong>
+                <strong>Name:</strong>
 
                 <span> {name}</span>
             </p>
             <p>
-                <strong>Имейл:</strong>
+                <strong>Email:</strong>
                 <a
                     href={`mailto:${email}`}
                     style={{
@@ -35,7 +39,7 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
                 </a>
             </p>
             <p style={{ paddingBottom: '0' }}>
-                <strong>Телефон:</strong>
+                <strong>Phone:</strong>
                 <a
                     href={`tel:${phone}`}
                     style={{
@@ -48,14 +52,14 @@ export const ProfileDetails = ({ email, phone, name, picture, adress, country })
             </p>
             {country && (
                 <p>
-                    <strong>Държава:</strong>
+                    <strong>Country:</strong>
                     <span> {country}</span>
                 </p>
             )}
-            {adress && (
+            {address && (
                 <p>
-                    <strong>Адрес:</strong>
-                    <span>{adress}</span>
+                    <strong>Address:</strong>
+                    <span>{address}</span>
                 </p>
             )}
         </div>

@@ -5,11 +5,11 @@ export const ContactInfo = () => {
     return (
             <div className={styles.customBlockContact}>
                 <h6>
-                    Имате ли нужда от помощ? Моля направете запитване.
+                    Need help? Please submit a request.
                 </h6>
 
                 <p>
-                    <strong>Свържете се с нас:</strong>
+                    <strong>Get in touch:</strong>
                     <a href="tel: 305-240-9671">
                         (60) 305-240-9671
                     </a>
@@ -19,8 +19,9 @@ export const ContactInfo = () => {
                     to="#"
                     className="custom-btn"
                 >
-                    Започни Чат
+                    Start Chat
                 </Link> */}
             </div>
     );
 };
+

@@ -11,7 +11,7 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
             setError('')
             navigate('/register/confirm')
         } else {
-            setError('Не сте потвърдили условията')
+            setError('You have not confirmed the terms')
         }
     }
 
@@ -19,7 +19,7 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
         <div className="form-container" style={{ maxWidth: '800px', margin: '1em auto' }}>
             <div className="form-content" style={{ paddingLeft: '4em', paddingRight: '4em' }}>
                 <header style={{ marginBottom: '0.5em' }}>
-                    <h5>Правила и условия</h5>
+                    <h5>Terms and Conditions</h5>
                 </header>
                 <div
                     style={{
@@ -31,45 +31,45 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
                     }}
                 >
                     <p>
-                        Добре дошли на нашият уебсайт. С продължаването на прегледа и използването
-                        на този уебсайт Вие се съгласявате да спазвате и бъдете обвързани от
-                        следните условия за използване, които заедно с нашата политика за
-                        поверителност уреждат нашите взаимоотношения с вас относно този уебсайт.
+                        Welcome to our website. By continuing to browse and use this website, you
+                        agree to comply with and be bound by the following terms of use, which
+                        together with our privacy policy govern our relationship with you in
+                        relation to this website.
                     </p>
-                    <h6>1. Финансова информация</h6>
+                    <h6>1. Financial Information</h6>
                     <p>
-                        Съдържанието на страниците на този уебсайт е само за ваша обща информация и
-                        използване. То подлежи на промяна без предизвестие.
+                        The content of the pages of this website is for your general information and
+                        use only. It is subject to change without notice.
                     </p>
-                    <h6>2. Регистрация</h6>
+                    <h6>2. Registration</h6>
                     <p>
-                        За да получите достъп до определени услуги на този уебсайт, ще трябва да
-                        предоставите конкретна информация. Всичка предоставена от вас информация
-                        трябва да бъде точна и пълна.
+                        To access certain services on this website, you will need to provide
+                        specific information. All information you provide must be accurate and
+                        complete.
                     </p>
-                    <h6>3. Сигурност</h6>
+                    <h6>3. Security</h6>
                     <p>
-                        Ние сме ангажирани да гарантираме, че вашата информация е защитена. За да
-                        предотвратим неоторизиран достъп или разкриване, сме въвели подходящи
-                        физически, електронни и управленски процедури за защита и осигуряване на
-                        информацията, която събираме онлайн.
+                        We are committed to ensuring that your information is secure. To prevent
+                        unauthorized access or disclosure, we have put in place suitable physical,
+                        electronic, and managerial procedures to safeguard and secure the
+                        information we collect online.
                     </p>
-                    <h6>4. Ограничение на отговорността</h6>
+                    <h6>4. Limitation of Liability</h6>
                     <p>
-                        Използването на всяка информация или материали на този уебсайт е изцяло на
-                        ваш собствен риск, за което ние няма да носим отговорност. Това ще бъде
-                        вашата собствена отговорност да осигурите, че всякакви продукти, услуги или
-                        информация, достъпни чрез този уебсайт, отговарят на вашите конкретни
-                        изисквания.
+                        Use of any information or materials on this website is entirely at your own
+                        risk, for which we shall not be liable. It shall be your own responsibility
+                        to ensure that any products, services, or information available through this
+                        website meet your specific requirements.
                     </p>
-                    <h6>5. Промени в условията</h6>
+                    <h6>5. Changes to Terms</h6>
                     <p>
-                        Запазваме си правото да променяме тези правила и условия по всяко време. При
-                        промени ще получите известие във вашият профил.
+                        We reserve the right to change these terms and conditions at any time. You
+                        will be notified in your account upon changes.
                     </p>
-                    <h6>6. Контактна информация</h6>
+                    <h6>6. Contact Information</h6>
                     <p>
-                        Ако имате въпроси относно тези условия и условия, моля, свържете се с нас.
+                        If you have any questions regarding these terms and conditions, please
+                        contact us.
                     </p>
                 </div>
                 <div
@@ -89,7 +89,7 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
                         }}
                         htmlFor="accept"
                     >
-                        Съгласен съм с условията
+                        I agree to the terms
                     </h6>
 
                     <input
@@ -109,10 +109,10 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
                         to={'/register/userinfo'}
                         onClick={currentStepsHandler}
                     >
-                        Назад
+                        Back
                     </Link>
                     <button name="next" className="button-primary" onClick={checkHandler}>
-                        Напред
+                        Next
                     </button>
                 </footer>
             </div>

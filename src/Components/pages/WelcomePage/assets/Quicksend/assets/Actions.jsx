@@ -36,7 +36,7 @@ export const Actions = ({ friend, closeMenuHandler, setShowBtns }) => {
             dataService
                 .removeRelation(userDataId, 'favorite_friends', friendId, token)
                 .then(() => {
-                    showMessage('success', 'Успешно премахнат приятел от списъка')
+                    showMessage('success', 'Successfully removed friend from list')
                     setAuth({
                         ...auth,
                         favorite_friends: favorites.filter(
@@ -68,7 +68,7 @@ export const Actions = ({ friend, closeMenuHandler, setShowBtns }) => {
                         data-key={friend.objectId}
                         onClick={onConfirmHandler}
                     >
-                        изтрий
+                        Delete
                     </li>
                 </ul>
             </div>

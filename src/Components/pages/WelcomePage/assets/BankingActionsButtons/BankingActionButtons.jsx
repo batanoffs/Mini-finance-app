@@ -27,21 +27,21 @@ export const BankingActionButtons = ({ userInput, setUserInput, showModal, setSh
             <div className={blocks.transactionBtns}>
                 <button
                     className={blocks.transactionBtn}
-                    data-text="Зареди сметка"
+                    data-text="Top up account"
                     onClick={handleShowModal('topUp')}
                 >
                     <FontAwesomeIcon className={blocks.icon} icon={faVault} />
                 </button>
                 <button
                     className={blocks.transactionBtn}
-                    data-text="Изпрати пари"
+                    data-text="Send money"
                     onClick={handleShowModal('send')}
                 >
                     <FontAwesomeIcon className={blocks.icon} icon={faMoneyBillTransfer} />
                 </button>
                 <button
                     className={blocks.transactionBtn}
-                    data-text="Поискай пари"
+                    data-text="Request money"
                     onClick={handleShowModal('request')}
                 >
                     <FontAwesomeIcon className={blocks.icon} icon={faHandHoldingDollar} />

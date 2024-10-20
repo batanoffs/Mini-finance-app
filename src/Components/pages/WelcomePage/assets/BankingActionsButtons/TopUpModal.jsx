@@ -5,7 +5,7 @@ import { useState, useContext } from 'react'
 import { PaymentForm } from './PaymentForm'
 
 import { AuthContext } from '../../../../../contexts/AuthContext'
-import { cardService } from '../../../../../services/cardGenetarionService'
+import { cardService } from '../../../../../services/cardGenerationService'
 import { useMessage } from '../../../../../hooks/useMessage'
 
 import modal from './modal.module.css'
@@ -20,7 +20,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
         const form = e.target
         if (!form) {
             console.error('Form element is null')
-            message('error', 'Не сте въвели данни. Опитайте отново.')
+            message('error', 'No form data was submitted. Please try again.')
             return
         }
         const formData = new FormData(form)
@@ -31,7 +31,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
                 data[name] = value
             } else {
                 console.error('Null pointer exception: name or value is null')
-                message('error', 'Въведени са грешни даннни. Опитайте отново.')
+                message('error', 'Invalid data was submitted. Please try again.')
                 return
             }
         }
@@ -40,7 +40,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
         const response = await cardService.topUp(virtualcard.objectId, amount, token)
 
         if (!response) {
-            message('error', 'Възникна грешка при изпращане на данните. Моля опитайте отново.')
+            message('error', 'An error occurred while submitting the data. Please try again.')
             return
         } else {
             const balance = response.balance
@@ -54,7 +54,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
                 })
             )
             setShowModal({ ...showModal, [`topUp`]: false })
-            message('success', 'Транзакцията е успешна')
+            message('success', 'Transaction was successful')
         }
     }
 
@@ -67,28 +67,28 @@ export const TopUp = ({ showModal, setShowModal }) => {
         <div className={modal.modalBackground}>
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
-                    <h5 className="modal-title">Захранване на акаунт</h5>
+                    <h5 className="modal-title">Top up account</h5>
                     <button onClick={() => setShowModal({ ...showModal, [`topUp`]: false })}>
                         X
                     </button>
                 </div>
                 <form onSubmit={onSubmitHandler} className="custom-form">
                     <div className="form-group">
-                        <label htmlFor="amount">Сума:</label>
+                        <label htmlFor="amount">Amount:</label>
                         <input
                             type="text"
                             name="amount"
                             value={inputState.amount}
                             onChange={handleChange}
                             id="amount"
-                            placeholder="10 лв."
+                            placeholder="10 BGN"
                             required
                         />
                     </div>
                     <div className="form-group">
                         <label htmlFor="paymethod">
                             <FontAwesomeIcon icon={faCreditCard} />
-                            Начин на плащане:
+                            Payment method:
                         </label>
                         <select
                             id="paymethod"
@@ -100,8 +100,8 @@ export const TopUp = ({ showModal, setShowModal }) => {
                                 })
                             }}
                         >
-                            <option value="">Изберете начин на плащане</option>
-                            <option value="debitcard"> Дебитна карта </option>
+                            <option value="">Select payment method</option>
+                            <option value="debitcard">Debit card</option>
                             <option value="paypal">PayPal</option>
                         </select>
                     </div>
@@ -112,7 +112,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
                             className="button-primary"
                             style={{ width: `100%`, textAlign: `center` }}
                             type="submit"
-                            value="Зареди"
+                            value="Top up"
                             disabled={
                                 !inputState.amount ||
                                 !inputState.paymethod ||
@@ -128,3 +128,4 @@ export const TopUp = ({ showModal, setShowModal }) => {
         </div>
     )
 }
+

@@ -21,20 +21,20 @@ export const SidebarRegister = (props) => {
                     current={props.currentStep}
                     items={[
                         {
-                            title: 'Имейл и парола',
+                            title: 'Email and Password',
                             description: '',
                         },
                         {
-                            title: 'Лична информация',
+                            title: 'Personal Information',
                             description: '',
                         },
                         {
-                            title: 'Общи условия',
+                            title: 'Terms and Conditions',
                             description: '',
                         },
                         {
-                            title: 'Регистрация',
-                            description: 'проверка на данни',
+                            title: 'Registration',
+                            description: 'data verification',
                         },
                     ]}
                 />
@@ -50,3 +50,4 @@ export const SidebarRegister = (props) => {
         </div>
     )
 }
+

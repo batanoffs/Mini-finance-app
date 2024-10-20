@@ -10,22 +10,22 @@ export const SettingsNavigationPanel = () => {
     const items = [
         {
             key: '1',
-            label: 'Профил',
+            label: 'Profile',
             children: <ProfileTab />,
         },
         {
             key: '2',
-            label: 'Парола',
+            label: 'Password',
             children: <PasswordTab />,
         },
         {
             key: '3',
-            label: 'Известия',
+            label: 'Notifications',
             children: <NotificationTab />,
         },
         {
             key: '4',
-            label: 'Карта',
+            label: 'Card',
             children: <VirtualCard />,
         },
     ]

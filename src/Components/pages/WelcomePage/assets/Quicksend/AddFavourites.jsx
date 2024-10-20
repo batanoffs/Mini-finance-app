@@ -5,10 +5,10 @@ import { dataService } from '../../../../../services/userDataService'
 import { Autocomplete } from '../../../../features/Autocomplete'
 import { useMessage } from '../../../../../hooks/useMessage'
 
-// TODO A component is changing an uncontrolled input to be controlled. 
-// This is likely caused by the value changing from undefined to a defined value, 
+// TODO A component is changing an uncontrolled input to be controlled.
+// This is likely caused by the value changing from undefined to a defined value,
 // which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
-export const AddToFavorites = ({ setShowFavourites }) => {
+export const AddToFavorites = ({ setShowFavorites }) => {
     const { auth, setAuth, token, userDataId } = useContext(AuthContext)
     const [userInput, setUserInput] = useState({})
     const showMessage = useMessage()
@@ -21,10 +21,10 @@ export const AddToFavorites = ({ setShowFavourites }) => {
             const findFriend = auth.friends.filter((friend) => friend.fullName === inputName)
             const body = [findFriend[0].objectId]
 
-            if (!findFriend) throw new Error('Този потребител не е ваш приятел!')
-            if (!findFriend.length) throw new Error('Този потребител не е ваш приятел!')
-            if (!userInput) throw new Error('Моля въведете име!')
-            if (!userDataId) throw new Error('Нещо се обърка')
+            if (!findFriend) throw new Error('This user is not your friend!')
+            if (!findFriend.length) throw new Error('This user is not your friend!')
+            if (!userInput) throw new Error('Please enter a name!')
+            if (!userDataId) throw new Error('Something went wrong')
 
             const response = await dataService.setRelation(
                 userDataId,
@@ -34,8 +34,8 @@ export const AddToFavorites = ({ setShowFavourites }) => {
             )
 
             if (response !== 1) {
-                setShowFavourites(false)
-                throw new Error('Нещо се обърка!')
+                setShowFavorites(false)
+                throw new Error('Something went wrong!')
             }
 
             if (response === 1) {
@@ -47,8 +47,8 @@ export const AddToFavorites = ({ setShowFavourites }) => {
                         favorite_friends: [...auth.favorite_friends, findFriend[0]],
                     })
                 )
-                setShowFavourites(false)
-                showMessage('success', `${findFriend[0].fullName} е добавен към любими!`)
+                setShowFavorites(false)
+                showMessage('success', `${findFriend[0].fullName} has been added to favorites!`)
             }
         } catch (error) {
             showMessage('error', error.message)
@@ -78,7 +78,7 @@ export const AddToFavorites = ({ setShowFavourites }) => {
                         style={{ marginTop: '0.5em' }}
                         type="submit"
                         className="custom-btn-fill"
-                        value="Добави към любими"
+                        value="Add to favorites"
                     />
                 </form>
             </div>

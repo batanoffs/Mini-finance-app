@@ -15,13 +15,13 @@ import styles from './notifications.module.css'
 
 export const Notifications = () => {
     const { userDataId, token } = useContext(AuthContext)
-    const [notificationsState, setnotificationsState] = useState([])
+    const [notificationsState, setNotificationsState] = useState([])
     const showMessage = useMessage()
 
     useEffect(() => {
         notificationService
             .getNotSeenNotifications(userDataId)
-            .then((result) => setnotificationsState(result))
+            .then((result) => setNotificationsState(result))
             .catch((error) => console.log(error))
     }, [userDataId])
 
@@ -33,10 +33,10 @@ export const Notifications = () => {
         try {
             await notificationService.updateSeenStatus(notificationId, true, token)
             const result = await notificationService.getNotSeenNotifications(userDataId)
-            setnotificationsState(result)
-            showMessage('success', 'Успешно изтрито съобщение')
+            setNotificationsState(result)
+            showMessage('success', 'Successfully deleted message')
         } catch (error) {
-            console.error('error while deleting notification', error)
+            console.error('Error while deleting notification', error)
             showMessage('error', error.message)
         }
     }
@@ -53,7 +53,7 @@ export const Notifications = () => {
                         notify?.event_type === 'friend request' && notify?.status === 'pending' ? (
                             <FriendRequestNotification
                                 deleteNotificationHandler={deleteNotificationHandler}
-                                setnotificationsState={setnotificationsState}
+                                setNotificationsState={setNotificationsState}
                                 notify={notify}
                                 key={notify.objectId}
                             />
@@ -76,7 +76,7 @@ export const Notifications = () => {
                                 notify={notify}
                                 userDataId={userDataId}
                                 token={token}
-                                setnotificationsState={setnotificationsState}
+                                setNotificationsState={setNotificationsState}
                                 key={notify.objectId}
                             />
                         ) : (

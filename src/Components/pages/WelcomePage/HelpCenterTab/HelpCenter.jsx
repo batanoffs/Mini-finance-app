@@ -10,44 +10,41 @@ export const HelpCenterTab = () => {
                 <div className={blocks.customBlock}>
                     <form action="#" method="post">
                         <header>
-                            <h5>Как можем да ви помогнем?</h5>
+                            <h5>How can we help you?</h5>
                         </header>
-                        <label htmlFor="search">Търсене по тема: </label>
+                        <label htmlFor="search">Search by topic: </label>
                         <input
                             className="form-control"
                             name="search"
                             type="text"
-                            placeholder="Търсене"
+                            placeholder="Search"
                             aria-label="Search"
                         />
                         <footer>
-                            <input type="submit" value="Изпрати" className="button-primary" />
+                            <input type="submit" value="Send" className="button-primary" />
                         </footer>
                     </form>
                 </div>
 
                 <div className={blocks.customBlock}>
-                    <h5>Често задавани въпроси</h5>
+                    <h5>Frequently Asked Questions</h5>
 
-                    <strong>Как да създам нова карта?</strong>
+                    <strong>How do I create a new card?</strong>
+
+                    <p>To create a new card, click on the "Create a card" button.</p>
+
+                    <strong>Where can I change my profile picture?</strong>
 
                     <p>
-                        За да създадете нова карта е необходимо да натиснете на бутона "Създай
-                        карта".
+                        To change your profile picture, navigate to Settings - Profile and click on
+                        the "Choose a picture" button.
                     </p>
 
-                    <strong>От къде мога да сменя профиланта си снимка?</strong>
+                    <strong>How do I change my password?</strong>
 
                     <p>
-                        За да смените профиланта си снимка трябва да навигирате до Настройки -
-                        Профил и натиснете на бутона "Избери снимка".
-                    </p>
-
-                    <strong>Как да променя паролата си?</strong>
-
-                    <p>
-                        За да промените паролата си е необходимо да навигирате до Настройки-Парола и
-                        натиснете на бутона "Запази промените", след като сте въвели новата парола.
+                        To change your password, navigate to Settings - Password and click on the
+                        "Save changes" button after entering your new password.
                     </p>
                 </div>
             </main>

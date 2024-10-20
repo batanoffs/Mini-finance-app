@@ -3,7 +3,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
 import styles from '../quicksend.module.css'
 
-export const ActionsMenu = ({ showFavouritesHandler, setShowBtns, showActionsHandler }) => {
+export const ActionsMenu = ({ showFavoritesHandler, setShowBtns, showActionsHandler }) => {
     const onChangeHandler = (e) => {
         const menuElement = e.currentTarget.parentElement
         const divElement = e.currentTarget.parentElement.parentElement
@@ -13,7 +13,7 @@ export const ActionsMenu = ({ showFavouritesHandler, setShowBtns, showActionsHan
     }
 
     const onAddHandller = (e) => {
-        showFavouritesHandler(e)
+        showFavoritesHandler(e)
         const menuElement = e.currentTarget.parentElement
         const divElement = e.currentTarget.parentElement.parentElement
         divElement.style.display = divElement.style.display === 'block' ? 'none' : 'block'
@@ -30,10 +30,10 @@ export const ActionsMenu = ({ showFavouritesHandler, setShowBtns, showActionsHan
             <div className={styles.actionButtons}>
                 <ul>
                     <li className={styles.actionButton} onClick={onChangeHandler}>
-                        промени
+                        Change
                     </li>
                     <li className={styles.actionButton} onClick={onAddHandller}>
-                        добави
+                        Add
                     </li>
                 </ul>
             </div>

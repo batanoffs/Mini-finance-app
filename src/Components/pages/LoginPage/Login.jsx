@@ -15,13 +15,14 @@ export const Login = () => {
             email: '',
             password: '',
         },
-        onLoginSubmitHandler
+        onLoginSubmitHandler,
+        null
     )
 
     const onSubmitLoginHandler = async (event) => {
         const response = await onSubmitLogin(event)
         if (!response) {
-            showMessage('error', 'Грешен имейл или парола')
+            showMessage('error', 'Invalid email or password')
         }
     }
 
@@ -29,7 +30,7 @@ export const Login = () => {
         <div className="form-container">
             <div className="form-content">
                 <header>
-                    <h5>Вход в системата</h5>
+                    <h5>Login</h5>
                 </header>
                 <form
                     style={{ display: `flex`, flexDirection: `column` }}
@@ -37,12 +38,12 @@ export const Login = () => {
                     onSubmit={onSubmitLoginHandler}
                 >
                     <div className="form-group">
-                        <label htmlFor="email">Имейл </label>
+                        <label htmlFor="email">Email </label>
                         <input
                             type="text"
                             autoComplete="on"
                             name="email"
-                            placeholder="Въведи имейл"
+                            placeholder="Enter email"
                             value={values.email}
                             onChange={changeHandler}
                         />
@@ -50,32 +51,32 @@ export const Login = () => {
                     <small className={styles.error}> {error.email}</small>
 
                     <div className="form-group">
-                        <label htmlFor="password">Парола </label>
+                        <label htmlFor="password">Password </label>
                         <input
                             type="password"
                             autoComplete="on"
                             name="password"
-                            placeholder="Въведи парола"
+                            placeholder="Enter password"
                             value={values.password}
                             onChange={changeHandler}
                         />
                     </div>
                     <small className={styles.error}> {error.password}</small>
 
-                    <Link to="reset">Забравена парола?</Link>
+                    <Link to="reset">Forgot password?</Link>
                     <footer style={{ marginTop: '1em' }}>
                         <input
                             type="submit"
                             style={{ width: `100%`, textAlign: `center` }}
                             className="button-primary"
                             disabled={!values.email || !values.password}
-                            value="Вход"
+                            value="Login"
                         />
                     </footer>
                 </form>
                 <span className="signup">
-                    Все още нямаш акаунт?
-                    <Link to="/register">Регистрация</Link>
+                    Don't have an account yet?
+                    <Link to="/register">Sign up</Link>
                 </span>
             </div>
         </div>

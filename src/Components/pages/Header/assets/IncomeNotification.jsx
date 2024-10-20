@@ -10,7 +10,7 @@ export const IncomeNotification = ({ notify, deleteNotificationHandler }) => {
         <li className={styles.singleNotification} key={notify.objectId} data-key={notify.objectId}>
             <section className={styles.notificationContent}>
                 <small>
-                    Получихте <b style={{ color: 'green' }}>{notify.amount ?? 'Unknown'}лв</b> от{' '}
+                    Received <b style={{ color: 'green' }}>{notify.amount ?? 'Unknown'}BGN</b> from{' '}
                     {notify.sender?.[0]?.fullName ?? 'Unknown'}
                 </small>
                 <small className={styles.date}> {formatDate(notify.created)}</small>
@@ -20,10 +20,11 @@ export const IncomeNotification = ({ notify, deleteNotificationHandler }) => {
                 data-key={notify.objectId}
                 className={styles.btnRemove}
                 onClick={deleteNotificationHandler}
-                defaultValue={'Изтриване'}
+                defaultValue={'Delete'}
             >
                 <FontAwesomeIcon icon={faTrashAlt} />
             </button>
         </li>
     )
 }
+

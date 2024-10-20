@@ -36,16 +36,16 @@ export const ConfirmForm = ({
                     method="post"
                 >
                     <header>
-                        <h5>Проверка на данните</h5>
+                        <h5>Confirm your data</h5>
                     </header>
                     <div className="form-group">
-                        <label htmlFor="email">Е-майл</label>
+                        <label htmlFor="email">Email</label>
                         <input
                             type="email"
                             name="email"
                             readOnly
                             autoComplete="off"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             className="form-control"
                             value={email}
                             onChange={changeHandler}
@@ -58,7 +58,7 @@ export const ConfirmForm = ({
                         readOnly
                         hidden
                         autoComplete="off"
-                        placeholder="липсва информация"
+                        placeholder="no information"
                         className="form-control"
                         value={cardId}
                         onChange={changeHandler}
@@ -70,7 +70,7 @@ export const ConfirmForm = ({
                         readOnly
                         hidden
                         autoComplete="off"
-                        placeholder="липсва информация"
+                        placeholder="no information"
                         className="form-control"
                         value={password}
                         onChange={changeHandler}
@@ -78,31 +78,31 @@ export const ConfirmForm = ({
                     />
 
                     <div className="form-group">
-                        <label htmlFor="firstName">Име</label>
+                        <label htmlFor="firstName">First name</label>
                         <input
                             type="text"
                             className="form-control"
                             name="firstName"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             value={firstName}
                             onChange={changeHandler}
                             disabled
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="lastName">Фамилия</label>
+                        <label htmlFor="lastName">Last name</label>
                         <input
                             type="text"
                             className="form-control"
                             name="lastName"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             value={lastName}
                             onChange={changeHandler}
                             disabled
                         />
                     </div>
                     <div className="form-group">
-                        <label>Пол</label>
+                        <label>Gender</label>
                         <Radio.Group
                             name="gender"
                             value={gender}
@@ -114,55 +114,55 @@ export const ConfirmForm = ({
                                 flexDirection: 'column',
                             }}
                         >
-                            <Radio value="male"> Мъж </Radio>
-                            <Radio value="female"> Жена </Radio>
+                            <Radio value="male"> Male </Radio>
+                            <Radio value="female"> Female </Radio>
                         </Radio.Group>
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="phoneNumber">Телефон</label>
+                        <label htmlFor="phoneNumber">Phone number</label>
                         <input
                             type="tel"
                             className="form-control"
                             name="phoneNumber"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             value={phoneNumber}
                             onChange={changeHandler}
                             disabled
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="address">Адрес</label>
+                        <label htmlFor="address">Address</label>
                         <input
                             type="text"
                             className="form-control"
                             name="address"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             value={address}
                             onChange={changeHandler}
                             disabled
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="town">Град</label>
+                        <label htmlFor="town">Town</label>
                         <input
                             type="text"
                             className="form-control"
                             name="town"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             value={town}
                             onChange={changeHandler}
                             disabled
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Държава</label>
+                        <label htmlFor="country">Country</label>
                         <input
                             type="text"
                             className="form-control"
                             name="country"
                             id="country"
-                            placeholder="липсва информация"
+                            placeholder="no information"
                             value={country}
                             onChange={changeHandler}
                             disabled
@@ -177,14 +177,14 @@ export const ConfirmForm = ({
                         className="button-secondary"
                         onClick={currentStepsHandler}
                     >
-                        Назад
+                        Back
                     </Link>
 
                     <input
                         name="confirm"
                         type="button"
                         className="button-primary"
-                        value={'Потвърди данните'}
+                        value={'Confirm data'}
                         onClick={onConfirmHandler}
                     />
                     {isHidden && (
@@ -192,7 +192,7 @@ export const ConfirmForm = ({
                             name="register"
                             type="submit"
                             className="button-primary"
-                            value={'Регистрация'}
+                            value={'Register'}
                             onClick={onSubmitRegister}
                         />
                     )}

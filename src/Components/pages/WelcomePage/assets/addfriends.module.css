@@ -1,4 +1,6 @@
 .friendsForm {
-    display: block;
-    justify-content: left;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    justify-content: flex-start;
 }

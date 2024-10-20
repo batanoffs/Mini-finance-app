@@ -8,9 +8,9 @@ export const Home = () => {
     return (
         <div className={styles.homeContainer}>
             <div className={styles.heroSection}>
-                <h1>Отворете банков акаунт и вземете вашата карта</h1>
+                <h1>Open a bank account and get your card now</h1>
                 <p>
-                    Създадохме тази платформа безплатна, за да бъде достъпна за всеки един от вас.
+                    We created this platform for free to make it accessible to each one of you.
                 </p>
                 <div className={styles.buttonContainer}>
                     <Link
@@ -18,10 +18,10 @@ export const Home = () => {
                         className="button-secondary"
                         style={{ backgroundColor: 'transparent' }}
                     >
-                        Научи повече
+                        Find out more
                     </Link>
                     <Link to="/register" className="button-primary">
-                        Вземи своята карта
+                        Get your card
                     </Link>
                 </div>
                 <Preview className={styles.scalingSvg} />

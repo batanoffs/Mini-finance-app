@@ -64,6 +64,7 @@ export const useForm = (initialState, onLogin, onRegister) => {
         e.preventDefault()
         const loginResponse = await onLogin(values)
         const isLoginSuccessful = !Object.values(error).some((value) => value) && loginResponse
+        
         resetFormHandler()
         return await isLoginSuccessful
     }
@@ -77,7 +78,7 @@ export const useForm = (initialState, onLogin, onRegister) => {
             resetFormHandler()
         } else {
             console.error('Errors found during registration', listErrors)
-            message('error', `Валидацията е неуспешна, намерени грешки: ${listErrors}`)
+            message('error', `Validation failed, errors found: ${listErrors}`)
         }
     }
 

@@ -89,7 +89,7 @@ export const Autocomplete = (props) => {
         } else {
             suggestionsListComponent = (
                 <div className="no-suggestions">
-                    <em>Няма съвпадения</em>
+                    <em>No matches found</em>
                 </div>
             )
         }
@@ -101,7 +101,7 @@ export const Autocomplete = (props) => {
                 <input
                     className="suggestion-box"
                     name="friends"
-                    placeholder="Иван Иванов"
+                    placeholder="John Doe"
                     type="text"
                     style={{
                         marginBottom: '0px',

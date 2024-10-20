@@ -31,12 +31,12 @@ export const Friends = () => {
     }
     return (
         <div className={`${blocks.customBlock} ${blocks.customBlockProfile}`}>
-            <h5>Приятели</h5>
+            <h5>Friends</h5>
             <div className={styles.searchWrapper}>
                 <FontAwesomeIcon className={styles.searchIcon} icon={faSearch} />
                 <Input
                     className={styles.searchInput}
-                    placeholder="Търси приятел"
+                    placeholder="Search friend"
                     onChange={onSearch}
                     value={search}
                 />
@@ -48,7 +48,7 @@ export const Friends = () => {
                             margin: '1em auto',
                             fontFamily: 'var(--body-font-family)',
                         }}
-                        description="Няма резултати"
+                        description="No results"
                     />
                 )}
                 {filteredFriends.length > 0 && (

@@ -24,18 +24,18 @@ export const EmailForm = ({
         <section className="form-container">
             <div className="form-content">
                 <header>
-                    <h5>Имейл и парола</h5>
+                    <h5>Email and password</h5>
                 </header>
                 <div className="form-group">
                     <label htmlFor="email">
-                        Имейл <small className="error">*</small>
+                        Email <small className="error">*</small>
                     </label>
                     <input
                         type="email"
                         name="email"
                         id="email"
                         autoComplete="off"
-                        placeholder="въведи имейл"
+                        placeholder="Enter email"
                         className="form-control"
                         value={email}
                         onChange={changeHandler}
@@ -47,14 +47,14 @@ export const EmailForm = ({
 
                 <div className="form-group">
                     <label htmlFor="password">
-                        Парола <small className="error">*</small>
+                        Password <small className="error">*</small>
                     </label>
                     <input
                         type="password"
                         name="password"
                         id="password"
                         autoComplete="off"
-                        placeholder="въведи парола"
+                        placeholder="Enter password"
                         className="form-control"
                         value={password}
                         onChange={changeHandler}
@@ -66,14 +66,14 @@ export const EmailForm = ({
 
                 <div className="form-group">
                     <label htmlFor="confirmPassword">
-                        Потвърди парола <small className="error">*</small>
+                        Confirm password <small className="error">*</small>
                     </label>
                     <input
                         type="password"
                         name="confirmPassword"
                         id="confirmPassword"
                         autoComplete="off"
-                        placeholder="потвърди парола"
+                        placeholder="Confirm password"
                         className="form-control"
                         value={confirmPassword}
                         onChange={changeHandler}
@@ -93,14 +93,16 @@ export const EmailForm = ({
                         onClick={onNextPageHandler}
                         disabled={!email || !password || confirmPassword !== password}
                     >
-                        Напред
+                        Next
                     </Link>
                 </footer>
                 <span className="signup">
-                    Вече имаш акаунт?
-                    <Link to="/login">Влез в системата</Link>
+                    Already have an account?
+                    <Link to="/login">Sign in</Link>
                 </span>
             </div>
         </section>
     )
 }
+
+

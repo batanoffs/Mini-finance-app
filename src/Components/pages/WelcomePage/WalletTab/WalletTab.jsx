@@ -1,5 +1,4 @@
 import { TableTransactions } from './assets/TableTransactions'
-
 import { BankingActionButtons } from '../assets/BankingActionsButtons/BankingActionButtons'
 import { ContactInfo } from '../assets/ContactInfo'
 

@@ -71,15 +71,15 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
             if (response.success) {
                 setShowModal({ ...showModal, [`request`]: false })
                 setUserInput({ amount: '', friends: '' })
-                showMessage('success', 'Успешно поискахте парите')
+                showMessage('success', 'Successfully requested money')
             } else {
                 setShowModal({ ...showModal, [`request`]: false })
                 setUserInput({ amount: '', friends: '' })
-                showMessage('error', `Грешка при изпращане: ${response.message}`)
+                showMessage('error', `Error requesting money: ${response.message}`)
                 console.error('error', response)
             }
         } catch (error) {
-            showMessage('error', 'Грешка при изпращане')
+            showMessage('error', 'Error requesting money')
             console.error(error)
         }
     }
@@ -104,13 +104,13 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
         <div className={modal.modalBackground}>
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
-                    <h5 className="modal-title">Поискай пари</h5>
+                    <h5 className="modal-title">Request money</h5>
                     <button onClick={onClose}>x</button>
                 </div>
                 <div className="form-content">
                     <form onSubmit={onFormSubmitHandler} className="custom-form">
                         <div className="form-group">
-                            <label htmlFor="amount">Сума:</label>
+                            <label htmlFor="amount">Amount:</label>
                             <input
                                 type="text"
                                 name="amount"
@@ -118,12 +118,12 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
                                 value={userInput.amount}
                                 onChange={setUserInputHandler}
                                 className="form-control"
-                                placeholder="10лв"
+                                placeholder="10 BGN"
                             />
                         </div>
                         <div className="form-group">
                             <div className="form-group ">
-                                <label htmlFor="friends">Приятел:</label>
+                                <label htmlFor="friends">Friend:</label>
                                 <Autocomplete
                                     name="friends"
                                     userInput={userInput}
@@ -136,7 +136,7 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
                             <input
                                 className="button-primary"
                                 type="submit"
-                                value="Изпрати"
+                                value="Send"
                                 style={{ width: '100%' }}
                             />
                         </footer>

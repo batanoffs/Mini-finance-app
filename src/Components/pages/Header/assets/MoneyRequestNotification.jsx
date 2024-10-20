@@ -5,36 +5,35 @@ import { formatDate } from '../../../../utils/formatDate'
 
 import styles from './notifications.module.css'
 
-export const MoneyRequestNotification = ({ notify, userDataId, token, setnotificationsState }) => {
+export const MoneyRequestNotification = ({ notify, userDataId, token, setNotificationsState }) => {
     const showMessage = useMessage()
     const onTransactionApprove = async (e) => {
         const notificationElement = e.currentTarget.parentElement
         if (!notificationElement) {
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
             return
         }
         const notificationId = notificationElement.getAttribute('data-key')
         if (!notificationId) {
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
             return
         }
         const requesterName = e.currentTarget.getAttribute('data-requester-name')
         if (!requesterName) {
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
             return
         }
         const amountStr = e.currentTarget.getAttribute('data-amount')
         if (!amountStr) {
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
             return
         }
         const amount = Number(amountStr)
         if (isNaN(amount)) {
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
             return
         }
         try {
-            //TODO
             const response = await transactionService.sendMoney(
                 requesterName,
                 amount,
@@ -58,12 +57,12 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setnotific
                     userDataId,
                     token
                 ) // make new notification for transaction approved
-                setnotificationsState(getNotificationsResponse)
-                showMessage('success', 'Изпращането е успешно')
+                setNotificationsState(getNotificationsResponse)
+                showMessage('success', 'The transaction was successful')
             }
         } catch (error) {
             console.error(error)
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
         }
     }
 
@@ -71,7 +70,7 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setnotific
         const notificationId = e.currentTarget.parentElement?.getAttribute('data-key')
         if (!notificationId) {
             console.error('Notification id is null')
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
             return
         }
 
@@ -86,11 +85,11 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setnotific
                 userDataId
             )
 
-            setnotificationsState(getNotificationsResponse)
-            showMessage('error', 'Транзакцията е отказана')
+            setNotificationsState(getNotificationsResponse)
+            showMessage('error', 'The transaction was declined')
         } catch (error) {
             console.error(error)
-            showMessage('error', 'Възникна грешка при изпращането')
+            showMessage('error', 'An error occurred while sending')
         }
     }
 
@@ -99,8 +98,8 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setnotific
             <img className={styles.profileImage} src={notify.sender?.[0]?.avatar} alt="avatar" />
             <section className={styles.notificationContent}>
                 <small>
-                    {notify.sender?.[0]?.fullName ?? 'Unknown'} поиска{' '}
-                    <b style={{ color: 'darkred' }}>{notify.amount ?? 'Unknown'}лв</b> от Вас
+                    {notify.sender?.[0]?.fullName ?? 'Unknown'} requested{' '}
+                    <b style={{ color: 'darkred' }}>{notify.amount ?? 'Unknown'}BGN</b>
                 </small>
                 <small className={styles.date}> {formatDate(notify.created)}</small>
             </section>
@@ -111,7 +110,7 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setnotific
                 className={styles.btnAccept}
                 onClick={onTransactionApprove}
             >
-                изпрати
+                send
             </button>
             <button
                 data-sender={`${notify.sender?.[0]?.objectId ?? ''}`}
@@ -119,7 +118,7 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setnotific
                 className={styles.btnRemove}
                 onClick={onTransactionDecline}
             >
-                откажи
+                decline
             </button>
         </li>
     )

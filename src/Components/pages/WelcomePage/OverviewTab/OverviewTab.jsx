@@ -1,10 +1,6 @@
-import { useContext, useState } from 'react'
-
 import { ProfileDetails } from './assets/profileDetails/ProfileDetails'
 import { Greetings } from './assets/Greetings'
-
 import { BankingActionButtons } from '../assets/BankingActionsButtons/BankingActionButtons'
-import { AuthContext } from '../../../../contexts/AuthContext'
 import { QuickSendMoney } from '../assets/Quicksend/QuickSend'
 import { LastTransactions } from '../assets/LastTransactions'
 import { ExchangeRate } from '../assets/ExchangeRate'
@@ -16,16 +12,12 @@ import { History } from '../assets/History'
 import styles from '../welcome-page-layout.module.css'
 
 export const OverviewTab = (props) => {
-    const { name, virtualcard, balance, picture, phone, email } = useContext(AuthContext)
-    
     return (
         <div className={styles.contentContainer}>
             <div className={styles.bentoMainColumn}>
-                <Greetings name={name} />
-                <ProfileDetails picture={picture} name={name} phone={phone} email={email} />
-
-                <VirtualCard virtualcard={virtualcard} name={name} balance={balance} />
-
+                <Greetings />
+                <ProfileDetails />
+                <VirtualCard />
                 <ExchangeRate props={props} />
             </div>
             <div className={styles.bentoFillColumn}>

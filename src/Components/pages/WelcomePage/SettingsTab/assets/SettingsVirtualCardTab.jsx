@@ -6,12 +6,12 @@ import { AuthContext } from '../../../../../contexts/AuthContext'
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 
 export const VirtualCard = () => {
-    const { name, virtualcard } = useContext(AuthContext)
+    const { name, virtualCard } = useContext(AuthContext)
     const [state, setState] = useState({
         name: name,
-        cardNumber: virtualcard.number,
-        expiryDate: virtualcard.expiration,
-        cvc: virtualcard.cvv,
+        cardNumber: virtualCard.number,
+        expiryDate: virtualCard.expiration,
+        cvc: virtualCard.cvv,
         focus: '',
     })
 
@@ -35,13 +35,13 @@ export const VirtualCard = () => {
             >
                 <form className="custom-form" method="post">
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">Номер</label>
+                        <label htmlFor="credit_card_number">Card Number</label>
 
                         <input
                             type="number"
                             name="credit_card_number"
                             className="form-control"
-                            placeholder="Номер на карта"
+                            placeholder="Card Number"
                             value={state.cardNumber}
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
@@ -49,7 +49,7 @@ export const VirtualCard = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">Име</label>
+                        <label htmlFor="credit_card_number">Cardholder Name</label>
 
                         <input
                             type="text"
@@ -57,20 +57,20 @@ export const VirtualCard = () => {
                             autoComplete="off"
                             className="form-control"
                             value={state.name}
-                            placeholder="Картодържател"
+                            placeholder="Cardholder Name"
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
                             required
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="credit_card_number">Валидна до</label>
+                        <label htmlFor="credit_card_number">Expiration Date</label>
 
                         <input
                             type="string"
                             name="expiryDate"
                             className="form-control"
-                            placeholder="Валидна до"
+                            placeholder="Expiration Date"
                             pattern="\d\d/\d\d"
                             value={state.expiryDate}
                             onChange={inputChangeHandler}
@@ -86,7 +86,7 @@ export const VirtualCard = () => {
                             className="form-control"
                             placeholder="CVV"
                             pattern="\d{3,4}"
-                            value={state.cvv}
+                            value={state.cvc}
                             onChange={inputChangeHandler}
                             onFocus={inputFocusHandler}
                             required
@@ -96,7 +96,7 @@ export const VirtualCard = () => {
                     <footer>
                         <input
                             type="submit"
-                            value="Запази"
+                            value="Save"
                             onClick={onUpdateHandler}
                             className="button-primary"
                         />
@@ -106,7 +106,7 @@ export const VirtualCard = () => {
                     <Cards
                         number={state.cardNumber}
                         expiry={state.expiryDate}
-                        cvc={state.cvv}
+                        cvc={state.cvc}
                         name={state.name}
                         focused={state.focus}
                     />

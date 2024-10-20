@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-
 import { exchangeRateService } from '../../../../services/exchangeRateService'
 
 import styles from './ExchangeRate.module.css'
@@ -82,7 +81,7 @@ export const ExchangeRate = ({ props }) => {
 
     return (
         <div className={`${block.customBlockContact} `}>
-            <h5>Обменен курс</h5>
+            <h5>Exchange Rate</h5>
             <ul>
                 {Array.from(Object.entries(props.rates)).map((rates) => {
                     return (
@@ -100,12 +99,12 @@ export const ExchangeRate = ({ props }) => {
                             </div>
 
                             <div>
-                                <small>Продава</small>
+                                <small>Sell</small>
                                 <h6>{rates[1].sell}</h6>
                             </div>
 
                             <div>
-                                <small>Купува</small>
+                                <small>Buy</small>
                                 <h6>{rates[1].buy}</h6>
                             </div>
                         </li>
@@ -115,3 +114,4 @@ export const ExchangeRate = ({ props }) => {
         </div>
     )
 }
+

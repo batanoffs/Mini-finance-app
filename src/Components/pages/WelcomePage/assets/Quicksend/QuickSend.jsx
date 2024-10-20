@@ -3,7 +3,6 @@ import { useContext, useState } from 'react'
 import { ActionsMenu } from './assets/ActionsMenu'
 import { AddToFavorites } from './AddFavourites'
 import { Actions } from './assets/Actions'
-
 import { AuthContext } from '../../../../../contexts/AuthContext'
 import { useMessage } from '../../../../../hooks/useMessage'
 
@@ -11,7 +10,7 @@ import blocks from '../../custom-block.module.css'
 import styles from './quicksend.module.css'
 
 export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {
-    const [showFavourites, setShowFavourites] = useState(false)
+    const [showFavorites, setShowFavorites] = useState(false)
     const [showBtns, setShowBtns] = useState(false)
     const { favorites } = useContext(AuthContext)
     const showMessage = useMessage()
@@ -19,7 +18,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
     const openSendMenu = (event) => {
         const name = event.currentTarget.parentElement.getAttribute('data-key')
         if (!name) {
-            showMessage('error', 'Възникна грешка, опитайте отново')
+            showMessage('error', 'An error occurred, please try again')
             return
         }
         setShowModal({ ...showModal, [`send`]: true })
@@ -37,22 +36,22 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
         e.currentTarget.style.display = e.currentTarget.style.display === 'block' ? 'none' : 'block'
     }
 
-    const showFavouritesHandler = () => {
+    const showFavoritesHandler = () => {
         if (favorites.length === 0) {
             return
         }
-        setShowFavourites(!showFavourites)
+        setShowFavorites(!showFavorites)
     }
 
     return (
         <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <h5 style={{ color: 'var(--section-bg-color)' }}>Бързо изпращане</h5>
+                <h5 style={{ color: 'var(--section-bg-color)' }}>Quick send</h5>
                 {favorites.length > 0 ? (
                     <ActionsMenu
                         setShowBtns={setShowBtns}
                         showActionsHandler={showActionsHandler}
-                        showFavouritesHandler={showFavouritesHandler}
+                        showFavoritesHandler={showFavoritesHandler}
                     />
                 ) : null}
             </div>
@@ -84,12 +83,12 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                 ) : (
                     <>
                         <p style={{ display: 'inline', fontStyle: 'italic', color: '#eee' }}>
-                            Нямате приятели в списъка
+                            You don't have friends in the list
                         </p>
-                        <AddToFavorites setShowFavourites={setShowFavourites} />
+                        <AddToFavorites setShowFavorites={setShowFavorites} />
                     </>
                 )}
-                {showFavourites && <AddToFavorites setShowFavourites={setShowFavourites} />}
+                {showFavorites && <AddToFavorites setShowFavorites={setShowFavorites} />}
             </ul>
         </div>
     )

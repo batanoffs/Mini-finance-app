@@ -10,52 +10,52 @@ import blocks from '../../custom-block.module.css'
 
 const columns = [
     {
-        title: 'Дата',
+        title: 'Date',
         dataIndex: 'date',
         key: 'date',
     },
     {
-        title: 'Време',
+        title: 'Time',
         dataIndex: 'time',
         key: 'time',
     },
     {
-        title: 'Име',
+        title: 'Name',
         dataIndex: 'description',
         key: 'description',
     },
     {
-        title: 'Вид',
+        title: 'Type',
         dataIndex: 'type',
         key: 'type',
         filters: [
             {
-                text: 'приход',
-                value: 'приход',
+                text: 'Income',
+                value: 'income',
             },
             {
-                text: 'разход',
-                value: 'разход',
+                text: 'Expense',
+                value: 'expense',
             },
         ],
         onFilter: (value, record) => record.type.indexOf(value) === 0,
     },
     {
-        title: 'Сума',
+        title: 'Amount',
         dataIndex: 'price',
         key: 'price',
         defaultSortOrder: 'descend',
         sorter: (a, b) => a.price - b.price,
     },
     {
-        title: 'Статус',
+        title: 'Status',
         key: 'status',
         dataIndex: 'status',
         render: (_, { status }) => (
             <>
                 {status.map((tag) => {
                     let color
-                    if (tag === 'Успешен') {
+                    if (tag === 'Successful') {
                         color = 'green'
                     }
                     if (tag === 'pending') {
@@ -103,7 +103,7 @@ export const TableTransactions = () => {
                     transaction.receiver[0].objectId === userDataId
                         ? transaction.sender[0].fullName
                         : transaction.receiver[0].fullName,
-                type: transaction.receiver[0].objectId === userDataId ? 'приход' : 'разход',
+                type: transaction.receiver[0].objectId === userDataId ? 'income' : 'expense',
                 price:
                     transaction.receiver[0].objectId === userDataId ? (
                         <Tag color={'green'} key={transaction.objectId}>
@@ -114,7 +114,7 @@ export const TableTransactions = () => {
                             {`- ${transaction.amount} BGN`}
                         </Tag>
                     ),
-                status: [transaction.status || 'Успешен'],
+                status: [transaction.status || 'Successful'],
             }))
 
             setTransactions(modified)
@@ -150,7 +150,7 @@ export const TableTransactions = () => {
 
     return (
         <div className={blocks.customBlock} style={{ padding: '0.5em 1.5em' }}>
-            <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Движения по сметка</h5>
+            <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Account movements</h5>
             <Table
                 columns={columns}
                 dataSource={transactions}

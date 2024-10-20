@@ -4,7 +4,7 @@ export const NotificationTab = () => {
             <div className="form-content">
                 <form className="custom-form" method="post">
                     <div className="form-group">
-                        <label htmlFor="form-check-input">Последна активност</label>
+                        <label htmlFor="form-check-input">Last activity</label>
 
                         <input
                             className="form-control"
@@ -19,7 +19,7 @@ export const NotificationTab = () => {
 
                     <div className="form-group">
                         <label className="form-check-label" htmlFor="flexSwitchCheckCheckedTwo">
-                            Обновено плащане
+                            Updated payment
                         </label>
 
                         <input
@@ -34,12 +34,13 @@ export const NotificationTab = () => {
                     </div>
 
                     <footer>
-                        <input type="button" value="Изчисти" className="button-secondary" />
+                        <input type="button" value="Clear" className="button-secondary" />
 
-                        <input type="submit" value="Запази промени" className="button-primary" />
+                        <input type="submit" value="Save changes" className="button-primary" />
                     </footer>
                 </form>
             </div>
         </div>
     )
 }
+

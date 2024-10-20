@@ -29,12 +29,12 @@ export const Header = () => {
             <ul className={styles.dropdownMenu}>
                 <li>
                     <Link className={styles.dropdownItem} to="/login">
-                        Вход
+                        Log in
                     </Link>
                 </li>
                 <li>
                     <Link className={styles.dropdownItem} to="/register">
-                        Нов Акаунт
+                        New Account
                     </Link>
                 </li>
             </ul>
@@ -50,10 +50,10 @@ export const Header = () => {
                     borderTopRightRadius: '0px',
                 }}
             >
-                Вход
+                Log in
             </Link>
             <Link to="/register" className={styles.buttonRegister} name="register" type="button">
-                Нов Акаунт
+                New Account
             </Link>
         </>
     )
