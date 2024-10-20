@@ -67,7 +67,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
             {
                 operationType: 'FIND',
                 table: 'UserData',
-                opResultId: 'findReciever',
+                opResultId: 'findReceiver',
                 payload: {
                     whereClause: `fullName = '${fullName}'`,
                 },
@@ -108,7 +108,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
                     relationColumn: 'receiver',
                     unconditional: {
                         ___ref: true,
-                        opResultId: 'findReciever',
+                        opResultId: 'findReceiver',
                     },
                 },
             },
@@ -118,16 +118,16 @@ const requestNotify = async (fullName, amount, sender, token) => {
 }
 
 // Send Money
-const sendMoney = async (fullname, amount, sender, token) => {
+const sendMoney = async (fullName, amount, sender, token) => {
     const body = {
         isolationLevelEnum: 'READ_COMMITTED',
         operations: [
             {
                 operationType: 'FIND',
                 table: 'UserData',
-                opResultId: 'findReciever',
+                opResultId: 'findReceiver',
                 payload: {
-                    whereClause: `fullName = '${fullname}'`,
+                    whereClause: `fullName = '${fullName}'`,
                 },
             },
             {
@@ -141,7 +141,7 @@ const sendMoney = async (fullname, amount, sender, token) => {
             {
                 operationType: 'ADD_RELATION',
                 table: 'MoneyTransactions',
-                opResultId: 'moneyReciever',
+                opResultId: 'moneyReceiver',
                 payload: {
                     parentObject: {
                         ___ref: true,
@@ -151,7 +151,7 @@ const sendMoney = async (fullname, amount, sender, token) => {
                     relationColumn: 'receiver',
                     unconditional: {
                         ___ref: true,
-                        opResultId: 'findReciever',
+                        opResultId: 'findReceiver',
                     },
                 },
             },
@@ -176,22 +176,22 @@ const sendMoney = async (fullname, amount, sender, token) => {
 }
 
 // Notify
-const notifyMoneyReceived = async (fullname, amount, sender, token) => {
+const notifyMoneyReceived = async (fullName, amount, sender, token) => {
     const body = {
         isolationLevelEnum: 'READ_COMMITTED',
         operations: [
             {
                 operationType: 'FIND',
                 table: 'UserData',
-                opResultId: 'findReciever',
+                opResultId: 'findReceiver',
                 payload: {
-                    whereClause: `fullName = '${fullname}'`,
+                    whereClause: `fullName = '${fullName}'`,
                 },
             },
             {
                 operationType: 'CREATE',
                 table: 'UserNotifications',
-                opResultId: 'notifyEnrty',
+                opResultId: 'notifyEntry',
                 payload: {
                     event_type: 'money received',
                     amount: amount,
@@ -204,13 +204,13 @@ const notifyMoneyReceived = async (fullname, amount, sender, token) => {
                 payload: {
                     parentObject: {
                         ___ref: true,
-                        opResultId: 'notifyEnrty',
+                        opResultId: 'notifyEntry',
                         propName: 'objectId',
                     },
                     relationColumn: 'receiver',
                     unconditional: {
                         ___ref: true,
-                        opResultId: 'findReciever',
+                        opResultId: 'findReceiver',
                     },
                 },
             },
@@ -221,7 +221,7 @@ const notifyMoneyReceived = async (fullname, amount, sender, token) => {
                 payload: {
                     parentObject: {
                         ___ref: true,
-                        opResultId: 'notifyEnrty',
+                        opResultId: 'notifyEntry',
                         propName: 'objectId',
                     },
                     relationColumn: 'sender',

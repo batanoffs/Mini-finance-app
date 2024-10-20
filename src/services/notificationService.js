@@ -3,7 +3,7 @@ import { API } from '../constants/baseUrl'
 
 const updateNotificationStatus = async (objectId, statusState, seen, token) => {
     const body = { status: `${statusState}`, seen: seen }
-    return await request.put(API.NOTIFICATIONS + objectId, body, token)
+    return await request.put(API.NOTIFICATIONS + '/' + objectId, body, token)
 }
 
 const getMoneyRequestNotifications = async (senderId, token) => {
@@ -18,16 +18,16 @@ const getMoneyRequestNotifications = async (senderId, token) => {
 
 const updateRelation = async (parentObjectId, relationName, id, token) => {
     const body = [id]
-    return await request.put(API.NOTIFICATIONS + `${parentObjectId}/${relationName}`, body, token)
+    return await request.put(API.NOTIFICATIONS + `/${parentObjectId}/${relationName}`, body, token)
 }
 
 const updateSeenStatus = async (objectId, seenState, token) => {
     const body = { seen: seenState }
-    return await request.put(API.NOTIFICATIONS + objectId, body, token)
+    return await request.put(API.NOTIFICATIONS + '/' + objectId, body, token)
 }
 
-const getNotSeenNotifications = async (reciverId, token) => {
-    const query = encodeURIComponent(`receiver='${reciverId}' and seen='false'`)
+const getNotSeenNotifications = async (receiverId, token) => {
+    const query = encodeURIComponent(`receiver='${receiverId}' and seen='false'`)
     return await request.get(
         API.NOTIFICATIONS + `?loadRelations&relationsDepth=1&where=${query}`,
         token
@@ -35,7 +35,7 @@ const getNotSeenNotifications = async (reciverId, token) => {
 }
 
 const deleteNotification = async (objectId) => {
-    return await request.del(API.NOTIFICATIONS + objectId)
+    return await request.del(API.NOTIFICATIONS + '/' + objectId)
 }
 
 const getAllFriendRequests = async (token) => {
@@ -53,7 +53,7 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
             {
                 operationType: 'FIND',
                 table: 'UserData',
-                opResultId: 'findReciever',
+                opResultId: 'findReceiver',
                 payload: {
                     whereClause: phone ? `phoneNumber = '${phone}'` : `objectId = '${receiver}'`,
                 },
@@ -63,7 +63,7 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
                 table: 'UserNotifications',
                 opResultId: 'check',
                 payload: {
-                    whereClause: `event_type = '${event}' and receiver = 'findReciever.result[0]' and sender = '${receiver}'`,
+                    whereClause: `event_type = '${event}' and receiver = 'findReceiver.result[0]' and sender = '${receiver}'`,
                 },
             },
             {
@@ -77,7 +77,7 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
             {
                 operationType: 'ADD_RELATION',
                 table: 'UserNotifications',
-                opResultId: 'setReciver',
+                opResultId: 'setReceiver',
                 payload: {
                     parentObject: {
                         ___ref: true,
@@ -87,7 +87,7 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
                     relationColumn: 'receiver',
                     unconditional: {
                         ___ref: true,
-                        opResultId: 'findReciever',
+                        opResultId: 'findReceiver',
                     },
                 },
             },
