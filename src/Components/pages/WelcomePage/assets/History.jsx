@@ -3,10 +3,9 @@ import { Empty } from 'antd'
 
 import { transactionService } from '../../../../services/transactionService'
 import { AuthContext } from '../../../../contexts/AuthContext'
-import { formatDate } from '../../../../utils/formatDate'
+import { TransactionListElement } from '../../../TransactionListElement'
 
 import blocks from '../custom-block.module.css'
-import styles from './LastTransactions.module.css'
 
 export const History = () => {
     const [transactionsList, setTransactionsList] = useState([])
@@ -21,47 +20,26 @@ export const History = () => {
 
     return (
         <div className={blocks.customBlock}>
-            <h5>История на плащания</h5>
+            <h5>Transaction History</h5>
             <ul>
                 {transactionsList.length > 0 ? (
                     transactionsList
                         .slice()
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .slice(0, 4)
-                        .map((transaction) => (
-                            <li
-                                key={transaction.objectId}
-                                data-key={transaction.objectId}
-                                className={styles.transactionsBoxWrapper}
-                            >
-                                <img
-                                    src={transaction.receiver[0].avatar}
-                                    className={blocks.profileImage}
-                                    alt="avatar"
-                                />
-                                <div className={styles.historyDetailsWrapper}>
-                                    <div className={styles.detailsBox}>
-                                        <small>Платихте на</small>
-                                        <strong
-                                            style={{
-                                                display: 'block',
-                                                textAlign: 'right',
-                                                color: 'darkred',
-                                            }}
-                                        >
-                                            - {transaction.amount}лв
-                                        </strong>
-                                    </div>
-                                    <div className={styles.detailsBox}>
-                                        <strong> {transaction.receiver[0].fullName}</strong>
-
-                                        <small>{formatDate(transaction.created)}</small>
-                                    </div>
-                                </div>
-                            </li>
+                        .map((entry) => (
+                            <TransactionListElement
+                                key={entry.objectId}
+                                id={entry.objectId}
+                                avatar={entry.sender[0].avatar}
+                                name={entry.sender[0].fullName}
+                                amount={entry.amount}
+                                transactionType={entry.transaction_type}
+                                date={entry.created}
+                            />
                         ))
                 ) : (
-                    <Empty description="Липсва история" />
+                    <Empty description="No transaction history found" />
                 )}
             </ul>
         </div>

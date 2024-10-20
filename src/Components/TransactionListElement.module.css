@@ -18,10 +18,17 @@
     flex-direction: column;
     width: calc(100% - 60px);
 }
+
 .historyDetailsWrapper {
     display: flex;
     align-content: space-between;
     justify-content: space-between;
     flex-direction: column;
     width: calc(100% - 60px);
+}
+
+.profileImage {
+    border-radius: var(--border-radius-medium);
+    width: 50px;
+    height: 50px;
 }

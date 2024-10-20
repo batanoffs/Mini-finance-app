@@ -4,9 +4,8 @@ import { Empty } from 'antd'
 
 import { transactionService } from '../../../../services/transactionService'
 import { AuthContext } from '../../../../contexts/AuthContext'
-import { formatDate } from '../../../../utils/formatDate'
+import { TransactionListElement } from '../../../TransactionListElement'
 
-import styles from './LastTransactions.module.css'
 import blocks from '../custom-block.module.css'
 
 export const LastTransactions = () => {
@@ -22,56 +21,35 @@ export const LastTransactions = () => {
 
     return (
         <div className={`${blocks.customBlock} ${blocks.cusomBlockExchange}`}>
-            <h5>Последни транзакции</h5>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <h5>Last Transactions</h5>
+                <Link className="custom-btn" to="/dashboard/wallet">
+                    View All Transactions
+                </Link>
+            </div>
             <ul>
                 {allTransactions.length > 0 ? (
                     allTransactions
                         .slice(0, 5)
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .map((entry) => (
-                            <li
+                            <TransactionListElement
                                 key={entry.objectId}
-                                data-key={entry.objectId}
-                                className={styles.transactionsBoxWrapper}
-                            >
-                                <img
-                                    src={entry.sender[0].avatar}
-                                    className={blocks.profileImage}
-                                    alt={'avatar'}
-                                />
-                                <div className={styles.detailsWrapper}>
-                                    <div className={styles.detailsBox}>
-                                        <strong>{entry.sender[0].fullName}</strong>
-                                        <strong
-                                            style={{
-                                                display: 'block',
-                                                textAlign: 'right',
-                                                color: 'green',
-                                            }}
-                                        >
-                                            + {entry.amount}лв
-                                        </strong>
-                                    </div>
-
-                                    <div className={styles.detailsBox}>
-                                        <small>{(entry.transaction_type = 'изпрати')}</small>
-                                        <small>{formatDate(entry.created)}</small>
-                                    </div>
-                                </div>
-                            </li>
+                                id={entry.objectId}
+                                avatar={entry.sender[0].avatar}
+                                name={entry.sender[0].fullName}
+                                amount={entry.amount}
+                                transactionType={entry.transaction_type}
+                                date={entry.created}
+                            />
                         ))
                 ) : (
                     <Empty
                         style={{ fontFamily: 'var(--body-font-family)', marginBottom: '20px' }}
-                        description="Няма транзакции"
+                        description="No transactions"
                     />
                 )}
             </ul>
-            <div>
-                <Link className="custom-btn" to="/dashboard/wallet">
-                    Всички транзакции
-                </Link>
-            </div>
         </div>
     )
 }
