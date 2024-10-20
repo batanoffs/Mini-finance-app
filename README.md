@@ -192,7 +192,7 @@ Used Exhange Rate API for live update rates
     component through useContext from React. Additionally exports useAuthContext()
 
 - ### Custom Hooks
-    **useMessage()** returns function message from Antd, which takes type and text
+    **useMessage()** returns function message from Ant Design, which takes type and text
 
     **useForm(initialState, onLogin, onRegister)** takes initial state for form, and functions to be called on login and register.
     Inside it there's also useValidate hook which validates input from user. Finally it returns:
@@ -228,7 +228,7 @@ Used Exhange Rate API for live update rates
     new one and returns it
   - **formatDate(date)** takes date and returns formatted
 
-  - **showLastCardDidgits(number)** takes bank card number and returns last four digits
+  - **showLastCardDigits(number)** takes bank card number and returns last four digits
 
 - ### Services
   - **authService** for Authentication 
@@ -262,6 +262,6 @@ It is inspired by the layout of [Tooplate 2135 Mini Finance Template](https://ww
 Some icons are used from [Julia G](https://icons8.com/illustrations/author/627444) at www.icons8.com
 
 ## License
-This project is licensed under MIT Licence - see the [LICENSE.txt](https://github.com/batanoffs/mini-finance/blob/main/LICENSE.txt) file for details.
+This project is licensed under MIT License - see the [LICENSE.txt](https://github.com/batanoffs/mini-finance/blob/main/LICENSE.txt) file for details.
 
 
