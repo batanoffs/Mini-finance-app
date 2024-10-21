@@ -6,7 +6,7 @@ import MyApp from './App'
 import './css/site.css'
 
 createRoot(document.getElementById('root')).render(
-    <BrowserRouter basename="/mini-finance">
+    <BrowserRouter basename="/">
         <StrictMode>
             <MyApp />
         </StrictMode>
