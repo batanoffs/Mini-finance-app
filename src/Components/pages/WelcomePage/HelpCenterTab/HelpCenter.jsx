@@ -9,18 +9,26 @@ export const HelpCenterTab = () => {
             <main className={styles.bentoFillColumn}>
                 <div className={blocks.customBlock}>
                     <form action="#" method="post">
-                        <header>
+                        <header style={{ marginBottom: `0.5em` }}>
                             <h5>How can we help you?</h5>
                         </header>
-                        <label htmlFor="search">Search by topic: </label>
-                        <input
-                            className="form-control"
-                            name="search"
-                            type="text"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <footer>
+                        <footer
+                            style={{
+                                display: `flex`,
+                                justifyContent: `center`,
+                                gap: `0.5em`,
+                                alignItems: `center`,
+                            }}
+                        >
+                            <p htmlFor="search">Search by topic: </p>
+                            <input
+                                className="form-control"
+                                style={{ width: `40%`, height: `2.5em`, margin: `0` }}
+                                name="search"
+                                type="text"
+                                placeholder="Search"
+                                aria-label="Search"
+                            />
                             <input type="submit" value="Send" className="button-primary" />
                         </footer>
                     </form>
