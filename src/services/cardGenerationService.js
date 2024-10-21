@@ -2,7 +2,7 @@ import { API } from '../constants/baseUrl'
 import * as request from './requester'
 
 const generateCard = async (id) => {
-    const query = encodeURIComponent(`cards_mock_data_id=${id}`) // EncodeURI
+    const query = encodeURIComponent(`cards_mock_data_id=${id}`)
     const response = await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`)
     const date = response[0].expiration.split('/')
     const money = response[0].balance
@@ -31,7 +31,7 @@ const topUp = async (objectId, value, token) => {
 }
 
 const getVirtualCardIds = async () => {
-    const query = encodeURIComponent(`property=cardId`) // EncodeURI
+    const query = encodeURIComponent(`property=cardId`)
     return await request.get(API.USERS + `?${query}`)
 }
 
