@@ -2,20 +2,17 @@
   "name": "mini-finance",
   "author": "Daniel Batanov",
   "license": "MIT",
-  "homepage": "http://batanoffs.github.io/mini-finance",
   "version": "0.3.0",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage --watch=false",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test:coverage": "vitest run --coverage --watch=false"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
