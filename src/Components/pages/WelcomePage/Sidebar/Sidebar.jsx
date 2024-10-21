@@ -106,7 +106,7 @@ export const Sidebar = () => {
 
                 <li className={styles.featureBox}>
                     <img
-                        src="https://notablepen.backendless.app/api/files/app/AppData/home/credit-card2.png"
+                        src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/t2gvhqmfqhmvllw8f09f.png"
                         alt="credit card"
                     />
 

@@ -16,7 +16,7 @@ export const About = () => {
                     <div className={style.features}>
                         <div className={style.feature}>
                             <img
-                                src="https://notablepen.backendless.app/api/files/app/AppData/home/credit-card.png"
+                                src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/sf6hdgxcph0mjc0ovqww.png"
                                 alt="Virtual Card"
                                 className={style.featureImg}
                             />
@@ -28,7 +28,7 @@ export const About = () => {
                         </div>
                         <div className={style.feature}>
                             <img
-                                src="https://notablepen.backendless.app/api/files/app/AppData/home/new-friendship.png"
+                                src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/lxwrha0dkp2zkgctrtri.png"
                                 alt="Add Friends"
                                 className={style.featureImg}
                             />
@@ -40,7 +40,7 @@ export const About = () => {
                         </div>
                         <div className={style.feature}>
                             <img
-                                src="https://notablepen.backendless.app/api/files/app/AppData/home/transaction.png"
+                                src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/thchf4tdrkuqmjula8nv.png"
                                 alt="Make Transactions"
                                 className={style.featureImg}
                             />
@@ -52,7 +52,7 @@ export const About = () => {
                         </div>
                         <div className={style.feature}>
                             <img
-                                src="https://notablepen.backendless.app/api/files/app/AppData/home/writing.png"
+                                src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/w6du8mo8c2p9jswc8b62.png"
                                 alt="Track History"
                                 className={style.featureImg}
                             />

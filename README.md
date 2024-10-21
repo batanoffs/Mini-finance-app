@@ -127,12 +127,12 @@ To get started with this project, follow these steps:
   
     | Notification Type             | Image                                                                                                                                   |
     | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-    | Friend request notification   | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png" width="800" height="400">              |
-    | Accept Friend request message | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png" width="800" height="400"> |
-    | Money recieved notification   | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png" width="800" height="400">                  |
+    | Friend request notification   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506877/friend-request_sevm2j.png" width="800" height="400">              |
+    | Accept Friend request message | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506879/notification-friend-accept_gzoldh.png" width="800" height="400"> |
+    | Money recieved notification   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507492/notifyMoneySent_jd0usp.png" width="800" height="400">                  |
     | Delete notification message   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png" width="800" height="400">                    |
-    | Money request notification    | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png" width="800" height="400">               |
-    | Message reject                | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png" width="800" height="400">                |
+    | Money request notification    | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507494/notifyMoneyRequest_dkhqpv.png" width="800" height="400">               |
+    | Message reject                | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507498/notifyMoneyReject_xjh7x0.png" width="800" height="400">                |
 
 - ### Profile menu
     |                                                 Web                                                 |                                                  Mobile                                                  |
@@ -164,7 +164,7 @@ To get started with this project, follow these steps:
     Users can view their transaction history, which shows the last 5 transactions
 
 - ### Autocomplete
-    ![Autocomplete](https://notablepen.backendless.app/api/files/app/AppData/docs/autocomplete.png)
+    ![Autocomplete](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507103/autocomplete_ztva8d.png)
 
 - ### Wallet
     Shows all movements in the account, as well as quick buttons for
@@ -176,7 +176,7 @@ To get started with this project, follow these steps:
 
     |                                            Overview                                            |                                Hover friends action buttons                                |
     | :--------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
-    | ![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/profileoverview.png) | ![Hover](https://notablepen.backendless.app/api/files/app/AppData/docs/friendsActions.png) |
+    | ![Overview](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507496/profileoverview_x1xtdq.png) | ![Hover](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507267/friendsActions_zv0joq.png) |
 
 - ### Help center
     Menu for help and frequently asked questions with search functionality (still not implemented)

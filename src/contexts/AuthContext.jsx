@@ -149,7 +149,7 @@ export const AuthProvider = ({ children }) => {
             created: `information`,
         },
         picture:
-            auth.avatar || 'https://notablepen.backendless.app/api/files/app/UserData/default.png',
+            auth.avatar || 'https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506585/default-avatar_vxyg1c.png',
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         favorites: auth.favorite_friends || [],
