@@ -44,7 +44,7 @@ export const SidebarRegister = (props) => {
 
             <img
                 className={styles.sidebarIcon}
-                src="https://notablepen.backendless.app/api/files/app/AppData/home/money-transfer-isometric-60529.svg"
+                src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729501388/money-transfer-isometric-60529_a6rm3y.svg"
                 alt="theme display"
             />
         </div>

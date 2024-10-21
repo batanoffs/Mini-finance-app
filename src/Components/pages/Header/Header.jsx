@@ -80,7 +80,7 @@ export const Header = () => {
         <header className={styles.headerContainer}>
             <div className={styles.logoContainer}>
                 <img
-                    src="https://notablepen.backendless.app/api/files/app/AppData/home/newLogoPng.png"
+                    src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729501409/newLogoPng_brnw5j.png"
                     onClick={onRedirect}
                     alt="logo"
                     className={styles.logo}

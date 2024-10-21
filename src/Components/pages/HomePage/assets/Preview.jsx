@@ -16,7 +16,7 @@ export const Preview = () => {
                     height="53.2"
                 >
                     <image
-                        href="https://notablepen.backendless.app/api/files/app/AppData/home/preview.png"
+                        href="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500909/preview_ydqijx.png"
                         x="0"
                         y="0"
                         width="93.52"
