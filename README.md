@@ -10,7 +10,7 @@ https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a0
 [Mini Finance Innovations](https://batanoffs.github.io/mini-finance/) is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
 
 Notes
-- Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day
+- Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day after the limit is reached
 
 
 ## Table of content
@@ -86,7 +86,7 @@ To get started with this project, follow these steps:
     ```bash
     npm start
     ```
-5. Open your browser and go to [http://localhost:3000/mini-finance/](http://localhost:3000/mini-finance/) to view the app.
+5. Open your browser and go to [http://localhost:3000/](http://localhost:3000/) to view the app.
 6. Login with test credentials or register new account
 
 ## Project content
@@ -97,13 +97,13 @@ To get started with this project, follow these steps:
 
     | Steps                                                                                           | From left to right:                                                                             |
     | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-    | ![register step 1](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps1.png) | ![register step 2](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps2.png) |
-    | ![register step 3](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps3.png) | ![register step 4](https://notablepen.backendless.app/api/files/app/AppData/docs/regsteps4.png) |
+    | ![register step 1](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505345/register1_xwktpp.png) | ![register step 2](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505347/register2_glrjhu.png) |
+    | ![register step 3](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505348/register3_uep0et.png) | ![register step 4](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505348/register3_uep0et.png) |
 
 
 - ### About
   
-    ![About page](https://notablepen.backendless.app/api/files/app/AppData/docs/aboutpage.png) 
+    ![About page](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505335/aboutapp_cu1qn5.png) 
 
 - ### Dashboard
     Provides a central interface for managing the account, navigation, including virtual
@@ -111,12 +111,12 @@ To get started with this project, follow these steps:
 
     |                                                Web                                                |                                                 Mobile                                                  |
     | :-----------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
-    | ![Dashboard web](https://notablepen.backendless.app/api/files/app/AppData/docs/dashoboardWeb.png) | ![Dashboard mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/dashoboardMobile.png) |
+    | ![Dashboard web](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505353/preview_dcttk8.png) | ![Dashboard mobile](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505337/homemobile_hihl3d.png) |
 
 - ### User balance
     The dashboard contains the information about the current balance of the user for quick financial overview as well virtual card details
 
-    ![User balance](https://notablepen.backendless.app/api/files/app/AppData/docs/cardBalance.png)
+    ![User balance](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505335/balance-card_dmewos.png)
 
 - ### Notifications
     Provides real-time notifications for friend requests and money transactions to inform
@@ -130,14 +130,14 @@ To get started with this project, follow these steps:
     | Friend request notification   | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequest.png" width="800" height="400">              |
     | Accept Friend request message | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyFriendRequestAcceptMessage.png" width="800" height="400"> |
     | Money recieved notification   | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneySent.png" width="800" height="400">                  |
-    | Delete notification message   | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyDeleted.png" width="800" height="400">                    |
+    | Delete notification message   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png" width="800" height="400">                    |
     | Money request notification    | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyRequest.png" width="800" height="400">               |
     | Message reject                | <img src="https://notablepen.backendless.app/api/files/app/AppData/docs/notifyMoneyReject.png" width="800" height="400">                |
 
 - ### Profile menu
     |                                                 Web                                                 |                                                  Mobile                                                  |
     | :-------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
-    | ![Profile web](https://notablepen.backendless.app/api/files/app/AppData/docs/NavigationMenuWeb.png) | ![Profile mobile](https://notablepen.backendless.app/api/files/app/AppData/docs/navigatioMenuMobile.png) |
+    | ![Profile web](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505340/profilemenu-web_wbdg0p.png) | ![Profile mobile](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505339/profilemenu-mobile_qaqegv.png) |
 
 - ### Transactions
     Needs update
@@ -146,7 +146,7 @@ To get started with this project, follow these steps:
     Users can change information about their account, including email, profile picture
     and information about credit card, as well as manage their notifications.
 
-    ![Profile settings](https://notablepen.backendless.app/api/files/app/AppData/docs/settingsPage.png)
+    ![Profile settings](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505353/settings-profile_xii4iw.png)
 
 - ### Quick actions
     Provides a quick way to execute tasks such as sending money, adding friends,
@@ -154,11 +154,11 @@ To get started with this project, follow these steps:
 
     |                                            Quick actions                                            |                             Add Friends and transaction buttons                             |
     | :-------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-    | ![Quick actions](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsAdd.png) | ![Add Friends](https://notablepen.backendless.app/api/files/app/AppData/docs/addFriend.png) |
+    | ![Quick actions](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505341/quciksend-menu_to80ws.png) | ![Add Friends](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505335/addfriend_retjnm.png) |
 
     |                                               Change                                                |                                             Show buttons                                              |                                              Delete                                               |
     | :-------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-    | ![Change](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsMenuChange.png) | ![Show buttons](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsDelete.png) | ![Delete](https://notablepen.backendless.app/api/files/app/AppData/docs/quickActionsOnDelete.png) |
+    | ![Change](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505342/quicksend-change_wulpfz.png) | ![Show buttons](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505343/quicksend-change-delete_ydn46c.png) | ![Delete](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505345/quicksend-change-delete-confirm_abbg1k.png) |
 
 - ### Last transactions
     Users can view their transaction history, which shows the last 5 transactions
@@ -169,7 +169,7 @@ To get started with this project, follow these steps:
 - ### Wallet
     Shows all movements in the account, as well as quick buttons for
     sending money, loading money and searching for an amount
-    ![Autocomplete](https://notablepen.backendless.app/api/files/app/AppData/docs/wallet.png)
+    ![Wallet](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505352/wallet_gyu5st.png)
 
 - ### Profile overview
     Here the user can view their data and perform actions towards their friends, as well as see who they are
@@ -181,7 +181,7 @@ To get started with this project, follow these steps:
 - ### Help center
     Menu for help and frequently asked questions with search functionality (still not implemented)
 
-    ![Overview](https://notablepen.backendless.app/api/files/app/AppData/docs/help.png)
+    ![Overview](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505336/FAQ_clao7s.png)
 
 ## Design and Architecture
 Serverless architecture, based on Backendless as a provider. 
@@ -240,7 +240,7 @@ Used Exhange Rate API for live update rates
 
 - ### Database schema - tables and relations 
 
-    ![Database schema](https://notablepen.backendless.app/api/files/app/AppData/docs/schema.png)
+    ![Database schema](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505808/schema_zlcpod.png)
 
 ## Future updates
 - [ ] oAuth 
