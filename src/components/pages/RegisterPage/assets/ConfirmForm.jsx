@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import { Radio } from 'antd'
 import { useState } from 'react'
 
-import { setNewGeneratedId } from '../../../../utils/setNewGeneratedId'
+import { assignNewCardId } from '../../../../utils/assignNewCardId'
+import { useMessage } from '../../../../hooks/useMessage'
 
 export const ConfirmForm = ({
     email,
@@ -20,12 +21,22 @@ export const ConfirmForm = ({
     changeHandler,
 }) => {
     const [isHidden, setHidden] = useState(false)
+    const showMessage = useMessage()
 
     const onConfirmHandler = async (e) => {
         e.preventDefault()
-        e.target.hidden = true
-        setHidden(true)
-        changeHandler({ target: { name: 'cardId', value: await setNewGeneratedId() } })
+        try {
+            e.target.hidden = true
+            setHidden(true)
+            const response = await assignNewCardId()
+            if (response && response.message) {
+                showMessage('error', response.message)
+                return
+            }
+            changeHandler({ target: { name: 'cardId', value: values } })
+        } catch (error) {
+            showMessage('error', 'An error occurred while confirming data')
+        }
     }
     return (
         <div className="form-container">

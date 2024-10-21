@@ -25,11 +25,9 @@ export const AuthProvider = ({ children }) => {
         }
         try {
             loginResponse = await authService.login(data)
-            console.log('response from login', loginResponse)
 
             if (loginResponse.message) {
-                console.error(loginResponse.message)
-                return
+                return loginResponse
             }
 
             const token = loginResponse['user-token']
@@ -68,7 +66,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const onRegisterSubmitHandler = async (formData) => {
-        console.log(formData)
         if (
             !formData.email ||
             !formData.password ||
@@ -82,17 +79,18 @@ export const AuthProvider = ({ children }) => {
             !formData.town ||
             !formData.cardId
         ) {
-            console.error('Null or empty value in formData')
-            return false
+            return { message: 'Null or empty value in formData' }
         }
+
         if (formData.password !== formData.confirmPassword) {
-            console.error('Passwords do not match')
-            return false
+            throw new Error('Passwords do not match')
         }
+
         const registerData = {
             email: formData.email,
             password: formData.password,
         }
+
         try {
             const registerResponse = await authService.register(registerData)
             const setUserDataResponse = await dataService.setUserData({
@@ -115,6 +113,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error)
             window.alert('Unsuccessful registration')
+            throw new Error('Unsuccessful registration')
         }
     }
 
@@ -149,7 +148,8 @@ export const AuthProvider = ({ children }) => {
             created: `information`,
         },
         picture:
-            auth.avatar || 'https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506585/default-avatar_vxyg1c.png',
+            auth.avatar ||
+            'https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506585/default-avatar_vxyg1c.png',
         transactions: auth.transactions || [],
         friends: auth.friends || [],
         favorites: auth.favorite_friends || [],

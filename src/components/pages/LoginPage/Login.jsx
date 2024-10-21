@@ -21,8 +21,10 @@ export const Login = () => {
 
     const onSubmitLoginHandler = async (event) => {
         const response = await onSubmitLogin(event)
-        if (!response) {
-            showMessage('error', 'Invalid email or password')
+        if (response && response.message) {
+            showMessage('error', response.message)
+        } else {
+            showMessage('success', 'Successfully logged in!')
         }
     }
 
