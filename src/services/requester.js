@@ -85,7 +85,8 @@ const request = async (method, url, data, file, token = undefined) => {
 
         const result = await response.json()
         if (!response.ok) {
-            console.log(result.message)
+            // console.log(result.message)
+            return result
         }
 
         return result
