@@ -2,9 +2,9 @@ import { formatDate } from '../utils/formatDate'
 
 import styles from './TransactionListElement.module.css'
 
-export const TransactionListElement = ({ key, avatar, name, amount, transactionType, date }) => {
+export const TransactionListElement = ({ id, avatar, name, amount, transactionType, date }) => {
     return (
-        <li key={key} data-key={key} className={styles.transactionsBoxWrapper}>
+        <li key={id} data-key={id} className={styles.transactionsBoxWrapper}>
             <img src={avatar} className={styles.profileImage} alt={'avatar'} />
             <div className={styles.detailsWrapper}>
                 <div className={styles.detailsBox}>
