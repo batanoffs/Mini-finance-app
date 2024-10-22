@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect, useCallback } from 'react'
 
-import { transactionService } from '../../../../../services/transactionService'
-import { dataService } from '../../../../../services/userDataService'
-import { AuthContext } from '../../../../../contexts/AuthContext'
-import { Autocomplete } from '../../../../features/Autocomplete'
-import { useMessage } from '../../../../../hooks/useMessage'
+import { transactionService } from '../../services/transactionService'
+import { dataService } from '../../services/userDataService'
+import { AuthContext } from '../../contexts/AuthContext'
+import { Autocomplete } from '../autocomplete/Autocomplete'
+import { useMessage } from '../../hooks/useMessage'
 
 import modal from './modal.module.css'
 

@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 
-import { dataService } from '../../../../../../services/userDataService'
-import { AuthContext } from '../../../../../../contexts/AuthContext'
-import { useMessage } from '../../../../../../hooks/useMessage'
+import { dataService } from '../../../services/userDataService'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { useMessage } from '../../../hooks/useMessage'
 
-import styles from '../quicksend.module.css'
+import styles from './quicksend.module.css'
 
 export const Actions = ({ friend, closeMenuHandler, setShowBtns }) => {
     const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext)

@@ -4,11 +4,11 @@ import { useState, useContext } from 'react'
 
 import { PaymentForm } from './PaymentForm'
 
-import { AuthContext } from '../../../../../contexts/AuthContext'
-import { cardService } from '../../../../../services/cardGenerationService'
-import { useMessage } from '../../../../../hooks/useMessage'
+import { cardService } from '../../services/cardGenerationService'
+import { useMessage } from '../../hooks/useMessage'
 
 import modal from './modal.module.css'
+import { AuthContext } from '../../contexts/AuthContext'
 
 export const TopUp = ({ showModal, setShowModal }) => {
     const [inputState, setInputState] = useState({})
@@ -128,4 +128,3 @@ export const TopUp = ({ showModal, setShowModal }) => {
         </div>
     )
 }
-

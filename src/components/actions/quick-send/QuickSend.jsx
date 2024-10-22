@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 
-import { ActionsMenu } from './assets/ActionsMenu'
+import { ActionsMenu } from './ActionsMenu'
 import { AddToFavorites } from './AddFavourites'
-import { Actions } from './assets/Actions'
-import { AuthContext } from '../../../../../contexts/AuthContext'
-import { useMessage } from '../../../../../hooks/useMessage'
+import { Actions } from './Actions'
+import { useMessage } from '../../../hooks/useMessage'
+import { AuthContext } from '../../../contexts/AuthContext'
 
-import blocks from '../../custom-block.module.css'
+import containers from '../../../pages/WelcomePage/assets/containers.module.css'
 import styles from './quicksend.module.css'
 
 export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {
@@ -44,7 +44,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
     }
 
     return (
-        <div className={`${blocks.customBlock} ${blocks.primaryBg}`}>
+        <div className={`${containers.customBlock} ${containers.primaryBg}`}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <h5 style={{ color: 'var(--section-bg-color)' }}>Quick send</h5>
                 {favorites.length > 0 ? (
@@ -56,7 +56,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                 ) : null}
             </div>
 
-            <ul className={blocks.sendMonkeyContainer}>
+            <ul className={containers.sendMonkeyContainer}>
                 {favorites.length > 0 ? (
                     favorites?.map((friend) => (
                         <li

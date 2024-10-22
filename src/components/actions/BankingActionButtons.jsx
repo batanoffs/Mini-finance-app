@@ -5,11 +5,10 @@ import {
     faHandHoldingDollar,
 } from '@fortawesome/free-solid-svg-icons'
 
-import { TopUp } from './TopUpModal'
-import { SendMoney } from './SendModal'
-import { RequestMoney } from './RequestModal'
+import { RequestMoney, SendMoney, TopUp } from './index'
 
-import blocks from '../../custom-block.module.css'
+import containers from '../../pages/WelcomePage/assets/containers.module.css'
+import styles from '../../pages/WelcomePage/assets/buttons.module.css'
 
 export const BankingActionButtons = ({ userInput, setUserInput, showModal, setShowModal }) => {
     const handleShowModal = (type) => () => {
@@ -21,30 +20,30 @@ export const BankingActionButtons = ({ userInput, setUserInput, showModal, setSh
 
     return (
         <div
-            className={`${blocks.customBlock} ${blocks.customBlockBottom}`}
+            className={`${containers.customBlock} ${containers.customBlockBottom}`}
             style={{ maxHeight: '85px' }}
         >
-            <div className={blocks.transactionBtns}>
+            <div className={styles.transactionBtns}>
                 <button
-                    className={blocks.transactionBtn}
+                    className={styles.transactionBtn}
                     data-text="Top up account"
                     onClick={handleShowModal('topUp')}
                 >
-                    <FontAwesomeIcon className={blocks.icon} icon={faVault} />
+                    <FontAwesomeIcon className={styles.icon} icon={faVault} />
                 </button>
                 <button
-                    className={blocks.transactionBtn}
+                    className={styles.transactionBtn}
                     data-text="Send money"
                     onClick={handleShowModal('send')}
                 >
-                    <FontAwesomeIcon className={blocks.icon} icon={faMoneyBillTransfer} />
+                    <FontAwesomeIcon className={styles.icon} icon={faMoneyBillTransfer} />
                 </button>
                 <button
-                    className={blocks.transactionBtn}
+                    className={styles.transactionBtn}
                     data-text="Request money"
                     onClick={handleShowModal('request')}
                 >
-                    <FontAwesomeIcon className={blocks.icon} icon={faHandHoldingDollar} />
+                    <FontAwesomeIcon className={styles.icon} icon={faHandHoldingDollar} />
                 </button>
             </div>
 
