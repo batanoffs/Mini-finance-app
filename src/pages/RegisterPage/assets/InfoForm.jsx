@@ -1,8 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Radio } from 'antd'
 
-import { useMessage } from '../../../../hooks/useMessage'
-
+import { useMessage } from '../../../hooks/useMessage'
 import styles from '../register.module.css'
 
 export const InfoForm = ({

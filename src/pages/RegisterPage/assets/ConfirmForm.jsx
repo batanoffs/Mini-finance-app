@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Radio } from 'antd'
 import { useState } from 'react'
-
-import { assignNewCardId } from '../../../../utils/assignNewCardId'
-import { useMessage } from '../../../../hooks/useMessage'
+import { assignNewCardId } from '../../../utils/assignNewCardId'
+import { useMessage } from '../../../hooks/useMessage'
 
 export const ConfirmForm = ({
     email,
