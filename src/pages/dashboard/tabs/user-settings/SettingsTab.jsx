@@ -1,7 +1,7 @@
 import { SettingsNavigationPanel } from './assets/index'
 import { ContactInfo } from '../../assets/ContactInfo'
 
-import styles from '../../welcome-layout.module.css'
+import styles from '../../dashboard-layout.module.css'
 import containers from '../../assets/containers.module.css'
 
 export const SettingsTab = () => {

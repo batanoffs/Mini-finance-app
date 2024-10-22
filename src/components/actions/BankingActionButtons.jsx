@@ -7,8 +7,8 @@ import {
 
 import { RequestMoney, SendMoney, TopUp } from './index'
 
-import containers from '../../pages/WelcomePage/assets/containers.module.css'
-import styles from '../../pages/WelcomePage/assets/buttons.module.css'
+import containers from '../../pages/dashboard/assets/containers.module.css'
+import styles from '../../pages/dashboard/assets/buttons.module.css'
 
 export const BankingActionButtons = ({ userInput, setUserInput, showModal, setShowModal }) => {
     const handleShowModal = (type) => () => {

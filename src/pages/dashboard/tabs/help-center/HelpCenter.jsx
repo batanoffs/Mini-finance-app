@@ -1,6 +1,6 @@
 import { ContactInfo } from '../../assets/index'
 
-import layout from '../../welcome-layout.module.css'
+import layout from '../../dashboard-layout.module.css'
 import containers from '../../assets/containers.module.css'
 
 export const HelpCenterTab = () => {

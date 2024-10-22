@@ -6,7 +6,7 @@ import { Friends } from './assets/index'
 import { AuthContext } from '../../../../contexts/AuthContext'
 
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
-import layout from '../../welcome-layout.module.css'
+import layout from '../../dashboard-layout.module.css'
 import containers from '../../assets/containers.module.css'
 
 export const ProfileTab = () => {

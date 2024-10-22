@@ -6,7 +6,7 @@ import { Actions } from './Actions'
 import { useMessage } from '../../../hooks/useMessage'
 import { AuthContext } from '../../../contexts/AuthContext'
 
-import containers from '../../../pages/WelcomePage/assets/containers.module.css'
+import containers from '../../../pages/dashboard/assets/containers.module.css'
 import styles from './quicksend.module.css'
 
 export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {

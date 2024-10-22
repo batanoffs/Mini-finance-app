@@ -3,7 +3,7 @@ import Cards from 'react-credit-cards-2'
 
 import { useValidate } from '../../hooks/useValidate'
 
-import errorstyle from '../../pages/RegisterPage/register.module.css'
+import errorstyle from '../../pages/register/register.module.css'
 import modal from './modal.module.css'
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 

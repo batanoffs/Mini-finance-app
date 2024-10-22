@@ -10,7 +10,7 @@ import {
     ProfileDetails,
 } from '../../assets/index'
 
-import layout from '../../welcome-layout.module.css'
+import layout from '../../dashboard-layout.module.css'
 
 export const OverviewTab = (props) => {
     return (
