@@ -104,6 +104,8 @@
 
     .sidebarIcon {
         display: block;
+        width: 200px;
+        height: 200px;
     }
 
     .register_content_container {
