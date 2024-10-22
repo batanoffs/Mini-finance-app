@@ -7,9 +7,9 @@ import { MoneyRequestNotification } from './MoneyRequestNotification'
 import { IncomeNotification } from './IncomeNotification'
 import { NotFoundNotifications } from './NotFound'
 
-import { notificationService } from '../../../../services/notificationService'
-import { AuthContext } from '../../../../contexts/AuthContext'
-import { useMessage } from '../../../../hooks/useMessage'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { useMessage } from '../../../hooks/useMessage'
+import { notificationService } from '../../../services/notificationService'
 
 import styles from './notifications.module.css'
 

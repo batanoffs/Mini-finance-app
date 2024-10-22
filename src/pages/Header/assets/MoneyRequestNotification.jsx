@@ -1,7 +1,7 @@
-import { notificationService } from '../../../../services/notificationService'
-import { transactionService } from '../../../../services/transactionService'
-import { useMessage } from '../../../../hooks/useMessage'
-import { formatDate } from '../../../../utils/formatDate'
+import { notificationService } from '../../../services/notificationService'
+import { transactionService } from '../../../services/transactionService'
+import { useMessage } from '../../../hooks/useMessage'
+import { formatDate } from '../../../utils/formatDate'
 
 import styles from './notifications.module.css'
 

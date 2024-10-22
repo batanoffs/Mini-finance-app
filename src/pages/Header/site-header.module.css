@@ -8,41 +8,37 @@
     flex-direction: row;
     justify-content: space-between;
     flex: 0 0 max(45px);
-}
 
-.logoContainer {
-    align-self: center;
-    margin-left: 0.3em;
-}
+    .logoContainer {
+        align-self: center;
+        margin-left: 0.3em;
 
-.headerDropdownContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-    margin-right: 1em;
-}
+        .logo {
+            height: 40px;
+            cursor: pointer;
+        }
+    }
 
-.headerMobileDropdown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1em;
-}
+    .headerMobileDropdown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1em;
+    }
 
-.headerMobileDropdown:hover .dropdownMenu {
-    display: block;
-    z-index: 5;
-    top: 25px;
-}
+    .headerMobileDropdown:hover .dropdownMenu {
+        display: block;
+        z-index: 5;
+        top: 25px;
+    }
 
-.logo {
-    height: 40px;
-    cursor: pointer;
-}
-
-.headerButtons {
-    display: none;
+    .headerDropdownContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        margin-right: 1em;
+    }
 }
 
 .buttonLogin {

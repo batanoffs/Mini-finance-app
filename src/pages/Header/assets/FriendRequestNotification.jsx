@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 
-import { notificationService } from '../../../../services/notificationService'
-import { dataService } from '../../../../services/userDataService'
-import { AuthContext } from '../../../../contexts/AuthContext'
-import { formatDate } from '../../../../utils/formatDate'
-import { useMessage } from '../../../../hooks/useMessage'
+import { notificationService } from '../../../services/notificationService'
+import { dataService } from '../../../services/userDataService'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { formatDate } from '../../../utils/formatDate'
+import { useMessage } from '../../../hooks/useMessage'
 
 import styles from './notifications.module.css'
 
