@@ -4,20 +4,13 @@ import { Divider, Steps } from 'antd'
 import styles from '../register.module.css'
 
 export const SidebarRegister = (props) => {
-    const checkWidth = () => {
-        if (window.innerWidth < 700) {
-            return 'horizontal'
-        } else {
-            return 'vertical'
-        }
-    }
     return (
         <div className={styles.sidebar_container}>
             <div className="sidebar-list">
                 <Steps
-                    direction={checkWidth()}
+                    direction="vertical"
                     size="small"
-                    style={{ fontFamily: 'var(--body-font-family)', padding: '20px 20px' }}
+                    style={{ fontFamily: 'var(--body-font-family)', padding: '20px' }}
                     current={props.currentStep}
                     items={[
                         {
@@ -40,7 +33,7 @@ export const SidebarRegister = (props) => {
                 />
             </div>
 
-            <Divider />
+            {window.innerWidth > 700 && <Divider />}
 
             <img
                 className={styles.sidebarIcon}
@@ -50,4 +43,3 @@ export const SidebarRegister = (props) => {
         </div>
     )
 }
-
