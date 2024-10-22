@@ -16,7 +16,7 @@ export const Header = () => {
     const showIcon = isMobile ? (
         <FontAwesomeIcon className={styles.headerDropdownIcon} icon={faBars} />
     ) : null
-    const showButtons = isMobile ? <MobileMenu /> : <LoginButtons />
+    const showButtons = isMobile ? <MobileMenu styles={styles} /> : <LoginButtons />
 
     const authContent = isAuthenticated() ? (
         <div className={styles.headerDropdownContainer}>
