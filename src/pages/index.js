@@ -1,0 +1,7 @@
+export * from './Footer/Footer'
+export * from './Header/Header'
+export * from './HomePage/Home'
+export * from './RegisterPage/Register'
+export * from './WelcomePage/Dashboard'
+export * from './HomePage/assets/login/Login'
+export * from './HomePage/assets/about/About'
