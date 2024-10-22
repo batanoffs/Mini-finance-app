@@ -1,5 +1,5 @@
-export * from './Footer/Footer'
-export * from './Header/Header'
+export * from './footer/Footer'
+export * from './header/Header'
 export * from './home/Home'
 export * from './register/Register'
 export * from './dashboard/Dashboard'
