@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Preview } from './assets/Preview'
-import { Login } from '../LoginPage/Login'
+import { Login, Preview } from './assets/index'
 
 import styles from './home.module.css'
 
@@ -9,9 +8,7 @@ export const Home = () => {
         <div className={styles.homeContainer}>
             <div className={styles.heroSection}>
                 <h1>Open a bank account and get your card now</h1>
-                <p>
-                    We created this platform for free to make it accessible to each one of you.
-                </p>
+                <p>We created this platform for free to make it accessible to each one of you.</p>
                 <div className={styles.buttonContainer}>
                     <Link
                         to="/about"
