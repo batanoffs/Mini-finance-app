@@ -1,4 +1,6 @@
-export const MobileMenu = () => {
+import { Link } from 'react-router-dom'
+
+export const MobileMenu = ({ styles }) => {
     return (
         <div
             to="#"
