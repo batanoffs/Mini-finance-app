@@ -12,7 +12,7 @@
     --third-bg-color: #ccdde2ff;
     --custom-btn-bg-color: #ccdde2ff;
     --heading-color: #44464c;
-    --p-color: #1d3557ff;
+    --p-color: #44464c;
     --border-color: #ccdde2ff;
     --link-hover-color: #dc602e;
 
@@ -20,7 +20,7 @@
     --logo--icon-color: #41a6d1;
     --logo--text-color: #5c5959;
 
-    --body-font-family: 'Montserrat Alternates', sans-serif;
+    --body-font-family: 'Montserrat', sans-serif;
     --label-font-size: 1em;
     --menu-font-size: 1em;
     --menu-font-weight: 400;
@@ -36,7 +36,7 @@
     --font-weight-light: 400;
     --font-weight-normal: 500;
     --font-weight-bold: 600;
-    
+
     --hero-aspect-ratio: 93.52/53.2;
 }
 
@@ -56,11 +56,16 @@ input {
 
 h1,
 h2,
-h3,
+h3 {
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    color: var(--heading-color);
+}
+
 h4,
 h5,
 h6 {
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     line-height: 1.2;
     color: var(--heading-color);
 }
@@ -85,18 +90,15 @@ h6 {
     font-size: 1em;
 } /* 14 * 1.0 = 14px */
 
-p {
-    padding-bottom: 1, 5em;
-}
-
 li {
     list-style-position: outside;
 }
 
 p {
     color: var(--p-color);
+    padding-bottom: 0.3em;
     font-size: 1em;
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-normal);
 }
 
 ul li {
@@ -116,6 +118,11 @@ label {
     padding-right: 0.6em;
     width: 100px;
     text-align: right;
+}
+
+span {
+    color: var(--logo--text-color);
+    font-weight: var(--font-weight-light);
 }
 
 a {
