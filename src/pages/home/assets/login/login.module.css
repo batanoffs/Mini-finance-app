@@ -6,3 +6,9 @@
     align-self: flex-end;
     margin-right: 3em;
 }
+
+.signup {
+    padding-top: 0.2em;
+    align-self: center;
+    font-size: small;
+}
