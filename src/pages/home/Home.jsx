@@ -4,7 +4,6 @@ import { Login, Preview } from './assets/index'
 import styles from './home.module.css'
 
 export const Home = () => {
-
     const title = 'Open a bank account and get your card for free'
     return (
         <div className={styles.wrapper}>
@@ -15,11 +14,7 @@ export const Home = () => {
                         We created this platform for free to make it accessible to each one of you.
                     </p>
                     <div className={styles.buttonContainer}>
-                        <Link
-                            to="/about"
-                            className="button-secondary"
-                            style={{ backgroundColor: 'transparent' }}
-                        >
+                        <Link to="/about" className="button-secondary">
                             Find out more
                         </Link>
                         <Link to="/register" className="button-primary">
