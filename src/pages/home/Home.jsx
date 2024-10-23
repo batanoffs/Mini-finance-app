@@ -4,15 +4,17 @@ import { Login, Preview } from './assets/index'
 import styles from './home.module.css'
 
 export const Home = () => {
-    const title = 'Open a bank account and get your card for free'
+    const title = 'The easiest way to make transactions online'
     return (
         <div className={styles.wrapper}>
             <div className={styles.heroSection}>
                 <div className={styles.heroContent}>
                     <h1>{title}</h1>
-                    <p>
-                        We created this platform for free to make it accessible to each one of you.
-                    </p>
+                    <h4>
+                        We created this platform for free to make it accessible to each one of you
+                        Register now and get your free card
+                    </h4>
+
                     <div className={styles.buttonContainer}>
                         <Link to="/about" className="button-secondary">
                             Find out more
