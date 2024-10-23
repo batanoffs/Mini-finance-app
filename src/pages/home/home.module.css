@@ -1,204 +1,141 @@
-:root {
-    --home-padding: 1em;
-    --home-gap: 1em;
-    --hero-aspect-ratio: 93.52/53.2;
-}
-
-.homeContainer {
+.wrapper {
     background: linear-gradient(to right, #b3cde0, #9ad2ee);
-    display: flex;
     width: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--home-padding);
-    gap: var(--home-gap);
-}
-
-.loginContainer {
-    display: none;
-}
-
-.textContainer {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 0;
-    gap: var(--home-gap);
-}
-.homeContainer h1 {
-    margin: 0;
-    font-size: 1.5em;
-    padding-bottom: 0.5em;
-    text-align: center;
-}
-
-.buttonContainer {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 1em;
-}
-
-.buttonContainer a {
-    z-index: 1;
-    width: 100%;
-}
-.heroSection {
-    flex: 0 0 calc(100vh / var(--hero-aspect-ratio));
-    position: relative;
-    text-align: center;
-}
-
-.scalingSvg {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    aspect-ratio: var(--hero-aspect-ratio);
-    object-fit: cover;
-    left: 0;
-    top: calc(100dvh / var(--hero-aspect-ratio) / 2);
-}
-
-.buttonContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-    gap: 0.5em;
-    width: 100%;
-    z-index: 3;
-}
-
-@media screen and (min-width: 700px) and (max-width: 1099px) {
-    :root {
-        --home-padding: 3em;
-    }
-    .scalingSvg {
-        position: absolute;
-        width: 90%;
-        height: 90%;
-        left: 50%;
-        top: 60%;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-    }
-    .homeContainer {
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: center;
-        padding: var(--home-padding);
-    }
 
     .loginContainer {
         display: none;
     }
+
     .heroSection {
-        flex: 1 0 calc(100vh / var(--hero-aspect-ratio));
-        position: relative;
-    }
-
-    .titleContainer {
-        flex: 0 0 max(400px);
-        justify-content: start;
-        gap: 2em;
-    }
-    .homeContainer h1 {
-        margin-bottom: 0.5em;
-        font-size: 2.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: calc(100vh - 120px);
         text-align: center;
-    }
 
-    .buttonContainer {
-        font-size: 1em;
+        .heroContent {
+            padding: 0 0.5em;
+            margin: 2em 0;
+            h1 {
+                font-size: 1.5em;
+                padding-bottom: 0.5em;
+                text-align: center;
+            }
+
+            .buttonContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                font-size: 1em;
+                gap: 1em;
+                z-index: 3;
+                margin: 1em auto;
+
+                a {
+                    font-size: small;
+                    z-index: 1;
+                    width: 100%;
+                }
+            }
+        }
+
+        .previewContainer {
+            overflow: hidden;
+            width: inherit;
+            height: auto;
+        }
     }
-    .buttonContainer {
-        gap: 1em;
-        margin: 0;
-        width: 100%;
-        justify-content: center;
-        padding-top: 1em;
-    }
-    .buttonContainer a {
-        z-index: 1;
-        width: auto;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1099px) {
+    .wrapper {
+        .loginContainer {
+            display: none;
+        }
+
+        .heroSection {
+            display: block;
+            height: calc(100vh - 120px);
+
+            .heroContent {
+                margin-bottom: 10em;
+                padding: 0 2em;
+
+                h1 {
+                    font-size: 2.5em;
+                    text-align: center;
+                }
+
+                .buttonContainer {
+                    display: flex;
+                    flex-direction: row;
+                    margin: 2em 0;
+
+                    a {
+                        font-size: 1.2em;
+
+                        z-index: 1;
+                        width: 40%;
+                    }
+                }
+            }
+
+            .previewContainer {
+                padding: 0 2em;
+            }
+        }
     }
 }
 
 @media (min-width: 1100px) {
-    :root {
-        --home-padding: 2em;
-    }
-
-    .scalingSvg {
-        position: absolute;
-        width: 90%;
-        height: 90%;
-        left: 50%;
-        top: 60%;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-    }
-
-    .homeContainer {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: inherit;
-        padding: var(--home-padding);
-        gap: var(--home-gap);
-    }
-
-    .homeContainer h1 {
-        margin: 0;
-        font-size: 3em;
-        text-align: center;
-    }
-
-    .loginContainer {
+    .wrapper {
         display: flex;
-        flex-direction: column;
-        align-self: center;
-        margin: 0 auto;
-    }
+        gap: 5em;
+        padding-right: 10em;
 
-    .loginContainer h1 {
-        margin: 0;
-        font-size: 1.8em;
-        text-align: center;
-    }
+        .loginContainer {
+            flex: 1 0 max(200px);
+            display: block;
+            align-self: center;
+        }
 
-    .loginContainer p {
-        text-align: center;
-    }
+        .heroSection {
+            
+            flex: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: center;
+            height: calc(100vh - 70px);
 
-    .titleContainer {
-        justify-content: center;
-        gap: var(--home-gap);
-    }
+            .heroContent {
+                margin: 0;
+                padding: 0;
 
-    .titleContainer h1 {
-        margin: 0;
-        margin-bottom: 2em;
-    }
+                h1 {
+                    margin: 0;
+                    font-size: 2.5em;
+                    text-align: center;
+                }
 
-    .heroSection {
-        flex: 0 0 800px;
-        width: 100%;
-        position: relative;
-        border-radius: 2em;
-        animation: rainbowBorder 12s ease-in-out infinite;
-    }
+                .buttonContainer {
+                    margin-top: 2em;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    font-size: 1em;
 
-    .buttonContainer a {
-        z-index: 1;
-        width: 40%;
-    }
-
-    .buttonContainer {
-        margin-top: 2em;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        font-size: 1em;
+                    a {
+                        font-size: 1.2em;
+                        z-index: 1;
+                        width: 40%;
+                    }
+                }
+            }
+            .previewContainer {
+                padding: 0 3em;
+            }
+        }
     }
 }

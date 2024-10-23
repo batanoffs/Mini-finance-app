@@ -1,7 +1,6 @@
 /*---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )    
 -----------------------------------------*/
-
 :root {
     --white-color: #ffffff;
     --black-color: #000000;
@@ -37,6 +36,8 @@
     --font-weight-light: 400;
     --font-weight-normal: 500;
     --font-weight-bold: 600;
+    
+    --hero-aspect-ratio: 93.52/53.2;
 }
 
 /*---------------------------------------
