@@ -11,7 +11,7 @@ export const Home = () => {
                 <div className={styles.heroContent}>
                     <h1>{title}</h1>
                     <h4>
-                        We created this platform for free to make it accessible to each one of you
+                        We created this platform for free to make it accessible to each one of you.
                         Register now and get your free card
                     </h4>
 
