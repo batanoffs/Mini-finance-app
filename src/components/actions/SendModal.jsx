@@ -15,8 +15,8 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
 
     const getReceivers = useCallback(async () => {
         try {
-            const response = dataService.getRelation(userDataId, 'friends')
-            const friends = response.friends.map((friend) => {
+            const response = await dataService.getRelation(userDataId, 'friends')
+            const friends = response.friends?.map((friend) => {
                 if (friend.fullName) {
                     return {
                         name: friend.fullName,
