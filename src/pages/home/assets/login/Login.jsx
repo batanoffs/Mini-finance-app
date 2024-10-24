@@ -45,6 +45,7 @@ export const Login = () => {
                             type="text"
                             autoComplete="on"
                             name="email"
+                            id="email"
                             placeholder="Enter email"
                             value={values.email}
                             onChange={changeHandler}
@@ -58,6 +59,7 @@ export const Login = () => {
                             type="password"
                             autoComplete="on"
                             name="password"
+                            id="password"
                             placeholder="Enter password"
                             value={values.password}
                             onChange={changeHandler}

@@ -51,6 +51,7 @@ export const InfoForm = ({
                         type="text"
                         className="form-control"
                         name="firstName"
+                        id="firstName"
                         placeholder="Name"
                         value={firstName}
                         onChange={changeHandler}
@@ -69,6 +70,7 @@ export const InfoForm = ({
                         type="text"
                         className="form-control"
                         name="lastName"
+                        id="lastName"
                         placeholder="Last Name"
                         value={lastName}
                         onChange={changeHandler}
@@ -78,29 +80,34 @@ export const InfoForm = ({
                 </div>
                 <small className={styles.error}>{error.lastName}</small>
                 <div className="form-group">
-                    <label>
+                    <label htmlFor="gender">
                         Gender <small className="error">*</small>
                     </label>
                     <Radio.Group
                         name="gender"
+                        id="gender"
                         value={gender}
                         onChange={changeHandler}
                         onBlur={validateHandler}
                         onFocus={onFocusHandler}
                         style={{
-                            marginBottom: '1.2rem',
+                            marginBottom: '0.8rem',
                             display: 'flex',
-                            flexDirection: 'column',
-                            gap: '0.4rem',
+                            flexDirection: 'row',
                         }}
                     >
-                        <Radio style={{ fontSize: '1rem' }} value="male">
+                        <Radio id="male" name="gender" style={{ fontSize: '1rem' }} value="male">
                             {' '}
-                            Male{' '}
+                            Male
                         </Radio>
-                        <Radio style={{ fontSize: '1rem' }} value="female">
+                        <Radio
+                            id="female"
+                            name="gender"
+                            style={{ fontSize: '1rem' }}
+                            value="female"
+                        >
                             {' '}
-                            Female{' '}
+                            Female
                         </Radio>
                     </Radio.Group>
                 </div>
@@ -108,12 +115,13 @@ export const InfoForm = ({
 
                 <div className="form-group">
                     <label htmlFor="phoneNumber">
-                        Phone number <small className="error">*</small>
+                        Phone<small className="error">*</small>
                     </label>
                     <input
                         type="tel"
                         className="form-control"
                         name="phoneNumber"
+                        id="phoneNumber"
                         placeholder="Phone number"
                         value={phoneNumber}
                         onChange={changeHandler}
@@ -131,6 +139,7 @@ export const InfoForm = ({
                         type="text"
                         className="form-control"
                         name="town"
+                        id="town"
                         placeholder="your town..."
                         value={town}
                         onChange={changeHandler}
@@ -154,6 +163,7 @@ export const InfoForm = ({
                         onChange={changeHandler}
                         onBlur={validateHandler}
                         onFocus={onFocusHandler}
+                        autoComplete="country-name"
                     />
                 </div>
                 <small className={styles.error}>{error.country}</small>
@@ -164,10 +174,12 @@ export const InfoForm = ({
                         type="text"
                         className="form-control"
                         name="address"
+                        id="address"
                         placeholder="Address"
                         value={address}
                         onChange={changeHandler}
                         onFocus={onFocusHandler}
+                        autoComplete="address-level1"
                     />
                 </div>
                 <footer>

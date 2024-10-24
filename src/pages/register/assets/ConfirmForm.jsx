@@ -53,18 +53,20 @@ export const ConfirmForm = ({
                         <input
                             type="email"
                             name="email"
+                            id="email"
                             readOnly
                             autoComplete="off"
                             placeholder="no information"
                             className="form-control"
                             value={email}
                             onChange={changeHandler}
-                            id="email"
                         />
                     </div>
+                    <label htmlFor="cardId" hidden={true} />
                     <input
                         type="id"
                         name="cardId"
+                        id="cardId"
                         readOnly
                         hidden
                         autoComplete="off"
@@ -72,11 +74,11 @@ export const ConfirmForm = ({
                         className="form-control"
                         value={cardId}
                         onChange={changeHandler}
-                        id="cardId"
                     />
                     <input
                         type="password"
                         name="password"
+                        id="password"
                         readOnly
                         hidden
                         autoComplete="off"
@@ -84,7 +86,6 @@ export const ConfirmForm = ({
                         className="form-control"
                         value={password}
                         onChange={changeHandler}
-                        id="password"
                     />
 
                     <div className="form-group">
@@ -93,6 +94,7 @@ export const ConfirmForm = ({
                             type="text"
                             className="form-control"
                             name="firstName"
+                            id="firstName"
                             placeholder="no information"
                             value={firstName}
                             onChange={changeHandler}
@@ -105,6 +107,7 @@ export const ConfirmForm = ({
                             type="text"
                             className="form-control"
                             name="lastName"
+                            id="lastName"
                             placeholder="no information"
                             value={lastName}
                             onChange={changeHandler}
@@ -115,6 +118,7 @@ export const ConfirmForm = ({
                         <label>Gender</label>
                         <Radio.Group
                             name="gender"
+                            id="gender"
                             value={gender}
                             onChange={changeHandler}
                             disabled
@@ -135,6 +139,7 @@ export const ConfirmForm = ({
                             type="tel"
                             className="form-control"
                             name="phoneNumber"
+                            id="phoneNumber"
                             placeholder="no information"
                             value={phoneNumber}
                             onChange={changeHandler}
@@ -147,9 +152,11 @@ export const ConfirmForm = ({
                             type="text"
                             className="form-control"
                             name="address"
+                            id="address"
                             placeholder="no information"
                             value={address}
                             onChange={changeHandler}
+                            autoComplete="address-level1"
                             disabled
                         />
                     </div>
@@ -159,6 +166,7 @@ export const ConfirmForm = ({
                             type="text"
                             className="form-control"
                             name="town"
+                            id="town"
                             placeholder="no information"
                             value={town}
                             onChange={changeHandler}
@@ -175,6 +183,7 @@ export const ConfirmForm = ({
                             placeholder="no information"
                             value={country}
                             onChange={changeHandler}
+                            autoComplete="country"
                             disabled
                         />
                     </div>
