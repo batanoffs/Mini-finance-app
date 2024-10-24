@@ -83,13 +83,16 @@ const request = async (method, url, data, file, token = undefined) => {
             return {}
         }
 
-        const result = await response.json()
         if (!response.ok) {
-            // console.log(result.message)
-            return result
+            console.log('Error while requesting data', await response)
+            return response
         }
 
-        return result
+        const result = await response.text()
+        if (result === '') {
+            return {}
+        }
+        return await JSON.parse(result)
     } catch (error) {
         console.warn('Error while requesting data', error)
     }
