@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 
 import { ActionsMenu } from './ActionsMenu'
-import { AddToFavorites } from './AddFavourites'
+import { AddToFavorites } from './AddToFavorites'
 import { Actions } from './Actions'
 import { useMessage } from '../../../hooks/useMessage'
 import { AuthContext } from '../../../contexts/AuthContext'
@@ -83,7 +83,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
                 ) : (
                     <>
                         <p style={{ display: 'inline', fontStyle: 'italic', color: '#eee' }}>
-                            You don't have friends in the list
+                            You don't have friends in the list yet. Add friends from overview panel.
                         </p>
                         <AddToFavorites setShowFavorites={setShowFavorites} />
                     </>
