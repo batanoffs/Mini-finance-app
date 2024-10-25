@@ -95,8 +95,8 @@ To get started with this project, follow these steps:
     The registration is a multi-step process as shown below and clearly displays the user's current stage.
     There is validation implemented for the user's input.
 
-    | Steps                                                                                           | From left to right:                                                                             |
-    | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+    | Steps                                                                                                  | From left to right:                                                                                    |
+    | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
     | ![register step 1](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505345/register1_xwktpp.png) | ![register step 2](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505347/register2_glrjhu.png) |
     | ![register step 3](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505348/register3_uep0et.png) | ![register step 4](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505348/register3_uep0et.png) |
 
@@ -109,8 +109,8 @@ To get started with this project, follow these steps:
     Provides a central interface for managing the account, navigation, including virtual
     card, balance, last transactions, quick actions and buttons.
 
-    |                                                Web                                                |                                                 Mobile                                                  |
-    | :-----------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
+    |                                                Web                                                 |                                                  Mobile                                                  |
+    | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
     | ![Dashboard web](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505353/preview_dcttk8.png) | ![Dashboard mobile](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505337/homemobile_hihl3d.png) |
 
 - ### User balance
@@ -125,18 +125,18 @@ To get started with this project, follow these steps:
 
     *Users can **request money** from other users in the ecosystem as long as they are in their list of friends.The form is invoked from a button located on the dashboard and allows automatic filling / **Autocomplete** of the field if the friend has been found.*
   
-    | Notification Type             | Image                                                                                                                                   |
-    | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-    | Friend request notification   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506877/friend-request_sevm2j.png" width="800" height="400">              |
-    | Accept Friend request message | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506879/notification-friend-accept_gzoldh.png" width="800" height="400"> |
-    | Money recieved notification   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507492/notifyMoneySent_jd0usp.png" width="800" height="400">                  |
-    | Delete notification message   | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png" width="800" height="400">                    |
-    | Money request notification    | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507494/notifyMoneyRequest_dkhqpv.png" width="800" height="400">               |
-    | Message reject                | <img src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507498/notifyMoneyReject_xjh7x0.png" width="800" height="400">                |
+    | Notification Type             | Image                                                                                                                  |
+    | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+    | Friend request notification   | ![Friend request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506877/friend-request_sevm2j.png)             |
+    | Accept Friend request message | ![Accept message](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506879/notification-friend-accept_gzoldh.png) |
+    | Money recieved notification   | ![Money recieved](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507492/notifyMoneySent_jd0usp.png)            |
+    | Delete notification message   | ![Delete notification](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png)      |
+    | Money request notification    | ![Money request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507494/notifyMoneyRequest_dkhqpv.png)          |
+    | Message reject                | ![Message reject](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507498/notifyMoneyReject_xjh7x0.png)          |
 
 - ### Profile menu
-    |                                                 Web                                                 |                                                  Mobile                                                  |
-    | :-------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
+    |                                                   Web                                                    |                                                     Mobile                                                     |
+    | :------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
     | ![Profile web](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505340/profilemenu-web_wbdg0p.png) | ![Profile mobile](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505339/profilemenu-mobile_qaqegv.png) |
 
 - ### Transactions
@@ -152,12 +152,12 @@ To get started with this project, follow these steps:
     Provides a quick way to execute tasks such as sending money, adding friends,
     requesting money, and adding friends to a category of favorite
 
-    |                                            Quick actions                                            |                             Add Friends and transaction buttons                             |
-    | :-------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+    |                                               Quick actions                                               |                                Add Friends and transaction buttons                                 |
+    | :-------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------: |
     | ![Quick actions](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505341/quciksend-menu_to80ws.png) | ![Add Friends](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505335/addfriend_retjnm.png) |
 
-    |                                               Change                                                |                                             Show buttons                                              |                                              Delete                                               |
-    | :-------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+    |                                                Change                                                |                                                   Show buttons                                                    |                                                       Delete                                                        |
+    | :--------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
     | ![Change](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505342/quicksend-change_wulpfz.png) | ![Show buttons](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505343/quicksend-change-delete_ydn46c.png) | ![Delete](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505345/quicksend-change-delete-confirm_abbg1k.png) |
 
 - ### Last transactions
@@ -174,8 +174,8 @@ To get started with this project, follow these steps:
 - ### Profile overview
     Here the user can view their data and perform actions towards their friends, as well as see who they are
 
-    |                                            Overview                                            |                                Hover friends action buttons                                |
-    | :--------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+    |                                               Overview                                                |                                   Hover friends action buttons                                    |
+    | :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
     | ![Overview](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507496/profileoverview_x1xtdq.png) | ![Hover](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507267/friendsActions_zv0joq.png) |
 
 - ### Help center
