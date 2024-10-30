@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
-import { exchangeRates } from '../../constants/rates'
 import {
     HelpCenterTab,
     SettingsTab,
@@ -17,9 +16,7 @@ export const Dashboard = () => {
         send: false,
         request: false,
     })
-    const [hasLoaded, setHasLoaded] = useState(false)
     const [userInput, setUserInput] = useState({ amount: '', friends: '' })
-    const [rates, setRates] = useState(exchangeRates)
 
     return (
         <div className="main-wrapper">
@@ -34,10 +31,6 @@ export const Dashboard = () => {
                             userInput={userInput}
                             setUserInput={setUserInput}
                             setShowModal={setShowModal}
-                            rates={rates}
-                            setRates={setRates}
-                            hasLoaded={hasLoaded}
-                            setHasLoaded={setHasLoaded}
                         />
                     }
                 />
