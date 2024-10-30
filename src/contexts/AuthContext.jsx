@@ -10,9 +10,7 @@ export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useSessionStorage(`auth`, {})
-    const [loginError, setLoginError] = useState(false)
     const navigate = useNavigate()
-    let loginResponse
 
     const onLoginSubmitHandler = async (formData) => {
         const data = {
@@ -20,48 +18,35 @@ export const AuthProvider = ({ children }) => {
             password: formData.password,
         }
 
-        if (!data.login || !data.password) {
-            return
-        }
+        if (!data.login || !data.password) throw new Error('Null or empty value in formData')
+
         try {
-            loginResponse = await authService.login(data)
+            const response = await authService.login(data)
 
-            if (loginResponse.message) {
-                return loginResponse
-            }
+            if (response && response.message) return response
 
-            const token = loginResponse['user-token']
-            const ownerId = loginResponse['ownerId']
-            // Store the token in session storage
+            const token = response['user-token']
+            const ownerId = response['ownerId']
+
             sessionStorage.setItem('token', token)
 
             const userDataResponse = await dataService.getUserData(ownerId)
 
-            if (userDataResponse === null) {
-                throw new Error('userDataResponse is null')
-            }
-
-            if (userDataResponse.length === 0) {
-                throw new Error('userDataResponse has no elements')
-            }
+            if (userDataResponse === null) throw new Error('No user found with those credentials')
+            if (userDataResponse.length === 0) throw new Error('No user found with those credentials')
 
             const card = userDataResponse[0].virtualCard[0]
 
-            if (card === null) {
-                throw new Error('card is null')
-            }
+            if (card === null) throw new Error('card is null')
 
             const userData = userDataResponse[0]
-
             userData.virtualCard = card
-            userData.email = loginResponse.email
+            userData.email = response.email
 
             setAuth(userData)
             navigate('/dashboard/overview')
-            return true
         } catch (error) {
-            console.error(error)
-            setLoginError(true)
+            console.log(error || error.message)
         }
     }
 
@@ -82,9 +67,8 @@ export const AuthProvider = ({ children }) => {
             return { message: 'Null or empty value in formData' }
         }
 
-        if (formData.password !== formData.confirmPassword) {
-            throw new Error('Passwords do not match')
-        }
+        if (formData.password !== formData.confirmPassword)
+            return { message: 'Passwords do not match' }
 
         const registerData = {
             email: formData.email,
@@ -113,7 +97,6 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error)
             window.alert('Unsuccessful registration')
-            throw new Error('Unsuccessful registration')
         }
     }
 
@@ -159,13 +142,7 @@ export const AuthProvider = ({ children }) => {
         auth: auth,
     }
 
-    return (
-        <>
-            <AuthContext.Provider value={{ ...authDataContext, loginError, setLoginError }}>
-                {children}
-            </AuthContext.Provider>
-        </>
-    )
+    return <AuthContext.Provider value={{ ...authDataContext }}>{children}</AuthContext.Provider>
 }
 
 export const useAuthContext = () => {
