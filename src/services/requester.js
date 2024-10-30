@@ -1,3 +1,5 @@
+import { errorHandler } from '../utils/errorHandler'
+
 const request = async (method, url, data, file, token = undefined) => {
     if (!url) {
         throw new Error('url is null')
@@ -83,10 +85,9 @@ const request = async (method, url, data, file, token = undefined) => {
             return {}
         }
 
-        if (!response.ok) {
-            console.log('Error while requesting data', await response)
-            return response
-        }
+        // if (!response.ok) {
+        //     return response
+        // }
 
         const result = await response.text()
         if (result === '') {
@@ -94,7 +95,7 @@ const request = async (method, url, data, file, token = undefined) => {
         }
         return await JSON.parse(result)
     } catch (error) {
-        console.warn('Error while requesting data', error)
+        return errorHandler(error)
     }
 }
 
