@@ -1,23 +1,13 @@
-import { useEffect, useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Empty } from 'antd'
 
 import { TransactionListElement } from '../../../components/TransactionListElement'
-import { transactionService } from '../../../services/transactionService'
-import { AuthContext } from '../../../contexts/AuthContext'
+import { useTransactions } from '../../../hooks/useTransactions'
 
 import containers from './containers.module.css'
 
 export const LastTransactions = () => {
-    const [allTransactions, setAllTransactions] = useState([])
-    const { userDataId, token } = useContext(AuthContext)
-
-    useEffect(() => {
-        transactionService
-            .getAllReceiver(userDataId, token)
-            .then((result) => setAllTransactions(result))
-            .catch((error) => console.log(error))
-    }, [userDataId, token])
+    const transactions = useTransactions('receiver')
 
     return (
         <div className={`${containers.customBlock} ${containers.customBlockExchange}`}>
@@ -28,8 +18,8 @@ export const LastTransactions = () => {
                 </Link>
             </div>
             <ul>
-                {allTransactions.length > 0 ? (
-                    allTransactions
+                {transactions.length > 0 ? (
+                    transactions
                         .slice(0, 5)
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .map((entry) => (

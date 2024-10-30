@@ -1,29 +1,18 @@
-import { useEffect, useContext, useState } from 'react'
 import { Empty } from 'antd'
-
-import { transactionService } from '../../../services/transactionService'
 import { TransactionListElement } from '../../../components/TransactionListElement'
-import { AuthContext } from '../../../contexts/AuthContext'
 
 import containers from './containers.module.css'
+import { useTransactions } from '../../../hooks/useTransactions'
 
 export const History = () => {
-    const [transactionsList, setTransactionsList] = useState([])
-    const { userDataId, token } = useContext(AuthContext)
-
-    useEffect(() => {
-        transactionService
-            .getAllSender(userDataId, token)
-            .then(setTransactionsList)
-            .catch(console.error)
-    }, [userDataId, token])
+    const transactions = useTransactions('sender')
 
     return (
         <div className={containers.customBlock}>
             <h5>Transaction History</h5>
             <ul>
-                {transactionsList.length > 0 ? (
-                    transactionsList
+                {transactions.length > 0 ? (
+                    transactions
                         .slice()
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .slice(0, 4)

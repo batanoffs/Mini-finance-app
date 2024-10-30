@@ -1,39 +1,20 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { balanceFormat } from '../../../utils/balanceFormat'
-import { AuthContext } from '../../../contexts/AuthContext'
 import { showLastCardDigits } from '../../../utils/showLastCardDigits'
-import { transactionService } from '../../../services/transactionService'
+import { useVirtualCard } from '../../../hooks/useVirtualCard'
 
 import containers from './containers.module.css'
 
 export const VirtualCard = () => {
-    const { userDataId, token, auth, setAuth, virtualCard } = useContext(AuthContext)
-    const [card, setCard] = useState(virtualCard)
-    const style = {
-        animation: 'spin 2s linear 1',
-
-        '@keyframes spin': {
-            from: { transform: 'rotate(0deg)' },
-            to: { transform: 'rotate(360deg)' },
-        },
-    }
+    const [card, auth, fetchBalance] = useVirtualCard()
 
     useEffect(() => {
-        transactionService
-            .updateBalance(userDataId, card.objectId, token)
-            .then((data) => {
-                setCard({ ...card, balance: data.results.updateMoney.result.balance })
-                setAuth({
-                    ...auth,
-                    virtualcard: { ...card, balance: data.results.updateMoney.result.balance },
-                })
-            })
-            .catch((err) => console.log(err))
-    }, [])
+        fetchBalance()
+    }, [fetchBalance])
 
     return (
-        <div style={style} className={`${containers.customBlock} ${containers.customBlockBalance}`}>
+        <div className={`${containers.customBlock} ${containers.customBlockBalance}`}>
             <h5>Balance</h5>
             <h4 style={{ color: 'var(--white-color)' }}>
                 {card.balance ? balanceFormat(card.balance) + ' BGN' : '0 BGN'}
