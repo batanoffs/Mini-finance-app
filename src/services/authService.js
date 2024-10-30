@@ -6,7 +6,7 @@ const login = async (data) => {
 }
 
 const logout = async (token) => {
-    await request.get(API.LOGOUT, token)
+    return await request.get(API.LOGOUT, token)
 }
 
 const register = async (data) => {
