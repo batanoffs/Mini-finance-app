@@ -21,10 +21,14 @@ export const Login = () => {
 
     const onSubmitLoginHandler = async (event) => {
         const response = await onSubmitLogin(event)
-        if (response && response.message) {
+
+        console.log('login response in component', response)
+
+        if (response?.message?.length > 0) {
             showMessage('error', response.message)
+            return
         } else {
-            showMessage('success', 'Successfully logged in!')
+            showMessage('success', 'Successfully logged in')
         }
     }
 

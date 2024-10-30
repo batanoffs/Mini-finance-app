@@ -1,3 +1,8 @@
+import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 import {
     faWallet,
     faGear,
@@ -5,10 +10,6 @@ import {
     faHouse,
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
-import { NavLink } from 'react-router-dom'
-import { useContext } from 'react'
 
 import { AuthContext } from '../../../../contexts/AuthContext'
 
