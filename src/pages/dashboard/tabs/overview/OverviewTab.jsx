@@ -12,14 +12,14 @@ import {
 
 import layout from '../../dashboard-layout.module.css'
 
-export const OverviewTab = (props) => {
+export const OverviewTab = (showModal, userInput, setUserInput, setShowModal) => {
     return (
         <div className={layout.contentContainer}>
             <div className={layout.bentoMainColumn}>
                 <Greetings />
                 <ProfileDetails />
                 <VirtualCard />
-                <ExchangeRate props={props} />
+                <ExchangeRate />
             </div>
             <div className={layout.bentoFillColumn}>
                 <LastTransactions />
@@ -30,16 +30,16 @@ export const OverviewTab = (props) => {
                 <ContactInfo />
                 <AddFriends />
                 <BankingActionButtons
-                    userInput={props.userInput}
-                    setUserInput={props.setUserInput}
-                    showModal={props.showModal}
-                    setShowModal={props.setShowModal}
+                    userInput={userInput}
+                    setUserInput={setUserInput}
+                    showModal={showModal}
+                    setShowModal={setShowModal}
                 />
                 <QuickSendMoney
-                    userInput={props.userInput}
-                    setUserInput={props.setUserInput}
-                    showModal={props.showModal}
-                    setShowModal={props.setShowModal}
+                    userInput={userInput}
+                    setUserInput={setUserInput}
+                    showModal={showModal}
+                    setShowModal={setShowModal}
                 />
             </div>
         </div>
