@@ -1,0 +1,33 @@
+.nav-tabs .navLink {
+    border-radius: 20px;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    color: var(--p-color);
+    font-size: var(--menu-font-size);
+    font-weight: var(--font-weight-normal);
+    padding: 15px 25px;
+    transition: all 0.3s;
+}
+
+.sidebarIcons {
+    width: 20px;
+    padding-right: 0.5em;
+}
+
+.navLink {
+    border-radius: var(--border-radius-small);
+    color: var(--p-color);
+    font-size: var(--menu-font-size);
+    display: inline-block;
+    position: relative;
+    margin-bottom: 0.1em;
+    margin-left: 1em;
+    padding: 0.2em;
+}
+
+.navLink.active,
+.navLink:hover {
+    background: var(--primary-hover-color);
+    color: var(--white-color);
+}
