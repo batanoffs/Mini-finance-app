@@ -1,17 +1,10 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
-import {
-    faWallet,
-    faGear,
-    faHandshakeAngle,
-    faHouse,
-    faArrowRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons'
-
+import { faWallet, faGear, faHandshakeAngle, faHouse, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../../../contexts/AuthContext'
+import { ListNav } from '../../../../components/buttons/ListNav'
 
 import styles from './sidebar.module.css'
 
@@ -20,112 +13,23 @@ export const Sidebar = () => {
     return (
         <nav className={styles.sidebarMenu}>
             <ul className={styles.nav}>
-                <li>
-                    <NavLink
-                        className={({ isActive, isPending }) =>
-                            isPending
-                                ? `${styles.navLink} ${styles.pending}`
-                                : isActive
-                                ? `${styles.navLink} ${styles.active}`
-                                : `${styles.navLink}`
-                        }
-                        name="overview"
-                        to="overview"
-                    >
-                        <FontAwesomeIcon className={styles.sidebarIcons} icon={faHouse} />
-                        Overview
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink
-                        className={({ isActive, isPending }) =>
-                            isPending
-                                ? `${styles.navLink} ${styles.pending}`
-                                : isActive
-                                ? `${styles.navLink} ${styles.active}`
-                                : `${styles.navLink}`
-                        }
-                        name="wallet"
-                        to="wallet"
-                    >
-                        <FontAwesomeIcon className={styles.sidebarIcons} icon={faWallet} />
-                        Wallet
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink
-                        className={({ isActive, isPending }) =>
-                            isPending
-                                ? `${styles.navLink} ${styles.pending}`
-                                : isActive
-                                ? `${styles.navLink} ${styles.active}`
-                                : `${styles.navLink}`
-                        }
-                        name="profile"
-                        to="profile"
-                    >
-                        <FontAwesomeIcon className={styles.sidebarIcons} icon={faAddressCard} />
-                        Profile
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink
-                        className={({ isActive, isPending }) =>
-                            isPending
-                                ? `${styles.navLink} ${styles.pending}`
-                                : isActive
-                                ? `${styles.navLink} ${styles.active}`
-                                : `${styles.navLink}`
-                        }
-                        name="settings"
-                        to="settings"
-                    >
-                        <FontAwesomeIcon className={styles.sidebarIcons} icon={faGear} />
-                        Settings
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink
-                        className={({ isActive, isPending }) =>
-                            isPending
-                                ? `${styles.navLink} ${styles.pending}`
-                                : isActive
-                                ? `${styles.navLink} ${styles.active}`
-                                : `${styles.navLink}`
-                        }
-                        name="helpCenter"
-                        to="help-center"
-                    >
-                        <FontAwesomeIcon className={styles.sidebarIcons} icon={faHandshakeAngle} />
-                        Help Center
-                    </NavLink>
-                </li>
-
-                <li className={styles.featureBox}>
-                    <img
-                        src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/t2gvhqmfqhmvllw8f09f.png"
-                        alt="credit card"
-                    />
-
-                    <NavLink className="custom-btn-fill" to="upgrade">
-                        Upgrade
-                    </NavLink>
-                </li>
-
-                <li style={{ position: 'absolute', bottom: `1em` }}>
-                    <NavLink className={styles.navLink} onClick={onLogoutHandler} to="/">
-                        <FontAwesomeIcon
-                            className={styles.sidebarIcons}
-                            icon={faArrowRightFromBracket}
-                        />
-                        Logout
-                    </NavLink>
-                </li>
+                <ListNav name="overview" to="overview" title="Overview" icon={faHouse} />
+                <ListNav name="wallet" to="wallet" title="Wallet" icon={faWallet} />
+                <ListNav name="profile" to="profile" title="Profile" icon={faAddressCard} />
+                <ListNav name="settings" to="settings" title="Settings" icon={faGear} />
+                <ListNav name="helpCenter" to="help-center" title="Help Center" icon={faHandshakeAngle} />
+                <ListNav name="logout" to="/" title="Logout" onClick={onLogoutHandler} icon={faArrowRightFromBracket} />
             </ul>
+            <div className={styles.featureBox}>
+                <img
+                    src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/t2gvhqmfqhmvllw8f09f.png"
+                    alt="credit card"
+                />
+
+                <NavLink className="custom-btn-fill" to="upgrade">
+                    Upgrade
+                </NavLink>
+            </div>
         </nav>
     )
 }
