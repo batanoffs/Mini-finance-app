@@ -13,9 +13,7 @@ export const Header = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 600)
     const navigate = useNavigate()
 
-    const showIcon = isMobile ? (
-        <FontAwesomeIcon className={styles.headerDropdownIcon} icon={faBars} />
-    ) : null
+    const showIcon = isMobile ? <FontAwesomeIcon className={styles.headerDropdownIcon} icon={faBars} /> : null
     const showButtons = isMobile ? <MobileMenu styles={styles} /> : <LoginButtons />
 
     const authContent = isAuthenticated() ? (

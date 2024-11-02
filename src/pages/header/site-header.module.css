@@ -7,14 +7,14 @@
     background-color: var(--heading-color);
     flex-direction: row;
     justify-content: space-between;
-    flex: 0 0 max(45px);
+    flex: 0 0 max(30px);
 
     .logoContainer {
         align-self: center;
         margin-left: 0.3em;
 
         .logo {
-            height: 40px;
+            height: max(30px);
             cursor: pointer;
         }
     }
@@ -38,6 +38,7 @@
         justify-content: center;
         gap: 1em;
         margin-right: 1em;
+        border: 2px solid #ccdde2ff;
     }
 }
 
@@ -216,7 +217,7 @@
 .dropdownNotifications {
     position: relative;
     display: inline-block;
-    height: 44px;
+    height: auto;
 }
 
 .hidden {

@@ -1,7 +1,6 @@
 /* NOTIFICATIONS */
 
 @media (min-width: 800px) {
-    /* Styles for the dropdown menu */
     .dropdownMenu {
         display: none;
         position: absolute;
@@ -11,7 +10,7 @@
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 4;
         top: 40px;
-        left: -350px; /* Adjust the left position as needed */
+        left: -350px;
     }
 }
 
@@ -91,8 +90,15 @@
 
 .dropdownNotifications {
     position: relative;
-    display: inline-block;
-    height: 44px;
+    /* display: inline-block;
+    height: auto; */
+}
+
+.dropdownNotifications:hover .dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    padding: 0.5em;
 }
 
 .notificationsIcon {
@@ -127,12 +133,6 @@
 }
 
 /* Show the dropdown menu on hover */
-.dropdownNotifications:hover .dropdownMenu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-    padding: 0.5em;
-}
 
 .accept {
     border: 1px solid #ddd;

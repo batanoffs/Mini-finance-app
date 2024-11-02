@@ -6,7 +6,7 @@ main {
 
 .main-wrapper {
     background: var(--section-bg-color);
-    max-height: calc(100dvh - 45px);
+    max-height: calc(100dvh - 30px);
     display: flex;
     width: 100dvw;
 }
