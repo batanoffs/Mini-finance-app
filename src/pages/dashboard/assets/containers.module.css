@@ -29,7 +29,7 @@
     height: 40px;
 }
 
-.sendMonkeyContainer {
+.sendMoneyContainer {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -231,6 +231,10 @@
     position: relative;
     overflow: hidden;
     padding: 1em;
+
+    h5 {
+        margin-bottom: 1em;
+    }
 }
 
 .customBlockExchange,

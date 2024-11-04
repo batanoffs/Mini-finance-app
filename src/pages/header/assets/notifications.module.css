@@ -90,15 +90,18 @@
 
 .dropdownNotifications {
     position: relative;
+    height: 100%;
     /* display: inline-block;
     height: auto; */
 }
 
-.dropdownNotifications:hover .dropdownMenu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-    padding: 0.5em;
+.dropdownNotifications:hover {
+    .dropdownMenu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
+        padding: 0.5em;
+    }
 }
 
 .notificationsIcon {
@@ -128,8 +131,8 @@
     min-width: 400px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 5;
-    top: 45px;
-    left: -350px; /* Adjust the left position as needed */
+    top: 40px;
+    left: -320px; /* Adjust the left position as needed */
 }
 
 /* Show the dropdown menu on hover */

@@ -14,7 +14,9 @@ export const AddFriends = () => {
             <form onSubmit={onSubmit} className={styles.friendsForm}>
                 {error ? <small style={{ color: 'red' }}>No phone number</small> : null}
                 <input
-                    type="text"
+                    type="number"
+                    id="phone number"
+                    name="phone number"
                     placeholder="phone number"
                     onBlur={(e) => {
                         if (!number) {

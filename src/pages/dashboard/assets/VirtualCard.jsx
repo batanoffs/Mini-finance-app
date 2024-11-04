@@ -21,9 +21,7 @@ export const VirtualCard = () => {
             </h4>
 
             <div className={containers.customBlockNumbers}>
-                <span>****</span>
-                <span>****</span>
-                <span>****</span>
+                <span>**** **** ****</span>
                 <small>{showLastCardDigits(card.number)}</small>
             </div>
 

@@ -215,7 +215,7 @@
 .dropdownNotifications {
     position: relative;
     display: inline-block;
-    height: auto;
+    height: 100%;
 }
 
 .hidden {

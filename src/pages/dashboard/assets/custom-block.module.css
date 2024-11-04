@@ -32,7 +32,7 @@
     height: 40px;
 }
 
-.sendMonkeyContainer {
+.sendMoneyContainer {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
