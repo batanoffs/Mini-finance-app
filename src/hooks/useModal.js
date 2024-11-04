@@ -13,5 +13,5 @@ export const useModal = () => {
             [type]: !showModal[type],
         })
 
-    return [showModal, setShowModal, handleShowModal]
+    return [showModal, handleShowModal]
 }
