@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import './autocomplete.css'
+import styles from './autocomplete.module.css'
 
 export const Autocomplete = (props) => {
     const [activeSuggestion, setActiveSuggestion] = useState(0)
@@ -61,25 +61,16 @@ export const Autocomplete = (props) => {
     if (showSuggestions && props.userInput?.friends) {
         if (filteredSuggestions.length) {
             suggestionsListComponent = (
-                <ul className="suggestions">
+                <ul className={styles.suggestions}>
                     {filteredSuggestions.map((suggestion, index) => {
                         let className
 
                         if (index === activeSuggestion) {
-                            className = 'suggestion-active'
+                            className = styles.active
                         }
                         return (
-                            <li
-                                className={className}
-                                key={suggestion.objectId}
-                                onClick={onClick}
-                                name="friends"
-                            >
-                                <img
-                                    className="profile-image"
-                                    src={suggestion.avatar}
-                                    alt={suggestion.name}
-                                />
+                            <li className={className} key={suggestion.objectId} onClick={onClick} name="friends">
+                                <img className={styles.avatar} src={suggestion.avatar} alt={suggestion.name} />
                                 <p>{suggestion.name}</p>
                             </li>
                         )
@@ -88,7 +79,7 @@ export const Autocomplete = (props) => {
             )
         } else {
             suggestionsListComponent = (
-                <div className="no-suggestions">
+                <div className={styles.noSuggestions}>
                     <em>No matches found</em>
                 </div>
             )
@@ -96,24 +87,22 @@ export const Autocomplete = (props) => {
     }
 
     return (
-        <>
-            <div className="suggestions-wrapper">
-                <input
-                    className="suggestion-box"
-                    name="friends"
-                    placeholder="John Doe"
-                    type="text"
-                    style={{
-                        marginBottom: '0px',
-                        border: 'none',
-                        width: '100%',
-                    }}
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                    value={props.userInput.friends}
-                />
-                {suggestionsListComponent}
-            </div>
-        </>
+        <div className={styles.wrapper}>
+            <input
+                name="friends"
+                placeholder="John Doe"
+                type="text"
+                autoComplete='off'
+                style={{
+                    marginBottom: '0px',
+                    border: 'none',
+                    width: '100%',
+                }}
+                onChange={onChange}
+                onKeyDown={onKeyDown}
+                value={props.userInput.friends}
+            />
+            {suggestionsListComponent}
+        </div>
     )
 }

@@ -1,0 +1,57 @@
+.noSuggestions {
+    color: #ddd;
+    text-align: left;
+    padding-left: 0.8em;
+    border-top: 1px solid #ddd;
+}
+
+.suggestions {
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow-y: auto;
+    padding-left: 0;
+    width: auto;
+
+    .active {
+        cursor: pointer;
+    }
+
+    li {
+        padding: 0.3em;
+        display: flex;
+        gap: 0.3em;
+        align-items: center;
+
+        .avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 20%;
+        }
+    }
+}
+
+.wrapper {
+    input {
+        border-bottom: 1px solid #ddd;
+        padding: 0.5rem;
+        width: 100%;
+    }
+}
+
+.suggestions .wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border: 1px solid #ddd;
+    /* border-top-style: none; */
+    border-bottom-left-radius: 0.8em;
+    border-bottom-right-radius: 0.8em;
+    border-top-right-radius: 0.8em;
+    border-top-left-radius: 0.8em;
+}
+
+.suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #ddd;
+}
