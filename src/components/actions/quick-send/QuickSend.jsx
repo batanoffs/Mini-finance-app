@@ -49,7 +49,7 @@ export const QuickSendMoney = () => {
     return (
         <div className={`${containers.customBlock} ${containers.primaryBg}`}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <h5 style={{ color: 'var(--section-bg-color)' }}>Quick send</h5>
+                <h5 style={{ color: 'var(--section-bg-color)', marginBottom: '1em' }}>Quick send</h5>
                 {favorites.length > 0 ? (
                     <ActionsMenu
                         setShowBtns={setShowBtns}
@@ -59,13 +59,13 @@ export const QuickSendMoney = () => {
                 ) : null}
             </div>
 
-            <ul className={containers.sendMonkeyContainer}>
+            <ul className={containers.sendMoneyContainer}>
                 {favorites.length > 0 ? (
                     favorites?.map((friend) => (
                         <li key={friend.objectId} data-key={friend.fullName} style={{ position: 'relative' }}>
                             <img
                                 src={friend.avatar}
-                                className={styles.profileImage}
+                                className={styles.avatar}
                                 data-key={friend.fullName}
                                 alt={'avatar'}
                                 onClick={openSendMenu}
@@ -82,7 +82,7 @@ export const QuickSendMoney = () => {
                 ) : (
                     <>
                         <p style={{ display: 'inline', fontStyle: 'italic', color: '#eee' }}>
-                            You don't have friends in the list yet. Add friends from overview panel.
+                            No friends added yet. Add friends below
                         </p>
                         <AddToFavorites setShowFavorites={setShowFavorites} />
                     </>

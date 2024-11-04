@@ -50,17 +50,17 @@
     background-color: whitesmoke;
 }
 
-.profileImage {
-    border-radius: var(--border-radius-medium);
+.avatar {
+    border: 1px solid transparent;
+    border-radius: 20%;
     position: relative;
     width: 50px;
     height: 50px;
     z-index: 2;
     cursor: pointer;
-    overflow: visible;
 }
 
-.profileImage::before {
+.avatar::before {
     content: attr(data-key);
     position: absolute;
     top: -30px;
@@ -70,13 +70,13 @@
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 20%;
     transition: opacity 0.3s, top 0.3s;
     z-index: 2;
     overflow: visible;
     pointer-events: none;
 }
 
-.profileImage:hover {
+.avatar:hover {
     border: 2px solid var(--primary-hover-color);
 }
