@@ -26,12 +26,7 @@ export const AddToFavorites = ({ setShowFavorites }) => {
             if (!userInput) throw new Error('Please enter a name!')
             if (!userDataId) throw new Error('Something went wrong')
 
-            const response = await dataService.setRelation(
-                userDataId,
-                'favorite_friends',
-                body,
-                token
-            )
+            const response = await dataService.setRelation(userDataId, 'favorite_friends', body, token)
 
             if (response !== 1) {
                 setShowFavorites(false)
@@ -57,31 +52,23 @@ export const AddToFavorites = ({ setShowFavorites }) => {
     }
 
     return (
-        <div className="modal-backdrop">
-            <div className="popup-modal">
-                <form onSubmit={onSubmit}>
-                    <Autocomplete
-                        name="favorite-name"
-                        userInput={userInput}
-                        setUserInput={setUserInput}
-                        suggestions={[
-                            ...auth.friends.map((friend) => {
-                                return {
-                                    name: friend.fullName,
-                                    avatar: friend.avatar,
-                                    objectId: friend.objectId,
-                                }
-                            }),
-                        ]}
-                    />
-                    <input
-                        style={{ marginTop: '0.5em' }}
-                        type="submit"
-                        className="custom-btn-fill"
-                        value="Add to favorites"
-                    />
-                </form>
-            </div>
-        </div>
+        <form onSubmit={onSubmit}>
+            <Autocomplete
+                name="favorite-name"
+                id="favorite-name"
+                userInput={userInput}
+                setUserInput={setUserInput}
+                suggestions={[
+                    ...auth.friends.map((friend) => {
+                        return {
+                            name: friend.fullName,
+                            avatar: friend.avatar,
+                            objectId: friend.objectId,
+                        }
+                    }),
+                ]}
+            />
+            <input style={{ marginTop: '0.5em' }} type="submit" className="custom-btn-fill" value="Add to favorites" />
+        </form>
     )
 }
