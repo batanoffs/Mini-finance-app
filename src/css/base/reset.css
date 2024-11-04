@@ -13,6 +13,16 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
 *,
 *:before,
 *:after {
@@ -24,6 +34,7 @@ img {
     display: block;
     width: 100%;
     height: auto;
+    overflow: clip;
 }
 
 li {
