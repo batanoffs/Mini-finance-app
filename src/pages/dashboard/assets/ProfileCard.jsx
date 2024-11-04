@@ -7,7 +7,7 @@ import { AuthContext } from '../../../contexts/AuthContext'
 
 import containers from './containers.module.css'
 
-export const ProfileDetails = () => {
+export const ProfileCard = () => {
     const { name, picture, phone, email, address, country } = useContext(AuthContext)
 
     return (
@@ -21,16 +21,15 @@ export const ProfileDetails = () => {
             </div>
 
             <p>
-                <strong>Name:</strong>
-                <span> {name}</span>
+                <strong>Name: </strong>
+                <span>{name}</span>
             </p>
 
             <p>
-                <strong>Email:</strong>
+                <strong>Email: </strong>
                 <a
                     href={`mailto:${email}`}
                     style={{
-                        paddingLeft: '5px',
                         color: 'var(--heading-color)',
                         hover: 'white',
                     }}
@@ -58,7 +57,7 @@ export const ProfileDetails = () => {
             )}
             {address && (
                 <p>
-                    <strong>Address:</strong>
+                    <strong>Address: </strong>
                     <span>{address}</span>
                 </p>
             )}

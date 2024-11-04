@@ -7,7 +7,7 @@ import {
     VirtualCard,
     ExchangeRate,
     LastTransactions,
-    ProfileDetails,
+    ProfileCard,
 } from '../../assets/index'
 
 import layout from '../../dashboard-layout.module.css'
@@ -17,7 +17,7 @@ export const OverviewTab = () => {
         <div className={layout.contentContainer}>
             <div className={layout.bentoMainColumn}>
                 <Greetings />
-                <ProfileDetails />
+                <ProfileCard />
                 <VirtualCard />
                 <ExchangeRate />
             </div>

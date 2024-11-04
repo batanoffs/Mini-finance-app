@@ -1,7 +1,7 @@
 import Cards from 'react-credit-cards-2'
 import { useContext } from 'react'
 
-import { ProfileDetails, ContactInfo } from '../../assets/index'
+import { ProfileCard, ContactInfo } from '../../assets/index'
 import { Friends } from './assets/index'
 import { AuthContext } from '../../../../contexts/AuthContext'
 
@@ -20,7 +20,7 @@ export const ProfileTab = () => {
     return (
         <div className={layout.contentContainer}>
             <section className={layout.bentoMainColumn}>
-                <ProfileDetails
+                <ProfileCard
                     address={address}
                     country={country}
                     email={email}
