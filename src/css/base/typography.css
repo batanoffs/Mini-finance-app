@@ -45,7 +45,7 @@
 -----------------------------------------*/
 
 html {
-    font: 16px/1.5 var(--body-font-family);
+    font: 14px/1.5 var(--body-font-family);
 }
 
 body,
@@ -83,12 +83,11 @@ h4 {
     font-size: 1.6em;
 } /* 14 * 1.6 = 22px */
 h5 {
-    font-size: 1.2em;
-    padding-bottom: 0.5em;
-} /* 14 * 1.2 = 17px */
+    font-size: 1.4em;
+} /* 14 * 1.4 = 20px */
 h6 {
-    font-size: 1em;
-} /* 14 * 1.0 = 14px */
+    font-size: 1.2em;
+} /* 14 * 1.2 = 17px */
 
 li {
     list-style-position: outside;

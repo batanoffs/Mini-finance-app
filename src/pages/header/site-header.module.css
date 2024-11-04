@@ -7,14 +7,14 @@
     background-color: var(--heading-color);
     flex-direction: row;
     justify-content: space-between;
-    flex: 0 0 max(30px);
+    flex: 0 0 max(40px);
 
     .logoContainer {
         align-self: center;
-        margin-left: 0.3em;
+        margin-left: 0.5em;
 
         .logo {
-            height: max(30px);
+            height: max(35px);
             cursor: pointer;
         }
     }
@@ -38,7 +38,6 @@
         justify-content: center;
         gap: 1em;
         margin-right: 1em;
-        border: 2px solid #ccdde2ff;
     }
 }
 
@@ -59,14 +58,14 @@
 
 .buttonLogin {
     color: #ccdde2ff;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 500;
     cursor: pointer;
     transition: 0.4s;
     margin-bottom: 0em;
     width: fit-content;
     margin-top: 0em;
-    padding: 3px 16px;
+    padding: 2px 16px;
     height: 2em;
     border: 1px solid #ccdde2ff;
     border-radius: 0.6em;
@@ -75,9 +74,8 @@
 .buttonRegister {
     background: var(--primary-color);
     color: white;
-    font-size: 1.1em;
-
-    padding: 3px 16px;
+    font-size: 1em;
+    padding: 2px 16px;
     border: 1px solid transparent;
     font-weight: 500;
     cursor: pointer;

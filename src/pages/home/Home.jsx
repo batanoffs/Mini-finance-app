@@ -5,15 +5,14 @@ import styles from './home.module.css'
 
 export const Home = () => {
     const title = 'The easiest way to make transactions online'
+    const subTitle =
+        'We created this platform for free to make it accessible to each one of you. Register now and get your free card today!'
     return (
         <div className={styles.wrapper}>
             <div className={styles.heroSection}>
                 <div className={styles.heroContent}>
                     <h1>{title}</h1>
-                    <h4>
-                        We created this platform for free to make it accessible to each one of you.
-                        Register now and get your free card
-                    </h4>
+                    <h5>{subTitle}</h5>
 
                     <div className={styles.buttonContainer}>
                         <Link to="/about" className="button-secondary">
