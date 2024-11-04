@@ -86,6 +86,7 @@
 }
 
 .custom-btn-fill:hover {
+    cursor: pointer;
     background: var(--section-bg-color);
     color: var(--primary-hover-color);
     border-color: var(--primary-hover-color);
