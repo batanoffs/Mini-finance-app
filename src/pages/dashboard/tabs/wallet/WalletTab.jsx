@@ -4,7 +4,7 @@ import { ContactInfo } from '../../assets/index'
 
 import layout from '../../dashboard-layout.module.css'
 
-export const WalletTab = (props) => {
+export const WalletTab = () => {
     return (
         <div className={layout.contentContainer}>
             <main className={layout.bentoFillColumn}>
@@ -12,12 +12,7 @@ export const WalletTab = (props) => {
             </main>
             <aside className={layout.bentoSideColumn}>
                 <ContactInfo />
-                <BankingActionButtons
-                    showModal={props.showModal}
-                    userInput={props.userInput}
-                    setUserInput={props.setUserInput}
-                    setShowModal={props.setShowModal}
-                />
+                <BankingActionButtons />
             </aside>
         </div>
     )

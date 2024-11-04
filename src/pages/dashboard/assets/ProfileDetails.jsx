@@ -22,9 +22,9 @@ export const ProfileDetails = () => {
 
             <p>
                 <strong>Name:</strong>
-
                 <span> {name}</span>
             </p>
+
             <p>
                 <strong>Email:</strong>
                 <a
