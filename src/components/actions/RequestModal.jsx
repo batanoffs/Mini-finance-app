@@ -8,8 +8,10 @@ import { useMessage } from '../../hooks/useMessage'
 
 import modal from './modal.module.css'
 
-export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal }) => {
+export const RequestMoney = ({ handleShowModal }) => {
+    const [userInput, setUserInput] = useState({ amount: '', friends: '' })
     const { userDataId, token } = useContext(AuthContext)
+
     const [receiver, setReceiver] = useState([])
     const showMessage = useMessage()
 
@@ -59,21 +61,16 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
 
             if (!amount || !friends) throw new Error('Amount or friends is null or empty')
 
-            const response = await transactionService.requestNotify(
-                friends,
-                Number(amount),
-                userDataId,
-                token
-            )
+            const response = await transactionService.requestNotify(friends, Number(amount), userDataId, token)
 
             if (!response) throw new Error('TransactionService response is null')
 
             if (response.success) {
-                setShowModal({ ...showModal, [`request`]: false })
+                handleShowModal('request')
                 setUserInput({ amount: '', friends: '' })
                 showMessage('success', 'Successfully requested money')
             } else {
-                setShowModal({ ...showModal, [`request`]: false })
+                handleShowModal('request')
                 setUserInput({ amount: '', friends: '' })
                 showMessage('error', `Error requesting money: ${response.message}`)
                 console.error('error', response)
@@ -90,7 +87,7 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
             return
         }
 
-        setShowModal({ ...showModal, [`request`]: false })
+        handleShowModal('request')
 
         if (!userInput) {
             console.error('userInput is null')
@@ -133,12 +130,7 @@ export const RequestMoney = ({ userInput, setUserInput, showModal, setShowModal 
                             </div>
                         </div>
                         <footer>
-                            <input
-                                className="button-primary"
-                                type="submit"
-                                value="Send"
-                                style={{ width: '100%' }}
-                            />
+                            <input className="button-primary" type="submit" value="Send" style={{ width: '100%' }} />
                         </footer>
                     </form>
                 </div>

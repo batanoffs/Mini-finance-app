@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 export const useModal = () => {
     const [showModal, setShowModal] = useState({
         topUp: false,
@@ -5,13 +7,11 @@ export const useModal = () => {
         request: false,
     })
 
-    const handleShowModal = (type) => () => {
-        
+    const handleShowModal = (type) => () =>
         setShowModal({
             ...showModal,
-            [type]: true,
+            [type]: !showModal[type],
         })
-    }
 
-    return [isModalOpen, openModal, closeModal, handleShowModal]
+    return [showModal, setShowModal, handleShowModal]
 }

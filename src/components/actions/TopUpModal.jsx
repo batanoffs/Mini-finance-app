@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, useContext } from 'react'
 
 import { PaymentForm } from './PaymentForm'
-
 import { cardService } from '../../services/cardGenerationService'
 import { useMessage } from '../../hooks/useMessage'
-
-import modal from './modal.module.css'
 import { AuthContext } from '../../contexts/AuthContext'
 
-export const TopUp = ({ showModal, setShowModal }) => {
+import modal from './modal.module.css'
+
+export const TopUp = ({ handleShowModal }) => {
     const [inputState, setInputState] = useState({})
     const { virtualcard, token } = useContext(AuthContext)
+
     const message = useMessage()
 
     const onSubmitHandler = async (e) => {
@@ -53,7 +53,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
                     virtualcard: { ...prevData.virtualcard, top_up: topUp, balance: balance },
                 })
             )
-            setShowModal({ ...showModal, [`topUp`]: false })
+            handleShowModal('topUp')
             message('success', 'Transaction was successful')
         }
     }
@@ -68,9 +68,7 @@ export const TopUp = ({ showModal, setShowModal }) => {
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Top up account</h5>
-                    <button onClick={() => setShowModal({ ...showModal, [`topUp`]: false })}>
-                        X
-                    </button>
+                    <button onClick={() => handleShowModal('topUp')}>X</button>
                 </div>
                 <form onSubmit={onSubmitHandler} className="custom-form">
                     <div className="form-group">

@@ -8,7 +8,8 @@ import { dataService } from '../../services/userDataService'
 
 import modal from './modal.module.css'
 
-export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) => {
+export const SendMoney = ({ handleShowModal }) => {
+    const [userInput, setUserInput] = useState({ amount: '', friends: '' })
     const { userDataId, token } = useContext(AuthContext)
     const [receiver, setReceiver] = useState([])
     const showMessage = useMessage()
@@ -61,12 +62,7 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
                 throw new Error('Amount or friends are not given.')
             }
 
-            const response = await transactionService.sendMoney(
-                friends,
-                Number(amount),
-                userDataId,
-                token
-            )
+            const response = await transactionService.sendMoney(friends, Number(amount), userDataId, token)
             if (!response) {
                 throw new Error('Transaction service response is null.')
             }
@@ -74,13 +70,13 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
                 throw new Error(`Transaction service error: ${response.message}`)
             }
             await transactionService.notifyMoneyReceived(friends, Number(amount), userDataId, token)
-            setShowModal({ ...showModal, [`send`]: false })
-            setUserInput({ amount: '', friends: '' })
+            handleShowModal('send')
+            setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
             showMessage('success', 'Successfully sent the money')
         } catch (error) {
             console.log('Error in onFormSubmitHandler: ', error)
-            setShowModal({ ...showModal, [`send`]: false })
-            setUserInput({ amount: '', friends: '' })
+            handleShowModal('send')
+            setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
             showMessage('error', `Error sending money: ${error.message}`)
         }
     }
@@ -94,13 +90,8 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
             console.error('showModal.send is null')
             return
         }
-        setShowModal({ ...showModal, [`send`]: false })
-
-        if (!userInput) {
-            console.error('userInput is null')
-            return
-        }
-        setUserInput({ amount: '', friends: '' })
+        handleShowModal('send')
+        setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
     }
 
     return (
@@ -135,12 +126,7 @@ export const SendMoney = ({ userInput, setUserInput, showModal, setShowModal }) 
                         </div>
 
                         <footer>
-                            <input
-                                className="button-primary"
-                                type="submit"
-                                value="Send"
-                                style={{ width: '100%' }}
-                            />
+                            <input className="button-primary" type="submit" value="Send" style={{ width: '100%' }} />
                         </footer>
                     </form>
                 </div>

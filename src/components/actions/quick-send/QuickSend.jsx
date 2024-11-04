@@ -5,11 +5,14 @@ import { AddToFavorites } from './AddToFavorites'
 import { Actions } from './Actions'
 import { useMessage } from '../../../hooks/useMessage'
 import { AuthContext } from '../../../contexts/AuthContext'
+import { useModal } from '../../../hooks/useModal'
 
 import containers from '../../../pages/dashboard/assets/containers.module.css'
 import styles from './quicksend.module.css'
 
-export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInput }) => {
+export const QuickSendMoney = () => {
+    const [userInput, setUserInput] = useState({ amount: '', friends: '' })
+    const [handleShowModal] = useModal()
     const [showFavorites, setShowFavorites] = useState(false)
     const [showBtns, setShowBtns] = useState(false)
     const { favorites } = useContext(AuthContext)
@@ -21,7 +24,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
             showMessage('error', 'An error occurred, please try again')
             return
         }
-        setShowModal({ ...showModal, [`send`]: true })
+        handleShowModal('send')
         setUserInput({ ...userInput, [`friends`]: name })
     }
 
@@ -59,11 +62,7 @@ export const QuickSendMoney = ({ showModal, setShowModal, userInput, setUserInpu
             <ul className={containers.sendMonkeyContainer}>
                 {favorites.length > 0 ? (
                     favorites?.map((friend) => (
-                        <li
-                            key={friend.objectId}
-                            data-key={friend.fullName}
-                            style={{ position: 'relative' }}
-                        >
+                        <li key={friend.objectId} data-key={friend.fullName} style={{ position: 'relative' }}>
                             <img
                                 src={friend.avatar}
                                 className={styles.profileImage}
