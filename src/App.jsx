@@ -8,7 +8,7 @@ import { PageNotFound } from './components/utils/404'
 const MyApp = () => {
     return (
         <AuthProvider>
-            <App style={{ fontFamily: 'var(--body-font-family)' }}>
+            <App> {/* style={{ fontFamily: 'var(--body-font-family)' }} */}
                 <Header />
                 <main>
                     <Routes>
