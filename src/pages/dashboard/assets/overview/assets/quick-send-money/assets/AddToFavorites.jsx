@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react'
 
-import { AuthContext } from '../../../contexts/AuthContext'
-import { dataService } from '../../../services/userDataService'
-import { Autocomplete } from '../../autocomplete/Autocomplete'
-import { useMessage } from '../../../hooks/useMessage'
+import { AuthContext } from '../../../../../../../contexts/AuthContext'
+import { dataService } from '../../../../../../../services'
+import { useMessage } from '../../../../../../../hooks'
+import { Autocomplete } from '../../../../../../../components/inputs'
 
 // TODO A component is changing an uncontrolled input to be controlled.
 // This is likely caused by the value changing from undefined to a defined value,

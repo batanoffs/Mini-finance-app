@@ -1,8 +1,8 @@
-import containers from './containers.module.css'
+import styles from './contact-info.module.css'
 
 export const ContactInfo = () => {
     return (
-        <div className={containers.customBlockContact}>
+        <div className={styles.customBlockContact}>
             <h6>Need help?</h6>
             <h6>Please submit a request</h6>
 

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
-import styles from './quicksend.module.css'
+import styles from '../quick-send.module.css'
 
 export const ActionsMenu = ({ showFavoritesHandler, setShowBtns, showActionsHandler }) => {
     const onChangeHandler = (e) => {

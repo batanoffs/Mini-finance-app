@@ -1,18 +1,14 @@
 import { useContext, useState } from 'react'
 
-import { ActionsMenu } from './ActionsMenu'
-import { AddToFavorites } from './AddToFavorites'
-import { Actions } from './Actions'
-import { useMessage } from '../../../hooks/useMessage'
-import { AuthContext } from '../../../contexts/AuthContext'
-import { useModal } from '../../../hooks/useModal'
+import { Actions, ActionsMenu, AddToFavorites } from './index'
+import { useMessage, useModal } from '../../../../../../hooks'
+import { AuthContext } from '../../../../../../contexts/AuthContext'
 
-import containers from '../../../pages/dashboard/assets/containers.module.css'
-import styles from './quicksend.module.css'
+import styles from './quick-send.module.css'
 
 export const QuickSendMoney = () => {
     const [userInput, setUserInput] = useState({ amount: '', friends: '' })
-    const [handleShowModal] = useModal()
+    const [toggleModal] = useModal()
     const [showFavorites, setShowFavorites] = useState(false)
     const [showBtns, setShowBtns] = useState(false)
     const { favorites } = useContext(AuthContext)
@@ -24,7 +20,7 @@ export const QuickSendMoney = () => {
             showMessage('error', 'An error occurred, please try again')
             return
         }
-        handleShowModal('send')
+        toggleModal('send')
         setUserInput({ ...userInput, [`friends`]: name })
     }
 
@@ -47,7 +43,7 @@ export const QuickSendMoney = () => {
     }
 
     return (
-        <div className={`${containers.customBlock} ${containers.primaryBg}`}>
+        <div className={`${styles.customBlock} ${styles.primaryBg}`}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <h5 style={{ color: 'var(--section-bg-color)', marginBottom: '1em' }}>Quick send</h5>
                 {favorites.length > 0 ? (
@@ -59,7 +55,7 @@ export const QuickSendMoney = () => {
                 ) : null}
             </div>
 
-            <ul className={containers.sendMoneyContainer}>
+            <ul className={styles.sendMoneyContainer}>
                 {favorites.length > 0 ? (
                     favorites?.map((friend) => (
                         <li key={friend.objectId} data-key={friend.fullName} style={{ position: 'relative' }}>

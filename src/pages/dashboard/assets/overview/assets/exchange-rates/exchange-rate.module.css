@@ -25,3 +25,25 @@
 .currency {
     padding-bottom: 0.1em;
 }
+
+.customBlockContact {
+    flex: initial;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
+}
+
+.customBlockExchange,
+.customBlockContact {
+    background: var(--third-bg-color);
+}
+
+.customBlockContact p a {
+    color: var(--heading-color);
+}
+
+.customBlockContact p a:hover {
+    color: var(--white-color);
+}

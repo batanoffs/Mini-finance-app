@@ -1,0 +1,21 @@
+.customBlock {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
+}
+
+.customBlockBottom {
+    background: var(--third-bg-color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 1.4em;
+    overflow: visible;
+}
+
+.customBlock.customBlockBottom small {
+    text-transform: none;
+}

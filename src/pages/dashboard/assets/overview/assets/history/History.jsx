@@ -1,14 +1,14 @@
 import { Empty } from 'antd'
-import { TransactionListElement } from '../../../components/TransactionListElement'
+import { TransactionList } from '../../../../../../components/list/index'
+import { useTransactions } from '../../../../../../hooks/useTransactions'
 
-import containers from './containers.module.css'
-import { useTransactions } from '../../../hooks/useTransactions'
+import styles from './history.module.css'
 
 export const History = () => {
     const transactions = useTransactions('sender')
 
     return (
-        <div className={containers.customBlock}>
+        <div className={styles.customBlock}>
             <h5>Transaction History</h5>
             <ul>
                 {transactions.length > 0 ? (
@@ -17,7 +17,7 @@ export const History = () => {
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .slice(0, 4)
                         .map((entry) => (
-                            <TransactionListElement
+                            <TransactionList
                                 id={entry.objectId}
                                 key={entry.objectId}
                                 avatar={entry.sender[0].avatar}

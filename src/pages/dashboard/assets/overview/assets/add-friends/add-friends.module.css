@@ -1,0 +1,32 @@
+.friendsForm {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    justify-content: flex-start;
+
+    input[type='number'] {
+        width: 100%;
+        height: 2.2em;
+    }
+}
+.customBlockContact {
+    flex: initial;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
+}
+
+.customBlockExchange,
+.customBlockContact {
+    background: var(--third-bg-color);
+}
+
+.customBlockContact p a {
+    color: var(--heading-color);
+}
+
+.customBlockContact p a:hover {
+    color: var(--white-color);
+}

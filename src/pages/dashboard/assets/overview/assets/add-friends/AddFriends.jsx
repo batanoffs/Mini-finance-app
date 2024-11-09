@@ -1,13 +1,12 @@
-import { useAddFriend } from '../../../hooks/useAddFriends'
+import { useAddFriend } from '../../../../../../hooks'
 
-import containers from './containers.module.css'
-import styles from './addfriends.module.css'
+import styles from './add-friends.module.css'
 
 export const AddFriends = () => {
     const [onSubmit, onFocusClearErrorHandler, onChangeNumber, number, error] = useAddFriend()
 
     return (
-        <div className={containers.customBlockContact}>
+        <div className={styles.customBlockContact}>
             <header>
                 <h5>Add Friend via phone</h5>
             </header>
