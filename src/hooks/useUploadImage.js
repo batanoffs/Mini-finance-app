@@ -1,0 +1,55 @@
+import { useContext, useState } from 'react'
+
+import { AuthContext } from '../contexts/AuthContext'
+import { dataService } from '../services/userDataService'
+import { MAX_FILE_SIZE } from '../constants/index'
+
+export const useUploadImage = () => {
+    const [error, setError] = useState(null)
+    const { ownerId, token, userDataId, picture, setAuth } = useContext(AuthContext)
+
+    const handleDrop = (e) => {
+        e.preventDefault()
+        const file = e.dataTransfer.files[0]
+        handleFile(file)
+    }
+
+    const handleFile = async (file) => {
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+            setError('File type must be JPEG or PNG!')
+            return
+        }
+        if (file.size > MAX_FILE_SIZE) {
+            setError('Max file size 5MB!')
+            return
+        }
+
+        // RESET ERROR
+        setError(null)
+
+        // Upload file
+        const fineName = file.name.split('.')[0]
+        const response = await dataService.uploadProfilePicture(fineName, ownerId, file, token)
+
+        const data = {
+            avatar: response.fileURL,
+        }
+
+        const avatarResponse = await dataService.changeAttribute(userDataId, data)
+
+        if (avatarResponse) {
+            setAuth((state) => ({ ...state, avatar: avatarResponse.avatar }))
+        }
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault()
+    }
+
+    const handleFileSelect = (e) => {
+        const file = e.target.files[0]
+        handleFile(file)
+    }
+
+    return [handleDrop, handleDragOver, handleFileSelect, error, picture]
+}
