@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 import { faWallet, faGear, faHandshakeAngle, faHouse, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../../../contexts/AuthContext'
-import { ListNav } from '../../../../components/list'
+import { ListNav } from '../../../../components/lists'
 
 import styles from './sidebar.module.css'
 
