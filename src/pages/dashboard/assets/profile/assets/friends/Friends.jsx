@@ -7,7 +7,6 @@ import { Friend } from './FriendEntry'
 import { AuthContext } from '../../../../../../contexts/AuthContext'
 import { useMessage } from '../../../../../../hooks/useMessage'
 
-import containers from '../../../../assets/containers.module.css'
 import styles from './friends.module.css'
 
 export const Friends = () => {
@@ -30,16 +29,11 @@ export const Friends = () => {
         }
     }
     return (
-        <div className={`${containers.customBlock} ${containers.customBlockProfile}`}>
+        <div className={`${styles.customBlock} ${styles.customBlockProfile}`}>
             <h5>Friends</h5>
             <div className={styles.searchWrapper}>
                 <FontAwesomeIcon className={styles.searchIcon} icon={faSearch} />
-                <Input
-                    className={styles.searchInput}
-                    placeholder="Search friend"
-                    onChange={onSearch}
-                    value={search}
-                />
+                <Input className={styles.searchInput} placeholder="Search friend" onChange={onSearch} value={search} />
             </div>
             <ul className={styles.friendsList}>
                 {filteredFriends.length === 0 && (

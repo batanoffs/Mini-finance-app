@@ -6,6 +6,26 @@
     margin: 0;
 }
 
+.customBlockProfile .customBlockEditIcon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.customBlock {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
+}
+
+.customBlock h2,
+.customBlock p {
+    position: relative;
+    z-index: 1;
+}
+
 .entryWrapper {
     align-items: center;
     background-color: #ddd;
