@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { transactionService } from '../services/transactionService'
 
@@ -19,5 +19,9 @@ export const useVirtualCard = () => {
             .catch((err) => console.log(err))
     }, [])
 
-    return [card, auth, fetchBalance]
+    useEffect(() => {
+        fetchBalance()
+    }, [fetchBalance])
+
+    return [card, auth]
 }

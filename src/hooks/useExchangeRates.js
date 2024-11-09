@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { exchangeRateService } from '../services/exchangeRateService'
 import { exchangeRates } from '../constants/rates'
 
@@ -80,5 +80,9 @@ export const useExchangeRates = () => {
         }
     }, [hasLoaded])
 
-    return [fetchRate, rates, setRates, hasLoaded, setHasLoaded]
+    useEffect(() => {
+        fetchRate
+    }, [fetchRate])
+
+    return rates
 }

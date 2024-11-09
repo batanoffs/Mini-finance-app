@@ -1,17 +1,28 @@
 import { useState } from 'react'
 
+/**
+ * useModal hook
+ *
+ * This hook manages the state of three modals: topUp, send, and request.
+ *
+ * @returns {Array} [showModal, handleShowModal]
+ *   showModal: { topUp: boolean, send: boolean, request: boolean }
+ *   handleShowModal: function(type: string) => void
+ */
+
 export const useModal = () => {
-    const [showModal, setShowModal] = useState({
+    const [showModal, setModalState] = useState({
         topUp: false,
         send: false,
         request: false,
     })
 
-    const handleShowModal = (type) => () =>
-        setShowModal({
-            ...showModal,
-            [type]: !showModal[type],
-        })
+    const toggleModal = (type) => {
+        setModalState((prevState) => ({
+            ...prevState,
+            [type]: !prevState[type],
+        }))
+    }
 
-    return [showModal, handleShowModal]
+    return [showModal, toggleModal]
 }
