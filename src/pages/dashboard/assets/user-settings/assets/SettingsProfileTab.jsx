@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 
-import { UploadPicture } from '../../../assets/index'
+import { UploadPicture } from '../../../../../components/buttons/upload/Upload'
 import { AuthContext } from '../../../../../contexts/AuthContext'
 
 export const ProfileTab = () => {

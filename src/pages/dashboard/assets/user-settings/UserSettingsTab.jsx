@@ -1,10 +1,9 @@
 import { SettingsNavigationPanel } from './assets/index'
-import { ContactInfo } from '../../assets/ContactInfo'
+import { ContactInfo } from '../overview/assets'
 
-import styles from '../../dashboard-layout.module.css'
-import containers from '../../assets/containers.module.css'
+import containers from './user-settings-tab.module.css'
 
-export const SettingsTab = () => {
+export const UserSettingsTab = ({ styles }) => {
     return (
         <div className={styles.contentContainer}>
             <main className={styles.bentoFillColumn}>
