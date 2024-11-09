@@ -1,5 +1,5 @@
 import { Empty } from 'antd'
-import { TransactionList } from '../../../../../../components/list/index'
+import { TransactionList } from '../../../../../../components/lists'
 import { useTransactions } from '../../../../../../hooks/useTransactions'
 
 import styles from './history.module.css'

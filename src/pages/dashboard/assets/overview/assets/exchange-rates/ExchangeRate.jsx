@@ -1,5 +1,5 @@
 import { useExchangeRates } from '../../../../../../hooks'
-import { ListRate } from '../../../../../../components/list'
+import { ListRate } from '../../../../../../components/lists'
 
 import styles from './exchange-rate.module.css'
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Empty } from 'antd'
 
-import { TransactionList } from '../../../../../../components/list'
+import { TransactionList } from '../../../../../../components/lists'
 import { useTransactions } from '../../../../../../hooks'
 
 import styles from './last-transactions.module.css'
