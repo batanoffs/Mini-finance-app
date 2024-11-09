@@ -1,4 +1,4 @@
-import styles from './exchange-rate.module.css'
+import styles from './list-rate.module.css'
 
 export const ListRate = (rate) => {
     return (
