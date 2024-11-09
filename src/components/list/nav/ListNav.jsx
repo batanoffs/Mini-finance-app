@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
-import styles from './listNav.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styles from './listNav.module.css'
 
 export const ListNav = ({ icon, title, name, to, onClick = () => {} }) => {
     return (
