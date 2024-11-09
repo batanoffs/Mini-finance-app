@@ -1,0 +1,21 @@
+.container {
+    border: 1px dashed gray;
+    border-radius: 1em;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+.image {
+    border-radius: var(--border-radius-large);
+    display: block;
+    /* margin: auto; */
+    width: 95.71px;
+    height: 95.71px;
+    object-fit: cover;
+}
+
+.error {
+    color: red;
+}
