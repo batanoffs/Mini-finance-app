@@ -2,14 +2,14 @@ import { faCreditCard } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, useContext } from 'react'
 
-import { PaymentForm } from './PaymentForm'
+import { PaymentForm } from '../../components/forms/PaymentForm'
 import { cardService } from '../../services/cardGenerationService'
 import { useMessage } from '../../hooks/useMessage'
 import { AuthContext } from '../../contexts/AuthContext'
 
 import modal from './modal.module.css'
 
-export const TopUp = ({ handleShowModal }) => {
+export const TopUp = ({ toggleModal }) => {
     const [inputState, setInputState] = useState({})
     const { virtualcard, token } = useContext(AuthContext)
 
@@ -53,7 +53,7 @@ export const TopUp = ({ handleShowModal }) => {
                     virtualcard: { ...prevData.virtualcard, top_up: topUp, balance: balance },
                 })
             )
-            handleShowModal('topUp')
+            toggleModal('topUp')
             message('success', 'Transaction was successful')
         }
     }
@@ -68,7 +68,7 @@ export const TopUp = ({ handleShowModal }) => {
             <div className={modal.modalContainer}>
                 <div className={modal.modalHeader}>
                     <h5 className="modal-title">Top up account</h5>
-                    <button onClick={() => handleShowModal('topUp')}>X</button>
+                    <button onClick={() => toggleModal('topUp')}>X</button>
                 </div>
                 <form onSubmit={onSubmitHandler} className="custom-form">
                     <div className="form-group">
