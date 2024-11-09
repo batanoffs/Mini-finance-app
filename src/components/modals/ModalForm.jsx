@@ -2,23 +2,24 @@ import { useMakeTransactions } from '../../hooks/useMakeTransactions'
 import { Autocomplete } from '../inputs/autocomplete/Autocomplete'
 import styles from './modal.module.css'
 
-export const ModalForm = ({ transactionType, showModal }) => {
+export const ModalForm = ({ type, showModal, toggleModal }) => {
     const { values, setValues, setUserInputHandler, onFormSubmitHandler, onClose, friends } = useMakeTransactions({
-        transactionType,
+        type,
         showModal,
+        toggleModal,
     })
 
     let title = ''
 
-    if (transactionType === 'request') title = 'Request Money'
-    if (transactionType === 'send') title = 'Send Money'
+    if (type === 'request') title = 'Request Money'
+    if (type === 'send') title = 'Send Money'
 
     return (
         <div className={styles.background}>
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h5 className="modal-title">{title}</h5>
-                    <button onClick={onClose}>x</button>
+                    <button onClick={onClose}>X</button>
                 </div>
                 <div className="form-content">
                     <form onSubmit={onFormSubmitHandler} className="custom-form">
@@ -46,12 +47,7 @@ export const ModalForm = ({ transactionType, showModal }) => {
                             </div>
                         </div>
                         <footer>
-                            <input
-                                className="button-primary"
-                                type="submit"
-                                value={transactionType}
-                                style={{ width: '100%' }}
-                            />
+                            <input className="button-primary" type="submit" value={type} style={{ width: '100%' }} />
                         </footer>
                     </form>
                 </div>

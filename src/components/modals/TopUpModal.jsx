@@ -64,9 +64,9 @@ export const TopUp = ({ toggleModal }) => {
     }
 
     return (
-        <div className={modal.modalBackground}>
-            <div className={modal.modalContainer}>
-                <div className={modal.modalHeader}>
+        <div className={modal.background}>
+            <div className={modal.container}>
+                <div className={modal.header}>
                     <h5 className="modal-title">Top up account</h5>
                     <button onClick={() => toggleModal('topUp')}>X</button>
                 </div>

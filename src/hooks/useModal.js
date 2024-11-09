@@ -10,18 +10,11 @@ import { useState } from 'react'
  *   handleShowModal: function(type: string) => void
  */
 
-export const useModal = () => {
-    const [showModal, setModalState] = useState({
-        topUp: false,
-        send: false,
-        request: false,
-    })
+export const useModal = (initialState) => {
+    const [showModal, setModalState] = useState(initialState)
 
     const toggleModal = (type) => {
-        setModalState((prevState) => ({
-            ...prevState,
-            [type]: !prevState[type],
-        }))
+        setModalState((prevState) => ({ ...prevState, [type]: !prevState[type] }))
     }
 
     return [showModal, toggleModal]

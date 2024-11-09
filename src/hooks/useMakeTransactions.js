@@ -4,10 +4,11 @@ import { useMessage } from './useMessage'
 import { AuthContext } from '../contexts/AuthContext'
 import { dataService } from '../services/userDataService'
 
-export const useMakeTransactions = ({ transactionType, toggleModal, showModal }) => {
+export const useMakeTransactions = ({ type, toggleModal, showModal }) => {
     const [values, setValues] = useState({ amount: '', friends: '' })
     const { userDataId, token } = useContext(AuthContext)
     const [friends, setFriends] = useState([])
+
     const showMessage = useMessage()
 
     const fetchFriends = useCallback(async () => {
@@ -60,40 +61,38 @@ export const useMakeTransactions = ({ transactionType, toggleModal, showModal })
 
             let response
 
-            if (transactionType === 'request') {
+            if (type === 'request') {
                 response = await transactionService.requestNotify(friends, Number(amount), userDataId, token)
             }
 
-            if ((transactionType = 'send')) {
+            if ((type = 'send')) {
                 response = await transactionService.sendMoney(friends, Number(amount), userDataId, token)
                 if (!response) throw new Error('Transaction service response is null.')
                 if (!response.success) throw new Error(`Transaction service error: ${response.message}`)
                 await transactionService.notifyMoneyReceived(friends, Number(amount), userDataId, token)
             }
 
+            toggleModal(type)
+            setValues((prev) => ({ ...prev, amount: '', friends: '' }))
+
             if (response.success) {
-                toggleModal(transactionType)
-                setValues((prev) => ({ ...prev, amount: '', friends: '' }))
-                showMessage('success', `Successfully ${transactionType} the money`)
+                showMessage('success', `Successfully ${type} the money`)
             } else {
-                toggleModal(transactionType)
-                setValues((prev) => ({ ...prev, amount: '', friends: '' }))
-                showMessage('error', `Error during ${transactionType}: ${response.message}`)
+                showMessage('error', `Error during ${type}: ${response.message}`)
             }
         } catch (error) {
-            toggleModal(transactionType)
+            toggleModal(type)
             setValues((prev) => ({ ...prev, amount: '', friends: '' }))
-            showMessage('error', `Error during ${transactionType}: ${error.message}`)
+            showMessage('error', `Error during ${type}: ${error.message}`)
         }
     }
 
     const onClose = () => {
-        if (!showModal) throw new Error('showModal is null')
-        if (!showModal[transactionType]) throw new Error('showModal.send is null')
+        if (!showModal || !showModal[type]) throw new Error('Modal data is null')
 
-        toggleModal(transactionType)
+        toggleModal(type)
         setValues((prev) => ({ ...prev, amount: '', friends: '' }))
     }
 
-    return { values, setValues, setUserInputHandler, onFormSubmitHandler, onClose, friends }
+    return { values, friends, setValues, setUserInputHandler, onFormSubmitHandler, onClose }
 }
