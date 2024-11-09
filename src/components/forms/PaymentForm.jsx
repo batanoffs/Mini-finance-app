@@ -3,8 +3,7 @@ import Cards from 'react-credit-cards-2'
 
 import { useValidate } from '../../hooks/useValidate'
 
-import errorstyle from '../../pages/register/register.module.css'
-import modal from './modal.module.css'
+import styles from './payment-form.module.css'
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 
 export const PaymentForm = ({ inputState, setInputState }) => {
@@ -30,7 +29,7 @@ export const PaymentForm = ({ inputState, setInputState }) => {
 
     if (inputState.paymethod === 'debitcard') {
         return (
-            <div className={modal.modalOptions}>
+            <div className={styles.modalOptions}>
                 <div className="form-group">
                     <label htmlFor="debitcard">Притежател:</label>
                     <input
@@ -41,11 +40,11 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                         onChange={handleChange}
                         onBlur={checkInputHandler}
                         onFocus={clearErrorHandler}
-                        className={modal.input}
+                        className={styles.input}
                         maxLength="30"
                     />
                 </div>
-                <small className={errorstyle.error}>{error.fullName}</small>
+                <small className={styles.error}>{error.fullName}</small>
                 <div>
                     <div className="form-group">
                         <label htmlFor="cardnumber">Номер:</label>
@@ -58,11 +57,11 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                             onBlur={checkInputHandler}
                             onFocus={clearErrorHandler}
                             maxLength="16"
-                            className={modal.input}
+                            className={styles.input}
                         />
                     </div>
 
-                    <small className={errorstyle.error}>{error.debitcard}</small>
+                    <small className={styles.error}>{error.debitcard}</small>
 
                     <div className="form-group">
                         <label htmlFor="expiry">Валидност:</label>
@@ -74,11 +73,11 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                             onChange={handleChange}
                             onBlur={checkInputHandler}
                             onFocus={clearErrorHandler}
-                            className={modal.input}
+                            className={styles.input}
                             maxLength="5"
                         />
                     </div>
-                    <small className={errorstyle.error}>{error.expiry}</small>
+                    <small className={styles.error}>{error.expiry}</small>
 
                     <div className="form-group">
                         <label htmlFor="cvv">CVV:</label>
@@ -86,7 +85,7 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                             required
                             type="password"
                             name="cvv"
-                            className={modal.input}
+                            className={styles.input}
                             value={inputState.cvv}
                             onChange={handleChange}
                             onBlur={checkInputHandler}
@@ -94,7 +93,7 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                             maxLength="3"
                         />
                     </div>
-                    <small className={errorstyle.error}>{error.cvv}</small>
+                    <small className={styles.error}>{error.cvv}</small>
                 </div>
                 <Cards
                     number={Number(inputState.cardnumber) || ''}
@@ -107,20 +106,20 @@ export const PaymentForm = ({ inputState, setInputState }) => {
     } else if (inputState.paymethod === 'paypal') {
         return (
             <>
-                <div className={modal.modalOptions}>
+                <div className={styles.modalOptions}>
                     <label htmlFor="email">Имейл:</label>
                     <input
                         required
                         type="email"
                         name="email"
-                        className={modal.input}
+                        className={styles.input}
                         value={inputState.email}
                         onChange={handleChange}
                         onBlur={checkInputHandler}
                         onFocus={clearErrorHandler}
                     />
                 </div>
-                <small className={errorstyle.error}>{error.email}</small>
+                <small className={styles.error}>{error.email}</small>
             </>
         )
     }

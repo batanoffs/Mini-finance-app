@@ -1,0 +1,82 @@
+.background {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 4;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .background {
+        height: calc(100vh - 45px);
+        top: 45px;
+    }
+}
+
+.container {
+    width: calc(min(100%, 400px) - 2em); /* subtract 2em for padding */
+    max-width: calc(100vw - 2em); /* subtract 2em for padding */
+    transition: all 150ms ease-in-out;
+    border-radius: 1em;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0.3em 1em;
+    padding: 1em;
+    margin: 0 auto;
+}
+
+.container .title {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+.header h5 {
+    flex: auto;
+}
+
+.header button {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 0.4em;
+    text-align: center;
+    font-size: 0.8em;
+    height: 1.6em;
+    margin: 0;
+    padding: 0em 0.5em;
+    cursor: pointer;
+}
+
+.modalOptions {
+    border: 1px solid #ddd;
+    border-radius: 0.4em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+}
+
+.error {
+    color: red;
+    font-size: 10px;
+    width: fit-content;
+    display: inline;
+    align-self: flex-end;
+    margin-right: 3em;
+}
+
+@media (min-width: 1200px) {
+    .background {
+        height: calc(100vh - 45px);
+        top: 45px;
+    }
+
+    .container {
+        width: 35%;
+    }
+}
