@@ -1,17 +1,11 @@
-import { useEffect } from 'react'
-
-import { balanceFormat } from '../../../utils/balanceFormat'
-import { showLastCardDigits } from '../../../utils/showLastCardDigits'
-import { useVirtualCard } from '../../../hooks/useVirtualCard'
+import { balanceFormat } from '../../utils/balanceFormat'
+import { showLastCardDigits } from '../../utils/showLastCardDigits'
+import { useVirtualCard } from '../../hooks/useVirtualCard'
 
 import containers from './containers.module.css'
 
 export const VirtualCard = () => {
-    const [card, auth, fetchBalance] = useVirtualCard()
-
-    useEffect(() => {
-        fetchBalance()
-    }, [fetchBalance])
+    const [card, auth] = useVirtualCard()
 
     return (
         <div className={`${containers.customBlock} ${containers.customBlockBalance}`}>
