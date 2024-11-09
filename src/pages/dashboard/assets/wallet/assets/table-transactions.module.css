@@ -1,0 +1,30 @@
+.customBlock {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
+}
+
+.customBlock h2,
+.customBlock p {
+    position: relative;
+    z-index: 1;
+}
+
+.customBlock.sectionBg,
+.sectionBg {
+    background-color: var(--section-bg-color);
+}
+
+.customBlock p {
+    color: var(--black-color);
+    margin-bottom: 0;
+}
+
+.customBlock small {
+    color: var(--p-color);
+    font-size: var(--btn-font-size);
+    letter-spacing: -0.5px;
+    text-transform: lowercase;
+}

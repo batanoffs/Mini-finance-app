@@ -6,7 +6,7 @@ import { transactionService } from '../../../../../services/transactionService'
 import { notificationService } from '../../../../../services/notificationService'
 import { formatDateTable } from '../../../../../utils/formatDate'
 
-import containers from '../../../assets/containers.module.css'
+import styles from './table-transactions.module.css'
 
 const columns = [
     {
@@ -93,11 +93,7 @@ export const TableTransactions = () => {
 
             const modified = allTransactions.map((transaction, index) => ({
                 key: index + '',
-                date: formatDateTable(transaction.created)
-                    .split(' ')
-                    .slice(0, 2)
-                    .join(' ')
-                    .replace(',', ''),
+                date: formatDateTable(transaction.created).split(' ').slice(0, 2).join(' ').replace(',', ''),
                 time: formatDateTable(transaction.created).split(' ').slice(3).join(' '),
                 description:
                     transaction.receiver[0].objectId === userDataId
@@ -130,16 +126,10 @@ export const TableTransactions = () => {
 
         if (action === 'sort') {
             currentArray.sort((a, b) => {
-                if (
-                    Number(a.price.props.children.split(' ')[1]) >
-                    Number(b.price.props.children.split(' ')[1])
-                ) {
+                if (Number(a.price.props.children.split(' ')[1]) > Number(b.price.props.children.split(' ')[1])) {
                     return sorter.order === 'ascend' ? 1 : -1
                 }
-                if (
-                    Number(a.price.props.children.split(' ')[1]) <
-                    Number(b.price.props.children.split(' ')[1])
-                ) {
+                if (Number(a.price.props.children.split(' ')[1]) < Number(b.price.props.children.split(' ')[1])) {
                     return sorter.order === 'descend' ? -1 : 1
                 }
                 return 0
@@ -149,7 +139,7 @@ export const TableTransactions = () => {
     }
 
     return (
-        <div className={containers.customBlock} style={{ padding: '0.5em 1.5em' }}>
+        <div className={styles.customBlock} style={{ padding: '0.5em 1.5em' }}>
             <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Account movements</h5>
             <Table
                 columns={columns}
