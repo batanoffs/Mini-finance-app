@@ -1,8 +1,7 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 
-import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 import { faWallet, faGear, faHandshakeAngle, faHouse, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { ListNav } from '../../../../components/lists'
 
@@ -18,18 +17,18 @@ export const Sidebar = () => {
                 <ListNav name="profile" to="profile" title="Profile" icon={faAddressCard} />
                 <ListNav name="settings" to="settings" title="Settings" icon={faGear} />
                 <ListNav name="helpCenter" to="help-center" title="Help Center" icon={faHandshakeAngle} />
+                <ListNav
+                    name="upgrade"
+                    className={styles.featureBox}
+                    to="upgrade"
+                    title="Upgrade"
+                    img={{
+                        src: 'https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/t2gvhqmfqhmvllw8f09f.png',
+                        alt: 'credit card',
+                    }}
+                />
                 <ListNav name="logout" to="/" title="Logout" onClick={onLogoutHandler} icon={faArrowRightFromBracket} />
             </ul>
-            <div className={styles.featureBox}>
-                <img
-                    src="https://res.cloudinary.com/dzh01qrmx/image/upload/v1729500566/t2gvhqmfqhmvllw8f09f.png"
-                    alt="credit card"
-                />
-
-                <NavLink className="custom-btn-fill" to="upgrade">
-                    Upgrade
-                </NavLink>
-            </div>
         </nav>
     )
 }

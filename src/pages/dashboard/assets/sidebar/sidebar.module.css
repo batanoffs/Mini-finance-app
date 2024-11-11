@@ -13,22 +13,29 @@
             bottom: 1em;
         }
     }
+}
 
-    .featureBox {
-        background-color: var(--section-bg-color);
-        border-radius: var(--border-radius-medium);
-        padding: 0.5em 0em;
-        margin: 0.5em;
-        text-align: center;
-    }
+.featureBox {
+    background-color: var(--section-bg-color);
+    border-radius: var(--border-radius-medium);
+    padding: 0.5em 0em;
+    margin: 0.5em;
+    text-align: center;
 
-    .featureBox img {
-        display: block;
-        margin: auto;
-        margin-bottom: 0.5em;
-        width: 90px;
-        height: auto;
+    a {
+        border: 1px solid var(--primary-hover-color);
+        margin-left: 0em;
+        padding: 0.3em 1em;
+        color: var(--primary-hover-color);
     }
+}
+
+.featureBox img {
+    display: block;
+    margin: auto;
+    margin-bottom: 0.5em;
+    width: 90px;
+    height: auto;
 }
 
 @media (min-width: 900px) {
