@@ -1,14 +1,16 @@
 import { useContext, useState } from 'react'
 
-import { AuthContext } from '../../../../../../../contexts/AuthContext'
-import { dataService } from '../../../../../../../services'
-import { useMessage } from '../../../../../../../hooks'
-import { Autocomplete } from '../../../../../../../components/inputs'
+import { AuthContext } from '../../../../../../../../contexts/AuthContext'
+import { dataService } from '../../../../../../../../services'
+import { useMessage } from '../../../../../../../../hooks'
+import { Autocomplete } from '../../../../../../../../components/inputs'
+
+import styles from './add-friends.module.css'
 
 // TODO A component is changing an uncontrolled input to be controlled.
 // This is likely caused by the value changing from undefined to a defined value,
 // which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
-export const AddToFavorites = ({ setShowFavorites }) => {
+export const AddToFavorites = ({ toggleModal }) => {
     const { auth, setAuth, token, userDataId } = useContext(AuthContext)
     const [userInput, setUserInput] = useState({})
     const showMessage = useMessage()
@@ -29,7 +31,7 @@ export const AddToFavorites = ({ setShowFavorites }) => {
             const response = await dataService.setRelation(userDataId, 'favorite_friends', body, token)
 
             if (response !== 1) {
-                setShowFavorites(false)
+                toggleModal('favFriends')
                 throw new Error('Something went wrong!')
             }
 
@@ -42,7 +44,7 @@ export const AddToFavorites = ({ setShowFavorites }) => {
                         favorite_friends: [...auth.favorite_friends, findFriend[0]],
                     })
                 )
-                setShowFavorites(false)
+                toggleModal('favFriends')
                 showMessage('success', `${findFriend[0].fullName} has been added to favorites!`)
             }
         } catch (error) {
@@ -68,7 +70,7 @@ export const AddToFavorites = ({ setShowFavorites }) => {
                     }),
                 ]}
             />
-            <input style={{ marginTop: '0.5em' }} type="submit" className="custom-btn-fill" value="Add to favorites" />
+            <input className={`"custom-btn-fill" ${styles.button}`} type="submit" value="Add to favorites" />
         </form>
     )
 }

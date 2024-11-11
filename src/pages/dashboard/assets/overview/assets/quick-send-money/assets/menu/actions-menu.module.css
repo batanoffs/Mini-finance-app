@@ -1,0 +1,37 @@
+.threeDotsIcon {
+    aspect-ratio: 1;
+    height: 1.3em;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    color: var(--white-color);
+}
+
+.threeDotsIcon:hover {
+    color: var(--primary-hover-color);
+    transition: 0.1s ease;
+}
+
+.actionButtons {
+    position: absolute;
+    right: 2.2em;
+    top: 1em;
+    border: 1px solid var(--section-bg-color);
+    border-radius: 0.6em;
+    background-color: white;
+    color: black;
+    z-index: 3;
+    display: none;
+    cursor: pointer;
+}
+
+.actionButton {
+    cursor: pointer;
+    text-align: center;
+    margin: 0.3em;
+}
+.actionButton:hover {
+    color: var(--primary-bg-color);
+    border-radius: 1em;
+    background-color: whitesmoke;
+}
