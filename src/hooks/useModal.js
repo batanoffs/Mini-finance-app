@@ -3,18 +3,20 @@ import { useState } from 'react'
 /**
  * useModal hook
  *
- * This hook manages the state of three modals: topUp, send, and request.
+ * This hook manages the state of modals with initialState passed as prop.
  *
- * @returns {Array} [showModal, handleShowModal]
- *   showModal: { topUp: boolean, send: boolean, request: boolean }
- *   handleShowModal: function(type: string) => void
+ * @returns {Array} [showModal, toggleModal]
+ *   showModal: initialState
+ *   toggleModal: function(type: string) => void
  */
 
 export const useModal = (initialState) => {
     const [showModal, setModalState] = useState(initialState)
 
     const toggleModal = (type) => {
-        setModalState((prevState) => ({ ...prevState, [type]: !prevState[type] }))
+        setModalState((prevState) => {
+            return { ...prevState, [type]: !prevState[type] }
+        })
     }
 
     return [showModal, toggleModal]
