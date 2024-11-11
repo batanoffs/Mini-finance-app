@@ -1,0 +1,55 @@
+.primary {
+    background: var(--third-bg-color);
+}
+
+.secondary {
+    background: var(--secondary-color);
+}
+
+.accent {
+    background: var(--primary-bg-color);
+    overflow: visible;
+
+    h5 {
+        color: aliceblue;
+    }
+}
+
+.customBlock {
+    border-radius: var(--border-radius-component);
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
+
+    p {
+        color: var(--black-color);
+        margin-bottom: 0;
+    }
+
+    h5,
+    p {
+        position: relative;
+        z-index: 1;
+    }
+
+    small {
+        color: var(--p-color);
+        font-size: var(--btn-font-size);
+        letter-spacing: -0.5px;
+        text-transform: lowercase;
+    }
+
+    .sectionBg {
+        background-color: var(--section-bg-color);
+    }
+
+    .content {
+        margin-top: 0.5em;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

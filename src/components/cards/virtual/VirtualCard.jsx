@@ -1,15 +1,15 @@
-import { balanceFormat } from '../../utils/balanceFormat'
-import { showLastCardDigits } from '../../utils/showLastCardDigits'
-import { useVirtualCard } from '../../hooks/useVirtualCard'
+import { balanceFormat } from '../../../utils/balanceFormat'
+import { showLastCardDigits } from '../../../utils/showLastCardDigits'
+import { useVirtualCard } from '../../../hooks/useVirtualCard'
 
-import containers from './containers.module.css'
+import containers from './virtual.module.css'
+import { EmptyCard } from '../empty/EmptyCard'
 
 export const VirtualCard = () => {
     const [card, auth] = useVirtualCard()
 
     return (
-        <div className={`${containers.customBlock} ${containers.customBlockBalance}`}>
-            <h5>Balance</h5>
+        <EmptyCard color="secondary" title={'Balance'} className={containers.customBlockBalance}>
             <h4 style={{ color: 'var(--white-color)' }}>
                 {card.balance ? balanceFormat(card.balance) + ' BGN' : '0 BGN'}
             </h4>
@@ -30,6 +30,6 @@ export const VirtualCard = () => {
                     <small>{auth.fullName}</small>
                 </div>
             </div>
-        </div>
+        </EmptyCard>
     )
 }

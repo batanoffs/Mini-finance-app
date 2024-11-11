@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AuthContext } from '../../contexts/AuthContext'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { EmptyCard } from '../empty/EmptyCard'
 
-import containers from './containers.module.css'
+import containers from './profile.module.css'
 
 export const ProfileCard = () => {
     const { name, picture, phone, email, address, country } = useContext(AuthContext)
 
     return (
-        <div className={`${containers.customBlock} ${containers.customBlockProfile}`}>
+        <EmptyCard color="secondary" className={containers.customBlockProfile}>
             <div className={containers.customBlockProfileImageWrap}>
                 <img src={picture} className={containers.customBlockProfileImage} alt="avatar" />
 
@@ -61,6 +62,6 @@ export const ProfileCard = () => {
                     <span>{address}</span>
                 </p>
             )}
-        </div>
+        </EmptyCard>
     )
 }
