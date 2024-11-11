@@ -1,3 +1,3 @@
 export * from './nav/ListNav'
 export * from './rate/ListRate'
-export * from './transactions/TransactionList'
+export * from './transactions/ListTransaction'
