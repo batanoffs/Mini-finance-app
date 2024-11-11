@@ -1,6 +1,7 @@
 import { Empty } from 'antd'
-import { TransactionList } from '../../../../../../components/lists'
+import { ListTransaction } from '../../../../../../components/lists'
 import { useTransactions } from '../../../../../../hooks/useTransactions'
+import { EmptyCard } from '../../../../../../components/cards'
 
 import styles from './history.module.css'
 
@@ -8,8 +9,7 @@ export const History = () => {
     const transactions = useTransactions('sender')
 
     return (
-        <div className={styles.customBlock}>
-            <h5>Transaction History</h5>
+        <EmptyCard title="Transaction History" color="secondary">
             <ul>
                 {transactions.length > 0 ? (
                     transactions
@@ -17,7 +17,7 @@ export const History = () => {
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .slice(0, 4)
                         .map((entry) => (
-                            <TransactionList
+                            <ListTransaction
                                 id={entry.objectId}
                                 key={entry.objectId}
                                 avatar={entry.sender[0].avatar}
@@ -31,6 +31,6 @@ export const History = () => {
                     <Empty description="No transaction history found" />
                 )}
             </ul>
-        </div>
+        </EmptyCard>
     )
 }

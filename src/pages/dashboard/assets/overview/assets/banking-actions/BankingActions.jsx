@@ -2,6 +2,7 @@ import { faVault, faMoneyBillTransfer, faHandHoldingDollar } from '@fortawesome/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { ModalForm, TopUp } from '../../../../../../components/modals'
+import { EmptyCard } from '../../../../../../components/cards'
 import { useModal } from '../../../../../../hooks'
 
 import styles from './banking-actions.module.css'
@@ -12,9 +13,8 @@ export const BankingActions = () => {
         send: false,
         request: false,
     })
-
     return (
-        <div className={`${styles.customBlock} ${styles.customBlockBottom}`} style={{ maxHeight: '85px' }}>
+        <EmptyCard title="Banking Actions" color="primary" className={styles.customBlockBottom}>
             <div className={styles.transactionBtns}>
                 <button
                     className={styles.transactionBtn}
@@ -37,6 +37,6 @@ export const BankingActions = () => {
             {showModal.topUp && <TopUp toggleModal={toggleModal} />}
             {showModal.send && <ModalForm type={'send'} showModal={showModal} toggleModal={toggleModal} />}
             {showModal.request && <ModalForm type={'request'} showModal={showModal} toggleModal={toggleModal} />}
-        </div>
+        </EmptyCard>
     )
 }

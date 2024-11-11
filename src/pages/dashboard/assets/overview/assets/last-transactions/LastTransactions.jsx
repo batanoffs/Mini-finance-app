@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Empty } from 'antd'
 
-import { TransactionList } from '../../../../../../components/lists'
+import { ListTransaction } from '../../../../../../components/lists'
 import { useTransactions } from '../../../../../../hooks'
+import { EmptyCard } from '../../../../../../components/cards'
 
 import styles from './last-transactions.module.css'
 
@@ -10,20 +11,24 @@ export const LastTransactions = () => {
     const transactions = useTransactions('receiver')
 
     return (
-        <div className={`${styles.customBlock} ${styles.customBlockExchange}`}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <h5>Last Transactions</h5>
-                <Link className="custom-btn" to="/dashboard/wallet">
-                    View All Transactions
-                </Link>
-            </div>
+        <EmptyCard
+            title="Last Transactions"
+            color="primary"
+            options={{
+                menu: (
+                    <Link className="custom-btn" to="/dashboard/wallet">
+                        View All Transactions
+                    </Link>
+                ),
+            }}
+        >
             <ul>
                 {transactions.length > 0 ? (
                     transactions
                         .slice(0, 5)
                         .sort((a, b) => new Date(b.created) - new Date(a.created))
                         .map((entry) => (
-                            <TransactionList
+                            <ListTransaction
                                 id={entry.objectId}
                                 key={entry.objectId}
                                 avatar={entry.sender[0].avatar}
@@ -40,6 +45,6 @@ export const LastTransactions = () => {
                     />
                 )}
             </ul>
-        </div>
+        </EmptyCard>
     )
 }

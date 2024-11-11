@@ -1,3 +1,4 @@
+import { EmptyCard } from '../../../../../../components/cards'
 import { useAddFriend } from '../../../../../../hooks'
 
 import styles from './add-friends.module.css'
@@ -6,10 +7,7 @@ export const AddFriends = () => {
     const [onSubmit, onFocusClearErrorHandler, onChangeNumber, number, error] = useAddFriend()
 
     return (
-        <div className={styles.customBlockContact}>
-            <header>
-                <h5>Add Friend via phone</h5>
-            </header>
+        <EmptyCard title="Add Friend via phone" color="primary">
             <form onSubmit={onSubmit} className={styles.friendsForm}>
                 {error ? <small style={{ color: 'red' }}>No phone number</small> : null}
                 <input
@@ -29,6 +27,6 @@ export const AddFriends = () => {
                 />
                 <input type="submit" className="custom-btn" value="Add" />
             </form>
-        </div>
+        </EmptyCard>
     )
 }
