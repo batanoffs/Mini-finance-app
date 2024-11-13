@@ -11,15 +11,11 @@ Mini Finance Innovations is a finance web application project. The goal is to si
 This is the project for the SoftUniada 2024 competition.
 
 Notes:
-- *Deployed on [https://mini-finance.onrender.com](https://mini-finance.onrender.com)* 
+- *Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)* 
 - *After the submission, the project has been updated with english localization, refactored according best practices 
 - *Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day after the limit is reached*
 - *New video for updated version coming soon*
-- **Test accounts:**
-    | *username*    | *password*     |
-    | ------------- | -------------- |
-    | `ivo@abv.bg`  | Minifinance123 |
-    | `test@abv.bg` | Minifinance123 |
+- Test account - `ivo@abv.bg`  | Minifinance123
  
 
 ## Table of content
@@ -100,8 +96,10 @@ To get started with this project, follow these steps:
 
 
 - ### About
-  
-    ![About page](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505335/aboutapp_cu1qn5.png) 
+  | Web                                                                                              | Mobile |
+  | ------------------------------------------------------------------------------------------------ | ------ |
+  | ![About page](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505335/aboutapp_cu1qn5.png) |        |
+     
 
 - ### Dashboard
     Provides a central interface for managing the account, navigation, including virtual
@@ -123,29 +121,27 @@ To get started with this project, follow these steps:
 
     *Users can **request money** from other users in the ecosystem as long as they are in their list of friends.The form is invoked from a button located on the dashboard and allows automatic filling / **Autocomplete** of the field if the friend has been found.*
 
-    - #### Friend notifications 
-  
     | Friend request                                                                                             | Accept Friend - success message                                                                                        |
     | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
     | ![Friend request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506877/friend-request_sevm2j.png) | ![Accept message](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506879/notification-friend-accept_gzoldh.png) |
 
-    - #### Money notifications
+
     | Money recieved                                                                                              | Money request                                                                                                 |
     | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
     | ![Money recieved](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507492/notifyMoneySent_jd0usp.png) | ![Money request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507494/notifyMoneyRequest_dkhqpv.png) |
 
-    - #### General notifications
+
     | Empty notifications                                                                                              | Message reject                                                                                                |
     | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
     | ![Empty notification](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png) | ![Message reject](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507498/notifyMoneyReject_xjh7x0.png) |
 
-- ### Profile menu
+- ### User profile menu 
+
+    The user profile menu contains the user's name and avatar and allows the user to navigate between pages.
+
     |                                                   Web                                                    |                                                     Mobile                                                     |
     | :------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
     | ![Profile web](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505340/profilemenu-web_wbdg0p.png) | ![Profile mobile](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505339/profilemenu-mobile_qaqegv.png) |
-
-- ### Transactions
-    Needs update
 
 - ### Profile settings
     Users can change information about their account, including email, profile picture
@@ -209,7 +205,7 @@ Used Exchange Rate API for live update rates
 - ### Custom Hooks
     Some of the hooks are reuseable others are not updated yet.
 
-    - useAddFriend() - *provides handlers and state managing for friends manipulation. Finally it returns:*
+    - **useAddFriend()** - *provides handlers and state managing for friends manipulation. Finally it returns:*
       - number
       - error
       - showMessage
@@ -217,13 +213,13 @@ Used Exchange Rate API for live update rates
       - onChangeNumber
       - onFocusClearErrorHandler
 
-    - useExchangeRates() - *manages the state and requests to the Exchange Rate API. Finally it returns the different rates.*
+    - **useExchangeRates()** - *manages the state and requests to the Exchange Rate API. Finally it returns the different rates.*
 
-    - useMessage() - *returns function message from Ant Design, which takes type and text*
+    - **useMessage()** - *returns function message from Ant Design, which takes type and text*
 
-    - useTransactions(type) - *Accepts type of transaction. It fetches the transactions by type and returns them.*
+    - **useTransactions(type)** - *Accepts type of transaction. It fetches the transactions by type and returns them.*
 
-    - useMakeTransactions(type, toggleModal, showModal) - *Accepts type of transaction, toggleModal and showModal as props. It manages the state and requests to the transactions. Finally it returns the different rates.*
+    - **useMakeTransactions(type, toggleModal, showModal)** - *Accepts type of transaction, toggleModal and showModal as props. It manages the state and requests to the transactions. Finally it returns the different rates.*
       - friends - array of friends of the user
       - values - updated form values
       - setValues - a setter function
@@ -231,7 +227,7 @@ Used Exchange Rate API for live update rates
       - onFormSubmitHandler - form submit handler
       - onClose - a function to close the modal
 
-    - useForm(initialState, onLogin, onRegister) - *takes initial state for form, and functions to be called on login and register. Inside it there's also useValidate hook which validates input from user. Finally it returns:*
+    - **useForm(initialState, onLogin, onRegister)** - *takes initial state for form, and functions to be called on login and register. Inside it there's also useValidate hook which validates input from user. Finally it returns:*
       - values - updated form values
       - error - errors if there were any during validation
       - changeHandler - updates form values and is used as onChange prop for input
@@ -241,23 +237,23 @@ Used Exchange Rate API for live update rates
       - onSubmitRegister - checks if request was successful
       - onFocusHandler - clears currently focused input field
 
-    - useSessionStorage(key, initialValue) - *takes key to store in sessionStorage and initial value. Finally it returns:*
+    - **useSessionStorage(key, initialValue)** - *takes key to store in sessionStorage and initial value. Finally it returns:*
       - setSessionStorageState - function to set current state
       - state - current state
 
-    - useValidate(initialStatе) - *takes initial state which comes from useForm. Finally it returns:*
+    - **useValidate(initialStatе)** - *takes initial state which comes from useForm. Finally it returns:*
       - error - state of errors in the current moment
       - errorHandler - function that validates errors and sets them in state
       - clearErrorHandler - function that clears errors
 
-    - useUploadImage() - *provides handlers for drag and drop and file input. Returns*
+    - **useUploadImage()** - *provides handlers for drag and drop and file input. Returns*
       - picture
       - error
       - handleDrop
       - handleDragOver
       - handleFileSelect
 
-    - useVirtualCard() - *returns virtual card number and balance for the current user*
+    - **useVirtualCard()** - *returns virtual card number and balance for the current user*
 
 - ### Routers
   - Main router is located in **App** component
@@ -267,8 +263,8 @@ Used Exchange Rate API for live update rates
     **baseURL** stores base URL for backendless and exchangerate api
 
 - ### Utils
-  - setNewGeneratedId() - *takes nothing. Generates random number from 0 – 100 and checks if there's already user with such id and if there is, generates new one and returns it*
-  - formatDate(date) - *takes date and returns formatted*
+  - **setNewGeneratedId()** - *takes nothing. Generates random number from 0 – 100 and checks if there's already user with such id and if there is, generates new one and returns it*
+  - **formatDate(date)** - *takes date and returns formatted*
 
   - **showLastCardDigits(number)** takes bank card number and returns last four digits
 
