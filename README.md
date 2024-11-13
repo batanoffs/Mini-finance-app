@@ -209,57 +209,55 @@ Used Exchange Rate API for live update rates
 - ### Custom Hooks
     Some of the hooks are reuseable others are not updated yet.
 
-    **useAddFriend()** provides handlers and state managing for friends manipulation. Finally it returns:
-    - number
-    - error
-    - showMessage
-    - onSubmit
-    - onChangeNumber
-    - onFocusClearErrorHandler
+    - useAddFriend() - *provides handlers and state managing for friends manipulation. Finally it returns:*
+      - number
+      - error
+      - showMessage
+      - onSubmit
+      - onChangeNumber
+      - onFocusClearErrorHandler
 
-    **useExchangeRates** manages the state and requests to the Exchange Rate API. Finally it returns the different rates.
+    - useExchangeRates() - *manages the state and requests to the Exchange Rate API. Finally it returns the different rates.*
 
-    **useMessage()** returns function message from Ant Design, which takes type and text
+    - useMessage() - *returns function message from Ant Design, which takes type and text*
 
-    **useTransactions(type)** Accepts type of transaction. It fetches the transactions by type and returns them.
+    - useTransactions(type) - *Accepts type of transaction. It fetches the transactions by type and returns them.*
 
-    **useMakeTransactions(type, toggleModal, showModal)** Accepts type of transaction, toggleModal and showModal as props. It manages the state and requests to the transactions. Finally it returns the different rates.
-    - friends - array of friends of the user
-    - values - updated form values
-    - setValues - a setter function
-    - setUserInputHandler - updates form values
-    - onFormSubmitHandler - form submit handler
-    - onClose - a function to close the modal
+    - useMakeTransactions(type, toggleModal, showModal) - *Accepts type of transaction, toggleModal and showModal as props. It manages the state and requests to the transactions. Finally it returns the different rates.*
+      - friends - array of friends of the user
+      - values - updated form values
+      - setValues - a setter function
+      - setUserInputHandler - updates form values
+      - onFormSubmitHandler - form submit handler
+      - onClose - a function to close the modal
 
-    **useForm(initialState, onLogin, onRegister)** takes initial state for form, and functions to be called on login and register.
-    Inside it there's also useValidate hook which validates input from user. Finally it returns:
-    - values - updated form values
-    - error - errors if there were any during validation
-    - changeHandler - updates form values and is used as onChange prop for input
-    - validateHandler - validates input from user
-    - onSubmitLogin - checks if request was successful
-    - resetFormHandler - clears input fields
-    - onSubmitRegister - checks if request was successful
-    - onFocusHandler - clears currently focused input field
+    - useForm(initialState, onLogin, onRegister) - *takes initial state for form, and functions to be called on login and register. Inside it there's also useValidate hook which validates input from user. Finally it returns:*
+      - values - updated form values
+      - error - errors if there were any during validation
+      - changeHandler - updates form values and is used as onChange prop for input
+      - validateHandler - validates input from user
+      - onSubmitLogin - checks if request was successful
+      - resetFormHandler - clears input fields
+      - onSubmitRegister - checks if request was successful
+      - onFocusHandler - clears currently focused input field
 
-    **useSessionStorage(key, initialValue)** takes key to store in sessionStorage
-    and initial value. Finally it returns:
-    - setSessionStorageState - function to set current state
-    - state - current state
+    - useSessionStorage(key, initialValue) - *takes key to store in sessionStorage and initial value. Finally it returns:*
+      - setSessionStorageState - function to set current state
+      - state - current state
 
-    **useValidate(initialStatе)** takes initial state which comes from useForm. Finally it returns:
-    - error - state of errors in the current moment
-    - errorHandler - function that validates errors and sets them in state
-    - clearErrorHandler - function that clears errors
+    - useValidate(initialStatе) - *takes initial state which comes from useForm. Finally it returns:*
+      - error - state of errors in the current moment
+      - errorHandler - function that validates errors and sets them in state
+      - clearErrorHandler - function that clears errors
 
-    **useUploadImage()** provides handlers for drag and drop and file input. Returns
-    - picture
-    - error
-    - handleDrop
-    - handleDragOver
-    - handleFileSelect
+    - useUploadImage() - *provides handlers for drag and drop and file input. Returns*
+      - picture
+      - error
+      - handleDrop
+      - handleDragOver
+      - handleFileSelect
 
-    **useVirtualCard()** returns virtual card number and balance for the current user
+    - useVirtualCard() - *returns virtual card number and balance for the current user*
 
 - ### Routers
   - Main router is located in **App** component
@@ -269,10 +267,8 @@ Used Exchange Rate API for live update rates
     **baseURL** stores base URL for backendless and exchangerate api
 
 - ### Utils
-  - **setNewGeneratedId()** takes nothing. Generates random number from 0 – 100
-    and checks if there's already user with such id and if there is, generates
-    new one and returns it
-  - **formatDate(date)** takes date and returns formatted
+  - setNewGeneratedId() - *takes nothing. Generates random number from 0 – 100 and checks if there's already user with such id and if there is, generates new one and returns it*
+  - formatDate(date) - *takes date and returns formatted*
 
   - **showLastCardDigits(number)** takes bank card number and returns last four digits
 
