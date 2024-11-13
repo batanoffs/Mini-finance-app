@@ -7,15 +7,22 @@
 
 https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a05e-6da467265a31
 
-[Mini Finance Innovations](https://mini-finance.onrender.com) is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups via the user's debit card, adding friends, facilitating transactions between users, and maintaining transaction history. The main focus of this project is to practice REST, React, React-router, ES6 features, CSS/CSS modules, and responsive design.
+Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, and maintaining transaction history.
+This is the project for the SoftUniada 2024 competition.
 
-Notes
-- Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day after the limit is reached
-
+Notes:
+- *Deployed on [https://mini-finance.onrender.com](https://mini-finance.onrender.com)* 
+- *After the submission, the project has been updated with english localization, refactored according best practices 
+- *Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day after the limit is reached*
+- *New video for updated version coming soon*
+- **Test accounts:**
+    | *username*    | *password*     |
+    | ------------- | -------------- |
+    | `ivo@abv.bg`  | Minifinance123 |
+    | `test@abv.bg` | Minifinance123 |
+ 
 
 ## Table of content
-- [Mini Finance Innovations](#mini-finance-innovations)
-- [Test account](#test-account)
 - [Features](#features)
 - [Libraries and Services](#libraries-and-services)
 - [Usage](#usage)
@@ -25,16 +32,7 @@ Notes
 - [Future updates](#future-updates)
 - [Contributing](#contributing)
 - [License](#license)
-  
 
-## Test account
-
-```bash
-username `ivo@abv.bg` password `Minifinance123`
-```
-```bash
-username `test@abv.bg` password `Minifinance123`
-```
 
 ## Features
 - Get online virtual card generation upon register
@@ -90,7 +88,7 @@ To get started with this project, follow these steps:
 6. Login with test credentials or register new account
 
 ## Project content
- - ### Login Register
+- ### Login Register
     The user can log in to the app with an existing account or register a new one.
     The registration is a multi-step process as shown below and clearly displays the user's current stage.
     There is validation implemented for the user's input.
@@ -124,15 +122,22 @@ To get started with this project, follow these steps:
     created and possible actions, when the user hovers over the notification with the mouse.
 
     *Users can **request money** from other users in the ecosystem as long as they are in their list of friends.The form is invoked from a button located on the dashboard and allows automatic filling / **Autocomplete** of the field if the friend has been found.*
+
+    - #### Friend notifications 
   
-    | Notification Type             | Image                                                                                                                  |
-    | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-    | Friend request notification   | ![Friend request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506877/friend-request_sevm2j.png)             |
-    | Accept Friend request message | ![Accept message](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506879/notification-friend-accept_gzoldh.png) |
-    | Money recieved notification   | ![Money recieved](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507492/notifyMoneySent_jd0usp.png)            |
-    | Delete notification message   | ![Delete notification](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png)      |
-    | Money request notification    | ![Money request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507494/notifyMoneyRequest_dkhqpv.png)          |
-    | Message reject                | ![Message reject](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507498/notifyMoneyReject_xjh7x0.png)          |
+    | Friend request                                                                                             | Accept Friend - success message                                                                                        |
+    | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+    | ![Friend request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506877/friend-request_sevm2j.png) | ![Accept message](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506879/notification-friend-accept_gzoldh.png) |
+
+    - #### Money notifications
+    | Money recieved                                                                                              | Money request                                                                                                 |
+    | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+    | ![Money recieved](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507492/notifyMoneySent_jd0usp.png) | ![Money request](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507494/notifyMoneyRequest_dkhqpv.png) |
+
+    - #### General notifications
+    | Empty notifications                                                                                              | Message reject                                                                                                |
+    | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+    | ![Empty notification](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729505338/no-notifications_zgsvkn.png) | ![Message reject](https://res.cloudinary.com/dzh01qrmx/image/upload/v1729507498/notifyMoneyReject_xjh7x0.png) |
 
 - ### Profile menu
     |                                                   Web                                                    |                                                     Mobile                                                     |
@@ -185,35 +190,76 @@ To get started with this project, follow these steps:
 
 ## Design and Architecture
 Serverless architecture, based on Backendless as a provider. 
-Used Exhange Rate API for live update rates
+Used Exchange Rate API for live update rates
+
+- ### Reuseable Components
+    - buttons
+    - cards
+    - forms
+    - lists
+    - cards
+    - modals
+    - inputs
+    - utils
 
 - ### Context Providers
     **AuthContext** provides data of authenticated user to welcomePage
     component through useContext from React. Additionally exports useAuthContext()
 
 - ### Custom Hooks
+    Some of the hooks are reuseable others are not updated yet.
+
+    **useAddFriend()** provides handlers and state managing for friends manipulation. Finally it returns:
+    - number
+    - error
+    - showMessage
+    - onSubmit
+    - onChangeNumber
+    - onFocusClearErrorHandler
+
+    **useExchangeRates** manages the state and requests to the Exchange Rate API. Finally it returns the different rates.
+
     **useMessage()** returns function message from Ant Design, which takes type and text
+
+    **useTransactions(type)** Accepts type of transaction. It fetches the transactions by type and returns them.
+
+    **useMakeTransactions(type, toggleModal, showModal)** Accepts type of transaction, toggleModal and showModal as props. It manages the state and requests to the transactions. Finally it returns the different rates.
+    - friends - array of friends of the user
+    - values - updated form values
+    - setValues - a setter function
+    - setUserInputHandler - updates form values
+    - onFormSubmitHandler - form submit handler
+    - onClose - a function to close the modal
 
     **useForm(initialState, onLogin, onRegister)** takes initial state for form, and functions to be called on login and register.
     Inside it there's also useValidate hook which validates input from user. Finally it returns:
-    - values updated form values
-    - error errors if there were any during validation
-    - changeHandler updates form values and is used as onChange prop for input
-    - validateHandler validates input from user
-    - onSubmitLogin checks if request was successful
-    - resetFormHandler clears input fields
-    - onSubmitRegister checks if request was successful
-    - onFocusHandler clears currently focused input field
+    - values - updated form values
+    - error - errors if there were any during validation
+    - changeHandler - updates form values and is used as onChange prop for input
+    - validateHandler - validates input from user
+    - onSubmitLogin - checks if request was successful
+    - resetFormHandler - clears input fields
+    - onSubmitRegister - checks if request was successful
+    - onFocusHandler - clears currently focused input field
 
     **useSessionStorage(key, initialValue)** takes key to store in sessionStorage
     and initial value. Finally it returns:
-    - setSessionStorageState function to set current state
-    - state current state
+    - setSessionStorageState - function to set current state
+    - state - current state
 
     **useValidate(initialStatе)** takes initial state which comes from useForm. Finally it returns:
-    - error state of errors in the current moment
-    - errorHandler function that validates errors and sets them in state
-    - clearErrorHandler function that clears errors
+    - error - state of errors in the current moment
+    - errorHandler - function that validates errors and sets them in state
+    - clearErrorHandler - function that clears errors
+
+    **useUploadImage()** provides handlers for drag and drop and file input. Returns
+    - picture
+    - error
+    - handleDrop
+    - handleDragOver
+    - handleFileSelect
+
+    **useVirtualCard()** returns virtual card number and balance for the current user
 
 - ### Routers
   - Main router is located in **App** component
