@@ -12,11 +12,16 @@ This is the project for the SoftUniada 2024 competition.
 
 Notes:
 - *Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)* 
-- *After the submission, the project has been updated with english localization, refactored according best practices 
 - *Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day after the limit is reached*
-- *New video for updated version coming soon*
-- Test account - `ivo@abv.bg`  | Minifinance123
+- *After the submission, the project has been updated with english localization and refactored according best practices for clean code and separation of concerns*
+- *New demo video for updated version - coming soon*
+
  
+Test account:
+  ```txt
+  email: ivo@abv.bg 
+  pass: Minifinance123
+  ```
 
 ## Table of content
 - [Features](#features)
