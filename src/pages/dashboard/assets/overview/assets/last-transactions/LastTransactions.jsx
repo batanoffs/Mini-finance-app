@@ -17,7 +17,7 @@ export const LastTransactions = () => {
             options={{
                 menu: (
                     <Link className="custom-btn" to="/dashboard/wallet">
-                        View All Transactions
+                        View All
                     </Link>
                 ),
             }}
