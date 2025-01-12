@@ -4,6 +4,9 @@ import { EmptyCard } from '../../../../../../components/cards'
 
 export const ExchangeRate = () => {
     const rates = useExchangeRates()
+
+    console.log(rates);
+    
     const mapRates = Array.from(Object.entries(rates)).map((rate) => ListRate(rate))
 
     return (
