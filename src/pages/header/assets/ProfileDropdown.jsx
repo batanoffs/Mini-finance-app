@@ -9,7 +9,7 @@ import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 
 import styles from '../site-header.module.css'
 
-export const ProfileDropdown = (props) => {
+export const ProfileDropdown = ({ avatar, onLogoutHandler, fullName }) => {
     return (
         <div className={styles.dropdownNotifications}>
             <div
@@ -19,17 +19,17 @@ export const ProfileDropdown = (props) => {
                 aria-expanded="false"
                 className={styles.dropdownToggle}
             >
-                <img src={props.picture} className={styles.profileImage} alt={'avatar'} />
+                <img src={avatar} className={styles.profileImage} alt={'avatar'} />
 
                 <ul className={styles.dropdownMenu}>
                     <li>
                         <div className={styles.dropdownMenuProfileThumb}>
                             <img
-                                src={props.picture}
+                                src={avatar}
                                 className={styles.profileImage}
                                 alt={'avatar'}
                             />
-                            <small>{props.name}</small>
+                            <small>{fullName}</small>
                         </div>
                     </li>
 
@@ -58,7 +58,7 @@ export const ProfileDropdown = (props) => {
                     </li>
 
                     <li className="border-top">
-                        <Link className={styles.dropdownItem} onClick={props.onLogoutHandler} to="">
+                        <Link className={styles.dropdownItem} onClick={onLogoutHandler} to="">
                             <FontAwesomeIcon
                                 className={styles.sidebarIcons}
                                 icon={faArrowRightFromBracket}

@@ -19,7 +19,7 @@ export const QuickSendMoney = () => {
         buttons: false,
         favFriends: false,
     })
-    const { favorites } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
     const showMessage = useMessage()
 
     const notFound = (
@@ -28,7 +28,7 @@ export const QuickSendMoney = () => {
             <AddToFavorites toggleModal={toggleModal} />
         </>
     )
-    const menu = favorites.length > 0 ? <ActionsMenu toggleModal={toggleModal} /> : null
+    const menu = auth.favorite_friends.length > 0 ? <ActionsMenu toggleModal={toggleModal} /> : null
 
     const openSendMenu = (event) => {
         const name = event.currentTarget.parentElement.getAttribute('data-key')
@@ -43,8 +43,8 @@ export const QuickSendMoney = () => {
     return (
         <EmptyCard options={{ menu }} title="Quick Send" color="accent">
             <ul className={styles.sendMoneyContainer}>
-                {favorites.length > 0
-                    ? favorites?.map((friend) => (
+                {auth.favorite_friends.length > 0
+                    ? auth.favorite_friends?.map((friend) => (
                           <ListFriend friend={friend} onClick={openSendMenu} key={friend.objectId}>
                               {showModal.send && <Actions toggleModal={toggleModal} friend={friend} />}
                           </ListFriend>

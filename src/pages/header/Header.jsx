@@ -9,7 +9,7 @@ import { AuthContext } from '../../contexts/AuthContext'
 import styles from './site-header.module.css'
 
 export const Header = () => {
-    const { isAuthenticated, picture, onLogoutHandler, name } = useContext(AuthContext)
+    const { isAuthenticated, auth, onLogoutHandler } = useContext(AuthContext)
     const [isMobile, setIsMobile] = useState(window.innerWidth < 600)
     const navigate = useNavigate()
 
@@ -19,7 +19,7 @@ export const Header = () => {
     const authContent = isAuthenticated() ? (
         <div className={styles.headerDropdownContainer}>
             <Notifications />
-            <ProfileDropdown onLogoutHandler={onLogoutHandler} name={name} picture={picture} />
+            <ProfileDropdown onLogoutHandler={onLogoutHandler} fullName={auth.fullName} avatar={auth.avatar} />
         </div>
     ) : (
         <div className={isMobile ? styles.headerMobileDropdown : styles.headerButtons}>

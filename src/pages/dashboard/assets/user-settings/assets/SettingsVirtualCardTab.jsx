@@ -6,12 +6,12 @@ import { AuthContext } from '../../../../../contexts/AuthContext'
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 
 export const VirtualCard = () => {
-    const { name, virtualCard } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
     const [state, setState] = useState({
-        name: name,
-        cardNumber: virtualCard.number,
-        expiryDate: virtualCard.expiration,
-        cvc: virtualCard.cvv,
+        name: auth.fullName,
+        cardNumber: auth.virtualCard.number,
+        expiryDate: auth.virtualCard.expiration,
+        cvc: auth.virtualCard.cvv,
         focus: '',
     })
 
@@ -29,10 +29,7 @@ export const VirtualCard = () => {
 
     return (
         <div className="form-container">
-            <div
-                className="form-content"
-                style={{ display: 'flex', flexDirection: 'row', gap: '10em' }}
-            >
+            <div className="form-content" style={{ display: 'flex', flexDirection: 'row', gap: '10em' }}>
                 <form className="custom-form" method="post">
                     <div className="form-group">
                         <label htmlFor="credit_card_number">Card Number</label>
@@ -94,12 +91,7 @@ export const VirtualCard = () => {
                     </div>
 
                     <footer>
-                        <input
-                            type="submit"
-                            value="Save"
-                            onClick={onUpdateHandler}
-                            className="button-primary"
-                        />
+                        <input type="submit" value="Save" onClick={onUpdateHandler} className="button-primary" />
                     </footer>
                 </form>
                 <div className="form-group">

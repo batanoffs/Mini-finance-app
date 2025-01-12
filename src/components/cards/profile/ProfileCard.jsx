@@ -9,12 +9,12 @@ import { EmptyCard } from '../empty/EmptyCard'
 import containers from './profile.module.css'
 
 export const ProfileCard = () => {
-    const { name, picture, phone, email, address, country } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
 
     return (
         <EmptyCard color="secondary" className={containers.customBlockProfile}>
             <div className={containers.customBlockProfileImageWrap}>
-                <img src={picture} className={containers.customBlockProfileImage} alt="avatar" />
+                <img src={auth.avatar} className={containers.customBlockProfileImage} alt="avatar" />
 
                 <Link to="/dashboard/settings" className={containers.customBlockEditIcon}>
                     <FontAwesomeIcon icon={faPenToSquare} />
@@ -23,43 +23,43 @@ export const ProfileCard = () => {
 
             <p>
                 <strong>Name: </strong>
-                <span>{name}</span>
+                <span>{auth.fullName}</span>
             </p>
 
             <p>
                 <strong>Email: </strong>
                 <a
-                    href={`mailto:${email}`}
+                    href={`mailto:${auth.email}`}
                     style={{
                         color: 'var(--heading-color)',
                         hover: 'white',
                     }}
                 >
-                    {email}
+                    {auth.email}
                 </a>
             </p>
             <p style={{ paddingBottom: '0' }}>
                 <strong>Phone:</strong>
                 <a
-                    href={`tel:${phone}`}
+                    href={`tel:${auth.phoneNumber}`}
                     style={{
                         paddingLeft: '5px',
                         color: 'var(--heading-color)',
                     }}
                 >
-                    {phone}
+                    {auth.phoneNumber}
                 </a>
             </p>
-            {country && (
+            {auth.country && (
                 <p>
                     <strong>Country:</strong>
-                    <span> {country}</span>
+                    <span> {auth.country}</span>
                 </p>
             )}
-            {address && (
+            {auth.address && (
                 <p>
                     <strong>Address: </strong>
-                    <span>{address}</span>
+                    <span>{auth.address}</span>
                 </p>
             )}
         </EmptyCard>
