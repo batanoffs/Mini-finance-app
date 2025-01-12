@@ -6,7 +6,7 @@ import { MAX_FILE_SIZE } from '../constants/index'
 
 export const useUploadImage = () => {
     const [error, setError] = useState(null)
-    const { ownerId, token, userDataId, picture, setAuth } = useContext(AuthContext)
+    const { token, setAuth, auth } = useContext(AuthContext)
 
     const handleDrop = (e) => {
         e.preventDefault()
@@ -24,18 +24,16 @@ export const useUploadImage = () => {
             return
         }
 
-        // RESET ERROR
         setError(null)
 
-        // Upload file
         const fineName = file.name.split('.')[0]
-        const response = await dataService.uploadProfilePicture(fineName, ownerId, file, token)
+        const response = await dataService.uploadProfilePicture(fineName, auth.ownerId, file, token)
 
         const data = {
             avatar: response.fileURL,
         }
 
-        const avatarResponse = await dataService.changeAttribute(userDataId, data)
+        const avatarResponse = await dataService.changeAttribute(auth.objectId, data)
 
         if (avatarResponse) {
             setAuth((state) => ({ ...state, avatar: avatarResponse.avatar }))
@@ -51,5 +49,5 @@ export const useUploadImage = () => {
         handleFile(file)
     }
 
-    return [handleDrop, handleDragOver, handleFileSelect, error, picture]
+    return { handleDrop, handleDragOver, handleFileSelect, error }
 }
