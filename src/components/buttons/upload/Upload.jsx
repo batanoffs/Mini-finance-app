@@ -1,12 +1,15 @@
+import { useContext } from 'react'
+import { AuthContext } from '../../../contexts/AuthContext'
 import { useUploadImage } from '../../../hooks/useUploadImage'
 import styles from './upload.module.css'
 
 export const UploadPicture = () => {
-    const [handleDrop, handleDragOver, handleFileSelect, error, picture] = useUploadImage()
+    const { handleDrop, handleDragOver, handleFileSelect, error } = useUploadImage()
+    const { auth } = useContext(AuthContext)
 
     return (
         <div className={styles.container} onDrop={handleDrop} onDragOver={handleDragOver}>
-            <img className={styles.image} src={picture} alt="person" />
+            <img className={styles.image} src={auth.avatar} alt="avatar" />
             <input type="file" onChange={handleFileSelect} />
 
             {error && <div className={styles.error}>{error}</div>}
