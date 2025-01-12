@@ -4,21 +4,21 @@ import { AuthContext } from '../contexts/AuthContext'
 
 export const useTransactions = (transactionType) => {
     const [transactions, setTransactions] = useState([])
-    const { userDataId, token } = useContext(AuthContext)
+    const { auth, token } = useContext(AuthContext)
 
     const fetchTransactions = useCallback(async () => {
         try {
             let result
             if (transactionType === 'sender') {
-                result = await transactionService.getAllSender(userDataId, token)
+                result = await transactionService.getAllSender(auth.objectId, token)
             } else if (transactionType === 'receiver') {
-                result = await transactionService.getAllReceiver(userDataId, token)
+                result = await transactionService.getAllReceiver(auth.objectId, token)
             }
             setTransactions(result)
         } catch (error) {
             console.log(error)
         }
-    }, [userDataId, token, transactionType])
+    }, [auth.objectId, token, transactionType])
 
     useEffect(() => {
         fetchTransactions()

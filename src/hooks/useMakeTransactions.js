@@ -6,14 +6,13 @@ import { dataService } from '../services/userDataService'
 
 export const useMakeTransactions = ({ type, toggleModal, showModal }) => {
     const [values, setValues] = useState({ amount: '', friends: '' })
-    const { userDataId, token } = useContext(AuthContext)
-    const [friends, setFriends] = useState([])
-
+    const { auth, token } = useContext(AuthContext)
+    const [friends, setFriends] = useState(auth.friends)
     const showMessage = useMessage()
 
     const fetchFriends = useCallback(async () => {
         try {
-            const response = await dataService.getRelation(userDataId, 'friends')
+            const response = await dataService.getRelation(auth.objectId, 'friends')
             const filterFriends = response.friends?.map((friend) => {
                 if (friend.fullName) {
                     return {
@@ -62,14 +61,14 @@ export const useMakeTransactions = ({ type, toggleModal, showModal }) => {
             let response
 
             if (type === 'request') {
-                response = await transactionService.requestNotify(friends, Number(amount), userDataId, token)
+                response = await transactionService.requestNotify(friends, Number(amount), auth.objectId, token)
             }
 
             if ((type = 'send')) {
-                response = await transactionService.sendMoney(friends, Number(amount), userDataId, token)
+                response = await transactionService.sendMoney(friends, Number(amount), auth.objectId, token)
                 if (!response) throw new Error('Transaction service response is null.')
                 if (!response.success) throw new Error(`Transaction service error: ${response.message}`)
-                await transactionService.notifyMoneyReceived(friends, Number(amount), userDataId, token)
+                await transactionService.notifyMoneyReceived(friends, Number(amount), auth.objectId, token)
             }
 
             toggleModal(type)
