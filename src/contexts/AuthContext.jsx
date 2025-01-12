@@ -1,15 +1,16 @@
-import { useState, useContext, createContext } from 'react'
+import { useContext, createContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { cardService } from '../services/cardGenerationService'
 import { useSessionStorage } from '../hooks/useSessionStorage'
 import { dataService } from '../services/userDataService'
 import { authService } from '../services/authService'
+import { DEFAULT_VALUES } from '../constants'
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useSessionStorage(`auth`, {})
+    const [auth, setAuth] = useSessionStorage(`auth`, DEFAULT_VALUES)
     const navigate = useNavigate()
 
     const onLoginSubmitHandler = async (formData) => {
@@ -26,22 +27,29 @@ export const AuthProvider = ({ children }) => {
             if (response && response.message) return response
 
             const token = response['user-token']
-            const ownerId = response['ownerId']
+
+            if(!token) throw new Error('No token found in response')
 
             sessionStorage.setItem('token', token)
 
+            const ownerId = response['ownerId']
+
+            if (!ownerId) throw new Error('No ownerId found in response')
+
             const userDataResponse = await dataService.getUserData(ownerId)
 
-            if (userDataResponse === null) throw new Error('No user found with those credentials')
-            if (userDataResponse.length === 0) throw new Error('No user found with those credentials')
+            if (userDataResponse === null || userDataResponse.length === 0)
+                throw new Error('No user found with those credentials')
 
             const card = userDataResponse[0].virtualCard[0]
 
-            if (card === null) throw new Error('card is null')
+            if (card === null) throw new Error('card not found')
 
             const userData = userDataResponse[0]
             userData.virtualCard = card
             userData.email = response.email
+
+            console.log('userData', userData)
 
             setAuth(userData)
             navigate('/dashboard/overview')
@@ -67,8 +75,7 @@ export const AuthProvider = ({ children }) => {
             return { message: 'Null or empty value in formData' }
         }
 
-        if (formData.password !== formData.confirmPassword)
-            return { message: 'Passwords do not match' }
+        if (formData.password !== formData.confirmPassword) return { message: 'Passwords do not match' }
 
         const registerData = {
             email: formData.email,
@@ -89,9 +96,7 @@ export const AuthProvider = ({ children }) => {
             })
             const getCardResponse = await cardService.generateCard(formData.cardId)
 
-            await cardService.setVirtualCardRelation(setUserDataResponse.objectId, [
-                getCardResponse.objectId,
-            ])
+            await cardService.setVirtualCardRelation(setUserDataResponse.objectId, [getCardResponse.objectId])
 
             navigate('/login')
         } catch (error) {
@@ -109,37 +114,13 @@ export const AuthProvider = ({ children }) => {
     }
 
     const authDataContext = {
-        onLoginSubmitHandler,
         onRegisterSubmitHandler,
+        onLoginSubmitHandler,
         onLogoutHandler,
-        ownerId: auth.ownerId || 'No information',
-        token: sessionStorage.getItem('token') || 'No information',
-        email: auth.email || 'No information',
-        userStatus: auth.userStatus,
         isAuthenticated: () => sessionStorage.getItem('token'),
-        name: auth.fullName || 'user',
-        phone: auth.phoneNumber || 'phone number',
-        country: auth.country || 'country',
-        virtualCard: auth.virtualCard || {
-            number: `0000 0000 0000 0000`,
-            expiration: '00/00',
-            cvv: `000`,
-            balance: Number(`00000000`),
-            issuer: 0,
-            brand: `No information`,
-            objectId: `No information`,
-            created: `information`,
-        },
-        picture:
-            auth.avatar ||
-            'https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506585/default-avatar_vxyg1c.png',
-        transactions: auth.transactions || [],
-        friends: auth.friends || [],
-        favorites: auth.favorite_friends || [],
-        address: auth.address || 'No information',
-        userDataId: auth.objectId || 'No information',
-        setAuth: setAuth,
-        auth: auth,
+        token: sessionStorage.getItem('token') || 'No information',
+        setAuth,
+        auth,
     }
 
     return <AuthContext.Provider value={{ ...authDataContext }}>{children}</AuthContext.Provider>
