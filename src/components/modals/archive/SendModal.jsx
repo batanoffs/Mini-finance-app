@@ -10,13 +10,13 @@ import modal from './modal.module.css'
 
 export const SendMoney = ({ toggleModal }) => {
     const [userInput, setUserInput] = useState({ amount: '', friends: '' })
-    const { userDataId, token } = useContext(AuthContext)
+    const { auth, token } = useContext(AuthContext)
     const [receiver, setReceiver] = useState([])
     const showMessage = useMessage()
-
+    
     const getReceivers = useCallback(async () => {
         try {
-            const response = await dataService.getRelation(userDataId, 'friends')
+            const response = await dataService.getRelation(auth.objectId, 'friends')
             const friends = response.friends?.map((friend) => {
                 if (friend.fullName) {
                     return {
@@ -62,14 +62,14 @@ export const SendMoney = ({ toggleModal }) => {
                 throw new Error('Amount or friends are not given.')
             }
 
-            const response = await transactionService.sendMoney(friends, Number(amount), userDataId, token)
+            const response = await transactionService.sendMoney(friends, Number(amount), auth.objectId, token)
             if (!response) {
                 throw new Error('Transaction service response is null.')
             }
             if (!response.success) {
                 throw new Error(`Transaction service error: ${response.message}`)
             }
-            await transactionService.notifyMoneyReceived(friends, Number(amount), userDataId, token)
+            await transactionService.notifyMoneyReceived(friends, Number(amount), auth.objectId, token)
             toggleModal('send')
             setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
             showMessage('success', 'Successfully sent the money')
