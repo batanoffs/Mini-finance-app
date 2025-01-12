@@ -5,86 +5,20 @@ import { AuthContext } from '../../../../../contexts/AuthContext'
 import { transactionService } from '../../../../../services/transactionService'
 import { notificationService } from '../../../../../services/notificationService'
 import { formatDateTable } from '../../../../../utils/formatDate'
+import { tableColumnsConfig } from './tableConfig'
 
 import styles from './table-transactions.module.css'
 
-const columns = [
-    {
-        title: 'Date',
-        dataIndex: 'date',
-        key: 'date',
-    },
-    {
-        title: 'Time',
-        dataIndex: 'time',
-        key: 'time',
-    },
-    {
-        title: 'Name',
-        dataIndex: 'description',
-        key: 'description',
-    },
-    {
-        title: 'Type',
-        dataIndex: 'type',
-        key: 'type',
-        filters: [
-            {
-                text: 'Income',
-                value: 'income',
-            },
-            {
-                text: 'Expense',
-                value: 'expense',
-            },
-        ],
-        onFilter: (value, record) => record.type.indexOf(value) === 0,
-    },
-    {
-        title: 'Amount',
-        dataIndex: 'price',
-        key: 'price',
-        defaultSortOrder: 'descend',
-        sorter: (a, b) => a.price - b.price,
-    },
-    {
-        title: 'Status',
-        key: 'status',
-        dataIndex: 'status',
-        render: (_, { status }) => (
-            <>
-                {status.map((tag) => {
-                    let color
-                    if (tag === 'Successful') {
-                        color = 'green'
-                    }
-                    if (tag === 'pending') {
-                        color = 'blue'
-                    }
-                    if (tag === 'rejected') {
-                        color = 'volcano'
-                    }
-                    return (
-                        <Tag color={color} key={tag}>
-                            {tag.toUpperCase()}
-                        </Tag>
-                    )
-                })}
-            </>
-        ),
-    },
-]
-
 export const TableTransactions = () => {
-    const { userDataId, token } = useContext(AuthContext)
+    const { auth, token } = useContext(AuthContext)
     const [transactions, setTransactions] = useState([])
 
     useEffect(() => {
         const getAllTransactions = async () => {
             const [receiverTransactions, requestTransactions] = await Promise.all([
-                transactionService.getAllReceiver(userDataId, token),
-                notificationService.getMoneyRequestNotifications(userDataId, token),
-                transactionService.getAllSender(userDataId, token),
+                transactionService.getAllReceiver(auth.objectId, token),
+                notificationService.getMoneyRequestNotifications(auth.objectId, token),
+                transactionService.getAllSender(auth.objectId, token),
             ])
 
             const allTransactions = [...receiverTransactions, ...requestTransactions].sort(
@@ -96,12 +30,12 @@ export const TableTransactions = () => {
                 date: formatDateTable(transaction.created).split(' ').slice(0, 2).join(' ').replace(',', ''),
                 time: formatDateTable(transaction.created).split(' ').slice(3).join(' '),
                 description:
-                    transaction.receiver[0].objectId === userDataId
+                    transaction.receiver[0].objectId === auth.objectId
                         ? transaction.sender[0].fullName
                         : transaction.receiver[0].fullName,
-                type: transaction.receiver[0].objectId === userDataId ? 'income' : 'expense',
+                type: transaction.receiver[0].objectId === auth.objectId ? 'income' : 'expense',
                 price:
-                    transaction.receiver[0].objectId === userDataId ? (
+                    transaction.receiver[0].objectId === auth.objectId ? (
                         <Tag color={'green'} key={transaction.objectId}>
                             {`+ ${transaction.amount} BGN`}
                         </Tag>
@@ -117,7 +51,7 @@ export const TableTransactions = () => {
         }
 
         getAllTransactions()
-    }, [userDataId, token])
+    }, [auth.objectId, token])
 
     const onChange = (pagination, filters, sorter, extra) => {
         // console.log("params", pagination, filters, sorter, extra);
@@ -142,7 +76,7 @@ export const TableTransactions = () => {
         <div className={styles.customBlock} style={{ padding: '0.5em 1.5em' }}>
             <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Account movements</h5>
             <Table
-                columns={columns}
+                columns={tableColumnsConfig}
                 dataSource={transactions}
                 onChange={onChange}
                 showSorterTooltip={{
