@@ -3,11 +3,12 @@ import { useContext, useState } from 'react'
 import { UploadPicture } from '../../../../../components/buttons/upload/Upload'
 import { AuthContext } from '../../../../../contexts/AuthContext'
 
+// TODO update handlers
 export const ProfileTab = () => {
-    const { phone, email } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
     const [state, setState] = useState({
-        email: email,
-        phoneNumber: phone,
+        email: auth.email,
+        phoneNumber: auth.phoneNumber,
     })
 
     const inputChangeHandler = (e) => {
