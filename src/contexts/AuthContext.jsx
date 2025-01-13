@@ -6,6 +6,7 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 import { dataService } from '../services/userDataService'
 import { authService } from '../services/authService'
 import { DEFAULT_VALUES } from '../constants'
+import { clearUserData } from '../utils/sessionStorage'
 
 export const AuthContext = createContext()
 
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
             const token = response['user-token']
 
-            if(!token) throw new Error('No token found in response')
+            if (!token) throw new Error('No token found in response')
 
             sessionStorage.setItem('token', token)
 
@@ -48,8 +49,6 @@ export const AuthProvider = ({ children }) => {
             const userData = userDataResponse[0]
             userData.virtualCard = card
             userData.email = response.email
-
-            console.log('userData', userData)
 
             setAuth(userData)
             navigate('/dashboard/overview')
@@ -106,11 +105,17 @@ export const AuthProvider = ({ children }) => {
     }
 
     const onLogoutHandler = async () => {
-        const token = sessionStorage.getItem('token')
-        await authService.logout(token)
-        sessionStorage.removeItem('token')
-        setAuth({})
-        sessionStorage.removeItem('auth')
+        try {
+            const token = sessionStorage.getItem('token')
+            await authService.logout(token)
+
+            clearUserData()
+            setAuth({})
+            navigate('/')
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const authDataContext = {
