@@ -27,7 +27,7 @@ export const Sidebar = () => {
                         alt: 'credit card',
                     }}
                 />
-                <ListNav name="logout" to="/" title="Logout" onClick={onLogoutHandler} icon={faArrowRightFromBracket} />
+                <ListNav name="logout" title="Logout" onClick={onLogoutHandler} icon={faArrowRightFromBracket} />
             </ul>
         </nav>
     )

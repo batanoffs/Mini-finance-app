@@ -58,7 +58,7 @@ export const ProfileDropdown = ({ avatar, onLogoutHandler, fullName }) => {
                     </li>
 
                     <li className="border-top">
-                        <Link className={styles.dropdownItem} onClick={onLogoutHandler} to="">
+                        <Link className={styles.dropdownItem} onClick={onLogoutHandler}>
                             <FontAwesomeIcon
                                 className={styles.sidebarIcons}
                                 icon={faArrowRightFromBracket}
