@@ -1,26 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import { App } from 'antd'
+import { RouterProvider } from 'react-router-dom'
 
-import { Dashboard, Footer, Header, Home, Register, Login, About } from './pages/index'
-import { PageNotFound } from './components/utils/404'
+import router from './router'
 
-const MyApp = () => {
-    return (
-        <App style={{ fontFamily: 'var(--body-font-family)' }}>
-            <Header />
-            <main>
-                <Routes>
-                    <Route path="*" element={<PageNotFound />} />
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register/*" element={<Register />} />
-                    <Route path="/dashboard/*" element={<Dashboard />} />
-                </Routes>
-            </main>
-            <Footer />
-        </App>
-    )
-}
+const App = () => <RouterProvider router={router} future={{ v7_startTransition: true }} />
 
-export default MyApp
+export default App
