@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
-import { Login, Preview } from './assets/index'
 
+import { Login, Preview } from './assets/index'
+import { title, subTitle } from './constants'
 import styles from './home.module.css'
 
 export const Home = () => {
-    const title = 'The easiest way to make transactions online'
-    const subTitle =
-        'We created this platform for free to make it accessible to each one of you. Register now and get your free card today!'
     return (
         <div className={styles.wrapper}>
             <div className={styles.heroSection}>
