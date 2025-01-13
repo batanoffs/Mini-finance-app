@@ -1,108 +1,76 @@
-import { useState } from 'react'
+/**
+ * Autocomplete component for suggesting and selecting friends.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.className - Additional class name for the input element.
+ * @param {string} props.inputName - The name attribute for the input element.
+ * @param {string} props.userInput - The current user input state.
+ * @param {Function} props.setUserInput - Function to update the user input state.
+ * @param {Array} props.suggestions - List of suggestions to filter and display.
+ * @param {string} [props.placeholder='John Doe'] - Placeholder text for the input element.
+ * @param {Object} rest - Additional props.
+ *
+ * @returns {JSX.Element} The rendered Autocomplete component.
+ */
+
+import useAutocomplete from './useAutocomplete'
+import { SuggestionItem } from './suggestion-item/SuggestionItem'
 
 import styles from './autocomplete.module.css'
 
-export const Autocomplete = (props) => {
-    const [activeSuggestion, setActiveSuggestion] = useState(0)
-    const [filteredSuggestions, setFilteredSuggestions] = useState([])
-    const [showSuggestions, setShowSuggestions] = useState(false)
+export const Autocomplete = ({
+    className = '',
+    inputName,
+    userInput,
+    setUserInput,
+    suggestions,
+    placeholder = 'John Doe',
+    ...rest
+}) => {
+    const { inputChangeHandler, keyboardPressHandler, listSelectHandler, filteredSuggestions, activeSuggestion } =
+        useAutocomplete(suggestions, userInput, setUserInput)
 
-    const onChange = (e) => {
-        const input = e.target.value
-        const suggestions = props.suggestions
-        const filtered = suggestions.filter(
-            (suggestion) => suggestion.name.toLowerCase().trim().indexOf(input.toLowerCase()) > -1
-        )
+    const keys = Object.keys(userInput)
+    const lastKey = keys[keys.length - 1]
 
-        setActiveSuggestion(0)
-        setFilteredSuggestions(filtered)
-        setShowSuggestions(true)
+    if (!lastKey) return <div> error </div>
 
-        props.setUserInput((state) => ({
-            ...state,
-            [e.target.name]: e.target.value,
-        }))
-    }
-
-    const onClick = (e) => {
-        if (e && e.target && e.target.innerText) {
-            setActiveSuggestion(0)
-            setFilteredSuggestions([])
-            setShowSuggestions(false)
-            props.setUserInput((state) => ({
-                ...state,
-                friends: e.target.innerText,
-            }))
-        } else {
-            return
-        }
-    }
-
-    const onKeyDown = (e) => {
-        if (e.keyCode === 13) {
-            setActiveSuggestion(0)
-            setShowSuggestions(false)
-            props.setUserInput(filteredSuggestions[activeSuggestion])
-        } else if (e.keyCode === 38) {
-            if (activeSuggestion === 0) {
-                return
-            }
-            setActiveSuggestion(activeSuggestion - 1)
-        } else if (e.keyCode === 40) {
-            if (activeSuggestion - 1 === filteredSuggestions.length) {
-                return
-            }
-            setActiveSuggestion(activeSuggestion + 1)
-        }
-    }
-
-    let suggestionsListComponent
-
-    if (showSuggestions && props.userInput?.friends) {
-        if (filteredSuggestions.length) {
-            suggestionsListComponent = (
-                <ul className={styles.suggestions}>
-                    {filteredSuggestions.map((suggestion, index) => {
-                        let className
-
-                        if (index === activeSuggestion) {
-                            className = styles.active
-                        }
-                        return (
-                            <li className={className} key={suggestion.objectId} onClick={onClick} name="friends">
-                                <img className={styles.avatar} src={suggestion.avatar} alt={suggestion.name} />
-                                <p>{suggestion.name}</p>
-                            </li>
-                        )
-                    })}
-                </ul>
-            )
-        } else {
-            suggestionsListComponent = (
-                <div className={styles.noSuggestions}>
-                    <em>No matches found</em>
-                </div>
-            )
-        }
-    }
+    const label = lastKey[0].toUpperCase() + lastKey.slice(1) + ':'
 
     return (
-        <div className={styles.wrapper}>
-            <input
-                name="friends"
-                placeholder="John Doe"
-                type="text"
-                autoComplete='off'
-                style={{
-                    marginBottom: '0px',
-                    border: 'none',
-                    width: '100%',
-                }}
-                onChange={onChange}
-                onKeyDown={onKeyDown}
-                value={props.userInput.friends}
-            />
-            {suggestionsListComponent}
+        <div className={styles.formGroup}>
+            <label htmlFor={lastKey}>{label}</label>
+
+            <div className={styles.wrapper}>
+                <input
+                    name={lastKey}
+                    placeholder={placeholder}
+                    type="text"
+                    autoComplete="off"
+                    onChange={inputChangeHandler}
+                    className={`${styles.formControl} ${className}`}
+                    onKeyDown={keyboardPressHandler}
+                    value={userInput.friends}
+                    {...rest}
+                />
+
+                <ul className={styles.suggestions}>
+                    {filteredSuggestions && filteredSuggestions.length > 0 ? (
+                        filteredSuggestions.map((suggestion, index) => (
+                            <SuggestionItem
+                                key={suggestion.objectId || index}
+                                suggestion={suggestion}
+                                isActive={index === activeSuggestion}
+                                onClick={listSelectHandler}
+                            />
+                        ))
+                    ) : (
+                        <div className={styles.noSuggestions}>
+                            <em>No matches found</em>
+                        </div>
+                    )}
+                </ul>
+            </div>
         </div>
     )
 }

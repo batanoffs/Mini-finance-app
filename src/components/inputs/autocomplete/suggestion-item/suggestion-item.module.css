@@ -1,0 +1,10 @@
+.active {
+    cursor: pointer;
+    background-color: #b3d4fc; /* Highlight color for active suggestion */
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+}
