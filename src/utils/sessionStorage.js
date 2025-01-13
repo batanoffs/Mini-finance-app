@@ -14,8 +14,7 @@ export const setUserData = (data) => {
 
 export const clearUserData = () => {
     sessionStorage.removeItem('auth')
+    sessionStorage.removeItem('token')
 }
 
 //TODO - add more functions for token validation, etc.
-
-// clearUserToken
