@@ -4,7 +4,6 @@ import {
     ContactInfo,
     ExchangeRate,
     Greetings,
-    History,
     LastTransactions,
     BankingActions,
     QuickSendMoney,
@@ -21,7 +20,6 @@ export const OverviewTab = ({ styles }) => {
             </div>
             <div className={styles.bentoFillColumn}>
                 <LastTransactions />
-                <History />
             </div>
 
             <div className={styles.bentoSideColumn}>
