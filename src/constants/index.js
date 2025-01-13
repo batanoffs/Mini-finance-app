@@ -1,4 +1,4 @@
 export * from './defaultAuth'
 export * from './baseUrl'
-export * from './common'
+export * from './uploadSettings'
 export * from './rates'

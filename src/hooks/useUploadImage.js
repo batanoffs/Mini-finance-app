@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 
 import { AuthContext } from '../contexts/AuthContext'
 import { dataService } from '../services/userDataService'
-import { MAX_FILE_SIZE } from '../constants/index'
+import { MAX_FILE_SIZE } from '../constants'
 
 export const useUploadImage = () => {
     const [error, setError] = useState(null)
