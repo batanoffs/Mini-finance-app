@@ -2,16 +2,16 @@ import { faCreditCard } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, useContext } from 'react'
 
-import { PaymentForm } from '../../components/forms/PaymentForm'
-import { cardService } from '../../services/cardGenerationService'
-import { useMessage } from '../../hooks/useMessage'
-import { AuthContext } from '../../contexts/AuthContext'
+import { PaymentForm } from '../../forms/PaymentForm'
+import { cardService } from '../../../services/cardGenerationService'
+import { useMessage } from '../../../hooks/useMessage'
+import { AuthContext } from '../../../contexts/AuthContext'
 
 import modal from './modal.module.css'
 
 export const TopUp = ({ toggleModal }) => {
     const [inputState, setInputState] = useState({})
-    const { virtualcard, token } = useContext(AuthContext)
+    const { auth, token } = useContext(AuthContext)
 
     const message = useMessage()
 
@@ -36,8 +36,8 @@ export const TopUp = ({ toggleModal }) => {
             }
         }
 
-        const amount = Number(data.amount) + Number(virtualcard.top_up)
-        const response = await cardService.topUp(virtualcard.objectId, amount, token)
+        const amount = Number(data.amount) + Number(auth.virtualCard.top_up)
+        const response = await cardService.topUp(auth.virtualCard.objectId, amount, token)
 
         if (!response) {
             message('error', 'An error occurred while submitting the data. Please try again.')
@@ -50,7 +50,7 @@ export const TopUp = ({ toggleModal }) => {
                 'auth',
                 JSON.stringify({
                     ...prevData,
-                    virtualcard: { ...prevData.virtualcard, top_up: topUp, balance: balance },
+                    virtualCard: { ...prevData.virtualCard, top_up: topUp, balance: balance },
                 })
             )
             toggleModal('topUp')
