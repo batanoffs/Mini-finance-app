@@ -4,9 +4,9 @@ import { Actions, ActionsMenu, AddToFavorites } from './assets'
 import { useMessage, useModal } from '../../../../../../hooks'
 import { AuthContext } from '../../../../../../contexts/AuthContext'
 
-import { ListFriend } from '../../../../../../components/lists/favorite-friend/ListFriend'
+import { ListFriend } from '../../../../../../components/lists'
 import { EmptyCard } from '../../../../../../components/cards'
-import { ModalForm } from '../../../../../../components/modals'
+import { TransactionsModal } from '../../../../../../components/modals'
 
 import styles from './quick-send.module.css'
 
@@ -51,7 +51,7 @@ export const QuickSendMoney = () => {
                       ))
                     : notFound}
                 {showModal.favFriends && <AddToFavorites toggleModal={toggleModal} />}
-                {showModal.send && <ModalForm type={'send'} showModal={showModal} toggleModal={toggleModal} />}
+                {showModal.send && <TransactionsModal.Send showModal={showModal} toggleModal={toggleModal} />}
             </ul>
         </EmptyCard>
     )
