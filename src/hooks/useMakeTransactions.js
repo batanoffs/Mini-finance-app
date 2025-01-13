@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import { useMessage } from './useMessage'
 import { AuthContext } from '../contexts/AuthContext'
 import { dataService } from '../services/userDataService'
+import { transactionService } from '../services/transactionService'
 
 export const useMakeTransactions = ({ type, toggleModal, showModal }) => {
     const [values, setValues] = useState({ amount: '', friends: '' })
