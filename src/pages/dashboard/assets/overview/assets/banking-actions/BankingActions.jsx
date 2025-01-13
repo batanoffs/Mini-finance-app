@@ -1,7 +1,7 @@
 import { faVault, faMoneyBillTransfer, faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { ModalForm, TopUp } from '../../../../../../components/modals'
+import { TransactionsModal, TopUp } from '../../../../../../components/modals'
+import { BankingButton } from '../../../../../../components/buttons'
 import { EmptyCard } from '../../../../../../components/cards'
 import { useModal } from '../../../../../../hooks'
 
@@ -13,30 +13,18 @@ export const BankingActions = () => {
         send: false,
         request: false,
     })
+
     return (
         <EmptyCard title="Banking Actions" color="primary" className={styles.customBlockBottom}>
             <div className={styles.transactionBtns}>
-                <button
-                    className={styles.transactionBtn}
-                    data-text="Top up account"
-                    onClick={() => toggleModal('topUp')}
-                >
-                    <FontAwesomeIcon className={styles.icon} icon={faVault} />
-                </button>
-                <button className={styles.transactionBtn} data-text="Send money" onClick={() => toggleModal('send')}>
-                    <FontAwesomeIcon className={styles.icon} icon={faMoneyBillTransfer} />
-                </button>
-                <button
-                    className={styles.transactionBtn}
-                    data-text="Request money"
-                    onClick={() => toggleModal('request')}
-                >
-                    <FontAwesomeIcon className={styles.icon} icon={faHandHoldingDollar} />
-                </button>
+                <BankingButton text="Top up account" type="topUp" icon={faVault} onClick={toggleModal} />
+                <BankingButton text="Send money" type="send" icon={faMoneyBillTransfer} onClick={toggleModal} />
+                <BankingButton text="Request money" type="request" icon={faHandHoldingDollar} onClick={toggleModal} />
             </div>
+
             {showModal.topUp && <TopUp toggleModal={toggleModal} />}
-            {showModal.send && <ModalForm type={'send'} showModal={showModal} toggleModal={toggleModal} />}
-            {showModal.request && <ModalForm type={'request'} showModal={showModal} toggleModal={toggleModal} />}
+            {showModal.send && <TransactionsModal.Send showModal={showModal} toggleModal={toggleModal} />}
+            {showModal.request && <TransactionsModal.Request showModal={showModal} toggleModal={toggleModal} />}
         </EmptyCard>
     )
 }
