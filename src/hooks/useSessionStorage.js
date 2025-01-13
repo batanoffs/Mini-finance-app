@@ -16,7 +16,7 @@ export const useSessionStorage = (key, initialValue) => {
             setState((prev) => value(prev))
         } else {
             setState(value)
-            sessionStorage.setItem(key, JSON.stringify(value)) // предполага се да е селиризуем стейта
+            sessionStorage.setItem(key, JSON.stringify(value)) // should be serialized
         }
     }
 
