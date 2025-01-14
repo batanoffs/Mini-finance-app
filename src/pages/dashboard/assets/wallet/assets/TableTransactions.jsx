@@ -74,7 +74,7 @@ export const TableTransactions = () => {
 
     return (
         <div className={styles.customBlock} style={{ padding: '0.5em 1.5em' }}>
-            <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Account movements</h5>
+            <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Transaction History</h5>
             <Table
                 columns={tableColumnsConfig}
                 dataSource={transactions}
