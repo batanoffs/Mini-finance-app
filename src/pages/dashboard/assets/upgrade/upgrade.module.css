@@ -5,9 +5,11 @@
     margin: 0 auto;
     background-color: var(--section-bg-color);
 }
+
 .container {
     text-align: center;
 }
+
 .plans {
     display: flex;
     margin-top: 2em;
@@ -34,15 +36,11 @@
     padding: 1em 2em;
     margin-top: 1em;
     border: none;
-    border-radius: 0.3em;
-    background-color: var(--custom-btn-bg-color);
+    border-radius: 1em;
+    background-color: var(--primary-hover-color);
     color: var(--white-color);
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.confirmButton:hover {
-    background-color: var(--primary-hover-color);
 }
 
 .displayFeatures {
@@ -101,6 +99,11 @@
     margin: 1em;
     gap: 0.5em;
     height: calc(100vh - 80px);
+}
+
+.message {
+    margin-top: 1em;
+    color: green;
 }
 
 @media (min-width: 800px) {
