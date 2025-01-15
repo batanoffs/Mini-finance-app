@@ -1,14 +1,20 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom'
-import { App } from 'antd'
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { App } from 'antd';
 
-import { Dashboard, Home, Register, Login, About } from './pages'
-import { HelpCenterTab, OverviewTab, ProfileTab, Upgrade, UserSettingsTab, WalletTab } from './pages/dashboard/assets'
-import { AuthProvider } from './contexts/AuthContext'
-import { PageNotFound } from './components/utils/404'
-import { RootLayout } from './layout/RootLayout'
-import { restrictLoginPage, restrictDashboard } from './guards'
-
-import styles from './pages/dashboard/dashboard-layout.module.css'
+import { Home, Register, Login, About } from './pages';
+import {
+    HelpCenterTab,
+    OverviewTab,
+    ProfileTab,
+    Upgrade,
+    UserSettingsTab,
+    WalletTab,
+    NavBar,
+} from './pages/dashboard';
+import { RootLayout, DashboardLayout } from './layout';
+import { AuthProvider } from './contexts/AuthContext';
+import { PageNotFound } from './components/utils/404';
+import { restrictLoginPage, restrictDashboard } from './guards';
 
 const router = createBrowserRouter(
     [
@@ -28,7 +34,7 @@ const router = createBrowserRouter(
                 { path: 'register', element: <Register />, loader: restrictLoginPage },
                 {
                     path: 'dashboard',
-                    element: <Dashboard />,
+                    element: <DashboardLayout NavComponent={NavBar}/>,
                     loader: restrictDashboard,
 
                     children: [
@@ -38,27 +44,27 @@ const router = createBrowserRouter(
                         },
                         {
                             path: 'overview',
-                            element: <OverviewTab styles={styles} />,
+                            element: <OverviewTab />,
                         },
                         {
                             path: 'wallet',
-                            element: <WalletTab styles={styles} />,
+                            element: <WalletTab />,
                         },
                         {
                             path: 'profile',
-                            element: <ProfileTab styles={styles} />,
+                            element: <ProfileTab />,
                         },
                         {
                             path: 'settings',
-                            element: <UserSettingsTab styles={styles} />,
+                            element: <UserSettingsTab />,
                         },
                         {
                             path: 'help-center',
-                            element: <HelpCenterTab styles={styles} />,
+                            element: <HelpCenterTab />,
                         },
                         {
                             path: 'upgrade',
-                            element: <Upgrade styles={styles} />,
+                            element: <Upgrade />,
                         },
                     ],
                 },
@@ -75,6 +81,6 @@ const router = createBrowserRouter(
             v7_skipActionErrorRevalidation: true,
         },
     }
-)
+);
 
-export default router
+export default router;

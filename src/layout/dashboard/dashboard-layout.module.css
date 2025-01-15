@@ -1,3 +1,10 @@
+.mainWrapper {
+    background: var(--section-bg-color);
+    max-height: calc(100dvh - 30px);
+    display: flex;
+    width: 100dvw;
+}
+
 .bentoMainColumn {
     flex: 1 0 min(200px);
     flex-direction: column;

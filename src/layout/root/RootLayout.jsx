@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import { Footer, Header } from '../pages'
+import { Footer, Header } from '../../pages'
 
 export const RootLayout = () => {
     return (
