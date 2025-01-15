@@ -1,16 +1,15 @@
-import { Routes, Route } from 'react-router-dom'
-import { useState, useContext } from 'react'
+import { useState, useContext } from 'react';
 
-import { InfoForm, TermsForm, EmailForm, SidebarRegister, ConfirmForm } from './assets/index'
-import { AuthContext } from '../../contexts/AuthContext'
-import { useForm } from '../../hooks/useForm'
+import { InfoForm, TermsForm, EmailForm, SidebarRegister, ConfirmForm } from './assets/index';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useForm } from '../../hooks/useForm';
+import { formInitialState } from './constants';
 
-import styles from './register.module.css'
+import styles from './register.module.css';
 
 export const Register = () => {
-    const { onRegisterSubmitHandler } = useContext(AuthContext)
-    const [currentStep, setCurrentStep] = useState(0)
-    const [check, setCheck] = useState(false)
+    const { onRegisterSubmitHandler } = useContext(AuthContext);
+    const [currentStep, setCurrentStep] = useState(0);
     const {
         values,
         error,
@@ -19,95 +18,54 @@ export const Register = () => {
         changeHandler,
         onSubmitRegister,
         resetFormHandler,
-    } = useForm(
-        {
-            email: '',
-            password: '',
-            confirmPassword: '',
-            firstName: '',
-            lastName: '',
-            gender: '',
-            country: '',
-            phoneNumber: '',
-            cardId: 0,
-            address: '',
-            town: '',
-        },
-        null,
-        onRegisterSubmitHandler
-    )
-
-    const termsCheckHandler = (e) => {
-        setCheck(e.target.checked)
-    }
+    } = useForm(formInitialState, null, onRegisterSubmitHandler);
 
     const currentStepsHandler = (e) => {
-        if (e.target.name === 'next') {
-            setCurrentStep((prev) => prev + 1)
-        }
-
-        if (e.target.name === 'prev') {
-            setCurrentStep((prev) => prev - 1)
-        }
-    }
+        const stepChange = e.target.name === 'next' ? 1 : -1;
+        setCurrentStep((prev) => prev + stepChange);
+    };
 
     return (
         <div className={styles.register_content_container}>
             <SidebarRegister currentStep={currentStep} />
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <EmailForm
-                            {...values}
-                            error={error}
-                            currentStepsHandler={currentStepsHandler}
-                            changeHandler={changeHandler}
-                            validateHandler={validateHandler}
-                            onFocusHandler={onFocusHandler}
-                        />
-                    }
+            {currentStep === 0 && (
+                <EmailForm
+                    {...values}
+                    error={error}
+                    currentStepsHandler={currentStepsHandler}
+                    changeHandler={changeHandler}
+                    validateHandler={validateHandler}
+                    onFocusHandler={onFocusHandler}
                 />
-                <Route
-                    path="/userinfo"
-                    element={
-                        <InfoForm
-                            {...values}
-                            error={error}
-                            currentStepsHandler={currentStepsHandler}
-                            changeHandler={changeHandler}
-                            validateHandler={validateHandler}
-                            onFocusHandler={onFocusHandler}
-                        />
-                    }
+            )}
+            {currentStep === 1 && (
+                <InfoForm
+                    {...values}
+                    error={error}
+                    currentStepsHandler={currentStepsHandler}
+                    changeHandler={changeHandler}
+                    validateHandler={validateHandler}
+                    onFocusHandler={onFocusHandler}
                 />
-                <Route
-                    path="/terms"
-                    element={
-                        <TermsForm
-                            {...values}
-                            error={error}
-                            currentStepsHandler={currentStepsHandler}
-                            changeHandler={changeHandler}
-                            check={check}
-                            termsCheckHandler={termsCheckHandler}
-                        />
-                    }
+            )}
+            {currentStep === 2 && (
+                <TermsForm
+                    {...values}
+                    error={error}
+                    currentStepsHandler={currentStepsHandler}
+                    changeHandler={changeHandler}
                 />
-                <Route
-                    path="/confirm"
-                    element={
-                        <ConfirmForm
-                            {...values}
-                            error={error}
-                            changeHandler={changeHandler}
-                            onSubmitRegister={onSubmitRegister}
-                            currentStepsHandler={currentStepsHandler}
-                            resetFormHandler={resetFormHandler}
-                        />
-                    }
+            )}
+            {currentStep === 3 && (
+                <ConfirmForm
+                    {...values}
+                    error={error}
+                    currentStepsHandler={currentStepsHandler}
+                    changeHandler={changeHandler}
+                    onSubmitRegister={onSubmitRegister}
+                    resetFormHandler={resetFormHandler}
                 />
-            </Routes>
+            )}
         </div>
-    )
-}
+    );
+};
