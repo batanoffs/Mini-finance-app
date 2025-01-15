@@ -1,8 +1,9 @@
 import { useContext } from 'react'
 import Cards from 'react-credit-cards-2'
-import { AuthContext } from '../../../../../contexts/AuthContext'
+import { AuthContext } from '../../../../../../contexts/AuthContext'
 
-import containers from '../profile-tab.module.css'
+import containers from './VirtualCardDetails.module.css'
+import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
 export const VirtualCardDetails = () => {
     const { auth } = useContext(AuthContext)
