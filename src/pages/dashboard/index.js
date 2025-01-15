@@ -1,7 +1,0 @@
-export * from './assets/help-center/HelpCenter'
-export * from './assets/overview/OverviewTab'
-export * from './assets/profile/ProfileTab'
-export * from './assets/navbar/NavBar'
-export * from './assets/upgrade/Upgrade'
-export * from './assets/wallet/WalletTab'
-export * from './assets/user-settings/index'
