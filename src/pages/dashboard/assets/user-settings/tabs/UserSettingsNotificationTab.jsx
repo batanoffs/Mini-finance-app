@@ -1,4 +1,4 @@
-export const NotificationTab = () => {
+export const UserSettingsNotificationTab = () => {
     return (
         <div className="form-container">
             <div className="form-content">

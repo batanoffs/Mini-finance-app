@@ -1,4 +1,4 @@
-export const PasswordTab = () => {
+export const UserSettingsPasswordTab = () => {
     return (
         <div className="form-container">
             <div className="form-content">

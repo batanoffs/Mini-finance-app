@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react'
 
-import { UploadPicture } from '../../../../../components/buttons/upload/Upload'
+import { UploadPicture } from '../../../../../components/buttons'
 import { AuthContext } from '../../../../../contexts/AuthContext'
 
 // TODO update handlers
-export const ProfileTab = () => {
+export const UserSettingsProfileTab = () => {
     const { auth } = useContext(AuthContext)
     const [state, setState] = useState({
         email: auth.email,
