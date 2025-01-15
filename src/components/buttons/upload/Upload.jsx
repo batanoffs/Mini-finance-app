@@ -1,6 +1,8 @@
 import { useContext } from 'react'
+
 import { AuthContext } from '../../../contexts/AuthContext'
 import { useUploadImage } from '../../../hooks/useUploadImage'
+
 import styles from './upload.module.css'
 
 export const UploadPicture = () => {
