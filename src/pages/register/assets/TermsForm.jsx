@@ -1,19 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-
-export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => {
-    const navigate = useNavigate()
-    const [error, setError] = useState('')
-
+export const TermsForm = ({ currentStepsHandler, changeHandler, error, termsAccept }) => {
+    
     const checkHandler = async (e) => {
-        if (check) {
-            currentStepsHandler(e)
-            setError('')
-            navigate('/register/confirm')
-        } else {
-            setError('You have not confirmed the terms')
+        if (typeof termsAccept === 'boolean' && termsAccept) {
+            currentStepsHandler(e);
         }
-    }
+    };
 
     return (
         <div className="form-container" style={{ maxWidth: '800px', margin: '1em auto' }}>
@@ -87,30 +78,24 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
                             fontWeight: '600',
                             alignSelf: 'start',
                         }}
-                        htmlFor="accept"
+                        htmlFor="termsAccept"
                     >
                         I agree to the terms
                     </h6>
 
                     <input
                         type="checkbox"
-                        name="accept"
-                        value={check}
-                        onChange={termsCheckHandler}
+                        name="termsAccept"
+                        checked={typeof termsAccept === 'boolean' ? termsAccept : false}
+                        onChange={changeHandler}
                         className="form-control"
                     />
                 </div>
-                <p className="error">{error}</p>
+                <p className="error">{error.termsAccept}</p>
                 <footer style={{ paddingBottom: '0', marginTop: '1em' }}>
-                    <Link
-                        type="button"
-                        name="prev"
-                        className="button-secondary"
-                        to={'/register/userinfo'}
-                        onClick={currentStepsHandler}
-                    >
+                    <button name="prev" className="button-secondary" onClick={currentStepsHandler}>
                         Back
-                    </Link>
+                    </button>
                     <button
                         name="next"
                         className="button-primary"
@@ -122,5 +107,5 @@ export const TermsForm = ({ currentStepsHandler, check, termsCheckHandler }) => 
                 </footer>
             </div>
         </div>
-    )
-}
+    );
+};

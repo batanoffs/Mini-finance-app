@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { Radio } from 'antd'
 import { useState } from 'react'
 import { assignNewCardId } from '../../../utils/assignNewCardId'
@@ -189,19 +188,18 @@ export const ConfirmForm = ({
                     </div>
                 </form>
                 <footer>
-                    <Link
-                        type="button"
+                    <button
                         name="prev"
                         to={'/register/terms'}
                         className="button-secondary"
                         onClick={currentStepsHandler}
                     >
                         Back
-                    </Link>
+                    </button>
 
                     <input
-                        name="confirm"
                         type="button"
+                        name="confirm"
                         className="button-primary"
                         value={'Confirm data'}
                         onClick={onConfirmHandler}

@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import styles from '../register.module.css'
+import { FormInput } from '../../../components/inputs';
+// import styles from '../register.module.css';
 
 export const EmailForm = ({
     email,
@@ -14,11 +15,9 @@ export const EmailForm = ({
 }) => {
     const onNextPageHandler = (e) => {
         if (!!email && !!password && confirmPassword === password) {
-            currentStepsHandler(e)
+            currentStepsHandler(e);
         }
-    }
-
-    const navigateTo = !!email && !!password && confirmPassword === password ? 'userInfo' : null
+    };
 
     return (
         <section className="form-container">
@@ -26,75 +25,53 @@ export const EmailForm = ({
                 <header>
                     <h5>Email and password</h5>
                 </header>
-                <div className="form-group">
-                    <label htmlFor="email">
-                        Email <small className="error">*</small>
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        autoComplete="off"
-                        placeholder="Enter email"
-                        className="form-control"
-                        value={email}
-                        onChange={changeHandler}
-                        onBlur={validateHandler}
-                        onFocus={onFocusHandler}
-                    />
-                </div>
-                <small className={styles.error}> {error.email}</small>
-
-                <div className="form-group">
-                    <label htmlFor="password">
-                        Password <small className="error">*</small>
-                    </label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        autoComplete="off"
-                        placeholder="Enter password"
-                        className="form-control"
-                        value={password}
-                        onChange={changeHandler}
-                        onBlur={validateHandler}
-                        onFocus={onFocusHandler}
-                    />
-                </div>
-                <small className={styles.error}>{error.password}</small>
-
-                <div className="form-group">
-                    <label htmlFor="confirmPassword">
-                        Confirm password <small className="error">*</small>
-                    </label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        id="confirmPassword"
-                        autoComplete="off"
-                        placeholder="Confirm password"
-                        className="form-control"
-                        value={confirmPassword}
-                        onChange={changeHandler}
-                        onBlur={validateHandler}
-                        onFocus={onFocusHandler}
-                    />
-                </div>
-                <small className={styles.error}>{error.confirmPassword}</small>
+                <FormInput
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Enter email"
+                    value={email}
+                    error={error.email}
+                    onChange={changeHandler}
+                    onBlur={validateHandler}
+                    onFocus={onFocusHandler}
+                    required
+                />
+                <FormInput
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter password"
+                    error={error.password}
+                    value={password}
+                    onChange={changeHandler}
+                    onBlur={validateHandler}
+                    onFocus={onFocusHandler}
+                    required
+                />
+                <FormInput
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    error={error.confirmPassword}
+                    value={confirmPassword}
+                    onChange={changeHandler}
+                    onBlur={validateHandler}
+                    onFocus={onFocusHandler}
+                    required
+                />
 
                 <footer>
-                    <Link
-                        type="button"
+                    <button
                         name="next"
                         className="button-primary"
                         style={{ width: `100%`, textAlign: `center` }}
-                        to={navigateTo}
                         onClick={onNextPageHandler}
                         disabled={!email || !password || confirmPassword !== password}
                     >
                         Next
-                    </Link>
+                    </button>
                 </footer>
                 <span className="signup">
                     Already have an account?
@@ -102,7 +79,5 @@ export const EmailForm = ({
                 </span>
             </div>
         </section>
-    )
-}
-
-
+    );
+};
