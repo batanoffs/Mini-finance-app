@@ -5,9 +5,9 @@ import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { ListNav } from '../../../../components/lists'
 
-import styles from './sidebar.module.css'
+import styles from './navbar.module.css'
 
-export const Sidebar = () => {
+export const NavBar = () => {
     const { onLogoutHandler } = useContext(AuthContext)
     return (
         <nav className={styles.sidebarMenu}>
