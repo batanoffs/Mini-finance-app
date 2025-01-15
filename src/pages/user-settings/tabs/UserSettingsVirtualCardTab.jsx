@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react'
 import Cards from 'react-credit-cards-2'
-
-import { AuthContext } from '../../../../../contexts/AuthContext'
-
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
+
+import { AuthContext } from '../../../contexts/AuthContext'
 
 export const UserSettingsVirtualCardTab = () => {
     const { auth } = useContext(AuthContext)
