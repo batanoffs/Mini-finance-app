@@ -1,13 +1,14 @@
-import { SettingsNavigationPanel } from './assets/index'
-import { ContactInfo } from '../overview/assets'
+import { SettingsNavigationPanel } from './assets/index';
+import { ContactInfo } from '../overview/assets';
 
-import containers from './user-settings-tab.module.css'
+import styles from './user-settings-tab.module.css';
 
-export const UserSettingsTab = ({ styles }) => {
+export const UserSettingsTab = () => {
     return (
-        <div className={styles.contentContainer}>
+        // <div className={styles.contentContainer}>
+        <>
             <main className={styles.bentoFillColumn}>
-                <div className={containers.customBlock}>
+                <div className={styles.customBlock}>
                     <SettingsNavigationPanel />
                 </div>
             </main>
@@ -15,6 +16,7 @@ export const UserSettingsTab = ({ styles }) => {
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />
             </aside>
-        </div>
-    )
-}
+        </>
+        // </div>
+    );
+};
