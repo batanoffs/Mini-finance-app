@@ -1,9 +1,12 @@
-import { TableTransactions } from './assets/TableTransactions'
-import { ContactInfo, BankingActions } from '../overview/assets'
+import { TableTransactions } from './assets/TableTransactions';
+import { ContactInfo, BankingActions } from '../overview/assets';
 
-export const WalletTab = ({ styles }) => {
+import styles from './wallet-tab.module.css';
+
+export const WalletTab = () => {
     return (
-        <div className={styles.contentContainer}>
+        // <div className={styles.contentContainer}>
+        <>
             <main className={styles.bentoFillColumn}>
                 <TableTransactions />
             </main>
@@ -11,6 +14,7 @@ export const WalletTab = ({ styles }) => {
                 <ContactInfo />
                 <BankingActions />
             </aside>
-        </div>
-    )
-}
+        </>
+        // </div>
+    );
+};
