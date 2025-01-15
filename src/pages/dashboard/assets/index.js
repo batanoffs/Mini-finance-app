@@ -1,5 +1,4 @@
 export * from './add-friends/AddFriends'
-export * from './contact-info/ContactInfo'
 export * from './exchange-rates/ExchangeRate'
 export * from './last-transactions/LastTransactions'
 export * from './history/History'

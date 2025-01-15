@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
-import { Empty } from 'antd'
+import { Link } from 'react-router-dom';
+import { Empty } from 'antd';
 
-import { ListTransaction } from '../../../../../../components/lists'
-import { useTransactions } from '../../../../../../hooks'
-import { EmptyCard } from '../../../../../../components/cards'
+import { ListTransaction } from '../../../../components/lists';
+import { EmptyCard } from '../../../../components/cards';
+import { useTransactions } from '../../../../hooks';
 
 const SortTransactions = ({ transactions }) => {
     if (transactions.length === 0) {
@@ -12,7 +12,7 @@ const SortTransactions = ({ transactions }) => {
                 style={{ fontFamily: 'var(--body-font-family)', marginBottom: '20px' }}
                 description="No transactions"
             />
-        )
+        );
     }
 
     return transactions
@@ -27,11 +27,11 @@ const SortTransactions = ({ transactions }) => {
                 transactionType={entry.transaction_type}
                 date={entry.created}
             />
-        ))
-}
+        ));
+};
 
 export const LastTransactions = () => {
-    const transactions = useTransactions('receiver')
+    const transactions = useTransactions('receiver');
 
     return (
         <EmptyCard
@@ -49,5 +49,5 @@ export const LastTransactions = () => {
                 <SortTransactions transactions={transactions} />
             </ul>
         </EmptyCard>
-    )
-}
+    );
+};

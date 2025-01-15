@@ -1,10 +1,10 @@
-import { EmptyCard } from '../../../../../../components/cards'
-import { useAddFriend } from '../../../../../../hooks'
+import { EmptyCard } from '../../../../components/cards';
+import { useAddFriend } from '../../../../hooks';
 
-import styles from './add-friends.module.css'
+import styles from './add-friends.module.css';
 
 export const AddFriends = () => {
-    const [onSubmit, onFocusClearErrorHandler, onChangeNumber, number, error] = useAddFriend()
+    const [onSubmit, onFocusClearErrorHandler, onChangeNumber, number, error] = useAddFriend();
 
     return (
         <EmptyCard title="Add Friend via phone" color="primary">
@@ -17,7 +17,7 @@ export const AddFriends = () => {
                     placeholder="phone number"
                     onBlur={(e) => {
                         if (!number) {
-                            e.target.style.border = `1px solid transparent`
+                            e.target.style.border = `1px solid transparent`;
                         }
                     }}
                     required
@@ -28,5 +28,5 @@ export const AddFriends = () => {
                 <input type="submit" className="custom-btn" value="Add" />
             </form>
         </EmptyCard>
-    )
-}
+    );
+};

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { AuthContext } from '../../../../../../contexts/AuthContext'
+import { AuthContext } from '../../../../contexts/AuthContext'
 
-import { EmptyCard } from '../../../../../../components/cards'
+import { EmptyCard } from '../../../../components/cards'
 
 export const Greetings = () => {
     const { auth } = useContext(AuthContext)

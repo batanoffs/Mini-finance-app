@@ -1,9 +1,9 @@
 import { faVault, faMoneyBillTransfer, faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
 
-import { TransactionsModal, TopUp } from '../../../../../../components/modals'
-import { BankingButton } from '../../../../../../components/buttons'
-import { EmptyCard } from '../../../../../../components/cards'
-import { useModal } from '../../../../../../hooks'
+import { TransactionsModal, TopUp } from '../../../../components/modals'
+import { BankingButton } from '../../../../components/buttons'
+import { EmptyCard } from '../../../../components/cards'
+import { useModal } from '../../../../hooks'
 
 import styles from './banking-actions.module.css'
 

@@ -1,12 +1,13 @@
-import { Empty } from 'antd'
-import { ListTransaction } from '../../../../../../components/lists'
-import { useTransactions } from '../../../../../../hooks/useTransactions'
-import { EmptyCard } from '../../../../../../components/cards'
+import { Empty } from 'antd';
 
-import styles from './history.module.css'
+import { ListTransaction } from '../../../../components/lists';
+import { useTransactions } from '../../../../hooks/useTransactions';
+import { EmptyCard } from '../../../../components/cards';
+
+// import styles from './history.module.css'
 
 export const History = () => {
-    const transactions = useTransactions('sender')
+    const transactions = useTransactions('sender');
 
     return (
         <EmptyCard title="Transaction History" color="secondary">
@@ -32,5 +33,5 @@ export const History = () => {
                 )}
             </ul>
         </EmptyCard>
-    )
-}
+    );
+};
