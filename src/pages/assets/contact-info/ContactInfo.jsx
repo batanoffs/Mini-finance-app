@@ -1,6 +1,6 @@
-import { EmptyCard } from '../../../../../../components/cards'
+import { EmptyCard } from '../../../components/cards';
 
-import styles from './contact-info.module.css'
+import styles from './contact-info.module.css';
 
 export const ContactInfo = () => {
     return (
@@ -12,5 +12,5 @@ export const ContactInfo = () => {
                 <a href="tel: 305-240-9671">(60) 305-240-9671</a>
             </p>
         </EmptyCard>
-    )
-}
+    );
+};
