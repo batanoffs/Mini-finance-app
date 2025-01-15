@@ -1,12 +1,13 @@
-import { ContactInfo } from '../overview/assets'
+import { ContactInfo } from '../overview/assets';
 
-import containers from './help-center.module.css'
+import styles from './help-center.module.css';
 
-export const HelpCenterTab = ({ styles }) => {
+export const HelpCenterTab = () => {
     return (
-        <div className={styles.contentContainer}>
+        // <div className={styles.contentContainer}>
+        <>
             <main className={styles.bentoFillColumn}>
-                <div className={containers.customBlock}>
+                <div className={styles.customBlock}>
                     <form action="#" method="post">
                         <header style={{ marginBottom: `0.5em` }}>
                             <h5>How can we help you?</h5>
@@ -33,7 +34,7 @@ export const HelpCenterTab = ({ styles }) => {
                     </form>
                 </div>
 
-                <div className={containers.customBlock}>
+                <div className={styles.customBlock}>
                     <h5>Frequently Asked Questions</h5>
 
                     <strong>How do I create a new card?</strong>
@@ -43,15 +44,15 @@ export const HelpCenterTab = ({ styles }) => {
                     <strong>Where can I change my profile picture?</strong>
 
                     <p>
-                        To change your profile picture, navigate to Settings - Profile and click on the "Choose a
-                        picture" button.
+                        To change your profile picture, navigate to Settings - Profile and click on
+                        the "Choose a picture" button.
                     </p>
 
                     <strong>How do I change my password?</strong>
 
                     <p>
-                        To change your password, navigate to Settings - Password and click on the "Save changes" button
-                        after entering your new password.
+                        To change your password, navigate to Settings - Password and click on the
+                        "Save changes" button after entering your new password.
                     </p>
                 </div>
             </main>
@@ -59,6 +60,7 @@ export const HelpCenterTab = ({ styles }) => {
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />
             </aside>
-        </div>
-    )
-}
+        </>
+        // </div>
+    );
+};
