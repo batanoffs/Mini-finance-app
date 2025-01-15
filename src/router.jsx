@@ -1,20 +1,23 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { App } from 'antd';
 
+import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
+import { AuthProvider } from './contexts/AuthContext';
+import { PageNotFound } from './components/utils/404';
+import { restrictLoginPage, restrictDashboard } from './guards';
 import { Home, Register, Login, About } from './pages';
 import {
+    UserSettingsNav,
     HelpCenterTab,
     OverviewTab,
     ProfileTab,
     Upgrade,
-    UserSettingsTab,
     WalletTab,
     NavBar,
+
 } from './pages/dashboard';
-import { RootLayout, DashboardLayout } from './layout';
-import { AuthProvider } from './contexts/AuthContext';
-import { PageNotFound } from './components/utils/404';
-import { restrictLoginPage, restrictDashboard } from './guards';
+
+import { ContactInfo } from './pages/dashboard/assets/overview/assets';
 
 const router = createBrowserRouter(
     [
@@ -34,7 +37,7 @@ const router = createBrowserRouter(
                 { path: 'register', element: <Register />, loader: restrictLoginPage },
                 {
                     path: 'dashboard',
-                    element: <DashboardLayout NavComponent={NavBar}/>,
+                    element: <DashboardLayout NavComponent={NavBar} />,
                     loader: restrictDashboard,
 
                     children: [
@@ -56,7 +59,12 @@ const router = createBrowserRouter(
                         },
                         {
                             path: 'settings',
-                            element: <UserSettingsTab />,
+                            element: (
+                                <UserSettingsLayout
+                                    NavComponent={UserSettingsNav}
+                                    aside={[ContactInfo]}
+                                />
+                            ),
                         },
                         {
                             path: 'help-center',
