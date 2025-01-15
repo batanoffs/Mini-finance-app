@@ -5,19 +5,19 @@ import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
 import { AuthProvider } from './contexts/AuthContext';
 import { PageNotFound } from './components/utils/404';
 import { restrictLoginPage, restrictDashboard } from './guards';
-import { Home, Register, Login, About } from './pages';
 import {
+    Home,
+    Register,
+    Login,
+    About,
+    Dashboard,
+    HelpCenter,
+    Profile,
+    Subscription,
+    Wallet,
     UserSettingsNav,
-    HelpCenterTab,
-    OverviewTab,
-    ProfileTab,
-    Upgrade,
-    WalletTab,
-    NavBar,
-
-} from './pages/dashboard';
-
-import { ContactInfo } from './pages/dashboard/assets/overview/assets';
+} from './pages';
+import { NavBar, ContactInfo } from './pages/assets';
 
 const router = createBrowserRouter(
     [
@@ -47,15 +47,15 @@ const router = createBrowserRouter(
                         },
                         {
                             path: 'overview',
-                            element: <OverviewTab />,
+                            element: <Dashboard />,
                         },
                         {
                             path: 'wallet',
-                            element: <WalletTab />,
+                            element: <Wallet />,
                         },
                         {
                             path: 'profile',
-                            element: <ProfileTab />,
+                            element: <Profile />,
                         },
                         {
                             path: 'settings',
@@ -68,11 +68,11 @@ const router = createBrowserRouter(
                         },
                         {
                             path: 'help-center',
-                            element: <HelpCenterTab />,
+                            element: <HelpCenter />,
                         },
                         {
-                            path: 'upgrade',
-                            element: <Upgrade />,
+                            path: 'subscription',
+                            element: <Subscription />,
                         },
                     ],
                 },
