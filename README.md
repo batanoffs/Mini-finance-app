@@ -261,17 +261,24 @@ Used Exchange Rate API for live update rates
     - **useVirtualCard()** - *returns virtual card number and balance for the current user*
 
 - ### Routers
-  - Main router is located in **App** component
-  - Secondary router is located in **WelcomePage** component
+  - The router is located in `src/router.jsx` 
+  - It is created with createBrowserRouter from `react-router-dom`
   
 - ### Constants
-    **baseURL** stores base URL for backendless and exchangerate api
+  - **baseURL** stores base URL for backendless and exchange rate api
+  - **defaultAuth** stores the default auth state
+  - **forms** holds regex validations and error messages for the different types 
+  - **rates** stores initial state for the exchange rates
+  - **uploadSettings** stores max upload file size
 
 - ### Utils
-  - **setNewGeneratedId()** - *takes nothing. Generates random number from 0 – 100 and checks if there's already user with such id and if there is, generates new one and returns it*
+  - **assignNewCardId()** - *takes nothing. Generates random number from 0 – 100 and checks if there's already user with such id and if there is, generates new one and returns it*
   - **formatDate(date)** - *takes date and returns formatted*
-
-  - **showLastCardDigits(number)** takes bank card number and returns last four digits
+  - **balanceFormat(balance)** - *takes balance and returns formatted*
+  - **errorHandler(error)** - takes the error and returns a custom object format
+  - **showLastCardDigits(number)** - takes bank card number and returns last four digits
+  - **sessionStorage(number)** - holds functions to manage the session storage data
+  - **showLastCardDigits(number)** - takes the card number digits and returns only the last 4 
 
 - ### Services
   - **authService** for Authentication 

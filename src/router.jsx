@@ -1,10 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { App } from 'antd';
 
-import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
-import { AuthProvider } from './contexts/AuthContext';
-import { PageNotFound } from './components/utils/404';
-import { restrictLoginPage, restrictDashboard } from './guards';
 import {
     Home,
     Register,
@@ -18,6 +14,10 @@ import {
     UserSettingsNav,
 } from './pages';
 import { NavBar, ContactInfo } from './pages/assets';
+import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
+import { AuthProvider } from './contexts/AuthContext';
+import { PageNotFound } from './components/utils/404';
+import { restrictLoginPage, restrictDashboard } from './guards';
 
 const router = createBrowserRouter(
     [
