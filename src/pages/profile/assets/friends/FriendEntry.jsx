@@ -1,8 +1,8 @@
 import { faMoneyBill, faPiggyBank, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { notificationService } from '../../../../../../services/notificationService'
-import { dataService } from '../../../../../../services/userDataService'
+import { notificationService } from '../../../../services/notificationService'
+import { dataService } from '../../../../services/userDataService'
 
 import styles from './friends.module.css'
 

@@ -1,10 +1,10 @@
 import { useOutletContext } from 'react-router-dom';
 
-import { ProfileCard } from '../../../../components/cards';
+import { ProfileCard } from '../../components/cards';
 import { VirtualCardDetails, Friends } from './assets/index';
-import { ContactInfo } from '../overview/assets';
+import { ContactInfo } from '../assets';
 
-export const ProfileTab = () => {
+export const Profile = () => {
     const styles = useOutletContext();
 
     return (

@@ -4,8 +4,8 @@ import { useContext, useState } from 'react'
 import { Empty, Input } from 'antd'
 
 import { Friend } from './FriendEntry'
-import { AuthContext } from '../../../../../../contexts/AuthContext'
-import { useMessage } from '../../../../../../hooks/useMessage'
+import { AuthContext } from '../../../../contexts/AuthContext'
+import { useMessage } from '../../../../hooks/useMessage'
 
 import styles from './friends.module.css'
 
