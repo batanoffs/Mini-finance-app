@@ -1,18 +1,22 @@
+import { useOutletContext } from 'react-router-dom';
+
 import { ContactInfo } from '../overview/assets';
+import { FormInput } from '../../../../components/inputs';
 
 import styles from './help-center.module.css';
 
 export const HelpCenterTab = () => {
+    const layout = useOutletContext();
+
     return (
-        // <div className={styles.contentContainer}>
-        <>
-            <main className={styles.bentoFillColumn}>
+        <div className={layout.contentContainer}>
+            <section className={layout.bentoFillColumn}>
                 <div className={styles.customBlock}>
                     <form action="#" method="post">
                         <header style={{ marginBottom: `0.5em` }}>
                             <h5>How can we help you?</h5>
                         </header>
-                        <footer
+                        <div
                             style={{
                                 display: `flex`,
                                 justifyContent: `center`,
@@ -20,17 +24,18 @@ export const HelpCenterTab = () => {
                                 alignItems: `center`,
                             }}
                         >
-                            <p htmlFor="search">Search by topic: </p>
-                            <input
-                                className="form-control"
-                                style={{ width: `40%`, height: `2.5em`, margin: `0` }}
-                                name="search"
+                            <FormInput
                                 type="text"
+                                name="search"
+                                id="search"
+                                label="Search by topic:"
                                 placeholder="Search"
+                                style={{ width: `40%`, height: `2.5em`, margin: `0` }}
                                 aria-label="Search"
                             />
+
                             <input type="submit" value="Send" className="button-primary" />
-                        </footer>
+                        </div>
                     </form>
                 </div>
 
@@ -55,12 +60,11 @@ export const HelpCenterTab = () => {
                         "Save changes" button after entering your new password.
                     </p>
                 </div>
-            </main>
+            </section>
 
-            <aside className={styles.bentoSideColumn}>
+            <aside className={layout.bentoSideColumn}>
                 <ContactInfo />
             </aside>
-        </>
-        // </div>
+        </div>
     );
 };

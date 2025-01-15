@@ -1,3 +1,4 @@
+import { useOutletContext } from 'react-router-dom';
 import { ProfileCard, VirtualCard } from '../../../../components/cards';
 import {
     AddFriends,
@@ -9,12 +10,11 @@ import {
     QuickSendMoney,
 } from './assets';
 
-import styles from './overview.module.css';
-
 export const OverviewTab = () => {
+    const styles = useOutletContext();
+    
     return (
-        // <div className={styles.contentContainer}>
-        <>
+        <div className={styles.contentContainer}>
             <div className={styles.bentoMainColumn}>
                 <Greetings />
                 <ProfileCard />
@@ -31,7 +31,6 @@ export const OverviewTab = () => {
                 <BankingActions />
                 <QuickSendMoney />
             </div>
-        </>
-        // </div>
+        </div>
     );
 };

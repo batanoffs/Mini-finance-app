@@ -1,15 +1,14 @@
-import { ProfileCard } from '../../../../components/cards';
-import { Friends } from './assets/index';
-import { ContactInfo } from '../overview/assets';
-import { VirtualCardDetails } from './assets/VirtualCardDetails';
+import { useOutletContext } from 'react-router-dom';
 
-import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import styles from './profile-tab.module.css';
+import { ProfileCard } from '../../../../components/cards';
+import { VirtualCardDetails, Friends } from './assets/index';
+import { ContactInfo } from '../overview/assets';
 
 export const ProfileTab = () => {
+    const styles = useOutletContext();
+
     return (
-        // <div className={styles.contentContainer}>
-        <>
+        <div className={styles.contentContainer}>
             <section className={styles.bentoMainColumn}>
                 <ProfileCard />
                 <VirtualCardDetails />
@@ -21,7 +20,6 @@ export const ProfileTab = () => {
             <aside className={styles.bentoSideColumn}>
                 <ContactInfo />
             </aside>
-        </>
-        // </div>
+        </div>
     );
 };

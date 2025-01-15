@@ -1,12 +1,12 @@
 import { TableTransactions } from './assets/TableTransactions';
 import { ContactInfo, BankingActions } from '../overview/assets';
-
-import styles from './wallet-tab.module.css';
+import { useOutletContext } from 'react-router-dom';
 
 export const WalletTab = () => {
+    const styles = useOutletContext();
+
     return (
-        // <div className={styles.contentContainer}>
-        <>
+        <div className={styles.contentContainer}>
             <main className={styles.bentoFillColumn}>
                 <TableTransactions />
             </main>
@@ -14,7 +14,6 @@ export const WalletTab = () => {
                 <ContactInfo />
                 <BankingActions />
             </aside>
-        </>
-        // </div>
+        </div>
     );
 };
