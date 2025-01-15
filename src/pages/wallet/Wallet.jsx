@@ -1,8 +1,10 @@
-import { TableTransactions } from './assets/TableTransactions';
-import { ContactInfo, BankingActions } from '../overview/assets';
 import { useOutletContext } from 'react-router-dom';
 
-export const WalletTab = () => {
+import { TableTransactions } from './assets/TableTransactions';
+import { BankingActions } from '../dashboard/assets';
+import { ContactInfo } from '../assets';
+
+export const Wallet = () => {
     const styles = useOutletContext();
 
     return (

@@ -1,11 +1,11 @@
 import { useOutletContext } from 'react-router-dom';
 
-import { ContactInfo } from '../overview/assets';
-import { FormInput } from '../../../../components/inputs';
+import { ContactInfo } from '../assets';
+import { FormInput } from '../../components/inputs';
 
 import styles from './help-center.module.css';
 
-export const HelpCenterTab = () => {
+export const HelpCenter = () => {
     const layout = useOutletContext();
 
     return (

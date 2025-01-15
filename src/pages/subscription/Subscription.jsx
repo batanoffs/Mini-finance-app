@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import styles from './upgrade.module.css';
+import styles from './subscription.module.css';
 
-export const Upgrade = () => {
+export const Subscription = () => {
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [currentPlan, setCurrentPlan] = useState('Basic');
 

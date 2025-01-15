@@ -1,8 +1,8 @@
 import { useOutletContext } from 'react-router-dom';
-import { ProfileCard, VirtualCard } from '../../../../components/cards';
+import { ProfileCard, VirtualCard } from '../../components/cards';
+import { ContactInfo } from '../assets';
 import {
     AddFriends,
-    ContactInfo,
     ExchangeRate,
     Greetings,
     LastTransactions,
@@ -10,9 +10,9 @@ import {
     QuickSendMoney,
 } from './assets';
 
-export const OverviewTab = () => {
+export const Dashboard = () => {
     const styles = useOutletContext();
-    
+
     return (
         <div className={styles.contentContainer}>
             <div className={styles.bentoMainColumn}>
