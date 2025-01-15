@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import { AuthContext } from '../../../../contexts/AuthContext'
-import { useMessage } from '../../../../hooks/useMessage'
-import { useForm } from '../../../../hooks/useForm'
+import { AuthContext } from '../../contexts/AuthContext'
+import { useMessage } from '../../hooks/useMessage'
+import { useForm } from '../../hooks/useForm'
 
 import styles from './login.module.css'
 
