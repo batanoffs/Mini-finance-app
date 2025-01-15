@@ -1,4 +1,4 @@
-import { ProfileCard, VirtualCard } from '../../../../components/cards'
+import { ProfileCard, VirtualCard } from '../../../../components/cards';
 import {
     AddFriends,
     ContactInfo,
@@ -7,11 +7,14 @@ import {
     LastTransactions,
     BankingActions,
     QuickSendMoney,
-} from './assets'
+} from './assets';
 
-export const OverviewTab = ({ styles }) => {
+import styles from './overview.module.css';
+
+export const OverviewTab = () => {
     return (
-        <div className={styles.contentContainer}>
+        // <div className={styles.contentContainer}>
+        <>
             <div className={styles.bentoMainColumn}>
                 <Greetings />
                 <ProfileCard />
@@ -28,6 +31,7 @@ export const OverviewTab = ({ styles }) => {
                 <BankingActions />
                 <QuickSendMoney />
             </div>
-        </div>
-    )
-}
+        </>
+        // </div>
+    );
+};
