@@ -1,3 +1,3 @@
-export * from './about/About'
+export * from '../../about/About'
 export * from './Preview'
-export * from './login/Login'
+export * from '../../login/Login'
