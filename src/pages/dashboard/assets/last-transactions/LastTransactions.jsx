@@ -5,14 +5,11 @@ import { ListTransaction } from '../../../../components/lists';
 import { EmptyCard } from '../../../../components/cards';
 import { useTransactions } from '../../../../hooks';
 
+import styles from './last-transactions.module.css';
+
 const SortTransactions = ({ transactions }) => {
     if (transactions.length === 0) {
-        return (
-            <Empty
-                style={{ fontFamily: 'var(--body-font-family)', marginBottom: '20px' }}
-                description="No transactions"
-            />
-        );
+        return <Empty style={styles.empty} description="No transactions" />;
     }
 
     return transactions
@@ -39,7 +36,7 @@ export const LastTransactions = () => {
             color="primary"
             options={{
                 menu: (
-                    <Link className="custom-btn" to="/dashboard/wallet">
+                    <Link className={styles.customBtn} to="/dashboard/wallet">
                         View All
                     </Link>
                 ),

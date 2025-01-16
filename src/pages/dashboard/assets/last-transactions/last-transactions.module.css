@@ -1,81 +1,24 @@
-.customBlock {
-    background: var(--secondary-color);
-    border-radius: var(--border-radius-component);
-    position: relative;
-    overflow: hidden;
-    padding: 1em;
+/* .empty {
+    font-family: var(--body-font-family);
+    margin-bottom: 20px;
+}
+*/
+
+.customBtn {
+    background: var(--custom-btn-bg-color);
+    border: 1px solid var(--primary-hover-color);
+    border-radius: var(--border-radius-small);
+    color: var(--primary-hover-color);
+    font-size: 1em;
+    font-weight: var(--font-weight-bold);
+    line-height: normal;
+    transition: all 0.1s;
+    padding: 6px 20px;
+    height: 2.2em;
 }
 
-.customBlock h2,
-.customBlock p {
-    position: relative;
-    z-index: 1;
-}
-
-.customBlock.sectionBg,
-.sectionBg {
-    background-color: var(--section-bg-color);
-}
-
-.customBlock.primaryBg {
-    background: var(--primary-bg-color);
-    overflow: visible;
-}
-
-.primaryBg {
-    overflow: visible;
-}
-
-.customBlock.customBlockBottom small {
-    text-transform: none;
-}
-
-.customBlock p {
-    color: var(--black-color);
-    margin-bottom: 0;
-}
-
-.customBlock small {
-    color: var(--p-color);
-    font-size: var(--btn-font-size);
-    letter-spacing: -0.5px;
-    text-transform: lowercase;
-}
-
-.customBlockNumbers {
-    margin-bottom: 10px;
-}
-
-.customBlockExchange {
-    background: var(--third-bg-color);
-}
-
-.customBlockExchange .border-bottom {
-    border-bottom: 1px solid #c6e5e7 !important;
-}
-
-.customBlockExchange h6 {
-    font-size: var(--menu-font-size);
-    font-weight: var(--font-weight-normal);
-}
-
-.customBlockExchange p + h6 {
-    color: var(--p-color);
-}
-
-.customBlockExchange {
-    background: var(--third-bg-color);
-}
-
-.customBlockExchange .border-bottom {
-    border-bottom: 1px solid #c6e5e7 !important;
-}
-
-.customBlockExchange h6 {
-    font-size: var(--menu-font-size);
-    font-weight: var(--font-weight-normal);
-}
-
-.customBlockExchange p + h6 {
-    color: var(--p-color);
-}
+.customBtn:hover {
+    background: var(--primary-hover-color);
+    color: var(--white-color);
+    border-color: var(--primary-hover-color);
+} 
