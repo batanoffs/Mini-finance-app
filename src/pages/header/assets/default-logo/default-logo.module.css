@@ -1,0 +1,9 @@
+.logoContainer {
+    align-self: center;
+    margin-left: 0.5em;
+
+    .logo {
+        height: max(35px);
+        cursor: pointer;
+    }
+}
