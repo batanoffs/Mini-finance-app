@@ -74,8 +74,7 @@ export const EmailForm = ({
                     </button>
                 </footer>
                 <span className="signup">
-                    Already have an account?
-                    <Link to="/login">Sign in</Link>
+                    Already have an account? <Link to="/login">Sign in</Link>
                 </span>
             </div>
         </section>
