@@ -11,7 +11,11 @@ export const AppBar = ({ AppLogo = DefaultLogo }) => {
     const navigate = useNavigate();
 
     const homeRedirectHandler = () => {
-        navigate(isAuthenticated() ? '/dashboard/overview' : '/');
+        if (isAuthenticated()) {
+            return navigate('/dashboard');
+        } else {
+            return navigate('/');
+        }
     };
 
     return (
