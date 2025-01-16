@@ -1,0 +1,7 @@
+.headerContainer {
+    display: flex;
+    background-color: var(--heading-color);
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 0 0 max(40px);
+}
