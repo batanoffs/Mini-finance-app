@@ -1,45 +1,48 @@
-import { useContext, useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell } from '@fortawesome/free-regular-svg-icons'
+import { useContext, useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
 
-import { FriendRequestNotification, FriendAcceptNotification } from './FriendRequestNotification'
-import { MoneyRequestNotification } from './MoneyRequestNotification'
-import { IncomeNotification } from './IncomeNotification'
-import { NotFoundNotifications } from './NotFound'
+import { AuthContext } from '../../../../../contexts/AuthContext';
+import { useMessage } from '../../../../../hooks/useMessage';
+import { notificationService } from '../../../../../services/notificationService';
+import { NOTIFY_TYPE, NOTIFY_STATUS } from './constants';
+import {
+    MoneyRequestNotification,
+    IncomeNotification,
+    NotFoundNotifications,
+    FriendAcceptNotification,
+    FriendRequestNotification,
+} from './index';
 
-import { AuthContext } from '../../../contexts/AuthContext'
-import { useMessage } from '../../../hooks/useMessage'
-import { notificationService } from '../../../services/notificationService'
-
-import styles from './notifications.module.css'
+import styles from './notifications.module.css';
 
 export const Notifications = () => {
-    const { userDataId, token } = useContext(AuthContext)
-    const [notificationsState, setNotificationsState] = useState([])
-    const showMessage = useMessage()
+    const { auth, token } = useContext(AuthContext);
+    const [notificationsState, setNotificationsState] = useState([]);
+    const showMessage = useMessage();
 
     useEffect(() => {
         notificationService
-            .getNotSeenNotifications(userDataId)
+            .getNotSeenNotifications(auth.ownerId)
             .then((result) => setNotificationsState(result))
-            .catch((error) => console.log(error))
-    }, [userDataId])
+            .catch((error) => console.log(error));
+    }, [auth.ownerId]);
 
     const deleteNotificationHandler = async (e) => {
-        const notificationId = e.currentTarget.getAttribute('data-key')
+        const notificationId = e.currentTarget.getAttribute('data-key');
         if (!notificationId) {
-            throw new Error('Notification id is null')
+            throw new Error('Notification id is null');
         }
         try {
-            await notificationService.updateSeenStatus(notificationId, true, token)
-            const result = await notificationService.getNotSeenNotifications(userDataId)
-            setNotificationsState(result)
-            showMessage('success', 'Successfully deleted message')
+            await notificationService.updateSeenStatus(notificationId, true, token);
+            const result = await notificationService.getNotSeenNotifications(auth.ownerId);
+            setNotificationsState(result);
+            showMessage('success', 'Successfully deleted message');
         } catch (error) {
-            console.error('Error while deleting notification', error)
-            showMessage('error', error.message)
+            console.error('Error while deleting notification', error);
+            showMessage('error', error.message);
         }
-    }
+    };
 
     return (
         <div className={styles.dropdownNotifications}>
@@ -50,31 +53,32 @@ export const Notifications = () => {
             <ul className={styles.dropdownMenu}>
                 {notificationsState.length > 0 ? (
                     notificationsState.map((notify) =>
-                        notify?.event_type === 'friend request' && notify?.status === 'pending' ? (
+                        notify?.event_type === NOTIFY_TYPE.FRIEND_REQUEST &&
+                        notify?.status === NOTIFY_STATUS.PENDING ? (
                             <FriendRequestNotification
                                 deleteNotificationHandler={deleteNotificationHandler}
                                 setNotificationsState={setNotificationsState}
                                 notify={notify}
                                 key={notify.objectId}
                             />
-                        ) : notify?.reciver?.[0]?.objectId === userDataId &&
-                          notify?.event_type === 'friend request' &&
+                        ) : notify?.reciver?.[0]?.objectId === auth.ownerId &&
+                          notify?.event_type === NOTIFY_TYPE.FRIEND_REQUEST &&
                           notify?.seen === false ? (
                             <FriendAcceptNotification
                                 deleteNotificationHandler={deleteNotificationHandler}
                                 notify={notify}
                                 key={notify.objectId}
                             />
-                        ) : notify?.event_type === 'money received' ? (
+                        ) : notify?.event_type === NOTIFY_TYPE.MONEY_RECEIVED ? (
                             <IncomeNotification
                                 notify={notify}
                                 deleteNotificationHandler={deleteNotificationHandler}
                                 key={notify.objectId}
                             />
-                        ) : notify?.event_type === 'money request' ? (
+                        ) : notify?.event_type === NOTIFY_TYPE.MONEY_REQUEST ? (
                             <MoneyRequestNotification
                                 notify={notify}
-                                userDataId={userDataId}
+                                userDataId={auth.ownerId}
                                 token={token}
                                 setNotificationsState={setNotificationsState}
                                 key={notify.objectId}
@@ -88,5 +92,5 @@ export const Notifications = () => {
                 )}
             </ul>
         </div>
-    )
-}
+    );
+};

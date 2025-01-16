@@ -1,37 +1,37 @@
-import { notificationService } from '../../../services/notificationService'
-import { transactionService } from '../../../services/transactionService'
-import { useMessage } from '../../../hooks/useMessage'
-import { formatDate } from '../../../utils/formatDate'
+import { notificationService } from '../../../../../../services/notificationService';
+import { transactionService } from '../../../../../../services/transactionService';
+import { useMessage } from '../../../../../../hooks/useMessage';
+import { formatDate } from '../../../../../../utils/formatDate';
 
-import styles from './notifications.module.css'
+import styles from './MoneyRequestNotification.module.css';
 
 export const MoneyRequestNotification = ({ notify, userDataId, token, setNotificationsState }) => {
-    const showMessage = useMessage()
+    const showMessage = useMessage();
     const onTransactionApprove = async (e) => {
-        const notificationElement = e.currentTarget.parentElement
+        const notificationElement = e.currentTarget.parentElement;
         if (!notificationElement) {
-            showMessage('error', 'An error occurred while sending')
-            return
+            showMessage('error', 'An error occurred while sending');
+            return;
         }
-        const notificationId = notificationElement.getAttribute('data-key')
+        const notificationId = notificationElement.getAttribute('data-key');
         if (!notificationId) {
-            showMessage('error', 'An error occurred while sending')
-            return
+            showMessage('error', 'An error occurred while sending');
+            return;
         }
-        const requesterName = e.currentTarget.getAttribute('data-requester-name')
+        const requesterName = e.currentTarget.getAttribute('data-requester-name');
         if (!requesterName) {
-            showMessage('error', 'An error occurred while sending')
-            return
+            showMessage('error', 'An error occurred while sending');
+            return;
         }
-        const amountStr = e.currentTarget.getAttribute('data-amount')
+        const amountStr = e.currentTarget.getAttribute('data-amount');
         if (!amountStr) {
-            showMessage('error', 'An error occurred while sending')
-            return
+            showMessage('error', 'An error occurred while sending');
+            return;
         }
-        const amount = Number(amountStr)
+        const amount = Number(amountStr);
         if (isNaN(amount)) {
-            showMessage('error', 'An error occurred while sending')
-            return
+            showMessage('error', 'An error occurred while sending');
+            return;
         }
         try {
             const response = await transactionService.sendMoney(
@@ -39,39 +39,39 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setNotific
                 amount,
                 userDataId,
                 token
-            )
+            );
             if (response.success) {
                 await notificationService.updateNotificationStatus(
                     notificationId,
                     'accepted',
                     true,
                     token
-                )
-                await notificationService.updateSeenStatus(notificationId, true, token)
+                );
+                await notificationService.updateSeenStatus(notificationId, true, token);
                 const getNotificationsResponse = await notificationService.getNotSeenNotifications(
                     userDataId
-                )
+                );
                 await transactionService.notifyMoneyReceived(
                     requesterName,
                     amount,
                     userDataId,
                     token
-                ) // make new notification for transaction approved
-                setNotificationsState(getNotificationsResponse)
-                showMessage('success', 'The transaction was successful')
+                ); // make new notification for transaction approved
+                setNotificationsState(getNotificationsResponse);
+                showMessage('success', 'The transaction was successful');
             }
         } catch (error) {
-            console.error(error)
-            showMessage('error', 'An error occurred while sending')
+            console.error(error);
+            showMessage('error', 'An error occurred while sending');
         }
-    }
+    };
 
     const onTransactionDecline = async (e) => {
-        const notificationId = e.currentTarget.parentElement?.getAttribute('data-key')
+        const notificationId = e.currentTarget.parentElement?.getAttribute('data-key');
         if (!notificationId) {
-            console.error('Notification id is null')
-            showMessage('error', 'An error occurred while sending')
-            return
+            console.error('Notification id is null');
+            showMessage('error', 'An error occurred while sending');
+            return;
         }
 
         try {
@@ -80,18 +80,18 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setNotific
                 'declined',
                 true,
                 token
-            )
+            );
             const getNotificationsResponse = await notificationService.getNotSeenNotifications(
                 userDataId
-            )
+            );
 
-            setNotificationsState(getNotificationsResponse)
-            showMessage('error', 'The transaction was declined')
+            setNotificationsState(getNotificationsResponse);
+            showMessage('error', 'The transaction was declined');
         } catch (error) {
-            console.error(error)
-            showMessage('error', 'An error occurred while sending')
+            console.error(error);
+            showMessage('error', 'An error occurred while sending');
         }
-    }
+    };
 
     return (
         <li className={styles.singleNotification} key={notify.objectId} data-key={notify.objectId}>
@@ -121,5 +121,5 @@ export const MoneyRequestNotification = ({ notify, userDataId, token, setNotific
                 decline
             </button>
         </li>
-    )
-}
+    );
+};
