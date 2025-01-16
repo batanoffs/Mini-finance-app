@@ -1,14 +1,15 @@
-import { Outlet } from 'react-router-dom'
-import { Footer, Header } from '../../pages'
+import { Outlet } from 'react-router-dom';
+
+import { Footer, AppBar } from '../../pages';
 
 export const RootLayout = () => {
     return (
         <>
-            <Header />
+            <AppBar />
             <main>
                 <Outlet />
             </main>
             <Footer />
         </>
-    )
-}
+    );
+};
