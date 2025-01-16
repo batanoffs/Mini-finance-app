@@ -1,0 +1,117 @@
+/* Container wrapper for the login menu */
+.loginMenuContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+}
+
+/* Toggle button for the dropdown menu (hidden by default) */
+.dropdownToggle {
+    display: none;
+}
+
+/* Styles for mobile view */
+@media (max-width: 800px) {
+    .dropdownToggle {
+        display: block; /* Show the toggle button on mobile */
+
+        /* Icon for the dropdown toggle */
+        .headerDropdownIcon {
+            padding-top: 0.1em;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+    }
+
+    .dropdownMenu {
+        display: none; /* Hide the dropdown menu by default */
+        position: absolute;
+    }
+
+    .dropdownToggle:hover + .dropdownMenu {
+        display: flex; /* Show the dropdown menu on hover */
+        flex-direction: column;
+        gap: 0.2em;
+        padding: 0.5em;
+        background-color: #f9f9f9;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 4;
+        top: 38px;
+        right: 0px;
+
+        .dropdownItem {
+            display: flex;
+            align-items: center;
+            padding: 0.5em;
+            text-decoration: none;
+            color: inherit;
+            font-size: medium;
+
+            &:hover {
+                background-color: var(--primary-hover-color);
+                color: white;
+            }
+        }
+    }
+}
+
+/* Styles for desktop view */
+@media (min-width: 801px) {
+    .headerMobileDropdown {
+        display: none; /* Hide the mobile dropdown on desktop */
+    }
+
+    .dropdownMenu {
+        display: flex; /* Show the dropdown menu as a flex container */
+
+        /* Button menu items */
+        .buttonLogin {
+            color: #ccdde2ff;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-bottom: 0em;
+            width: fit-content;
+            margin-top: 0em;
+            padding: 2px 16px;
+            height: 2em;
+            border: 1px solid #ccdde2ff;
+            border-radius: 0.6em;
+        }
+
+        .buttonLogin:hover {
+            color: var(--primary-hover-color);
+            border-color: transparent;
+            border: 1px solid var(--primary-hover-color);
+            border-top-left-radius: 0.6em;
+            border-bottom-left-radius: 0.6em;
+        }
+
+        .buttonRegister {
+            background: var(--primary-color);
+            color: white;
+            font-size: 1em;
+            padding: 2px 16px;
+            border: 1px solid transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            height: 2em;
+            width: fit-content;
+            border-radius: 0.6em;
+            border-bottom-left-radius: 0em;
+            border-top-left-radius: 0em;
+        }
+
+        .buttonRegister:hover {
+            background: var(--primary-hover-color);
+            color: var(--white-color);
+        }
+
+        .dropdownItem {
+            display: inline-block; /* Display dropdown items inline */
+        }
+    }
+}
