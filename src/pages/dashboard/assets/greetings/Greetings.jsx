@@ -1,10 +1,12 @@
-import { useContext } from 'react'
-import { AuthContext } from '../../../../contexts/AuthContext'
+import { useContext } from 'react';
+import { AuthContext } from '../../../../contexts/AuthContext';
 
-import { EmptyCard } from '../../../../components/cards'
+import { EmptyCard } from '../../../../components/cards';
 
 export const Greetings = () => {
-    const { auth } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext);
+    
+    const firstName = auth.fullName.split(' ')[0];
 
-    return <EmptyCard title={`Welcome back, ${auth.fullName}!`} color="primary" />
-}
+    return <EmptyCard title={`Welcome back, ${firstName}!`} color="primary" />;
+};
