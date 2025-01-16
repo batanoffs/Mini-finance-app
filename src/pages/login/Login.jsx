@@ -1,34 +1,33 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext'
-import { useMessage } from '../../hooks/useMessage'
-import { useForm } from '../../hooks/useForm'
+import { AuthContext } from '../../contexts/AuthContext';
+import { FormInput } from '../../components/inputs';
+import { initialLoginState } from './constants';
+import { useMessage } from '../../hooks/useMessage';
+import { useForm } from '../../hooks/useForm';
 
-import styles from './login.module.css'
+import styles from './login.module.css';
 
 export const Login = () => {
-    const showMessage = useMessage()
-    const { onLoginSubmitHandler } = useContext(AuthContext)
+    const { onLoginSubmitHandler } = useContext(AuthContext);
     const { values, error, changeHandler, onSubmitLogin } = useForm(
-        {
-            email: '',
-            password: '',
-        },
+        initialLoginState,
         onLoginSubmitHandler,
         null
-    )
+    );
+    const showMessage = useMessage();
 
     const onSubmitLoginHandler = async (event) => {
-        const response = await onSubmitLogin(event)
+        const response = await onSubmitLogin(event);
 
         if (response?.message?.length > 0) {
-            showMessage('error', response.message)
-            return
+            showMessage('error', response.message);
+            return;
         } else {
-            showMessage('success', 'Successfully logged in')
+            showMessage('success', 'Successfully logged in');
         }
-    }
+    };
 
     return (
         <div className="form-container">
@@ -41,33 +40,25 @@ export const Login = () => {
                     method="post"
                     onSubmit={onSubmitLoginHandler}
                 >
-                    <div className="form-group">
-                        <label htmlFor="email">Email </label>
-                        <input
-                            type="text"
-                            autoComplete="on"
-                            name="email"
-                            id="email"
-                            placeholder="Enter email"
-                            value={values.email}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                    <small className={styles.error}> {error.email}</small>
+                    <FormInput
+                        type="text"
+                        name="email"
+                        id="email"
+                        value={values.email}
+                        onChange={changeHandler}
+                        error={error.email}
+                        placeholder="Enter email"
+                    />
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password </label>
-                        <input
-                            type="password"
-                            autoComplete="on"
-                            name="password"
-                            id="password"
-                            placeholder="Enter password"
-                            value={values.password}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                    <small className={styles.error}> {error.password}</small>
+                    <FormInput
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={values.password}
+                        onChange={changeHandler}
+                        error={error.password}
+                        placeholder="Enter password"
+                    />
 
                     <Link to="reset">Forgot password?</Link>
                     <footer style={{ marginTop: '1em' }}>
@@ -85,5 +76,5 @@ export const Login = () => {
                 </span>
             </div>
         </div>
-    )
-}
+    );
+};
