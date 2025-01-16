@@ -12,3 +12,55 @@
     align-self: center;
     font-size: small;
 }
+
+.formContainer {
+    background: #fff;
+    border-radius: var(--border-radius-medium);
+    font-family: 'Montserrat Alternates';
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.formContainer input:hover,
+.formContainer input:focus {
+    border-color: var(--primary-hover-color);
+}
+
+.formContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.formContent header {
+    margin-bottom: 2rem;
+    align-self: center;
+}
+
+.formContent footer {
+    align-self: center;
+    margin-top: 1em;
+    font-size: 1em;
+    width: 100%; /* Ensure footer takes full width */
+
+    .buttonPrimary {
+        background: var(--primary-color);
+        color: #fff;
+        font-size: 1.2em;
+        border: 0em solid transparent;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.2s;
+        height: 2.2em;
+        width: 100%; /* Stretch button to full width */
+        border-radius: var(--border-radius-small);
+    }
+
+    .buttonPrimary:hover {
+        background: var(--primary-hover-color);
+        color: var(--white-color);
+    }
+}

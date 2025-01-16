@@ -30,16 +30,12 @@ export const Login = () => {
     };
 
     return (
-        <div className="form-container">
-            <div className="form-content">
+        <div className={styles.formContainer}>
+            <div className={styles.formContent}>
                 <header>
                     <h5>Login</h5>
                 </header>
-                <form
-                    style={{ display: `flex`, flexDirection: `column` }}
-                    method="post"
-                    onSubmit={onSubmitLoginHandler}
-                >
+                <form className={styles.form} method="post" onSubmit={onSubmitLoginHandler}>
                     <FormInput
                         type="text"
                         name="email"
@@ -61,16 +57,16 @@ export const Login = () => {
                     />
 
                     <Link to="reset">Forgot password?</Link>
-                    <footer style={{ marginTop: '1em' }}>
+                    <footer className={styles.footer}>
                         <input
                             type="submit"
-                            style={{ width: `100%`, textAlign: `center` }}
-                            className="button-primary"
+                            className={styles.buttonPrimary}
                             disabled={!values.email || !values.password}
                             value="Login"
                         />
                     </footer>
                 </form>
+                <span className={styles.signup}></span>
                 <span className={styles.signup}>
                     Don't have an account yet? <Link to="/register">Sign up</Link>
                 </span>
