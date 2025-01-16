@@ -7,9 +7,8 @@
 
 .bentoMainColumn {
     flex: 1 0 min(200px);
-    flex-direction: column;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 0.5em;
 }
 
@@ -26,15 +25,15 @@
 
 .bentoFillColumn {
     flex: 5 0 min(200px);
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     gap: 0.5em;
 }
 
 .bentoSideColumn {
     flex: 0 0 max(150px);
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     gap: 0.5em;
 }
 
