@@ -1,17 +1,13 @@
-import { Link } from 'react-router-dom'
-import {
-    faGear,
-    faHandshakeAngle,
-    faArrowRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
+import { faGear, faHandshakeAngle, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
-import styles from '../site-header.module.css'
+import styles from './user-menu.module.css';
 
-export const ProfileDropdown = ({ avatar, onLogoutHandler, fullName }) => {
+export const UserMenu = ({ avatar, onLogoutHandler, fullName }) => {
     return (
-        <div className={styles.dropdownNotifications}>
+        <div className={styles.userMenuContainer}>
             <div
                 to="#"
                 role="button"
@@ -24,11 +20,7 @@ export const ProfileDropdown = ({ avatar, onLogoutHandler, fullName }) => {
                 <ul className={styles.dropdownMenu}>
                     <li>
                         <div className={styles.dropdownMenuProfileThumb}>
-                            <img
-                                src={avatar}
-                                className={styles.profileImage}
-                                alt={'avatar'}
-                            />
+                            <img src={avatar} className={styles.profileImage} alt={'avatar'} />
                             <small>{fullName}</small>
                         </div>
                     </li>
@@ -69,5 +61,5 @@ export const ProfileDropdown = ({ avatar, onLogoutHandler, fullName }) => {
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+};
