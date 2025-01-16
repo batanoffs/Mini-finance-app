@@ -1,49 +1,5 @@
-.exchangeWrapper {
+.list {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.5em;
-}
-
-.exchangeWrapperLast {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.currencyWrapper {
-    display: flex;
-    align-items: center;
-}
-
-.exchangeImage {
-    border-radius: var(--border-radius-small);
-    width: 55px;
-    height: auto;
-    margin-right: 10px;
-}
-.currency {
-    padding-bottom: 0.1em;
-}
-
-.customBlockContact {
-    flex: initial;
-    background: var(--secondary-color);
-    border-radius: var(--border-radius-component);
-    position: relative;
-    overflow: hidden;
-    padding: 1em;
-}
-
-.customBlockExchange,
-.customBlockContact {
-    background: var(--third-bg-color);
-}
-
-.customBlockContact p a {
-    color: var(--heading-color);
-}
-
-.customBlockContact p a:hover {
-    color: var(--white-color);
+    flex-direction: column;
+    justify-content: flex-start;
 }
