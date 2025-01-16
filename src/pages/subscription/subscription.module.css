@@ -54,7 +54,6 @@
     flex: 1 0 min(200px);
     flex-direction: column;
     display: inline-flex;
-    flex-wrap: wrap;
     gap: 0.5em;
 }
 
