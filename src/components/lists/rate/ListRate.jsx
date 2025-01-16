@@ -1,4 +1,4 @@
-import styles from './list-rate.module.css'
+import styles from './list-rate.module.css';
 
 export const ListRate = (rate) => {
     return (
@@ -11,15 +11,15 @@ export const ListRate = (rate) => {
                 </div>
             </div>
 
-            <div>
+            <div className={styles.flexWrapper}>
                 <small>Sell</small>
-                <h6>{rate[1].sell}</h6>
+                <b>{rate[1].sell}</b>
             </div>
 
-            <div>
+            <div className={styles.flexWrapper}>
                 <small>Buy</small>
-                <h6>{rate[1].buy}</h6>
+                <b>{rate[1].buy}</b>
             </div>
         </li>
-    )
-}
+    );
+};

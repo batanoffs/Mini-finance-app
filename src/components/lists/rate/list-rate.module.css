@@ -2,18 +2,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5em;
-}
+    margin-right: 1em;
 
-.exchangeWrapperLast {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .currencyWrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.flexWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .exchangeImage {
@@ -21,8 +23,5 @@
     aspect-ratio: 1/2;
     width: 40px;
     height: 25px;
-    margin-right: 10px;
-}
-.currency {
-    padding-bottom: 0.1em;
+    margin-right: 0.5em;
 }
