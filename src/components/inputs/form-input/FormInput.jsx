@@ -1,3 +1,5 @@
+import { splitCamelCase } from './utils';
+
 import styles from './form-input.module.css';
 
 export const FormInput = ({
@@ -14,15 +16,7 @@ export const FormInput = ({
     placeholder = '',
     required = false,
 }) => {
-    // Split camelCase name into words and capitalize the first letter of each word
-    const splitCamelCase = (str) => {
-        return str
-            .replace(/([a-z])([A-Z])/g, '$1 $2')
-            .split(' ')
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    };
-
+    // Split camel case name into separate words and capitalize first letter
     const fieldName = name ? splitCamelCase(name) : '';
 
     // Create label with error star if there's an error
