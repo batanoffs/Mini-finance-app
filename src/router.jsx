@@ -61,7 +61,12 @@ const router = createBrowserRouter(
                         },
                         {
                             path: 'settings',
-                            element: <UserSettingsLayout NavComponent={UserSettingsNav} aside={[ContactInfo]}/>,
+                            element: (
+                                <UserSettingsLayout
+                                    NavComponent={UserSettingsNav}
+                                    aside={[ContactInfo]}
+                                />
+                            ),
                         },
                         {
                             path: 'help-center',
