@@ -127,7 +127,14 @@ export const useAddFriend = () => {
         setError(false);
     };
 
-    return [onSubmit, onFocusClearErrorHandler, onChangeNumber, number, error, showMessage];
+    return [
+        onSubmit,
+        onFocusClearErrorHandler,
+        onChangeNumber,
+        number,
+        error,
+        showMessage,
+    ];
 };
 
 // const onSubmit = async (e) => {
