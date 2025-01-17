@@ -1,48 +1,80 @@
-import { API } from '../constants/baseUrl'
-import * as request from './requester'
+import { API } from '../constants/baseUrl';
+import * as request from '../utils/requester';
 
 const generateCard = async (id) => {
-    const query = encodeURIComponent(`cards_mock_data_id=${id}`)
-    const response = await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`)
-    const date = response[0].expiration.split('/')
-    const money = response[0].balance
-    date.shift()
+    try {
+        const query = encodeURIComponent(`cards_mock_data_id=${id}`);
+        const response = await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`);
+        
+        if (!response || response.length === 0) {
+            throw new Error('Card not found');
+        }
 
-    return {
-        id: id,
-        balance: money,
-        brand: response[0].brand,
-        cvv: Number(response[0].cvv),
-        expiration: date.join('/'),
-        issuer: response[0].issuer,
-        number: Number(response[0].number),
-        objectId: response[0].objectId,
+        const card = response[0];
+        if (!card || !card.expiration) {
+            throw new Error('Invalid card data');
+        }
+
+        const date = card.expiration.split('/');
+        date.shift();
+
+        return {
+            id: id,
+            balance: card.balance,
+            brand: card.brand,
+            cvv: Number(card.cvv),
+            expiration: date.join('/'),
+            issuer: card.issuer,
+            number: Number(card.number),
+            objectId: card.objectId,
+        };
+    } catch (error) {
+        console.error('Error generating card:', error);
+        throw error;
     }
-}
+};
 
 const getCard = async (id) => {
-    const query = encodeURIComponent(`cards_mock_data_id='${id}'`)
-    return await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`)
-}
+    const query = encodeURIComponent(`cards_mock_data_id='${id}'`);
+    return await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`);
+};
 
 const topUp = async (objectId, value, token) => {
-    const data = { top_up: value }
-    return await request.put(API.MOCK_CREDIT_CARDS + `/${objectId}`, data, token)
-}
+    const data = { top_up: value };
+    return await request.put(API.MOCK_CREDIT_CARDS + `/${objectId}`, data, token);
+};
 
 const getVirtualCardIds = async () => {
-    const query = encodeURIComponent(`property=cardId`)
-    return await request.get(API.USERS + `?${query}`)
-}
+    const query = encodeURIComponent(`property=cardId`);
+    return await request.get(API.USERS + `?${query}`);
+};
 
 const setVirtualCardRelation = async (parentObjectId, body) => {
-    return await request.put(API.USERS + `/${parentObjectId}/virtualCard`, body)
+    return await request.put(API.USERS + `/${parentObjectId}/virtualCard`, body);
+};
+
+const assignNewCardId = async () => {
+    let newCardId
+    let checkMatch = true
+    try {
+        while (checkMatch) {
+            newCardId = Math.floor(Math.random() * 100) + 1
+            const getUsersCardIds = await getVirtualCardIds()
+            if (getUsersCardIds && getUsersCardIds.message) return getUsersCardIds
+            const usersCardIds = getUsersCardIds.map((id) => id.cardId)
+            checkMatch = usersCardIds.includes(newCardId)
+        }
+        return newCardId
+    } catch (error) {
+        return error
+    }
 }
 
 export const cardService = {
     generateCard,
     setVirtualCardRelation,
     getVirtualCardIds,
+    assignNewCardId,
     getCard,
     topUp,
-}
+};
