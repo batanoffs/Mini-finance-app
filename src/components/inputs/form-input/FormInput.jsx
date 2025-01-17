@@ -4,17 +4,18 @@ import styles from './form-input.module.css';
 
 export const FormInput = ({
     type,
-    name = '',
-    id = '',
     value,
-    autoComplete = 'off',
-    error = '',
+    id = '',
+    name = '',
     className = '',
+    placeholder = '',
+    autoComplete = 'off',
+    required = false,
+    error = '',
+    sx = {},
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
-    placeholder = '',
-    required = false,
 }) => {
     // Split camel case name into separate words and capitalize first letter
     const fieldName = name ? splitCamelCase(name) : '';
@@ -27,7 +28,7 @@ export const FormInput = ({
         </>
     );
     return (
-        <div>
+        <div style={sx}>
             <div className={styles.formGroup}>
                 {name && <label htmlFor={id}>{label}</label>}
                 <input
@@ -39,7 +40,7 @@ export const FormInput = ({
                     onChange={onChange}
                     onBlur={onBlur}
                     onFocus={onFocus}
-                    className={className}
+                    className={`${className} ${styles.input}`}
                     placeholder={placeholder}
                 />
             </div>

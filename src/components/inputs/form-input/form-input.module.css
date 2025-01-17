@@ -1,50 +1,80 @@
+:root {
+    --error-color: red;
+    --font-size-medium: 16px;
+    --font-size-small: 12px;
+}
+
 .formGroup {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: start;
-
-    small {
-        color: red;
-        font-size: 16px;
-        margin-left: 0.2em;
-    }
-
-    label {
-        font-size: 16px;
-        margin-bottom: 0.5em;
-    }
-
-    .error {
-        color: red;
-        font-size: 16px;
-        margin-left: 0.2em;
-        width: fit-content;
-        justify-self: center;
-        align-self: flex-end;
-    }
-
-    input:not([type='submit'], [type='button'], [type='radio'], [type='checkbox']) {
-        height: 2em;
-        width: 60%;
-        margin-bottom: 0.5em;
-        padding-left: 0.7em;
-        margin-left: 0em;
-        border: 1px solid #ddd;
-        border-radius: var(--border-radius-small);
-        outline: none;
-        text-align: left;
-    }
-
-    input[type='radio'] {
-        width: 1em;
-        height: 1em;
-        border: 0em;
-        margin: 0;
-    }
-
-    input[type='checkbox'] {
-        width: 1em;
-        height: 1em;
-    }
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
 }
+
+.error {
+    color: var(--error-color);
+    font-size: var(--font-size-small);
+    height: 1em;
+    width: fit-content;
+}
+
+small {
+    color: var(--error-color);
+    font-size: 16px;
+    margin-left: 0.2em;
+}
+
+.input {
+    padding-left: 0.7em;
+    margin-left: 0em;
+    outline: none;
+    text-align: left;
+}
+
+.input:focus {
+    border-color: var(--primary-hover-color);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.input[type='text'],
+.input[type='email'],
+.input[type='password'],
+.input[type='tel'],
+.input[type='number'] {
+    height: 2em;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-small);
+}
+
+input[type='radio'] {
+    width: 1em;
+    height: 1em;
+    border: 0em;
+    margin: 0;
+}
+
+input[type='checkbox'] {
+    width: 1em;
+    height: 1em;
+}
+
+/* input:not([type='submit'], [type='button'], [type='radio'], [type='checkbox']) {
+    height: 2em;
+    width: auto;
+    margin-bottom: 0.5em;
+    padding-left: 0.7em;
+    margin-left: 0em;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-small);
+    outline: none;
+    text-align: left;
+}
+
+input:not([type='submit'], [type='button'], [type='radio'], [type='checkbox']):focus {
+    border-color: var(--primary-hover-color);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+    */
