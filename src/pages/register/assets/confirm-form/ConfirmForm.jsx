@@ -1,7 +1,7 @@
 import { Radio } from 'antd'
 import { useState } from 'react'
-import { assignNewCardId } from '../../../utils/assignNewCardId'
-import { useMessage } from '../../../hooks/useMessage'
+import { useMessage } from '../../../../hooks/useMessage'
+import { cardService } from '../../../../services'
 
 export const ConfirmForm = ({
     email,
@@ -26,7 +26,7 @@ export const ConfirmForm = ({
         try {
             e.target.hidden = true
             setHidden(true)
-            const response = await assignNewCardId()
+            const response = await cardService.assignNewCardId()
             if (response && response.message) {
                 showMessage('error', response.message)
                 return
