@@ -1,16 +1,13 @@
-import { useOutletContext } from 'react-router-dom';
-
 import { ContactInfo } from '../assets';
 import { FormInput } from '../../components/inputs';
+import { BentoGrid } from '../../layout';
 
 import styles from './help-center.module.css';
 
 export const HelpCenter = () => {
-    const layout = useOutletContext();
-
     return (
-        <div className={layout.contentContainer}>
-            <section className={layout.bentoFillColumn}>
+        <>
+            <BentoGrid.Fill>
                 <div className={styles.customBlock}>
                     <form action="#" method="post">
                         <header style={{ marginBottom: `0.5em` }}>
@@ -60,11 +57,11 @@ export const HelpCenter = () => {
                         "Save changes" button after entering your new password.
                     </p>
                 </div>
-            </section>
+            </BentoGrid.Fill>
 
-            <aside className={layout.bentoSideColumn}>
+            <BentoGrid.Aside>
                 <ContactInfo />
-            </aside>
-        </div>
+            </BentoGrid.Aside>
+        </>
     );
 };

@@ -1,21 +1,19 @@
-import { useOutletContext } from 'react-router-dom';
-
 import { TableTransactions } from './assets/TableTransactions';
 import { BankingActions } from '../dashboard/assets';
 import { ContactInfo } from '../assets';
+import { BentoGrid } from '../../layout';
 
 export const Wallet = () => {
-    const styles = useOutletContext();
-
     return (
-        <div className={styles.contentContainer}>
-            <main className={styles.bentoFillColumn}>
+        <>
+            <BentoGrid.Fill>
                 <TableTransactions />
-            </main>
-            <aside className={styles.bentoSideColumn}>
+            </BentoGrid.Fill>
+
+            <BentoGrid.Aside>
                 <ContactInfo />
                 <BankingActions />
-            </aside>
-        </div>
+            </BentoGrid.Aside>
+        </>
     );
 };

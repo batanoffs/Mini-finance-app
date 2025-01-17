@@ -1,25 +1,23 @@
-import { useOutletContext } from 'react-router-dom';
-
 import { ProfileCard } from '../../components/cards';
 import { VirtualCardDetails, Friends } from './assets/index';
 import { ContactInfo } from '../assets';
+import { BentoGrid } from '../../layout';
 
 export const Profile = () => {
-    const styles = useOutletContext();
-
     return (
-        <div className={styles.contentContainer}>
-            <section className={styles.bentoMainColumn}>
+        <>
+            <BentoGrid.Main>
                 <ProfileCard />
                 <VirtualCardDetails />
-            </section>
-            <section className={styles.bentoFillColumn}>
-                <Friends />
-            </section>
+            </BentoGrid.Main>
 
-            <aside className={styles.bentoSideColumn}>
+            <BentoGrid.Fill>
+                <Friends />
+            </BentoGrid.Fill>
+
+            <BentoGrid.Aside>
                 <ContactInfo />
-            </aside>
-        </div>
+            </BentoGrid.Aside>
+        </>
     );
 };

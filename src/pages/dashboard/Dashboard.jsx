@@ -1,6 +1,6 @@
-import { useOutletContext } from 'react-router-dom';
 import { ProfileCard, VirtualCard } from '../../components/cards';
 import { ContactInfo } from '../assets';
+import { BentoGrid } from '../../layout';
 import {
     AddFriends,
     ExchangeRate,
@@ -11,26 +11,25 @@ import {
 } from './assets';
 
 export const Dashboard = () => {
-    const styles = useOutletContext();
-
     return (
-        <div className={styles.contentContainer}>
-            <div className={styles.bentoMainColumn}>
+        <>
+            <BentoGrid.Main>
                 <Greetings />
                 <ProfileCard />
                 <VirtualCard />
                 <ExchangeRate />
-            </div>
-            <div className={styles.bentoFillColumn}>
-                <LastTransactions />
-            </div>
+            </BentoGrid.Main>
 
-            <div className={styles.bentoSideColumn}>
+            <BentoGrid.Fill>
+                <LastTransactions />
+            </BentoGrid.Fill>
+
+            <BentoGrid.Aside>
                 <ContactInfo />
                 <AddFriends />
                 <BankingActions />
                 <QuickSendMoney />
-            </div>
-        </div>
+            </BentoGrid.Aside>
+        </>
     );
 };
