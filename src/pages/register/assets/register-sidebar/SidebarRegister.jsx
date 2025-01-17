@@ -1,16 +1,15 @@
-// import pic from "../../../../images/svg/money-transfer-isometric-60529.svg";
-import { Divider, Steps } from 'antd'
+import { Divider, Steps } from 'antd';
 
-import styles from '../register.module.css'
+import styles from './sidebar-register.module.css';
 
 export const SidebarRegister = (props) => {
     return (
-        <div className={styles.sidebar_container}>
+        <div className={styles.sidebarContainer}>
             <div className="sidebar-list">
                 <Steps
                     direction="vertical"
                     size="small"
-                    style={{ fontFamily: 'var(--body-font-family)', padding: '20px' }}
+                    className={styles.stepsBar}
                     current={props.currentStep}
                     items={[
                         {
@@ -41,5 +40,5 @@ export const SidebarRegister = (props) => {
                 alt="theme display"
             />
         </div>
-    )
-}
+    );
+};

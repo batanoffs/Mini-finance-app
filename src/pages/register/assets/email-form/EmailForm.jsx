@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { FormInput } from '../../../components/inputs';
-// import styles from '../register.module.css';
+import { FormInput } from '../../../../components/inputs'; 
 
 export const EmailForm = ({
     email,

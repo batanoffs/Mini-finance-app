@@ -1,8 +1,9 @@
 import { Radio } from 'antd';
 
-import { useMessage } from '../../../hooks/useMessage';
-import styles from '../register.module.css';
-import { FormInput } from '../../../components/inputs';
+import { useMessage } from '../../../../hooks/useMessage';
+import { FormInput } from '../../../../components/inputs';
+
+import styles from './info-form.module.css';
 
 export const InfoForm = ({
     firstName,
