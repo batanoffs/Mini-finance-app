@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 
-import { InfoForm, TermsForm, EmailForm, SidebarRegister, ConfirmForm } from './assets/index';
+import { InfoForm, TermsForm, EmailForm, SidebarRegister, ConfirmForm } from './assets';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useForm } from '../../hooks/useForm';
 import { formInitialState } from './constants';
@@ -26,7 +26,7 @@ export const Register = () => {
     };
 
     return (
-        <div className={styles.register_content_container}>
+        <div className={styles.registerContainer}>
             <SidebarRegister currentStep={currentStep} />
             {currentStep === 0 && (
                 <EmailForm
