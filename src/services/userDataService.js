@@ -1,4 +1,4 @@
-import * as request from './requester'
+import * as request from '../utils/requester'
 import { API } from '../constants/baseUrl'
 
 const getUserData = async (ownerId) => {

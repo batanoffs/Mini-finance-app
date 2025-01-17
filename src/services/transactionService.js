@@ -1,4 +1,4 @@
-import * as request from './requester'
+import * as request from '../utils/requester'
 import { API } from '../constants/baseUrl'
 
 //TODO FIX TYPOS in the transactions resultID

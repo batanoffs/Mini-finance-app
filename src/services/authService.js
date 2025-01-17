@@ -1,6 +1,5 @@
-import { encodeURIComponent } from 'querystring';
 import { API } from '../constants/baseUrl'
-import * as request from './requester'
+import * as request from '../utils/requester'
 
 const login = async (data) => {
     return await request.post(API.LOGIN, data)
