@@ -6,7 +6,10 @@ export const DashboardLayout = ({ NavComponent = () => null }) => {
     return (
         <div className={styles.mainWrapper}>
             <NavComponent />
-            <Outlet context={styles} />
+            
+            <div className={styles.contentContainer}>
+                <Outlet context={styles} />
+            </div>
         </div>
     );
 };
