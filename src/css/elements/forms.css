@@ -1,34 +1,8 @@
-input:not([type='submit'], [type='button'], [type='radio'], [type='checkbox']) {
-    height: 2em;
-    width: 60%;
-    margin-bottom: 0.5em;
-    padding-left: 0.7em;
-    margin-left: 0em;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius-small);
-    outline: none;
-    text-align: left;
-}
-
-input[type='radio'] {
-    width: 1em;
-    height: 1em;
-    border: 0em;
-    margin: 0;
-}
-
-input[type='checkbox'] {
-    width: 1em;
-    height: 1em;
-}
-
 form {
     display: flex;
     flex-direction: column;
 }
-/*---------------------------------------
-  CUSTOM FORM               
------------------------------------------*/
+
 .form-group {
     display: flex;
     flex-direction: row;
@@ -47,7 +21,6 @@ form {
 .form-container {
     background: #fff;
     border-radius: var(--border-radius-medium);
-    font-family: 'Montserrat Alternates';
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     min-width: 200px;
     align-self: center;

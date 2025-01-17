@@ -14,7 +14,6 @@ main {
 .ant-app {
     background-color: var(--white-color);
     font-family: var(--body-font-family);
-    font-style: var(--body-font-style);
     display: flex;
     flex-direction: column;
     min-height: 100dvh;

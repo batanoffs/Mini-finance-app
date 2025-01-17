@@ -1,4 +1,4 @@
-@import url('../fonts/Montserrat.css');
+@import url('./fonts/Montserrat.css');
 @import url('./base/reset.css');
 @import url('./base/typography.css');
 @import url('./elements/buttons.css');
@@ -6,5 +6,3 @@
 @import url('./elements/blocks.css');
 @import url('./site-layout.css');
 @import url('./responsive.css');
-
-/* @import url("./components/sidebar.css"); */
