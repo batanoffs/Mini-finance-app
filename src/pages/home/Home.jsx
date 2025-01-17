@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { Login, Preview } from './assets/index'
-import { title, subTitle } from './constants'
-import styles from './home.module.css'
+import { Login } from '../index';
+import { Preview } from './assets';
+import { title, subTitle } from './constants';
+
+import styles from './home.module.css';
 
 export const Home = () => {
     return (
@@ -28,5 +30,5 @@ export const Home = () => {
                 <Login />
             </div>
         </div>
-    )
-}
+    );
+};
