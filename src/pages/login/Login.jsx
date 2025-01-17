@@ -66,7 +66,7 @@ export const Login = () => {
                         />
                     </footer>
                 </form>
-                <span className={styles.signup}></span>
+                
                 <span className={styles.signup}>
                     Don't have an account yet? <Link to="/register">Sign up</Link>
                 </span>
