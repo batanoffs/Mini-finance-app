@@ -12,6 +12,7 @@ import {
     Subscription,
     Wallet,
     UserSettingsNav,
+    ResetPassword,
 } from './pages';
 import { NavBar, ContactInfo } from './pages/assets';
 import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
                 { path: 'about', element: <About />, loader: restrictLoginPage },
                 { path: 'login', element: <Login />, loader: restrictLoginPage },
                 { path: 'register', element: <Register />, loader: restrictLoginPage },
+                { path: 'reset', element: <ResetPassword />, loader: restrictLoginPage }, // Add the new route
                 {
                     path: 'dashboard',
                     element: <DashboardLayout NavComponent={NavBar} />,
