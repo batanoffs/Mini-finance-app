@@ -1,67 +1,43 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AuthContext } from '../../../contexts/AuthContext'
-import { EmptyCard } from '../empty/EmptyCard'
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { EmptyCard } from '../empty/EmptyCard';
+import { ProfileAttributes } from './profile-attributes/ProfileAttributes';
 
-import containers from './profile.module.css'
+import styles from './profile.module.css';
 
 export const ProfileCard = () => {
-    const { auth } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext);
+
+    const userAvatar = auth.avatar;
+    const userElements = [
+        ['Name', auth.fullName],
+        ['Country', auth.country],
+        ['Address', auth.address],
+        ['Email', auth.email, 'mailto'],
+        ['Phone', auth.phoneNumber, 'tel'],
+        // TODO: add last login date
+        // ['Last online', auth.lastOnline],
+    ];
 
     return (
-        <EmptyCard color="secondary" className={containers.customBlockProfile}>
-            <div className={containers.customBlockProfileImageWrap}>
-                <img src={auth.avatar} className={containers.customBlockProfileImage} alt="avatar" />
+        <EmptyCard color="secondary" className={styles.customBlockProfile}>
+            <div className={styles.customBlockProfileImageWrap}>
+                <img
+                    src={userAvatar}
+                    className={styles.customBlockProfileImage}
+                    alt="user avatar"
+                />
 
-                <Link to="/dashboard/settings" className={containers.customBlockEditIcon}>
+                <Link to="/dashboard/settings" className={styles.customBlockEditIcon}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </Link>
             </div>
 
-            <p>
-                <strong>Name: </strong>
-                <span>{auth.fullName}</span>
-            </p>
-
-            <p>
-                <strong>Email: </strong>
-                <a
-                    href={`mailto:${auth.email}`}
-                    style={{
-                        color: 'var(--heading-color)',
-                        hover: 'white',
-                    }}
-                >
-                    {auth.email}
-                </a>
-            </p>
-            <p style={{ paddingBottom: '0' }}>
-                <strong>Phone:</strong>
-                <a
-                    href={`tel:${auth.phoneNumber}`}
-                    style={{
-                        paddingLeft: '5px',
-                        color: 'var(--heading-color)',
-                    }}
-                >
-                    {auth.phoneNumber}
-                </a>
-            </p>
-            {auth.country && (
-                <p>
-                    <strong>Country:</strong>
-                    <span> {auth.country}</span>
-                </p>
-            )}
-            {auth.address && (
-                <p>
-                    <strong>Address: </strong>
-                    <span>{auth.address}</span>
-                </p>
-            )}
+            <ProfileAttributes styles={styles} userElements={userElements} />
         </EmptyCard>
-    )
-}
+    );
+};
