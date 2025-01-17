@@ -6,6 +6,17 @@
     margin: 0;
 }
 
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.searchInput {
+    width: 100%;
+    color: red;
+}
+
 .customBlockProfile .customBlockEditIcon {
     position: absolute;
     bottom: 0;
