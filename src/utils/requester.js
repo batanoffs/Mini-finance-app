@@ -1,4 +1,4 @@
-import { errorHandler } from '../utils/errorHandler'
+import { errorHandler } from './errorHandler'
 
 const request = async (method, url, data, file, token = undefined) => {
     if (!url) {
