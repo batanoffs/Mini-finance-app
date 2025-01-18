@@ -1,24 +1,28 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 
 import { InfoForm, TermsForm, EmailForm, SidebarRegister, ConfirmForm } from './assets';
-import { AuthContext } from '../../contexts/AuthContext';
+import { formState, errorMessages, formRegex } from './constants';
 import { useForm } from '../../hooks/useForm';
-import { formInitialState } from './constants';
+import { useRegister } from './useRegister';
 
 import styles from './register.module.css';
 
 export const Register = () => {
-    const { onRegisterSubmitHandler } = useContext(AuthContext);
     const [currentStep, setCurrentStep] = useState(0);
+    const { onRegister } = useRegister();
     const {
         values,
         error,
         onFocusHandler,
         validateHandler,
         changeHandler,
-        onSubmitRegister,
+        handleSubmit,
         resetFormHandler,
-    } = useForm(formInitialState, null, onRegisterSubmitHandler);
+    } = useForm(formState, errorMessages, formRegex);
+
+    const onSubmit = (data) => {
+        onRegister(data);
+    };
 
     const currentStepsHandler = (e) => {
         const stepChange = e.target.name === 'next' ? 1 : -1;
@@ -54,6 +58,7 @@ export const Register = () => {
                     error={error}
                     currentStepsHandler={currentStepsHandler}
                     changeHandler={changeHandler}
+                    validateHandler={validateHandler}
                 />
             )}
             {currentStep === 3 && (
@@ -62,7 +67,7 @@ export const Register = () => {
                     error={error}
                     currentStepsHandler={currentStepsHandler}
                     changeHandler={changeHandler}
-                    onSubmitRegister={onSubmitRegister}
+                    handleSubmit={handleSubmit(onSubmit)}
                     resetFormHandler={resetFormHandler}
                 />
             )}
