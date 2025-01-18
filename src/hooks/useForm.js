@@ -19,44 +19,53 @@ export const useForm = (initialState, errorMessages, testRegex) => {
         // reset the form
         resetFormHandler();
     };
-    
-    const changeHandler = (event) => {
-        const { name, value, type, checked } = event.target;
-        
-        // Handle nested object paths (e.g., "user.name")
-        if (name.includes('.')) {
-            const keys = name.split('.');
-            setValues(prev => {
-                const newState = { ...prev };
-                let current = newState;
-                
-                // Traverse to the nested property
-                for (let i = 0; i < keys.length - 1; i++) {
-                    current = current[keys[i]];
-                }
-                
-                // Set the value based on input type
-                current[keys[keys.length - 1]] = type === 'checkbox' 
-                    ? checked 
-                    : type === 'number'
-                        ? Number(value)
-                        : value;
-                        
-                return newState;
-            });
-        } else {
-            // Handle regular inputs
-            setValues(prev => ({
-                ...prev,
-                [name]: type === 'checkbox' 
-                    ? checked 
-                    : type === 'number'
-                        ? Number(value)
-                        : value
-            }));
-        }
-    };
 
+    const changeHandler = (event) => {
+        const { name, value, type, checked, files } = event.target;
+
+        // Value conversion utility
+        const convertValue = (type, value) => {
+            switch (type) {
+                case 'checkbox':
+                    return checked;
+                case 'tel':
+                    return value;
+                case 'number':
+                    return value === '' ? '' : Number(value);
+                case 'date':
+                    return value ? new Date(value) : null;
+                case 'file':
+                    return files;
+                default:
+                    return value;
+            }
+        };
+
+        // Handle nested or flat object structure
+        const updateValues = (name, convertedValue) => {
+            if (name.includes('.')) {
+                setValues((prev) => {
+                    const newState = { ...prev };
+                    let current = newState;
+                    const keys = name.split('.');
+
+                    for (let i = 0; i < keys.length - 1; i++) {
+                        current = current[keys[i]];
+                    }
+                    current[keys[keys.length - 1]] = convertedValue;
+                    return newState;
+                });
+            } else {
+                setValues((prev) => ({
+                    ...prev,
+                    [name]: convertedValue,
+                }));
+            }
+        };
+
+        updateValues(name, convertValue(type, value));
+    };
+    
     const validateHandler = (event) => {
         if (!event) return;
 
