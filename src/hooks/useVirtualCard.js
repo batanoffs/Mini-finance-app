@@ -1,10 +1,13 @@
 import { useCallback, useContext, useState, useEffect } from 'react';
+
 import { AuthContext } from '../contexts/AuthContext';
-import { transactionService } from '../services/transactionService';
+import { transactionService } from '../services';
+import { getUserToken } from '../utils';
 
 export const useVirtualCard = () => {
-    const { token, auth, setAuth } = useContext(AuthContext);
     const [card, setCard] = useState(auth.virtualCard);
+    const { auth, setAuth } = useContext(AuthContext);
+    const { token } = getUserToken();
 
     const fetchBalance = useCallback(() => {
         transactionService

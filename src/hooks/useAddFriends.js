@@ -1,11 +1,13 @@
 import { useContext, useCallback } from 'react';
+
 import { AuthContext } from '../contexts/AuthContext';
 import { useMessage } from './useMessage';
-import { dataService } from '../services/userDataService';
-import { notificationService } from '../services/notificationService';
+import { dataService, notificationService } from '../services';
+import { getUserToken } from '../utils';
 
 export const useAddFriend = () => {
-    const { token, auth } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
+    const { token } = getUserToken();
     const showMessage = useMessage();
 
     const onFriendRequest = async (formData) => {

@@ -1,12 +1,15 @@
 import { useContext, useState } from 'react'
 
 import { AuthContext } from '../contexts/AuthContext'
-import { dataService } from '../services/userDataService'
+import { dataService } from '../services'
 import { MAX_FILE_SIZE } from '../constants'
+import { getUserToken } from '../utils'
 
 export const useUploadImage = () => {
     const [error, setError] = useState(null)
-    const { token, setAuth, auth } = useContext(AuthContext)
+    const { setAuth, auth } = useContext(AuthContext)
+    const { token } = getUserToken();
+
 
     const handleDrop = (e) => {
         e.preventDefault()

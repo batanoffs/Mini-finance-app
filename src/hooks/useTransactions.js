@@ -1,28 +1,31 @@
-import { useState, useEffect, useCallback, useContext } from 'react'
-import { transactionService } from '../services/transactionService'
-import { AuthContext } from '../contexts/AuthContext'
+import { useState, useEffect, useCallback, useContext } from 'react';
+
+import { transactionService } from '../services';
+import { AuthContext } from '../contexts/AuthContext';
+import { getUserToken } from '../utils';
 
 export const useTransactions = (transactionType) => {
-    const [transactions, setTransactions] = useState([])
-    const { auth, token } = useContext(AuthContext)
+    const [transactions, setTransactions] = useState([]);
+    const { auth } = useContext(AuthContext);
+    const { token } = getUserToken();
 
     const fetchTransactions = useCallback(async () => {
         try {
-            let result
+            let result;
             if (transactionType === 'sender') {
-                result = await transactionService.getAllSender(auth.objectId, token)
+                result = await transactionService.getAllSender(auth.objectId, token);
             } else if (transactionType === 'receiver') {
-                result = await transactionService.getAllReceiver(auth.objectId, token)
+                result = await transactionService.getAllReceiver(auth.objectId, token);
             }
-            setTransactions(result)
+            setTransactions(result);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }, [auth.objectId, token, transactionType])
+    }, [auth.objectId, token, transactionType]);
 
     useEffect(() => {
-        fetchTransactions()
-    }, [fetchTransactions])
+        fetchTransactions();
+    }, [fetchTransactions]);
 
-    return transactions
-}
+    return transactions;
+};
