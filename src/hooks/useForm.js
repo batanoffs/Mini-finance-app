@@ -1,40 +1,60 @@
 import { useState } from 'react';
 import { useValidate } from './useValidate';
-import { useMessage } from './useMessage';
 
-export const useForm = (initialState, onLogin, onRegister) => {
+export const useForm = (initialState, errorMessages, testRegex) => {
     const [values, setValues] = useState(initialState);
-    const { error, errorHandler, clearErrorHandler } = useValidate({});
-    const message = useMessage();
+    const { error, errorHandler, clearErrorHandler } = useValidate(
+        initialState,
+        errorMessages,
+        testRegex
+    );
 
-    const changeHandler = (event, photoInfo) => {
-        setValues((state) => {
-            const newState = { ...state };
+    const handleSubmit = (onSubmit) => (e) => {
+        // prevent default form submission
+        e.preventDefault();
 
-            if (event === undefined && photoInfo) {
-                newState['identity'] = photoInfo;
-            }
+        // call the service
+        onSubmit(values);
 
-            if (newState.virtualcard) {
-                if (
-                    event &&
-                    event.target.name !== 'balance' &&
-                    event.target.name !== 'issuer' &&
-                    event.target.name !== 'number' &&
-                    event.target.name !== 'brand' &&
-                    event.target.name !== 'expiration' &&
-                    event.target.name !== 'cvv'
-                ) {
-                    newState[event.target.name] = event.target.value;
+        // reset the form
+        resetFormHandler();
+    };
+    
+    const changeHandler = (event) => {
+        const { name, value, type, checked } = event.target;
+        
+        // Handle nested object paths (e.g., "user.name")
+        if (name.includes('.')) {
+            const keys = name.split('.');
+            setValues(prev => {
+                const newState = { ...prev };
+                let current = newState;
+                
+                // Traverse to the nested property
+                for (let i = 0; i < keys.length - 1; i++) {
+                    current = current[keys[i]];
                 }
-            } else if (newState.termsAccept) {
-                newState[event.target.name] = event.target.checked;
-            } else {
-                newState[event.target.name] = event.target.value;
-            }
-
-            return newState;
-        });
+                
+                // Set the value based on input type
+                current[keys[keys.length - 1]] = type === 'checkbox' 
+                    ? checked 
+                    : type === 'number'
+                        ? Number(value)
+                        : value;
+                        
+                return newState;
+            });
+        } else {
+            // Handle regular inputs
+            setValues(prev => ({
+                ...prev,
+                [name]: type === 'checkbox' 
+                    ? checked 
+                    : type === 'number'
+                        ? Number(value)
+                        : value
+            }));
+        }
     };
 
     const validateHandler = (event) => {
@@ -55,36 +75,13 @@ export const useForm = (initialState, onLogin, onRegister) => {
         }
     };
 
-    const onSubmitLogin = async (e) => {
-        e.preventDefault();
-        const loginResponse = await onLogin(values);
-        const isLoginSuccessful = !Object.values(error).some((value) => value) && loginResponse;
-
-        resetFormHandler();
-        return await isLoginSuccessful;
-    };
-
-    const onSubmitRegister = async (e) => {
-        e.preventDefault();
-        const checkError = Object.values(error).some((value) => value);
-        const listErrors = Object.values(error).find((value) => value);
-        if (!checkError) {
-            onRegister(values);
-            resetFormHandler();
-        } else {
-            console.error('Errors found during registration', listErrors);
-            message('error', `Validation failed, errors found: ${listErrors}`);
-        }
-    };
-
     return {
         values,
         error,
         changeHandler,
         validateHandler,
-        onSubmitLogin,
         resetFormHandler,
-        onSubmitRegister,
         onFocusHandler,
+        handleSubmit,
     };
 };
