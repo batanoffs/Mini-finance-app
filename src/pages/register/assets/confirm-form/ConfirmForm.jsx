@@ -1,7 +1,5 @@
-import { Radio } from 'antd'
-import { useState } from 'react'
-import { useMessage } from '../../../../hooks/useMessage'
-import { cardService } from '../../../../services'
+import { Radio } from 'antd';
+import { useState } from 'react';
 
 export const ConfirmForm = ({
     email,
@@ -11,31 +9,20 @@ export const ConfirmForm = ({
     gender,
     country,
     phoneNumber,
-    cardId,
     address,
     town,
     currentStepsHandler,
-    onSubmitRegister,
+    handleSubmit,
     changeHandler,
 }) => {
-    const [isHidden, setHidden] = useState(false)
-    const showMessage = useMessage()
+    const [isHidden, setHidden] = useState(false);
 
-    const onConfirmHandler = async (e) => {
-        e.preventDefault()
-        try {
-            e.target.hidden = true
-            setHidden(true)
-            const response = await cardService.assignNewCardId()
-            if (response && response.message) {
-                showMessage('error', response.message)
-                return
-            }
-            changeHandler({ target: { name: 'cardId', value: values } })
-        } catch (error) {
-            showMessage('error', 'An error occurred while confirming data')
-        }
-    }
+    const onConfirmHandler = (e) => {
+        const registerButton = e.target;
+        registerButton.hidden = true;
+        setHidden(true);
+    };
+
     return (
         <div className="form-container">
             <div className="form-content">
@@ -54,6 +41,7 @@ export const ConfirmForm = ({
                             name="email"
                             id="email"
                             readOnly
+                            disabled
                             autoComplete="off"
                             placeholder="no information"
                             className="form-control"
@@ -61,32 +49,21 @@ export const ConfirmForm = ({
                             onChange={changeHandler}
                         />
                     </div>
-                    <label htmlFor="cardId" hidden={true} />
-                    <input
-                        type="id"
-                        name="cardId"
-                        id="cardId"
-                        readOnly
-                        hidden
-                        autoComplete="off"
-                        placeholder="no information"
-                        className="form-control"
-                        value={cardId}
-                        onChange={changeHandler}
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        readOnly
-                        hidden
-                        autoComplete="off"
-                        placeholder="no information"
-                        className="form-control"
-                        value={password}
-                        onChange={changeHandler}
-                    />
-
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            readOnly
+                            disabled
+                            autoComplete="off"
+                            placeholder="no information"
+                            className="form-control"
+                            value={password}
+                            onChange={changeHandler}
+                        />
+                    </div>
                     <div className="form-group">
                         <label htmlFor="firstName">First name</label>
                         <input
@@ -210,11 +187,11 @@ export const ConfirmForm = ({
                             type="submit"
                             className="button-primary"
                             value={'Register'}
-                            onClick={onSubmitRegister}
+                            onClick={handleSubmit}
                         />
                     )}
                 </footer>
             </div>
         </div>
-    )
-}
+    );
+};
