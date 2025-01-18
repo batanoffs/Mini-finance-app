@@ -11,8 +11,8 @@ export const Login = () => {
     const { login } = useLogin();
     const { values, error, changeHandler, handleSubmit } = useForm(initialLoginState);
 
-    const onSubmit = (data) => {
-        login(data);
+    const onSubmit = (formData) => {
+        login(formData);
     };
 
     return (

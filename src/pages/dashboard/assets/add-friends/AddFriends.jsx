@@ -12,8 +12,8 @@ export const AddFriends = () => {
         { phone: /^\d{10}$/ }
     );
 
-    const onSubmit = (data) => {
-        onFriendRequest(data);
+    const onSubmit = (formData) => {
+        onFriendRequest(formData);
     };
 
     return (

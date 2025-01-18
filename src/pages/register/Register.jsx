@@ -20,8 +20,8 @@ export const Register = () => {
         resetFormHandler,
     } = useForm(formState, errorMessages, formRegex);
 
-    const onSubmit = (data) => {
-        onRegister(data);
+    const onSubmit = (formData) => {
+        onRegister(formData);
     };
 
     const currentStepsHandler = (e) => {
