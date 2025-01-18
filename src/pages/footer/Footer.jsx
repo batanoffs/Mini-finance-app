@@ -1,11 +1,8 @@
-import { useContext } from 'react'
-
-import { AuthContext } from '../../contexts/AuthContext'
+import { isAuthenticated } from '../../utils/sessionStorage'
 
 import styles from './site-footer.module.css'
 
 export const Footer = () => {
-    const { isAuthenticated } = useContext(AuthContext)
     const homeLink = window.location.pathname === '/'
 
     if (homeLink) {
