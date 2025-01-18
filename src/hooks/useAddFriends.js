@@ -1,55 +1,90 @@
-import { useState, useContext, useCallback } from 'react';
+import { useContext, useCallback } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { useMessage } from './useMessage';
 import { dataService } from '../services/userDataService';
 import { notificationService } from '../services/notificationService';
 
 export const useAddFriend = () => {
-    const [number, setNumber] = useState('');
-    const [error, setError] = useState(false);
     const { token, auth } = useContext(AuthContext);
     const showMessage = useMessage();
 
-    const handleError = useCallback(
-        (message) => {
-            setError(true);
-            showMessage('error', message);
-        },
-        [showMessage]
-    );
+    const onFriendRequest = async (formData) => {
+        try {
+            const friendNumber = formData.phone;
 
-    const validateRequest = useCallback(async () => {
-        if (!number) return 'No phone number provided';
-        if (number === auth.phoneNumber) return 'You cannot add yourself';
+            console.log('friendPhoneNumber', friendNumber);
+            
+            const verifyResponse = await verifyFriendRequestStatus(friendNumber);
 
-        const receiverData = await dataService.getAttribute('phoneNumber', number);
-        if (!receiverData?.length) return 'User with this phone number does not exist';
+            const { receiverUserId } = verifyResponse;
 
-        const receiverId = receiverData[0].objectId;
-        if (auth.friends?.some((friend) => friend.objectId === receiverId)) {
-            return 'User is already your friend';
+            if (receiverUserId) return await sendFriendRequest(friendNumber, receiverUserId);
+        } catch (error) {
+            console.error(error);
+            if (error instanceof Error) {
+                showMessage('error', error.message);
+            } else {
+                showMessage('error', 'An error occurred');
+            }
         }
-        return { receiverId };
-    }, [number, auth.phoneNumber, auth.friends]);
+    };
 
-    const checkExistingNotification = useCallback(
-        async (receiverId) => {
-            const notifications = await notificationService.getAllFriendRequests(token);
-            return notifications?.filter(
-                (request) =>
-                    (request.receiver?.[0].objectId === receiverId &&
-                        request.sender[0].objectId === auth.ownerId) ||
-                    (request.receiver?.[0].objectId === auth.ownerId &&
-                        request.sender[0].objectId === receiverId)
+    const verifyFriendRequestStatus = useCallback(
+        async (telephone) => {
+            if (!telephone) throw new Error('No phone number provided');
+
+            if (telephone === auth.phoneNumber) throw new Error('You cannot add yourself');
+
+            const userData = await dataService.getAttribute('phoneNumber', telephone);
+
+            if (!userData?.length) throw new Error('User with this phone number does not exist');
+
+            const receiverUserId = userData[0].objectId;
+
+            if (auth.friends?.some((friend) => friend.objectId === receiverUserId))
+                throw new Error('This user is already your friend');
+
+            const checkExistingFriendRequests = await notificationService.getAllFriendRequests(
+                token
             );
+
+            // Find if friend request has been sent before
+            const filterFriendRequests = checkExistingFriendRequests?.filter(
+                ({ receiver, sender }) =>
+                    (receiver?.[0].objectId === receiverUserId &&
+                        sender[0].objectId === auth.ownerId) ||
+                    (receiver?.[0].objectId === auth.ownerId &&
+                        sender[0].objectId === receiverUserId)
+            );
+
+            // If no friend request has been sent before, return the receiver's userId
+            if (!filterFriendRequests?.length) return receiverUserId;
+
+            // If friend request has been sent before, check the status
+            const [
+                {
+                    sender: [{ objectId: senderId }],
+                    receiver: [{ objectId: receiverId }],
+                    status,
+                },
+            ] = filterFriendRequests;
+
+            if (status === 'pending') throw new Error('You have already sent a friend request');
+            if (status === 'accepted') throw new Error('You are already friends');
+            if (status === 'declined')
+                return await handleDeclinedRequest(
+                    filterFriendRequests[0],
+                    receiverUserId,
+                    senderId
+                );
         },
-        [auth.ownerId, token]
+        [auth]
     );
 
     const sendFriendRequest = useCallback(
-        async (receiverId) => {
+        async (telephone, receiverId) => {
             const response = await notificationService.createNotification(
-                number,
+                telephone,
                 null,
                 'friend request',
                 auth.ownerId,
@@ -58,7 +93,7 @@ export const useAddFriend = () => {
             if (!response?.success) throw new Error('Failed to send friend request');
             showMessage('success', 'Friend request sent');
         },
-        [number, auth.ownerId, token, showMessage]
+        [auth, token, showMessage]
     );
 
     const handleDeclinedRequest = useCallback(
@@ -85,57 +120,27 @@ export const useAddFriend = () => {
             if (!response?.success) throw new Error('Error updating friend request status');
             showMessage('success', 'Friend request re-sent');
         },
-        [auth.ownerId, token, showMessage]
+        [auth, token, showMessage]
     );
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const validation = await validateRequest();
-            if (typeof validation === 'string') throw new Error(validation);
-
-            const { receiverId } = validation;
-            const existingNotifications = await checkExistingNotification(receiverId);
-
-            if (!existingNotifications?.length) {
-                await sendFriendRequest(receiverId);
-            } else {
-                const [
-                    {
-                        sender: [{ objectId: senderId }],
-                        receiver: [{ objectId: receiverId }],
-                        status,
-                    },
-                ] = existingNotifications;
-                if (status === 'pending') throw new Error('You have already sent a friend request');
-                if (status === 'accepted') throw new Error('You are already friends');
-                if (status === 'declined') {
-                    await handleDeclinedRequest(existingNotifications[0], receiverId, senderId);
-                }
-            }
-        } catch (error) {
-            handleError(error.message);
-        } finally {
-            setNumber('');
-        }
+    return {
+        onFriendRequest,
     };
-
-    const onChangeNumber = (e) => setNumber(e.target.value);
-
-    const onFocusClearErrorHandler = (e) => {
-        e.target.style.border = `1px solid var(--primary-hover-color)`;
-        setError(false);
-    };
-
-    return [
-        onSubmit,
-        onFocusClearErrorHandler,
-        onChangeNumber,
-        number,
-        error,
-        showMessage,
-    ];
 };
+
+// const checkExistingNotification = useCallback(
+//     async (receiverId) => {
+//         const notifications = await notificationService.getAllFriendRequests(token);
+//         return notifications?.filter(
+//             (request) =>
+//                 (request.receiver?.[0].objectId === receiverId &&
+//                     request.sender[0].objectId === auth.ownerId) ||
+//                 (request.receiver?.[0].objectId === auth.ownerId &&
+//                     request.sender[0].objectId === receiverId)
+//         );
+//     },
+//     [auth.ownerId, token]
+// );
 
 // const onSubmit = async (e) => {
 //     e.preventDefault()
