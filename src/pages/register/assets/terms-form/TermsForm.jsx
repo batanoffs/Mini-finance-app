@@ -1,5 +1,10 @@
-export const TermsForm = ({ currentStepsHandler, changeHandler, error, termsAccept }) => {
-    
+export const TermsForm = ({
+    currentStepsHandler,
+    validateHandler,
+    changeHandler,
+    error,
+    termsAccept,
+}) => {
     const checkHandler = async (e) => {
         if (typeof termsAccept === 'boolean' && termsAccept) {
             currentStepsHandler(e);
@@ -88,6 +93,7 @@ export const TermsForm = ({ currentStepsHandler, changeHandler, error, termsAcce
                         name="termsAccept"
                         checked={typeof termsAccept === 'boolean' ? termsAccept : false}
                         onChange={changeHandler}
+                        onBlur={validateHandler}
                         className="form-control"
                     />
                 </div>
