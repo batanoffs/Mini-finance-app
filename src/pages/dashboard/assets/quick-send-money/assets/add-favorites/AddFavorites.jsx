@@ -4,6 +4,7 @@ import { AuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
 import { useMessage } from '../../../../../../hooks';
 import { Autocomplete } from '../../../../../../components/inputs';
+import { getUserToken } from '../../../../../../utils';
 
 import styles from './add-friends.module.css';
 
@@ -11,7 +12,9 @@ import styles from './add-friends.module.css';
 // This is likely caused by the value changing from undefined to a defined value,
 // which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
 export const AddToFavorites = ({ toggleModal }) => {
-    const { auth, setAuth, token, userDataId } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
+    const { token } = getUserToken();
+
     const [userInput, setUserInput] = useState({});
     const showMessage = useMessage();
 
@@ -26,10 +29,10 @@ export const AddToFavorites = ({ toggleModal }) => {
             if (!findFriend) throw new Error('This user is not your friend!');
             if (!findFriend.length) throw new Error('This user is not your friend!');
             if (!userInput) throw new Error('Please enter a name!');
-            if (!userDataId) throw new Error('Something went wrong');
+            if (!auth.objectId) throw new Error('Something went wrong');
 
             const response = await dataService.setRelation(
-                userDataId,
+                auth.objectId,
                 'favorite_friends',
                 body,
                 token

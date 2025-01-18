@@ -4,12 +4,15 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
+import { getUserToken } from '../../../../../../utils';
 import { useMessage } from '../../../../../../hooks';
 
 import styles from './actions.module.css';
 
 export const Actions = ({ friend, toggleModal }) => {
-    const { favorites, auth, setAuth, userDataId, token } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
+    const { token } = getUserToken();
+
     const showMessage = useMessage();
 
     const showActionsHandler = (e) => {
@@ -33,12 +36,12 @@ export const Actions = ({ friend, toggleModal }) => {
 
             if (!friendId) throw new Error('Null pointer exception: friendId is null');
             dataService
-                .removeRelation(userDataId, 'favorite_friends', friendId, token)
+                .removeRelation(auth.objectId, 'favorite_friends', friendId, token)
                 .then(() => {
                     showMessage('success', 'Successfully removed friend from list');
                     setAuth({
                         ...auth,
-                        favorite_friends: favorites.filter(
+                        favorite_friends: auth.favorite_friends.filter(
                             (favorite) => favorite.objectId !== friendId
                         ),
                     });
