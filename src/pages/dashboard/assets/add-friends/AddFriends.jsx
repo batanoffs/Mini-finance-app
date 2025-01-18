@@ -1,28 +1,38 @@
 import { EmptyCard } from '../../../../components/cards';
 import { FormInput } from '../../../../components/inputs';
-import { useAddFriend } from '../../../../hooks';
+import { useAddFriend, useForm } from '../../../../hooks';
 
 import styles from './add-friends.module.css';
 
 export const AddFriends = () => {
-    // TODO - move the useAddFriend handlers to useForm hook in order to reuse it and apply error handling
-    const [onSubmit, onFocusClearErrorHandler, onChangeNumber, number, error] =
-        useAddFriend();
+    const { onFriendRequest } = useAddFriend();
+    const { values, error, changeHandler, validateHandler, onFocusHandler, handleSubmit } = useForm(
+        { phone: '' },
+        { phone: 'Phone is not valid' },
+        { phone: /^\d{10}$/ }
+    );
+
+    const onSubmit = (data) => {
+        onFriendRequest(data);
+    };
 
     return (
         <EmptyCard title="Add Friend via phone" color="primary">
-            <form onSubmit={onSubmit} className={styles.friendsForm}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.friendsForm}>
                 <FormInput
-                    type="number"
-                    id="phone number"
+                    type="tel"
+                    name="phone"
+                    id="phone"
                     placeholder="phone number"
+                    value={values.phone}
+                    error={error.phone}
+                    onChange={changeHandler}
+                    onBlur={validateHandler}
+                    onFocus={onFocusHandler}
                     required
-                    value={number}
-                    onChange={onChangeNumber}
-                    onFocus={onFocusClearErrorHandler}
                 />
 
-                <FormInput type="submit" className="custom-btn" value="Add" />
+                <FormInput type="submit" className={styles.customBtn} value="Add" />
             </form>
         </EmptyCard>
     );
