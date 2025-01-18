@@ -1,32 +1,18 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext';
 import { FormInput } from '../../components/inputs';
 import { initialLoginState } from './constants';
-import { useMessage } from '../../hooks/useMessage';
 import { useForm } from '../../hooks/useForm';
+import { useLogin } from './useLogin';
 
 import styles from './login.module.css';
 
 export const Login = () => {
-    const { onLoginSubmitHandler } = useContext(AuthContext);
-    const { values, error, changeHandler, onSubmitLogin } = useForm(
-        initialLoginState,
-        onLoginSubmitHandler,
-        null
-    );
-    const showMessage = useMessage();
+    const { login } = useLogin();
+    const { values, error, changeHandler, handleSubmit } = useForm(initialLoginState);
 
-    const onSubmitLoginHandler = async (event) => {
-        const response = await onSubmitLogin(event);
-
-        if (response?.message?.length > 0) {
-            showMessage('error', response.message);
-            return;
-        } else {
-            showMessage('success', 'Successfully logged in');
-        }
+    const onSubmit = (data) => {
+        login(data);
     };
 
     return (
@@ -35,7 +21,7 @@ export const Login = () => {
                 <header>
                     <h5>Login</h5>
                 </header>
-                <form className={styles.form} method="post" onSubmit={onSubmitLoginHandler}>
+                <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <FormInput
                         type="text"
                         name="email"
@@ -66,7 +52,7 @@ export const Login = () => {
                         />
                     </footer>
                 </form>
-                
+
                 <span className={styles.signup}>
                     Don't have an account yet? <Link to="/register">Sign up</Link>
                 </span>
