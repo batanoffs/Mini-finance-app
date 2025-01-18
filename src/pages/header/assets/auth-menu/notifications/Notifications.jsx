@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 
 import { AuthContext } from '../../../../../contexts/AuthContext';
-import { useMessage } from '../../../../../hooks/useMessage';
-import { notificationService } from '../../../../../services/notificationService';
+import { useMessage } from '../../../../../hooks';
+import { notificationService } from '../../../../../services';
 import { NOTIFY_TYPE, NOTIFY_STATUS } from './constants';
+import { getUserToken } from '../../../../../utils';
 import {
     MoneyRequestNotification,
     IncomeNotification,
@@ -17,7 +18,8 @@ import {
 import styles from './notifications.module.css';
 
 export const Notifications = () => {
-    const { auth, token } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
+    const { token } = getUserToken();
     const [notificationsState, setNotificationsState] = useState([]);
     const showMessage = useMessage();
 

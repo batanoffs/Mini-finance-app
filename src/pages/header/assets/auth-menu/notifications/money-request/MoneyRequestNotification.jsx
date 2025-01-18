@@ -1,12 +1,12 @@
-import { notificationService } from '../../../../../../services/notificationService';
-import { transactionService } from '../../../../../../services/transactionService';
-import { useMessage } from '../../../../../../hooks/useMessage';
-import { formatDate } from '../../../../../../utils/formatDate';
+import { transactionService, notificationService } from '../../../../../../services';
+import { useMessage } from '../../../../../../hooks';
+import { formatDate } from '../../../../../../utils';
 
 import styles from './MoneyRequestNotification.module.css';
 
 export const MoneyRequestNotification = ({ notify, userDataId, token, setNotificationsState }) => {
     const showMessage = useMessage();
+    
     const onTransactionApprove = async (e) => {
         const notificationElement = e.currentTarget.parentElement;
         if (!notificationElement) {

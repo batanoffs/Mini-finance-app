@@ -4,14 +4,16 @@ import { Table, Tag } from 'antd';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { transactionService } from '../../../services/transactionService';
 import { notificationService } from '../../../services/notificationService';
-import { formatDateTable } from '../../../utils/formatDate';
+import { getUserToken } from '../../../utils';
+import { formatDateTable } from './formatDateTable';
 import { tableColumnsConfig } from './tableConfig';
 
 import styles from './table-transactions.module.css';
 
 export const TableTransactions = () => {
-    const { auth, token } = useContext(AuthContext);
     const [transactions, setTransactions] = useState([]);
+    const { auth } = useContext(AuthContext);
+    const { token } = getUserToken();
 
     useEffect(() => {
         const getAllTransactions = async () => {

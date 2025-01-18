@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-
 import { faWallet, faGear, faHandshakeAngle, faHouse, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
+
 import { AuthContext } from '../../../contexts/AuthContext';
 import { ListNav } from '../../../components/lists';
 

@@ -1,17 +1,19 @@
+import { useState, useContext } from 'react'
 import { faCreditCard } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState, useContext } from 'react'
 
 import { PaymentForm } from '../../forms/PaymentForm'
-import { cardService } from '../../../services/cardGenerationService'
-import { useMessage } from '../../../hooks/useMessage'
+import { cardService } from '../../../services'
+import { useMessage } from '../../../hooks'
 import { AuthContext } from '../../../contexts/AuthContext'
+import { getUserToken } from '../../../utils'
 
 import modal from './modal.module.css'
 
 export const TopUp = ({ toggleModal }) => {
     const [inputState, setInputState] = useState({})
-    const { auth, token } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
+    const { token } = getUserToken();
 
     const message = useMessage()
 

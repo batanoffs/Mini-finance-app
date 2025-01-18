@@ -1,98 +1,109 @@
-import { useState, useContext, useEffect, useCallback } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react';
 
-import { transactionService } from '../../../services/transactionService'
-import { AuthContext } from '../../../contexts/AuthContext'
-import { Autocomplete } from '../../autocomplete/Autocomplete'
-import { useMessage } from '../../../hooks/useMessage'
-import { dataService } from '../../../services/userDataService'
+import { AuthContext } from '../../../contexts/AuthContext';
+import { dataService, transactionService } from '../../../services';
+import { Autocomplete } from '../../inputs';
+import { useMessage } from '../../../hooks';
+import { getUserToken } from '../../../utils';
 
-import modal from './modal.module.css'
+import modal from './modal.module.css';
 
 export const SendMoney = ({ toggleModal }) => {
-    const [userInput, setUserInput] = useState({ amount: '', friends: '' })
-    const { auth, token } = useContext(AuthContext)
-    const [receiver, setReceiver] = useState([])
-    const showMessage = useMessage()
-    
+    const [userInput, setUserInput] = useState({ amount: '', friends: '' });
+    const [receiver, setReceiver] = useState([]);
+    const { auth } = useContext(AuthContext);
+    const { token } = getUserToken();
+    const showMessage = useMessage();
+
     const getReceivers = useCallback(async () => {
         try {
-            const response = await dataService.getRelation(auth.objectId, 'friends')
+            const response = await dataService.getRelation(auth.objectId, 'friends');
             const friends = response.friends?.map((friend) => {
                 if (friend.fullName) {
                     return {
                         name: friend.fullName,
                         avatar: friend.avatar,
                         objectId: friend.objectId,
-                    }
+                    };
                 } else {
-                    return null
+                    return null;
                 }
-            })
-            setReceiver(friends)
+            });
+            setReceiver(friends);
         } catch (error) {
-            showMessage('error', 'Error during fetching friends')
+            showMessage('error', 'Error during fetching friends');
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
-        getReceivers()
-    }, [getReceivers])
+        getReceivers();
+    }, [getReceivers]);
 
     const setUserInputHandler = (e) => {
         if (!e || !e.target) {
-            throw new Error('Null pointer exception: e.target is null')
+            throw new Error('Null pointer exception: e.target is null');
         }
-        const { name, value } = e.target
+        const { name, value } = e.target;
         if (!name) {
-            throw new Error('Null pointer exception: e.target.name is null')
+            throw new Error('Null pointer exception: e.target.name is null');
         }
-        setUserInput({ ...userInput, [name]: value })
-    }
+        setUserInput({ ...userInput, [name]: value });
+    };
 
     const onFormSubmitHandler = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
             if (!e.target) {
-                throw new Error('Target element does not exist.')
+                throw new Error('Target element does not exist.');
             }
-            const formElementSelect = e.target
-            const form = new FormData(formElementSelect)
-            const { amount, friends } = Object.fromEntries(form)
+            const formElementSelect = e.target;
+            const form = new FormData(formElementSelect);
+            const { amount, friends } = Object.fromEntries(form);
             if (!amount || !friends) {
-                throw new Error('Amount or friends are not given.')
+                throw new Error('Amount or friends are not given.');
             }
 
-            const response = await transactionService.sendMoney(friends, Number(amount), auth.objectId, token)
+            const response = await transactionService.sendMoney(
+                friends,
+                Number(amount),
+                auth.objectId,
+                token
+            );
             if (!response) {
-                throw new Error('Transaction service response is null.')
+                throw new Error('Transaction service response is null.');
             }
             if (!response.success) {
-                throw new Error(`Transaction service error: ${response.message}`)
+                throw new Error(`Transaction service error: ${response.message}`);
             }
-            await transactionService.notifyMoneyReceived(friends, Number(amount), auth.objectId, token)
-            toggleModal('send')
-            setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
-            showMessage('success', 'Successfully sent the money')
+            await transactionService.notifyMoneyReceived(
+                friends,
+                Number(amount),
+                auth.objectId,
+                token
+            );
+            toggleModal('send');
+            setUserInput((prev) => ({ ...prev, amount: '', friends: '' }));
+            showMessage('success', 'Successfully sent the money');
         } catch (error) {
-            console.log('Error in onFormSubmitHandler: ', error)
-            toggleModal('send')
-            setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
-            showMessage('error', `Error sending money: ${error.message}`)
+            console.log('Error in onFormSubmitHandler: ', error);
+            toggleModal('send');
+            setUserInput((prev) => ({ ...prev, amount: '', friends: '' }));
+            showMessage('error', `Error sending money: ${error.message}`);
         }
-    }
+    };
 
     const onClose = () => {
         if (!showModal) {
-            console.error('showModal is null')
-            return
+            console.error('showModal is null');
+            return;
         }
         if (!showModal['send']) {
-            console.error('showModal.send is null')
-            return
+            console.error('showModal.send is null');
+            return;
         }
-        toggleModal('send')
-        setUserInput((prev) => ({ ...prev, amount: '', friends: '' }))
-    }
+        toggleModal('send');
+        setUserInput((prev) => ({ ...prev, amount: '', friends: '' }));
+    };
 
     return (
         <div className={modal.modalBackground}>
@@ -126,11 +137,16 @@ export const SendMoney = ({ toggleModal }) => {
                         </div>
 
                         <footer>
-                            <input className="button-primary" type="submit" value="Send" style={{ width: '100%' }} />
+                            <input
+                                className="button-primary"
+                                type="submit"
+                                value="Send"
+                                style={{ width: '100%' }}
+                            />
                         </footer>
                     </form>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

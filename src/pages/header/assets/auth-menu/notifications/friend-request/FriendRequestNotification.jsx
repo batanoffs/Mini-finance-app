@@ -2,17 +2,17 @@ import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 
-import { notificationService } from '../../../../../../services/notificationService';
-import { dataService } from '../../../../../../services/userDataService';
+import { notificationService, dataService } from '../../../../../../services';
 import { AuthContext } from '../../../../../../contexts/AuthContext';
-import { formatDate } from '../../../../../../utils/formatDate';
-import { useMessage } from '../../../../../../hooks/useMessage';
+import { formatDate, getUserToken } from '../../../../../../utils';
+import { useMessage } from '../../../../../../hooks';
 import { NOTIFY_STATUS } from '../constants';
 
 import styles from './FriendRequestNotification.module.css';
 
 export const FriendRequestNotification = ({ notify, setNotificationsState }) => {
-    const { userDataId, token, auth, setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
+    const { token } = getUserToken();
     const showMessage = useMessage();
 
     // Handler to accept friend request
@@ -38,16 +38,16 @@ export const FriendRequestNotification = ({ notify, setNotificationsState }) => 
                 token
             );
 
-            const result = await notificationService.getNotSeenNotifications(userDataId);
+            const result = await notificationService.getNotSeenNotifications(auth.objectId);
 
             setNotificationsState(result);
 
-            const setReceiverFriend = await dataService.setRelation(userDataId, 'friends', [
+            const setReceiverFriend = await dataService.setRelation(auth.objectId, 'friends', [
                 senderId,
             ]);
 
             const setSenderFriend = await dataService.setRelation(senderId, 'friends', [
-                userDataId,
+                auth.objectId,
             ]);
 
             const getSender = await dataService.getUser(senderId);
@@ -95,7 +95,10 @@ export const FriendRequestNotification = ({ notify, setNotificationsState }) => 
                 token
             );
 
-            const response = await notificationService.getNotSeenNotifications(userDataId, token);
+            const response = await notificationService.getNotSeenNotifications(
+                auth.objectId,
+                token
+            );
 
             if (response) {
                 showMessage('error', 'The friend request has been declined');

@@ -1,100 +1,107 @@
-import { useState, useContext, useEffect, useCallback } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react';
 
-import { transactionService } from '../../../services/transactionService'
-import { dataService } from '../../../services/userDataService'
-import { AuthContext } from '../../../contexts/AuthContext'
-import { Autocomplete } from '../../autocomplete/Autocomplete'
-import { useMessage } from '../../../hooks/useMessage'
+import { dataService, transactionService } from '../../../services';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { Autocomplete } from '../../inputs';
+import { useMessage } from '../../../hooks';
+import { getUserToken } from '../../../utils';
 
-import modal from './modal.module.css'
+import modal from './modal.module.css';
 
 export const RequestMoney = ({ toggleModal }) => {
-    const [userInput, setUserInput] = useState({ amount: '', friends: '' })
-    const { userDataId, token } = useContext(AuthContext)
-    const [receiver, setReceiver] = useState([])
-    const showMessage = useMessage()
+    const [userInput, setUserInput] = useState({ amount: '', friends: '' });
+    const { userDataId } = useContext(AuthContext);
+    const { token } = getUserToken();
+
+    const [receiver, setReceiver] = useState([]);
+    const showMessage = useMessage();
 
     const getRelations = useCallback(async () => {
         try {
-            const response = await dataService.getRelation(userDataId, 'friends')
+            const response = await dataService.getRelation(userDataId, 'friends');
             const friends = response.friends.map((friend) => {
                 if (friend.fullName) {
                     return {
                         name: friend.fullName,
                         avatar: friend.avatar,
                         objectId: friend.objectId,
-                    }
+                    };
                 } else {
-                    return null
+                    return null;
                 }
-            })
-            setReceiver(friends)
+            });
+            setReceiver(friends);
         } catch (error) {
-            showMessage('error', 'Error getting friends')
+            showMessage('error', 'Error getting friends');
         }
-    }, [userDataId])
+    }, [userDataId]);
 
     useEffect(() => {
-        getRelations()
-    }, [getRelations])
+        getRelations();
+    }, [getRelations]);
 
     const setUserInputHandler = (e) => {
-        setUserInput({ ...userInput, [e.target.name]: e.target.value })
-    }
+        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    };
 
     const onFormSubmitHandler = async (event) => {
         try {
-            if (!event) throw new Error('Event is null')
+            if (!event) throw new Error('Event is null');
 
-            event.preventDefault()
+            event.preventDefault();
 
-            if (!event.target) throw new Error('Form element is null')
+            if (!event.target) throw new Error('Form element is null');
 
-            const formElementSelect = event.target
-            const form = new FormData(formElementSelect)
+            const formElementSelect = event.target;
+            const form = new FormData(formElementSelect);
 
-            if (!form) throw new Error('FormData is null')
+            if (!form) throw new Error('FormData is null');
 
-            const formEntries = Object.fromEntries(form)
-            const { amount, friends } = formEntries
+            const formEntries = Object.fromEntries(form);
+            const { amount, friends } = formEntries;
 
-            if (!amount || !friends) throw new Error('Amount or friends is null or empty')
+            if (!amount || !friends) throw new Error('Amount or friends is null or empty');
 
-            const response = await transactionService.requestNotify(friends, Number(amount), userDataId, token)
+            const response = await transactionService.requestNotify(
+                friends,
+                Number(amount),
+                userDataId,
+                token
+            );
 
-            if (!response) throw new Error('TransactionService response is null')
+            if (!response) throw new Error('TransactionService response is null');
 
             if (response.success) {
-                toggleModal('request')
-                setUserInput({ amount: '', friends: '' })
-                showMessage('success', 'Successfully requested money')
+                toggleModal('request');
+                setUserInput({ amount: '', friends: '' });
+                showMessage('success', 'Successfully requested money');
             } else {
-                toggleModal('request')
-                setUserInput({ amount: '', friends: '' })
-                showMessage('error', `Error requesting money: ${response.message}`)
-                console.error('error', response)
+                toggleModal('request');
+                setUserInput({ amount: '', friends: '' });
+                showMessage('error', `Error requesting money: ${response.message}`);
+                console.error('error', response);
             }
         } catch (error) {
-            showMessage('error', 'Error requesting money')
-            console.error(error)
+            showMessage('error', 'Error requesting money');
+            console.error(error);
         }
-    }
+    };
 
     const onClose = () => {
         if (!showModal) {
-            console.error('showModal is null')
-            return
+            console.error('showModal is null');
+            return;
         }
 
-        toggleModal('request')
+        toggleModal('request');
 
         if (!userInput) {
-            console.error('userInput is null')
-            return
+            console.error('userInput is null');
+            return;
         }
 
-        setUserInput({ amount: '', friends: '' })
-    }
+        setUserInput({ amount: '', friends: '' });
+    };
 
     return (
         <div className={modal.modalBackground}>
@@ -129,11 +136,16 @@ export const RequestMoney = ({ toggleModal }) => {
                             </div>
                         </div>
                         <footer>
-                            <input className="button-primary" type="submit" value="Send" style={{ width: '100%' }} />
+                            <input
+                                className="button-primary"
+                                type="submit"
+                                value="Send"
+                                style={{ width: '100%' }}
+                            />
                         </footer>
                     </form>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
