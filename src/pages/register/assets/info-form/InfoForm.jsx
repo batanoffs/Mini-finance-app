@@ -100,7 +100,7 @@ export const InfoForm = ({
                 <small className={styles.error}>{error.gender}</small>
 
                 <FormInput
-                    type="tel"
+                    type="number"
                     name="phoneNumber"
                     id="phoneNumber"
                     placeholder="Phone number"
