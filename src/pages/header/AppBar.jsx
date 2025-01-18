@@ -1,13 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 
 import { AuthMenu, DefaultLogo, LoginMenu, UserMenu } from './assets';
-import { AuthContext } from '../../contexts/AuthContext';
+import { isAuthenticated } from '../../utils/sessionStorage';
 
 import styles from './assets/app-bar.module.css';
 
 export const AppBar = ({ AppLogo = DefaultLogo }) => {
-    const { isAuthenticated } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const homeRedirectHandler = () => {
