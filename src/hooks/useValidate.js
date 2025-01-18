@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { formErrorMessage, formRegex } from '../constants/forms';
 
-export const useValidate = (initialState) => {
+export const useValidate = (initialState, errorMessages, formRegex) => {
     const [error, setErrors] = useState(initialState);
 
     const errorHandler = (event) => {
         const { name, value } = event.target;
         const newErrors = { ...error };
 
-        // newErrors[event.target.name] = formErrorMessage[event.target.name] || newErrors[event.target.name];
-
-        newErrors[name] = validateField(name, value, event);
+        newErrors[name] = validateField(name, value, event, errorMessages, formRegex);
 
         const hasError = newErrors[name] !== '';
         setErrors(newErrors);
@@ -30,14 +27,14 @@ export const useValidate = (initialState) => {
     };
 };
 
-const validateField = (fieldName, fieldValue, e) => {
+const validateField = (fieldName, fieldValue, e, errorMessages, testRegex) => {
     if (fieldName === 'confirmPassword') {
         const password =
             e.target.parentElement.parentElement.previousElementSibling.querySelector(
                 "input[name='password']"
             ).value;
-        return fieldValue === password ? '' : formErrorMessage[fieldName];
+        return fieldValue === password ? '' : errorMessages[fieldName];
     }
 
-    return formRegex[fieldName]?.test(fieldValue) ? '' : formErrorMessage[fieldName];
+    return testRegex[fieldName]?.test(fieldValue) ? '' : errorMessages[fieldName];
 };
