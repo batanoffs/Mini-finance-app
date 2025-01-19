@@ -1,66 +1,41 @@
-import { useEffect, useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Table, Tag } from 'antd';
 
 import { AuthContext } from '../../../contexts/AuthContext';
-import { transactionService } from '../../../services/transactionService';
-import { notificationService } from '../../../services/notificationService';
-import { getUserToken } from '../../../utils';
-import { formatDateTable } from './formatDateTable';
 import { tableColumnsConfig } from './tableConfig';
+import { useTransactions } from '../../../hooks';
 
 import styles from './table-transactions.module.css';
 
 export const TableTransactions = () => {
-    const [transactions, setTransactions] = useState([]);
+    const { transactions, setTransactions, error, isLoading } = useTransactions();
     const { auth } = useContext(AuthContext);
-    const { token } = getUserToken();
 
-    useEffect(() => {
-        const getAllTransactions = async () => {
-            const [receiverTransactions, requestTransactions] = await Promise.all([
-                transactionService.getAllReceiver(auth.objectId, token),
-                notificationService.getMoneyRequestNotifications(auth.objectId, token),
-                transactionService.getAllSender(auth.objectId, token),
-            ]);
-
-            const allTransactions = [...receiverTransactions, ...requestTransactions].sort(
-                (a, b) => new Date(b.created) - new Date(a.created)
-            );
-
-            const modified = allTransactions.map((transaction, index) => ({
-                key: index + '',
-                date: formatDateTable(transaction.created)
-                    .split(' ')
-                    .slice(0, 2)
-                    .join(' ')
-                    .replace(',', ''),
-                time: formatDateTable(transaction.created).split(' ').slice(3).join(' '),
-                description:
-                    transaction.receiver[0].objectId === auth.objectId
-                        ? transaction.sender[0].fullName
-                        : transaction.receiver[0].fullName,
-                type: transaction.receiver[0].objectId === auth.objectId ? 'income' : 'expense',
-                price:
-                    transaction.receiver[0].objectId === auth.objectId ? (
-                        <Tag color={'green'} key={transaction.objectId}>
-                            {`+ ${transaction.amount} BGN`}
-                        </Tag>
-                    ) : (
-                        <Tag color={'volcano'} key={transaction.objectId}>
-                            {`- ${transaction.amount} BGN`}
-                        </Tag>
-                    ),
-                status: [transaction.status || 'Successful'],
-            }));
-
-            setTransactions(modified);
-        };
-
-        getAllTransactions();
-    }, [auth.objectId, token]);
+    // Construct the table data params
+    const processedTransactionList = transactions
+        .sort((a, b) => new Date(b.created) - new Date(a.created))
+        .map((transaction) => ({
+            key: transaction.objectId,
+            date: transaction.created,
+            description:
+                transaction.receiver[0].objectId === auth.objectId
+                    ? transaction.sender[0].fullName
+                    : transaction.receiver[0].fullName,
+            type: transaction.receiver[0].objectId === auth.objectId ? 'Income' : 'Outflow',
+            price:
+                transaction.receiver[0].objectId === auth.objectId ? (
+                    <Tag color={'green'} key={transaction.objectId}>
+                        {`+ ${transaction.amount} BGN`}
+                    </Tag>
+                ) : (
+                    <Tag color={'volcano'} key={transaction.objectId}>
+                        {`- ${transaction.amount} BGN`}
+                    </Tag>
+                ),
+            status: [transaction.status || 'Successful'],
+        }));
 
     const onChange = (pagination, filters, sorter, extra) => {
-        // console.log("params", pagination, filters, sorter, extra);
         const currentArray = extra.currentDataSource;
         const action = extra.action;
 
@@ -89,7 +64,7 @@ export const TableTransactions = () => {
             <h5 style={{ paddingBottom: '0.5em', paddingTop: '0.7em' }}>Transaction History</h5>
             <Table
                 columns={tableColumnsConfig}
-                dataSource={transactions}
+                dataSource={processedTransactionList}
                 onChange={onChange}
                 showSorterTooltip={{
                     target: 'sorter-icon',
