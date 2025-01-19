@@ -1,8 +1,8 @@
-import { formatDate } from '../../../utils/formatDate'
+import { formatDate } from '../../../utils';
 
-import styles from './transactions-list.module.css'
+import styles from './transactions-list.module.css';
 
-export const ListTransaction = ({ id, avatar, name, amount, transactionType, date }) => {
+export const ListTransaction = ({ id, avatar, name, amount, date, isIncoming }) => {
     return (
         <li key={id} data-key={id} className={styles.transactionsBoxWrapper}>
             <img src={avatar} className={styles.profileImage} alt={'avatar'} />
@@ -13,18 +13,17 @@ export const ListTransaction = ({ id, avatar, name, amount, transactionType, dat
                         style={{
                             display: 'block',
                             textAlign: 'right',
-                            color: 'green',
+                            color: isIncoming ? 'green' : 'red',
                         }}
                     >
-                        + {amount}лв
+                        {isIncoming ? '+' : '-'} {amount} BGN
                     </strong>
                 </div>
 
                 <div className={styles.detailsBox}>
-                    <small>{(transactionType = 'sent')}</small>
                     <p>{formatDate(date)}</p>
                 </div>
             </div>
         </li>
-    )
-}
+    );
+};
