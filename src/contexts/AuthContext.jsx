@@ -2,14 +2,14 @@ import { useContext, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { clearUserData, getUserToken } from '../utils';
-import { DEFAULT_VALUES } from '../constants';
+import { INITIAL_AUTH } from '../constants';
 import { useSessionStorage } from '../hooks';
 import { authService } from '../services';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useSessionStorage(`auth`, DEFAULT_VALUES);
+    const [auth, setAuth] = useSessionStorage(`auth`, INITIAL_AUTH);
     const navigate = useNavigate();
 
     const onLogoutHandler = async () => {

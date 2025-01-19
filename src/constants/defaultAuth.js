@@ -1,4 +1,4 @@
-export const DEFAULT_VALUES = {
+export const INITIAL_AUTH = {
     userStatus: 'No information',
     phoneNumber: 'phone number',
     ownerId: 'No information',
@@ -21,27 +21,4 @@ export const DEFAULT_VALUES = {
         objectId: 'No information',
         created: 'information',
     },
-}
-
-// userStatus: auth.userStatus,
-// ownerId: auth.ownerId || 'No information',
-// email: auth.email || 'No information',
-// name: auth.fullName || 'user',
-// phone: auth.phoneNumber || 'phone number',
-// country: auth.country || 'country',
-// picture: auth.avatar || 'https://res.cloudinary.com/dzh01qrmx/image/upload/v1729506585/default-avatar_vxyg1c.png',
-// transactions: auth.transactions || [],
-// friends: auth.friends || [],
-// favorites: auth.favorite_friends || [],
-// address: auth.address || 'No information',
-// userDataId: auth.objectId || 'No information',
-// virtualCard: auth.virtualCard || {
-//     number: `0000 0000 0000 0000`,
-//     expiration: '00/00',
-//     cvv: `000`,
-//     balance: Number(`00000000`),
-//     issuer: 0,
-//     brand: `No information`,
-//     objectId: `No information`,
-//     created: `information`,
-// },
+};
