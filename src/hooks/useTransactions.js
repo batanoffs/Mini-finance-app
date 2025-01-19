@@ -4,28 +4,38 @@ import { transactionService } from '../services';
 import { AuthContext } from '../contexts/AuthContext';
 import { getUserToken } from '../utils';
 
-export const useTransactions = (transactionType) => {
+export const useTransactions = () => {
     const [transactions, setTransactions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
     const { auth } = useContext(AuthContext);
     const { token } = getUserToken();
 
     const fetchTransactions = useCallback(async () => {
+        setIsLoading(true);
+        setError(null);
+
         try {
-            let result;
-            if (transactionType === 'sender') {
-                result = await transactionService.getAllSender(auth.objectId, token);
-            } else if (transactionType === 'receiver') {
-                result = await transactionService.getAllReceiver(auth.objectId, token);
+            const allTransactions = await transactionService.getAllTransactions(
+                auth.objectId,
+                token
+            );
+
+            if (!Array.isArray(allTransactions)) {
+                throw new Error('Invalid response');
             }
-            setTransactions(result);
+
+            setTransactions(allTransactions);
         } catch (error) {
-            console.log(error);
+            setError(error.message || 'Failed to fetch transactions');
+        } finally {
+            setIsLoading(false);
         }
-    }, [auth.objectId, token, transactionType]);
+    }, [auth.objectId, token]);
 
     useEffect(() => {
         fetchTransactions();
     }, [fetchTransactions]);
 
-    return transactions;
+    return { transactions, isLoading, error };
 };
