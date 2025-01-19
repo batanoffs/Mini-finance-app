@@ -17,7 +17,7 @@ import {
 import { NavBar, ContactInfo } from './pages/assets';
 import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
 import { AuthProvider } from './contexts/AuthContext';
-import { PageNotFound } from './components/utils/404';
+import { PageNotFound } from './components/utils';
 import { restrictLoginPage, restrictDashboard } from './guards';
 
 const router = createBrowserRouter(
