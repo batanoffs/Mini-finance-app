@@ -7,7 +7,7 @@
 
 #### Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, and maintaining transaction history.
 
-### Project Demo (old version)
+### Project Demo Previous Stage (updated version - coming soon)
 https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a05e-6da467265a31
 
 
@@ -16,7 +16,6 @@ https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a0
 - #### Backendless FREE-TIER requests are **LIMITED** and the server will shut down for a day when reached
 - #### After SoftUniada 2024 submission, has been updated with english localization
 - #### Still in development, fixing issues and adding improvements
-- #### NEW DEMO for updated version - coming soon
 - #### Test account:
   ```txt
   email: ivo@abv.bg 
