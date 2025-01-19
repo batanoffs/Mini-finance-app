@@ -1,4 +1,4 @@
-export const exchangeRates = {
+export const INITIAL_RATES = {
     USD: {
         name: 'USD',
         buy: 0,
