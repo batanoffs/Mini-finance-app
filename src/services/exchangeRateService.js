@@ -1,14 +1,14 @@
-import { API_CURRENCY_RATE } from '../constants/baseUrl'
+import { API } from '../constants/apiKeys';
 
 export const getSpecificRate = async (from, to) => {
-    return await fetch(API_CURRENCY_RATE.PAIR + `/${from}/${to}`)
-}
+    return await fetch(API.rates.pair + `/${from}/${to}`);
+};
 
 export const getLatest = async (currencyCode) => {
-    return await fetch(API_CURRENCY_RATE.LATEST + currencyCode)
-}
+    return await fetch(API.rates.latest + currencyCode);
+};
 
 export const exchangeRateService = {
     getSpecificRate,
     getLatest,
-}
+};

@@ -1,11 +1,11 @@
-import { API } from '../constants/baseUrl';
+import { API } from '../constants/apiKeys';
 import * as request from '../utils/requester';
 
 const generateCard = async (id) => {
     try {
         const query = encodeURIComponent(`cards_mock_data_id=${id}`);
-        const response = await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`);
-        
+        const response = await request.get(API.data.cardsMockData + `?where=${query}`);
+
         if (!response || response.length === 0) {
             throw new Error('Card not found');
         }
@@ -36,39 +36,45 @@ const generateCard = async (id) => {
 
 const getCard = async (id) => {
     const query = encodeURIComponent(`cards_mock_data_id='${id}'`);
-    return await request.get(API.MOCK_CREDIT_CARDS + `?where=${query}`);
+    return await request.get(API.data.cardsMockData + `?where=${query}`);
 };
 
 const topUp = async (objectId, value, token) => {
     const data = { top_up: value };
-    return await request.put(API.MOCK_CREDIT_CARDS + `/${objectId}`, data, token);
+    return await request.put(API.data.cardsMockData + `/${objectId}`, data, token);
 };
 
 const getVirtualCardIds = async () => {
     const query = encodeURIComponent(`property=cardId`);
-    return await request.get(API.USERS + `?${query}`);
+    return await request.get(API.data.userData + `?${query}`);
 };
 
 const setVirtualCardRelation = async (parentObjectId, body) => {
-    return await request.put(API.USERS + `/${parentObjectId}/virtualCard`, body);
+    return await request.put(API.data.userData + `/${parentObjectId}/virtualCard`, body);
 };
 
 const assignNewCardId = async () => {
-    let newCardId
-    let checkMatch = true
+    let newCardId;
+    let checkMatch = true;
+
     try {
         while (checkMatch) {
-            newCardId = Math.floor(Math.random() * 100) + 1
-            const getUsersCardIds = await getVirtualCardIds()
-            if (getUsersCardIds && getUsersCardIds.message) return getUsersCardIds
-            const usersCardIds = getUsersCardIds.map((id) => id.cardId)
-            checkMatch = usersCardIds.includes(newCardId)
+            newCardId = Math.floor(Math.random() * 100) + 1;
+
+            const getUsersCardIds = await getVirtualCardIds();
+
+            if (getUsersCardIds && getUsersCardIds.message) return getUsersCardIds;
+
+            const usersCardIds = getUsersCardIds.map((id) => id.cardId);
+
+            checkMatch = usersCardIds.includes(newCardId);
         }
-        return newCardId
+
+        return newCardId;
     } catch (error) {
-        return error
+        return error;
     }
-}
+};
 
 export const cardService = {
     generateCard,

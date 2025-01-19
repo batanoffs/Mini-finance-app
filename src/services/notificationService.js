@@ -1,50 +1,55 @@
-import * as request from '../utils/requester'
-import { API } from '../constants/baseUrl'
+import * as request from '../utils/requester';
+import { API } from '../constants/apiKeys';
 
 const updateNotificationStatus = async (objectId, statusState, seen, token) => {
-    const body = { status: `${statusState}`, seen: seen }
-    return await request.put(API.NOTIFICATIONS + '/' + objectId, body, token)
-}
+    const body = { status: `${statusState}`, seen: seen };
+
+    return await request.put(API.data.userNotifications + `/${objectId}`, body, token);
+};
 
 const getMoneyRequestNotifications = async (senderId, token) => {
     const query = encodeURIComponent(
         `event_type='money request' and status!='accepted' AND sender='${senderId}'`
-    )
+    );
     return await request.get(
-        API.NOTIFICATIONS + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
-    )
-}
+    );
+};
 
 const updateRelation = async (parentObjectId, relationName, id, token) => {
-    const body = [id]
-    return await request.put(API.NOTIFICATIONS + `/${parentObjectId}/${relationName}`, body, token)
-}
+    const body = [id];
+    return await request.put(
+        API.data.userNotifications + `/${parentObjectId}/${relationName}`,
+        body,
+        token
+    );
+};
 
 const updateSeenStatus = async (objectId, seenState, token) => {
-    const body = { seen: seenState }
-    return await request.put(API.NOTIFICATIONS + '/' + objectId, body, token)
-}
+    const body = { seen: seenState };
+    return await request.put(API.data.userNotifications + '/' + objectId, body, token);
+};
 
 const getNotSeenNotifications = async (receiverId, token) => {
-    const query = encodeURIComponent(`receiver='${receiverId}' and seen='false'`)
+    const query = encodeURIComponent(`receiver='${receiverId}' and seen='false'`);
     return await request.get(
-        API.NOTIFICATIONS + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
-    )
-}
+    );
+};
 
 const deleteNotification = async (objectId) => {
-    return await request.del(API.NOTIFICATIONS + '/' + objectId)
-}
+    return await request.del(API.data.userNotifications + '/' + objectId);
+};
 
 const getAllFriendRequests = async (token) => {
-    const query = encodeURIComponent(`event_type='friend request'`)
+    const query = encodeURIComponent(`event_type='friend request'`);
     return await request.get(
-        API.NOTIFICATIONS + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
-    )
-}
+    );
+};
 
 const createNotification = async (phone, receiver, event, currentUserId, token) => {
     const body = {
@@ -106,10 +111,10 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
                 },
             },
         ],
-    }
+    };
 
-    return await request.post(API.TRANSACTION, body, null, token)
-}
+    return await request.post(API.data.userNotifications, body, null, token);
+};
 
 export const notificationService = {
     createNotification,
@@ -120,4 +125,4 @@ export const notificationService = {
     getMoneyRequestNotifications,
     updateSeenStatus,
     updateRelation,
-}
+};

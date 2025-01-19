@@ -1,5 +1,5 @@
-import * as request from '../utils/requester'
-import { API } from '../constants/baseUrl'
+import * as request from '../utils/requester';
+import { API } from '../constants/apiKeys';
 
 //TODO FIX TYPOS in the transactions resultID
 const updateBalance = async (ownerId, cardId, token) => {
@@ -45,20 +45,23 @@ const updateBalance = async (ownerId, cardId, token) => {
                 },
             },
         ],
-    }
+    };
 
-    return await request.post(API.TRANSACTION, body, null, token)
-}
+    return await request.post(API.transaction.unit_of_work, body, null, token);
+};
 
 const getAllReceiver = async (receiverId, token) => {
-    const query = encodeURIComponent(`receiver='${receiverId}'`)
-    return await request.get(API.MONEY + `?loadRelations&relationsDepth=1&where=${query}`, token)
-}
+    const query = encodeURIComponent(`receiver='${receiverId}'`);
+    return await request.get(API.MONEY + `?loadRelations&relationsDepth=1&where=${query}`, token);
+};
 
 const getAllSender = async (senderId, token) => {
-    const query = encodeURIComponent(`sender='${senderId}'`)
-    return await request.get(API.MONEY + `?loadRelations&relationsDepth=1&where=${query}`, token)
-}
+    const query = encodeURIComponent(`sender='${senderId}'`);
+    return await request.get(
+        API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`,
+        token
+    );
+};
 
 const requestNotify = async (fullName, amount, sender, token) => {
     const body = {
@@ -113,9 +116,9 @@ const requestNotify = async (fullName, amount, sender, token) => {
                 },
             },
         ],
-    }
-    return await request.post(API.TRANSACTION, body, null, token)
-}
+    };
+    return await request.post(API.transaction.unit_of_work, body, null, token);
+};
 
 // Send Money
 const sendMoney = async (fullName, amount, sender, token) => {
@@ -170,10 +173,10 @@ const sendMoney = async (fullName, amount, sender, token) => {
                 },
             },
         ],
-    }
+    };
 
-    return await request.post(API.TRANSACTION, body, null, token)
-}
+    return await request.post(API.transaction.unit_of_work, body, null, token);
+};
 
 // Notify
 const notifyMoneyReceived = async (fullName, amount, sender, token) => {
@@ -229,9 +232,9 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
                 },
             },
         ],
-    }
-    return await request.post(API.TRANSACTION, body, null, token)
-}
+    };
+    return await request.post(API.transaction.unit_of_work, body, null, token);
+};
 
 export const transactionService = {
     sendMoney,
@@ -240,4 +243,4 @@ export const transactionService = {
     getAllSender,
     updateBalance,
     requestNotify,
-}
+};
