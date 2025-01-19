@@ -1,6 +1,6 @@
-import { useExchangeRates } from '../../../../hooks';
 import { ListRate } from '../../../../components/lists';
 import { EmptyCard } from '../../../../components/cards';
+import { useExchangeRates } from './useExchangeRates';
 
 import styles from './exchange-rate.module.css';
 
