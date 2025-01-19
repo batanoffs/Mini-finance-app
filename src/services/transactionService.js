@@ -50,12 +50,17 @@ const updateBalance = async (ownerId, cardId, token) => {
     return await request.post(API.transaction.unit_of_work, body, null, token);
 };
 
-const getAllReceiver = async (receiverId, token) => {
-    const query = encodeURIComponent(`receiver='${receiverId}'`);
-    return await request.get(API.MONEY + `?loadRelations&relationsDepth=1&where=${query}`, token);
+const getAllTransactions = async (ownerId, token) => {
+    const query = encodeURIComponent(`receiver='${ownerId}' OR sender='${ownerId}'`);
+    return await request.get(API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
 };
 
-const getAllSender = async (senderId, token) => {
+const getReceivedTransactions = async (receiverId, token) => {
+    const query = encodeURIComponent(`receiver='${receiverId}'`);
+    return await request.get(API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+};
+
+const getSentTransactions = async (senderId, token) => {
     const query = encodeURIComponent(`sender='${senderId}'`);
     return await request.get(
         API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`,
@@ -239,8 +244,9 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
 export const transactionService = {
     sendMoney,
     notifyMoneyReceived,
-    getAllReceiver,
-    getAllSender,
+    getAllTransactions,
+    getReceivedTransactions,
+    getSentTransactions,
     updateBalance,
     requestNotify,
 };
