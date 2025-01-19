@@ -5,8 +5,8 @@ import { transactionService } from '../services';
 import { getUserToken } from '../utils';
 
 export const useVirtualCard = () => {
-    const [card, setCard] = useState(auth.virtualCard);
     const { auth, setAuth } = useContext(AuthContext);
+    const [card, setCard] = useState(auth.virtualCard);
     const { token } = getUserToken();
 
     const fetchBalance = useCallback(() => {
