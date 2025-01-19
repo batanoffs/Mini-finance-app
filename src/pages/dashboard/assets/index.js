@@ -1,7 +1,6 @@
 export * from './add-friends/AddFriends'
 export * from './exchange-rates/ExchangeRate'
 export * from './last-transactions/LastTransactions'
-export * from './history/History'
 export * from './greetings/Greetings'
 export * from './banking-actions/BankingActions'
 export * from './quick-send-money/QuickSendMoney'
