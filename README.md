@@ -49,12 +49,21 @@ https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a0
 The project utilizes the following libraries and services:
 - [Backendless](https://backendless.com/) as the backend service
 - [Exchange Rate API](https://www.exchangerate-api.com/) for real-time exchange rates
-- [Create-react-app](https://create-react-app.dev/) library
 - [React-router](https://reactrouter.com/en/main) library
 - [React credit card 2](https://www.npmjs.com/package/react-credit-cards-2) library
 - [Ant Design](https://ant.design/) library for a few components
 - [Font Awesome Icons](https://fontawesome.com/icons) library
 - [Dotenv](https://www.npmjs.com/package/dotenv) library for secret keys
+
+| Category         | Technologies / Libraries                                   |
+| ---------------- | ---------------------------------------------------------- |
+| Frontend         | `React`                                                    |
+| Server           | `Backendless`                                              |
+| UI               | `AntDesign`, `react-credit-cards-2`                        |
+| Forms            | `custom logic`                                             |
+| State management | `React.useContext`                                         |
+| API Request      | `fetch`                                                    |
+| Tools            | `Git`, `Vite`, `Prettier`, `Npm`, `disable-react-devtools` |
 
 ## Usage
 Here are some examples of how to use this project:
