@@ -1,15 +1,14 @@
-import { Tag } from 'antd'
+import { Tag } from 'antd';
+
+import { formatDateTable } from './formatDateTable';
 
 export const tableColumnsConfig = [
     {
         title: 'Date',
         dataIndex: 'date',
         key: 'date',
-    },
-    {
-        title: 'Time',
-        dataIndex: 'time',
-        key: 'time',
+        sorter: (a, b) => new Date(a.date) - new Date(b.date),
+        render: (date) => formatDateTable(date),
     },
     {
         title: 'Name',
@@ -23,11 +22,11 @@ export const tableColumnsConfig = [
         filters: [
             {
                 text: 'Income',
-                value: 'income',
+                value: 'Income',
             },
             {
-                text: 'Expense',
-                value: 'expense',
+                text: 'Outflow',
+                value: 'Outflow',
             },
         ],
         onFilter: (value, record) => record.type.indexOf(value) === 0,
@@ -46,23 +45,21 @@ export const tableColumnsConfig = [
         render: (_, { status }) => (
             <>
                 {status.map((tag) => {
-                    let color
+                    let color;
                     if (tag === 'Successful') {
-                        color = 'green'
-                    }
-                    if (tag === 'pending') {
-                        color = 'blue'
-                    }
-                    if (tag === 'rejected') {
-                        color = 'volcano'
+                        color = 'green';
+                    } else if (tag === 'pending') {
+                        color = 'blue';
+                    } else if (tag === 'rejected') {
+                        color = 'volcano';
                     }
                     return (
                         <Tag color={color} key={tag}>
                             {tag.toUpperCase()}
                         </Tag>
-                    )
+                    );
                 })}
             </>
         ),
     },
-]
+];
