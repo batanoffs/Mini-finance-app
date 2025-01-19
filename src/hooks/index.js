@@ -1,5 +1,4 @@
 export * from './useAddFriends'
-export * from './useExchangeRates'
 export * from './useForm'
 export * from './useMakeTransactions'
 export * from './useMessage'
