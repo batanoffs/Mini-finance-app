@@ -5,5 +5,10 @@ export const formatDateTable = (date) => {
         hourCycle: 'h23',
         month: 'long',
         day: 'numeric',
-    }).format(new Date(date));
+    })
+        .format(new Date(date))
+        .split(' ')
+        .slice(0, 4)
+        .join(' ')
+        .replace(' at', ',');
 };
