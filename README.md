@@ -5,23 +5,24 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-purple)](https://github.com/prettier/prettier)
 [![styled with prettier](https://img.shields.io/badge/Finance-web_app-teal)]()
 
+#### Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, and maintaining transaction history.
+
+### Project Demo (old version)
 https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a05e-6da467265a31
 
-Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, and maintaining transaction history.
-This is the project for the SoftUniada 2024 competition.
 
-Notes:
-- *Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)* 
-- *Please consider that Backendless requests are **limited** for free tier and will shut down the server for a day after the limit is reached*
-- *After the submission, the project has been updated with english localization and refactored according best practices for clean code and separation of concerns*
-- *New demo video for updated version - coming soon*
-
- 
-Test account:
+### Important Notes
+- #### Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)
+- #### Backendless FREE-TIER requests are **LIMITED** and the server will shut down for a day when reached
+- #### After SoftUniada 2024 submission, has been updated with english localization
+- #### Still in development, fixing issues and adding improvements
+- #### NEW DEMO for updated version - coming soon
+- #### Test account:
   ```txt
   email: ivo@abv.bg 
   pass: Minifinance123
   ```
+
 
 ## Table of content
 - [Features](#features)
