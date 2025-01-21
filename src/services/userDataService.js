@@ -1,10 +1,13 @@
 import * as request from '../utils/requester';
 import { API } from '../constants/apiKeys';
 
-const getUserData = async (ownerId) => {
+const getUserData = async (
+    ownerId,
+    loadRelations = ['virtualcard', 'friends', 'favorite_friends']
+) => {
     const query = encodeURIComponent(`ownerId='${ownerId}'`); // EncodeURI
     return await request.get(
-        API.data.userData + `?loadRelations=virtualcard,friends,favorite_friends&where=${query}`
+        API.data.userData + `?loadRelations=${loadRelations.join(',')}&where=${query}`
     );
 };
 
