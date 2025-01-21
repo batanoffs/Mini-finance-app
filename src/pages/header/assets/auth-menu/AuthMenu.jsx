@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { AuthContext } from '../../../../contexts/AuthContext';
-import { Notifications } from './notifications/Notifications';
+import { Notifications } from './assets/Notifications';
 
 import styles from './auth-menu.module.css';
 
