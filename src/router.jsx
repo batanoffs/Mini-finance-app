@@ -26,7 +26,7 @@ const router = createBrowserRouter(
             path: '/',
             element: (
                 <AuthProvider>
-                    <App style={{ fontFamily: 'var(--body-font-family)' }}>
+                    <App>
                         <RootLayout />
                     </App>
                 </AuthProvider>

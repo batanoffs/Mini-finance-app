@@ -1,11 +1,24 @@
-import { createRoot } from 'react-dom/client'
-import { StrictMode } from 'react'
-import App from './App'
+import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react';
+import { ConfigProvider } from 'antd';
 
-import './css/site.css'
+import App from './App';
+
+import './css/site.css';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <App />
+        <ConfigProvider
+            theme={{
+                token: {
+                    // Seed Token
+                    colorPrimary: 'var(--primary-color)',
+                    borderRadius: 6,
+                    fontFamily: 'var(--body-font-family)',
+                },
+            }}
+        >
+            <App />
+        </ConfigProvider>
     </StrictMode>
-)
+);
