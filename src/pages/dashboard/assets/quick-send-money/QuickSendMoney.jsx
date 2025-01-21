@@ -29,12 +29,12 @@ export const QuickSendMoney = () => {
         </>
     );
     const menu =
-        auth.favorite_friends.length > 0 ? <ActionsMenu toggleModal={toggleModal} /> : null;
+        auth?.favorite_friends?.length > 0 ? <ActionsMenu toggleModal={toggleModal} /> : null;
 
     const openSendMenu = (event) => {
-        const name = event.currentTarget.parentElement.getAttribute('data-key');
+        const name = event?.currentTarget?.parentElement?.getAttribute('data-key');
         if (!name) {
-            showMessage('error', 'An error occurred, please try again');
+            showMessage('error', 'Error, can not get friend name. Please try again, or refresh page');
             return;
         }
         toggleModal('send');
@@ -44,7 +44,7 @@ export const QuickSendMoney = () => {
     return (
         <EmptyCard options={{ menu }} title="Quick Send" color="accent">
             <ul className={styles.sendMoneyContainer}>
-                {auth.favorite_friends.length > 0
+                {auth?.favorite_friends?.length > 0
                     ? auth.favorite_friends?.map((friend) => (
                           <ListFriend friend={friend} onClick={openSendMenu} key={friend.objectId}>
                               {showModal.send && (
