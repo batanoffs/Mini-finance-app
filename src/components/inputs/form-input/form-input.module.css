@@ -21,7 +21,6 @@
 label {
     flex: 0 0 var(--label-width);
     text-align: right;
-    padding-right: var(--spacing-sm);
     font-size: var(--font-size-medium);
 }
 

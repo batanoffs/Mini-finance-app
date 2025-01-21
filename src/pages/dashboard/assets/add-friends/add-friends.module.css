@@ -3,20 +3,22 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 0.5em;
+
+    label {
+        flex: 0 0 40px;
+    }
 }
 
 .customBtn {
     background: var(--custom-btn-bg-color);
     border: 1px solid var(--primary-hover-color);
-    border-radius: var(--border-radius-small);
     color: var(--primary-hover-color);
-    font-size: 1em;
     font-weight: var(--font-weight-bold);
-    line-height: normal;
     transition: all 0.1s;
+    /*  line-height: normal;
     padding: 6px 20px;
     text-align: center;
-    width: 100%;
+    width: 100%; */
 }
 
 .customBtn:hover {
