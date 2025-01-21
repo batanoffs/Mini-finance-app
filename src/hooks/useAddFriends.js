@@ -12,46 +12,70 @@ export const useAddFriend = () => {
 
     const onFriendRequest = async (formData) => {
         try {
+            // Get the target user's phone number
             const friendNumber = formData.phone;
 
-            console.log('friendPhoneNumber', friendNumber);
-            
-            const verifyResponse = await verifyFriendRequestStatus(friendNumber);
+            // Check if the user provided a phone number
+            if (!friendNumber) throw new Error('No phone number provided');
 
-            const { receiverUserId } = verifyResponse;
+            // Check if the user is trying to add themselves
+            if (friendNumber === auth.phoneNumber) throw new Error('You cannot add yourself');
 
-            if (receiverUserId) return await sendFriendRequest(friendNumber, receiverUserId);
+            // Verify the friend request
+            const receiverUserId = await verifyFriendRequest(friendNumber);
+
+            // Send the friend request
+            if (receiverUserId) {
+                const response = await notificationService.createNotification(
+                    telephone,
+                    null,
+                    'friend request',
+                    receiverUserId,
+                    token
+                );
+
+                // Validate the response
+                if (!response?.success) throw new Error('Failed to send friend request');
+
+                // Show success message
+                showMessage('success', 'Friend request sent');
+            }
         } catch (error) {
-            console.error(error);
+            // Handle the error
             if (error instanceof Error) {
-                showMessage('error', error.message);
+                showMessage('error', `Error sending friend request: ${error.message}`);
             } else {
                 showMessage('error', 'An error occurred');
+                console.error(error);
             }
         }
     };
 
-    const verifyFriendRequestStatus = useCallback(
+    const verifyFriendRequest = useCallback(
         async (telephone) => {
-            if (!telephone) throw new Error('No phone number provided');
-
-            if (telephone === auth.phoneNumber) throw new Error('You cannot add yourself');
-
+            // Get the receiver's user data
             const userData = await dataService.getAttribute('phoneNumber', telephone);
 
-            if (!userData?.length) throw new Error('User with this phone number does not exist');
+            // Check if the user exists
+            if (!userData || userData.length === 0)
+                throw new Error('User with this phone number does not exist');
 
+            // Get the receiver's id
             const receiverUserId = userData[0].objectId;
 
-            if (auth.friends?.some((friend) => friend.objectId === receiverUserId))
-                throw new Error('This user is already your friend');
-
-            const checkExistingFriendRequests = await notificationService.getAllFriendRequests(
-                token
+            // Check if the user is already friend with the receiver
+            const validateFriend = auth.friends?.some(
+                (friend) => friend.objectId === receiverUserId
             );
+            if (validateFriend) {
+                showMessage('warning', 'User is already your friend');
+                return null;
+            }
+            // Get all friend requests notifications
+            const userFriendRequests = await notificationService.getAllFriendRequests(token);
 
             // Find if friend request has been sent before
-            const filterFriendRequests = checkExistingFriendRequests?.filter(
+            const filterFriendRequests = userFriendRequests?.filter(
                 ({ receiver, sender }) =>
                     (receiver?.[0].objectId === receiverUserId &&
                         sender[0].objectId === auth.ownerId) ||
@@ -60,54 +84,40 @@ export const useAddFriend = () => {
             );
 
             // If no friend request has been sent before, return the receiver's userId
-            if (!filterFriendRequests?.length) return receiverUserId;
+            if (filterFriendRequests?.length === 0) return receiverUserId;
 
-            // If friend request has been sent before, check the status
-            const [
-                {
-                    sender: [{ objectId: senderId }],
-                    receiver: [{ objectId: receiverId }],
-                    status,
-                },
-            ] = filterFriendRequests;
+            const status = filterFriendRequests[0]?.status;
 
+            // Validate friend request status
             if (status === 'pending') throw new Error('You have already sent a friend request');
             if (status === 'accepted') throw new Error('You are already friends');
-            if (status === 'declined')
-                return await handleDeclinedRequest(
-                    filterFriendRequests[0],
-                    receiverUserId,
-                    senderId
-                );
+
+            // If the receiver declined the request
+            if (status === 'declined') {
+                // Flip the request to the sender
+                return await handleDeclinedRequest(filterFriendRequests);
+            }
         },
         [auth]
     );
 
-    const sendFriendRequest = useCallback(
-        async (telephone, receiverId) => {
-            const response = await notificationService.createNotification(
-                telephone,
-                null,
-                'friend request',
-                auth.ownerId,
-                token
-            );
-            if (!response?.success) throw new Error('Failed to send friend request');
-            showMessage('success', 'Friend request sent');
-        },
-        [auth, token, showMessage]
-    );
-
+    // Handle the declined request
     const handleDeclinedRequest = useCallback(
-        async (notification, receiverId, senderId) => {
-            const notificationId = notification.objectId;
+        async (notification) => {
+            // Get ids from the notification
+            const senderId = notification[0]?.sender[0]?.objectId;
+            const receiverId = notification[0]?.receiver[0]?.objectId;
+            const notificationId = notification[0].objectId;
 
+            // If friend request has been sent before, check the status
             if (notification.receiver[0].objectId === auth.ownerId) {
                 // Update Relations and Flip Request for the Declined Case
                 const [setSenderResponse, setReceiverResponse] = await Promise.all([
                     notificationService.updateRelation(notificationId, 'sender', receiverId, token),
                     notificationService.updateRelation(notificationId, 'receiver', senderId, token),
                 ]);
+
+                // Validate the response
                 if (!setSenderResponse || !setReceiverResponse)
                     throw new Error('Failed to update relation');
             }
@@ -119,12 +129,17 @@ export const useAddFriend = () => {
                 false,
                 token
             );
+
+            // Validate the response
             if (!response?.success) throw new Error('Error updating friend request status');
+
+            // Show success message
             showMessage('success', 'Friend request re-sent');
         },
         [auth, token, showMessage]
     );
 
+    // Return the function to send friend request
     return {
         onFriendRequest,
     };
