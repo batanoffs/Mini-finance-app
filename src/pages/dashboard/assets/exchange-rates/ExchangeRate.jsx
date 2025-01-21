@@ -11,12 +11,13 @@ export const ExchangeRate = () => {
         .map((entry) => entry[1])
         .map((rate) => <ListRate key={rate.name} {...rate} />);
 
+    const titleItems = ['Currency', 'Sell', 'Buy'];
     return (
         <EmptyCard>
             <div className={styles.title}>
-                <p>Currency</p>
-                <p>Sell</p>
-                <p>Buy</p>
+                {titleItems.map((item) => (
+                    <p key={item}>{item.toUpperCase()}</p>
+                ))}
             </div>
             {RateItems ? (
                 <ul className={styles.list}>{RateItems}</ul>

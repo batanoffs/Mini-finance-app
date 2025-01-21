@@ -6,10 +6,19 @@
 }
 
 .title {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: var(--heading-color);
-    margin-bottom: 0.2em;
-    font-size: 1.2em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid var(--p-color);
+
+    p {
+        margin: 0;
+        padding: 0;
+        color: var(--p-color);
+        font-size: 1em;
+    }
 }
