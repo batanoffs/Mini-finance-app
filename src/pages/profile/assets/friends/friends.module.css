@@ -106,3 +106,7 @@
 .friendButton:hover {
     color: #0056b3;
 }
+
+.empty {
+    margin: 1em auto;
+}
