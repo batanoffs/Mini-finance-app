@@ -1,7 +1,10 @@
 .headerDropdownContainer {
+    position: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1em;
+    justify-items: center;
+    gap: 0.8em;
     margin-right: 1em;
+    height: 100%;
 }
