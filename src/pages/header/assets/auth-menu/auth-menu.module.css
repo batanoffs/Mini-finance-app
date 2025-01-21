@@ -1,10 +1,9 @@
 .headerDropdownContainer {
     position: inherit;
     display: flex;
-    align-items: center;
+    /* Use 'align-items: stretch' to allow items to fill the container vertically */
+    align-items: stretch; 
     justify-content: center;
-    justify-items: center;
-    gap: 0.8em;
-    margin-right: 1em;
+    gap: 1em;
     height: 100%;
 }

@@ -10,11 +10,8 @@ export const ListTransaction = ({ id, avatar, name, amount, date, isIncoming }) 
                 <div className={styles.detailsBox}>
                     <strong>{name}</strong>
                     <strong
-                        style={{
-                            display: 'block',
-                            textAlign: 'right',
-                            color: isIncoming ? 'green' : 'red',
-                        }}
+                        className={styles.strong}
+                        style={{ color: isIncoming ? 'green' : 'red' }}
                     >
                         {isIncoming ? '+' : '-'} {amount} BGN
                     </strong>

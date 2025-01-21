@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     overflow: visible;
     gap: 0.4em;
+    margin-top: 1em;
 
     .notFound {
         display: inline;

@@ -3,7 +3,11 @@
     align-items: center;
     justify-content: space-between;
     margin-right: 1em;
+}
 
+strong {
+    display: 'block';
+    text-align: 'right';
 }
 
 .currencyWrapper {

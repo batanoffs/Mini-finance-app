@@ -1,6 +1,6 @@
 .mainWrapper {
     background: var(--section-bg-color);
-    max-height: calc(100dvh - 30px);
+    max-height: calc(100dvh - 40px);
     display: flex;
     width: 100dvw;
 }
@@ -43,8 +43,9 @@
     width: 100dvw;
     margin: 1em;
     gap: 0.5em;
-    height: calc(100dvh - 70px);
+    height: calc(100dvh - 68px);
 }
+
 .contentContainerProfileTab {
     display: flex;
     width: 100dvw;
