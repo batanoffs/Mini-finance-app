@@ -36,10 +36,10 @@
 
 .transactionBtn:hover::before {
     opacity: 5;
-    top: -50px;
+    top: -65px;
     overflow: visible;
 }
 
 .transactionBtn:hover {
-    color: #0056b3;
+    color: var(--heading-color);
 }

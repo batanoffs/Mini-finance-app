@@ -100,11 +100,11 @@
 
 .friendButton:hover::before {
     opacity: 1;
-    top: -50px; /* Adjust the positioning for better visibility */
+    top: -65px; /* Adjust the positioning for better visibility */
 }
 
 .friendButton:hover {
-    color: #0056b3;
+    color: var(--heading-color);
 }
 
 .empty {
