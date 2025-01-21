@@ -1,6 +1,4 @@
-/*---------------------------------------
-  ACCOUNT TABLE               
------------------------------------------*/
+/* 
 .account-table {
     background: var(--section-bg-color);
     border-radius: var(--border-radius-small);
@@ -50,9 +48,6 @@
     padding-bottom: 4px;
 }
 
-/*---------------------------------------
-  PAGINATION              
------------------------------------------*/
 .pagination {
     margin-top: 20px;
 }
@@ -91,4 +86,4 @@
 .page-link.active {
     background-color: var(--custom-btn-bg-color);
     border-color: var(--secondary-color);
-}
+} */

@@ -8,7 +8,7 @@
 
 .accent {
     background: var(--primary-bg-color);
-    overflow: visible;
+    overflow: hidden;
 
     h5 {
         color: aliceblue;
@@ -19,7 +19,7 @@
     border-radius: var(--border-radius-component);
     position: relative;
     overflow: hidden;
-    padding: 1em;
+    padding: 0.7em 1em;
 
     p {
         color: var(--black-color);
@@ -34,14 +34,12 @@
 
     small {
         color: var(--p-color);
+        margin: 0;
+        padding: 0;
     }
 
     .sectionBg {
         background-color: var(--section-bg-color);
-    }
-
-    .content {
-        margin-top: 0.5em;
     }
 }
 
