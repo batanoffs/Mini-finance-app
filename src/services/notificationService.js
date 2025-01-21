@@ -31,8 +31,8 @@ const updateSeenStatus = async (objectId, seenState, token) => {
     return await request.put(API.data.userNotifications + '/' + objectId, body, token);
 };
 
-const getNotSeenNotifications = async (receiverId, token) => {
-    const query = encodeURIComponent(`receiver='${receiverId}' and seen='false'`);
+const getNotSeenNotifications = async (id, token) => {
+    const query = encodeURIComponent(`receiver.ownerId='${id}' and seen='false'`);
     return await request.get(
         API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
