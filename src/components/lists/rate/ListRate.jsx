@@ -1,25 +1,16 @@
 import styles from './list-rate.module.css';
 
-export const ListRate = (rate) => {
+export const ListRate = ({ name, buy, sell, logo }) => {
     return (
-        <li key={rate[0]} className={styles.exchangeWrapper}>
+        <li className={styles.exchangeWrapper}>
             <div className={styles.currencyWrapper}>
-                <img src={rate[1].logo} className={styles.exchangeImage} alt={'logo'} />
-
-                <div>
-                    <small>{rate[0]}</small>
-                </div>
+                <img src={logo} className={styles.exchangeImage} alt={'logo'} />
+                <strong>{name}</strong>
             </div>
 
-            <div className={styles.flexWrapper}>
-                <strong>Sell</strong>
-                <b>{rate[1].sell}</b>
-            </div>
+            <p>{sell}</p>
 
-            <div className={styles.flexWrapper}>
-                <strong>Buy</strong>
-                <b>{rate[1].buy}</b>
-            </div>
+            <p>{buy}</p>
         </li>
     );
 };
