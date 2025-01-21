@@ -8,9 +8,6 @@ import { getUserToken } from '../../../../../../utils';
 
 import styles from './add-friends.module.css';
 
-// TODO A component is changing an uncontrolled input to be controlled.
-// This is likely caused by the value changing from undefined to a defined value,
-// which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
 export const AddToFavorites = ({ toggleModal }) => {
     const { auth, setAuth } = useContext(AuthContext);
     const { token } = getUserToken();
@@ -68,20 +65,21 @@ export const AddToFavorites = ({ toggleModal }) => {
                 id="favorite-name"
                 userInput={userInput}
                 setUserInput={setUserInput}
-                suggestions={[
-                    ...auth.friends.map((friend) => {
-                        return {
-                            name: friend.fullName,
-                            avatar: friend.avatar,
-                            objectId: friend.objectId,
-                        };
-                    }),
-                ]}
+                suggestions={auth?.friends?.map(friend => ({
+                    name: friend.fullName,
+                    avatar: friend.avatar,
+                    objectId: friend.objectId
+                }))}
             />
+            {/* Display a short validation message if no friend is selected */}
+            {!userInput.friends && (
+                <p className={styles.error}>Please select a friend before submitting.</p>
+            )}
             <input
-                className={`"custom-btn-fill" ${styles.button}`}
+                className={`custom-btn-fill ${styles.button}`}
                 type="submit"
                 value="Add to favorites"
+                disabled={!userInput.friends}
             />
         </form>
     );
