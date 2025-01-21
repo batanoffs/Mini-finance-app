@@ -15,7 +15,11 @@ export const LastTransactions = () => {
 
     // Handle empty/invalid cases first
     if (!transactions || !Array.isArray(transactions) || transactions.length === 0) {
-        return <Empty style={styles.empty} description="No transactions" />;
+        return (
+            <EmptyCard title="Last Transactions" color="primary">
+                <Empty style={styles.empty} description="No transactions" />
+            </EmptyCard>
+        );
     }
 
     // Sort by date and take the latest 10
@@ -30,7 +34,7 @@ export const LastTransactions = () => {
             options={{
                 menu: (
                     <Link className={styles.customBtn} to="/dashboard/wallet">
-                        View All
+                        More...
                     </Link>
                 ),
             }}
