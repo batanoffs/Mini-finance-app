@@ -1,14 +1,16 @@
-import { isAuthenticated } from '../../utils/sessionStorage'
+import { useLocation } from 'react-router-dom';
 
-import styles from './site-footer.module.css'
+import { isAuthenticated } from '../../utils/sessionStorage';
+
+import styles from './site-footer.module.css';
 
 export const Footer = () => {
-    const homeLink = window.location.pathname === '/'
+    const location = useLocation();
 
-    if (homeLink) {
-        return null
+    if (location.pathname.includes('dashboard') || location.pathname === '/') {
+        return null;
     }
-    
+
     return (
         <>
             {!isAuthenticated() && (
@@ -17,12 +19,12 @@ export const Footer = () => {
                         <p className={styles.copyright_text}>
                             All rights reserved &copy; Mini Finance Innovations 2024. Programmed by{' '}
                             <a href="https://github.com/batanoffs">batanoffs.</a> Illustration by{' '}
-                            <a href="https://icons8.com/illustrations/author/627444">Julia G</a> from{' '}
-                            <a href="https://icons8.com/illustrations">Ouch!</a>
+                            <a href="https://icons8.com/illustrations/author/627444">Julia G</a>{' '}
+                            from <a href="https://icons8.com/illustrations">Ouch!</a>
                         </p>
                     </div>
                 </footer>
             )}
         </>
-    )
-}
+    );
+};

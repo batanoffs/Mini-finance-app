@@ -16,6 +16,7 @@ export const FormInput = ({
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
+    ...props
 }) => {
     // Split camel case name into separate words and capitalize first letter
     const fieldName = name ? splitCamelCase(name) : '';
@@ -28,7 +29,7 @@ export const FormInput = ({
         </>
     );
     return (
-        <div style={sx}>
+        <div style={{ sx }}>
             <div className={styles.formGroup}>
                 {name && <label htmlFor={id}>{label}</label>}
                 <input
@@ -42,6 +43,7 @@ export const FormInput = ({
                     onFocus={onFocus}
                     className={`${className} ${styles.input}`}
                     placeholder={placeholder}
+                    {...props}
                 />
             </div>
             {error && <span className={styles.error}>{error}</span>}

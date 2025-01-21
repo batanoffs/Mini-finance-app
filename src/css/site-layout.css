@@ -1,4 +1,4 @@
-/* main {
+main {
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -6,7 +6,7 @@
 
 .main-wrapper {
     background: var(--section-bg-color);
-    max-height: calc(100dvh - 30px);
+    max-height: calc(100dvh - 40px);
     display: flex;
     width: 100dvw;
 }
@@ -17,4 +17,4 @@
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-} */
+}

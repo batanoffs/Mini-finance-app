@@ -93,7 +93,8 @@ p {
     font-weight: var(--font-weight-normal);
 }
 
-ul, li {
+ul,
+li {
     color: var(--p-color);
     font-size: var(--card-title-font-size);
     font-weight: var(--font-weight-normal);
@@ -103,13 +104,6 @@ a,
 button {
     touch-action: manipulation;
     transition: all 0.3s;
-}
-
-label {
-    display: inline-block;
-    padding-right: 0.6em;
-    max-width: 100px;
-    text-align: right;
 }
 
 span {
