@@ -2,15 +2,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 
 import { RenderMessage } from './RenderMessage';
-import { formatDate } from '../../../../../../utils';
+import { formatDate } from '../../../../../../../utils';
 import { NOTIFY } from '../constants';
 
-import styles from './notification.module.css';
+import styles from './notification-item.module.css';
 
 export const NotificationItem = ({
     notification,
     onDelete,
-    ownerId,
     onFriendReject,
     onFriendAccept,
     onCashDecline,
@@ -21,30 +20,27 @@ export const NotificationItem = ({
     const event = notification.event_type;
     const senderName = notification.sender?.[0]?.fullName ?? 'Unknown';
     const senderId = notification.sender?.[0]?.objectId ?? null;
+    const sender = notification.sender?.[0];
+    const notificationId = notification.objectId;
+    const cashAmount = notification.amount;
 
     // Check if notification requires confirmation in order to render the appropriate buttons
     const needToConfirm = event === NOTIFY.TYPE.frRequest || event === NOTIFY.TYPE.cashRequest;
 
     // Event handlers
-    const acceptHandler = (e) => {
-        console.log('Accepting friend request');
-
-        if (event === NOTIFY.TYPE.frRequest) {
-            onFriendAccept(e);
-        } else if (event === NOTIFY.TYPE.cashRequest) {
-            onCashApprove(e);
-        }
+    const onAcceptNotification = () => {
+        // Check the event type and call the appropriate handler
+        if (event === NOTIFY.TYPE.frRequest) return onFriendAccept(notificationId, sender);
+        if (event === NOTIFY.TYPE.cashRequest) return onCashApprove(notificationId, senderName, cashAmount);
     };
 
-    const rejectHandler = (e) => {
-        console.log('Rejecting friend request');
-
-        if (event === NOTIFY.TYPE.frRequest) {
-            onFriendReject(e);
-        } else if (event === NOTIFY.TYPE.cashRequest) {
-            onCashDecline(e);
-        }
+    const onRejectNotification = () => {
+        // Check the event type and call the appropriate handler
+        if (event === NOTIFY.TYPE.frRequest) return onFriendReject(notificationId);
+        if (event === NOTIFY.TYPE.cashRequest) return onCashDecline(notificationId);
     };
+
+    const onDeleteNotification = () => onDelete(notificationId);
 
     return (
         <li
@@ -53,32 +49,36 @@ export const NotificationItem = ({
             data-key={notification.objectId}
         >
             <div className={styles.notificationContent}>
-                <RenderMessage styles={styles} notification={notification} ownerId={ownerId} />
+                <RenderMessage notification={notification} />
                 <small className={styles.date}>{date}</small>
             </div>
 
             {needToConfirm ? (
-                <>
+                <div className={styles.btnGroup}>
                     <button
+                        data-key={notification.objectId}
                         data-sender={senderId}
                         data-requester-name={senderName}
                         className={styles.btnAccept}
-                        onClick={acceptHandler}
-                        value={'Accept'}
-                    />
+                        onClick={onAcceptNotification}
+                    >
+                        Accept
+                    </button>
                     <button
+                        data-key={notification.objectId}
                         data-sender={senderId}
                         data-requester-name={senderName}
                         className={styles.btnRemove}
-                        onClick={rejectHandler}
-                        value={'Reject'}
-                    />
-                </>
+                        onClick={onRejectNotification}
+                    >
+                        Reject
+                    </button>
+                </div>
             ) : (
                 <button
                     data-key={notification.objectId}
                     className={styles.btnRemove}
-                    onClick={onDelete}
+                    onClick={onDeleteNotification}
                     defaultValue={'Delete'}
                 >
                     <FontAwesomeIcon icon={faTrashAlt} />

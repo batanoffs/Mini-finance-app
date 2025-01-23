@@ -1,0 +1,66 @@
+.singleNotification {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+
+    .btnGroup {
+        display: none;
+    }
+
+    .notificationContent {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .date {
+        display: inline-block;
+    }
+
+    .btnAccept {
+        border: 1px solid #ddd;
+        border-radius: 0.5em;
+        padding: 0.2em;
+        cursor: pointer;
+        background-color: transparent;
+        color: gray;
+
+        &:hover {
+            color: white;
+            background-color: var(--primary-hover-color);
+            border-color: var(--primary-hover-color);
+        }
+    }
+
+    .btnRemove {
+        border: 1px solid #ddd;
+        border-radius: 0.5em;
+        padding: 0.2em;
+        cursor: pointer;
+        background-color: transparent;
+        color: gray;
+
+        &:hover {
+            color: darkred;
+            border-color: darkred;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 0.3em 12px rgba(0, 0, 0, 0.2);
+
+        .btnGroup {
+            display: flex;
+            gap: 0.2em;
+        }
+
+        .date {
+            display: none;
+        }
+    }
+}
