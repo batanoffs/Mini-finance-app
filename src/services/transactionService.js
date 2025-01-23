@@ -135,6 +135,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
                 table: 'UserData',
                 opResultId: 'findReceiver',
                 payload: {
+                    //TODO better search by id 
                     whereClause: `fullName = '${fullName}'`,
                 },
             },
