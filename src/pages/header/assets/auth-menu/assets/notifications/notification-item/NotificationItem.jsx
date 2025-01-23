@@ -53,37 +53,40 @@ export const NotificationItem = ({
                 <small className={styles.date}>{date}</small>
             </div>
 
-            {needToConfirm ? (
-                <div className={styles.btnGroup}>
+            <div className={styles.btnContainer}>
+                {needToConfirm ? (
+                    <div className={styles.btnGroup}>
+                        
+                        <button
+                            data-key={notification.objectId}
+                            data-sender={senderId}
+                            data-requester-name={senderName}
+                            className={styles.btnAccept}
+                            onClick={onAcceptNotification}
+                        >
+                            Accept
+                        </button>
+                        <button
+                            data-key={notification.objectId}
+                            data-sender={senderId}
+                            data-requester-name={senderName}
+                            className={styles.btnRemove}
+                            onClick={onRejectNotification}
+                        >
+                            Reject
+                        </button>
+                    </div>
+                ) : (
                     <button
                         data-key={notification.objectId}
-                        data-sender={senderId}
-                        data-requester-name={senderName}
-                        className={styles.btnAccept}
-                        onClick={onAcceptNotification}
-                    >
-                        Accept
-                    </button>
-                    <button
-                        data-key={notification.objectId}
-                        data-sender={senderId}
-                        data-requester-name={senderName}
                         className={styles.btnRemove}
-                        onClick={onRejectNotification}
+                        onClick={onDeleteNotification}
+                        defaultValue={'Delete'}
                     >
-                        Reject
+                        <FontAwesomeIcon icon={faTrashAlt} />
                     </button>
-                </div>
-            ) : (
-                <button
-                    data-key={notification.objectId}
-                    className={styles.btnRemove}
-                    onClick={onDeleteNotification}
-                    defaultValue={'Delete'}
-                >
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
-            )}
+                )}
+            </div>
         </li>
     );
 };
