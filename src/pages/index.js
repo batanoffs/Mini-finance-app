@@ -1,5 +1,5 @@
 export * from './footer/Footer'
-export * from './header/AppBar'
+export * from './header/Header'
 export * from './home/Home'
 export * from './register/Register'
 export * from './login/Login'
