@@ -141,60 +141,107 @@ export const useNotification = ({ initialState }) => {
     };
 
     // Send the requested money to the requester
-    const onCashApprove = async (notificationId, requesterName, amount) => {
+    const onCashApprove = async (notificationId, receiverFullName, amount) => {
+
+        // Track operation states
+        const states = {
+            moneyTransferred: false,
+            notificationAccepted: false,
+            notificationSeen: false,
+            receiverNotified: false
+        };
+
         try {
-            // Check if notification id is null
-            if (!notificationId) throw new Error('Notification id is null');
+            // Input validation
+            if (!notificationId || !receiverFullName || !amount || isNaN(amount)) {
+                throw new Error('Invalid input parameters');
+            }
 
-            // Check if requester name is null
-            if (!requesterName) throw new Error('Requester name not found');
-
-            // Check if amount is null or not a number
-            if (!amount || isNaN(amount)) throw new Error('Amount is not valid or missing');
-
-            // On user accept transaction, send the money
+            // TODO - fix error: 
+            // TODO - "Unable to create relation. Child object with id is not found in the related table."
+            // Execute money transfer
             const moneyTransferResponse = await transactionService.sendMoney(
-                requesterName,
+                receiverFullName,
                 amount,
-                auth.ownerId,
+                auth.objectId,
                 token
             );
 
             // Check if transaction was successful
-            if (moneyTransferResponse.success) {
-                // Update notification status to accepted
-                await notificationService.updateNotificationStatus(
-                    notificationId,
-                    'accepted',
-                    true,
-                    token
-                );
+            if (!moneyTransferResponse.success) throw new Error('Failed to send money');
+            states.moneyTransferred = true;
 
-                // Update notification status to seen
-                await notificationService.updateSeenStatus(notificationId, true, token);
+            // Update notifications
+            const [notificationUpdates, notifications] = await Promise.all([
+                Promise.all([
+                    notificationService.updateNotificationStatus(
+                        notificationId,
+                        NOTIFY.STATUS.accepted,
+                        true,
+                        token
+                    ).then(() => states.notificationAccepted = true),
+                    
+                    notificationService.updateSeenStatus(
+                        notificationId, 
+                        true, 
+                        token
+                    ).then(() => states.notificationSeen = true),
+                    
+                    transactionService.notifyMoneyReceived(
+                        receiverFullName,
+                        amount,
+                        auth.ownerId,
+                        token
+                    ).then(() => states.receiverNotified = true)
+                ]),
+                notificationService.getNotSeenNotifications(auth.ownerId)
+            ]);
 
-                // Send notification to requester that money was received
-                await transactionService.notifyMoneyReceived(
-                    requesterName,
-                    amount,
-                    auth.ownerId,
-                    token
-                );
+            if(!notifications) throw new Error('Failed to retrieve notifications');
 
-                // Get all not seen notifications
-                const getNotificationsResponse = await notificationService.getNotSeenNotifications(
-                    auth.ownerId
-                );
+            // Update the current notifications state
+            setNotifications(notifications);
 
-                // Update the current notifications state
-                setNotifications(getNotificationsResponse);
-
-                // Show success message
-                showMessage('success', 'Transaction successful');
-            }
+            // Show success message
+            showMessage('success', 'Transaction successful');
+            
         } catch (error) {
+            // Rollback money transfer
+            if (states.moneyTransferred) {
+                try {
+                    // TODO - Implement rollback for money transfer
+                    console.log('Rollback money transfer not implemented');
+                    
+                } catch (rollbackError) {
+                    console.error('Failed to rollback transaction:', rollbackError);
+                }
+            }
+    
+            // Rollback notification states
+            if (states.notificationAccepted || states.notificationSeen) {
+                try {
+                    await Promise.all([
+                        states.notificationAccepted && 
+                            notificationService.updateNotificationStatus(
+                                notificationId,
+                                NOTIFY.STATUS.pending,
+                                false,
+                                token
+                            ),
+                        states.notificationSeen && 
+                            notificationService.updateSeenStatus(
+                                notificationId,
+                                false,
+                                token
+                            )
+                    ]);
+                } catch (rollbackError) {
+                    console.error('Failed to rollback notifications:', rollbackError);
+                }
+            }
+
             // Log error message
-            console.error('Money transaction error:', error);
+            console.error('Transaction failed:', error);
             showMessage('error', error.message || 'Failed to accept money transaction');
         }
     };
@@ -208,7 +255,7 @@ export const useNotification = ({ initialState }) => {
             // Update notification status to declined
             const statusUpdateRes = await notificationService.updateNotificationStatus(
                 notificationId,
-                'declined',
+                NOTIFY.STATUS.declined,
                 true,
                 token
             );
@@ -277,48 +324,3 @@ export const useNotification = ({ initialState }) => {
         setNotifications,
     };
 };
-
-// ADD FRIEND REQUEST
-// // Update notifications state
-// setNotifications(result);
-// const [
-//     updateStatus,
-//     getUserNotifications,
-//     setReceiverFriend,
-//     setSenderFriend,
-//     getSender,
-// ] = Promise.all([
-
-//     // Update notification status to accepted
-//     await notificationService.updateNotificationStatus(
-//         notificationId,
-//         NOTIFY.STATUS.accepted,
-//         true,
-//         token
-//     ),
-
-//     // Get all not seen notifications
-//     await notificationService.getNotSeenNotifications(auth.objectId),
-
-//     // Set relation between the two users
-//     await dataService.setRelation(auth.objectId, 'friends', [senderId]),
-
-//     // Check if relation was set successfully
-//     await dataService.setRelation(senderId, 'friends', [auth.objectId]),
-
-//     // Get sender data
-//     await dataService.getUser(senderId),
-// ]);
-
-// // Check if receiver and sender aren't already friends
-// if (setReceiverFriend !== 1 && setSenderFriend !== 1)
-//     throw new Error('You have already added this friend');
-
-// // Update auth state with new friend
-// setAuth({ ...auth, friends: [...auth.friends, getSender] });
-
-// // Get notifications that are not seen
-// const result = await notificationService.getNotSeenNotifications(auth.objectId);
-
-// // Update notifications state
-// setNotifications(result);
