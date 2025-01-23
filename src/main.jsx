@@ -11,10 +11,9 @@ createRoot(document.getElementById('root')).render(
         <ConfigProvider
             theme={{
                 token: {
-                    // Seed Token
                     colorPrimary: 'var(--primary-color)',
-                    borderRadius: 6,
                     fontFamily: 'var(--body-font-family)',
+                    borderRadius: 6,
                 },
             }}
         >
