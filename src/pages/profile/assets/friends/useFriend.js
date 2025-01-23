@@ -9,8 +9,8 @@ export const useFriends = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [friends, setFriends] = useState(auth.friends);
     const [search, setSearch] = useState('');
-    const { showMessage } = useMessage();
     const { token } = getUserToken();
+    const showMessage = useMessage();
 
     // Fetch current user's friends
     const fetchFriends = useCallback(async () => {
