@@ -1,10 +1,10 @@
 import * as request from '../utils/requester';
 import { API } from '../constants/apiKeys';
 
-const updateNotificationStatus = async (objectId, statusState, seen, token) => {
-    const body = { status: `${statusState}`, seen: seen };
+const updateNotificationStatus = async (notificationId, status, isSeen, token) => {
+    const body = { status: `${status}`, seen: isSeen };
 
-    return await request.put(API.data.userNotifications + `/${objectId}`, body, token);
+    return await request.put(API.data.userNotifications + `/${notificationId}`, body, token);
 };
 
 const getMoneyRequestNotifications = async (senderId, token) => {
