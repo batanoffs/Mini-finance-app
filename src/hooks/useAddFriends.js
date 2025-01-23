@@ -42,12 +42,8 @@ export const useAddFriend = () => {
             }
         } catch (error) {
             // Handle the error
-            if (error instanceof Error) {
-                showMessage('error', `Error sending friend request: ${error.message}`);
-            } else {
-                showMessage('error', 'An error occurred');
-                console.error(error);
-            }
+            console.error(error);
+            showMessage('error', error.message || 'Failed to send friend request');
         }
     };
 
