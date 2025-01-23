@@ -50,7 +50,7 @@
 .dropdownItem {
     display: flex;
     align-items: center;
-    padding: 1em;
+    padding: 0.5em;
     text-decoration: none;
     color: inherit;
 
@@ -66,9 +66,25 @@
 
 .dropdownMenuProfileThumb {
     display: flex;
+    justify-content: flex-start;
+    justify-items: center;
     align-items: center;
-    padding: 0.5em;
+    gap: 0.2em;
     border-bottom: 1px solid #ddd;
+
+    p {
+        margin: 0;
+        padding: 0;
+        color: var(--error-color);
+    }
+
+    .profileImage {
+        position: relative;
+        border-radius: 50%;
+        max-height: 20px;
+        overflow: hidden;
+        margin: 0.5em;
+    }
 }
 
 .dropdownToggle {

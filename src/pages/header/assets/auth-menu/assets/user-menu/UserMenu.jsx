@@ -21,7 +21,7 @@ export const UserMenu = ({ avatar, onLogoutHandler, fullName }) => {
                     <li>
                         <div className={styles.dropdownMenuProfileThumb}>
                             <img src={avatar} className={styles.profileImage} alt={'avatar'} />
-                            <small>{fullName}</small>
+                            <p>{fullName}</p>
                         </div>
                     </li>
 
