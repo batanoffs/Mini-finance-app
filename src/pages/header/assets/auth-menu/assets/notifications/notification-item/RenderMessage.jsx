@@ -1,7 +1,13 @@
+import { useContext } from 'react';
+
+import { AuthContext } from '../../../../../../../contexts/AuthContext';
 import { NOTIFY } from '../constants';
 
-export const RenderMessage = ({ notification, ownerId, styles }) => {
-    
+import styles from './render-message.module.css';
+
+export const RenderMessage = ({ notification }) => {
+    const { auth } = useContext(AuthContext);
+
     // Define variables for notification data
     const senderName = notification.sender?.[0]?.fullName ?? 'Unknown';
     const receiverId = notification?.receiver?.[0]?.objectId ?? null;
@@ -39,7 +45,7 @@ export const RenderMessage = ({ notification, ownerId, styles }) => {
         </>
     );
 
-    if (event === NOTIFY.TYPE.frRequest && receiverId === ownerId && seen === false) {
+    if (event === NOTIFY.TYPE.frRequest && receiverId === auth.ownerId && seen === false) {
         return FriendAccept;
     }
 
