@@ -18,11 +18,12 @@ export const NotificationItem = ({
     // Destructure notification object
     const date = formatDate(notification.created);
     const event = notification.event_type;
-    const senderName = notification.sender?.[0]?.fullName ?? 'Unknown';
+    const senderName = notification.sender?.[0]?.fullName ?? null;
     const senderId = notification.sender?.[0]?.objectId ?? null;
     const sender = notification.sender?.[0];
     const notificationId = notification.objectId;
     const cashAmount = notification.amount;
+    const moneyReceiverName = notification.sender?.[0]?.fullName ?? null;
 
     // Check if notification requires confirmation in order to render the appropriate buttons
     const needToConfirm = event === NOTIFY.TYPE.frRequest || event === NOTIFY.TYPE.cashRequest;
@@ -31,7 +32,7 @@ export const NotificationItem = ({
     const onAcceptNotification = () => {
         // Check the event type and call the appropriate handler
         if (event === NOTIFY.TYPE.frRequest) return onFriendAccept(notificationId, sender);
-        if (event === NOTIFY.TYPE.cashRequest) return onCashApprove(notificationId, senderName, cashAmount);
+        if (event === NOTIFY.TYPE.cashRequest) return onCashApprove(notificationId, moneyReceiverName, cashAmount);
     };
 
     const onRejectNotification = () => {

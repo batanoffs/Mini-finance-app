@@ -11,6 +11,11 @@
         display: none;
     }
 
+    .btnGroup {
+        display: flex;
+        gap: 0.2em;
+    }
+
     .notificationContent {
         display: flex;
         justify-items: center;
@@ -55,8 +60,7 @@
         box-shadow: 0 0.3em 12px rgba(0, 0, 0, 0.2);
 
         .btnContainer {
-            display: flex;
-            gap: 0.2em;
+            display: block;
         }
 
         .date {
