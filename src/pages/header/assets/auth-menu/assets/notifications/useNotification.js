@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { dataService, notificationService, transactionService } from '../../../../../../services';
 import { AuthContext } from '../../../../../../contexts/AuthContext';
@@ -12,17 +12,12 @@ export const useNotification = ({ initialState }) => {
     const { token } = getUserToken();
     const showMessage = useMessage();
 
-    // Fetch notifications from the server with memoization
-    const fetchNotifications = useCallback(async () => {
+    // Fetch notifications on component mount
+    useEffect(() => {
         notificationService
             .getNotSeenNotifications(auth.ownerId, token)
             .then((result) => setNotifications(result))
             .catch((error) => console.log(error));
-    }, [auth.ownerId, token]);
-
-    // Fetch notifications on component mount
-    useEffect(() => {
-        fetchNotifications();
     }, []);
 
     // Handler to accept friend request
@@ -253,6 +248,15 @@ export const useNotification = ({ initialState }) => {
 
             // Check if status update was successful
             if (!statusUpdateRes) throw new Error('Failed to update notification status');
+
+            // Get all not seen notifications
+            const retrieveNotifications = await notificationService.getNotSeenNotifications(
+                auth.ownerId,
+                token
+            );
+
+            // Update the current notifications state
+            setNotifications(retrieveNotifications);
 
             // Show success message
             showMessage('success', 'Successfully deleted message');
