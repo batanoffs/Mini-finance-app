@@ -8,7 +8,7 @@ const updateBalance = async (ownerId, cardId, token) => {
         operations: [
             {
                 operationType: 'FIND',
-                table: 'MoneyTransactions',
+                table: 'cash-transactions',
                 opResultId: 'income',
                 payload: {
                     whereClause: `receiver = '${ownerId}'`,
@@ -17,7 +17,7 @@ const updateBalance = async (ownerId, cardId, token) => {
             },
             {
                 operationType: 'FIND',
-                table: 'MoneyTransactions',
+                table: 'cash-transactions',
                 opResultId: 'outcome',
                 payload: {
                     whereClause: `sender = '${ownerId}'`,
@@ -26,7 +26,7 @@ const updateBalance = async (ownerId, cardId, token) => {
             },
             {
                 operationType: 'UPDATE',
-                table: 'CardsMockData',
+                table: 'mock-cards',
                 opResultId: 'updateMoney',
                 payload: {
                     objectId: cardId,
@@ -52,18 +52,18 @@ const updateBalance = async (ownerId, cardId, token) => {
 
 const getAllTransactions = async (ownerId, token) => {
     const query = encodeURIComponent(`receiver='${ownerId}' OR sender='${ownerId}'`);
-    return await request.get(API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+    return await request.get(API.data.cashTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
 };
 
 const getReceivedTransactions = async (receiverId, token) => {
     const query = encodeURIComponent(`receiver='${receiverId}'`);
-    return await request.get(API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+    return await request.get(API.data.cashTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
 };
 
 const getSentTransactions = async (senderId, token) => {
     const query = encodeURIComponent(`sender='${senderId}'`);
     return await request.get(
-        API.data.moneyTransactions + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.cashTransactions + `?loadRelations&relationsDepth=1&where=${query}`,
         token
     );
 };
@@ -74,7 +74,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
         operations: [
             {
                 operationType: 'FIND',
-                table: 'UserData',
+                table: 'user-data',
                 opResultId: 'findReceiver',
                 payload: {
                     whereClause: `fullName = '${fullName}'`,
@@ -82,7 +82,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'CREATE',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'newEntry',
                 payload: {
                     event_type: 'money request',
@@ -91,7 +91,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'notificationReceiver',
                 payload: {
                     parentObject: {
@@ -105,7 +105,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'notificationSender',
                 payload: {
                     parentObject: {
@@ -132,7 +132,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
         operations: [
             {
                 operationType: 'FIND',
-                table: 'UserData',
+                table: 'user-data',
                 opResultId: 'findReceiver',
                 payload: {
                     //TODO better search by id 
@@ -141,7 +141,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'CREATE',
-                table: 'MoneyTransactions',
+                table: 'cash-transactions',
                 opResultId: 'newEntry',
                 payload: {
                     amount: amount,
@@ -149,7 +149,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'MoneyTransactions',
+                table: 'cash-transactions',
                 opResultId: 'moneyReceiver',
                 payload: {
                     parentObject: {
@@ -166,7 +166,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'MoneyTransactions',
+                table: 'cash-transactions',
                 opResultId: 'moneySender',
                 payload: {
                     parentObject: {
@@ -191,7 +191,7 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
         operations: [
             {
                 operationType: 'FIND',
-                table: 'UserData',
+                table: 'user-data',
                 opResultId: 'findReceiver',
                 payload: {
                     whereClause: `fullName = '${fullName}'`,
@@ -199,7 +199,7 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'CREATE',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'notifyEntry',
                 payload: {
                     event_type: 'money received',
@@ -208,7 +208,7 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'notificationReceiver',
                 payload: {
                     parentObject: {
@@ -225,7 +225,7 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'notificationSender',
                 payload: {
                     parentObject: {

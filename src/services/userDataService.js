@@ -72,7 +72,7 @@ const downloadFile = async (fileName, path) => {
 };
 
 const addTransactions = async (data) => {
-    return await request.post(API.data.transactions, data);
+    return await request.post(API.data.apiTransaction, data);
 };
 
 const getUser = async (ownerId) => {

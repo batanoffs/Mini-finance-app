@@ -4,7 +4,7 @@ import { API } from '../constants/apiKeys';
 const updateNotificationStatus = async (notificationId, status, isSeen, token) => {
     const body = { status: `${status}`, seen: isSeen };
 
-    return await request.put(API.data.userNotifications + `/${notificationId}`, body, token);
+    return await request.put(API.data.notifications + `/${notificationId}`, body, token);
 };
 
 const getMoneyRequestNotifications = async (senderId, token) => {
@@ -12,7 +12,7 @@ const getMoneyRequestNotifications = async (senderId, token) => {
         `event_type='money request' and status!='accepted' AND sender='${senderId}'`
     );
     return await request.get(
-        API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.notifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
     );
 };
@@ -20,7 +20,7 @@ const getMoneyRequestNotifications = async (senderId, token) => {
 const updateRelation = async (parentObjectId, relationName, id, token) => {
     const body = [id];
     return await request.put(
-        API.data.userNotifications + `/${parentObjectId}/${relationName}`,
+        API.data.notifications + `/${parentObjectId}/${relationName}`,
         body,
         token
     );
@@ -28,25 +28,25 @@ const updateRelation = async (parentObjectId, relationName, id, token) => {
 
 const updateSeenStatus = async (objectId, seenState, token) => {
     const body = { seen: seenState };
-    return await request.put(API.data.userNotifications + '/' + objectId, body, token);
+    return await request.put(API.data.notifications + '/' + objectId, body, token);
 };
 
 const getNotSeenNotifications = async (id, token) => {
     const query = encodeURIComponent(`receiver.ownerId='${id}' and seen='false'`);
     return await request.get(
-        API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.notifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
     );
 };
 
 const deleteNotification = async (objectId) => {
-    return await request.del(API.data.userNotifications + '/' + objectId);
+    return await request.del(API.data.notifications + '/' + objectId);
 };
 
 const getAllFriendRequests = async (token) => {
     const query = encodeURIComponent(`event_type='friend request'`);
     return await request.get(
-        API.data.userNotifications + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.notifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
     );
 };
@@ -57,7 +57,7 @@ const createNotification = async (receiverId, event_type, currentUserId, token) 
         operations: [
             {
                 operationType: 'FIND',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'check',
                 payload: {
                     whereClause: `event_type = '${event_type}' and receiver = '${receiverId}' and sender = '${currentUserId}'`,
@@ -65,7 +65,7 @@ const createNotification = async (receiverId, event_type, currentUserId, token) 
             },
             {
                 operationType: 'CREATE',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'newEntry',
                 payload: {
                     event_type: event_type,
@@ -73,7 +73,7 @@ const createNotification = async (receiverId, event_type, currentUserId, token) 
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'setReceiver',
                 payload: {
                     parentObject: {
@@ -91,7 +91,7 @@ const createNotification = async (receiverId, event_type, currentUserId, token) 
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'UserNotifications',
+                table: 'notifications',
                 opResultId: 'setSender',
                 payload: {
                     parentObject: {
@@ -106,7 +106,7 @@ const createNotification = async (receiverId, event_type, currentUserId, token) 
         ],
     };
 
-    return await request.post(API.data.userNotifications, body, null, token);
+    return await request.post(API.data.notifications, body, null, token);
 };
 
 export const notificationService = {
