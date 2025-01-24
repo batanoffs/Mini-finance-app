@@ -15,7 +15,7 @@ const setUserData = async (userData) => {
     return await request.post(API.data.userData, userData);
 };
 
-const getAttribute = async (attribute, value) => {
+const getUserDataByAttribute = async (attribute, value) => {
     const query = encodeURIComponent(`${attribute}='${value}'`);
     return await request.get(API.data.userData + `?where=${query}`);
 };
@@ -87,7 +87,7 @@ export const dataService = {
     getRelation,
     setRelation,
     removeRelation,
-    getAttribute,
+    getUserDataByAttribute,
     changeAttribute,
     addTransactions,
     getAllFriends,
