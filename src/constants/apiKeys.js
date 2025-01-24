@@ -6,11 +6,12 @@ const REST_API_KEY = import.meta.env.VITE_APP_REST_API_KEY;
 
 export const API = {
     data: {
-        transactions: BASE_URL + '/data/transaction/unit-of-work',
-        moneyTransactions: BASE_URL + '/data/MoneyTransactions',
-        cardsMockData: BASE_URL + '/data/CardsMockData',
-        userData: BASE_URL + '/data/UserData',
-        userNotifications: BASE_URL + '/data/UserNotifications',
+        apiTransaction: BASE_URL + '/data/transaction/unit-of-work',
+        cashTransactions: BASE_URL + '/data/cash-transactions',
+        cardsMockData: BASE_URL + '/data/mock-cards',
+        friendRequests: BASE_URL + '/data/friend-requests',
+        userData: BASE_URL + '/data/user-data',
+        notifications: BASE_URL + '/data/notifications',
     },
     users: {
         login: BASE_URL + '/users/login',
@@ -19,7 +20,7 @@ export const API = {
         restorePassword: BASE_URL + '/users/restorepassword/',
     },
     files: {
-        userData: BASE_URL + '/files/app/UserData',
+        userData: BASE_URL + '/files/app/user-data',
         download: FILE_BASE_URL + APPLICATION_ID + REST_API_KEY + '/files/',
     },
     transaction: {
@@ -32,18 +33,3 @@ export const API = {
     // ToDo implement AuthO hidden password thirds API
     // authO: '/users/oauth/<providerCode>/request_url'
 };
-
-// LOGIN: BASE_URL + '/users/login',
-// LOGOUT: BASE_URL + '/users/logout',
-// REGISTER: BASE_URL + '/users/register',
-// RESET_PASSWORD: (email) => BASE_URL + '/users/restorepassword/' + email,
-// USERS: BASE_URL + '/data/UserData',
-// NOTIFICATIONS: BASE_URL + '/data/UserNotifications',
-// MOCK_CREDIT_CARDS: BASE_URL + '/data/CardsMockData',
-// MONEY: BASE_URL + '/data/MoneyTransactions',
-// TRANSACTION: BASE_URL + '/transaction/unit-of-work',
-// DATA_TRANSACTION: BASE_URL + '/data/transaction/unit-of-work',
-// FILES: {
-//     USER: BASE_URL + '/files/app/UserData',
-//     DOWNLOAD: FILE_BASE_URL + APPLICATION_ID + REST_API_KEY + '/files/',
-// },
