@@ -51,24 +51,16 @@ const getAllFriendRequests = async (token) => {
     );
 };
 
-const createNotification = async (phone, receiver, event, currentUserId, token) => {
+const createNotification = async (receiverId, event_type, currentUserId, token) => {
     const body = {
         isolationLevelEnum: 'READ_COMMITTED',
         operations: [
             {
                 operationType: 'FIND',
-                table: 'UserData',
-                opResultId: 'findReceiver',
-                payload: {
-                    whereClause: phone ? `phoneNumber = '${phone}'` : `objectId = '${receiver}'`,
-                },
-            },
-            {
-                operationType: 'FIND',
                 table: 'UserNotifications',
                 opResultId: 'check',
                 payload: {
-                    whereClause: `event_type = '${event}' and receiver = 'findReceiver.result[0]' and sender = '${receiver}'`,
+                    whereClause: `event_type = '${event_type}' and receiver = '${receiverId}' and sender = '${currentUserId}'`,
                 },
             },
             {
@@ -76,7 +68,7 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
                 table: 'UserNotifications',
                 opResultId: 'newEntry',
                 payload: {
-                    event_type: event,
+                    event_type: event_type,
                 },
             },
             {
@@ -90,10 +82,11 @@ const createNotification = async (phone, receiver, event, currentUserId, token) 
                         propName: 'objectId',
                     },
                     relationColumn: 'receiver',
-                    unconditional: {
-                        ___ref: true,
-                        opResultId: 'findReceiver',
-                    },
+                    unconditional: [receiverId],
+                    // unconditional: {
+                    //     ___ref: true,
+                    //     opResultId: 'findReceiver',
+                    // },
                 },
             },
             {
