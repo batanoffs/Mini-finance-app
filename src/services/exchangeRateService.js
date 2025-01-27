@@ -1,11 +1,19 @@
 import { API } from '../constants/apiKeys';
 
 export const getSpecificRate = async (from, to) => {
-    return await fetch(API.rates.pair + `/${from}/${to}`);
+    try {
+        return await fetch(API.rates.pair + `/${from}/${to}`);
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const getLatest = async (currencyCode) => {
-    return await fetch(API.rates.latest + currencyCode);
+    try {
+        return await fetch(API.rates.latest + currencyCode);
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const exchangeRateService = {
