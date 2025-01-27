@@ -2,7 +2,7 @@ import * as request from '../utils/requester';
 import { API } from '../constants/apiKeys';
 
 const updateNotificationStatus = async (notificationId, status, isSeen, token) => {
-    const body = { status: `${status}`, seen: isSeen };
+    const body = { status: `${status}`, is_seen: isSeen };
 
     return await request.put(API.data.notifications + `/${notificationId}`, body, token);
 };
@@ -27,12 +27,12 @@ const updateRelation = async (parentObjectId, relationName, id, token) => {
 };
 
 const updateSeenStatus = async (objectId, seenState, token) => {
-    const body = { seen: seenState };
+    const body = { is_seen: seenState };
     return await request.put(API.data.notifications + '/' + objectId, body, token);
 };
 
 const getNotSeenNotifications = async (id, token) => {
-    const query = encodeURIComponent(`receiver.ownerId='${id}' and seen='false'`);
+    const query = encodeURIComponent(`receiver.ownerId='${id}' and is_seen='false'`);
     return await request.get(
         API.data.notifications + `?loadRelations&relationsDepth=1&where=${query}`,
         token
