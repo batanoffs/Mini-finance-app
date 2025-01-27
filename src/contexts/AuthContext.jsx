@@ -2,7 +2,7 @@ import { useContext, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { clearUserData, getUserToken } from '../utils';
-import { INITIAL_AUTH } from '../constants';
+import { INITIAL_AUTH } from './constants';
 import { useSessionStorage } from '../hooks';
 import { authService } from '../services';
 
