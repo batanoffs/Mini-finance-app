@@ -28,11 +28,15 @@ export const useLogin = () => {
 
             sessionStorage.setItem('token', token);
 
-            const ownerId = response['ownerId'];
+            const userId = response['ownerId'];
 
-            if (!ownerId) throw new Error('No ownerId found in response');
+            if (!userId) throw new Error('No id found in response');
 
-            const userDataResponse = await dataService.getUserData(ownerId);
+            const userDataResponse = await dataService.getUserDataByAttribute('ownerId', userId, [
+                'virtualCard',
+                'friends',
+                'favorite_friends',
+            ]);
 
             if (userDataResponse === null || userDataResponse.length === 0)
                 throw new Error('No user found with those credentials');
