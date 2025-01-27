@@ -3,8 +3,9 @@ import * as request from '../utils/requester';
 
 const generateCard = async (id) => {
     try {
-        const query = encodeURIComponent(`cards_mock_data_id=${id}`);
-        const response = await request.get(API.data.cardsMockData + `?where=${query}`);
+        const response = await Backendless.Data.of('mock-cards').find({
+            where: `cards_mock_data_id='${id}'`,
+        });
 
         if (!response || response.length === 0) {
             throw new Error('Card not found');
@@ -28,29 +29,79 @@ const generateCard = async (id) => {
             number: Number(card.number),
             objectId: card.objectId,
         };
+
+        // const query = encodeURIComponent(`cards_mock_data_id=${id}`);
+        // const response = await request.get(API.data.cardsMockData + `?where=${query}`);
+
+        // if (!response || response.length === 0) {
+        //     throw new Error('Card not found');
+        // }
+
+        // const card = response[0];
+        // if (!card || !card.expiration) {
+        //     throw new Error('Invalid card data');
+        // }
+
+        // const date = card.expiration.split('/');
+        // date.shift();
+
+        // return {
+        //     id: id,
+        //     balance: card.balance,
+        //     brand: card.brand,
+        //     cvv: Number(card.cvv),
+        //     expiration: date.join('/'),
+        //     issuer: card.issuer,
+        //     number: Number(card.number),
+        //     objectId: card.objectId,
+        // };
     } catch (error) {
-        console.error('Error generating card:', error);
         throw error;
     }
 };
 
 const getCard = async (id) => {
-    const query = encodeURIComponent(`cards_mock_data_id='${id}'`);
-    return await request.get(API.data.cardsMockData + `?where=${query}`);
+    // const query = encodeURIComponent(`cards_mock_data_id='${id}'`);
+    // return await request.get(API.data.cardsMockData + `?where=${query}`);
+    try {
+        return await Backendless.Data.of('mock-cards').find({
+            where: `cards_mock_data_id='${id}'`,
+        });
+    } catch (error) {
+        throw error;
+    }
 };
 
 const topUp = async (objectId, value, token) => {
-    const data = { top_up: value };
-    return await request.put(API.data.cardsMockData + `/${objectId}`, data, token);
+    // const data = { top_up: value };
+    // return await request.put(API.data.cardsMockData + `/${objectId}`, data, token);
+    try {
+        return await Backendless.Data.of('mock-cards').save({ objectId, top_up: value }, token);
+    } catch (error) {
+        throw error;
+    }
 };
 
 const getVirtualCardIds = async () => {
-    const query = encodeURIComponent(`property=cardId`);
-    return await request.get(API.data.userData + `?${query}`);
+    // const query = encodeURIComponent(`property=cardId`);
+    // return await request.get(API.data.userData + `?${query}`);
+    try {
+        return await Backendless.Data.of('user-data').find({ properties: 'cardId' });
+    } catch (error) {
+        throw error;
+    }
 };
 
 const setVirtualCardRelation = async (parentObjectId, body) => {
-    return await request.put(API.data.userData + `/${parentObjectId}/virtualCard`, body);
+    // return await request.put(API.data.userData + `/${parentObjectId}/virtualCard`, body);
+    try {
+        return await Backendless.Data.of('user-data').save({
+            objectId: parentObjectId,
+            virtualCard: body,
+        });
+    } catch (error) {
+        throw error;
+    }
 };
 
 const assignNewCardId = async () => {
@@ -72,7 +123,7 @@ const assignNewCardId = async () => {
 
         return newCardId;
     } catch (error) {
-        return error;
+        throw error;
     }
 };
 
