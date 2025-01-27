@@ -14,7 +14,7 @@ export const useFriends = () => {
 
     // Fetch current user's friends
     const fetchFriends = useCallback(async () => {
-        const userData = await dataService.getUserData(auth.ownerId, ['friends']);
+        const userData = await dataService.getUserData(auth.objectId, ['friends']);
         setFriends(userData[0].friends);
     }, [auth.ownerId]);
 
@@ -38,8 +38,12 @@ export const useFriends = () => {
                 const receiverId = request.receiver[0].objectId;
                 const senderId = request.sender[0].objectId;
                 return (
-                    (request.receiver?.length && receiverId === friendId && senderId === auth.objectId) ||
-                    (request.receiver?.length && receiverId === auth.objectId && senderId === friendId)
+                    (request.receiver?.length &&
+                        receiverId === friendId &&
+                        senderId === auth.objectId) ||
+                    (request.receiver?.length &&
+                        receiverId === auth.objectId &&
+                        senderId === friendId)
                 );
             });
 
@@ -47,10 +51,10 @@ export const useFriends = () => {
             await notificationService.deleteNotification(checkNotification[0].objectId);
 
             // Remove the friend from the user's friend list
-            await dataService.removeRelation(auth.objectId, 'friends', friendId, token);
+            await dataService.removeRelation(auth.objectId, 'friends', [friendId]);
 
             // Remove the user from the friend's friend list
-            await dataService.removeRelation(friendId, 'friends', auth.objectId, token);
+            await dataService.removeRelation(friendId, 'friends', [auth.objectId]);
 
             // Update the user's friend list
             const filterFriends = auth.friends.filter((friend) => friend.objectId !== friendId);
