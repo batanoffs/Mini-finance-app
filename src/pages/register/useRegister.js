@@ -58,7 +58,7 @@ export const useRegister = () => {
             navigate('/login');
             showMessage('success', 'Successful registration');
         } catch (error) {
-            console.log(error);
+            console.log(error.message || error);
             showMessage('error', 'Unsuccessful registration');
         }
     };
