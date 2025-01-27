@@ -6,8 +6,7 @@ const REST_API_KEY = import.meta.env.VITE_APP_REST_API_KEY;
 
 export const API = {
     data: {
-        apiTransaction: BASE_URL + '/data/transaction/unit-of-work',
-        cashTransactions: BASE_URL + '/data/cash-transactions',
+        transactions: BASE_URL + '/data/transactions',
         cardsMockData: BASE_URL + '/data/mock-cards',
         friendRequests: BASE_URL + '/data/friend-requests',
         userData: BASE_URL + '/data/user-data',
@@ -23,9 +22,7 @@ export const API = {
         userData: BASE_URL + '/files/app/user-data',
         download: FILE_BASE_URL + APPLICATION_ID + REST_API_KEY + '/files/',
     },
-    transaction: {
-        unit_of_work: BASE_URL + '/transaction/unit-of-work',
-    },
+    transaction: BASE_URL + '/transaction/unit-of-work',
     rates: {
         pair: EXCHANGE_RATE_BASE_URL + '/pair/',
         latest: EXCHANGE_RATE_BASE_URL + '/latest/',

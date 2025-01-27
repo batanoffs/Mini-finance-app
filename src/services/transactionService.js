@@ -8,7 +8,7 @@ const updateBalance = async (ownerId, cardId, token) => {
         operations: [
             {
                 operationType: 'FIND',
-                table: 'cash-transactions',
+                table: 'transactions',
                 opResultId: 'income',
                 payload: {
                     whereClause: `receiver = '${ownerId}'`,
@@ -17,7 +17,7 @@ const updateBalance = async (ownerId, cardId, token) => {
             },
             {
                 operationType: 'FIND',
-                table: 'cash-transactions',
+                table: 'transactions',
                 opResultId: 'outcome',
                 payload: {
                     whereClause: `sender = '${ownerId}'`,
@@ -47,23 +47,23 @@ const updateBalance = async (ownerId, cardId, token) => {
         ],
     };
 
-    return await request.post(API.transaction.unit_of_work, body, null, token);
+    return await request.post(API.transaction, body, null, token);
 };
 
 const getAllTransactions = async (ownerId, token) => {
     const query = encodeURIComponent(`receiver='${ownerId}' OR sender='${ownerId}'`);
-    return await request.get(API.data.cashTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+    return await request.get(API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
 };
 
 const getReceivedTransactions = async (receiverId, token) => {
     const query = encodeURIComponent(`receiver='${receiverId}'`);
-    return await request.get(API.data.cashTransactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+    return await request.get(API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
 };
 
 const getSentTransactions = async (senderId, token) => {
     const query = encodeURIComponent(`sender='${senderId}'`);
     return await request.get(
-        API.data.cashTransactions + `?loadRelations&relationsDepth=1&where=${query}`,
+        API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`,
         token
     );
 };
@@ -122,7 +122,7 @@ const requestNotify = async (fullName, amount, sender, token) => {
             },
         ],
     };
-    return await request.post(API.transaction.unit_of_work, body, null, token);
+    return await request.post(API.transaction, body, null, token);
 };
 
 // Send Money
@@ -141,7 +141,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'CREATE',
-                table: 'cash-transactions',
+                table: 'transactions',
                 opResultId: 'newEntry',
                 payload: {
                     amount: amount,
@@ -149,7 +149,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'cash-transactions',
+                table: 'transactions',
                 opResultId: 'moneyReceiver',
                 payload: {
                     parentObject: {
@@ -166,7 +166,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
             },
             {
                 operationType: 'ADD_RELATION',
-                table: 'cash-transactions',
+                table: 'transactions',
                 opResultId: 'moneySender',
                 payload: {
                     parentObject: {
@@ -181,7 +181,7 @@ const sendMoney = async (fullName, amount, sender, token) => {
         ],
     };
 
-    return await request.post(API.transaction.unit_of_work, body, null, token);
+    return await request.post(API.transaction, body, null, token);
 };
 
 // Notify
@@ -239,7 +239,7 @@ const notifyMoneyReceived = async (fullName, amount, sender, token) => {
             },
         ],
     };
-    return await request.post(API.transaction.unit_of_work, body, null, token);
+    return await request.post(API.transaction, body, null, token);
 };
 
 export const transactionService = {
