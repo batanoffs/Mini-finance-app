@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { AuthContext } from '../../../contexts/AuthContext'
-import { useUploadImage } from '../../../hooks/useUploadImage'
+import { useUploadImage } from './useUploadImage'
 
 import styles from './upload.module.css'
 

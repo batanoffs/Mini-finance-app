@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react'
 
-import { AuthContext } from '../contexts/AuthContext'
-import { dataService } from '../services'
-import { MAX_FILE_SIZE } from '../constants'
-import { getUserToken } from '../utils'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { dataService } from '../../../services'
+import { MAX_FILE_SIZE } from './constants'
+import { getUserToken } from '../../../utils'
+import { fileService } from './fileService'
 
 export const useUploadImage = () => {
     const [error, setError] = useState(null)
@@ -30,7 +31,7 @@ export const useUploadImage = () => {
         setError(null)
 
         const fineName = file.name.split('.')[0]
-        const response = await dataService.uploadProfilePicture(fineName, auth.ownerId, file, token)
+        const response = await fileService.uploadProfilePicture(fineName, auth.ownerId, file, token)
 
         const data = {
             avatar: response.fileURL,
