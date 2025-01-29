@@ -12,8 +12,18 @@
 import styles from './suggestion-item.module.css'
 
 export const SuggestionItem = ({ suggestion, isActive, onClick }) => (
-    <li className={isActive ? styles.active : ''} onClick={onClick} name="friends">
-        <img className={styles.avatar} src={suggestion.avatar} alt={suggestion.name} />
-        <p>{suggestion.name}</p>
+    <li 
+        className={`${styles.suggestionItem} ${isActive ? styles.active : ''}`}
+        onClick={onClick}
+    >
+        {suggestion.avatar && (
+            <img 
+                className={styles.avatar} 
+                src={suggestion.avatar} 
+                alt=""
+                onError={(e) => e.target.style.display = 'none'} 
+            />
+        )}
+        <p className={styles.name}>{suggestion.name}</p>
     </li>
-)
+);
