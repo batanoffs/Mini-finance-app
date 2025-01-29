@@ -1,5 +1,5 @@
-import * as request from '../utils/requester';
-import { API } from '../constants/apiKeys';
+// import * as request from '../utils/requester';
+// import { API } from '../constants/apiKeys';
 
 const getUserData = async (
     parentObjectId,
@@ -134,19 +134,23 @@ const setRelation = async (parentObjectId, relationColumnName, children) => {
     }
 };
 
-const removeRelation = async (parentObjectId, relationName, childrenArrayIds) => {
-    // return await request.del(
-    //     API.data.userData + `/${parentObjectId}/${relationName}`,
-    //     [friendId],
-    //     null,
-    //     token
-    // );
+const removeFriend = async (currentUserId, friendId, token) => {
     try {
-        return await Backendless.Data.of('user-data').deleteRelation(parentObjectId, relationName, [
-            childrenArrayIds,
-        ]);
+        // Beginning of the transaction
+        const unitOfWork = new Backendless.UnitOfWork();
+
+        // unitOfWork.deleteRelation(parentTableName, personObjectId, relationColumnName, giftIds);
+        
+        // Remove the relation from the user
+        unitOfWork.deleteRelation('user-data', currentUserId, 'friends', [friendId]);
+
+        // Remove the relation from the friend
+        unitOfWork.deleteRelation('user-data', friendId, 'friends', [currentUserId]);
+
+        // End of the transaction
+        return unitOfWork.execute(token);
     } catch (error) {
-        throw error;
+        throw new Error(error);
     }
 };
 
@@ -156,7 +160,7 @@ export const dataService = {
     getMockCardObjectId,
     getRelation,
     setRelation,
-    removeRelation,
+    removeFriend,
     getUserDataByAttribute,
     changeAttribute,
     getAllFriends,
