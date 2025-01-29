@@ -1,8 +1,6 @@
 import { Empty } from 'antd';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PropTypes from 'prop-types';
-
 import { FormInput } from '../../../../components/inputs';
 import { FriendItem } from './FriendItem';
 import { useFriends } from './useFriend';
@@ -46,19 +44,4 @@ export const Friends = () => {
             </ul>
         </div>
     );
-};
-
-Friends.propTypes = {
-    friends: PropTypes.arrayOf(
-        PropTypes.shape({
-            objectId: PropTypes.string.isRequired,
-            fullName: PropTypes.string.isRequired,
-            avatar: PropTypes.string,
-            country: PropTypes.string,
-            phoneNumber: PropTypes.string
-        })
-    ),
-    search: PropTypes.string,
-    onSearch: PropTypes.func.isRequired,
-    onRemoveFriend: PropTypes.func.isRequired
 };
