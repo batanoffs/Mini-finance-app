@@ -78,7 +78,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
             let response;
 
             if (type === 'request') {
-                response = await transactionService.requestNotify(
+                response = await transactionService.request(
                     fullName,
                     Number(amount),
                     auth.objectId,
@@ -87,7 +87,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
             }
 
             if (type === 'send') {
-                response = await transactionService.sendMoney(
+                response = await transactionService.send(
                     fullName,
                     receiverId,
                     Number(amount),
