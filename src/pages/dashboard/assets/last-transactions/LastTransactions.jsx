@@ -10,8 +10,24 @@ import { useTransactions } from '../../../../hooks';
 import styles from './last-transactions.module.css';
 
 export const LastTransactions = () => {
-    const { transactions, isLoading, error } = useTransactions('verified');
+    const { transactions, isLoading, error } = useTransactions();
     const { auth } = useContext(AuthContext);
+
+    if (isLoading) {
+        return (
+            <EmptyCard title="Last Transactions" color="primary">
+                <Empty style={styles.empty} description="Loading..." />
+            </EmptyCard>
+        );
+    }
+
+    if (error) {
+        return (
+            <EmptyCard title="Last Transactions" color="primary">
+                <Empty style={styles.empty} description={error} />
+            </EmptyCard>
+        );
+    }
 
     // Handle empty/invalid cases first
     if (!transactions || !Array.isArray(transactions) || transactions.length === 0) {
@@ -21,11 +37,6 @@ export const LastTransactions = () => {
             </EmptyCard>
         );
     }
-
-    // Sort by date and take the latest 10
-    const sortedByDate = transactions
-        .sort((a, b) => new Date(b.created) - new Date(a.created))
-        .slice(0, 10);
 
     return (
         <EmptyCard
@@ -40,7 +51,7 @@ export const LastTransactions = () => {
             }}
         >
             <ul>
-                {sortedByDate.map((entry) => {
+                {transactions?.slice(0, 10).map((entry) => {
                     const isIncoming = entry.receiver[0].objectId === auth.objectId;
 
                     return (
