@@ -32,7 +32,12 @@ export const AddFriends = () => {
                     required
                 />
 
-                <FormInput type="submit" className={styles.customBtn} value="Add" />
+                <FormInput
+                    type="submit"
+                    className={styles.customBtn}
+                    value="Add"
+                    sx={{ marginBottom: '0' }}
+                />
             </form>
         </EmptyCard>
     );
