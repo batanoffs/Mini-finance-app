@@ -1,63 +1,62 @@
 import * as request from '../utils/requester';
 import { API } from '../constants/apiKeys';
 
-//TODO FIX TYPOS in the transactions resultID
-const updateBalance = async (ownerId, cardId, token) => {
-    const body = {
-        isolationLevelEnum: 'READ_COMMITTED',
-        operations: [
-            {
-                operationType: 'FIND',
-                table: 'transactions',
-                opResultId: 'income',
-                payload: {
-                    whereClause: `receiver = '${ownerId}'`,
-                    properties: ['Sum(amount)'],
-                },
-            },
-            {
-                operationType: 'FIND',
-                table: 'transactions',
-                opResultId: 'outcome',
-                payload: {
-                    whereClause: `sender = '${ownerId}'`,
-                    properties: ['Sum(amount)'],
-                },
-            },
-            {
-                operationType: 'UPDATE',
-                table: 'mock-cards',
-                opResultId: 'updateMoney',
-                payload: {
-                    objectId: cardId,
-                    income: {
-                        ___ref: true,
-                        opResultId: 'income',
-                        resultIndex: 0,
-                        propName: 'sum',
-                    },
-                    outcome: {
-                        ___ref: true,
-                        opResultId: 'outcome',
-                        resultIndex: 0,
-                        propName: 'sum',
-                    },
-                },
-            },
-        ],
-    };
+const updateBalance = async (objectId, cardId, token) => {
+    try {
+        const unitOfWork = new Backendless.UnitOfWork();
 
-    return await request.post(API.transaction, body, null, token);
+        // Get the virtual card
+        const cardQuery = Backendless.DataQueryBuilder.create();
+        cardQuery.setWhereClause(`objectId = '${cardId}'`);
+        const findCard = unitOfWork.find('mock-cards', cardQuery);
+
+        // Create a query builder
+        const incomeQuery = Backendless.DataQueryBuilder.create(token);
+        // Set the where clause
+        incomeQuery
+            .setWhereClause(`receiver = '${objectId}'`)
+            .setProperties(['Sum(amount) as total']);
+        // Find transaction sum for income
+        const findIncome = unitOfWork.find('transactions', incomeQuery);
+
+        // Create a query builder
+        const outcomeQuery = Backendless.DataQueryBuilder.create(token);
+        // Set the where clause
+        outcomeQuery
+            .setWhereClause(`sender = '${objectId}'`)
+            .setProperties(['Sum(amount) as total']);
+        // Find transaction sum for outcome
+        const findOutcome = unitOfWork.find('transactions', outcomeQuery);
+
+        // Define the changes
+        const changes = {
+            income: findIncome.resolveTo(0, 'total'),
+            outcome: findOutcome.resolveTo(0, 'total'),
+        };
+        // Update the card balance
+        unitOfWork.update(findCard.resolveTo(0), changes).setOpResultId('updateBalance');
+
+        // End of the transaction
+        return unitOfWork.execute(token);
+    } catch (error) {
+        return error;
+    }
 };
 
 const getAllTransactions = async (ownerId, token) => {
     const query = encodeURIComponent(`receiver='${ownerId}' OR sender='${ownerId}'`);
-    return await request.get(API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+    return await request.get(
+        API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`,
+        token
+    );
 };
 
 const getReceivedTransactions = async (receiverId, token) => {
     const query = encodeURIComponent(`receiver='${receiverId}'`);
-    return await request.get(API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`, token);
+    return await request.get(
+        API.data.transactions + `?loadRelations&relationsDepth=1&where=${query}`,
+        token
+    );
 };
 
 const getSentTransactions = async (senderId, token) => {
@@ -125,63 +124,36 @@ const requestNotify = async (fullName, amount, sender, token) => {
     return await request.post(API.transaction, body, null, token);
 };
 
-// Send Money
-const sendMoney = async (fullName, amount, sender, token) => {
-    const body = {
-        isolationLevelEnum: 'READ_COMMITTED',
-        operations: [
-            {
-                operationType: 'FIND',
-                table: 'user-data',
-                opResultId: 'findReceiver',
-                payload: {
-                    //TODO better search by id 
-                    whereClause: `fullName = '${fullName}'`,
-                },
-            },
-            {
-                operationType: 'CREATE',
-                table: 'transactions',
-                opResultId: 'newEntry',
-                payload: {
-                    amount: amount,
-                },
-            },
-            {
-                operationType: 'ADD_RELATION',
-                table: 'transactions',
-                opResultId: 'moneyReceiver',
-                payload: {
-                    parentObject: {
-                        ___ref: true,
-                        opResultId: 'newEntry',
-                        propName: 'objectId',
-                    },
-                    relationColumn: 'receiver',
-                    unconditional: {
-                        ___ref: true,
-                        opResultId: 'findReceiver',
-                    },
-                },
-            },
-            {
-                operationType: 'ADD_RELATION',
-                table: 'transactions',
-                opResultId: 'moneySender',
-                payload: {
-                    parentObject: {
-                        ___ref: true,
-                        opResultId: 'newEntry',
-                        propName: 'objectId',
-                    },
-                    relationColumn: 'sender',
-                    unconditional: [sender],
-                },
-            },
-        ],
-    };
+// Send Money can be improved when we pass id instead of fullName
+const sendMoney = async (fullName, receiverId, amount, senderId, token) => {
+    const message = fullName + ' sent you ' + amount + ' BNG.';
 
-    return await request.post(API.transaction, body, null, token);
+    try {
+        const unitOfWork = new Backendless.UnitOfWork();
+
+        // Create a new transaction
+        const newTransaction = unitOfWork.create('transactions', { amount });
+
+        // Set the relation with the receiver
+        unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
+
+        // Set the relation with the sender
+        unitOfWork.setRelation(newTransaction, 'sender', [senderId]);
+
+        // Create a notification
+        const notification = unitOfWork.create('notifications', {
+            message: message,
+            type: 'transaction',
+        });
+
+        // Set the relation with the receiver
+        unitOfWork.setRelation(notification, 'userId', [receiverId]);
+
+        // End of the transaction
+        return unitOfWork.execute(token);
+    } catch (error) {
+        return new Error(error);
+    }
 };
 
 // Notify
