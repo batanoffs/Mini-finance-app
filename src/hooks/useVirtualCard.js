@@ -12,19 +12,19 @@ export const useVirtualCard = () => {
     // Fetch the card balance
     const fetchBalance = useCallback(() => {
         transactionService
-            .updateBalance(auth.objectId, card.objectId, token)
+            .calcBalance(auth.objectId, card.objectId, token)
             .then((response) => {
                 // Check error
                 if (!response.success)
                     throw new Error(response.message || 'Error during fetch card balance');
 
                 // Update the card balance and auth context
-                setCard({ ...card, balance: response.results.updateBalance.result.balance });
+                setCard({ ...card, balance: response.results.balanceResult.result.balance });
                 setAuth({
                     ...auth,
                     virtualCard: {
                         ...card,
-                        balance: response.results.updateBalance.result.balance,
+                        balance: response.results.balanceResult.result.balance,
                     },
                 });
             })
