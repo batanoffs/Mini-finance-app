@@ -8,7 +8,6 @@
 
 .searchForm {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     gap: 0.5em;
     align-items: center;

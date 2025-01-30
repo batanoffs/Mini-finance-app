@@ -4,13 +4,21 @@ import { BentoGrid } from '../../layout';
 import { AddFriends } from '../dashboard/assets';
 
 import styles from './help-center.module.css';
+import { useMessage } from '../../hooks';
 
 export const HelpCenter = () => {
+    const message = useMessage();
+    
+    const onSearchHandler = (e) => {
+        e.preventDefault();
+        message('info', 'Search not implemented yet!');
+    };
+
     return (
         <>
             <BentoGrid.Fill>
                 <div className={styles.customBlock}>
-                    <form action="#" method="post">
+                    <form onSubmit={onSearchHandler}>
                         <header style={{ marginBottom: `0.5em` }}>
                             <h5>How can we help you?</h5>
                         </header>
@@ -19,13 +27,20 @@ export const HelpCenter = () => {
                                 type="text"
                                 name="search"
                                 id="search"
-                                label="Search by topic:"
-                                sx={{ marginBottom: `0` }}
-                                placeholder="Search"
+                                placeholder="Type your question here"
+                                sx={{ flex: '2' }}
                                 aria-label="Search"
                             />
 
-                            <FormInput type="submit" value="Search" />
+                            <FormInput
+                                type="submit"
+                                value="Search"
+                                style={{
+                                    backgroundColor: 'var(--primary-color)',
+                                    color: 'white',
+                                }}
+                                sx={{ flex: '1' }}
+                            />
                         </div>
                     </form>
                 </div>
