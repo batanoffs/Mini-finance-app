@@ -1,100 +1,102 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
-const useAutocomplete = (suggestions, userInput, setUserInput) => {
-    const [activeSuggestion, setActiveSuggestion] = useState(0);
-    const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [showSuggestions, setShowSuggestions] = useState(false);
+const useAutocomplete = (suggestions = [], userInput, setUserInput) => {
+    const [state, setState] = useState({
+        activeSuggestion: 0,
+        showSuggestions: false
+    });
 
-    const filterSuggestions = (input, suggestionsList) => {
-        if (!suggestionsList?.length) return [];
-        
-        // Only filter if there's input, otherwise return empty array
-        if (!input?.trim()) return [];
-        
-        const searchTerm = input.toLowerCase();
-        return suggestionsList.filter(suggestion => 
-            suggestion?.name?.toLowerCase().includes(searchTerm)
-        );
-    };
-
-    useEffect(() => {
-        if (!suggestions?.length) {
-            setFilteredSuggestions([]);
-            return;
+    // Memoize filtered suggestions
+    const filteredSuggestions = useMemo(() => {
+        const currentInput = userInput.friends || '';
+        if (!suggestions?.length || !currentInput?.trim()) {
+            return [];
         }
 
-        const currentInput = userInput.friends || '';
-        const filtered = filterSuggestions(currentInput, suggestions);
-        
-        setFilteredSuggestions(filtered);
-        setActiveSuggestion(0);
-    }, [userInput.friends, suggestions]);
+        const searchTerm = currentInput.toLowerCase();
+        return suggestions.filter(suggestion => 
+            suggestion?.name?.toLowerCase().includes(searchTerm)
+        );
+    }, [suggestions, userInput.friends]);
 
-    const inputChangeHandler = (event) => {
-        const input = event.target.value;
-        const name = event.target.name;
+    const setShowSuggestions = useCallback((show) => {
+        setState(prev => ({ ...prev, showSuggestions: show }));
+    }, []);
+
+    const inputChangeHandler = useCallback((event) => {
+        const { value: input, name } = event.target;
         
         setUserInput(prev => ({
             ...prev,
             [name]: input,
-            selectedFriendId: '',
+            selectedFriendId: ''
         }));
         
-        setShowSuggestions(true);
-    };
+        setState(prev => ({
+            ...prev,
+            showSuggestions: !!input.trim(),
+            activeSuggestion: 0
+        }));
+    }, [setUserInput]);
 
-    const listSelectHandler = (suggestion) => {
+    const listSelectHandler = useCallback((suggestion) => {
         if (!suggestion) return;
-
-        setActiveSuggestion(0);
-        setFilteredSuggestions([]);
-        setShowSuggestions(false);
         
         setUserInput(prev => ({
             ...prev,
             friends: suggestion.name,
             selectedFriendId: suggestion.objectId,
         }));
-    };
 
-    const keyboardPressHandler = (event) => {
-        if (!showSuggestions || !filteredSuggestions.length) return;
+        setState({
+            activeSuggestion: 0,
+            showSuggestions: false
+        });
+    }, [setUserInput]);
+
+    const keyboardPressHandler = useCallback((event) => {
+        if (!state.showSuggestions || !filteredSuggestions.length) return;
 
         switch (event.keyCode) {
-            case 13: // Enter key
-                event.preventDefault(); // Prevent form submission
-                if (filteredSuggestions[activeSuggestion]) {
-                    listSelectHandler(filteredSuggestions[activeSuggestion]);
+            case 13: // Enter
+                event.preventDefault();
+                if (filteredSuggestions[state.activeSuggestion]) {
+                    listSelectHandler(filteredSuggestions[state.activeSuggestion]);
                 }
                 break;
-            case 38: // Arrow Up key
-                event.preventDefault(); // Prevent cursor movement
-                if (activeSuggestion > 0) {
-                    setActiveSuggestion(activeSuggestion - 1);
-                }
+            case 38: // Up
+                event.preventDefault();
+                setState(prev => ({
+                    ...prev,
+                    activeSuggestion: Math.max(0, prev.activeSuggestion - 1)
+                }));
                 break;
-            case 40: // Arrow Down key
-                event.preventDefault(); // Prevent cursor movement
-                if (activeSuggestion < filteredSuggestions.length - 1) {
-                    setActiveSuggestion(activeSuggestion + 1);
-                }
+            case 40: // Down
+                event.preventDefault();
+                setState(prev => ({
+                    ...prev,
+                    activeSuggestion: Math.min(
+                        filteredSuggestions.length - 1,
+                        prev.activeSuggestion + 1
+                    )
+                }));
                 break;
-            case 27: // Escape key
-                setShowSuggestions(false);
+            case 27: // Escape
+                setState(prev => ({ ...prev, showSuggestions: false }));
                 break;
             default:
                 break;
         }
-    };
+    }, [state.showSuggestions, state.activeSuggestion, filteredSuggestions, listSelectHandler]);
 
     return {
         inputChangeHandler,
         keyboardPressHandler,
         listSelectHandler,
         filteredSuggestions,
-        activeSuggestion,
-        showSuggestions,
-        setShowSuggestions,
+        activeSuggestion: state.activeSuggestion,
+        showSuggestions: state.showSuggestions,
+        setShowSuggestions
     };
 };
 
