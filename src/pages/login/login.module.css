@@ -1,16 +1,5 @@
-.error {
-    color: red;
-    font-size: 10px;
-    width: fit-content;
-    display: inline;
-    align-self: flex-end;
-    margin-right: 3em;
-}
-
 .signup {
-    padding-top: 0.2em;
     align-self: center;
-    font-size: small;
 }
 
 .formContainer {
@@ -36,29 +25,4 @@
 .formContent header {
     margin-bottom: 2rem;
     align-self: center;
-}
-
-.formContent footer {
-    align-self: center;
-    margin-top: 1em;
-    font-size: 1em;
-    width: 100%; /* Ensure footer takes full width */
-
-    .buttonPrimary {
-        background: var(--primary-color);
-        color: #fff;
-        font-size: 1.2em;
-        border: 0em solid transparent;
-        font-weight: 500;
-        cursor: pointer;
-        transition: 0.2s;
-        height: 2.2em;
-        width: 100%; /* Stretch button to full width */
-        border-radius: var(--border-radius-small);
-    }
-
-    .buttonPrimary:hover {
-        background: var(--primary-hover-color);
-        color: var(--white-color);
-    }
 }

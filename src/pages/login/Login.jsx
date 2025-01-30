@@ -8,18 +8,22 @@ import { useLogin } from './useLogin';
 import styles from './login.module.css';
 
 export const Login = () => {
-    const { login } = useLogin();
+    const { login, onDemoLogin } = useLogin();
     const { values, error, changeHandler, handleSubmit } = useForm(initialLoginState);
 
     const onSubmit = (formData) => {
         login(formData);
     };
 
+    const demoUserLoginHandler = () => {
+        onDemoLogin();
+    };
+
     return (
         <div className={styles.formContainer}>
             <div className={styles.formContent}>
                 <header>
-                    <h5>Login</h5>
+                    <h3>Welcome back!</h3>
                 </header>
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <FormInput
@@ -31,7 +35,6 @@ export const Login = () => {
                         error={error.email}
                         placeholder="Enter email"
                     />
-
                     <FormInput
                         type="password"
                         name="password"
@@ -41,16 +44,21 @@ export const Login = () => {
                         error={error.password}
                         placeholder="Enter password"
                     />
-
                     <Link to="reset">Forgot password?</Link>
-                    <footer className={styles.footer}>
-                        <input
-                            type="submit"
-                            className={styles.buttonPrimary}
-                            disabled={!values.email || !values.password}
-                            value="Login"
-                        />
-                    </footer>
+                    <FormInput
+                        type="submit"
+                        id="submit"
+                        sx={{ marginBottom: '0.5em' }}
+                        value="LOGIN"
+                        disabled={!values.email || !values.password}
+                    />
+                    {/* TODO add demo user login button */}
+                    <FormInput
+                        type="button"
+                        id="demo"
+                        value="LOGIN AS DEMO USER"
+                        onClick={demoUserLoginHandler}
+                    />
                 </form>
 
                 <span className={styles.signup}>

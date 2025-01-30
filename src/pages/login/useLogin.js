@@ -9,6 +9,10 @@ export const useLogin = () => {
     const navigate = useNavigate();
     const message = useMessage();
 
+    const onDemoLogin = () => {
+        message('info', 'Demo login not implemented yet');
+    };
+
     const login = async (formData) => {
         // construct the auth data object
         const data = {
@@ -58,5 +62,5 @@ export const useLogin = () => {
         }
     };
 
-    return { login };
+    return { login, onDemoLogin };
 };
