@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { FormInput } from '../../../../components/inputs'; 
+import { FormInput } from '../../../../components/inputs';
 
 export const EmailForm = ({
     email,
@@ -61,17 +61,14 @@ export const EmailForm = ({
                     required
                 />
 
-                <footer>
-                    <button
-                        name="next"
-                        className="button-primary"
-                        style={{ width: `100%`, textAlign: `center` }}
-                        onClick={onNextPageHandler}
-                        disabled={!email || !password || confirmPassword !== password}
-                    >
-                        Next
-                    </button>
-                </footer>
+                <FormInput
+                    type="button"
+                    id="next"
+                    value="Next"
+                    name="next"
+                    onClick={onNextPageHandler}
+                    disabled={!email || !password || confirmPassword !== password}
+                />
                 <span className="signup">
                     Already have an account? <Link to="/login">Sign in</Link>
                 </span>
