@@ -1,11 +1,21 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
-import { faGear, faHandshakeAngle, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import {
+    faGear,
+    faHandshakeAngle,
+    faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { AuthContext } from '../../../../../../contexts/AuthContext';
 
 import styles from './user-menu.module.css';
 
-export const UserMenu = ({ avatar, onLogoutHandler, fullName }) => {
+export const UserMenu = () => {
+    const { auth, onLogoutHandler } = useContext(AuthContext);
+    const { avatar, fullName } = auth;
+
     return (
         <div className={styles.userMenuContainer}>
             <div
