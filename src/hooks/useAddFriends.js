@@ -10,9 +10,7 @@ export const useAddFriend = () => {
 
     const onFriendRequest = async (formData) => {
         try {
-            // Get the target user's phone number
-            console.log('auth', auth);
-
+            // Get the user's phone number and the friend's phone number
             const friendsPhoneNumber = formData.phone;
             const authUserId = auth.objectId;
             const userPhoneNumber = auth.phoneNumber;
@@ -41,25 +39,12 @@ export const useAddFriend = () => {
             if (!createResponse.success)
                 throw new Error(createResponse.error.message || 'Failed to send friend request');
 
-            // // Send the notification
-            // const notificationResponse = await notificationService.createNotification(
-            //     friendsPhoneNumber,
-            //     authUserId,
-            //     token
-            // );
-
-            // // Validate the notification response
-            // if (!notificationResponse.success)
-            //     throw new Error(
-            //         notificationResponse.error.message || 'Failed to send friend request notification'
-            //     );
-
             // Show a success message
             showMessage('success', 'Friend request sent');
         } catch (error) {
             // Handle the error
-            console.error(error.message || error);
-            showMessage('error', 'Failed to send friend request');
+            console.error(error);
+            showMessage('error', error.message || 'Failed to send friend request');
         }
     };
 
