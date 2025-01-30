@@ -67,30 +67,27 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
 
     const onTransaction = async (fullName, receiverId, amount) => {
         try {
-            if (!fullName || !receiverId || !amount) {
-                throw new Error('Please fill in all fields');
-            }
+            if (!fullName || !receiverId || !amount) throw new Error('Please fill in all fields');
 
-            if (isNaN(Number(amount)) || Number(amount) <= 0) {
-                throw new Error('Please enter a valid amount');
-            }
-
-            let response;
+            if (isNaN(amount) || amount <= 0) throw new Error('Please enter a valid amount');
 
             if (type === 'request') {
-                response = await transactionService.request(
+                const response = await transactionService.request(
                     fullName,
-                    Number(amount),
+                    receiverId,
+                    amount,
                     auth.objectId,
                     token
                 );
+
+                if (!response.success) throw new Error(response.error.message);
             }
 
             if (type === 'send') {
-                response = await transactionService.send(
+                const response = await transactionService.send(
                     fullName,
                     receiverId,
-                    Number(amount),
+                    amount,
                     auth.objectId,
                     token
                 );
@@ -108,8 +105,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
             showMessage('success', `Successfully ${type} the money`);
         } catch (error) {
             console.error(error);
-            // Just show error message, keep modal open
-            showMessage('error', `Error during ${type}: ${error.message}`);
+            showMessage('error', `Error during ${type}: ${error.message || 'Unknown error'}`);
         }
     };
 
