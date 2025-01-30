@@ -58,6 +58,8 @@ const calcBalance = async (objectId, cardId, token) => {
 };
 
 const send = async (fullName, receiverId, amount, senderId, token) => {
+    console.log('send', { fullName, receiverId, amount, senderId, token });
+
     // Build the notification message
     const message = fullName + ' sent you ' + amount + ' BNG.';
 
@@ -65,7 +67,9 @@ const send = async (fullName, receiverId, amount, senderId, token) => {
         const unitOfWork = new Backendless.UnitOfWork();
 
         // Create a new transaction
-        const newTransaction = unitOfWork.create('transactions', { amount });
+        const newTransaction = unitOfWork.create('transactions', { amount: Number(amount) });
+
+        console.log('Send Transaction', newTransaction.opResultId());
 
         // Set the relation with the receiver
         unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
@@ -77,6 +81,8 @@ const send = async (fullName, receiverId, amount, senderId, token) => {
         const notification = unitOfWork.create('notifications', {
             message: message,
             type: 'transaction',
+            related_entity_id: newTransaction,
+            related_entity_name: 'transactions',
         });
 
         // Set the relation with the receiver
@@ -97,7 +103,9 @@ const request = async (fullName, receiverId, amount, senderId, token) => {
         const unitOfWork = new Backendless.UnitOfWork();
 
         // Create a new transaction
-        const newTransaction = unitOfWork.create('transactions', { amount });
+        const newTransaction = unitOfWork.create('transactions', { amount: Number(amount) });
+
+        console.log('newTransaction', newTransaction);
 
         // Set the relation with the receiver
         unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
@@ -109,6 +117,8 @@ const request = async (fullName, receiverId, amount, senderId, token) => {
         const notification = unitOfWork.create('notifications', {
             message: message,
             type: 'transaction',
+            related_entity_id: newTransaction.objectId,
+            related_entity_name: 'transactions',
         });
 
         // Set the relation with the receiver
