@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
 import { useMessage } from '../../../../../../hooks';
-import { Autocomplete } from '../../../../../../components/inputs';
+import { Autocomplete, FormInput } from '../../../../../../components/inputs';
 
 import styles from './add-friends.module.css';
 
@@ -30,7 +30,9 @@ export const AddToFavorites = ({ toggleModal }) => {
                 throw new Error('This user is not your friend!');
             }
 
-            const response = await dataService.setRelation(auth.objectId, 'favorite_friends', [findFriend.objectId]);
+            const response = await dataService.setRelation(auth.objectId, 'favorite_friends', [
+                findFriend.objectId,
+            ]);
 
             if (response !== 1) {
                 throw new Error('Something went wrong!');
@@ -39,10 +41,10 @@ export const AddToFavorites = ({ toggleModal }) => {
             // Update auth context and session storage
             const updatedFavorites = [...auth.favorite_friends, findFriend];
             const updatedAuth = { ...auth, favorite_friends: updatedFavorites };
-            
+
             setAuth(updatedAuth);
             sessionStorage.setItem('auth', JSON.stringify(updatedAuth));
-            
+
             toggleModal('favFriends');
             showMessage('success', `${findFriend.fullName} has been added to favorites!`);
         } catch (error) {
@@ -68,12 +70,8 @@ export const AddToFavorites = ({ toggleModal }) => {
             {!userInput.friends && (
                 <p className={styles.error}>Please select a friend before submitting.</p>
             )}
-            <input
-                className={`custom-btn-fill ${styles.button}`}
-                type="submit"
-                value="Add to favorites"
-                disabled={!userInput.friends}
-            />
+
+            <FormInput type="submit" value="Add to favorites" disabled={!userInput.friends} />
         </form>
     );
 };
