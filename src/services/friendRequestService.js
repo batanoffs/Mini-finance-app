@@ -31,6 +31,8 @@ const create = async (friendPhone, currentUserId, token) => {
     const notification = unitOfWork.create('notifications', {
         type: 'friend-request',
         message: `${auth.fullName} sent you a friend request`,
+        related_entity_id: newFriendRequest.objectId,
+        related_entity_name: 'friend-requests',
     });
 
     // Set the receiver relation
