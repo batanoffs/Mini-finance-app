@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import { ConfigProvider } from 'antd';
 
 import initializeBackendless from './config/backendless';
+import theme from './config/antDesignTheme';
 import App from './App';
 
 import './css/site.css';
@@ -11,15 +12,7 @@ initializeBackendless();
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: 'var(--primary-color)',
-                    fontFamily: 'var(--body-font-family)',
-                    fontSize: 'var(--body-font-size)',
-                },
-            }}
-        >
+        <ConfigProvider theme={theme}>
             <App />
         </ConfigProvider>
     </StrictMode>
