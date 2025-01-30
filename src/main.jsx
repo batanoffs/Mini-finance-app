@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
                 token: {
                     colorPrimary: 'var(--primary-color)',
                     fontFamily: 'var(--body-font-family)',
-                    borderRadius: 6,
+                    fontSize: 'var(--body-font-size)',
                 },
             }}
         >
