@@ -14,25 +14,18 @@ export const HelpCenter = () => {
                         <header style={{ marginBottom: `0.5em` }}>
                             <h5>How can we help you?</h5>
                         </header>
-                        <div
-                            style={{
-                                display: `flex`,
-                                justifyContent: `center`,
-                                gap: `0.5em`,
-                                alignItems: `center`,
-                            }}
-                        >
+                        <div className={styles.searchForm}>
                             <FormInput
                                 type="text"
                                 name="search"
                                 id="search"
                                 label="Search by topic:"
+                                sx={{ marginBottom: `0` }}
                                 placeholder="Search"
-                                style={{ width: `40%`, height: `2.5em`, margin: `0` }}
                                 aria-label="Search"
                             />
 
-                            <input type="submit" value="Send" className="button-primary" />
+                            <FormInput type="submit" value="Search" />
                         </div>
                     </form>
                 </div>
