@@ -1,26 +1,25 @@
 :root {
     /* Colors */
     --error-color: #dc3545;
-    --primary-color: #4361ee;
     --border-color: #d1d5db;
     --text-color: #374151;
     --background-color: #ffffff;
     --focus-ring-color: rgba(67, 97, 238, 0.25);
     --error-ring-color: rgba(220, 53, 69, 0.25);
-    
+
     /* Typography */
-    --font-size-base: 1rem;
-    --font-size-sm: 0.875rem;
-    --line-height-base: 1.5;
-    
+    --font-size-base: inherit;
+    --font-size-sm: 0.8rem;
+    --line-height-base: 1;
+
     /* Spacing */
     --space-2: 0.5rem;
     --space-3: 0.75rem;
     --space-4: 1rem;
-    
+
     /* Component specific */
     --input-height: 2.75rem;
-    --border-radius: 0.7rem;
+    --border-radius: 0.5rem;
     --transition-duration: 150ms;
 }
 
@@ -28,6 +27,31 @@
     position: relative;
     margin-bottom: var(--space-4);
     width: 100%;
+}
+
+input[type='submit'],
+input[type='button'] {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: var(--font-weight-bold);
+    transition: all 0.1s;
+    /*  line-height: normal;
+        padding: 6px 20px;
+        text-align: center;
+        width: 100%; */
+}
+
+input[type='submit']:hover,
+input[type='button']:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+input[type='submit']:disabled,
+input[type='button']:disabled {
+    cursor: not-allowed;
 }
 
 .input {
@@ -62,12 +86,6 @@
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px var(--focus-ring-color);
     outline: none;
-}
-
-.input:disabled {
-    background-color: #f3f4f6;
-    cursor: not-allowed;
-    opacity: 0.7;
 }
 
 .inputError {
