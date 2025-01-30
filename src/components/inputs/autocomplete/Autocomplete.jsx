@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
+
 import useAutocomplete from './useAutocomplete';
 import { SuggestionItem } from './suggestion-item/SuggestionItem';
 import { FormInput } from '../form-input/FormInput';
 
 import styles from './autocomplete.module.css';
 
-export const Autocomplete = ({
+export const Autocomplete = memo(({
     userInput = { friends: '' },
     setUserInput,
     suggestions = [],
@@ -16,7 +17,9 @@ export const Autocomplete = ({
     customLabel = null,
     ...rest
 }) => {
+    // Move all hooks to the top level
     const [isFocused, setIsFocused] = useState(false);
+    
     const {
         inputChangeHandler,
         keyboardPressHandler,
@@ -27,32 +30,32 @@ export const Autocomplete = ({
         showSuggestions,
     } = useAutocomplete(suggestions, userInput, setUserInput);
 
-    const handleChange = (e) => {
+    // Memoize all handlers
+    const handleChange = useCallback((e) => {
         inputChangeHandler(e);
-        if (onChange) {
-            onChange(e);
-        }
-    };
+        onChange?.(e);
+    }, [inputChangeHandler, onChange]);
 
-    const handleBlur = () => {
-        // Delay hiding suggestions to allow click events to fire
+    const handleBlur = useCallback(() => {
+        // Delay hiding focus state to allow click events to complete
         setTimeout(() => {
             setIsFocused(false);
-            if (!userInput[name]) {
-                setShowSuggestions(false);
-            }
+            !userInput[name]?.trim() && setShowSuggestions(false);
         }, 200);
-    };
+    }, [name, userInput, setShowSuggestions]);
 
-    const handleFocus = () => {
+    const handleFocus = useCallback(() => {
         setIsFocused(true);
-        // Only show suggestions if there's input
-        if (userInput[name]?.trim()) {
-            setShowSuggestions(true);
-        }
-    };
+        userInput[name]?.trim() && setShowSuggestions(true);
+    }, [name, userInput, setShowSuggestions]);
 
-    const shouldShowSuggestions = isFocused && showSuggestions && userInput[name]?.trim() && filteredSuggestions?.length > 0;
+    const handleListItemClick = useCallback((suggestion) => {
+        listSelectHandler(suggestion);
+        setIsFocused(false);
+    }, [listSelectHandler]);
+
+    // Compute visibility once
+    const shouldShowSuggestions = isFocused && showSuggestions && filteredSuggestions.length > 0;
 
     return (
         <div className={styles.autocomplete}>
@@ -70,18 +73,24 @@ export const Autocomplete = ({
                 {...rest}
             />
             <ul className={`${styles.suggestions} ${shouldShowSuggestions ? styles.show : ''}`}>
-                {filteredSuggestions?.map((suggestion, index) => (
-                    <SuggestionItem
-                        key={suggestion.objectId || index}
-                        suggestion={suggestion}
-                        isActive={index === activeSuggestion}
-                        onClick={() => {
-                            listSelectHandler(suggestion);
-                            setIsFocused(false);
-                        }}
-                    />
-                ))}
+                {shouldShowSuggestions &&
+                    filteredSuggestions.map((suggestion, index) => (
+                        <SuggestionItem
+                            key={suggestion.objectId || index}
+                            suggestion={suggestion}
+                            isActive={index === activeSuggestion}
+                            onClick={() => handleListItemClick(suggestion)}
+                        />
+                    ))}
             </ul>
         </div>
     );
-};
+}, (prevProps, nextProps) => {
+    return (
+        prevProps.userInput[prevProps.name] === nextProps.userInput[nextProps.name] &&
+        prevProps.suggestions?.length === nextProps.suggestions?.length &&
+        JSON.stringify(prevProps.suggestions) === JSON.stringify(nextProps.suggestions)
+    );
+});
+
+Autocomplete.displayName = 'Autocomplete';
