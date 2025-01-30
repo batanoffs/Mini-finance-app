@@ -11,7 +11,7 @@ export const useLogin = () => {
     const message = useMessage();
 
     const login = async (formData) => {
-        // construct the data object
+        // construct the auth data object
         const data = {
             login: formData.email,
             password: formData.password,
@@ -28,11 +28,16 @@ export const useLogin = () => {
 
             sessionStorage.setItem('token', token);
 
-            const ownerId = response['ownerId'];
+            const userId = response['ownerId'];
 
-            if (!ownerId) throw new Error('No ownerId found in response');
+            if (!userId) throw new Error('No id found in response');
 
-            const userDataResponse = await dataService.getUserData(ownerId);
+            const userDataResponse = await dataService.getUserDataByAttribute('ownerId', userId, [
+                // load relations
+                'virtualCard',
+                'friends',
+                'favorite_friends',
+            ]);
 
             if (userDataResponse === null || userDataResponse.length === 0)
                 throw new Error('No user found with those credentials');
@@ -49,7 +54,8 @@ export const useLogin = () => {
             navigate('/dashboard/overview');
             message('success', 'Login successful');
         } catch (error) {
-            console.error('Errors found during login', error);
+            console.error('Login failed', error);
+            message('error', error.message || 'Login failed');
         }
     };
 

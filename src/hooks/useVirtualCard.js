@@ -9,17 +9,26 @@ export const useVirtualCard = () => {
     const [card, setCard] = useState(auth.virtualCard);
     const { token } = getUserToken();
 
+    // Fetch the card balance
     const fetchBalance = useCallback(() => {
         transactionService
-            .updateBalance(auth.objectId, card.objectId, token)
-            .then((data) => {
-                setCard({ ...card, balance: data.results.updateMoney.result.balance });
+            .calcBalance(auth.objectId, card.objectId, token)
+            .then((response) => {
+                // Check error
+                if (!response.success)
+                    throw new Error(response.message || 'Error during fetch card balance');
+
+                // Update the card balance and auth context
+                setCard({ ...card, balance: response.results.balanceResult.result.balance });
                 setAuth({
                     ...auth,
-                    virtualCard: { ...card, balance: data.results.updateMoney.result.balance },
+                    virtualCard: {
+                        ...card,
+                        balance: response.results.balanceResult.result.balance,
+                    },
                 });
             })
-            .catch((err) => console.log('Error during fetch card balance', err.message));
+            .catch((error) => console.error(error || 'Error during fetch card balance'));
     }, []);
 
     useEffect(() => {

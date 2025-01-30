@@ -12,10 +12,10 @@ export const useNotification = ({ initialState }) => {
     const { token } = getUserToken();
     const showMessage = useMessage();
 
-    // Fetch notifications on component mount
+    // // Fetch notifications on component mount
     useEffect(() => {
         notificationService
-            .getNotSeenNotifications(auth.ownerId, token)
+            .getByUserId(auth.objectId)
             .then((result) => setNotifications(result))
             .catch((error) => console.log(error));
     }, []);
@@ -142,13 +142,12 @@ export const useNotification = ({ initialState }) => {
 
     // Send the requested money to the requester
     const onCashApprove = async (notificationId, receiverFullName, amount) => {
-
         // Track operation states
         const states = {
             moneyTransferred: false,
             notificationAccepted: false,
             notificationSeen: false,
-            receiverNotified: false
+            receiverNotified: false,
         };
 
         try {
@@ -157,10 +156,10 @@ export const useNotification = ({ initialState }) => {
                 throw new Error('Invalid input parameters');
             }
 
-            // TODO - fix error: 
+            // TODO - fix error:
             // TODO - "Unable to create relation. Child object with id is not found in the related table."
             // Execute money transfer
-            const moneyTransferResponse = await transactionService.sendMoney(
+            const moneyTransferResponse = await transactionService.send(
                 receiverFullName,
                 amount,
                 auth.objectId,
@@ -168,72 +167,65 @@ export const useNotification = ({ initialState }) => {
             );
 
             // Check if transaction was successful
-            if (!moneyTransferResponse.success) throw new Error('Failed to send money');
+            if (!moneyTransferResponse.success)
+                throw new Error(moneyTransferResponse.error.message);
+
             states.moneyTransferred = true;
 
             // Update notifications
             const [notificationUpdates, notifications] = await Promise.all([
                 Promise.all([
-                    notificationService.updateNotificationStatus(
-                        notificationId,
-                        NOTIFY.STATUS.accepted,
-                        true,
-                        token
-                    ).then(() => states.notificationAccepted = true),
-                    
-                    notificationService.updateSeenStatus(
-                        notificationId, 
-                        true, 
-                        token
-                    ).then(() => states.notificationSeen = true),
-                    
-                    transactionService.notifyMoneyReceived(
-                        receiverFullName,
-                        amount,
-                        auth.ownerId,
-                        token
-                    ).then(() => states.receiverNotified = true)
+                    notificationService
+                        .updateNotificationStatus(
+                            notificationId,
+                            NOTIFY.STATUS.accepted,
+                            true,
+                            token
+                        )
+                        .then(() => (states.notificationAccepted = true)),
+
+                    notificationService
+                        .updateSeenStatus(notificationId, true, token)
+                        .then(() => (states.notificationSeen = true)),
+
+                    transactionService
+                        .notifyMoneyReceived(receiverFullName, amount, auth.ownerId, token)
+                        .then(() => (states.receiverNotified = true)),
                 ]),
-                notificationService.getNotSeenNotifications(auth.ownerId)
+                notificationService.getNotSeenNotifications(auth.ownerId),
             ]);
 
-            if(!notifications) throw new Error('Failed to retrieve notifications');
+            if (!notifications) throw new Error('Failed to retrieve notifications');
 
             // Update the current notifications state
             setNotifications(notifications);
 
             // Show success message
             showMessage('success', 'Transaction successful');
-            
         } catch (error) {
             // Rollback money transfer
             if (states.moneyTransferred) {
                 try {
                     // TODO - Implement rollback for money transfer
                     console.log('Rollback money transfer not implemented');
-                    
                 } catch (rollbackError) {
                     console.error('Failed to rollback transaction:', rollbackError);
                 }
             }
-    
+
             // Rollback notification states
             if (states.notificationAccepted || states.notificationSeen) {
                 try {
                     await Promise.all([
-                        states.notificationAccepted && 
+                        states.notificationAccepted &&
                             notificationService.updateNotificationStatus(
                                 notificationId,
                                 NOTIFY.STATUS.pending,
                                 false,
                                 token
                             ),
-                        states.notificationSeen && 
-                            notificationService.updateSeenStatus(
-                                notificationId,
-                                false,
-                                token
-                            )
+                        states.notificationSeen &&
+                            notificationService.updateSeenStatus(notificationId, false, token),
                     ]);
                 } catch (rollbackError) {
                     console.error('Failed to rollback notifications:', rollbackError);

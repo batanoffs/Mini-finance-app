@@ -1,68 +1,32 @@
 import { useState, useEffect, useCallback, useContext } from 'react';
 
-import { notificationService, transactionService } from '../services';
+import { transactionService } from '../services';
 import { AuthContext } from '../contexts/AuthContext';
-import { getUserToken } from '../utils';
 
-export const useTransactions = (transactionType = 'nonVerified') => {
+export const useTransactions = () => {
     const [transactions, setTransactions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const { auth } = useContext(AuthContext);
-    const { token } = getUserToken();
 
-    const fetchTransactions = useCallback(
-        async (type) => {
-            setIsLoading(true);
-            setError(null);
+    const fetchTransactions = useCallback(async () => {
+        try {
+            const response = await transactionService.getByUserId(auth.objectId);
 
-            try {
-                let transactions = [];
+            if (response?.length === 0) throw new Error('Failed to fetch transactions');
 
-                switch (type) {
-                    case 'verified':
-                        transactions = await transactionService.getAllTransactions(
-                            auth.objectId,
-                            token
-                        );
-
-                        if (!Array.isArray(transactions)) {
-                            throw new Error('Invalid response');
-                        }
-                        break;
-                    case 'nonVerified':
-                        const [verifiedTxs, pendingTxs] = await Promise.all([
-                            transactionService.getAllTransactions(auth.objectId, token),
-                            notificationService.getMoneyRequestNotifications(auth.objectId, token),
-                        ]);
-                        transactions = [...verifiedTxs, ...pendingTxs];
-
-                        if (!Array.isArray(transactions)) {
-                            throw new Error('Invalid response');
-                        }
-
-                        break;
-                    default:
-                        const [allVerified, allPending] = await Promise.all([
-                            transactionService.getAllTransactions(auth.objectId, token),
-                            notificationService.getMoneyRequestNotifications(auth.objectId, token),
-                        ]);
-                        transactions = [...allVerified, ...allPending];
-                }
-
-                setTransactions(transactions);
-            } catch (error) {
-                setError(error.message || 'Failed to fetch transactions');
-            } finally {
-                setIsLoading(false);
-            }
-        },
-        [auth.objectId, token]
-    );
+            setTransactions(response);
+        } catch (error) {
+            console.error(error);
+            setError(error.message || 'Failed to fetch transactions');
+        } finally {
+            setIsLoading(false);
+        }
+    }, [auth.objectId]);
 
     useEffect(() => {
-        fetchTransactions(transactionType);
-    }, [fetchTransactions]);
+        fetchTransactions();
+    }, []);
 
     return {
         transactions,

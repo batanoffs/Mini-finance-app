@@ -1,101 +1,101 @@
-/**
- * Custom hook for handling autocomplete functionality.
- *
- * @param {Object} params - Parameters for the hook.
- * @returns {Object} - An object containing handlers and render function for autocomplete.
- * @returns {Function} inputChangeHandler - Handler for input change events.
- * @returns {Function} keyboardPressHandler - Handler for keyboard press events.
- * @returns {Function} renderSuggestionsList - Function to render the suggestions list.
- */
-
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 const useAutocomplete = (suggestions, userInput, setUserInput) => {
-    const [activeSuggestion, setActiveSuggestion] = useState(0)
-    const [filteredSuggestions, setFilteredSuggestions] = useState([])
-    const [showSuggestions, setShowSuggestions] = useState(false)
-    const [debouncedInput, setDebouncedInput] = useState('')
+    const [activeSuggestion, setActiveSuggestion] = useState(0);
+    const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
 
-    const inputKeys = Object.keys(userInput)
-    const lastKey = inputKeys[inputKeys.length - 1]
+    const filterSuggestions = (input, suggestionsList) => {
+        if (!suggestionsList?.length) return [];
+        
+        // Only filter if there's input, otherwise return empty array
+        if (!input?.trim()) return [];
+        
+        const searchTerm = input.toLowerCase();
+        return suggestionsList.filter(suggestion => 
+            suggestion?.name?.toLowerCase().includes(searchTerm)
+        );
+    };
 
     useEffect(() => {
-        const handler = setTimeout(() => {
-            const filtered = filterSuggestions(debouncedInput, suggestions)
-            setActiveSuggestion(0)
-            setFilteredSuggestions(filtered)
-            setShowSuggestions(true)
-        }, 300)
-
-        return () => {
-            clearTimeout(handler)
+        if (!suggestions?.length) {
+            setFilteredSuggestions([]);
+            return;
         }
-    }, [debouncedInput, suggestions])
+
+        const currentInput = userInput.friends || '';
+        const filtered = filterSuggestions(currentInput, suggestions);
+        
+        setFilteredSuggestions(filtered);
+        setActiveSuggestion(0);
+    }, [userInput.friends, suggestions]);
 
     const inputChangeHandler = (event) => {
-        const input = event.target.value.toLowerCase().trim()
-        setDebouncedInput(input)
-        updateUserInput(event.target.name, event.target.value)
-    }
+        const input = event.target.value;
+        const name = event.target.name;
+        
+        setUserInput(prev => ({
+            ...prev,
+            [name]: input,
+            selectedFriendId: '',
+        }));
+        
+        setShowSuggestions(true);
+    };
 
-    const updateUserInput = (name, value) => {
-        setUserInput((state) => ({
-            ...state,
-            [name]: value,
-        }))
-    }
+    const listSelectHandler = (suggestion) => {
+        if (!suggestion) return;
 
-    const listSelectHandler = (event) => {
-        if (event?.target?.innerText) {
-            setActiveSuggestion(0)
-            setFilteredSuggestions([])
-            setShowSuggestions(false)
-            updateUserInput(lastKey, event.target.innerText)
-        }
-    }
+        setActiveSuggestion(0);
+        setFilteredSuggestions([]);
+        setShowSuggestions(false);
+        
+        setUserInput(prev => ({
+            ...prev,
+            friends: suggestion.name,
+            selectedFriendId: suggestion.objectId,
+        }));
+    };
 
     const keyboardPressHandler = (event) => {
+        if (!showSuggestions || !filteredSuggestions.length) return;
+
         switch (event.keyCode) {
             case 13: // Enter key
-                handleEnterKey()
-                break
+                event.preventDefault(); // Prevent form submission
+                if (filteredSuggestions[activeSuggestion]) {
+                    listSelectHandler(filteredSuggestions[activeSuggestion]);
+                }
+                break;
             case 38: // Arrow Up key
-                handleArrowUpKey()
-                break
+                event.preventDefault(); // Prevent cursor movement
+                if (activeSuggestion > 0) {
+                    setActiveSuggestion(activeSuggestion - 1);
+                }
+                break;
             case 40: // Arrow Down key
-                handleArrowDownKey()
-                break
+                event.preventDefault(); // Prevent cursor movement
+                if (activeSuggestion < filteredSuggestions.length - 1) {
+                    setActiveSuggestion(activeSuggestion + 1);
+                }
+                break;
+            case 27: // Escape key
+                setShowSuggestions(false);
+                break;
             default:
-                break
+                break;
         }
-    }
-
-    const handleEnterKey = () => {
-        setActiveSuggestion(0)
-        setShowSuggestions(false)
-        updateUserInput(lastKey, filteredSuggestions[activeSuggestion].name)
-    }
-
-    const handleArrowUpKey = () => {
-        if (activeSuggestion > 0) setActiveSuggestion(activeSuggestion - 1)
-    }
-
-    const renderSuggestionsList = () => {
-        if (!showSuggestions || !userInput?.friends || !filteredSuggestions.length) return null
-        if (filteredSuggestions.length && userInput.friends) return filteredSuggestions
-    }
+    };
 
     return {
         inputChangeHandler,
         keyboardPressHandler,
         listSelectHandler,
-        filteredSuggestions: renderSuggestionsList(),
+        filteredSuggestions,
         activeSuggestion,
-    }
-}
+        showSuggestions,
+        setShowSuggestions,
+    };
+};
 
-const filterSuggestions = (input, suggestions) => {
-    return suggestions.filter((suggestion) => suggestion.name.toLowerCase().includes(input))
-}
-
-export default useAutocomplete
+export default useAutocomplete;

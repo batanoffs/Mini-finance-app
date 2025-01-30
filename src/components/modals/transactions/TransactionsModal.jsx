@@ -1,24 +1,33 @@
-import { useMakeTransactions } from '../../../hooks/useMakeTransactions'
-import { FormInput, Autocomplete } from '../../inputs'
+import { useMakeTransactions } from '../../../hooks/useMakeTransactions';
+import { FormInput, Autocomplete } from '../../inputs';
 
-import styles from './modal.module.css'
+import styles from './modal.module.css';
 
-// TODO merge logic for the top up modal with the transactions modal and update the useMakeTransactions hook
-const ModalForm = ({ type, showModal, toggleModal }) => {
-    const { values, setValues, setUserInputHandler, onFormSubmitHandler, onClose, friends } = useMakeTransactions({
-        type,
-        showModal,
-        toggleModal,
-    })
+const ModalForm = ({ type, toggleModal }) => {
+    const { values, setValues, setUserInputHandler, onTransaction, onClose, friends } =
+        useMakeTransactions(type, toggleModal, {
+            amount: '',
+            friends: '',
+        });
 
-    let title = ''
+    let title = '';
 
-    if (type === 'request') title = 'Request Money'
-    if (type === 'send') title = 'Send Money'
-    if (type === 'topUp') title = 'Top Up Account'
+    if (type === 'request') title = 'Request Money';
+    if (type === 'send') title = 'Send Money';
+    if (type === 'topUp') title = 'Top Up Account';
+
+    const onTransactionSubmit = (e) => {
+        e.preventDefault();
+        onTransaction(values.friends, values.selectedFriendId, values.amount);
+    };
 
     return (
-        <div className={styles.background}>
+        <div className={styles.background} onClick={(e) => {
+            // Close only if clicking the background itself, not the modal
+            if (e.target === e.currentTarget) {
+                onClose();
+            }
+        }}>
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h5 className="modal-title">{title}</h5>
@@ -26,49 +35,59 @@ const ModalForm = ({ type, showModal, toggleModal }) => {
                 </div>
 
                 <div className="form-content">
-                    <form onSubmit={onFormSubmitHandler} className="custom-form">
-                        <FormInput
-                            type="text"
-                            name="amount"
-                            id="amount"
-                            className="form-control"
-                            value={values.amount}
-                            onChange={setUserInputHandler}
-                            placeholder="10 BGN"
-                        />
+                    <form onSubmit={onTransactionSubmit} className="custom-form">
+                        <div className={styles.formGroup}>
+                            <FormInput
+                                type="text"
+                                name="amount"
+                                id="amount"
+                                required
+                                className={styles.formControl}
+                                value={values.amount}
+                                onChange={setUserInputHandler}
+                                placeholder="10 BGN"
+                            />
+                        </div>
 
-                        <Autocomplete userInput={values} setUserInput={setValues} suggestions={[...friends]} />
+                        <div className={styles.formGroup}>
+                            <Autocomplete
+                                userInput={values}
+                                setUserInput={setValues}
+                                name="friends"
+                                placeholder="Select friend"
+                                required
+                                suggestions={friends || []}
+                            />
+                        </div>
 
-                        <footer>
-                            <FormInput type="submit" className="button-primary" value="Submit" />
-                        </footer>
+                        <div className={styles.footer}>
+                            <FormInput
+                                type="submit"
+                                className={`${styles.buttonPrimary} button-primary`}
+                                value="Submit"
+                            />
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export const TransactionsModal = {
-    Send: ({ showModal, toggleModal, inputName }) => (
+    Send: ({ toggleModal }) => (
         <ModalForm
             type="send"
-            showModal={showModal}
-            inputName={inputName}
             toggleModal={toggleModal}
-            title="Send Money"
         />
     ),
-    Request: ({ showModal, toggleModal, inputName }) => (
+    Request: ({ toggleModal }) => (
         <ModalForm
             type="request"
-            showModal={showModal}
-            inputName={inputName}
             toggleModal={toggleModal}
-            title="Request Money"
         />
     ),
     // TopUp: ({ showModal, toggleModal }) => (
     //     <ModalForm type="topUp" showModal={showModal} toggleModal={toggleModal} title="Top Up Account" />
     // ),
-}
+};

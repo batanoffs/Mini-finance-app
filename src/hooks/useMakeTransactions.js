@@ -5,27 +5,43 @@ import { AuthContext } from '../contexts/AuthContext';
 import { dataService, transactionService } from '../services/';
 import { getUserToken } from '../utils';
 
-export const useMakeTransactions = ({ type, toggleModal, showModal }) => {
-    const [values, setValues] = useState({ amount: '', friends: '' });
+export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
+    const [values, setValues] = useState({
+        ...initialState,
+        selectedFriendId: '',
+    });
     const { auth } = useContext(AuthContext);
-    const [friends, setFriends] = useState(auth.friends);
+    const [friends, setFriends] = useState(() => {
+        // Initialize with any existing friends from auth
+        if (auth.friends?.length > 0) {
+            return auth.friends
+                .filter((f) => f?.fullName)
+                .map((friend) => ({
+                    name: friend.fullName,
+                    avatar: friend.avatar,
+                    objectId: friend.objectId,
+                }));
+        }
+        return [];
+    });
     const { token } = getUserToken();
     const showMessage = useMessage();
 
     const fetchFriends = useCallback(async () => {
+        if (!auth.objectId) return;
+
         try {
             const response = await dataService.getRelation(auth.objectId, 'friends');
-            const filterFriends = response.friends?.map((friend) => {
-                if (friend.fullName) {
-                    return {
-                        name: friend.fullName,
-                        avatar: friend.avatar,
-                        objectId: friend.objectId,
-                    };
-                } else {
-                    return null;
-                }
-            });
+            const friendsList = response?.friends || [];
+
+            const filterFriends = friendsList
+                .filter((friend) => friend?.fullName)
+                .map((friend) => ({
+                    name: friend.fullName,
+                    avatar: friend.avatar,
+                    objectId: friend.objectId,
+                }));
+
             setFriends(filterFriends);
         } catch (error) {
             showMessage('error', 'Error during fetching');
@@ -37,79 +53,75 @@ export const useMakeTransactions = ({ type, toggleModal, showModal }) => {
     }, [fetchFriends]);
 
     const setUserInputHandler = (event) => {
-        if (!event || !event.target) throw new Error('Null pointer exception: event is null');
+        if (!event?.target) {
+            return;
+        }
 
         const { name, value } = event.target;
 
-        if (!name || !value) throw new Error('Name or value is null');
-
-        setValues({ ...values, [name]: value });
+        setValues((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
-    const onFormSubmitHandler = async (e) => {
-        e.preventDefault();
+    const onTransaction = async (fullName, receiverId, amount) => {
         try {
-            if (!e.target) throw new Error('Target element does not exist.');
+            if (!fullName || !receiverId || !amount) throw new Error('Please fill in all fields');
 
-            const formElementSelect = e.target;
-            const form = new FormData(formElementSelect);
-
-            if (!form) throw new Error('Form data is null');
-
-            const { amount, friends } = Object.fromEntries(form);
-
-            if (!amount || !friends) throw new Error('Amount or friend is not given.');
-
-            let response;
+            if (isNaN(amount) || amount <= 0) throw new Error('Please enter a valid amount');
 
             if (type === 'request') {
-                response = await transactionService.requestNotify(
-                    friends,
-                    Number(amount),
+                const response = await transactionService.request(
+                    fullName,
+                    receiverId,
+                    amount,
                     auth.objectId,
                     token
                 );
+
+                if (!response.success) throw new Error(response.error.message);
             }
 
-            if ((type = 'send')) {
-                response = await transactionService.sendMoney(
-                    friends,
-                    Number(amount),
+            if (type === 'send') {
+                const response = await transactionService.send(
+                    fullName,
+                    receiverId,
+                    amount,
                     auth.objectId,
                     token
                 );
-                if (!response) throw new Error('Transaction service response is null.');
-                if (!response.success)
-                    throw new Error(`Transaction service error: ${response.message}`);
-                await transactionService.notifyMoneyReceived(
-                    friends,
-                    Number(amount),
-                    auth.objectId,
-                    token
-                );
+
+                if (!response.success) throw new Error(response.error.message);
             }
 
+            // Only close modal and reset form on success
             toggleModal(type);
-            setValues((prev) => ({ ...prev, amount: '', friends: '' }));
-
-            if (response.success) {
-                showMessage('success', `Successfully ${type} the money`);
-            } else {
-                showMessage('error', `Error during ${type}: ${response.message}`);
-            }
+            setValues(() => ({
+                amount: '',
+                friends: '',
+                selectedFriendId: '',
+            }));
+            showMessage('success', `Successfully ${type} the money`);
         } catch (error) {
-            toggleModal(type);
-            setValues((prev) => ({ ...prev, amount: '', friends: '' }));
-            showMessage('error', `Error during ${type}: ${error.message}`);
+            console.error(error);
+            showMessage('error', `Error during ${type}: ${error.message || 'Unknown error'}`);
         }
     };
 
     const onClose = () => {
-        if (!showModal || !showModal[type]) throw new Error('Modal data is null');
-
-        toggleModal(type);
-        setValues((prev) => ({ ...prev, amount: '', friends: '' }));
+        try {
+            toggleModal(type);
+            setValues(() => ({
+                amount: '',
+                friends: '',
+                selectedFriendId: '',
+            }));
+        } catch (error) {
+            console.error(error);
+            showMessage('error', error.message || `Error during closing`);
+        }
     };
 
-    return { values, friends, setValues, setUserInputHandler, onFormSubmitHandler, onClose };
+    return { values, friends, setValues, setUserInputHandler, onTransaction, onClose };
 };

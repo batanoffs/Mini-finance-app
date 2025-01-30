@@ -4,13 +4,11 @@ import { AuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
 import { useMessage } from '../../../../../../hooks';
 import { Autocomplete } from '../../../../../../components/inputs';
-import { getUserToken } from '../../../../../../utils';
 
 import styles from './add-friends.module.css';
 
 export const AddToFavorites = ({ toggleModal }) => {
     const { auth, setAuth } = useContext(AuthContext);
-    const { token } = getUserToken();
 
     const [userInput, setUserInput] = useState({});
     const showMessage = useMessage();
@@ -32,7 +30,6 @@ export const AddToFavorites = ({ toggleModal }) => {
                 auth.objectId,
                 'favorite_friends',
                 body,
-                token
             );
 
             if (response !== 1) {
