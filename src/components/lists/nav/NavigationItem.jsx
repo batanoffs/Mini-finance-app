@@ -1,10 +1,19 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './navigation-item.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const NavigationItem = ({ icon, title, name, to, onClick = () => {}, img = {}, className = '' }) => {
-    const image = img ? <img src={img.src} alt={img.alt} /> : null
+import styles from './navigation-item.module.css';
+
+export const NavigationItem = ({
+    to,
+    icon,
+    title,
+    name,
+    img = {},
+    className = '',
+    onClick = () => {},
+}) => {
+    const image = img ? <img src={img.src} alt={img.alt} /> : null;
 
     return (
         <li className={className}>
@@ -25,5 +34,5 @@ export const NavigationItem = ({ icon, title, name, to, onClick = () => {}, img 
                 {title}
             </NavLink>
         </li>
-    )
-}
+    );
+};
