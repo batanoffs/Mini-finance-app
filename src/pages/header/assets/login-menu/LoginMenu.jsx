@@ -29,7 +29,7 @@ export const LoginMenu = () => {
                             borderTopRightRadius: '0px',
                         }}
                     >
-                        Log in
+                        LOGIN
                     </Link>
                 </li>
                 <li>
@@ -39,7 +39,7 @@ export const LoginMenu = () => {
                         name="register"
                         type="button"
                     >
-                        New Account
+                        NEW ACCOUNT
                     </Link>
                 </li>
             </ul>
