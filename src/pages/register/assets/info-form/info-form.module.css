@@ -6,3 +6,10 @@
     align-self: flex-end;
     margin-right: 3em;
 }
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    margin-top: 1em;
+}

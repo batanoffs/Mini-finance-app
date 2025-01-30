@@ -148,18 +148,22 @@ export const InfoForm = ({
                     autoComplete="address-level1"
                 />
 
-                <footer>
-                    <button name="prev" className="button-secondary" onClick={currentStepsHandler}>
-                        Back
-                    </button>
-                    <button
+                <footer className={styles.footer}>
+                    <FormInput
+                        type="button"
+                        id="back"
+                        value="Back"
+                        name="prev"
+                        onClick={currentStepsHandler}
+                    />
+                    <FormInput
+                        type="button"
+                        id="next"
+                        value="Next"
                         name="next"
-                        className="button-primary"
                         onClick={onNextPageHandler}
                         disabled={isNextDisabled}
-                    >
-                        Next
-                    </button>
+                    />
                 </footer>
             </div>
         </section>
