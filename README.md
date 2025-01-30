@@ -5,17 +5,17 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-purple)](https://github.com/prettier/prettier)
 [![styled with prettier](https://img.shields.io/badge/Finance-web_app-teal)]()
 
-#### Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, and maintaining transaction history.
-
-### Project Demo Previous Stage (updated version - coming soon)
-https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a05e-6da467265a31
+#### Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, notify user for events and maintaining transaction history.
 
 > [!NOTE]
 > - Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)
 > - Backendless FREE-TIER requests are **LIMITED** and the server will shut down for a day when reached
-> - After SoftUniada 2024 submission, the project has been updated with english localization
-> - Still in development, fixing issues and adding improvements
+> - New updates to database, services(introduced SDK), localization changes to english
 > - Test account: ```email: ivo@abv.bg pass: Minifinance123```
+
+### Project Demo Previous Stage (updated version - coming soon)
+https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a05e-6da467265a31
+
 
 ## Table of content
 - [Features](#features)
@@ -30,14 +30,16 @@ https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a0
 
 
 ## Features
-- Get online virtual card generation upon register
-- Account top-up via user's debit card, paypal or bank transfer
-- Add friends, manage friends, add favorite friends
-- Real-time notifications
-- User-to-user transactions send receive money
-- Transaction history tracking
-- Autocomplete user input based on data
+- Authentication
+- Virtual card generation upon register (currently all mock cards have balance)
+- Top-up
+- Friends and favorites
+- Notifications
+- User-to-user transactions
+- Transaction history tracking with filters
+- Autocomplete
 - User profile management (picture, profile details etc.)
+- Subscription (not implemented)
 
 ## Libraries and Services
 The project utilizes the following libraries and services:
@@ -47,7 +49,6 @@ The project utilizes the following libraries and services:
 - [React credit card 2](https://www.npmjs.com/package/react-credit-cards-2) library
 - [Ant Design](https://ant.design/) library for a few components
 - [Font Awesome Icons](https://fontawesome.com/icons) library
-- [Dotenv](https://www.npmjs.com/package/dotenv) library for secret keys
 
 | Category         | Technologies / Libraries                                   |
 | ---------------- | ---------------------------------------------------------- |
