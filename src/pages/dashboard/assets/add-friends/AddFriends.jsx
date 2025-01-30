@@ -17,7 +17,7 @@ export const AddFriends = () => {
     };
 
     return (
-        <EmptyCard title="Add Friend via phone" color="primary">
+        <EmptyCard title="Add friend" color="primary">
             <form onSubmit={handleSubmit(onSubmit)} className={styles.friendsForm}>
                 <FormInput
                     type="tel"
