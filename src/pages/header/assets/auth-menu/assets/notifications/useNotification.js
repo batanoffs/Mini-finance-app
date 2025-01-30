@@ -13,12 +13,12 @@ export const useNotification = ({ initialState }) => {
     const showMessage = useMessage();
 
     // // Fetch notifications on component mount
-    // useEffect(() => {
-    //     notificationService
-    //         .getNotSeenNotifications(auth.ownerId, token)
-    //         .then((result) => setNotifications(result))
-    //         .catch((error) => console.log(error));
-    // }, []);
+    useEffect(() => {
+        notificationService
+            .getByUserId(auth.objectId)
+            .then((result) => setNotifications(result))
+            .catch((error) => console.log(error));
+    }, []);
 
     // Handler to accept friend request
     const onFriendAccept = async (notificationId, sender) => {
@@ -159,7 +159,7 @@ export const useNotification = ({ initialState }) => {
             // TODO - fix error:
             // TODO - "Unable to create relation. Child object with id is not found in the related table."
             // Execute money transfer
-            const moneyTransferResponse = await transactionService.sendMoney(
+            const moneyTransferResponse = await transactionService.send(
                 receiverFullName,
                 amount,
                 auth.objectId,
@@ -169,7 +169,7 @@ export const useNotification = ({ initialState }) => {
             // Check if transaction was successful
             if (!moneyTransferResponse.success)
                 throw new Error(moneyTransferResponse.error.message);
-            
+
             states.moneyTransferred = true;
 
             // Update notifications
