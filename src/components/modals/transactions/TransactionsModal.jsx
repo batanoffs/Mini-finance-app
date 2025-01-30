@@ -18,9 +18,6 @@ const ModalForm = ({ type, toggleModal }) => {
 
     const onTransactionSubmit = (e) => {
         e.preventDefault();
-
-        console.log('onTransactionSubmit', values);
-        
         onTransaction(values.friends, values.selectedFriendId, values.amount);
     };
 
