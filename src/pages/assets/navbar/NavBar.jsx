@@ -14,6 +14,7 @@ import styles from './navbar.module.css';
 
 export const NavBar = () => {
     const { onLogoutHandler } = useAuthContext();
+    
     return (
         <nav className={styles.sidebarMenu}>
             <ul className={styles.nav}>
