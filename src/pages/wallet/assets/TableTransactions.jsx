@@ -1,7 +1,6 @@
-import { useContext } from 'react';
 import { Table, Tag } from 'antd';
 
-import { AuthContext } from '../../../contexts/AuthContext';
+import { useAuthContext } from '../../../contexts/AuthContext';
 import { tableColumnsConfig } from './tableConfig';
 import { useTransactions } from '../../../hooks';
 
@@ -9,7 +8,7 @@ import styles from './table-transactions.module.css';
 
 export const TableTransactions = () => {
     const { transactions, setTransactions, error, isLoading } = useTransactions();
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
 
     // Construct the table data params
     const processedTransactionList = transactions

@@ -1,8 +1,7 @@
-import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { AuthContext } from '../../../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
 import { getUserToken } from '../../../../../../utils';
 import { useMessage } from '../../../../../../hooks';
@@ -10,7 +9,7 @@ import { useMessage } from '../../../../../../hooks';
 import styles from './actions.module.css';
 
 export const Actions = ({ friend, toggleModal }) => {
-    const { auth, setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useAuthContext();
     const { token } = getUserToken();
 
     const showMessage = useMessage();

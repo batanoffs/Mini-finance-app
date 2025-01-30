@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 import { Actions, ActionsMenu, AddToFavorites } from './assets';
 import { useMessage, useModal } from '../../../../hooks';
-import { AuthContext } from '../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../contexts/AuthContext';
 
 import { ListFriend } from '../../../../components/lists';
 import { EmptyCard } from '../../../../components/cards';
@@ -19,7 +19,7 @@ export const QuickSendMoney = () => {
         buttons: false,
         favFriends: false,
     });
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
     const showMessage = useMessage();
 
     const notFound = (
@@ -34,7 +34,10 @@ export const QuickSendMoney = () => {
     const openSendMenu = (event) => {
         const name = event?.currentTarget?.parentElement?.getAttribute('data-key');
         if (!name) {
-            showMessage('error', 'Error, can not get friend name. Please try again, or refresh page');
+            showMessage(
+                'error',
+                'Error, can not get friend name. Please try again, or refresh page'
+            );
             return;
         }
         toggleModal('send');

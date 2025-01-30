@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { dataService, notificationService, transactionService } from '../../../../../../services';
-import { AuthContext } from '../../../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../../../contexts/AuthContext';
 import { useMessage } from '../../../../../../hooks';
 import { getUserToken } from '../../../../../../utils';
 import { NOTIFY } from './constants';
 
 export const useNotification = ({ initialState }) => {
     const [notifications, setNotifications] = useState(initialState);
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
     const { token } = getUserToken();
     const showMessage = useMessage();
 

@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-
-import { AuthContext } from '../../../../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../../../../contexts/AuthContext';
 import { NOTIFY } from '../constants';
 
 import styles from './render-message.module.css';
 
 export const RenderMessage = ({ notification }) => {
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
 
     // Define variables for notification data
     const senderName = notification.sender?.[0]?.fullName ?? 'Unknown';

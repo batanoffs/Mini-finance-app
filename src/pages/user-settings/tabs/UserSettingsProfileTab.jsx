@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 import { UploadPicture } from '../../../components/buttons';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { useAuthContext } from '../../../contexts/AuthContext';
 import { FormInput } from '../../../components/inputs';
 
 export const UserSettingsProfileTab = () => {
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
     const [state, setState] = useState({
         changeEmail: auth.email,
         changePhoneNumber: auth.phoneNumber,

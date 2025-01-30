@@ -1,19 +1,17 @@
-import { useState, useEffect, useCallback, useContext } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { transactionService } from '../services';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
 
 export const useTransactions = () => {
     const [transactions, setTransactions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
 
     const fetchTransactions = useCallback(async () => {
         try {
             const response = await transactionService.getByUserId(auth.objectId);
-
-            if (response?.length === 0) throw new Error('Failed to fetch transactions');
 
             setTransactions(response);
         } catch (error) {

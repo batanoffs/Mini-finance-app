@@ -1,12 +1,10 @@
-import { useContext, useCallback } from 'react';
-
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
 import { useMessage } from './useMessage';
-import { dataService, notificationService, friendRequestService } from '../services';
+import { dataService, friendRequestService } from '../services';
 import { getUserToken } from '../utils';
 
 export const useAddFriend = () => {
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
     const { token } = getUserToken();
     const showMessage = useMessage();
 
@@ -14,7 +12,6 @@ export const useAddFriend = () => {
         try {
             // Get the target user's phone number
             console.log('auth', auth);
-            
 
             const friendsPhoneNumber = formData.phone;
             const authUserId = auth.objectId;

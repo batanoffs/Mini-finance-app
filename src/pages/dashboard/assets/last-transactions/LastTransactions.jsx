@@ -1,8 +1,7 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Empty } from 'antd';
 
-import { AuthContext } from '../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../contexts/AuthContext';
 import { ListTransaction } from '../../../../components/lists';
 import { EmptyCard } from '../../../../components/cards';
 import { useTransactions } from '../../../../hooks';
@@ -11,7 +10,7 @@ import styles from './last-transactions.module.css';
 
 export const LastTransactions = () => {
     const { transactions, isLoading, error } = useTransactions();
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
 
     if (isLoading) {
         return (

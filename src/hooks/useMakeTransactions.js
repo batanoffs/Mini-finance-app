@@ -1,7 +1,7 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useMessage } from './useMessage';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
 import { dataService, transactionService } from '../services/';
 import { getUserToken } from '../utils';
 
@@ -10,7 +10,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
         ...initialState,
         selectedFriendId: '',
     });
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
     const [friends, setFriends] = useState(() => {
         // Initialize with any existing friends from auth
         if (auth.friends?.length > 0) {
@@ -80,6 +80,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
                     token
                 );
 
+                // TODO - update this validation its not returning success
                 if (!response.success) throw new Error(response.error.message);
             }
 
@@ -92,6 +93,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
                     token
                 );
 
+                // TODO - update this validation its not returning success
                 if (!response.success) throw new Error(response.error.message);
             }
 

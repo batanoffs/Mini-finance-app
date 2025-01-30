@@ -1,11 +1,11 @@
-import { useCallback, useContext, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
 import { transactionService } from '../services';
 import { getUserToken } from '../utils';
 
 export const useVirtualCard = () => {
-    const { auth, setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useAuthContext();
     const [card, setCard] = useState(auth.virtualCard);
     const { token } = getUserToken();
 

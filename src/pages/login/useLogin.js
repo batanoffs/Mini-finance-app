@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { authService, dataService } from '../../services';
 import { useMessage } from '../../hooks';
 
 export const useLogin = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuthContext();
     const navigate = useNavigate();
     const message = useMessage();
 

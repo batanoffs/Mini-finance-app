@@ -1,12 +1,12 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { AuthContext } from '../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../contexts/AuthContext';
 import { dataService } from '../../../../services';
 import { useMessage } from '../../../../hooks';
 import { getUserToken } from '../../../../utils';
 
 export const useFriends = () => {
-    const { auth, setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useAuthContext();
     const [allFriends, setAllFriends] = useState(auth.friends);
     const [search, setSearch] = useState('');
     const { token } = getUserToken();
@@ -18,7 +18,6 @@ export const useFriends = () => {
             friend.fullName.toLowerCase().includes(search.toLowerCase())
         );
     }, [allFriends, search]);
-    
 
     useEffect(() => {
         dataService

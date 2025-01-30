@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { useAuthContext } from '../../../contexts/AuthContext';
 import { EmptyCard } from '../empty/EmptyCard';
 import { ProfileAttributes } from './profile-attributes/ProfileAttributes';
 
 import styles from './profile.module.css';
 
 export const ProfileCard = () => {
-    const { auth } = useContext(AuthContext);
+    const { auth } = useAuthContext();
 
     const userAvatar = auth.avatar;
     const userElements = [
