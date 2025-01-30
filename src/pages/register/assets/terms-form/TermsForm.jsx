@@ -1,3 +1,5 @@
+import { FormInput } from '../../../../components/inputs';
+
 export const TermsForm = ({
     currentStepsHandler,
     validateHandler,
@@ -99,17 +101,21 @@ export const TermsForm = ({
                 </div>
                 <p className="error">{error.termsAccept}</p>
                 <footer style={{ paddingBottom: '0', marginTop: '1em' }}>
-                    <button name="prev" className="button-secondary" onClick={currentStepsHandler}>
-                        Back
-                    </button>
-                    <button
+                    <FormInput
+                        type="button"
+                        id="back"
+                        value="Back"
+                        name="prev"
+                        onClick={currentStepsHandler}
+                    />
+                    <FormInput
+                        type="button"
+                        id="next"
+                        value="Next"
                         name="next"
-                        className="button-primary"
-                        style={{ width: '80px' }}
                         onClick={checkHandler}
-                    >
-                        Next
-                    </button>
+                        disabled={isNextDisabled}
+                    />
                 </footer>
             </div>
         </div>
