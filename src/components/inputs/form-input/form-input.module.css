@@ -9,7 +9,7 @@
 
     /* Typography */
     --font-size-base: inherit;
-    --font-size-sm: 0.8rem;
+    --font-size-error: 0.8rem;
     --line-height-base: 1;
 
     /* Spacing */
@@ -19,8 +19,8 @@
 
     /* Component specific */
     --input-height: 2.75rem;
-    --border-radius: 0.5rem;
     --transition-duration: 150ms;
+    --font-weight: 500;
 }
 
 .formField {
@@ -33,7 +33,8 @@ input[type='submit'],
 input[type='button'] {
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight);
+    background-color: transparent;
     transition: all 0.1s;
     /*  line-height: normal;
         padding: 6px 20px;
@@ -46,21 +47,28 @@ input[type='button']:hover {
     background: var(--primary-color);
     color: var(--white-color);
     cursor: pointer;
-    opacity: 0.7;
 }
 
 input[type='submit']:disabled,
 input[type='button']:disabled {
+    background-color: white;
     cursor: not-allowed;
+    opacity: 0.7;
+
+    &:hover {
+        background: var(--primary-color);
+    }
 }
 
 .input {
     display: block;
-    height: var(--input-height);
-    width: 100%;
-    padding: 0 var(--space-3);
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
+    width: 100%;
+
+    height: var(--input-height);
+    padding: 0 var(--space-3);
+
     color: var(--text-color);
     background-color: var(--background-color);
     border: 1.5px solid var(--border-color);
@@ -104,7 +112,7 @@ input[type='button']:disabled {
 .error {
     display: block;
     color: var(--error-color);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-error);
     margin-top: var(--space-2);
     opacity: 0;
     transform: translateY(-5px);
