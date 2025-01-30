@@ -1,4 +1,4 @@
-export const INITIAL_AUTH = {
+export const INITIAL_AUTH_STATE = {
     userStatus: 'No information',
     phoneNumber: 'phone number',
     ownerId: 'No information',
