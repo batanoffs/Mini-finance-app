@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './listNav.module.css'
+import styles from './navigation-item.module.css'
 
-export const ListNav = ({ icon, title, name, to, onClick = () => {}, img = {}, className = '' }) => {
+export const NavigationItem = ({ icon, title, name, to, onClick = () => {}, img = {}, className = '' }) => {
     const image = img ? <img src={img.src} alt={img.alt} /> : null
 
     return (
