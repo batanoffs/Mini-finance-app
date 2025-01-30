@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-import { AuthContext } from '../../../../../../contexts/AuthContext';
+import { useAuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
 import { useMessage } from '../../../../../../hooks';
 import { Autocomplete } from '../../../../../../components/inputs';
@@ -8,9 +8,9 @@ import { Autocomplete } from '../../../../../../components/inputs';
 import styles from './add-friends.module.css';
 
 export const AddToFavorites = ({ toggleModal }) => {
-    const { auth, setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useAuthContext();
 
-    const [userInput, setUserInput] = useState({});
+    const [userInput, setUserInput] = useState({ friends: '' });
     const showMessage = useMessage();
 
     const onSubmit = async (event) => {
@@ -18,37 +18,33 @@ export const AddToFavorites = ({ toggleModal }) => {
         const inputName = userInput.friends;
 
         try {
-            const findFriend = auth.friends.filter((friend) => friend.fullName === inputName);
-            const body = [findFriend[0].objectId];
+            if (!inputName?.trim()) {
+                throw new Error('Please enter a name!');
+            }
+            if (!auth.objectId) {
+                throw new Error('Something went wrong');
+            }
 
-            if (!findFriend) throw new Error('This user is not your friend!');
-            if (!findFriend.length) throw new Error('This user is not your friend!');
-            if (!userInput) throw new Error('Please enter a name!');
-            if (!auth.objectId) throw new Error('Something went wrong');
+            const findFriend = auth.friends?.find((friend) => friend.fullName === inputName);
+            if (!findFriend) {
+                throw new Error('This user is not your friend!');
+            }
 
-            const response = await dataService.setRelation(
-                auth.objectId,
-                'favorite_friends',
-                body,
-            );
+            const response = await dataService.setRelation(auth.objectId, 'favorite_friends', [findFriend.objectId]);
 
             if (response !== 1) {
-                toggleModal('favFriends');
                 throw new Error('Something went wrong!');
             }
 
-            if (response === 1) {
-                setAuth({ ...auth, favorite_friends: [...auth.favorite_friends, findFriend[0]] });
-                sessionStorage.setItem(
-                    'auth',
-                    JSON.stringify({
-                        ...auth,
-                        favorite_friends: [...auth.favorite_friends, findFriend[0]],
-                    })
-                );
-                toggleModal('favFriends');
-                showMessage('success', `${findFriend[0].fullName} has been added to favorites!`);
-            }
+            // Update auth context and session storage
+            const updatedFavorites = [...auth.favorite_friends, findFriend];
+            const updatedAuth = { ...auth, favorite_friends: updatedFavorites };
+            
+            setAuth(updatedAuth);
+            sessionStorage.setItem('auth', JSON.stringify(updatedAuth));
+            
+            toggleModal('favFriends');
+            showMessage('success', `${findFriend.fullName} has been added to favorites!`);
         } catch (error) {
             showMessage('error', error.message);
             console.error(error);
@@ -58,14 +54,14 @@ export const AddToFavorites = ({ toggleModal }) => {
     return (
         <form onSubmit={onSubmit}>
             <Autocomplete
-                name="favorite-name"
-                id="favorite-name"
+                name="friends"
+                id="friends"
                 userInput={userInput}
                 setUserInput={setUserInput}
-                suggestions={auth?.friends?.map(friend => ({
+                suggestions={auth?.friends?.map((friend) => ({
                     name: friend.fullName,
                     avatar: friend.avatar,
-                    objectId: friend.objectId
+                    objectId: friend.objectId,
                 }))}
             />
             {/* Display a short validation message if no friend is selected */}
