@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom';
 
 import { FormInput } from '../../components/inputs';
-import { initialLoginState } from './constants';
+import { initialLoginState, DEMO_USER_1, DEMO_USER_2 } from './constants';
 import { useForm } from '../../hooks/useForm';
 import { useLogin } from './useLogin';
 
 import styles from './login.module.css';
 
 export const Login = () => {
-    const { login, onDemoLogin } = useLogin();
+    const { onLogin } = useLogin();
     const { values, error, changeHandler, handleSubmit } = useForm(initialLoginState);
 
-    const onSubmit = (formData) => {
-        login(formData);
+    const onLoginHandler = (formData) => {
+        onLogin(formData);
     };
 
-    const demoUserLoginHandler = () => {
-        onDemoLogin();
+    const onFirstDemoUserLogin = () => {
+        onLogin(DEMO_USER_1);
+    };
+
+    const onSecondDemoUserLogin = () => {
+        onLogin(DEMO_USER_2);
     };
 
     return (
@@ -25,7 +29,7 @@ export const Login = () => {
                 <header>
                     <h3>Welcome back!</h3>
                 </header>
-                <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+                <form className={styles.form} onSubmit={handleSubmit(onLoginHandler)}>
                     <FormInput
                         type="text"
                         name="email"
@@ -52,12 +56,21 @@ export const Login = () => {
                         value="LOGIN"
                         disabled={!values.email || !values.password}
                     />
-                    {/* TODO add demo user login button */}
+
+                    {/* Demo users login buttons(No need to enter email and password) */}
                     <FormInput
                         type="button"
-                        id="demo"
-                        value="LOGIN AS DEMO USER"
-                        onClick={demoUserLoginHandler}
+                        id="demo1"
+                        sx={{ marginBottom: '0.5em' }}
+                        value="LOGIN AS DEMO USER 1"
+                        onClick={onFirstDemoUserLogin}
+                    />
+                    <FormInput
+                        type="button"
+                        id="demo2"
+                        sx={{ marginBottom: '0.5em' }}
+                        value="LOGIN AS DEMO USER 2"
+                        onClick={onSecondDemoUserLogin}
                     />
                 </form>
 
