@@ -1,42 +1,11 @@
 // import * as request from '../utils/requester';
 // import { API } from '../constants/apiKeys';
 
-const getUserData = async (
-    parentObjectId,
-    loadRelations = ['virtualcard', 'friends', 'favorite_friends']
-) => {
-    // const query = encodeURIComponent(`ownerId='${ownerId}'`); // EncodeURI
-    // return await request.get(
-    //     API.data.userData + `?loadRelations=${loadRelations.join(',')}&where=${query}`
-    // );
-
-    try {
-        return await Backendless.Data.of('user-data').findById(parentObjectId, {
-            relations: loadRelations,
-        });
-    } catch (error) {
-        throw error;
-    }
-};
-
-const getUser = async (parentObjectId) => {
-    // return await request.get(API.data.userData + '/' + ownerId);
-    try {
-        return await Backendless.Data.of('user-data').findById(parentObjectId);
-    } catch (error) {
-        throw error;
-    }
-};
-
-const getRelation = async (parentObjectId, relations) => {
-    // return await request.get(
-    //     API.data.userData + `/${parentObjectId}?loadRelations=${relationName}&relationsDepth=1`
-    // );
-
+const getUserData = async (parentObjectId, relations = [], relationsDepth = 1) => {
     try {
         return await Backendless.Data.of('user-data').findById(parentObjectId, {
             relations,
-            relationsDepth: 1,
+            relationsDepth,
         });
     } catch (error) {
         throw error;
@@ -58,7 +27,7 @@ const getAllFriends = async (parentObjectId) => {
     }
 };
 
-const checkUserFriend = async (parentObjectId, phone) => {
+const getByAttr = async (phone) => {
     // const whereClause = encodeURIComponent(
     //     `objectId = '${parentObjectId}' and 'friends.phoneNumber' LIKE ${phone}`
     // );
@@ -66,25 +35,8 @@ const checkUserFriend = async (parentObjectId, phone) => {
     //     API.data.userData + `?where=${whereClause}&loadRelations=friends&relationsDepth=1`
     // );
     try {
-        return await Backendless.Data.of('user-data').findById(parentObjectId, {
-            where: `'friends.phoneNumber' LIKE ${phone}`,
-            relations: 'friends',
-            relationsDepth: 1,
-        });
-    } catch (error) {
-        throw error;
-    }
-};
-
-const getUserDataByAttribute = async (attribute, value, relations = [], relationsDepth = 0) => {
-    // const query = encodeURIComponent(`${attribute}='${value}'`);
-    // return await request.get(API.data.userData + `?where=${query}`);
-
-    try {
-        return Backendless.Data.of('user-data').find({
-            where: `${attribute}='${value}'`,
-            relations,
-            relationsDepth,
+        return await Backendless.Data.of('user-data').find({
+            where: `phoneNumber=${phone}`,
         });
     } catch (error) {
         throw error;
@@ -140,7 +92,7 @@ const removeFriend = async (currentUserId, friendId, token) => {
         const unitOfWork = new Backendless.UnitOfWork();
 
         // unitOfWork.deleteRelation(parentTableName, personObjectId, relationColumnName, giftIds);
-        
+
         // Remove the relation from the user
         unitOfWork.deleteRelation('user-data', currentUserId, 'friends', [friendId]);
 
@@ -158,12 +110,9 @@ export const dataService = {
     getUserData,
     setUserData,
     getMockCardObjectId,
-    getRelation,
     setRelation,
     removeFriend,
-    getUserDataByAttribute,
     changeAttribute,
     getAllFriends,
-    getUser,
-    checkUserFriend,
+    getByAttr,
 };
