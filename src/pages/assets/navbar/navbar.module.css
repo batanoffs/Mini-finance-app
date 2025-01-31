@@ -1,3 +1,13 @@
+:root {
+    --active-color: #e5e5e6;
+    --white-color: #ffffff;
+    --primary-color: #007bff;
+
+    --border-radius: 0.25em;
+    --border-radius-medium: 0.5em;
+    --border-radius-large: 1em;
+}
+
 .sidebarMenu {
     display: none;
     padding-top: 14px;
@@ -17,6 +27,15 @@
             position: absolute;
             bottom: 1em;
             width: 100%;
+
+            a {
+                background-color: transparent;
+                color: var(--primary-color);
+
+                &:hover {
+                    background-color: var(--active-color);
+                }
+            }
         }
     }
 }
