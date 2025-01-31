@@ -27,8 +27,6 @@ export const useAddFriend = () => {
             if (friendsPhoneNumber === userPhoneNumber) throw new Error('You cannot add yourself');
 
             // Check if already friends
-            // const response = await dataService.validateFriendExist(authUserId, friendsPhoneNumber);
-            // if (response && response.length > 0) throw new Error(response.error.message || 'This user is already your friend');
             const isYourFriend = auth.friends.find((x) => x.phoneNumber === friendsPhoneNumber);
 
             if (isYourFriend) throw new Error('This user is already your friend');
