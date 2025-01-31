@@ -1,12 +1,25 @@
+/**
+ * @hook useAutocomplete
+ * @description Custom hook that manages the autocomplete functionality including suggestion filtering,
+ * keyboard navigation, and selection handling.
+ * 
+ * @param {Array} suggestions - Array of suggestion objects containing name and objectId
+ * @param {Object} userInput - Current input state object containing friends and selected friend
+ * @param {Function} setUserInput - Function to update the parent component's input state
+ * @returns {Object} Object containing handlers and state for autocomplete functionality
+ */
+
 import { useState, useCallback, useMemo } from 'react';
 
 const useAutocomplete = (suggestions = [], userInput, setUserInput) => {
+    // Internal state for managing active suggestion index and visibility
     const [state, setState] = useState({
-        activeSuggestion: 0,
-        showSuggestions: false
+        activeSuggestion: 0,        
+        showSuggestions: false      
     });
 
-    // Memoize filtered suggestions
+    // Memoized computation of filtered suggestions based on current input
+    // Prevents re-filtering on every render unless dependencies change
     const filteredSuggestions = useMemo(() => {
         const currentInput = userInput.friends || '';
         if (!suggestions?.length || !currentInput?.trim()) {
@@ -19,10 +32,12 @@ const useAutocomplete = (suggestions = [], userInput, setUserInput) => {
         );
     }, [suggestions, userInput.friends]);
 
+    // Memoized handler for externally controlling suggestions visibility
     const setShowSuggestions = useCallback((show) => {
         setState(prev => ({ ...prev, showSuggestions: show }));
     }, []);
 
+    // Handles input changes: updates parent state and resets suggestion navigation
     const inputChangeHandler = useCallback((event) => {
         const { value: input, name } = event.target;
         
@@ -39,6 +54,7 @@ const useAutocomplete = (suggestions = [], userInput, setUserInput) => {
         }));
     }, [setUserInput]);
 
+    // Handles suggestion selection: updates parent state with selected friend
     const listSelectHandler = useCallback((suggestion) => {
         if (!suggestion) return;
         
@@ -54,6 +70,8 @@ const useAutocomplete = (suggestions = [], userInput, setUserInput) => {
         });
     }, [setUserInput]);
 
+    // Handles keyboard navigation through suggestions list
+    // Supports: Enter (select), Up/Down (navigate), Escape (close)
     const keyboardPressHandler = useCallback((event) => {
         if (!state.showSuggestions || !filteredSuggestions.length) return;
 
@@ -90,13 +108,13 @@ const useAutocomplete = (suggestions = [], userInput, setUserInput) => {
     }, [state.showSuggestions, state.activeSuggestion, filteredSuggestions, listSelectHandler]);
 
     return {
-        inputChangeHandler,
-        keyboardPressHandler,
-        listSelectHandler,
-        filteredSuggestions,
-        activeSuggestion: state.activeSuggestion,
-        showSuggestions: state.showSuggestions,
-        setShowSuggestions
+        inputChangeHandler,          // Handler for input changes
+        keyboardPressHandler,        // Handler for keyboard navigation
+        listSelectHandler,           // Handler for suggestion selection
+        filteredSuggestions,         // Filtered array of suggestions
+        activeSuggestion: state.activeSuggestion,  // Current active suggestion index
+        showSuggestions: state.showSuggestions,    // Visibility state
+        setShowSuggestions          // Function to control suggestions visibility
     };
 };
 

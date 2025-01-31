@@ -43,22 +43,22 @@
 }
 
 .suggestions li:hover,
-.suggestions li[data-active="true"] {
+.suggestions li[data-active='true'] {
     background-color: #f3f4f6;
 }
 
 @media (max-width: 480px) {
     .suggestions.show {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-height: 50vh;
-    margin: 0;
-    border-radius: 0.75rem 0.75rem 0 0;
-    border-width: 1.5px 0 0 0;
-    z-index: 9999; /* Ensure suggestions appear above other content on mobile */
-    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 50vh;
+        margin: 0;
+        border-radius: 0.75rem 0.75rem 0 0;
+        border-width: 1.5px 0 0 0;
+        z-index: 9999; /* Ensure suggestions appear above other content on mobile */
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 }
