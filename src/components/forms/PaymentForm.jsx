@@ -82,7 +82,6 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                     <div className="form-group">
                         <label htmlFor="cvv">CVV:</label>
                         <input
-                            required
                             type="password"
                             name="cvv"
                             className={styles.input}
@@ -91,6 +90,7 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                             onBlur={checkInputHandler}
                             onFocus={clearErrorHandler}
                             maxLength="3"
+                            required
                         />
                     </div>
                     <small className={styles.error}>{error.cvv}</small>
@@ -109,7 +109,6 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                 <div className={styles.modalOptions}>
                     <label htmlFor="email">Имейл:</label>
                     <input
-                        required
                         type="email"
                         name="email"
                         className={styles.input}
@@ -117,6 +116,7 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                         onChange={handleChange}
                         onBlur={checkInputHandler}
                         onFocus={clearErrorHandler}
+                        required
                     />
                 </div>
                 <small className={styles.error}>{error.email}</small>
