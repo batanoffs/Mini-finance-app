@@ -1,3 +1,13 @@
+:root {
+    --active-color: #e5e5e6;
+    --white-color: #ffffff;
+    --primary-color: #007bff;
+
+    --border-radius: 0.25em;
+    --border-radius-medium: 0.5em;
+    --border-radius-large: 1em;
+}
+
 .navLink {
     display: inline-block;
     position: relative;
@@ -19,6 +29,6 @@
 
 .navLink.active,
 .navLink:hover {
-    background: var(--primary-hover-color);
-    color: var(--white-color);
+    background: var(--active-color);
+    color: var(--primary-color);
 }
