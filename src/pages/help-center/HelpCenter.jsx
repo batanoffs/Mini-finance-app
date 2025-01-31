@@ -1,7 +1,6 @@
 import { ContactInfo } from '../assets';
 import { FormInput } from '../../components/inputs';
 import { BentoGrid } from '../../layout';
-import { AddFriends } from '../dashboard/assets';
 
 import styles from './help-center.module.css';
 import { useMessage } from '../../hooks';
@@ -70,7 +69,6 @@ export const HelpCenter = () => {
 
             <BentoGrid.Aside>
                 <ContactInfo />
-                <AddFriends />
             </BentoGrid.Aside>
         </>
     );
