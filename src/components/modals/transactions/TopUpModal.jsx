@@ -1,69 +1,70 @@
-import { useState, useContext } from 'react'
-import { faCreditCard } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState, useContext } from 'react';
+import { faCreditCard } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { PaymentForm } from '../../forms/PaymentForm'
-import { cardService } from '../../../services'
-import { useMessage } from '../../../hooks'
-import { AuthContext } from '../../../contexts/AuthContext'
-import { getUserToken } from '../../../utils'
+import { PaymentForm } from '../../forms/PaymentForm';
+import { cardService } from '../../../services';
+import { useMessage } from '../../../hooks';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { getUserToken } from '../../../utils';
+import { FormInput } from '../../inputs';
 
-import modal from './modal.module.css'
+import modal from './modal.module.css';
 
 export const TopUp = ({ toggleModal }) => {
-    const [inputState, setInputState] = useState({})
-    const { auth } = useContext(AuthContext)
+    const [inputState, setInputState] = useState({});
+    const { auth } = useContext(AuthContext);
     const { token } = getUserToken();
 
-    const message = useMessage()
+    const message = useMessage();
 
     const onSubmitHandler = async (e) => {
-        e.preventDefault()
-        const form = e.target
+        e.preventDefault();
+        const form = e.target;
         if (!form) {
-            console.error('Form element is null')
-            message('error', 'No form data was submitted. Please try again.')
-            return
+            console.error('Form element is null');
+            message('error', 'No form data was submitted. Please try again.');
+            return;
         }
-        const formData = new FormData(form)
-        const data = {}
+        const formData = new FormData(form);
+        const data = {};
 
         for (const [name, value] of formData) {
             if (name && value) {
-                data[name] = value
+                data[name] = value;
             } else {
-                console.error('Null pointer exception: name or value is null')
-                message('error', 'Invalid data was submitted. Please try again.')
-                return
+                console.error('Null pointer exception: name or value is null');
+                message('error', 'Invalid data was submitted. Please try again.');
+                return;
             }
         }
 
-        const amount = Number(data.amount) + Number(auth.virtualCard.top_up)
-        const response = await cardService.topUp(auth.virtualCard.objectId, amount, token)
+        const amount = Number(data.amount) + Number(auth.virtualCard.top_up);
+        const response = await cardService.topUp(auth.virtualCard.objectId, amount, token);
 
         if (!response) {
-            message('error', 'An error occurred while submitting the data. Please try again.')
-            return
+            message('error', 'An error occurred while submitting the data. Please try again.');
+            return;
         } else {
-            const balance = response.balance
-            const topUp = response.top_up
-            const prevData = JSON.parse(sessionStorage.getItem('auth') || '{}')
+            const balance = response.balance;
+            const topUp = response.top_up;
+            const prevData = JSON.parse(sessionStorage.getItem('auth') || '{}');
             sessionStorage.setItem(
                 'auth',
                 JSON.stringify({
                     ...prevData,
                     virtualCard: { ...prevData.virtualCard, top_up: topUp, balance: balance },
                 })
-            )
-            toggleModal('topUp')
-            message('success', 'Transaction was successful')
+            );
+            toggleModal('topUp');
+            message('success', 'Transaction was successful');
         }
-    }
+    };
 
     const handleChange = (event) => {
-        const result = event.target.value.replace(/\D/g, '')
-        setInputState({ ...inputState, [event.target.name]: result })
-    }
+        const result = event.target.value.replace(/\D/g, '');
+        setInputState({ ...inputState, [event.target.name]: result });
+    };
 
     return (
         <div className={modal.background}>
@@ -73,23 +74,18 @@ export const TopUp = ({ toggleModal }) => {
                     <button onClick={() => toggleModal('topUp')}>X</button>
                 </div>
                 <form onSubmit={onSubmitHandler} className="custom-form">
+                    <FormInput
+                        type="text"
+                        name="amount"
+                        id="amount"
+                        value={inputState.amount}
+                        onChange={handleChange}
+                        placeholder="10 BGN"
+                        required
+                    />
                     <div className="form-group">
-                        <label htmlFor="amount">Amount:</label>
-                        <input
-                            type="text"
-                            name="amount"
-                            value={inputState.amount}
-                            onChange={handleChange}
-                            id="amount"
-                            placeholder="10 BGN"
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="paymethod">
-                            <FontAwesomeIcon icon={faCreditCard} />
-                            Payment method:
-                        </label>
+                        <FontAwesomeIcon icon={faCreditCard} />
+
                         <select
                             id="paymethod"
                             value={inputState.method}
@@ -97,7 +93,7 @@ export const TopUp = ({ toggleModal }) => {
                                 setInputState({
                                     ...inputState,
                                     paymethod: e.target.value,
-                                })
+                                });
                             }}
                         >
                             <option value="">Select payment method</option>
@@ -126,5 +122,5 @@ export const TopUp = ({ toggleModal }) => {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
