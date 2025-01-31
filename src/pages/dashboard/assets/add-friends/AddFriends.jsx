@@ -30,6 +30,7 @@ export const AddFriends = () => {
                     onBlur={validateHandler}
                     onFocus={onFocusHandler}
                     required
+                    sx={{ marginBottom: '0.5em' }}
                 />
 
                 <FormInput type="submit" value="Add" sx={{ marginBottom: '0' }} />
