@@ -1,4 +1,4 @@
-const getByUserId = async (id, status = 'pending') => {
+const getByUserId = async (id, status = 'completed') => {
     try {
         // Build the where clause
         const whereClause = `receiver='${id}' OR sender='${id}' AND status='${status}'`;
@@ -58,24 +58,18 @@ const calcBalance = async (objectId, cardId, token) => {
 };
 
 const send = async (fullName, receiverId, amount, senderId, token) => {
-    console.log('send', { fullName, receiverId, amount, senderId, token });
-
-    // Build the notification message
-    const message = fullName + ' sent you ' + amount + ' BNG.';
-
     try {
+        // Build the notification message
+        const message = fullName + ' sent you ' + amount + ' BNG.';
+
+        // Create a new unit of work
         const unitOfWork = new Backendless.UnitOfWork();
 
         // Create a new transaction
-        const newTransaction = unitOfWork.create('transactions', { amount: Number(amount) });
-
-        console.log('Send Transaction', newTransaction.opResultId());
-
-        // Set the relation with the receiver
-        unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
-
-        // Set the relation with the sender
-        unitOfWork.setRelation(newTransaction, 'sender', [senderId]);
+        const newTransaction = unitOfWork.create('transactions', {
+            amount: Number(amount),
+            status: 'completed',
+        });
 
         // Create a notification
         const notification = unitOfWork.create('notifications', {
@@ -85,7 +79,11 @@ const send = async (fullName, receiverId, amount, senderId, token) => {
             related_entity_name: 'transactions',
         });
 
-        // Set the relation with the receiver
+        // Set the relations for the transaction
+        unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
+        unitOfWork.setRelation(newTransaction, 'sender', [senderId]);
+
+        // Set the relation for the receiver
         unitOfWork.setRelation(notification, 'userId', [receiverId]);
 
         // End of the transaction
@@ -96,22 +94,14 @@ const send = async (fullName, receiverId, amount, senderId, token) => {
 };
 
 const request = async (fullName, receiverId, amount, senderId, token) => {
-    // Build the notification message
-    const message = fullName + ' requested ' + amount + ' BNG.';
-
     try {
+        // Build the notification message
+        const message = fullName + ' requested ' + amount + ' BNG.';
+
         const unitOfWork = new Backendless.UnitOfWork();
 
         // Create a new transaction
         const newTransaction = unitOfWork.create('transactions', { amount: Number(amount) });
-
-        console.log('newTransaction', newTransaction);
-
-        // Set the relation with the receiver
-        unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
-
-        // Set the relation with the sender
-        unitOfWork.setRelation(newTransaction, 'sender', [senderId]);
 
         // Create a notification
         const notification = unitOfWork.create('notifications', {
@@ -121,7 +111,11 @@ const request = async (fullName, receiverId, amount, senderId, token) => {
             related_entity_name: 'transactions',
         });
 
-        // Set the relation with the receiver
+        // Set the relations for the transaction
+        unitOfWork.setRelation(newTransaction, 'receiver', [receiverId]);
+        unitOfWork.setRelation(newTransaction, 'sender', [senderId]);
+
+        // Set the relations for the notification
         unitOfWork.setRelation(notification, 'userId', [receiverId]);
 
         // End of the transaction
