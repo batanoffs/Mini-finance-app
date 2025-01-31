@@ -22,12 +22,15 @@ const ModalForm = ({ type, toggleModal }) => {
     };
 
     return (
-        <div className={styles.background} onClick={(e) => {
-            // Close only if clicking the background itself, not the modal
-            if (e.target === e.currentTarget) {
-                onClose();
-            }
-        }}>
+        <div
+            className={styles.background}
+            onClick={(e) => {
+                // Close only if clicking the background itself, not the modal
+                if (e.target === e.currentTarget) {
+                    onClose();
+                }
+            }}
+        >
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h5 className="modal-title">{title}</h5>
@@ -61,11 +64,7 @@ const ModalForm = ({ type, toggleModal }) => {
                         </div>
 
                         <div className={styles.footer}>
-                            <FormInput
-                                type="submit"
-                                className={`${styles.buttonPrimary} button-primary`}
-                                value="Submit"
-                            />
+                            <FormInput type="submit" value="Submit" />
                         </div>
                     </form>
                 </div>
@@ -75,18 +74,8 @@ const ModalForm = ({ type, toggleModal }) => {
 };
 
 export const TransactionsModal = {
-    Send: ({ toggleModal }) => (
-        <ModalForm
-            type="send"
-            toggleModal={toggleModal}
-        />
-    ),
-    Request: ({ toggleModal }) => (
-        <ModalForm
-            type="request"
-            toggleModal={toggleModal}
-        />
-    ),
+    Send: ({ toggleModal }) => <ModalForm type="send" toggleModal={toggleModal} />,
+    Request: ({ toggleModal }) => <ModalForm type="request" toggleModal={toggleModal} />,
     // TopUp: ({ showModal, toggleModal }) => (
     //     <ModalForm type="topUp" showModal={showModal} toggleModal={toggleModal} title="Top Up Account" />
     // ),
