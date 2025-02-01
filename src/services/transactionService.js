@@ -1,7 +1,7 @@
-const getByUserId = async (id, status = 'completed') => {
+const getByUserId = async (id, status = null) => {
     try {
         // Build the where clause
-        const whereClause = `receiver='${id}' OR sender='${id}' AND status='${status}'`;
+        const whereClause = `receiver='${id}' OR sender='${id}' ${status !== null ? `AND status='${status}'` : ''}`;
 
         return await Backendless.Data.of('transactions').find({
             where: whereClause,

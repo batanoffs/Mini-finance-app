@@ -9,7 +9,7 @@ import { useTransactions } from '../../../../hooks';
 import styles from './last-transactions.module.css';
 
 export const LastTransactions = () => {
-    const { transactions, isLoading, error } = useTransactions();
+    const { transactions, isLoading, error } = useTransactions('completed');
     const { auth } = useAuthContext();
 
     if (isLoading) {

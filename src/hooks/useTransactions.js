@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { transactionService } from '../services';
 import { useAuthContext } from '../contexts/AuthContext';
 
-export const useTransactions = () => {
+export const useTransactions = (transactionStatus = null) => {
     const [transactions, setTransactions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -11,8 +11,7 @@ export const useTransactions = () => {
 
     const fetchTransactions = useCallback(async () => {
         try {
-            const response = await transactionService.getByUserId(auth.objectId);
-
+            const response = await transactionService.getByUserId(auth.objectId, transactionStatus);
             setTransactions(response);
         } catch (error) {
             console.error(error);
