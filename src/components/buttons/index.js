@@ -1,2 +1,2 @@
-export * from './banking-button/BankingButton'
+export * from './button-tooltip/ButtonTooltip'
 export * from './upload/Upload'
