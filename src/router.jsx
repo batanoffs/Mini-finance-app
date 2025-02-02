@@ -1,6 +1,11 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { App } from 'antd';
+import { ConfigProvider } from 'antd';
 
+import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
+import { NavBar, ContactInfo } from './pages/assets';
+import { restrictLoginPage, restrictDashboard } from './guards';
+import { AuthProvider } from './contexts/AuthContext';
+import { PageNotFound } from './components/utils';
 import {
     Home,
     Register,
@@ -14,34 +19,51 @@ import {
     UserSettingsNav,
     ResetPassword,
 } from './pages';
-import { NavBar, ContactInfo } from './pages/assets';
-import { RootLayout, DashboardLayout, UserSettingsLayout } from './layout';
-import { AuthProvider } from './contexts/AuthContext';
-import { PageNotFound } from './components/utils';
-import { restrictLoginPage, restrictDashboard } from './guards';
+
+import theme from './config/antDesignTheme';
 
 const router = createBrowserRouter(
     [
         {
             path: '/',
             element: (
-                <AuthProvider>
-                    <App>
+                <ConfigProvider theme={theme}>
+                    <AuthProvider>
                         <RootLayout />
-                    </App>
-                </AuthProvider>
+                    </AuthProvider>
+                </ConfigProvider>
             ),
+            hydrateFallback: <div>Loading...</div>,
             children: [
-                { index: true, element: <Home />, loader: restrictLoginPage },
-                { path: 'about', element: <About />, loader: restrictLoginPage },
-                { path: 'login', element: <Login />, loader: restrictLoginPage },
-                { path: 'register', element: <Register />, loader: restrictLoginPage },
-                { path: 'reset', element: <ResetPassword />, loader: restrictLoginPage }, // Add the new route
+                {
+                    index: true,
+                    element: <Home />,
+                    loader: restrictLoginPage,
+                },
+                {
+                    path: 'about',
+                    element: <About />,
+                    loader: restrictLoginPage,
+                },
+                {
+                    path: 'login',
+                    element: <Login />,
+                    loader: restrictLoginPage,
+                },
+                {
+                    path: 'register',
+                    element: <Register />,
+                    loader: restrictLoginPage,
+                },
+                {
+                    path: 'reset',
+                    element: <ResetPassword />,
+                    loader: restrictLoginPage,
+                },
                 {
                     path: 'dashboard',
                     element: <DashboardLayout NavComponent={NavBar} />,
                     loader: restrictDashboard,
-
                     children: [
                         {
                             index: true, // if user goes to /dashboard, redirect to /dashboard/overview
