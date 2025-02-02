@@ -4,41 +4,30 @@
     --white-color: #ffffff;
     --black-color: #000000;
     --primary-color: #1678fb;
-    --primary-hover-color: #1678fb;
     --secondary-color: #44cfcb;
     --section-bg-color: #eee;
-    --primary-bg-color: #a60067;
+    --accent-bg-color: #a60067;
     --third-bg-color: #ccdde2ff;
     --custom-btn-bg-color: #ccdde2ff;
     --heading-color: #44464c;
     --p-color: #44464c;
     --border-color: #ccdde2ff;
     --link-hover-color: #dc602e;
-
-    --logo--background-color: #44464c;
-    --logo--icon-color: #41a6d1;
     --logo--text-color: #5c5959;
 
     --body-font-family: 'Montserrat', sans-serif;
-    --label-font-size: 1em;
     --menu-font-size: 1em;
-    --menu-font-weight: 400;
     --btn-font-size: 1em;
     --card-title-font-size: 1em;
-    --copyright-font-size: 0.8em;
 
     --border-radius-large: 1em;
     --border-radius-component: 1em;
     --border-radius-medium: 1.1em;
-    --border-radius-small: 0.8em;
+    --border-radius-small: 0.5em;
 
     --font-weight-light: 400;
     --font-weight-normal: 500;
     --font-weight-bold: 600;
-
-    --hero-aspect-ratio: 93.52/53.2;
-
-    --border-radius: 0.5rem;
 }
 
 html {
@@ -129,4 +118,11 @@ b,
 strong {
     font-weight: var(--font-weight-bold);
     color: var(--heading-color);
+}
+
+input {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    padding: 0.5em;
+    font-size: 1em;
 }
