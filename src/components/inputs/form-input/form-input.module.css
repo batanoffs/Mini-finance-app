@@ -72,7 +72,7 @@ input[type='button']:disabled {
     color: var(--text-color);
     background-color: var(--background-color);
     border: 1.5px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-small);
     transition: all var(--transition-duration) ease-in-out;
     appearance: none;
 }

@@ -28,7 +28,7 @@
 }
 
 .avatar:hover {
-    border: 2px solid var(--primary-hover-color);
+    border: 2px solid var(--primary-color);
 }
 
 .list {
