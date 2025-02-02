@@ -1,33 +1,57 @@
-import { Link } from 'react-router-dom';
-
+import { useEffect, useRef } from 'react';
 import { Login } from '../index';
+import { RainbowButton, SecondaryButton } from './assets';
 import { Preview } from './assets';
 import { title, subTitle } from './constants';
 
 import styles from './home.module.css';
 
 export const Home = () => {
+    const heroContentRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        if (heroContentRef.current) {
+            observer.observe(heroContentRef.current);
+        }
+
+        return () => {
+            if (heroContentRef.current) {
+                observer.unobserve(heroContentRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.heroSection}>
-                <div className={styles.heroContent}>
-                    <h1>{title}</h1>
-                    <h5>{subTitle}</h5>
-
-                    <div className={styles.buttonContainer}>
-                        <Link to="/about" className="button-secondary">
-                            Find out more
-                        </Link>
-                        <Link to="/register" className="button-primary">
-                            Get your card
-                        </Link>
+        <div className={styles.backgroundWrapper}>
+            <div className={styles.heroContainer}>
+                <section className={styles.heroSection}>
+                    <div ref={heroContentRef} className={styles.heroContent}>
+                        <h1>{title}</h1>
+                        <h5>{subTitle}</h5>
                     </div>
-                </div>
-                <Preview styles={styles} />
-            </div>
-
-            <div className={styles.loginContainer}>
-                <Login />
+                    <Preview />
+                </section>
+                <aside className={styles.actions}>
+                    <div>
+                        <RainbowButton to="/register" text="Get your card" />
+                        <SecondaryButton to="/about" text="Find out more" />
+                    </div>
+                    <div className={styles.divider}>
+                        <h6> OR </h6>
+                    </div>
+                    <Login className={styles.login} />
+                </aside>
             </div>
         </div>
     );
