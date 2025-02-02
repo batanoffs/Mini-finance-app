@@ -37,7 +37,7 @@
     margin-top: 1em;
     border: none;
     border-radius: 1em;
-    background-color: var(--primary-hover-color);
+    background-color: var(--primary-color);
     color: var(--white-color);
     cursor: pointer;
     transition: background-color 0.3s ease;
