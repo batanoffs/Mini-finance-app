@@ -4,6 +4,8 @@ import { UploadPicture } from '../../../components/buttons';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { FormInput } from '../../../components/inputs';
 
+import styles from './UserSettingsProfileTab.module.css';
+
 export const UserSettingsProfileTab = () => {
     const { auth } = useAuthContext();
     const [state, setState] = useState({
@@ -26,12 +28,12 @@ export const UserSettingsProfileTab = () => {
     };
 
     return (
-        <div className="form-container">
-            <div className="form-content">
-                <div className="form-group">
+        <div className={styles.formContainer}>
+            <div className={styles.formContent}>
+                <div className={styles.formGroup}>
                     <UploadPicture />
                 </div>
-                <form className="custom-form" method="post">
+                <form className={styles.customForm} method="post">
                     <FormInput
                         autoComplete="off"
                         type="email"
@@ -55,19 +57,8 @@ export const UserSettingsProfileTab = () => {
                     />
 
                     <footer>
-                        <input
-                            type="button"
-                            onClick={onResetHandler}
-                            className="button-secondary"
-                            value="Reset"
-                        />
-
-                        <input
-                            type="submit"
-                            onClick={onUpdateHandler}
-                            className="button-primary"
-                            value="Save changes"
-                        />
+                        <FormInput type="button" onClick={onResetHandler} value="Reset" />
+                        <FormInput type="submit" onClick={onUpdateHandler} value="Save changes" />
                     </footer>
                 </form>
             </div>
