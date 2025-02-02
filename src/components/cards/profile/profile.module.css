@@ -17,7 +17,7 @@
 .customBlockEditIcon {
     background: var(--custom-btn-bg-color);
     border-radius: var(--border-radius-large);
-    color: var(--primary-hover-color);
+    color: var(--primary-color);
 
     width: 35px;
     height: 35px;
@@ -26,7 +26,7 @@
 }
 
 .customBlockEditIcon:hover {
-    background: var(--primary-hover-color);
+    background: var(--primary-color);
     color: var(--white-color);
 }
 
@@ -58,7 +58,7 @@
     }
 
     a:hover {
-        color: var(--primary-hover-color);
+        color: var(--primary-color);
     }
 
     a:active {

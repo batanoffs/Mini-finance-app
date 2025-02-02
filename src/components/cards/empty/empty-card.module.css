@@ -7,7 +7,7 @@
 }
 
 .accent {
-    background: var(--primary-bg-color);
+    background: var(--accent-bg-color);
     overflow: hidden;
 
     h5 {
