@@ -37,8 +37,8 @@ export const InfoForm = ({
     );
 
     return (
-        <section className="form-container">
-            <div className="form-content">
+        <section className={styles.formContainer}>
+            <div className={styles.formContent}>
                 <header>
                     <h5>Please enter your personal information in the form</h5>
                 </header>
@@ -65,9 +65,9 @@ export const InfoForm = ({
                     onFocus={onFocusHandler}
                     error={error.lastName}
                 />
-                <div className="form-group">
+                <div className={styles.formGroup}>
                     <label htmlFor="gender">
-                        Gender <small className="error">*</small>
+                        Gender <small className={styles.error}>*</small>
                     </label>
                     <Radio.Group
                         name="gender"
@@ -148,7 +148,7 @@ export const InfoForm = ({
                     autoComplete="address-level1"
                 />
 
-                <footer className={styles.footer}>
+                <footer>
                     <FormInput
                         type="button"
                         id="back"
