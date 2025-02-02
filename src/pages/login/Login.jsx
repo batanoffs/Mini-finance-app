@@ -7,7 +7,7 @@ import { useLogin } from './useLogin';
 
 import styles from './login.module.css';
 
-export const Login = () => {
+export const Login = ({ className = '' }) => {
     const { onLogin } = useLogin();
     const { values, error, changeHandler, handleSubmit } = useForm(initialLoginState);
 
@@ -24,10 +24,11 @@ export const Login = () => {
     };
 
     return (
-        <div className={styles.formContainer}>
+        <div className={`${styles.formContainer} ${className}`}>
             <div className={styles.formContent}>
                 <header>
                     <h3>Welcome back!</h3>
+                    <p>Enter your credentials or click one of the demo users to login</p>
                 </header>
                 <form className={styles.form} onSubmit={handleSubmit(onLoginHandler)}>
                     <FormInput
