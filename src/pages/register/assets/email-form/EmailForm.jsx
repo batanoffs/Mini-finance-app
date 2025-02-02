@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 
 import { FormInput } from '../../../../components/inputs';
 
+import styles from './email-form.module.css';
+
 export const EmailForm = ({
     email,
     password,
@@ -19,8 +21,8 @@ export const EmailForm = ({
     };
 
     return (
-        <section className="form-container">
-            <div className="form-content">
+        <section className={styles.formContainer}>
+            <div className={styles.formContent}>
                 <header>
                     <h5>Email and password</h5>
                 </header>

@@ -1,0 +1,20 @@
+.formContainer {
+    background: #fff;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.formContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.formContent header {
+    margin-bottom: 2rem;
+    align-self: center;
+}
