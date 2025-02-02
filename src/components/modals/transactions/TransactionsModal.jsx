@@ -21,24 +21,20 @@ const ModalForm = ({ type, toggleModal }) => {
         onTransaction(values.friends, values.selectedFriendId, values.amount);
     };
 
+    const onCloseOutsideClick = (e) => {
+        if (e.target === e.currentTarget) onClose();
+    };
+
     return (
-        <div
-            className={styles.background}
-            onClick={(e) => {
-                // Close only if clicking the background itself, not the modal
-                if (e.target === e.currentTarget) {
-                    onClose();
-                }
-            }}
-        >
+        <div className={styles.background} onClick={onCloseOutsideClick}>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <h5 className="modal-title">{title}</h5>
+                    <h5>{title}</h5>
                     <button onClick={onClose}>X</button>
                 </div>
 
-                <div className="form-content">
-                    <form onSubmit={onTransactionSubmit} className="custom-form">
+                <div className={styles.formContent}>
+                    <form onSubmit={onTransactionSubmit} className={styles.customForm}>
                         <div className={styles.formGroup}>
                             <FormInput
                                 type="text"
@@ -63,9 +59,9 @@ const ModalForm = ({ type, toggleModal }) => {
                             />
                         </div>
 
-                        <div className={styles.footer}>
+                        <footer>
                             <FormInput type="submit" value="Submit" />
-                        </div>
+                        </footer>
                     </form>
                 </div>
             </div>

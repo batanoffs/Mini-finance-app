@@ -70,10 +70,10 @@ export const TopUp = ({ toggleModal }) => {
         <div className={modal.background}>
             <div className={modal.container}>
                 <div className={modal.header}>
-                    <h5 className="modal-title">Top up account</h5>
+                    <h5>Top up account</h5>
                     <button onClick={() => toggleModal('topUp')}>X</button>
                 </div>
-                <form onSubmit={onSubmitHandler} className="custom-form">
+                <form onSubmit={onSubmitHandler} className={modal.customForm}>
                     <FormInput
                         type="text"
                         name="amount"
@@ -83,7 +83,7 @@ export const TopUp = ({ toggleModal }) => {
                         placeholder="10 BGN"
                         required
                     />
-                    <div className="form-group">
+                    <div className={modal.formGroup}>
                         <FontAwesomeIcon icon={faCreditCard} />
 
                         <select
@@ -104,11 +104,10 @@ export const TopUp = ({ toggleModal }) => {
                     <PaymentForm inputState={inputState} setInputState={setInputState} />
 
                     <footer>
-                        <input
-                            className="button-primary"
-                            style={{ width: `100%`, textAlign: `center` }}
+                        <FormInput
                             type="submit"
                             value="Top up"
+                            style={{ width: `100%`, textAlign: `center` }}
                             disabled={
                                 !inputState.amount ||
                                 !inputState.paymethod ||
