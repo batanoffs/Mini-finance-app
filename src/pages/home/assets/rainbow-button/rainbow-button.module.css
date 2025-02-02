@@ -1,0 +1,116 @@
+:root {
+    /* Existing variables */
+    --gray-blue-gradient: linear-gradient(
+        45deg,
+        #2563eb,
+        #3b82f6,
+        #60a5fa,
+        #93c5fd,
+        #2563eb,
+        #3b82f6,
+        #60a5fa
+    );
+    --rainbow-gradient: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff8000,
+        #ffff00,
+        #80ff00,
+        #00ff00,
+        #00ff80,
+        #00ffff,
+        #0080ff,
+        #0000ff,
+        #8000ff,
+        #ff00ff,
+        #ff0080,
+        #ff0000
+    );
+}
+
+.rainbowButton {
+    padding: 0.5em 2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 1;
+    flex: 2;
+    min-width: var(--button-min-width);
+    font-size: var(--button-font-size);
+    border-radius: var(--border-radios);
+    background-size: 200% auto;
+    background: var(--rainbow-gradient);
+    animation: gradient var(--animation-duration) linear infinite;
+}
+
+.rainbowButton::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--white-color);
+    border-radius: calc(var(--border-radios) - 1px);
+    z-index: -1;
+    transition: var(--transition-speed);
+}
+
+.rainbowButton span {
+    background: var(--gray-blue-gradient);
+    font-weight: var(--font-weigh-button);
+
+    background-size: 200% auto;
+    animation: gradient var(--animation-duration) linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    transition: var(--transition-speed);
+}
+
+.rainbowButton span::after {
+    content: '→';
+    position: absolute;
+    right: var(--arrow-spacing);
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-8px);
+}
+
+.rainbowButton:hover::before {
+    opacity: var(--hover-opacity);
+}
+
+.rainbowButton:hover span {
+    color: transparent;
+}
+
+.rainbowButton:hover span::after {
+    opacity: 1;
+    transform: translateX(0);
+    background: none;
+    color: var(--primary-color);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .rainbowButton {
+        padding: 0.8em 1.2em;
+        font-size: var(--button-mobile-font-size);
+        min-width: var(--button-mobile-min-width);
+    }
+}
