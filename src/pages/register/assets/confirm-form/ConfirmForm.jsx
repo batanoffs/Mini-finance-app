@@ -1,6 +1,8 @@
 import { Radio } from 'antd';
 import { useState } from 'react';
 
+import styles from './confirm-form.module.css';
+
 export const ConfirmForm = ({
     email,
     password,
@@ -24,17 +26,13 @@ export const ConfirmForm = ({
     };
 
     return (
-        <div className="form-container">
-            <div className="form-content">
-                <form
-                    style={{ display: `inline-flex`, flexDirection: `column` }}
-                    action="#"
-                    method="post"
-                >
+        <div className={styles.formContainer}>
+            <div className={styles.formContent}>
+                <form>
                     <header>
                         <h5>Confirm your data</h5>
                     </header>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
@@ -44,12 +42,12 @@ export const ConfirmForm = ({
                             disabled
                             autoComplete="off"
                             placeholder="no information"
-                            className="form-control"
+                            className={styles.formControl}
                             value={email}
                             onChange={changeHandler}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
@@ -59,16 +57,16 @@ export const ConfirmForm = ({
                             disabled
                             autoComplete="off"
                             placeholder="no information"
-                            className="form-control"
+                            className={styles.formControl}
                             value={password}
                             onChange={changeHandler}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="firstName">First name</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className={styles.formControl}
                             name="firstName"
                             id="firstName"
                             placeholder="no information"
@@ -77,11 +75,11 @@ export const ConfirmForm = ({
                             disabled
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="lastName">Last name</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className={styles.formControl}
                             name="lastName"
                             id="lastName"
                             placeholder="no information"
@@ -90,7 +88,7 @@ export const ConfirmForm = ({
                             disabled
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label>Gender</label>
                         <Radio.Group
                             name="gender"
@@ -109,11 +107,11 @@ export const ConfirmForm = ({
                         </Radio.Group>
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="phoneNumber">Phone number</label>
                         <input
                             type="tel"
-                            className="form-control"
+                            className={styles.formControl}
                             name="phoneNumber"
                             id="phoneNumber"
                             placeholder="no information"
@@ -122,11 +120,11 @@ export const ConfirmForm = ({
                             disabled
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="address">Address</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className={styles.formControl}
                             name="address"
                             id="address"
                             placeholder="no information"
@@ -136,11 +134,11 @@ export const ConfirmForm = ({
                             disabled
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="town">Town</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className={styles.formControl}
                             name="town"
                             id="town"
                             placeholder="no information"
@@ -149,11 +147,11 @@ export const ConfirmForm = ({
                             disabled
                         />
                     </div>
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="country">Country</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className={styles.formControl}
                             name="country"
                             id="country"
                             placeholder="no information"
@@ -168,7 +166,7 @@ export const ConfirmForm = ({
                     <button
                         name="prev"
                         to={'/register/terms'}
-                        className="button-secondary"
+                        className={styles.buttonSecondary}
                         onClick={currentStepsHandler}
                     >
                         Back
@@ -177,7 +175,7 @@ export const ConfirmForm = ({
                     <input
                         type="button"
                         name="confirm"
-                        className="button-primary"
+                        className={styles.buttonPrimary}
                         value={'Confirm data'}
                         onClick={onConfirmHandler}
                     />
@@ -185,7 +183,7 @@ export const ConfirmForm = ({
                         <input
                             name="register"
                             type="submit"
-                            className="button-primary"
+                            className={styles.buttonPrimary}
                             value={'Register'}
                             onClick={handleSubmit}
                         />
