@@ -74,7 +74,7 @@ export const useForm = (initialState, errorMessages, testRegex) => {
     };
 
     const onFocusHandler = (event) => {
-        event.target.style.borderColor = 'var(--primary-hover-color)';
+        event.target.style.borderColor = 'var(--primary-color)';
     };
 
     const resetFormHandler = (event) => {
