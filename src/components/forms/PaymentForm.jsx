@@ -1,99 +1,92 @@
-import React from 'react'
-import Cards from 'react-credit-cards-2'
+import React from 'react';
+import Cards from 'react-credit-cards-2';
+import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
-import { useValidate } from '../../hooks/useValidate'
+import { useValidate } from '../../hooks/useValidate';
+import { FormInput } from '../inputs';
 
-import styles from './payment-form.module.css'
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
+import styles from './payment-form.module.css';
 
 export const PaymentForm = ({ inputState, setInputState }) => {
-    const { error, errorHandler, clearErrorHandler } = useValidate({})
+    const { error, errorHandler, clearErrorHandler } = useValidate({});
 
     const handleChange = (e) => {
-        setInputState({ ...inputState, [e.target.name]: e.target.value })
-    }
+        setInputState({ ...inputState, [e.target.name]: e.target.value });
+    };
 
     const checkInputHandler = (e) => {
-        const inputName = e.target.name
-        const currentValue = inputState[inputName]
+        const inputName = e.target.name;
+        const currentValue = inputState[inputName];
         if (!currentValue) {
-            return
+            return;
         } else {
             if (errorHandler(e)) {
-                e.target.style.borderColor = 'red'
+                e.target.style.borderColor = 'red';
             } else {
-                e.target.style.borderColor = 'lightgreen'
+                e.target.style.borderColor = 'lightgreen';
             }
         }
-    }
+    };
 
     if (inputState.paymethod === 'debitcard') {
         return (
             <div className={styles.modalOptions}>
-                <div className="form-group">
-                    <label htmlFor="debitcard">Притежател:</label>
-                    <input
+                <FormInput
+                    type="text"
+                    name="fullName"
+                    placeholder="Enter card holder name"
+                    value={inputState.fullName}
+                    onChange={handleChange}
+                    onBlur={checkInputHandler}
+                    onFocus={clearErrorHandler}
+                    className={styles.input}
+                    error={error.fullName}
+                    maxLength="30"
+                    required
+                />
+
+                <div>
+                    <FormInput
                         required
                         type="text"
-                        name="fullName"
-                        value={inputState.fullName}
+                        name="cardnumber"
+                        placeholder="Enter card number"
+                        value={inputState.cardnumber}
+                        onChange={handleChange}
+                        onBlur={checkInputHandler}
+                        onFocus={clearErrorHandler}
+                        maxLength="16"
+                        className={styles.input}
+                        error={error.debitcard}
+                    />
+
+                    <FormInput
+                        required
+                        type="text"
+                        name="expiry"
+                        placeholder="Enter expiry date"
+                        value={inputState.expiry}
                         onChange={handleChange}
                         onBlur={checkInputHandler}
                         onFocus={clearErrorHandler}
                         className={styles.input}
-                        maxLength="30"
+                        error={error.expiry}
+                        maxLength="5"
                     />
-                </div>
-                <small className={styles.error}>{error.fullName}</small>
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="cardnumber">Номер:</label>
-                        <input
-                            required
-                            type="text"
-                            name="cardnumber"
-                            value={inputState.cardnumber}
-                            onChange={handleChange}
-                            onBlur={checkInputHandler}
-                            onFocus={clearErrorHandler}
-                            maxLength="16"
-                            className={styles.input}
-                        />
-                    </div>
 
-                    <small className={styles.error}>{error.debitcard}</small>
-
-                    <div className="form-group">
-                        <label htmlFor="expiry">Валидност:</label>
-                        <input
-                            required
-                            type="text"
-                            name="expiry"
-                            value={inputState.expiry}
-                            onChange={handleChange}
-                            onBlur={checkInputHandler}
-                            onFocus={clearErrorHandler}
-                            className={styles.input}
-                            maxLength="5"
-                        />
-                    </div>
-                    <small className={styles.error}>{error.expiry}</small>
-
-                    <div className="form-group">
-                        <label htmlFor="cvv">CVV:</label>
-                        <input
-                            type="password"
-                            name="cvv"
-                            className={styles.input}
-                            value={inputState.cvv}
-                            onChange={handleChange}
-                            onBlur={checkInputHandler}
-                            onFocus={clearErrorHandler}
-                            maxLength="3"
-                            required
-                        />
-                    </div>
-                    <small className={styles.error}>{error.cvv}</small>
+                    <FormInput
+                        placeholder="Enter cvv"
+                        type="password"
+                        name="cvv"
+                        className={styles.input}
+                        value={inputState.cvv}
+                        onChange={handleChange}
+                        onBlur={checkInputHandler}
+                        onFocus={clearErrorHandler}
+                        error={error.cvv}
+                        maxLength="3"
+                        required
+                    />
                 </div>
                 <Cards
                     number={Number(inputState.cardnumber) || ''}
@@ -102,25 +95,25 @@ export const PaymentForm = ({ inputState, setInputState }) => {
                     name={inputState.fullName || ''}
                 />
             </div>
-        )
+        );
     } else if (inputState.paymethod === 'paypal') {
         return (
-            <>
-                <div className={styles.modalOptions}>
-                    <label htmlFor="email">Имейл:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        className={styles.input}
-                        value={inputState.email}
-                        onChange={handleChange}
-                        onBlur={checkInputHandler}
-                        onFocus={clearErrorHandler}
-                        required
-                    />
-                </div>
-                <small className={styles.error}>{error.email}</small>
-            </>
-        )
+            <div className={styles.modalOptions}>
+                <FormInput
+                    type="email"
+                    name="email"
+                    className={styles.input}
+                    value={inputState.email}
+                    onChange={handleChange}
+                    onBlur={checkInputHandler}
+                    onFocus={clearErrorHandler}
+                    required
+                    error={error.email}
+                />
+
+                <label htmlFor="email">Имейл:</label>
+                <input />
+            </div>
+        );
     }
-}
+};
