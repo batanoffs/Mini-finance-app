@@ -13,6 +13,7 @@ export const FormInput = ({
     required = false,
     error = '',
     customLabel = null,
+    suffixText = '',
     sx = {},
     onChange = () => {},
     onBlur = () => {},
@@ -27,7 +28,7 @@ export const FormInput = ({
             style={sx}
             className={`${styles.formField} ${error ? styles.hasError : ''} ${
                 required ? styles.required : ''
-            }`}
+            } ${suffixText ? styles.hasSuffix : ''}`}
         >
             <input
                 type={type}
@@ -42,6 +43,7 @@ export const FormInput = ({
                 placeholder={placeholder || customLabel || fieldName}
                 {...props}
             />
+            {suffixText && <span className={styles.suffixText}>{suffixText}</span>}
             {error && <span className={styles.error}>{error}</span>}
         </div>
     );
