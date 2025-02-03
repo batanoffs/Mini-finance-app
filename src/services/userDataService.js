@@ -13,14 +13,23 @@ const getUserData = async (parentObjectId, relations = [], relationsDepth = 1) =
 };
 
 const getAllFriends = async (parentObjectId) => {
-    // return await request.get(
-    //     API.data.userData + `/${parentObjectId}/friends?loadRelations=friends&relationsDepth=1`
-    // );
     try {
         return await Backendless.Data.of('user-data').findById(parentObjectId, {
-            properties: ['friends'],
-            relations: 'friends',
+            relations: ['friends'],
+            excludeProps: [
+                'country',
+                'address',
+                'gender',
+                'town',
+                'created',
+                'avatar',
+                'ownerId',
+                'phoneNumber',
+                'cardId',
+                'updated',
+            ],
             relationsDepth: 1,
+            relationsPageSize: 100,
         });
     } catch (error) {
         throw error;
