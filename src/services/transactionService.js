@@ -1,10 +1,11 @@
 const getByUserId = async (id, status = null) => {
     try {
-        // Build the where clause
-        const whereClause = `receiver='${id}' OR sender='${id}' ${status !== null ? `AND status='${status}'` : ''}`;
+        // build the having clause
+        const query = status !== null ? `status='${status}'` : "status='pending'";
 
         return await Backendless.Data.of('transactions').find({
-            where: whereClause,
+            where: `receiver='${id}' OR sender='${id}'`,
+            having: query,
             relations: ['receiver', 'sender'],
             sortBy: ['created DESC'],
             pageSize: 10,
@@ -107,7 +108,7 @@ const request = async (fullName, receiverId, amount, senderId, token) => {
         const notification = unitOfWork.create('notifications', {
             message: message,
             type: 'transaction',
-            related_entity_id: newTransaction.objectId,
+            related_entity_id: newTransaction,
             related_entity_name: 'transactions',
         });
 
