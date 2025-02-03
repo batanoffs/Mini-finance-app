@@ -10,7 +10,7 @@
 > [!NOTE]
 > - Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)
 > - Backendless FREE-TIER requests are **LIMITED** and the server will shut down for a day when reached
-> - New updates to database, services(introduced SDK), localization changes to english
+> - New updates to database, services(introduced Backendless SDK), localization updated to english
 
 ## Table of content
 - [Features](#features)
