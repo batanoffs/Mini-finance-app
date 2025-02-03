@@ -12,10 +12,6 @@
 > - Backendless FREE-TIER requests are **LIMITED** and the server will shut down for a day when reached
 > - New updates to database, services(introduced SDK), localization changes to english
 
-### Project Demo Previous Stage (updated version - coming soon)
-https://github.com/batanoffs/mini-finance/assets/111650687/d3e5ef51-4f2d-4225-a05e-6da467265a31
-
-
 ## Table of content
 - [Features](#features)
 - [Libraries and Services](#libraries-and-services)
