@@ -5,7 +5,7 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-purple)](https://github.com/prettier/prettier)
 [![styled with prettier](https://img.shields.io/badge/Finance-web_app-teal)]()
 
-#### Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling account top-ups, adding friends, facilitating transactions between users, notify user for events and maintaining transaction history.
+#### Mini Finance Innovations is a finance web application project. The goal is to simulate online banking by generating online virtual cards for new users, enabling users to add friends via phone number, facilitating transactions between friends in the ecosystem, receiving notifications for events, and maintaining transaction history.
 
 > [!NOTE]
 > - Deployed at [https://mini-finance.onrender.com](https://mini-finance.onrender.com)
