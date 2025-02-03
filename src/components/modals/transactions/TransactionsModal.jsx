@@ -4,7 +4,7 @@ import { FormInput, Autocomplete } from '../../inputs';
 import styles from './modal.module.css';
 
 const ModalForm = ({ type, toggleModal }) => {
-    const { values, setValues, setUserInputHandler, onTransaction, onClose, friends } =
+    const { values, setValues, setUserInputHandler, onTransaction, onClose, friendSuggestions } =
         useMakeTransactions(type, toggleModal, {
             amount: '',
             friends: '',
@@ -28,42 +28,36 @@ const ModalForm = ({ type, toggleModal }) => {
     return (
         <div className={styles.background} onClick={onCloseOutsideClick}>
             <div className={styles.container}>
-                <div className={styles.header}>
-                    <h5>{title}</h5>
-                    <button onClick={onClose}>X</button>
-                </div>
+                <form onSubmit={onTransactionSubmit} className={styles.customForm}>
+                    <header>
+                        <h5>{title}</h5>
+                        <button onClick={onClose}>X</button>
+                    </header>
+                    <FormInput
+                        type="number"
+                        name="amount"
+                        id="amount"
+                        className={styles.formControl}
+                        value={values.amount}
+                        onChange={setUserInputHandler}
+                        placeholder="Enter amount"
+                        suffixText="BGN"
+                        required
+                    />
 
-                <div className={styles.formContent}>
-                    <form onSubmit={onTransactionSubmit} className={styles.customForm}>
-                        <div className={styles.formGroup}>
-                            <FormInput
-                                type="text"
-                                name="amount"
-                                id="amount"
-                                required
-                                className={styles.formControl}
-                                value={values.amount}
-                                onChange={setUserInputHandler}
-                                placeholder="10 BGN"
-                            />
-                        </div>
+                    <Autocomplete
+                        userInput={values}
+                        setUserInput={setValues}
+                        name="friends"
+                        placeholder="Start typing a name..."
+                        required
+                        suggestions={friendSuggestions || []}
+                    />
 
-                        <div className={styles.formGroup}>
-                            <Autocomplete
-                                userInput={values}
-                                setUserInput={setValues}
-                                name="friends"
-                                placeholder="Select friend"
-                                required
-                                suggestions={friends || []}
-                            />
-                        </div>
-
-                        <footer>
-                            <FormInput type="submit" value="Submit" />
-                        </footer>
-                    </form>
-                </div>
+                    <footer>
+                        <FormInput type="submit" value="Submit" />
+                    </footer>
+                </form>
             </div>
         </div>
     );
