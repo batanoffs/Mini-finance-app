@@ -5,24 +5,10 @@ import { useAuthContext } from '../contexts/AuthContext';
 import { dataService, transactionService } from '../services/';
 import { getUserToken } from '../utils';
 
-// Map friends data to a more readable format
-function filterFriends(friends) {
-    if (friends?.length === 0) return [];
-
-    return friends.map((friend) => ({
-        name: friend.fullName,
-        avatar: friend.avatar,
-        objectId: friend.objectId,
-    }));
-}
-
 export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
-    const [values, setValues] = useState({
-        ...initialState,
-        selectedFriendId: '',
-    });
     const { auth } = useAuthContext();
-    const [friends, setFriends] = useState(filterFriends(auth.friends));
+    const [friendSuggestions, setFriendsSuggestions] = useState([]);
+    const [values, setValues] = useState({ ...initialState, selectedFriendId: '' });
     const { token } = getUserToken();
     const showMessage = useMessage();
 
@@ -32,7 +18,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
 
             const response = await dataService.getAllFriends(auth.objectId);
 
-            if (!response || !response.friends) throw new Error('No friends found');
+            if (!response) throw new Error(response.error || 'Error during fetching');
 
             const friendsList = response.friends;
 
@@ -44,7 +30,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
                     objectId: friend.objectId,
                 }));
 
-            setFriends(filterFriends);
+            setFriendsSuggestions(filterFriends);
         } catch (error) {
             console.error(error);
             showMessage('error', 'Error during fetching');
@@ -76,10 +62,10 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
 
             if (type === 'request') {
                 const response = await transactionService.request(
-                    fullName,
-                    receiverId,
-                    amount,
+                    auth.fullName,
                     auth.objectId,
+                    amount,
+                    receiverId,
                     token
                 );
 
@@ -126,5 +112,12 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
         }
     };
 
-    return { values, friends, setValues, setUserInputHandler, onTransaction, onClose };
+    return {
+        values,
+        friendSuggestions,
+        setValues,
+        setUserInputHandler,
+        onTransaction,
+        onClose,
+    };
 };
