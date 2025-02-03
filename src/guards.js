@@ -49,7 +49,6 @@ export const restrictDashboard = async ({ request }) => {
         // Validate backend session
         const token = await authService.getUserToken();
         const session = await authService.validateSession();
-        console.log('User Session: ', { session, token });
 
         if (!token || !session) {
             clearUserData(); // Clear only if backend says session is invalid
