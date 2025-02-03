@@ -49,7 +49,7 @@ export const Login = ({ className = '' }) => {
                         error={error.password}
                         placeholder="Enter password"
                     />
-                    <Link to="reset">Forgot password?</Link>
+                    <Link to="/reset">Forgot password?</Link>
                     <FormInput
                         type="submit"
                         id="submit"
