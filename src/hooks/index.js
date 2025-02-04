@@ -1,6 +1,5 @@
 export * from './useAddFriends'
 export * from './useForm'
-export * from './useMakeTransactions'
 export * from './useMessage'
 export * from './useModal'
 export * from './useSessionStorage'
