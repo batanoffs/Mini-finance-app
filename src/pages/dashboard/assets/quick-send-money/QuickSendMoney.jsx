@@ -7,40 +7,35 @@ import { useAuthContext } from '../../../../contexts/AuthContext';
 import { ListFriend } from '../../../../components/lists';
 import { EmptyCard } from '../../../../components/cards';
 import { TransactionsModal } from '../../../../components/modals';
+import { getUserToken } from '../../../../utils';
 
 import styles from './quick-send.module.css';
 
 export const QuickSendMoney = () => {
     const [values, setValues] = useState({ amount: '', friends: '' });
-    const [showModal, toggleModal] = useModal({
-        topUp: false,
-        send: false,
-        request: false,
-        buttons: false,
-        favFriends: false,
-    });
+    const [showMenu, setShowMenu] = useState(false);
+    const [showModal, setShowModal] = useModal({ send: false, buttons: false, favFriends: false });
     const { auth } = useAuthContext();
+    const { token } = getUserToken();
     const showMessage = useMessage();
 
     const notFound = (
         <>
             <p className={styles.notFound}>No friends added yet. Add friends below</p>
-            <AddToFavorites toggleModal={toggleModal} />
+            <AddToFavorites toggleModal={setShowModal} />
         </>
     );
     const menu =
-        auth?.favorite_friends?.length > 0 ? <ActionsMenu toggleModal={toggleModal} /> : null;
+        auth?.favorite_friends?.length > 0 ? (
+            <ActionsMenu toggleModal={setShowModal} showMenu={showMenu} setShowMenu={setShowMenu} />
+        ) : null;
 
-    const openSendMenu = (event) => {
-        const name = event?.currentTarget?.parentElement?.getAttribute('data-key');
+    const openSendMenu = (name) => {
         if (!name) {
-            showMessage(
-                'error',
-                'Error, can not get friend name. Please try again, or refresh page'
-            );
+            showMessage('error', 'Can not get friend name. Please try again, or refresh page');
             return;
         }
-        toggleModal('send');
+        setShowModal('send');
         setValues({ ...values, [`friends`]: name });
     };
 
@@ -49,16 +44,27 @@ export const QuickSendMoney = () => {
             <ul className={styles.sendMoneyContainer}>
                 {auth?.favorite_friends?.length > 0
                     ? auth.favorite_friends?.map((friend) => (
-                          <ListFriend friend={friend} onClick={openSendMenu} key={friend.objectId}>
+                          <ListFriend
+                              friend={friend}
+                              onClick={() => openSendMenu(friend?.fullName)}
+                              key={friend.objectId}
+                          >
                               {showModal.send && (
-                                  <Actions toggleModal={toggleModal} friend={friend} />
+                                  <Actions toggleModal={setShowModal} friend={friend} />
                               )}
                           </ListFriend>
                       ))
                     : notFound}
-                {showModal.favFriends && <AddToFavorites toggleModal={toggleModal} />}
+                {showModal.favFriends && <AddToFavorites toggleModal={setShowModal} />}
                 {showModal.send && (
-                    <TransactionsModal.Send showModal={showModal} toggleModal={toggleModal} />
+                    <TransactionsModal.Send
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        userId={auth.objectId}
+                        userFullName={auth.fullName}
+                        token={token}
+                        showMessage={showMessage}
+                    />
                 )}
             </ul>
         </EmptyCard>
