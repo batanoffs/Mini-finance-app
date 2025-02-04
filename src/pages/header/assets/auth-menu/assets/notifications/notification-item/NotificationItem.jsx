@@ -17,31 +17,34 @@ export const NotificationItem = ({
 }) => {
     // Destructure notification object
     const date = formatDate(notification.created);
-    const event = notification.event_type;
-    const senderName = notification.sender?.[0]?.fullName ?? null;
-    const senderId = notification.sender?.[0]?.objectId ?? null;
-    const sender = notification.sender?.[0];
+    const type = notification.type;
     const notificationId = notification.objectId;
-    const cashAmount = notification.amount;
-    const moneyReceiverName = notification.sender?.[0]?.fullName ?? null;
+    const relatedId = notification.related_entity_id;
+    const relatedName = notification.related_entity_name;
 
     // Check if notification requires confirmation in order to render the appropriate buttons
-    const needToConfirm = event === NOTIFY.TYPE.frRequest || event === NOTIFY.TYPE.cashRequest;
+    const needToConfirm = type === 'friend-request' || message.incudes('requested');
 
     // Event handlers
     const onAcceptNotification = () => {
         // Check the event type and call the appropriate handler
-        if (event === NOTIFY.TYPE.frRequest) return onFriendAccept(notificationId, sender);
-        if (event === NOTIFY.TYPE.cashRequest) return onCashApprove(notificationId, moneyReceiverName, cashAmount);
+        if (type === 'friend-request') return onFriendAccept(notificationId, sender);
+        if (type === 'transaction' && message.incudes('requested'))
+            return onCashApprove(notificationId, relatedId, relatedName);
     };
 
     const onRejectNotification = () => {
         // Check the event type and call the appropriate handler
-        if (event === NOTIFY.TYPE.frRequest) return onFriendReject(notificationId);
-        if (event === NOTIFY.TYPE.cashRequest) return onCashDecline(notificationId);
+        if (type === 'friend-request') return onFriendReject(notificationId);
+        if (type === 'transaction' && message.incudes('requested'))
+            return onCashDecline(notificationId);
     };
 
-    const onDeleteNotification = () => onDelete(notificationId);
+    const onDeleteNotification = () => {
+        console.log('Deleting notification with id:', notificationId);
+
+        // onDelete(notificationId);
+    };
 
     return (
         <li
@@ -57,7 +60,6 @@ export const NotificationItem = ({
             <div className={styles.btnContainer}>
                 {needToConfirm ? (
                     <div className={styles.btnGroup}>
-                        
                         <button
                             data-key={notification.objectId}
                             data-sender={senderId}
