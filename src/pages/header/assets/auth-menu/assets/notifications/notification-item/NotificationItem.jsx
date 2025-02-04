@@ -15,15 +15,17 @@ export const NotificationItem = ({
     onCashDecline,
     onCashApprove,
 }) => {
+    if (!notification) return null;
     // Destructure notification object
-    const date = formatDate(notification.created);
-    const type = notification.type;
-    const notificationId = notification.objectId;
-    const relatedId = notification.related_entity_id;
-    const relatedName = notification.related_entity_name;
+    const date = formatDate(notification?.created);
+    const type = notification?.type;
+    const notificationId = notification?.objectId;
+    const relatedId = notification?.related_entity_id;
+    const relatedName = notification?.related_entity_name;
+    const message = notification?.message;
 
     // Check if notification requires confirmation in order to render the appropriate buttons
-    const needToConfirm = type === 'friend-request' || message.incudes('requested');
+    const needToConfirm = type === 'friend-request' || message?.includes('requested');
 
     // Event handlers
     const onAcceptNotification = () => {
@@ -40,10 +42,9 @@ export const NotificationItem = ({
             return onCashDecline(notificationId);
     };
 
+    // TODO - remove only notifications, events which need actions must not have this option
     const onDeleteNotification = () => {
-        console.log('Deleting notification with id:', notificationId);
-
-        // onDelete(notificationId);
+        onDelete(notificationId);
     };
 
     return (
