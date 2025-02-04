@@ -1,8 +1,7 @@
 const type = {
-    frRequest: 'friend request',
-    frAccept: 'friend accept',
-    cashReceived: 'money received',
-    cashRequest: 'money request',
+    frRequest: 'friend-request',
+    system: 'system',
+    transaction: 'transaction',
 };
 
 const status = {
