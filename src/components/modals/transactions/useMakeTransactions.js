@@ -1,22 +1,24 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { useMessage } from './useMessage';
-import { useAuthContext } from '../contexts/AuthContext';
-import { dataService, transactionService } from '../services/';
-import { getUserToken } from '../utils';
+import { dataService, transactionService } from '../../../services';
 
-export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
-    const { auth } = useAuthContext();
+export const useMakeTransactions = (
+    type,
+    currentUserId,
+    currentUserFullName,
+    setShowModal,
+    token,
+    showMessage,
+    values,
+    setValues
+) => {
     const [friendSuggestions, setFriendsSuggestions] = useState([]);
-    const [values, setValues] = useState({ ...initialState, selectedFriendId: '' });
-    const { token } = getUserToken();
-    const showMessage = useMessage();
 
     const fetchFriends = useCallback(async () => {
         try {
-            if (!auth.objectId) throw new Error('No user found');
+            if (!currentUserId) throw new Error('No user found');
 
-            const response = await dataService.getAllFriends(auth.objectId);
+            const response = await dataService.getAllFriends(currentUserId);
 
             if (!response) throw new Error(response.error || 'Error during fetching');
 
@@ -62,8 +64,8 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
 
             if (type === 'request') {
                 const response = await transactionService.request(
-                    auth.fullName,
-                    auth.objectId,
+                    currentUserFullName,
+                    currentUserId,
                     amount,
                     receiverId,
                     token
@@ -74,10 +76,10 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
 
             if (type === 'send') {
                 const response = await transactionService.send(
-                    auth.fullName,
+                    currentUserFullName,
                     receiverId,
                     amount,
-                    auth.objectId,
+                    currentUserId,
                     token
                 );
 
@@ -85,7 +87,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
             }
 
             // Only close modal and reset form on success
-            toggleModal(type);
+            setShowModal(type);
             setValues(() => ({
                 amount: '',
                 friends: '',
@@ -100,7 +102,7 @@ export const useMakeTransactions = (type, toggleModal, initialState = {}) => {
 
     const onClose = () => {
         try {
-            toggleModal(type);
+            setShowModal(type);
             setValues(() => ({
                 amount: '',
                 friends: '',
