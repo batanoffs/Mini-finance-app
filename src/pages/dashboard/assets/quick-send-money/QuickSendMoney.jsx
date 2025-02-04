@@ -13,7 +13,6 @@ import styles from './quick-send.module.css';
 
 export const QuickSendMoney = () => {
     const [values, setValues] = useState({ amount: '', friends: '' });
-    const [showMenu, setShowMenu] = useState(false);
     const [showModal, setShowModal] = useModal({ send: false, buttons: false, favFriends: false });
     const { auth } = useAuthContext();
     const { token } = getUserToken();
@@ -26,9 +25,7 @@ export const QuickSendMoney = () => {
         </>
     );
     const menu =
-        auth?.favorite_friends?.length > 0 ? (
-            <ActionsMenu toggleModal={setShowModal} showMenu={showMenu} setShowMenu={setShowMenu} />
-        ) : null;
+        auth?.favorite_friends?.length > 0 ? <ActionsMenu toggleModal={setShowModal} /> : null;
 
     const openSendMenu = (name) => {
         if (!name) {
