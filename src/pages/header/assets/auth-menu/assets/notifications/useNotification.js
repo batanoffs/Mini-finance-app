@@ -12,12 +12,15 @@ export const useNotification = ({ initialState }) => {
     const { token } = getUserToken();
     const showMessage = useMessage();
 
-    // // Fetch notifications on component mount
+    // Fetch notifications on component mount
     useEffect(() => {
         notificationService
             .getByUserId(auth.objectId)
-            .then((result) => setNotifications(result))
-            .catch((error) => console.log(error));
+            .then((result) => console.log(result) && setNotifications(result))
+            .catch((error) => {
+                console.log(error);
+                showMessage('error', 'Failed to fetch notifications - under maintenance');
+            });
     }, []);
 
     // Handler to accept friend request
