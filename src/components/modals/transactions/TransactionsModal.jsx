@@ -1,14 +1,23 @@
-import { useMakeTransactions } from '../../../hooks/useMakeTransactions';
+import { useState } from 'react';
+
+import { useMakeTransactions } from './useMakeTransactions';
 import { FormInput, Autocomplete } from '../../inputs';
 
 import styles from './modal.module.css';
 
-const ModalForm = ({ type, toggleModal }) => {
-    const { values, setValues, setUserInputHandler, onTransaction, onClose, friendSuggestions } =
-        useMakeTransactions(type, toggleModal, {
-            amount: '',
-            friends: '',
-        });
+const ModalForm = ({ type, setShowModal, userId, userFullName, token, showMessage }) => {
+    const [values, setValues] = useState({ amount: '', friends: '', selectedFriendId: '' });
+
+    const { setUserInputHandler, onTransaction, onClose, friendSuggestions } = useMakeTransactions(
+        type,
+        userId,
+        userFullName,
+        setShowModal,
+        token,
+        showMessage,
+        values,
+        setValues
+    );
 
     let title = '';
 
@@ -64,8 +73,26 @@ const ModalForm = ({ type, toggleModal }) => {
 };
 
 export const TransactionsModal = {
-    Send: ({ toggleModal }) => <ModalForm type="send" toggleModal={toggleModal} />,
-    Request: ({ toggleModal }) => <ModalForm type="request" toggleModal={toggleModal} />,
+    Send: ({ setShowModal, userId, userFullName, token, showMessage }) => (
+        <ModalForm
+            type="send"
+            setShowModal={setShowModal}
+            userId={userId}
+            userFullName={userFullName}
+            token={token}
+            showMessage={showMessage}
+        />
+    ),
+    Request: ({ setShowModal, userId, userFullName, token, showMessage }) => (
+        <ModalForm
+            type="request"
+            setShowModal={setShowModal}
+            userId={userId}
+            userFullName={userFullName}
+            token={token}
+            showMessage={showMessage}
+        />
+    ),
     // TopUp: ({ showModal, toggleModal }) => (
     //     <ModalForm type="topUp" showModal={showModal} toggleModal={toggleModal} title="Top Up Account" />
     // ),
