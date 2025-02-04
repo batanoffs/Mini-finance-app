@@ -1,13 +1,19 @@
 // import * as request from '../utils/requester';
 // import { API } from '../constants/apiKeys';
 
-const getByUserId = async (id) => {
+const getByUserId = async (currentUserId) => {
     try {
-        return await Backendless.Data.of('notifications').find({
-            relations: ['userId'],
-            where: `userId.objectId='${id}' and is_seen='false'`,
-            sortBy: ['created desc'],
-        });
+        // const query = encodeURIComponent(`userId.objectId = '${id}'`);
+        const queryBuilder = Backendless.DataQueryBuilder.create()
+            .setRelated(['userId'])
+            // .setWhereClause(query)
+            .setSortBy(['created desc']);
+
+        const notifications = await Backendless.Data.of('notifications').find(queryBuilder);
+
+        return notifications.filter(
+            (notification) => notification.userId.objectId === currentUserId
+        );
     } catch (error) {
         throw new Error(error);
     }
