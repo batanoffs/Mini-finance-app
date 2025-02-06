@@ -1,7 +1,7 @@
 const type = {
-    frRequest: 'friend-request',
-    system: 'system',
-    transaction: 'transaction',
+    FRIEND_REQUEST: 'friend-request',
+    SYSTEM: 'system',
+    TRANSACTION: 'transaction',
 };
 
 const status = {
@@ -10,7 +10,7 @@ const status = {
     declined: 'declined',
 };
 
-export const NOTIFY = {
+export const NOTIFICATION = {
     STATUS: status,
     TYPE: type,
 };
