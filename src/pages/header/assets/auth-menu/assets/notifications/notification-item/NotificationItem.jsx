@@ -3,7 +3,7 @@ import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 
 import { RenderMessage } from './RenderMessage';
 import { formatDate } from '../../../../../../../utils';
-import { NOTIFY } from '../constants';
+import { NOTIFICATION } from '../constants';
 
 import styles from './notification-item.module.css';
 
@@ -15,31 +15,57 @@ export const NotificationItem = ({
     onCashDecline,
     onCashApprove,
 }) => {
+    // Validate notification object
     if (!notification) return null;
+
     // Destructure notification object
-    const date = formatDate(notification?.created);
-    const type = notification?.type;
-    const notificationId = notification?.objectId;
-    const relatedId = notification?.related_entity_id;
-    const relatedName = notification?.related_entity_name;
-    const message = notification?.message;
+    const {
+        message,
+        related_entity_id,
+        related_entity_name,
+        userId,
+        created,
+        type,
+        is_seen,
+        objectId,
+    } = notification;
 
-    // Check if notification requires confirmation in order to render the appropriate buttons
-    const needToConfirm = type === 'friend-request' || message?.includes('requested');
+    // Validate props
+    if (
+        (!message,
+        !related_entity_id,
+        !related_entity_name,
+        !userId,
+        !created,
+        !type,
+        !is_seen,
+        !objectId)
+    )
+        return null;
 
-    // Event handlers
-    const onAcceptNotification = () => {
-        // Check the event type and call the appropriate handler
-        if (type === 'friend-request') return onFriendAccept(notificationId, sender);
-        if (type === 'transaction' && message.incudes('requested'))
-            return onCashApprove(notificationId, relatedId, relatedName);
+    // Define more understandable variables
+    const eventId = related_entity_id;
+    const eventType = related_entity_name;
+    const notificationId = objectId;
+    const isEvent = {
+        friendRequest: type === NOTIFICATION.TYPE.FRIEND_REQUEST,
+        moneyRequest: type === NOTIFICATION.TYPE.TRANSACTION && message?.includes('requested'),
     };
 
+    // Check if notification requires confirmation in order to render the appropriate buttons
+    const needToConfirm = isEvent.friendRequest || isEvent.moneyRequest;
+
+    // Handlers for user confirmation
+    const onAcceptNotification = () => {
+        // TODO: fix issues with sender variable not defined
+        if (isEvent.friendRequest) return onFriendAccept(notificationId, sender);
+        if (isEvent.moneyRequest) return onCashApprove(notificationId, eventId, eventType);
+    };
+
+    // Handlers for user rejection
     const onRejectNotification = () => {
-        // Check the event type and call the appropriate handler
-        if (type === 'friend-request') return onFriendReject(notificationId);
-        if (type === 'transaction' && message.incudes('requested'))
-            return onCashDecline(notificationId);
+        if (isEvent.friendRequest) return onFriendReject(notificationId);
+        if (isEvent.moneyRequest) return onCashDecline(notificationId);
     };
 
     // TODO - remove only notifications, events which need actions must not have this option
@@ -48,41 +74,24 @@ export const NotificationItem = ({
     };
 
     return (
-        <li
-            className={styles.singleNotification}
-            key={`${notification.objectId} ${notification.status} ${notification.seen}`}
-            data-key={notification.objectId}
-        >
+        <li className={styles.singleNotification} key={`${notificationId} ${is_seen}`}>
             <div className={styles.notificationContent}>
-                <RenderMessage notification={notification} />
-                <small className={styles.date}>{date}</small>
+                <small>{message}</small>
+                <small className={styles.date}>{formatDate(created)}</small>
             </div>
 
             <div className={styles.btnContainer}>
                 {needToConfirm ? (
                     <div className={styles.btnGroup}>
-                        <button
-                            data-key={notification.objectId}
-                            data-sender={senderId}
-                            data-requester-name={senderName}
-                            className={styles.btnAccept}
-                            onClick={onAcceptNotification}
-                        >
+                        <button className={styles.btnAccept} onClick={onAcceptNotification}>
                             Accept
                         </button>
-                        <button
-                            data-key={notification.objectId}
-                            data-sender={senderId}
-                            data-requester-name={senderName}
-                            className={styles.btnRemove}
-                            onClick={onRejectNotification}
-                        >
+                        <button className={styles.btnRemove} onClick={onRejectNotification}>
                             Reject
                         </button>
                     </div>
                 ) : (
                     <button
-                        data-key={notification.objectId}
                         className={styles.btnRemove}
                         onClick={onDeleteNotification}
                         defaultValue={'Delete'}
