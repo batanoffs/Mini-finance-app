@@ -3,11 +3,10 @@
 
 const getByUserId = async (currentUserId) => {
     try {
-        // const query = encodeURIComponent(`userId.objectId = '${id}'`);
         const queryBuilder = Backendless.DataQueryBuilder.create()
             .setRelated(['userId'])
-            // .setWhereClause(query)
-            .setSortBy(['created desc']);
+            .setSortBy(['created desc'])
+            .setWhereClause('`is_seen` = FALSE');
 
         const notifications = await Backendless.Data.of('notifications').find(queryBuilder);
 
@@ -43,9 +42,8 @@ const updateRelation = async (parentObjectId, relationName, id, token) => {
     // );
 };
 
-const updateSeenStatus = async (objectId, seenState, token) => {
-    // const body = { is_seen: seenState };
-    // return await request.put(API.data.notifications + '/' + objectId, body, token);
+const updateSeen = async (objectId) => {
+    return await Backendless.Data.of('notifications').save({ objectId: objectId, is_seen: true });
 };
 
 const getNotSeenNotifications = async (id, token) => {
@@ -133,6 +131,6 @@ export const notificationService = {
     deleteNotification,
     getAllFriendRequests,
     getMoneyRequestNotifications,
-    updateSeenStatus,
+    updateSeen,
     updateRelation,
 };
