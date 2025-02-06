@@ -77,20 +77,13 @@ export const useNotification = ({ initialState }) => {
             if (!notificationId) throw new Error('Notification id not found');
 
             // Update notification status to seen
-            const statusUpdateRes = await notificationService.updateSeenStatus(
-                notificationId,
-                true,
-                token
-            );
+            const updateRes = await notificationService.updateSeen(notificationId);
 
             // Check if status update was successful
-            if (!statusUpdateRes) throw new Error('Failed to update notification status');
+            if (!updateRes) throw new Error('Failed to update notification status');
 
             // Get all not seen notifications
-            const retrieveNotifications = await notificationService.getNotSeenNotifications(
-                auth.ownerId,
-                token
-            );
+            const retrieveNotifications = await notificationService.getByUserId(auth.objectId);
 
             // Update the current notifications state
             setNotifications(retrieveNotifications);
