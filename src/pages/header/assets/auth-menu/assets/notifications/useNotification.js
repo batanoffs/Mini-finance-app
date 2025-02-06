@@ -23,10 +23,10 @@ export const useNotification = ({ initialState }) => {
     }, []);
 
     // Handler to accept friend request
-    const onFriendAccept = async (notificationId, sender) => {
+    const onFriendAccept = async (notificationId, eventId, eventType) => {
         try {
             // Show success message
-            showMessage('warning', 'Not implemented yet');
+            showMessage('warning', 'Not implemented yet. Please try again later. ');
         } catch (error) {
             // Log error message
             console.error('Friend accept error:', error);
@@ -38,7 +38,7 @@ export const useNotification = ({ initialState }) => {
     const onFriendReject = async (notificationId) => {
         try {
             // Show success message
-            showMessage('warning', 'Not implemented yet');
+            showMessage('warning', 'Not implemented yet. Please try again later. ');
         } catch (error) {
             // Log error message
             console.error('Friend reject error:', error);
@@ -47,10 +47,10 @@ export const useNotification = ({ initialState }) => {
     };
 
     // Send the requested money to the requester
-    const onCashApprove = async (notificationId, receiverFullName, amount) => {
+    const onCashApprove = async (notificationId, eventId, eventType) => {
         try {
             // Show success message
-            showMessage('warning', 'Not implemented yet');
+            showMessage('warning', 'Not implemented yet. Please try again later. ');
         } catch (error) {
             // Log error message
             console.error('Transaction failed:', error);
@@ -62,7 +62,7 @@ export const useNotification = ({ initialState }) => {
     const onCashDecline = async (notificationId) => {
         try {
             // Show success message
-            showMessage('warning', 'Not implemented yet');
+            showMessage('warning', 'Not implemented yet. Please try again later. ');
         } catch (error) {
             // Log error message
             console.error('Decline transaction error:', error);
@@ -89,7 +89,7 @@ export const useNotification = ({ initialState }) => {
             setNotifications(retrieveNotifications);
 
             // Show success message
-            showMessage('success', 'Successfully deleted message');
+            showMessage('success', 'Notification deleted successfully');
         } catch (error) {
             // Log error message
             console.error('Delete notification error:', error);

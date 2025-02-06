@@ -58,7 +58,7 @@ export const NotificationItem = ({
     // Handlers for user confirmation
     const onAcceptNotification = () => {
         // TODO: fix issues with sender variable not defined
-        if (isEvent.friendRequest) return onFriendAccept(notificationId, sender);
+        if (isEvent.friendRequest) return onFriendAccept(notificationId, eventId, eventType);
         if (isEvent.moneyRequest) return onCashApprove(notificationId, eventId, eventType);
     };
 
