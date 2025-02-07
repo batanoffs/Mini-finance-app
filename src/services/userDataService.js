@@ -45,7 +45,7 @@ const getByAttr = async (phone) => {
     // );
     try {
         return await Backendless.Data.of('user-data').find({
-            where: `phoneNumber=${phone}`,
+            where: `phoneNumber='${phone}'`,
         });
     } catch (error) {
         throw error;
@@ -107,6 +107,9 @@ const removeFriend = async (currentUserId, friendId, token) => {
 
         // Remove the relation from the friend
         unitOfWork.deleteRelation('user-data', friendId, 'friends', [currentUserId]);
+
+        // Remove the relation from friend favorites
+        unitOfWork.deleteRelation('user-data', currentUserId, 'favorite_friends', [friendId]);
 
         // End of the transaction
         return unitOfWork.execute(token);
