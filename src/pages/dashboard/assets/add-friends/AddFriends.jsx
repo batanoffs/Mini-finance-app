@@ -1,38 +1,46 @@
+import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input';
+
 import { EmptyCard } from '../../../../components/cards';
 import { FormInput } from '../../../../components/inputs';
-import { useAddFriend, useForm } from '../../../../hooks';
+import { useAddFriend, useMessage } from '../../../../hooks';
 
 import styles from './add-friends.module.css';
+import 'react-phone-number-input/style.css';
 
 export const AddFriends = () => {
-    const { onFriendRequest } = useAddFriend();
-    const { values, error, changeHandler, validateHandler, onFocusHandler, handleSubmit } = useForm(
-        { phone: '' },
-        { phone: 'Phone is not valid' },
-        { phone: /^\d{10}$/ }
-    );
+    const showMessage = useMessage();
+    const { onFriendRequest, value, changeHandler } = useAddFriend();
 
-    const onSubmit = (formData) => {
-        onFriendRequest(formData);
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        if (!value) {
+            showMessage('error', 'Please enter a phone number');
+            return;
+        }
+
+        if (!isPossiblePhoneNumber(value)) {
+            showMessage('error', 'Please enter a valid phone number');
+            return;
+        }
+
+        onFriendRequest();
     };
 
     return (
         <EmptyCard title="Add friend" color="primary">
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.friendsForm}>
-                <FormInput
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    placeholder="phone number"
-                    value={values.phone}
-                    error={error.phone}
+            <form onSubmit={onSubmit} className={styles.friendsForm}>
+                <PhoneInput
+                    placeholder="Enter phone number"
+                    defaultCountry="BG"
+                    value={value}
                     onChange={changeHandler}
-                    onBlur={validateHandler}
-                    onFocus={onFocusHandler}
-                    required
-                    sx={{ marginBottom: '0.5em' }}
+                    international={true}
+                    countryCallingCodeEditable={false}
+                    style={{
+                        marginBottom: '0.5em',
+                    }}
                 />
-
                 <FormInput type="submit" value="Add" sx={{ marginBottom: '0' }} />
             </form>
         </EmptyCard>
