@@ -40,9 +40,20 @@ export const useFriends = () => {
             // Check for errors
             if (!response.success) throw new Error(response.error.message);
 
-            // Update session storage
+            // Update session storage friends and favorite friends list
             const filterFriends = auth.friends.filter((friend) => friend.objectId !== friendId);
-            sessionStorage.setItem('auth', JSON.stringify({ ...auth, friends: filterFriends }));
+            const filterFavoriteFriends = auth.favorite_friends.filter(
+                (friend) => friend.objectId !== friendId
+            );
+
+            sessionStorage.setItem(
+                'auth',
+                JSON.stringify({
+                    ...auth,
+                    friends: filterFriends,
+                    favorite_friends: filterFavoriteFriends,
+                })
+            );
 
             // Update the state
             setAuth({ ...auth, friends: filterFriends || [] });
