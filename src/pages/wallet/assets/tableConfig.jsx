@@ -1,22 +1,28 @@
-import { Tag } from 'antd';
+import { Tag, Space, Typography } from 'antd';
+import { SortAscendingOutlined } from '@ant-design/icons';
 
 import { formatDateTable } from './formatDateTable';
 
 export const tableColumnsConfig = [
     {
-        title: 'Date',
+        title: (
+            <Space>
+                <Typography.Text strong>Date</Typography.Text>
+                <SortAscendingOutlined />
+            </Space>
+        ),
         dataIndex: 'date',
         key: 'date',
         sorter: (a, b) => new Date(a.date) - new Date(b.date),
         render: (date) => formatDateTable(date),
     },
     {
-        title: 'Name',
+        title: <Typography.Text strong>Name</Typography.Text>,
         dataIndex: 'description',
         key: 'description',
     },
     {
-        title: 'Type',
+        title: <Typography.Text strong>Type</Typography.Text>,
         dataIndex: 'type',
         key: 'type',
         filters: [
@@ -32,14 +38,22 @@ export const tableColumnsConfig = [
         onFilter: (value, record) => record.type.indexOf(value) === 0,
     },
     {
-        title: 'Amount',
+        title: (
+            <Space>
+                <Typography.Text strong>Amount</Typography.Text>
+                <SortAscendingOutlined />
+            </Space>
+        ),
         dataIndex: 'price',
         key: 'price',
         defaultSortOrder: 'descend',
-        sorter: (a, b) => a.price - b.price,
+        sorter: {
+            compare: (a, b) => a.amount - b.amount,
+            multiple: 1
+        },
     },
     {
-        title: 'Status',
+        title: <Typography.Text strong>Status</Typography.Text>,
         key: 'status',
         dataIndex: 'status',
         render: (_, { status }) => (

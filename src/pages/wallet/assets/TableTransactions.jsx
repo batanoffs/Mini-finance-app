@@ -10,53 +10,26 @@ export const TableTransactions = () => {
     const { transactions, setTransactions, error, isLoading } = useTransactions();
     const { auth } = useAuthContext();
 
-    // Construct the table data params
+    // Process transactions with amount field for sorting
     const processedTransactionList = transactions
         .sort((a, b) => new Date(b.created) - new Date(a.created))
-        .map((transaction) => ({
-            key: transaction.objectId,
-            date: transaction.created,
-            description:
-                transaction.receiver[0].objectId === auth.objectId
-                    ? transaction.sender[0].fullName
-                    : transaction.receiver[0].fullName,
-            type: transaction.receiver[0].objectId === auth.objectId ? 'Income' : 'Outflow',
-            price:
-                transaction.receiver[0].objectId === auth.objectId ? (
-                    <Tag color={'green'} key={transaction.objectId}>
-                        {`+ ${transaction.amount} BGN`}
-                    </Tag>
-                ) : (
-                    <Tag color={'volcano'} key={transaction.objectId}>
-                        {`- ${transaction.amount} BGN`}
+        .map((transaction) => {
+            const isIncome = transaction.receiver[0].objectId === auth.objectId;
+            const amount = transaction.amount;
+            return {
+                key: transaction.objectId,
+                date: transaction.created,
+                description: isIncome ? transaction.sender[0].fullName : transaction.receiver[0].fullName,
+                type: isIncome ? 'Income' : 'Outflow',
+                amount: isIncome ? amount : -amount, // Store raw amount for sorting
+                price: (
+                    <Tag color={isIncome ? 'green' : 'volcano'} key={transaction.objectId}>
+                        {`${isIncome ? '+' : '-'} ${amount} BGN`}
                     </Tag>
                 ),
-            status: [transaction.status || 'Successful'],
-        }));
-
-    const onChange = (pagination, filters, sorter, extra) => {
-        const currentArray = extra.currentDataSource;
-        const action = extra.action;
-
-        if (action === 'sort') {
-            currentArray.sort((a, b) => {
-                if (
-                    Number(a.price.props.children.split(' ')[1]) >
-                    Number(b.price.props.children.split(' ')[1])
-                ) {
-                    return sorter.order === 'ascend' ? 1 : -1;
-                }
-                if (
-                    Number(a.price.props.children.split(' ')[1]) <
-                    Number(b.price.props.children.split(' ')[1])
-                ) {
-                    return sorter.order === 'descend' ? -1 : 1;
-                }
-                return 0;
-            });
-            setTransactions(currentArray);
-        }
-    };
+                status: [transaction.status],
+            };
+        });
 
     return (
         <div className={styles.customBlock} style={{ padding: '0.5em 1.5em' }}>
@@ -64,10 +37,6 @@ export const TableTransactions = () => {
             <Table
                 columns={tableColumnsConfig}
                 dataSource={processedTransactionList}
-                onChange={onChange}
-                showSorterTooltip={{
-                    target: 'sorter-icon',
-                }}
             />
         </div>
     );
