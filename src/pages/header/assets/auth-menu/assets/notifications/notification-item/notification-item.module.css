@@ -21,6 +21,11 @@
         justify-items: center;
         align-items: center;
         width: 100%;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
     }
 
     .date {

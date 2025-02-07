@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 
-import { RenderMessage } from './RenderMessage';
 import { formatDate } from '../../../../../../../utils';
 import { NOTIFICATION } from '../constants';
+// import { RenderMessage } from './RenderMessage';
 
 import styles from './notification-item.module.css';
 
@@ -76,8 +76,8 @@ export const NotificationItem = ({
     return (
         <li className={styles.singleNotification} key={`${notificationId} ${is_seen}`}>
             <div className={styles.notificationContent}>
-                <small>{message}</small>
-                <small className={styles.date}>{formatDate(created)}</small>
+                <p>{message}</p>
+                <span className={styles.date}>{formatDate(created)}</span>
             </div>
 
             <div className={styles.btnContainer}>
