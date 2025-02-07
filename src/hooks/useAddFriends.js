@@ -1,44 +1,50 @@
+import { useState } from 'react';
+
 import { useAuthContext } from '../contexts/AuthContext';
 import { useMessage } from './useMessage';
 import { dataService, friendRequestService } from '../services';
 import { getUserToken } from '../utils';
 
 export const useAddFriend = () => {
+    const [value, setValue] = useState('');
     const { auth } = useAuthContext();
     const { token } = getUserToken();
     const showMessage = useMessage();
 
-    const onFriendRequest = async (formData) => {
-        try {
+    const changeHandler = (phone) => {
+        setValue(phone || '');
+    };
 
+    const onFriendRequest = async () => {
+        try {
             // Get the user's phone number and the friend's phone number
-            const friendsPhoneNumber = formData.phone;
+            const friendPhone = value;
             const authUserId = auth.objectId;
             const currentUserName = auth.fullName;
             const userPhoneNumber = auth.phoneNumber;
 
             // Check if the user provided a phone number
-            if (!friendsPhoneNumber) throw new Error('No phone number provided');
+            if (!friendPhone) throw new Error('No phone number provided');
 
             if (!auth || !auth.objectId || !auth.phoneNumber)
                 throw new Error('User not authenticated');
 
             // Check if the user is trying to add themselves
-            if (friendsPhoneNumber === userPhoneNumber) throw new Error('You cannot add yourself');
+            if (friendPhone === userPhoneNumber) throw new Error('You cannot add yourself');
 
             // Check if already friends
-            const isYourFriend = auth.friends.find((x) => x.phoneNumber === friendsPhoneNumber);
+            const isYourFriend = auth.friends.find((x) => x.phoneNumber === friendPhone);
 
             if (isYourFriend) throw new Error('This user is already your friend');
 
-            // Find the friend by phone number
-            const friend = await dataService.getByAttr(friendsPhoneNumber);
+            // Find the user by input phone number
+            const friend = await dataService.getByAttr(friendPhone);
 
-            // If already friends
-            if (!friend[0].objectId) throw new Error('User not found');
+            // If no user found throw an error
+            if (!friend || !friend.length > 0)
+                throw new Error(`User with phone number ${friendPhone} does not exist`);
 
             //TODO - check if the same friend request exists in the database
-
 
             // Create the friend request and notification
             const createResponse = await friendRequestService.create(
@@ -52,8 +58,8 @@ export const useAddFriend = () => {
             if (!createResponse.success)
                 throw new Error(createResponse.error.message || 'Failed to send friend request');
 
-            // Show a success message
-            formData.phone = '';
+            // Clear input and show success message
+            setValue('');
             showMessage('success', 'Friend request sent');
         } catch (error) {
             // Handle the error
@@ -62,8 +68,9 @@ export const useAddFriend = () => {
         }
     };
 
-    // Return the function to send friend request
     return {
         onFriendRequest,
+        value,
+        changeHandler,
     };
 };
