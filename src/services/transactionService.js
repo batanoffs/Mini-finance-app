@@ -1,7 +1,7 @@
 const getByUserId = async (id, status = null) => {
     try {
         // build the having clause
-        const query = status !== null ? `status='${status}'` : "status='pending'";
+        const query = status !== null ? `status='${status}'` : "";
 
         return await Backendless.Data.of('transactions').find({
             where: `receiver='${id}' OR sender='${id}'`,
