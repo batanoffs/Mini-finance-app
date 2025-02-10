@@ -1,13 +1,13 @@
 import { ContactInfo } from '../assets';
 import { FormInput } from '../../components/inputs';
 import { BentoGrid } from '../../layout';
+import { useMessage } from '../../hooks';
 
 import styles from './help-center.module.css';
-import { useMessage } from '../../hooks';
 
 export const HelpCenter = () => {
     const message = useMessage();
-    
+
     const onSearchHandler = (e) => {
         e.preventDefault();
         message('info', 'Search not implemented yet!');
