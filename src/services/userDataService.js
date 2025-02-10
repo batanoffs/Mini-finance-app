@@ -95,6 +95,18 @@ const setRelation = async (parentObjectId, relationColumnName, children) => {
     }
 };
 
+const removeRelation = async (parentObjectId, relationColumnName, children) => {
+    try {
+        return await Backendless.Data.of('user-data').deleteRelation(
+            parentObjectId,
+            relationColumnName,
+            children
+        );
+    } catch (error) {
+        throw error;
+    }
+};
+
 const removeFriend = async (currentUserId, friendId, token) => {
     try {
         // Beginning of the transaction
@@ -127,4 +139,5 @@ export const dataService = {
     changeAttribute,
     getAllFriends,
     getByAttr,
+    removeRelation,
 };
