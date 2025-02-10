@@ -4,7 +4,7 @@ import {
     faHandHoldingDollar,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { TransactionsModal, TopUp } from '../../../../components/modals';
+import { TopUpFrom, TransactionsForm } from './components';
 import { ButtonTooltip } from '../../../../components/buttons';
 import { EmptyCard } from '../../../../components/cards';
 import { useMessage, useModal } from '../../../../hooks';
@@ -46,9 +46,9 @@ export const BankingActions = () => {
                 />
             </div>
 
-            {showModal.topUp && <TopUp toggleModal={setShowModal} />}
+            {showModal.topUp && <TopUpFrom toggleModal={setShowModal} />}
             {showModal.send && (
-                <TransactionsModal.Send
+                <TransactionsForm.Send
                     showModal={showModal}
                     setShowModal={setShowModal}
                     userId={auth.objectId}
@@ -58,7 +58,7 @@ export const BankingActions = () => {
                 />
             )}
             {showModal.request && (
-                <TransactionsModal.Request
+                <TransactionsForm.Request
                     showModal={showModal}
                     setShowModal={setShowModal}
                     userId={auth.objectId}
