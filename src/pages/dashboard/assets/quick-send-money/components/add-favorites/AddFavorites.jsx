@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
+import { Autocomplete, FormInput } from '../../../../../../components/inputs';
 import { useAuthContext } from '../../../../../../contexts/AuthContext';
 import { dataService } from '../../../../../../services';
 import { useMessage } from '../../../../../../hooks';
-import { Autocomplete, FormInput } from '../../../../../../components/inputs';
 
 import styles from './add-friends.module.css';
 
-export const AddToFavorites = ({ toggleModal }) => {
+export const AddToFavorites = ({ setAddMode }) => {
     const { auth, setAuth } = useAuthContext();
 
     const [userInput, setUserInput] = useState({ friends: '' });
@@ -22,7 +22,7 @@ export const AddToFavorites = ({ toggleModal }) => {
                 throw new Error('Please enter a name!');
             }
             if (!auth.objectId) {
-                throw new Error('Something went wrong');
+                throw new Error('Unauthorized!');
             }
 
             const findFriend = auth.friends?.find((friend) => friend.fullName === inputName);
@@ -45,7 +45,7 @@ export const AddToFavorites = ({ toggleModal }) => {
             setAuth(updatedAuth);
             sessionStorage.setItem('auth', JSON.stringify(updatedAuth));
 
-            toggleModal('favFriends');
+            setAddMode(false);
             showMessage('success', `${findFriend.fullName} has been added to favorites!`);
         } catch (error) {
             showMessage('error', error.message);
