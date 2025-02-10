@@ -48,3 +48,7 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
+.overflowVisible {
+    overflow: visible;
+}

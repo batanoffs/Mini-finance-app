@@ -8,6 +8,7 @@ export const EmptyCard = ({
     options = {
         menu: null,
     },
+    overflow = 'hidden',
 }) => {
     const backgroundColor = {
         primary: styles.primary,
@@ -30,8 +31,10 @@ export const EmptyCard = ({
         );
     }
 
+    const overflowClass = overflow === 'visible' ? styles.overflowVisible : '';
+    
     return (
-        <section className={`${styles.customBlock} ${backgroundColor} ${className}`}>
+        <section className={`${styles.customBlock} ${backgroundColor} ${overflowClass} ${className}`}>
             {TitleItem}
 
             {children && <article className={styles.content}>{children}</article>}
