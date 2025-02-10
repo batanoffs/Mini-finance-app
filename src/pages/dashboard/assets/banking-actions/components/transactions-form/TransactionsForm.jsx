@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 import { useMakeTransactions } from './useMakeTransactions';
-import { FormInput, Autocomplete } from '../../inputs';
+import { FormInput, Autocomplete } from '../../../../../../components/inputs';
 
 import styles from './modal.module.css';
 
-const ModalForm = ({ type, setShowModal, userId, userFullName, token, showMessage }) => {
+const Form = ({ type, setShowModal, userId, userFullName, token, showMessage }) => {
     const [values, setValues] = useState({ amount: '', friends: '', selectedFriendId: '' });
 
     const { setUserInputHandler, onTransaction, onClose, friendSuggestions } = useMakeTransactions(
@@ -72,9 +72,9 @@ const ModalForm = ({ type, setShowModal, userId, userFullName, token, showMessag
     );
 };
 
-export const TransactionsModal = {
+export const TransactionsForm = {
     Send: ({ setShowModal, userId, userFullName, token, showMessage }) => (
-        <ModalForm
+        <Form
             type="send"
             setShowModal={setShowModal}
             userId={userId}
@@ -84,7 +84,7 @@ export const TransactionsModal = {
         />
     ),
     Request: ({ setShowModal, userId, userFullName, token, showMessage }) => (
-        <ModalForm
+        <Form
             type="request"
             setShowModal={setShowModal}
             userId={userId}
