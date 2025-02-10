@@ -3,16 +3,18 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './actions-menu.module.css';
 
-export const ActionsMenu = ({ toggleModal }) => {
-    const onChangeHandler = (e) => {
+export const ActionsMenu = ({ toggleEditMode, toggleAddMode, favoriteFriends }) => {
+    if (!favoriteFriends?.length) return null;
+
+    const onEditHandler = (e) => {
         const menuElement = e.currentTarget.parentElement;
         const divElement = e.currentTarget.parentElement.parentElement;
         menuElement.style.display = menuElement.style.display === 'block' ? 'none' : 'block';
         divElement.style.display = divElement.style.display === 'block' ? 'none' : 'block';
-        toggleModal('favFriends');
+        toggleEditMode((prev) => !prev);
     };
 
-    const showActionsHandler = (e) => {
+    const openMenuHandler = (e) => {
         const tooltip = e.currentTarget.nextElementSibling;
         const ul = e.currentTarget.nextElementSibling.children[0];
         ul.style.display = ul.style.display === 'block' ? 'none' : 'block';
@@ -20,7 +22,7 @@ export const ActionsMenu = ({ toggleModal }) => {
     };
 
     const onAddHandler = (e) => {
-        toggleModal('favFriends');
+        toggleAddMode((prev) => !prev);
         const menuElement = e.currentTarget.parentElement;
         const divElement = e.currentTarget.parentElement.parentElement;
         divElement.style.display = divElement.style.display === 'block' ? 'none' : 'block';
@@ -31,16 +33,16 @@ export const ActionsMenu = ({ toggleModal }) => {
             <FontAwesomeIcon
                 icon={faEllipsisV}
                 className={styles.threeDotsIcon}
-                onClick={showActionsHandler}
+                onClick={openMenuHandler}
             />
 
             <div className={styles.actionButtons}>
                 <ul>
-                    <li className={styles.actionButton} onClick={onChangeHandler}>
-                        Change
+                    <li className={styles.actionButton} onClick={onEditHandler}>
+                        Edit list
                     </li>
                     <li className={styles.actionButton} onClick={onAddHandler}>
-                        Add
+                        Add more
                     </li>
                 </ul>
             </div>
