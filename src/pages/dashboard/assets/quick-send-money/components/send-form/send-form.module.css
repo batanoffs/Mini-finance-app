@@ -1,0 +1,15 @@
+.friend {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background-color 150ms ease-in-out;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+    object-fit: cover;
+    border: 1px solid #e5e7eb;
+}
