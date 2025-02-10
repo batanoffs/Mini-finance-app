@@ -2,8 +2,8 @@ import React from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
-import { useValidate } from '../../hooks/useValidate';
-import { FormInput } from '../inputs';
+import { useValidate } from '../../../../../../hooks/useValidate';
+import { FormInput } from '../../../../../../components/inputs';
 
 import styles from './payment-form.module.css';
 
